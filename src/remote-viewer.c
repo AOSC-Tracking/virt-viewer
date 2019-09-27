@@ -645,17 +645,13 @@ remote_viewer_recent_add(gchar *uri, const gchar *mime_type)
 
 static void
 remote_viewer_session_connected(VirtViewerSession *session,
-                                gchar *guri)
+                                const gchar *guri)
 {
     gchar *uri = virt_viewer_session_get_uri(session);
     const gchar *mime = virt_viewer_session_mime_type(session);
 
-    if (uri == NULL)
-        uri = g_strdup(guri);
-
-    remote_viewer_recent_add(uri, mime);
+    remote_viewer_recent_add(uri != NULL ? uri : (char *) guri, mime);
     g_free(uri);
-    g_free(guri);
 }
 
 static gchar *
@@ -694,7 +690,7 @@ remote_viewer_initial_connect(RemoteViewer *self, const gchar *type, const gchar
     }
 
     g_signal_connect(virt_viewer_app_get_session(app), "session-connected",
-                     G_CALLBACK(remote_viewer_session_connected), g_strdup(guri));
+                     G_CALLBACK(remote_viewer_session_connected), (gpointer) g_intern_string(guri));
 
     virt_viewer_session_set_file(virt_viewer_app_get_session(app), vvfile);
 #ifdef HAVE_OVIRT
