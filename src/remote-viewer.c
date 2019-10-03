@@ -540,7 +540,8 @@ create_ovirt_session(VirtViewerApp *app, const char *uri, GError **err)
 #ifdef HAVE_SPICE_GTK
     if (type == OVIRT_VM_DISPLAY_SPICE) {
         SpiceSession *session;
-        GByteArray *ca_cert;
+        GByteArray *ca_cert = NULL;
+        const char *from = "display";
 
         session = remote_viewer_get_spice_session(REMOTE_VIEWER(app));
         g_object_set(G_OBJECT(session),
@@ -548,12 +549,19 @@ create_ovirt_session(VirtViewerApp *app, const char *uri, GError **err)
                      "cert-subject", host_subject,
                      "proxy", proxy_url,
                      NULL);
-        g_object_get(G_OBJECT(proxy), "ca-cert", &ca_cert, NULL);
+
+        g_object_get(G_OBJECT(display), "ca-cert", &ca_cert, NULL);
+        if (ca_cert == NULL) {
+            g_object_get(G_OBJECT(proxy), "ca-cert", &ca_cert, NULL);
+            from = "proxy";
+        }
+
         if (ca_cert != NULL) {
             g_object_set(G_OBJECT(session),
                     "ca", ca_cert,
                     NULL);
             g_byte_array_unref(ca_cert);
+            g_debug("Using ca-cert from %s", from);
         }
     }
 #endif
