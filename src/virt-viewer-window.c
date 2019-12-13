@@ -1069,6 +1069,14 @@ virt_viewer_window_menu_file_screenshot(GtkWidget *menu G_GNUC_UNUSED,
         GError *error = NULL;
 
         filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER (dialog));
+        if (g_strrstr(filename, ".") == NULL) {
+            // no extension provided: add the .png default
+            char *tmp_filename ;
+            tmp_filename = g_strdup_printf("%s.png", filename) ;
+            g_free(filename) ;
+            filename = tmp_filename ;
+        }
+
         if (!virt_viewer_window_save_screenshot(self, filename, &error)) {
             virt_viewer_app_simple_message_dialog(self->priv->app,
                                                   error->message);
