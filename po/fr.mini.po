@@ -1,4 +1,4 @@
-# Libvirt package strings.
+# Virt Viewer package strings.
 # Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -10,12 +10,13 @@
 # Sam Friedmann <sam.friedmann@redhat.com>, 2010,2012
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2016. #zanata
 # Sam Friedmann <sfriedma@redhat.com>, 2016. #zanata
+# Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2019. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: virt-viewer 8.0\n"
+"Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-02-21 09:49+0000\n"
-"PO-Revision-Date: 2016-07-15 05:00+0000\n"
+"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"PO-Revision-Date: 2019-03-05 05:18+0000\n"
 "Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/virt-viewer/"
 "language/fr/)\n"
@@ -33,6 +34,26 @@ msgid ""
 msgstr ""
 "\n"
 "Erreur : impossible de gérer plusieurs URI\n"
+
+#, c-format
+msgid ""
+"\n"
+"No ID|UUID|DOMAIN-NAME was specified for '%s'\n"
+"\n"
+msgstr ""
+"\n"
+"Aucun ID|UUID|DOMAIN-NAME n'a été renseigné pour « %s »\n"
+"\n"
+
+#, c-format
+msgid ""
+"\n"
+"Usage: %s [OPTIONS] [ID|UUID|DOMAIN-NAME]\n"
+"\n"
+msgstr ""
+"\n"
+"Usage : %s [OPTIONS] [ID|UUID|DOMAIN-NAME]\n"
+"\n"
 
 msgid " "
 msgstr " "
@@ -53,6 +74,9 @@ msgstr "%s%s%s - %s"
 msgid "(Press %s to release pointer)"
 msgstr "(Appuyer sur %s pour libérer la souris)"
 
+msgid "<b>Loading...</b>"
+msgstr "<b>Chargement...</b>"
+
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
 
@@ -64,6 +88,10 @@ msgstr "À propos de Virt-Viewer"
 
 msgid "Access remote desktops"
 msgstr "Accéder à des bureaux distants"
+
+#, c-format
+msgid "Address is too long for unix socket_path: %s"
+msgstr "L'adresse est trop longue pour le socket_path Unix : %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -113,6 +141,10 @@ msgstr "Machines virtuelles disponibles"
 msgid "C_onnect"
 msgstr "C_onnecter"
 
+#, c-format
+msgid "Can't connect to channel: %s"
+msgstr "Impossible de se connecter au canal : %s"
+
 msgid "Cannot determine the connection type from URI"
 msgstr "Impossible de déterminer le type de la connexion à partir de l'URI"
 
@@ -127,11 +159,17 @@ msgstr "Impossible de déterminer l'hôte de l'invité %s"
 msgid "Cannot get guest state"
 msgstr "Impossible d'obtenir l'état de l'invité"
 
+msgid "Change CD"
+msgstr "Changer le CD"
+
 msgid "Checking guest domain status"
 msgstr "Vérification du statut du domaine invité"
 
 msgid "Choose a virtual machine"
 msgstr "Choisissez une machine virtuelle"
+
+msgid "Close"
+msgstr "Fermer"
 
 msgid "Connect to channel unsupported."
 msgstr "La connexion au canal n'est pas prise en charge."
@@ -140,7 +178,7 @@ msgid "Connect to hypervisor"
 msgstr "Se connecter à l'hyperviseur"
 
 msgid "Connect to ssh failed."
-msgstr "Échec de la connexion ssh."
+msgstr "La connexion ssh a échoué."
 
 msgid "Connected to graphic server"
 msgstr "Connecté au serveur d'affichage"
@@ -148,11 +186,18 @@ msgstr "Connecté au serveur d'affichage"
 msgid "Connecting to graphic server"
 msgstr "Connexion au serveur d'affichage"
 
+#, c-format
+msgid "Connecting to unix socket failed: %s"
+msgstr "La connexion au socket Unix a échoué : %s"
+
 msgid "Connection _Address"
 msgstr "_Adresse de la connexion"
 
 msgid "Connection details"
 msgstr "Détails de la connexion"
+
+msgid "Console support is compiled out!"
+msgstr "La prise en charge de la console est compilé !"
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
@@ -163,6 +208,10 @@ msgstr ""
 
 msgid "Couldn't open oVirt session: "
 msgstr "Impossible d'ouvrir une session oVirt : "
+
+#, c-format
+msgid "Creating unix socket failed: %s"
+msgstr "La création du socket Unix a échoué : %s"
 
 msgid "Ctrl+Alt"
 msgstr "Ctrl+Alt"
@@ -223,8 +272,7 @@ msgid "Display _%d"
 msgstr "Afficher _%d"
 
 msgid "Display can only be attached through libvirt with --attach"
-msgstr ""
-"L'affichage peut uniquement être attaché à travers libvirt avec --attach"
+msgstr "L'affichage peut uniquement être attaché via libvirt avec --attach"
 
 msgid "Display debugging information"
 msgstr "Afficher les informations de débogage"
@@ -244,11 +292,20 @@ msgstr "Êtes-vous sûr de vouloir mettre fin à la session?"
 msgid "Enable kiosk mode"
 msgstr "Activer le mode kiosque"
 
+msgid "Failed to change CD"
+msgstr "Échec du changement de CD"
+
 msgid "Failed to connect: "
 msgstr "Échec de connexion :"
 
+msgid "Failed to fetch CD names"
+msgstr "Échec de la récupération des noms des CD"
+
 msgid "Failed to initiate connection"
 msgstr "Impossible d'initier la connexion"
+
+msgid "Failed to read stdin: "
+msgstr "Échec de la lecture de stdin :"
 
 msgid "File Transfers"
 msgstr "Transferts de fichier"
@@ -289,6 +346,9 @@ msgstr "Mot de passe invalide"
 msgid "Leave fullscreen"
 msgstr "Quitter le plein écran"
 
+msgid "Loading..."
+msgstr "Chargement..."
+
 msgid "Name"
 msgstr "Nom"
 
@@ -296,7 +356,10 @@ msgid "Name:"
 msgstr "Nom :"
 
 msgid "No connection was chosen"
-msgstr "Aucune connexion choisie"
+msgstr "Aucune connexion n'a été choisie"
+
+msgid "No running virtual machine found"
+msgstr "Aucune machine virtuelle en cours de fonctionnement n'a été trouvée"
 
 msgid "No virtual machine was chosen"
 msgstr "Aucune machine virtuelle choisie"
@@ -312,6 +375,12 @@ msgstr "Mot de passe :"
 msgid "Preferences"
 msgstr "Préférences"
 
+msgid "QEMU debug console"
+msgstr "Console de débogage de QEMU"
+
+msgid "QEMU human monitor"
+msgstr "Moniteur humain de QEMU"
+
 msgid "Quit on given condition in kiosk mode"
 msgstr "Quitter sur une condition définie dans le mode kiosque"
 
@@ -324,14 +393,31 @@ msgstr "Connexions récentes"
 msgid "Reconnect to domain upon restart"
 msgstr "Se reconnecter au domaine lors des redémarrages"
 
+msgid "Refresh"
+msgstr "Recharger"
+
 msgid "Release cursor"
 msgstr "Libérer le curseur"
 
 msgid "Remote Viewer"
 msgstr "Afficheur distant"
 
+msgid ""
+"Remote Viewer provides a graphical viewer for the guest OS display. At this "
+"time it supports guest OS using the VNC or SPICE protocols. Further "
+"protocols may be supported in the future as user demand dictates. The viewer "
+"can connect directly to both local and remotely hosted guest OS, optionally "
+"using SSL/TLS encryption."
+msgstr ""
+"L'afficheur distant fourni un afficheur graphique pour l’affichage du "
+"système d'exploitation hôte. Pour l'instant, il prend en charge les systèmes "
+"hôtes utilisant les protocoles VNC ou SPICE. Plus de protocoles pourraient "
+"être pris en charge dans le future selon des demandes des utilisateurs. "
+"L'afficheur peu se connecter directement tant aux hôtes locaux ou distants, "
+"en utilisant en option le chiffrement SSL/TLS."
+
 msgid "Remote viewer client"
-msgstr "Client Remote viewer"
+msgstr "Client d'affichage à distance"
 
 msgid "Remotely access virtual machines"
 msgstr "Accéder à distance aux machines virtuelles"
@@ -339,14 +425,35 @@ msgstr "Accéder à distance aux machines virtuelles"
 #, c-format
 msgid "Run '%s --help' to see a full list of available command line options\n"
 msgstr ""
-"Lancer '%s --help' pour voir la liste complète des options de ligne de "
+"Lancer « %s --help » pour voir la liste complète des options de ligne de "
 "commande disponibles.\n"
+
+msgid "Screenshot.png"
+msgstr "Screenshot.png"
+
+msgid "Select ISO"
+msgstr "Sélectionnez l'ISO"
 
 msgid "Select USB devices for redirection"
 msgstr "Sélectionnez les périphériques USB à rediriger"
 
+msgid "Select the virtual machine only by its id"
+msgstr "Sélectionnez la machine virtuelle uniquement par son id"
+
+msgid "Select the virtual machine only by its name"
+msgstr "Sélectionnez la machine virtuelle uniquement par son nom"
+
+msgid "Select the virtual machine only by its uuid"
+msgstr "Sélectionnez la machine virtuelle uniquement par son uuid"
+
+msgid "Selected"
+msgstr "Sélectionné"
+
 msgid "Send key combination"
 msgstr "Envoyer la combinaison de touches"
+
+msgid "Serial"
+msgstr "Série"
 
 msgid "Set window title"
 msgstr "Définir le titre de la fenêtre"
@@ -398,6 +505,15 @@ msgstr ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
 
+#, c-format
+msgid "Transferring %u file of %u..."
+msgid_plural "Transferring %u files of %u..."
+msgstr[0] "Transfert de %u fichier sur %u..."
+msgstr[1] "Transfert de %u fichiers sur %u..."
+
+msgid "Transferring 1 file..."
+msgstr "Transfert de 1 fichier..."
+
 msgid "USB device selection"
 msgstr "Sélection du périphérique USB"
 
@@ -424,8 +540,26 @@ msgstr "Impossible d'établir la connexion à libvirt avec l'URI : %s"
 msgid "Unable to connect to the graphic server %s"
 msgstr "Impossible d'établir la connexion au serveur d'affichage %s"
 
+#, c-format
+msgid "Unable to connect: %s"
+msgstr "Impossible de se connecter à : %s"
+
+msgid "Unable to connnect to oVirt"
+msgstr "Incapable de se connecter à oVirt"
+
+#, c-format
+msgid "Unable to determine image format for file '%s'"
+msgstr "Incapable de déterminer le format d'image du fichier « %s »"
+
 msgid "Unknown"
 msgstr "Inconnu"
+
+msgid "Unspecified error"
+msgstr "Erreur inconnue"
+
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr "Le type d'authentification %u n'est pas pris en charge"
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
@@ -509,17 +643,29 @@ msgstr "_Détails de l'invité"
 msgid "_Help"
 msgstr "_Aide"
 
+msgid "_Machine"
+msgstr "_Machine"
+
 msgid "_Normal Size"
 msgstr "Taille _normale"
 
 msgid "_OK"
 msgstr "_OK"
 
+msgid "_Pause"
+msgstr "_Pause"
+
+msgid "_Power down"
+msgstr "Éteindre"
+
 msgid "_Preferences"
 msgstr "_Préférences"
 
 msgid "_Quit"
 msgstr "_Quitter"
+
+msgid "_Reset"
+msgstr "_Réinitialiser"
 
 msgid "_Save"
 msgstr "Enregi_strer"
@@ -540,7 +686,7 @@ msgid "_Zoom"
 msgstr "_Zoom"
 
 msgid "failed to parse ovirt uri"
-msgstr "impossible d'analyser l'uri ovirt"
+msgstr "impossible d'analyser l'URI oVirt"
 
 msgid "label"
 msgstr "étiquette"
@@ -554,8 +700,18 @@ msgid "oVirt VM %s has no host information"
 msgstr "oVirt VM %s ne possède pas d'informations sur l'hôte"
 
 #, c-format
+msgid "oVirt VM %s has unknown display type: %u"
+msgstr "Le type d'affichage de la VM oVirt %s est inconnu : %u"
+
+#, c-format
 msgid "oVirt VM %s is not running"
 msgstr "oVirt VM %s n'est pas en cours d'exécution"
 
+msgid "only SSH or unix socket connection supported."
+msgstr "seul les connexions via socket Unix ou SSH sont prises en charge."
+
 msgid "virt-manager.org"
 msgstr "virt-manager.org"
+
+msgid "virt-viewer"
+msgstr "virt-viewer"

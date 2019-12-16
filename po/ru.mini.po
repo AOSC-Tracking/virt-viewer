@@ -1,4 +1,4 @@
-# Libvirt package strings.
+# Virt Viewer package strings.
 # Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -11,13 +11,14 @@
 # Ilyas B Arinov <arinov.ilyas@gmail.com>, 2015. #zanata
 # yuliya <ypoyarko@redhat.com>, 2015. #zanata
 # yuliya <ypoyarko@redhat.com>, 2016. #zanata
+# Dmitry Astankov <mornie@basealt.ru>, 2019. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: virt-viewer 8.0\n"
+"Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-02-21 09:49+0000\n"
-"PO-Revision-Date: 2016-04-01 12:38+0000\n"
-"Last-Translator: yuliya <ypoyarko@redhat.com>\n"
+"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"PO-Revision-Date: 2019-04-19 08:47+0000\n"
+"Last-Translator: Dmitry Astankov <mornie@basealt.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/virt-viewer/"
 "language/ru/)\n"
 "Language: ru\n"
@@ -28,16 +29,56 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Zanata 4.6.2\n"
 
+msgid ""
+"\n"
+"Error: can't handle multiple URIs\n"
+"\n"
+msgstr ""
+"\n"
+"Ошибка: работа с несколькими URI невозможна\n"
+"\n"
+
+#, c-format
+msgid ""
+"\n"
+"No ID|UUID|DOMAIN-NAME was specified for '%s'\n"
+"\n"
+msgstr ""
+"\n"
+"Для «%s» не заданы ID|UUID|ИМЯ-ДОМЕНА\n"
+"\n"
+
+#, c-format
+msgid ""
+"\n"
+"Usage: %s [OPTIONS] [ID|UUID|DOMAIN-NAME]\n"
+"\n"
+msgstr ""
+"\n"
+"Формат: %s [ПАРАМЕТРЫ] [ID|UUID|ИМЯ-ДОМЕНА]\n"
+"\n"
+
 msgid " "
 msgstr " "
 
 #, c-format
+msgid "%s\n"
+msgstr "%s\n"
+
+#, c-format
+msgid "%s version %s"
+msgstr "%s версии %s"
+
+#, c-format
 msgid "%s%s%s - %s"
-msgstr "%s%s%s - %s"
+msgstr "%s%s%s — %s"
 
 #, c-format
 msgid "(Press %s to release pointer)"
 msgstr "(нажмите %s для освобождения курсора)"
+
+msgid "<b>Loading...</b>"
+msgstr "<b>Загрузка...</b>"
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -47,26 +88,33 @@ msgstr ""
 "Клиент доступа к удаленному рабочему столу построен на основе GTK-VNC, SPICE-"
 "GTK и libvirt"
 
+msgid "About Virt-Viewer"
+msgstr "О Virt-Viewer"
+
 msgid "Access remote desktops"
-msgstr "Доступ к удаленному рабочему столу"
+msgstr "Доступ к удалённому рабочему столу"
+
+#, c-format
+msgid "Address is too long for unix socket_path: %s"
+msgstr "Слишком длинный адрес для Unix socket_path: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
-msgstr "Для настройки этого соединения требуется по крайней мере %s %s"
+msgstr "Для настройки этого соединения требуется по крайней мере %s версии %s"
 
 #, c-format
 msgid ""
 "At least %s version %s is required to setup this connection, see %s for "
 "details"
 msgstr ""
-"Для настройки этого соединения требуется по крайней мере %s %s. Для "
-"получения подробной информации см. %s"
+"Для настройки этого соединения требуется по крайней мере %s версии %s. \n"
+"Подробную информацию можно найти по адресу %s"
 
 msgid "Attach to the local display using libvirt"
-msgstr "Подключиться к локальному графическому сеансу с помощью libvirt"
+msgstr "Подключаться к локальному графическому сеансу с помощью libvirt"
 
 msgid "Authentication failed."
-msgstr "Аутентификация не пройдена."
+msgstr "Ошибка аутентификации."
 
 #, c-format
 msgid ""
@@ -85,7 +133,7 @@ msgid "Authentication is required for the %s connection:\n"
 msgstr "Требуется аутентификация для соединения %s:\n"
 
 msgid "Authentication required"
-msgstr "Требуется проверка подлинности"
+msgstr "Требуется аутентификация"
 
 msgid "Authentication was cancelled"
 msgstr "Аутентификация была отменена"
@@ -93,25 +141,39 @@ msgstr "Аутентификация была отменена"
 msgid "Available virtual machines"
 msgstr "Доступные виртуальные машины"
 
+msgid "C_onnect"
+msgstr "Под­­_ключиться"
+
+#, c-format
+msgid "Can't connect to channel: %s"
+msgstr "Невозможно подключиться к каналу: %s"
+
 msgid "Cannot determine the connection type from URI"
-msgstr "Не удалось определить тип подключения из заданного адреса"
+msgstr "Не удалось определить тип подключения из заданного URI"
 
 #, c-format
 msgid "Cannot determine the graphic type for the guest %s"
-msgstr "Не удалось определить тип графической подсистемы для гостя %s"
+msgstr ""
+"Не удалось определить тип графической подсистемы для гостевой системы %s"
 
 #, c-format
 msgid "Cannot determine the host for the guest %s"
-msgstr "Не удалось определить хост для гостя %s"
+msgstr "Не удалось определить хост для гостевой системы %s"
 
 msgid "Cannot get guest state"
 msgstr "Не удалось получить статус гостевой системы"
+
+msgid "Change CD"
+msgstr "Изменить CD-диск"
 
 msgid "Checking guest domain status"
 msgstr "Проверка статуса гостевого домена"
 
 msgid "Choose a virtual machine"
 msgstr "Выберите виртуальную машину"
+
+msgid "Close"
+msgstr "Закрыть"
 
 msgid "Connect to channel unsupported."
 msgstr "Подключение к каналу не поддерживается."
@@ -120,7 +182,7 @@ msgid "Connect to hypervisor"
 msgstr "Подключиться к гипервизору"
 
 msgid "Connect to ssh failed."
-msgstr "Ошибка соединения ssh."
+msgstr "Ошибка соединения SSH."
 
 msgid "Connected to graphic server"
 msgstr "Установлено соединение с графическим сервером"
@@ -128,18 +190,32 @@ msgstr "Установлено соединение с графическим с
 msgid "Connecting to graphic server"
 msgstr "Подключение к графическому серверу"
 
+#, c-format
+msgid "Connecting to unix socket failed: %s"
+msgstr "Ошибка подключения к сокету Unix: %s"
+
+msgid "Connection _Address"
+msgstr "_Адрес подключения"
+
 msgid "Connection details"
 msgstr "Свойства подключения"
+
+msgid "Console support is compiled out!"
+msgstr "Поддержка консоли не скомпилирована."
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 "Copyright (C) 2007-2014 Red Hat, Inc."
 msgstr ""
-"(C) 2007-2012 Daniel P. Berrange\n"
-"(C) 2007-2014 Red Hat, Inc."
+"© Daniel P. Berrange, 2007-2012\\n\n"
+"© Red Hat, Inc., 2007-2014"
 
 msgid "Couldn't open oVirt session: "
 msgstr "Не удалось открыть сеанс oVirt:"
+
+#, c-format
+msgid "Creating unix socket failed: %s"
+msgstr "Ошибка создания сокета Unix: %s"
 
 msgid "Ctrl+Alt"
 msgstr "Ctrl+Alt"
@@ -190,22 +266,26 @@ msgid "Customise hotkeys"
 msgstr "Настроить комбинации клавиш"
 
 msgid "Direct connection with no automatic tunnels"
-msgstr "Прямое подключение без туннелей"
+msgstr "Прямое подключение без автоматических туннелей"
 
 msgid "Disconnect"
 msgstr "Отключиться"
 
+#, c-format
+msgid "Display _%d"
+msgstr "Дисплей _%d"
+
 msgid "Display can only be attached through libvirt with --attach"
-msgstr "Дисплей может быть подключён только через libvirt с --attach"
+msgstr "Дисплей может быть подключён только через libvirt с помощью --attach"
 
 msgid "Display debugging information"
-msgstr "Показать сообщения диагностики"
+msgstr "Показать отладочную информацию"
 
 msgid "Display verbose information"
-msgstr "Подробный вывод"
+msgstr "Показать подробную информацию"
 
 msgid "Display version information"
-msgstr "Показать версию"
+msgstr "Показать сведения о версии"
 
 msgid "Do not ask me again"
 msgstr "Больше не спрашивать"
@@ -214,13 +294,25 @@ msgid "Do you want to close the session?"
 msgstr "Закрыть сеанс?"
 
 msgid "Enable kiosk mode"
-msgstr "Включить режим киоска"
+msgstr "Включить режим терминала"
+
+msgid "Failed to change CD"
+msgstr "Ошибка изменения CD-диска"
 
 msgid "Failed to connect: "
 msgstr "Не удалось подключиться:"
 
+msgid "Failed to fetch CD names"
+msgstr "Ошибка получения имён CD-дисков"
+
 msgid "Failed to initiate connection"
 msgstr "Не удалось установить соединение"
+
+msgid "Failed to read stdin: "
+msgstr "Ошибка чтения потока stdin: "
+
+msgid "File Transfers"
+msgstr "Передача файлов"
 
 msgid "Finding guest domain"
 msgstr "Поиск гостевого домена"
@@ -236,27 +328,30 @@ msgstr "GUID:"
 
 #, c-format
 msgid "Guest '%s' is not reachable"
-msgstr "Гость '%s' недосягаем"
+msgstr "Гостевая система «%s» недоступна"
 
 msgid "Guest Details"
-msgstr "Параметры гостевой системы"
+msgstr "Сведения о гостевой системе"
 
 msgid "Guest domain has shutdown"
 msgstr "Гостевой домен завершил работу"
 
 #, c-format
 msgid "Invalid file %s: "
-msgstr "Недопустимый файл %s:"
+msgstr "Недопустимый файл %s: "
 
 #, c-format
 msgid "Invalid kiosk-quit argument: %s"
-msgstr "недопустимый аргумент kiosk-quit: %s"
+msgstr "недопустимый параметр команды kiosk-quit: %s"
 
 msgid "Invalid password"
 msgstr "Неверный пароль"
 
 msgid "Leave fullscreen"
 msgstr "Выйти из полноэкранного режима"
+
+msgid "Loading..."
+msgstr "Загрузка..."
 
 msgid "Name"
 msgstr "Имя"
@@ -267,22 +362,31 @@ msgstr "Имя:"
 msgid "No connection was chosen"
 msgstr "Соединение не выбрано"
 
+msgid "No running virtual machine found"
+msgstr "Работающая виртуальная машина не найдена"
+
 msgid "No virtual machine was chosen"
 msgstr "Виртуальная машина не выбрана"
 
 msgid "Open in full screen mode (adjusts guest resolution to fit the client)"
 msgstr ""
-"Открыть в полноэкранном режиме (регулирует разрешение гостя для соответствия "
-"клиенту)"
+"Открыть в полноэкранном режиме (разрешение гостевой системы подстраивается\n"
+" под клиент)"
 
 msgid "Password:"
 msgstr "Пароль:"
 
 msgid "Preferences"
-msgstr "Настройки"
+msgstr "Настройка"
+
+msgid "QEMU debug console"
+msgstr "Консоль отладки QEMU"
+
+msgid "QEMU human monitor"
+msgstr "HMI-консоль QEMU"
 
 msgid "Quit on given condition in kiosk mode"
-msgstr "Выйти по заданному условию в режиме киоска"
+msgstr "Выйти по заданному условию в режиме терминала"
 
 msgid "Read-only"
 msgstr "Только для чтения"
@@ -291,28 +395,75 @@ msgid "Recent connections"
 msgstr "Последние подключения"
 
 msgid "Reconnect to domain upon restart"
-msgstr "Заново подключиться к домену после перезапуска"
+msgstr "Повторно подключаться к домену после перезапуска"
+
+msgid "Refresh"
+msgstr "Обновить"
 
 msgid "Release cursor"
 msgstr "Освободить курсор"
 
 msgid "Remote Viewer"
-msgstr "Удаленный рабочий стол"
+msgstr "Удалённый рабочий стол"
+
+msgid ""
+"Remote Viewer provides a graphical viewer for the guest OS display. At this "
+"time it supports guest OS using the VNC or SPICE protocols. Further "
+"protocols may be supported in the future as user demand dictates. The viewer "
+"can connect directly to both local and remotely hosted guest OS, optionally "
+"using SSL/TLS encryption."
+msgstr ""
+"Удалённый рабочий стол предоставляет графическую оболочку для отображения "
+"гостевой ОС. На текущий момент поддерживается подключение по протоколам VNC "
+"и SPICE. По мере появления пользовательских запросов в дальнейшем может быть "
+"добавлена поддержка и других протоколов. Программа просмотра может "
+"подключаться напрямую как к локальной, так и к удалённой гостевой ОС, при "
+"необходимости используя шифрование SSL/TLS."
 
 msgid "Remote viewer client"
-msgstr "Клиент удаленного просмотра рабочего стола"
+msgstr "Клиент удалённого просмотра рабочего стола"
+
+msgid "Remotely access virtual machines"
+msgstr "Удалённый доступ к виртуальным машинам"
+
+#, c-format
+msgid "Run '%s --help' to see a full list of available command line options\n"
+msgstr ""
+"Выполните команду «%s --help», чтобы просмотреть полный список доступных "
+"параметров командной строки\n"
+
+msgid "Screenshot.png"
+msgstr "Screenshot.png"
+
+msgid "Select ISO"
+msgstr "Выбор ISO"
 
 msgid "Select USB devices for redirection"
-msgstr "Выбрать устройства USB для перенаправления"
+msgstr "Выбор USB-устройств для перенаправления"
+
+msgid "Select the virtual machine only by its id"
+msgstr "Выбирать виртуальную машину только по идентификатору"
+
+msgid "Select the virtual machine only by its name"
+msgstr "Выбирать виртуальную машину только по имени"
+
+msgid "Select the virtual machine only by its uuid"
+msgstr "Выбирать виртуальную машину только по UUID"
+
+msgid "Selected"
+msgstr "Выбрано"
 
 msgid "Send key combination"
 msgstr "Отправить комбинацию клавиш"
+
+msgid "Serial"
+msgstr "Последовательная консоль"
 
 msgid "Set window title"
 msgstr "Изменить заголовок окна"
 
 msgid "Share folder"
-msgstr "Поделиться папкой"
+msgstr "Общая папка"
 
 msgid "Show password"
 msgstr "Показать пароль"
@@ -345,7 +496,7 @@ msgid ""
 "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
 msgstr ""
 "Эта программа относится к категории свободного программного обеспечения;\n"
-"ее изменение и распространение допускается в соответствии с условиями \n"
+"её изменение и распространение допускается в соответствии с условиями \n"
 "лицензии GNU General Public License 2 или любой более поздней версии, \n"
 "опубликованной фондом свободного программного обеспечения. \n"
 "\n"
@@ -353,14 +504,26 @@ msgstr ""
 "но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ВЫРАЖЕННЫХ ЯВНО ИЛИ ПОДРАЗУМЕВАЕМЫХ,\n"
 "В ТОМ ЧИСЛЕ БЕЗ ГАРАНТИЙ КОММЕРЧЕСКОЙ ЦЕННОСТИ И \n"
 "ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ. \n"
-"Подробную информацию можно найти в тексте лицензии GNU. \n"
+"Подробную информацию можно найти в тексте лицензии GNU General Public "
+"License. \n"
 "\n"
-"Копия лицензии GNU предоставляется вместе с этой программой.\n"
-"Адрес фонда: Free Software Foundation, \n"
-"Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
+"Копия лицензии GNU General Public License предоставляется вместе с этой "
+"программой.\n"
+"Адрес фонда: Free Software Foundation, Inc.,\n"
+"59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
+
+#, c-format
+msgid "Transferring %u file of %u..."
+msgid_plural "Transferring %u files of %u..."
+msgstr[0] "Передача %u файла из %u..."
+msgstr[1] "Передача %u файлов из %u..."
+msgstr[2] "Передача %u файлов из %u..."
+
+msgid "Transferring 1 file..."
+msgstr "Передача 1 файла..."
 
 msgid "USB device selection"
-msgstr "Выбор устройства USB"
+msgstr "Выбор USB-устройств"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -380,17 +543,35 @@ msgstr "Невозможно подключиться к libvirt с URI: %s."
 
 #, c-format
 msgid "Unable to connect to the graphic server %s"
-msgstr "Не удалось установить соединение с сервером %s"
+msgstr "Не удалось установить соединение с графическим сервером %s"
+
+#, c-format
+msgid "Unable to connect: %s"
+msgstr "Не удалось подключиться: %s"
+
+msgid "Unable to connnect to oVirt"
+msgstr "Не удаётся подключиться к oVirt"
+
+#, c-format
+msgid "Unable to determine image format for file '%s'"
+msgstr "Не удалось определить формат изображения для файла «%s»"
 
 msgid "Unknown"
 msgstr "Неизвестно"
+
+msgid "Unspecified error"
+msgstr "Неопределённая ошибка"
+
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr "Неподдерживаемый тип аутентификации %u"
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
 msgstr "Тип графики «%s» не поддерживается"
 
 msgid "Username:"
-msgstr "Пользователь:"
+msgstr "Имя пользователь:"
 
 msgid "VNC does not provide GUID"
 msgstr "VNC не предоставляет GUID"
@@ -424,9 +605,15 @@ msgstr "Ожидание запуска гостевого домена"
 msgid "Waiting for libvirt to start"
 msgstr "Ожидание запуска libvirt"
 
+msgid "Zoom _In"
+msgstr "У_величить"
+
+msgid "Zoom _Out"
+msgstr "У_меньшить"
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
-msgstr "Уровень увеличения должен быть между %d-%d\n"
+msgstr "Уровень увеличения должен быть в пределах %d-%d\n"
 
 msgid "Zoom level of window, in percentage"
 msgstr "Масштаб окна в процентах"
@@ -434,20 +621,68 @@ msgstr "Масштаб окна в процентах"
 msgid "[none]"
 msgstr "[нет]"
 
+msgid "_About"
+msgstr "_О программе"
+
+msgid "_Cancel"
+msgstr "_Отменить"
+
 msgid "_Change CD"
-msgstr "_Поменять CD"
+msgstr "_Изменение CD-диска"
+
+msgid "_Close"
+msgstr "За_крыть"
+
+msgid "_Displays"
+msgstr "_Дисплеи"
 
 msgid "_File"
 msgstr "_Файл"
 
+msgid "_Full screen"
+msgstr "_На весь экран"
+
 msgid "_Guest Details"
-msgstr "Параметры  _гостевой системы"
+msgstr "Сведения о  _гостевой системе"
 
 msgid "_Help"
 msgstr "_Справка"
 
+msgid "_Machine"
+msgstr "_Система"
+
+msgid "_Normal Size"
+msgstr "_Нормальный масштаб"
+
+msgid "_OK"
+msgstr "_OK"
+
+msgid "_Pause"
+msgstr "П_ауза"
+
+msgid "_Power down"
+msgstr "_Выключение"
+
+msgid "_Preferences"
+msgstr "_Настройка"
+
+msgid "_Quit"
+msgstr "В_ыход"
+
+msgid "_Reset"
+msgstr "П_ерезагрузка"
+
+msgid "_Save"
+msgstr "_Сохранить"
+
+msgid "_Screenshot"
+msgstr "_Снимок экрана"
+
 msgid "_Send key"
 msgstr "О_тправить клавишу"
+
+msgid "_USB device selection"
+msgstr "Выбор _USB-устройств"
 
 msgid "_View"
 msgstr "_Просмотр"
@@ -470,8 +705,18 @@ msgid "oVirt VM %s has no host information"
 msgstr "Отсутствуют сведения о хосте виртуальной машины oVirt %s"
 
 #, c-format
+msgid "oVirt VM %s has unknown display type: %u"
+msgstr "Неизвестный тип дисплея виртуальной машины oVirt %s: %u"
+
+#, c-format
 msgid "oVirt VM %s is not running"
 msgstr "Виртуальная машина oVirt %s не работает"
 
+msgid "only SSH or unix socket connection supported."
+msgstr "поддерживается только подключение по SSH или через сокет Unix."
+
 msgid "virt-manager.org"
 msgstr "virt-manager.org"
+
+msgid "virt-viewer"
+msgstr "virt-viewer"

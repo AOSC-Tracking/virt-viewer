@@ -2,12 +2,13 @@
 # Thomas Rohlik <rohrto@gmail.com>, 2017. #zanata
 # Zdenek <chmelarz@gmail.com>, 2017. #zanata
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018. #zanata
+# Pavel Borecki <pavel.borecki@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: virt-viewer 8.0\n"
+"Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-02-21 09:49+0000\n"
-"PO-Revision-Date: 2018-12-12 05:40+0000\n"
+"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"PO-Revision-Date: 2019-07-05 06:57+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech\n"
 "Language: cs\n"
@@ -84,10 +85,6 @@ msgstr "Přístup ke vzdáleným plochám"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "Adresa je příliš dlouhá pro unixovou socket_path: %s"
-
-#, c-format
-msgid "An error caused the following file transfers to fail:%s"
-msgstr "Chyba způsobila že se nezdařil přenos následujících souborů:%s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -191,6 +188,9 @@ msgstr "_Adresa spojení"
 
 msgid "Connection details"
 msgstr "Podrobnosti o spojení"
+
+msgid "Console support is compiled out!"
+msgstr "Není sestaveno s podporou konzole!"
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
@@ -381,6 +381,12 @@ msgstr "Heslo:"
 msgid "Preferences"
 msgstr "Předvolby"
 
+msgid "QEMU debug console"
+msgstr "Ladící konzole QEMU"
+
+msgid "QEMU human monitor"
+msgstr "lidský monitor QEMU"
+
 msgid "Quit on given condition in kiosk mode"
 msgstr "V režimu kiosek za daných podmínek ukončit"
 
@@ -459,6 +465,9 @@ msgstr "Vybráno"
 msgid "Send key combination"
 msgstr "Odeslat kombinace kláves"
 
+msgid "Serial"
+msgstr "Sériové"
+
 msgid "Set window title"
 msgstr "Nastavit titulek okna"
 
@@ -510,6 +519,13 @@ msgstr ""
 "License. Pokud tomu tak není, napište do Free Software Foundation, Inc., 59 "
 "Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
 
+#, c-format
+msgid "Transferring %u file of %u..."
+msgid_plural "Transferring %u files of %u..."
+msgstr[0] "Přenášení souboru %u z %u…"
+msgstr[1] "Přenášení souborů %u z %u…"
+msgstr[2] "Přenášení souborů %u z %u…"
+
 msgid "Transferring 1 file..."
 msgstr "Přenáší se 1 soubor…"
 
@@ -554,6 +570,10 @@ msgstr "Neznámý"
 
 msgid "Unspecified error"
 msgstr "Neurčená chyba"
+
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr "Nepodporovaný typ ověření %u"
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
@@ -646,6 +666,9 @@ msgstr "_Podrobnosti o hostovi"
 msgid "_Help"
 msgstr "_Nápověda"
 
+msgid "_Machine"
+msgstr "_Stroj"
+
 msgid "_Normal Size"
 msgstr "_Normální velikost"
 
@@ -653,6 +676,12 @@ msgstr "_Normální velikost"
 # master, DocId: system-config-printer
 msgid "_OK"
 msgstr "_OK"
+
+msgid "_Pause"
+msgstr "_Pozastavit"
+
+msgid "_Power down"
+msgstr "Vy_pnout"
 
 # auto translated by TM merge from project: ibus, version: head, DocId: ibus10
 msgid "_Preferences"
@@ -662,6 +691,9 @@ msgstr "_Předvolby"
 # DocId: po/blivet-gui
 msgid "_Quit"
 msgstr "_Ukončit"
+
+msgid "_Reset"
+msgstr "_Restartovat"
 
 # auto translated by TM merge from project: libreport, version: rhel6, DocId:
 # libreport
@@ -702,6 +734,10 @@ msgid "oVirt VM %s has no host information"
 msgstr "oVirt virt. stroj %s neposkytuje informace o stroji"
 
 #, c-format
+msgid "oVirt VM %s has unknown display type: %u"
+msgstr "oVirt virt. stroj %s má neznámý typ zobrazení: %u"
+
+#, c-format
 msgid "oVirt VM %s is not running"
 msgstr "oVirt virt. stroj %s není spuštěný"
 
@@ -711,3 +747,6 @@ msgstr ""
 
 msgid "virt-manager.org"
 msgstr "virt-manager.org"
+
+msgid "virt-viewer"
+msgstr "virt-viewer"

@@ -1,4 +1,4 @@
-# Libvirt package strings.
+# Virt Viewer package strings.
 # Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -9,12 +9,13 @@
 # Göran Uddeborg <goeran@uddeborg.se>, 2015. #zanata
 # Göran Uddeborg <goeran@uddeborg.se>, 2016. #zanata
 # Göran Uddeborg <goeran@uddeborg.se>, 2018. #zanata
+# Göran Uddeborg <goeran@uddeborg.se>, 2019. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: virt-viewer 8.0\n"
+"Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-02-21 09:49+0000\n"
-"PO-Revision-Date: 2018-05-14 08:20+0000\n"
+"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"PO-Revision-Date: 2019-09-29 03:45+0000\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/virt-viewer/"
 "language/sv/)\n"
@@ -91,10 +92,6 @@ msgstr "Gå till fjärrskrivbord"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "Adressen är för lång för en unix-uttagssökväg: %s"
-
-#, c-format
-msgid "An error caused the following file transfers to fail:%s"
-msgstr "Ett fel gjorde att följande filöverföringar misslyckades: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -196,6 +193,9 @@ msgstr "Anslutnings_adress"
 
 msgid "Connection details"
 msgstr "Anslutningsdetaljer"
+
+msgid "Console support is compiled out!"
+msgstr "Stöd för konsol är utkompilerat!"
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
@@ -372,6 +372,12 @@ msgstr "Lösenord:"
 msgid "Preferences"
 msgstr "Inställningar"
 
+msgid "QEMU debug console"
+msgstr "QEMU felsökningskonsol"
+
+msgid "QEMU human monitor"
+msgstr "QEMU manuell övervakare"
+
 msgid "Quit on given condition in kiosk mode"
 msgstr "Avsluta på angivet villkor i kioskläge"
 
@@ -441,6 +447,9 @@ msgstr "Vald"
 msgid "Send key combination"
 msgstr "Skicka tangentbordskombination"
 
+msgid "Serial"
+msgstr "Seriell"
+
 msgid "Set window title"
 msgstr "Ange fönstertitel"
 
@@ -491,6 +500,12 @@ msgstr ""
 "program. Om inte, skriv till Free Software Foundation, Inc., 59 Temple "
 "Place, Suite 330, Boston, MA 02111-1307  USA\n"
 
+#, c-format
+msgid "Transferring %u file of %u..."
+msgid_plural "Transferring %u files of %u..."
+msgstr[0] "Överför %u fil av %u …"
+msgstr[1] "Överför %u filer av %u …"
+
 msgid "Transferring 1 file..."
 msgstr "Överför 1 fil …"
 
@@ -533,6 +548,10 @@ msgstr "Okänd"
 
 msgid "Unspecified error"
 msgstr "Ospecificerat fel"
+
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr "Autenticeringstyp %u som inte stödjs"
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
@@ -616,17 +635,29 @@ msgstr "_Gästdetaljer"
 msgid "_Help"
 msgstr "_Hjälp"
 
+msgid "_Machine"
+msgstr "_Maskin"
+
 msgid "_Normal Size"
 msgstr "_Normal storlek"
 
 msgid "_OK"
 msgstr "_OK"
 
+msgid "_Pause"
+msgstr "_Pausa"
+
+msgid "_Power down"
+msgstr "_Stäng av"
+
 msgid "_Preferences"
 msgstr "_Egenskaper"
 
 msgid "_Quit"
 msgstr "_Avsluta"
+
+msgid "_Reset"
+msgstr "_Återställ"
 
 msgid "_Save"
 msgstr "_Spara"
@@ -661,6 +692,10 @@ msgid "oVirt VM %s has no host information"
 msgstr "oVirt-VM %s har ingen värdinformation"
 
 #, c-format
+msgid "oVirt VM %s has unknown display type: %u"
+msgstr "oVirt-VM %s har en okänd display-typ: %u"
+
+#, c-format
 msgid "oVirt VM %s is not running"
 msgstr "oVirt-VM %s kör inte"
 
@@ -669,3 +704,6 @@ msgstr "endast SSH- eller unix-uttagsförbindelser stödjs."
 
 msgid "virt-manager.org"
 msgstr "virt-manager.org"
+
+msgid "virt-viewer"
+msgstr "virt-viewer"

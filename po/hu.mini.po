@@ -1,4 +1,4 @@
-# Libvirt package strings.
+# Virt Viewer package strings.
 # Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -8,12 +8,13 @@
 # Zoltan Hoppár <zoltanh721@fedoraproject.org>, 2012-2013
 # Meskó Balázs <meskobalazs@gmail.com>, 2016. #zanata
 # Meskó Balázs <meskobalazs@gmail.com>, 2018. #zanata
+# Meskó Balázs <meskobalazs@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: virt-viewer 8.0\n"
+"Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-02-21 09:49+0000\n"
-"PO-Revision-Date: 2018-08-15 06:31+0000\n"
+"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"PO-Revision-Date: 2019-02-28 03:37+0000\n"
 "Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/virt-viewer/"
 "language/hu/)\n"
@@ -91,10 +92,6 @@ msgstr "Távoli számítógépek elérése"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "A cím túl hosszú a Unix foglalat útvonalhoz: %s"
-
-#, c-format
-msgid "An error caused the following file transfers to fail:%s"
-msgstr "Hiba történt, ami a következő fájlküldések sikertelenségét okozta: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -196,6 +193,9 @@ msgstr "Kapcsolódási _cím"
 
 msgid "Connection details"
 msgstr "Kapcsolat részletei"
+
+msgid "Console support is compiled out!"
+msgstr "A konzolos támogatás nincs belefordítva!"
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
@@ -374,6 +374,12 @@ msgstr "Jelszó:"
 msgid "Preferences"
 msgstr "Beállítások"
 
+msgid "QEMU debug console"
+msgstr "QEMU hibakereső konzol"
+
+msgid "QEMU human monitor"
+msgstr "QEMU emberi felügyelet"
+
 msgid "Quit on given condition in kiosk mode"
 msgstr "A megadott feltétel esetén kilépés kioszk módból"
 
@@ -444,6 +450,9 @@ msgstr "Kiválasztva"
 msgid "Send key combination"
 msgstr "Billentyűkombináció küldése"
 
+msgid "Serial"
+msgstr "Soros"
+
 msgid "Set window title"
 msgstr "Ablak címének megadása"
 
@@ -493,6 +502,12 @@ msgstr ""
 "meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 59 Temple Place, "
 "Suite 330, Boston, MA  02111-1307  USA\n"
 
+#, c-format
+msgid "Transferring %u file of %u..."
+msgid_plural "Transferring %u files of %u..."
+msgstr[0] "%u / %u fájl átküldése…"
+msgstr[1] "%u / %u fájl átküldése…"
+
 msgid "Transferring 1 file..."
 msgstr "1 fájl átküldése…"
 
@@ -535,6 +550,10 @@ msgstr "Ismeretlen"
 
 msgid "Unspecified error"
 msgstr "Meghatározatlan hiba"
+
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr "Nem támogatott hitelesítési mód: %u"
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
@@ -618,17 +637,29 @@ msgstr "_Vendég részletei"
 msgid "_Help"
 msgstr "_Súgó"
 
+msgid "_Machine"
+msgstr "_Gép"
+
 msgid "_Normal Size"
 msgstr "_Normál méret"
 
 msgid "_OK"
 msgstr "_OK"
 
+msgid "_Pause"
+msgstr "_Felfüggesztés"
+
+msgid "_Power down"
+msgstr "_Leállítás"
+
 msgid "_Preferences"
 msgstr "_Beállítások"
 
 msgid "_Quit"
 msgstr "_Kilépés"
+
+msgid "_Reset"
+msgstr "Új_raindítás"
 
 msgid "_Save"
 msgstr "Menté_s"
@@ -663,6 +694,10 @@ msgid "oVirt VM %s has no host information"
 msgstr "A(z) %s oVirt VM-nek nincsenek gazda információi"
 
 #, c-format
+msgid "oVirt VM %s has unknown display type: %u"
+msgstr "A(z) %s oVirt VM megjelenítő típusa ismeretlen: %u"
+
+#, c-format
 msgid "oVirt VM %s is not running"
 msgstr "A(z) %s oVirt VM nem fut"
 
@@ -671,3 +706,6 @@ msgstr "csak az SSH vagy a Unix foglalat kapcsolat támogatott."
 
 msgid "virt-manager.org"
 msgstr "virt-manager.org"
+
+msgid "virt-viewer"
+msgstr "virt-viewer"

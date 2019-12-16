@@ -1,4 +1,4 @@
-# Libvirt package strings.
+# Virt Viewer package strings.
 # Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -12,9 +12,9 @@
 # Henrique Montemor Junqueira <hickijunqueira@hotmail.com>, 2018. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: virt-viewer 8.0\n"
+"Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-02-21 09:49+0000\n"
+"POT-Creation-Date: 2019-12-16 15:59+0000\n"
 "PO-Revision-Date: 2018-04-02 12:44+0000\n"
 "Last-Translator: Henrique Montemor Junqueira <hickijunqueira@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/virt-"
@@ -74,10 +74,6 @@ msgid "Address is too long for unix socket_path: %s"
 msgstr ""
 "O endereço é muito longo para o unix socket_path (caminho do soquete unix) : "
 "%s"
-
-#, c-format
-msgid "An error caused the following file transfers to fail:%s"
-msgstr "Um erro causou a falha nas seguintes transferências de arquivos: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"

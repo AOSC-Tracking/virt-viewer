@@ -1,4 +1,4 @@
-# Libvirt package strings.
+# Virt Viewer package strings.
 # Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -10,9 +10,9 @@
 # Piotr Drąg <piotrdrag@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: virt-viewer 8.0\n"
+"Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-02-21 09:49+0000\n"
+"POT-Creation-Date: 2019-12-16 15:59+0000\n"
 "PO-Revision-Date: 2019-02-20 08:01+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/virt-viewer/"
@@ -93,10 +93,6 @@ msgstr "Dostęp do zdalnych pulpitów"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "Adres jest za długi dla ścieżki gniazda uniksowego: %s"
-
-#, c-format
-msgid "An error caused the following file transfers to fail:%s"
-msgstr "Błąd spowodował niepowodzenie przesłania poniższych plików:%s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"

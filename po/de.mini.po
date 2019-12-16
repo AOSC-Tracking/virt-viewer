@@ -1,4 +1,4 @@
-# Libvirt package strings.
+# Virt Viewer package strings.
 # Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -17,13 +17,14 @@
 # jasna <jdimanos@redhat.com>, 2016. #zanata
 # Florian H. <postfuerflo@gmail.com>, 2017. #zanata
 # Daniel Berrange <dan-zanata@berrange.com>, 2019. #zanata
+# Thomas Eichhorn <tomislav@posteo.de>, 2019. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: virt-viewer 8.0\n"
+"Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-02-21 09:49+0000\n"
-"PO-Revision-Date: 2019-02-20 06:04+0000\n"
-"Last-Translator: Daniel Berrange <dan-zanata@berrange.com>\n"
+"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"PO-Revision-Date: 2019-03-25 08:53+0000\n"
+"Last-Translator: Thomas Eichhorn <tomislav@posteo.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/virt-viewer/"
 "language/de/)\n"
 "Language: de\n"
@@ -137,11 +138,17 @@ msgstr "Host für den Gast %s konnte nicht ermittelt werden"
 msgid "Cannot get guest state"
 msgstr "Gast-Status konnte nicht abgerufen werden"
 
+msgid "Change CD"
+msgstr "CD wechseln"
+
 msgid "Checking guest domain status"
 msgstr "Prüfen des Gast-Domain-Status"
 
 msgid "Choose a virtual machine"
 msgstr "Wählen Sie eine virtuelle Maschine"
+
+msgid "Close"
+msgstr "Schließen"
 
 msgid "Connect to channel unsupported."
 msgstr "Verbindung zu dem Kanal wird nicht unterstützt."
@@ -161,6 +168,9 @@ msgstr "Verbinden mit Grafikserver"
 msgid "Connection details"
 msgstr "Verbindungsdetails"
 
+msgid "Console support is compiled out!"
+msgstr "Konsolenunterstützung wurde nicht ins Programm kompiliert!"
+
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -170,6 +180,10 @@ msgstr ""
 
 msgid "Couldn't open oVirt session: "
 msgstr "Konnte oVirt-Sitzung nicht öffnen: "
+
+#, c-format
+msgid "Creating unix socket failed: %s"
+msgstr "Unix-Socket konnte nicht erstellt werden: %s"
 
 msgid "Ctrl+Alt"
 msgstr "Strg+Alt"
@@ -246,11 +260,20 @@ msgstr "Möchten Sie die Sitzung beenden?"
 msgid "Enable kiosk mode"
 msgstr "Kiosk Modus ermöglichen"
 
+msgid "Failed to change CD"
+msgstr "Fehler beim Wechseln der CD"
+
 msgid "Failed to connect: "
 msgstr "Verbindung fehlgeschlagen:"
 
+msgid "Failed to fetch CD names"
+msgstr "CD-Namen konnten nicht abgerufen werden"
+
 msgid "Failed to initiate connection"
 msgstr "Initiieren der Verbindung fehlgeschlagen"
+
+msgid "Failed to read stdin: "
+msgstr "stdin könnte nicht gelesen werden:"
 
 msgid "File Transfers"
 msgstr "Dateitransfer"
@@ -290,6 +313,9 @@ msgstr "Ungültiges Passwort"
 
 msgid "Leave fullscreen"
 msgstr "Vollbildmodus verlassen"
+
+msgid "Loading..."
+msgstr "Lade..."
 
 msgid "Name"
 msgstr "Name"
@@ -335,14 +361,23 @@ msgstr "Remote-Viewer"
 msgid "Remote viewer client"
 msgstr "Remote-Viewer Client"
 
+msgid "Remotely access virtual machines"
+msgstr "Greifen Sie auf entfernte Virtuelle Maschinen zu"
+
 #, c-format
 msgid "Run '%s --help' to see a full list of available command line options\n"
 msgstr ""
 "Führen Sie '%s --help' aus, zum Anzeigen aller verfügbaren Kommandozeilen-"
 "Optionen\n"
 
+msgid "Select ISO"
+msgstr "ISO-Abbild auswählen"
+
 msgid "Select USB devices for redirection"
 msgstr "USB-Gerät zur Weiterleitung wählen"
+
+msgid "Selected"
+msgstr "Ausgewählt"
 
 msgid "Send key combination"
 msgstr "Tastenkombination senden"
@@ -397,6 +432,9 @@ msgstr ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
 
+msgid "Transferring 1 file..."
+msgstr "Eine Datei wird übertragen..."
+
 msgid "USB device selection"
 msgstr "USB-Geräteauswahl"
 
@@ -420,8 +458,15 @@ msgstr "Verbindung zu libvirt mit URI: %s nicht möglich."
 msgid "Unable to connect to the graphic server %s"
 msgstr "Verbindung zum Grafik-Server %s konnte nicht hergestellt werden"
 
+#, c-format
+msgid "Unable to connect: %s"
+msgstr "Verbindung konnte nicht hergestellt werden: %s"
+
 msgid "Unknown"
 msgstr "Unbekannt"
+
+msgid "Unspecified error"
+msgstr "Unspezifizierter Fehler"
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
@@ -553,5 +598,11 @@ msgstr "oVirt VM %s hat keine Host-Informationen"
 msgid "oVirt VM %s is not running"
 msgstr "oVirt VM %s läuft nicht"
 
+msgid "only SSH or unix socket connection supported."
+msgstr "Es werden nur SSH und Unix-Sockets unterstützt."
+
 msgid "virt-manager.org"
 msgstr "virt-manager.org"
+
+msgid "virt-viewer"
+msgstr "virt-viewer"

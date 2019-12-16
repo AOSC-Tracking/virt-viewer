@@ -1,4 +1,4 @@
-# Libvirt package strings.
+# Virt Viewer package strings.
 # Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -7,12 +7,13 @@
 # Yuri Chornoivan <yurchor@ukr.net>, 2015. #zanata
 # Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata
 # Yuri Chornoivan <yurchor@ukr.net>, 2017. #zanata
+# Yuri Chornoivan <yurchor@ukr.net>, 2019. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: virt-viewer 8.0\n"
+"Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-02-21 09:49+0000\n"
-"PO-Revision-Date: 2017-12-06 12:28+0000\n"
+"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"PO-Revision-Date: 2019-02-21 07:53+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/virt-viewer/"
 "language/uk/)\n"
@@ -92,10 +93,6 @@ msgstr "Доступ до віддалених стільниць"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "Адреса є надто довгою для socket_path UNIX: %s"
-
-#, c-format
-msgid "An error caused the following file transfers to fail:%s"
-msgstr "Помилка спричинила невдале передавання таких файлів:%s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -197,6 +194,9 @@ msgstr "_Адреса з’єднання"
 
 msgid "Connection details"
 msgstr "Параметри з’єднання"
+
+msgid "Console support is compiled out!"
+msgstr "Підтримку консолі не передбачено під час збирання!"
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
@@ -374,6 +374,12 @@ msgstr "Пароль:"
 msgid "Preferences"
 msgstr "Параметри"
 
+msgid "QEMU debug console"
+msgstr "Діагностична консоль QEMU"
+
+msgid "QEMU human monitor"
+msgstr "Монітор для людини QEMU"
+
 msgid "Quit on given condition in kiosk mode"
 msgstr "Вийти за вказаної умови у режимі кіоску"
 
@@ -446,6 +452,9 @@ msgstr "Вибрано"
 msgid "Send key combination"
 msgstr "Надіслати комбінацію ключів"
 
+msgid "Serial"
+msgstr "Послідовний"
+
 msgid "Set window title"
 msgstr "Встановити вказаний заголовок вікна"
 
@@ -495,6 +504,13 @@ msgstr ""
 "Якщо ви її не отримали, повідомте про це на адресу Free Software\n"
 "Foundation, Inc, 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
 
+#, c-format
+msgid "Transferring %u file of %u..."
+msgid_plural "Transferring %u files of %u..."
+msgstr[0] "Передаємо файл %u з %u..."
+msgstr[1] "Передаємо файл %u з %u..."
+msgstr[2] "Передаємо файл %u з %u..."
+
 msgid "Transferring 1 file..."
 msgstr "Передаємо 1 файл…"
 
@@ -539,6 +555,10 @@ msgstr "Невідомо"
 
 msgid "Unspecified error"
 msgstr "Невизначена помилка"
+
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr "Непідтримуваний тип розпізнавання %u"
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
@@ -622,17 +642,29 @@ msgstr "Параметри _гостьової системи"
 msgid "_Help"
 msgstr "_Довідка"
 
+msgid "_Machine"
+msgstr "_Машина"
+
 msgid "_Normal Size"
 msgstr "З_вичайний розмір"
 
 msgid "_OK"
 msgstr "_Гаразд"
 
+msgid "_Pause"
+msgstr "П_ризупинити"
+
+msgid "_Power down"
+msgstr "Ви_мкнути"
+
 msgid "_Preferences"
 msgstr "_Налаштування"
 
 msgid "_Quit"
 msgstr "Ви_йти"
+
+msgid "_Reset"
+msgstr "_Скинути"
 
 msgid "_Save"
 msgstr "З_берегти"
@@ -667,6 +699,10 @@ msgid "oVirt VM %s has no host information"
 msgstr "ВМ oVirt %s не містить даних щодо основної системи"
 
 #, c-format
+msgid "oVirt VM %s has unknown display type: %u"
+msgstr "ВМ oVirt %s має дисплей невідомого типу: %u"
+
+#, c-format
 msgid "oVirt VM %s is not running"
 msgstr "ВМ oVirt %s не запущено"
 
@@ -676,3 +712,6 @@ msgstr ""
 
 msgid "virt-manager.org"
 msgstr "virt-manager.org"
+
+msgid "virt-viewer"
+msgstr "virt-viewer"
