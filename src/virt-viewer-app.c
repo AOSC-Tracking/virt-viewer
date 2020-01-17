@@ -37,6 +37,10 @@
 #include <glib/gi18n.h>
 #include <errno.h>
 
+#ifndef G_OS_WIN32
+#include <glib-unix.h>
+#endif
+
 #ifdef HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
 #endif
@@ -1756,6 +1760,23 @@ static gboolean opt_fullscreen = FALSE;
 static gboolean opt_kiosk = FALSE;
 static gboolean opt_kiosk_quit = FALSE;
 
+#ifndef G_OS_WIN32
+static gboolean
+sigint_cb(gpointer data)
+{
+    VirtViewerApp *self = VIRT_VIEWER_APP(data);
+    VirtViewerAppPrivate *priv = self->priv;
+
+    g_debug("got SIGINT, quitting\n");
+    if (priv->started)
+        virt_viewer_app_quit(self);
+    else
+        exit(EXIT_SUCCESS);
+
+    return G_SOURCE_CONTINUE;
+}
+#endif
+
 static void
 title_maybe_changed(VirtViewerApp *self, GParamSpec* pspec G_GNUC_UNUSED, gpointer user_data G_GNUC_UNUSED)
 {
@@ -1769,6 +1790,10 @@ virt_viewer_app_init(VirtViewerApp *self)
     self->priv = virt_viewer_app_get_instance_private(self);
 
     gtk_window_set_default_icon_name("virt-viewer");
+
+#ifndef G_OS_WIN32
+    g_unix_signal_add (SIGINT, sigint_cb, self);
+#endif
 
     self->priv->displays = g_hash_table_new_full(g_direct_hash, g_direct_equal, NULL, g_object_unref);
     self->priv->config = g_key_file_new();
