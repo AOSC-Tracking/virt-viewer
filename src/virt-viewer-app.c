@@ -110,6 +110,7 @@ static void virt_viewer_app_set_fullscreen(VirtViewerApp *self, gboolean fullscr
 static void virt_viewer_app_update_menu_displays(VirtViewerApp *self);
 static void virt_viewer_update_smartcard_accels(VirtViewerApp *self);
 static void virt_viewer_app_add_option_entries(VirtViewerApp *self, GOptionContext *context, GOptionGroup *group);
+static VirtViewerWindow *virt_viewer_app_get_nth_window(VirtViewerApp *self, gint nth);
 
 
 struct _VirtViewerAppPrivate {
@@ -402,6 +403,122 @@ virt_viewer_app_get_monitor_mapping_for_section(VirtViewerApp *self, const gchar
     g_strfreev(mappings);
 
     return mapping;
+}
+
+/*
+ *  save the association display/monitor in the config for reuse on next connection
+ */
+static void virt_viewer_app_set_monitor_mapping_for_display(VirtViewerApp *self,
+                                                            VirtViewerDisplay *display)
+{
+    GError *error = NULL;
+    gsize nmappings = 0;
+    gchar **mappings = NULL;
+    gchar **tokens = NULL;
+
+    int i;
+
+    gint virt_viewer_display = virt_viewer_display_get_nth(display);
+    gint virt_viewer_monitor = virt_viewer_display_get_monitor(display);
+
+    if (virt_viewer_monitor == -1) {
+        // find which monitor the window is on
+#if GTK_CHECK_VERSION(3, 22, 0)
+        G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+        GdkDisplay *gdk_dpy = gdk_display_get_default();
+        VirtViewerWindow *vvWindow = virt_viewer_app_get_nth_window(self, virt_viewer_display);
+        GdkWindow *window = gtk_widget_get_window(
+                                            GTK_WIDGET(virt_viewer_window_get_window(vvWindow)));
+        GdkMonitor *pMonitor = gdk_display_get_monitor_at_window(gdk_dpy, window);
+
+        // compare this monitor with the list of monitors from the display
+        gint num_monitors = gdk_display_get_n_monitors(gdk_dpy);
+        if (num_monitors > 0) {
+            for (i = 0; i < num_monitors; i++) {
+                GdkMonitor *tmp = gdk_display_get_monitor(gdk_dpy, i);
+                if (tmp == pMonitor) {
+                    virt_viewer_monitor = i;
+                    break;
+                }
+            }
+        }
+        G_GNUC_END_IGNORE_DEPRECATIONS
+#endif
+        if (virt_viewer_monitor == -1) {
+            // could not determine the monitor - abort
+            return;
+        }
+    }
+
+    // IDs are 0 based, but the config uses 1-based numbering
+    virt_viewer_display++;
+    virt_viewer_monitor++;
+
+    mappings = g_key_file_get_string_list(self->priv->config, self->priv->uuid,
+                                          "monitor-mapping", &nmappings, &error);
+    if (error) {
+        if (error->code != G_KEY_FILE_ERROR_GROUP_NOT_FOUND
+                && error->code != G_KEY_FILE_ERROR_KEY_NOT_FOUND)
+            g_warning("Error reading monitor assignments for %s: %s",
+                      self->priv->uuid, error->message);
+        g_clear_error(&error);
+
+        // no mapping available for the VM: we will create a new one
+    }
+
+    for (i = 0; i < nmappings; i++) {
+        gchar *endptr = NULL;
+        gint disp, monitor;
+
+        tokens = g_strsplit(mappings[i], ":", 2);
+        if (g_strv_length(tokens) != 2) {
+            // config error
+            g_strfreev(tokens);
+            goto end;
+        }
+
+        disp = strtol(tokens[0], &endptr, 10);
+        if ((endptr && *endptr != '\0') || disp < 1) {
+            // config error
+            g_strfreev(tokens);
+            goto end;
+        }
+
+        if (disp == virt_viewer_display) {
+            // found the display we have to save. Verify if it changed mappings
+            monitor = strtol(tokens[1], &endptr, 10);
+            if ((endptr && *endptr != '\0') || monitor < 1) {
+                // config error
+                g_strfreev(tokens);
+                goto end;
+            }
+
+            g_strfreev(tokens);
+            if (monitor == virt_viewer_monitor) {
+                // no change in the config - just exit
+                goto end;
+            }
+
+            // save the modified mapping
+            g_snprintf(mappings[i], strlen(mappings[i]) + 1, "%d:%d",
+                       virt_viewer_display, virt_viewer_monitor);
+            break;
+        }
+        g_strfreev(tokens);
+    }
+    if (i == nmappings) {
+        // this display was not saved yet - add it
+        nmappings++;
+        mappings = g_realloc(mappings, (nmappings + 1) * sizeof(gchar *));
+        mappings[nmappings - 1] = g_strdup_printf("%d:%d", virt_viewer_display, virt_viewer_monitor);
+        mappings[nmappings] = NULL;
+    }
+    g_key_file_set_string_list(self->priv->config, self->priv->uuid, "monitor-mapping",
+                               (const gchar * const *) mappings, nmappings);
+    virt_viewer_app_save_config(self);
+
+end:
+    g_strfreev(mappings);
 }
 
 static
@@ -1013,6 +1130,9 @@ virt_viewer_app_display_removed(VirtViewerSession *session G_GNUC_UNUSED,
                                 VirtViewerApp *self)
 {
     gint nth;
+
+    if(virt_viewer_display_get_fullscreen(display))
+        virt_viewer_app_set_monitor_mapping_for_display(self, display) ;
 
     g_object_get(display, "nth-display", &nth, NULL);
     virt_viewer_app_remove_nth_window(self, nth);
