@@ -1296,7 +1296,11 @@ virt_viewer_app_channel_open(VirtViewerSession *session,
         return;
     }
 
-    virt_viewer_session_channel_open_fd(session, channel, fd);
+    if (!virt_viewer_session_channel_open_fd(session, channel, fd)) {
+        // in case of error, close the file descriptor to prevent a leak
+        // NOTE: as VNC doesn't support channel_open, this function will always return false for this protocol.
+        close(fd);
+    }
 }
 #else
 static void
@@ -1355,7 +1359,10 @@ virt_viewer_app_default_activate(VirtViewerApp *self, GError **error)
 #endif
 
     if (fd >= 0) {
-        return virt_viewer_session_open_fd(VIRT_VIEWER_SESSION(priv->session), fd);
+        gboolean ret = virt_viewer_session_open_fd(VIRT_VIEWER_SESSION(priv->session), fd);
+        if (!ret)
+            close (fd);
+        return ret ;
     } else if (priv->guri) {
         virt_viewer_app_trace(self, "Opening connection to display at %s", priv->guri);
         return virt_viewer_session_open_uri(VIRT_VIEWER_SESSION(priv->session), priv->guri, error);
