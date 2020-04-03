@@ -212,17 +212,17 @@ Written by Daniel P. Berrange, based on the GTK-VNC example program gvncviewer.
 
 =head1 BUGS
 
-Report bugs to the mailing list C<http://www.redhat.com/mailman/listinfo/virt-tools-list>
+Report bugs to https://gitlab.com/virt-viewer/virt-viewer/-/issues
 
 =head1 COPYRIGHT
 
-Copyright (C) 2007-2014 Red Hat, Inc., and various contributors.
+Copyright (C) 2007-2020 Red Hat, Inc., and various contributors.
 This is free software. You may redistribute copies of it under the terms of the GNU General
 Public License C<https://www.gnu.org/licenses/gpl-2.0.html>. There is NO WARRANTY,
 to the extent permitted by law.
 
 =head1 SEE ALSO
 
-C<virsh(1)>, C<virt-manager(1)>, C<spice-client(1)>, the project website C<http://virt-manager.org>
+C<virsh(1)>, C<virt-manager(1)>, C<spice-client(1)>, the project website C<http://gitlab.com/virt-viewer/virt-viewer>
 
 =cut

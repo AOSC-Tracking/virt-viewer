@@ -29,11 +29,10 @@ guest OS display. This is available from
 
   http://libvirt.org/
 
-Further information about the Virt Viewer application can be
-found on the Virt Manager website:
+Bug reports / support questions should be submitted to
 
-  http://virt-manager.org/
+  http://gitlab.com/virt-viewer/virt-viewer/-/issues
 
-Feedback should be directed to the mailing list at
+Code contributions should be submitted as merge requests to
 
-  http://www.redhat.com/mailman/listinfo/virt-tools-list
+  http://gitlab.com/virt-viewer/virt-viewer/-/merge_requests

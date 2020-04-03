@@ -22,7 +22,7 @@ Version: @VERSION@
 Release: 1%{?dist}
 Summary: Virtual Machine Viewer
 License: GPLv2+
-URL: http://virt-manager.org/
+URL: http://gitlab.com/virt-viewer/virt-viewer
 Source0: http://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
 Requires: openssh-clients
 Requires(post):   %{_sbindir}/update-alternatives

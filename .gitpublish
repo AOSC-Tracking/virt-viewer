@@ -1,4 +1,0 @@
-[gitpublishprofile "default"]
-base = master
-to = virt-tools-list@redhat.com
-prefix = virt-viewer PATCH

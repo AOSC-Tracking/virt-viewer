@@ -24,6 +24,6 @@
  <provides>
   <binary>remote-viewer</binary>
  </provides>
- <url type="homepage">https://virt-manager.org/</url>
- <updatecontact>virt-tools-list_at_redhat.com</updatecontact>
+ <url type="homepage">https://gitlab.com/virt-viewer/virt-viewer/</url>
+ <updatecontact>https://gitlab.com/virt-viewer/virt-viewer/</updatecontact>
 </component>

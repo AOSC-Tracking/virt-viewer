@@ -1,6 +1,6 @@
 DOMAIN = $(PACKAGE_NAME)
 COPYRIGHT_HOLDER = The Virt Viewer authors
-MSGID_BUGS_ADDRESS = https://virt-manager.org/bugs/
+MSGID_BUGS_ADDRESS = https://gitlab.com/virt-viewer/virt-viewer/-/issues
 
 MAINTAINERCLEANFILES = $(GMOFILES) $(POTFILE) $(POFILES)
 
