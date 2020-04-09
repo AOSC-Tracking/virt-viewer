@@ -27,12 +27,12 @@ respectively.
 Virt Viewer uses libvirt to lookup information about the
 guest OS display. This is available from
 
-  http://libvirt.org/
+  https://libvirt.org/
 
 Bug reports / support questions should be submitted to
 
-  http://gitlab.com/virt-viewer/virt-viewer/-/issues
+  https://gitlab.com/virt-viewer/virt-viewer/-/issues
 
 Code contributions should be submitted as merge requests to
 
-  http://gitlab.com/virt-viewer/virt-viewer/-/merge_requests
+  https://gitlab.com/virt-viewer/virt-viewer/-/merge_requests
