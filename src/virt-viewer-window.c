@@ -913,6 +913,12 @@ virt_viewer_window_menu_file_quit(GtkWidget *src G_GNUC_UNUSED,
     virt_viewer_app_maybe_quit(self->priv->app, self);
 }
 
+static void
+virt_viewer_window_toolbar_minimize(GtkWidget *button G_GNUC_UNUSED,
+                                    VirtViewerWindow *self)
+{
+    gtk_window_iconify(GTK_WINDOW(self->priv->window));
+}
 
 static void
 virt_viewer_window_set_fullscreen(VirtViewerWindow *self,
@@ -1261,6 +1267,14 @@ virt_viewer_window_toolbar_setup(VirtViewerWindow *self)
     gtk_widget_show(button);
     gtk_toolbar_insert(GTK_TOOLBAR(priv->toolbar), GTK_TOOL_ITEM (button), 0);
     g_signal_connect(button, "clicked", G_CALLBACK(virt_viewer_window_menu_file_quit), self);
+
+    /* Minimize */
+    button = GTK_WIDGET(gtk_tool_button_new(NULL, NULL));
+    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(button), "window-minimize-symbolic");
+    gtk_tool_item_set_tooltip_text(GTK_TOOL_ITEM(button), _("Minimize"));
+    gtk_widget_show(button);
+    gtk_toolbar_insert(GTK_TOOLBAR(priv->toolbar), GTK_TOOL_ITEM(button), 0);
+    g_signal_connect(button, "clicked", G_CALLBACK(virt_viewer_window_toolbar_minimize), self);
 
     /* USB Device selection */
     button = gtk_image_new_from_resource(VIRT_VIEWER_RESOURCE_PREFIX"/icons/24x24/virt-viewer-usb.png");
