@@ -81,38 +81,39 @@ virt_viewer_timed_revealer_grab_notify(VirtViewerTimedRevealer *self,
 }
 
 static gboolean
-virt_viewer_timed_revealer_enter_leave_notify(VirtViewerTimedRevealer *self,
-                                              GdkEventCrossing *event,
-                                              gpointer user_data G_GNUC_UNUSED)
+virt_viewer_timed_revealer_enter_notify(VirtViewerTimedRevealer *self,
+					GdkEventCrossing *event G_GNUC_UNUSED,
+					gpointer user_data G_GNUC_UNUSED)
 {
     VirtViewerTimedRevealerPrivate *priv = self->priv;
-    GdkDevice *device;
-    GtkAllocation allocation;
-    gint x, y;
-    gboolean entered;
 
     if (!priv->fullscreen)
         return FALSE;
 
-    device = gdk_event_get_device((GdkEvent *)event);
+    virt_viewer_timed_revealer_unregister_timeout(self);
+    if (!gtk_revealer_get_reveal_child(GTK_REVEALER(priv->revealer))) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(priv->revealer), TRUE);
+    }
 
-    gdk_window_get_device_position(event->window, device, &x, &y, 0);
-    gtk_widget_get_allocation(GTK_WIDGET(self), &allocation);
+    return FALSE;
+}
 
-    entered = !!(x >= 0 && y >= 0 && x < allocation.width && y < allocation.height);
+static gboolean
+virt_viewer_timed_revealer_leave_notify(VirtViewerTimedRevealer *self,
+					GdkEventCrossing *event G_GNUC_UNUSED,
+					gpointer user_data G_GNUC_UNUSED)
+{
+    VirtViewerTimedRevealerPrivate *priv = self->priv;
+
+    if (!priv->fullscreen)
+        return FALSE;
 
     /*
      * Pointer exited the toolbar, and toolbar is revealed. Schedule
      * a timeout to close it, if one isn't already scheduled.
      */
-    if (!entered && gtk_revealer_get_reveal_child(GTK_REVEALER(priv->revealer))) {
+    if (gtk_revealer_get_reveal_child(GTK_REVEALER(priv->revealer))) {
         virt_viewer_timed_revealer_schedule_unreveal_timeout(self, 1000);
-        return FALSE;
-    }
-
-    virt_viewer_timed_revealer_unregister_timeout(self);
-    if (entered && !gtk_revealer_get_reveal_child(GTK_REVEALER(priv->revealer))) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(priv->revealer), TRUE);
     }
 
     return FALSE;
@@ -183,11 +184,11 @@ virt_viewer_timed_revealer_new(GtkWidget *toolbar)
                      NULL);
     g_signal_connect(self,
                      "enter-notify-event",
-                     G_CALLBACK(virt_viewer_timed_revealer_enter_leave_notify),
+                     G_CALLBACK(virt_viewer_timed_revealer_enter_notify),
                      NULL);
     g_signal_connect(self,
                      "leave-notify-event",
-                     G_CALLBACK(virt_viewer_timed_revealer_enter_leave_notify),
+                     G_CALLBACK(virt_viewer_timed_revealer_leave_notify),
                      NULL);
 
     return self;
