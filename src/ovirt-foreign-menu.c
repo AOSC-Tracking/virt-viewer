@@ -652,8 +652,8 @@ static gboolean storage_domain_validate(OvirtForeignMenu *menu G_GNUC_UNUSED,
 
     g_object_get(domain, "name", &name, "type", &type, "state", &state, NULL);
 
-    if (type != OVIRT_STORAGE_DOMAIN_TYPE_ISO) {
-        g_debug("Storage domain '%s' type is not ISO", name);
+    if (type != OVIRT_STORAGE_DOMAIN_TYPE_ISO && type != OVIRT_STORAGE_DOMAIN_TYPE_DATA) {
+        g_debug("Storage domain '%s' type is not ISO or DATA", name);
         ret = FALSE;
     }
 
