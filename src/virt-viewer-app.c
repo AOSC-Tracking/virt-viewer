@@ -612,7 +612,6 @@ void virt_viewer_app_set_keymap(VirtViewerApp *self, const gchar *keymap_string)
 	kcode = gdk_keyval_from_name(*key);
 	if ( kcode == GDK_KEY_VoidSymbol ) {
 		g_warning("Unable to lookup '%s' key", *key);
-		// TODO - handle this error otherwise gaps in array
 		continue;
 	}
 	g_debug("Mapped source key '%s' to %x", *key, kcode);
