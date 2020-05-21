@@ -86,6 +86,7 @@ enum {
     PROP_DISPLAY,
     PROP_SUBTITLE,
     PROP_APP,
+    PROP_KEYMAP,
 };
 
 struct _VirtViewerWindowPrivate {
@@ -114,6 +115,7 @@ struct _VirtViewerWindowPrivate {
     gboolean fullscreen;
     gchar *subtitle;
     gboolean initial_zoom_set;
+    KeyMapping *keyMappings;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (VirtViewerWindow, virt_viewer_window, G_TYPE_OBJECT)
@@ -164,6 +166,11 @@ virt_viewer_window_set_property (GObject *object, guint property_id,
         g_return_if_fail(priv->app == NULL);
         priv->app = g_value_get_object(value);
         break;
+
+    case PROP_KEYMAP:
+	g_free(priv->keyMappings);
+	priv->keyMappings = (KeyMapping *)g_value_get_pointer(value);
+	break;
 
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -313,6 +320,14 @@ virt_viewer_window_class_init (VirtViewerWindowClass *klass)
                                                         G_PARAM_WRITABLE |
                                                         G_PARAM_CONSTRUCT_ONLY |
                                                         G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(object_class,
+                                    PROP_KEYMAP,
+                                    g_param_spec_pointer("keymap",
+                                                        "keymap",
+                                                        "Remapped keys",
+                                                        G_PARAM_WRITABLE |
+                                                        G_PARAM_STATIC_STRINGS));
+
 }
 
 static gboolean
@@ -1484,12 +1499,49 @@ display_show_hint(VirtViewerDisplay *display,
 }
 static gboolean
 window_key_pressed (GtkWidget *widget G_GNUC_UNUSED,
-                    GdkEvent  *event,
-                    GtkWidget *display)
+                    GdkEvent  *ev,
+                   VirtViewerWindow *self)
 {
-    gtk_widget_grab_focus(display);
-    return gtk_widget_event(display, event);
+    GdkEventKey  *event;
+    VirtViewerWindowPrivate *priv;
+    VirtViewerDisplay *display;
+    priv = self->priv;
+    display = priv->display;
+    event = (GdkEventKey *)ev;
+    
+    gtk_widget_grab_focus(GTK_WIDGET(display));
+
+    // Look through keymaps - if set for mappings and intercept
+    if ( priv->keyMappings ) {
+	KeyMapping *ptr, *matched;
+	ptr = priv->keyMappings;
+	matched = NULL;
+	do {
+		if ( event->keyval == ptr->sourceKey ) {
+			matched = ptr;
+		}
+		if ( ptr->isLast ) {
+			break;
+		}
+		ptr++;
+	} while ( matched == NULL );    
+	if ( matched ) {
+		if ( matched->mappedKeys == NULL ) {
+			// Key to be ignored and not pass through to VM
+			g_debug("Blocking keypress '%s'", gdk_keyval_name(matched->sourceKey));
+		} else {
+			g_debug("Sending through mapped keys");
+			virt_viewer_display_send_keys(display,
+				matched->mappedKeys, matched->numMappedKeys);
+		}
+		return TRUE;
+	}
+
+    }
+    g_debug("Key pressed was keycode='0x%x', gdk_keyname='%s'", event->keyval, gdk_keyval_name(event->keyval));
+    return gtk_widget_event(GTK_WIDGET(display), ev);
 }
+
 
 void
 virt_viewer_window_set_display(VirtViewerWindow *self, VirtViewerDisplay *display)
@@ -1517,7 +1569,7 @@ virt_viewer_window_set_display(VirtViewerWindow *self, VirtViewerDisplay *displa
         gtk_widget_realize(GTK_WIDGET(display));
 
         virt_viewer_signal_connect_object(priv->window, "key-press-event",
-                                          G_CALLBACK(window_key_pressed), display, 0);
+                                          G_CALLBACK(window_key_pressed), self, 0);
 
         /* switch back to non-display if not ready */
         if (!(virt_viewer_display_get_show_hint(display) &
