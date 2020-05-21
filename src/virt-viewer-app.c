@@ -163,6 +163,7 @@ struct _VirtViewerAppPrivate {
     GdkModifierType remove_smartcard_accel_mods;
     gboolean quit_on_disconnect;
     gboolean supports_share_clipboard;
+    KeyMapping *keyMappings;
 };
 
 
@@ -566,6 +567,90 @@ void virt_viewer_app_set_uuid_string(VirtViewerApp *self, const gchar *uuid_stri
     self->priv->uuid = g_strdup(uuid_string);
 
     virt_viewer_app_apply_monitor_mapping(self);
+}
+
+static
+void virt_viewer_app_set_keymap(VirtViewerApp *self, const gchar *keymap_string)
+{
+    gchar **key, **keymaps, **valkey, **valuekeys = NULL;
+
+    if ( keymap_string == NULL ) {
+	g_debug("keymap string is empty - nothing to do");
+	self->priv->keyMappings = NULL;
+	return;
+    }
+
+    g_debug("keymap string set to %s", keymap_string);
+
+    g_return_if_fail(VIRT_VIEWER_IS_APP(self));
+       
+    g_debug("keymap command-line set to %s", keymap_string);
+    if ( keymap_string ) {
+	keymaps = g_strsplit(keymap_string, ",", -1);
+    }
+
+    if ( !keymaps || g_strv_length(keymaps) == 0 ) {
+	return;
+    }
+
+    KeyMapping *keyMappingArray, *keyMappingPtr;
+    keyMappingPtr = keyMappingArray = g_new0(KeyMapping,  g_strv_length(keymaps));
+
+    g_debug("Allocated %d number of mappings",  g_strv_length(keymaps));
+
+    for ( key = keymaps; *key != NULL; key++ ) {
+	gchar *srcKey = strstr(*key, "=");
+	const gchar *value = (srcKey == NULL) ? NULL : (*srcKey = '\0', srcKey + 1);
+	if ( value == NULL ) {
+		g_warning("Missing mapping value for key '%s'", srcKey);
+		continue;
+	}
+
+	// Key value must be resolved to GDK key code
+	// along with mapped key which can also be void (for no action)
+	guint kcode;
+	kcode = gdk_keyval_from_name(*key);
+	if ( kcode == GDK_KEY_VoidSymbol ) {
+		g_warning("Unable to lookup '%s' key", *key);
+		// TODO - handle this error otherwise gaps in array
+		continue;
+	}
+	g_debug("Mapped source key '%s' to %x", *key, kcode);
+
+	valuekeys = g_strsplit(value, "+", -1);
+
+	keyMappingPtr->sourceKey = kcode;
+	keyMappingPtr->numMappedKeys = g_strv_length(valuekeys);
+	keyMappingPtr->isLast = FALSE;
+
+	if ( !valuekeys || g_strv_length(valuekeys) == 0 ) {
+		g_debug("No value set for key '%s' it will be blocked", *key);
+		keyMappingPtr->mappedKeys = NULL;
+		keyMappingPtr++;
+		continue;
+	}
+
+	guint *mappedArray, *ptrMove;
+	ptrMove = mappedArray = g_new0(guint, g_strv_length(valuekeys));
+
+	guint mcode;
+	for ( valkey = valuekeys; *valkey != NULL; valkey++ ) {
+		g_debug("Value key to map '%s'", *valkey);
+		mcode = gdk_keyval_from_name(*valkey);
+		if ( mcode == GDK_KEY_VoidSymbol ) {
+			g_warning("Unable to lookup mapped key '%s' it will be ignored", *valkey);
+		}
+		g_debug("Mapped dest key '%s' to %x", *valkey, mcode);
+		*ptrMove++ = mcode;
+	}
+	keyMappingPtr->mappedKeys = mappedArray;
+	keyMappingPtr++;
+
+    }
+    keyMappingPtr--;
+    keyMappingPtr->isLast=TRUE;
+
+    self->priv->keyMappings = keyMappingArray;
 }
 
 void
@@ -980,6 +1065,11 @@ virt_viewer_app_window_new(VirtViewerApp *self, gint nth)
 
     g_signal_connect(w, "hide", G_CALLBACK(viewer_window_visible_cb), self);
     g_signal_connect(w, "show", G_CALLBACK(viewer_window_visible_cb), self);
+
+    if ( self->priv->keyMappings ) {
+       g_object_set(window, "keymap", self->priv->keyMappings, NULL);
+    }
+
     return window;
 }
 
@@ -1880,6 +1970,7 @@ gboolean virt_viewer_app_start(VirtViewerApp *self, GError **error)
 
 static int opt_zoom = NORMAL_ZOOM_LEVEL;
 static gchar *opt_hotkeys = NULL;
+static gchar *opt_keymap = NULL;
 static gboolean opt_version = FALSE;
 static gboolean opt_verbose = FALSE;
 static gboolean opt_debug = FALSE;
@@ -2010,6 +2101,8 @@ virt_viewer_app_on_application_startup(GApplication *app)
 
     virt_viewer_app_set_debug(opt_debug);
     virt_viewer_app_set_fullscreen(self, opt_fullscreen);
+
+    virt_viewer_app_set_keymap(self, opt_keymap);
 
     self->priv->verbose = opt_verbose;
     self->priv->quit_on_disconnect = opt_kiosk ? opt_kiosk_quit : TRUE;
@@ -2844,6 +2937,8 @@ virt_viewer_app_add_option_entries(G_GNUC_UNUSED VirtViewerApp *self,
           N_("Open in full screen mode (adjusts guest resolution to fit the client)"), NULL },
         { "hotkeys", 'H', 0, G_OPTION_ARG_STRING, &opt_hotkeys,
           N_("Customise hotkeys"), NULL },
+        { "keymap", 'K', 0, G_OPTION_ARG_STRING, &opt_keymap,
+          N_("Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"), NULL },
         { "kiosk", 'k', 0, G_OPTION_ARG_NONE, &opt_kiosk,
           N_("Enable kiosk mode"), NULL },
         { "kiosk-quit", '\0', 0, G_OPTION_ARG_CALLBACK, option_kiosk_quit,

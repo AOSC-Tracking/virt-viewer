@@ -101,6 +101,28 @@ Note that hotkeys for which no binding is given are disabled. Although the
 hotkeys specified here are handled by the client, it is still possible to send
 these key combinations to the guest via a menu item.
 
+=item -K, --keymap
+
+Remap and/or block supplied keypresses to the host. All key identifiers are
+case-sensitive and follow the naming convention as defined in gdkkeysyms.h
+without the GDK_KEY_ prefix.
+
+Running the application with --debug will display keypress symbols in the
+following way:
+  "Key pressed was keycode='0x63', gdk_keyname='c'"
+  "Key pressed was keycode='0xffeb', gdk_keyname='Super_L'"
+
+The format for supplying a keymap is:
+<srcKeySym1>=[<destKeySym1>][+<destKeySym2][,<srckeySym2>=[<destKeySym1]
+
+To block a keypress simply assign an empty parameter to the srcKeySym.
+
+Example:
+  --keymap=Super_L=,Alt_L=,1=Shift_L+F1,2=Shift_L+F2
+
+This will block the Super_L (typically Windows Key) and ALT_L keypresses
+and remap key 1 to Shift F1, 2 to Shift F2.
+
 =item -k, --kiosk
 
 Start in kiosk mode. In this mode, the application will start in
