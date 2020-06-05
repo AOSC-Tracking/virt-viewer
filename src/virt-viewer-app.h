@@ -44,6 +44,13 @@ typedef struct {
 } VirtViewerApp;
 
 typedef struct {
+    guint sourceKey;
+    guint numMappedKeys;
+    guint *mappedKeys;
+    gboolean isLast;
+} VirtViewerKeyMapping;
+
+typedef struct {
     GtkApplicationClass parent_class;
 
     /*< private >*/
