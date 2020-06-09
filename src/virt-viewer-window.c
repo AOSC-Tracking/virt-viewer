@@ -1085,17 +1085,22 @@ virt_viewer_window_menu_file_screenshot(GtkWidget *menu G_GNUC_UNUSED,
         gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER (dialog), image_dir);
     gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER (dialog), _("Screenshot.png"));
 
+retry_dialog:
     if (gtk_dialog_run(GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT) {
         char *filename;
         GError *error = NULL;
 
         filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER (dialog));
         if (g_strrstr(filename, ".") == NULL) {
-            // no extension provided: add the .png default
-            char *tmp_filename ;
-            tmp_filename = g_strdup_printf("%s.png", filename) ;
-            g_free(filename) ;
-            filename = tmp_filename ;
+            // no extension provided
+            GtkWidget *msg_dialog ;
+            g_free(filename);
+            msg_dialog = gtk_message_dialog_new (GTK_WINDOW(dialog), GTK_DIALOG_MODAL,
+                                                 GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
+                                                 _("Please add an extension to the file name"));
+            gtk_dialog_run(GTK_DIALOG(msg_dialog));
+            gtk_widget_destroy(msg_dialog);
+            goto retry_dialog;
         }
 
         if (!virt_viewer_window_save_screenshot(self, filename, &error)) {
