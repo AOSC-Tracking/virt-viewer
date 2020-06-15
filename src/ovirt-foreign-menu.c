@@ -727,8 +727,8 @@ static void storage_domains_fetched_cb(GObject *source_object,
     OvirtForeignMenu *menu = OVIRT_FOREIGN_MENU(g_task_get_source_object(task));
     OvirtCollection *collection = OVIRT_COLLECTION(source_object);
     GHashTableIter iter;
-    OvirtStorageDomain *domain;
-    gboolean domain_valid = FALSE;
+    OvirtStorageDomain *domain, *valid_domain = NULL;
+    OvirtCollection *file_collection;
 
     ovirt_collection_fetch_finish(collection, result, &error);
     if (error != NULL) {
@@ -740,32 +740,36 @@ static void storage_domains_fetched_cb(GObject *source_object,
 
     g_hash_table_iter_init(&iter, ovirt_collection_get_resources(collection));
     while (g_hash_table_iter_next(&iter, NULL, (gpointer *)&domain)) {
-        OvirtCollection *file_collection;
-
         if (!storage_domain_validate(menu, domain))
             continue;
 
-        if (!domain_valid)
-            domain_valid = TRUE;
+        /* Storage domain of type ISO has precedence over type DATA */
+        if (valid_domain != NULL) {
+            OvirtStorageDomainType domain_type, valid_type;
+            g_object_get(domain, "type", &domain_type, NULL);
+            g_object_get(valid_domain, "type", &valid_type, NULL);
 
-        file_collection = storage_domain_get_files(domain);
-        if (!ovirt_foreign_menu_set_file_collection(menu, file_collection))
+            if (domain_type > valid_type)
+                valid_domain = domain;
+
             continue;
+        }
 
-        break; /* There can only be one valid storage domain at a time,
-                  no need to iterate more on the list */
+        valid_domain = domain;
     }
 
-    if (menu->priv->files != NULL) {
-        ovirt_foreign_menu_next_async_step(menu, task, STATE_STORAGE_DOMAIN);
-    } else {
-        const char *msg = domain_valid ? "Could not find ISO file collection"
+    file_collection = storage_domain_get_files(valid_domain);
+    if (!ovirt_foreign_menu_set_file_collection(menu, file_collection)) {
+        const char *msg = valid_domain ? "Could not find ISO file collection"
                                        : "Could not find valid ISO storage domain";
 
         g_debug("%s", msg);
         g_task_return_new_error(task, OVIRT_ERROR, OVIRT_ERROR_FAILED, "%s", msg);
         g_object_unref(task);
+        return;
     }
+
+    ovirt_foreign_menu_next_async_step(menu, task, STATE_STORAGE_DOMAIN);
 }
 
 
