@@ -1,7 +1,7 @@
 FROM centos:8
 
 RUN dnf install 'dnf-command(config-manager)' -y && \
-    dnf config-manager --set-enabled PowerTools -y && \
+    dnf config-manager --set-enabled -y PowerTools && \
     dnf install -y epel-release && \
     dnf update -y && \
     dnf install -y \
@@ -26,6 +26,7 @@ RUN dnf install 'dnf-command(config-manager)' -y && \
         gobject-introspection-devel \
         gtk-doc \
         gtk3-devel \
+        icoutils \
         intltool \
         libgcrypt-devel \
         libnl3-devel \
@@ -41,10 +42,12 @@ RUN dnf install 'dnf-command(config-manager)' -y && \
         ninja-build \
         patch \
         perl \
+        perl-App-cpanminus \
         pkgconfig \
         pulseaudio-libs-devel \
         python3 \
         python3-docutils \
+        python3-pip \
         python3-setuptools \
         python3-wheel \
         rpcgen \

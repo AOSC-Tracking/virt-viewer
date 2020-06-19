@@ -10,49 +10,41 @@ RUN zypper update -y && \
            ccache \
            chrony \
            cppi \
-           cyrus-sasl-devel \
            gcc \
            gdb \
-           gdk-pixbuf-devel \
            gettext \
            gettext-devel \
            git \
            glib2-devel \
            glibc-devel \
            glibc-locale \
-           gobject-introspection-devel \
-           gtk-doc \
+           gtk-vnc2-devel \
            gtk3-devel \
-           intltool \
-           libgcrypt-devel \
-           libgnutls-devel \
+           icoutils \
            libgovirt-devel \
-           libnl3-devel \
-           libpulse-devel \
-           libtirpc-devel \
+           librest-devel \
            libtool \
+           libvirt-devel \
+           libvirt-glib-devel \
            libxml2 \
            libxml2-devel \
-           libxslt \
            lsof \
            make \
            net-tools \
            ninja \
            patch \
            perl \
+           perl-App-cpanminus \
            pkgconfig \
            python3 \
-           python3-docutils \
            python3-pip \
            python3-setuptools \
            python3-wheel \
-           rpcgen \
            rpm-build \
            screen \
            spice-gtk-devel \
            strace \
            sudo \
-           vala \
            vim && \
     zypper clean --all && \
     mkdir -p /usr/libexec/ccache-wrappers && \

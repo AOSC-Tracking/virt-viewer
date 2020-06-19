@@ -18,5 +18,10 @@ HOSTS=$($LCITOOL hosts | grep -v freebsd | sed -e 's/libvirt-//')
 
 for host in $HOSTS
 do
-    $LCITOOL dockerfile libvirt-$host libvirt+minimal,libvirt-glib,gtk-vnc,virt-viewer > $host.Dockerfile
+    if test "$host" = "centos-8" || test "$host" = "centos-stream"
+    then
+        $LCITOOL dockerfile libvirt-$host libvirt+minimal,libvirt-glib,gtk-vnc,virt-viewer > $host.Dockerfile
+    else
+        $LCITOOL dockerfile libvirt-$host libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer > $host.Dockerfile
+    fi
 done

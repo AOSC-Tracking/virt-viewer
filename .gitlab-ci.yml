@@ -20,17 +20,29 @@ stages:
   after_script:
     - docker logout
 
-.git_build_job_template: &git_build_job_definition
+.script_variables: &script_variables |
+  export MAKEFLAGS="-j$(getconf _NPROCESSORS_ONLN)"
+  export SCRATCH_DIR="/tmp/scratch"
+  export VROOT="$SCRATCH_DIR/vroot"
+  export LD_LIBRARY_PATH="$VROOT/lib"
+  export PATH="$VROOT/bin:$PATH"
+  export PKG_CONFIG_PATH="$VROOT/lib/pkgconfig"
+
+.dist_native_build_job_template: &dist_native_build_job_definition
   image: $CI_REGISTRY_IMAGE/ci-$NAME:latest
   stage: builds
   before_script:
-    - export MAKEFLAGS="-j$(getconf _NPROCESSORS_ONLN)"
-    - export SCRATCH_DIR="/tmp/scratch"
-    - export VROOT="$SCRATCH_DIR/vroot"
-    - export LD_LIBRARY_PATH="$VROOT/lib"
-    - export PATH="$VROOT/bin:$PATH"
-    - export PKG_CONFIG_PATH="$VROOT/lib/pkgconfig"
-    - export TEST_MAINTAINER=1
+    - *script_variables
+  script:
+    - ./autogen.sh --prefix="$VROOT"
+    - $MAKE dist
+    - if test -x /usr/bin/rpmbuild && test "$RPM" != "skip" ; then rpmbuild --nodeps -ta virt-viewer*.tar.gz ; fi
+
+.git_native_build_job_template: &git_native_build_job_definition
+  image: $CI_REGISTRY_IMAGE/ci-$NAME:latest
+  stage: builds
+  before_script:
+    - *script_variables
   script:
     - pushd "$PWD"
     - mkdir -p "$SCRATCH_DIR"
@@ -54,9 +66,10 @@ stages:
     - $NINJA -C build install
     - popd
     - ./autogen.sh --prefix="$VROOT"
-    - $MAKE
     - $MAKE syntax-check
-    - $MAKE install
+    - $MAKE dist
+    - if test -x /usr/bin/rpmbuild && test "$RPM" != "skip" ; then rpmbuild --nodeps -ta virt-viewer*.tar.gz ; fi
+
 
 # Check that all commits are signed-off for the DCO.
 # Skip on "virt-viewer" namespace, since we only need to run
@@ -71,113 +84,115 @@ check-dco:
     variables:
       - $CI_PROJECT_NAMESPACE == 'virt-viewer'
 
-centos-7-container:
+x86-centos-7-container:
   <<: *container_job_definition
   variables:
     NAME: centos-7
 
-centos-8-container:
+x86-centos-8-container:
   <<: *container_job_definition
   variables:
     NAME: centos-8
 
-debian-9-container:
+x86-debian-9-container:
   <<: *container_job_definition
   variables:
     NAME: debian-9
 
-debian-10-container:
+x86-debian-10-container:
   <<: *container_job_definition
   variables:
     NAME: debian-10
 
-debian-sid-container:
+x86-debian-sid-container:
   <<: *container_job_definition
   variables:
     NAME: debian-sid
 
-fedora-31-container:
+x86-fedora-31-container:
   <<: *container_job_definition
   variables:
     NAME: fedora-31
 
-fedora-32-container:
+x86-fedora-32-container:
   <<: *container_job_definition
   variables:
     NAME: fedora-32
 
-fedora-rawhide-container:
+x86-fedora-rawhide-container:
   <<: *container_job_definition
   variables:
     NAME: fedora-rawhide
 
-opensuse-151-container:
+x86-opensuse-151-container:
   <<: *container_job_definition
   variables:
     NAME: opensuse-151
 
-ubuntu-1804-container:
+x86-ubuntu-1804-container:
   <<: *container_job_definition
   variables:
     NAME: ubuntu-1804
 
-ubuntu-2004-container:
+x86-ubuntu-2004-container:
   <<: *container_job_definition
   variables:
     NAME: ubuntu-2004
 
 
-centos-7-git-build:
-  <<: *git_build_job_definition
+x86-centos-7-dist-build:
+  <<: *dist_native_build_job_definition
   variables:
     NAME: centos-7
 
-centos-8-git-build:
-  <<: *git_build_job_definition
+x86-centos-8-git-build:
+  <<: *git_native_build_job_definition
   variables:
     NAME: centos-8
+    RPM: skip
 
-debian-9-git-build:
-  <<: *git_build_job_definition
+x86-debian-9-dist-build:
+  <<: *dist_native_build_job_definition
   variables:
     NAME: debian-9
 
-debian-10-git-build:
-  <<: *git_build_job_definition
+x86-debian-10-dist-build:
+  <<: *dist_native_build_job_definition
   variables:
     NAME: debian-10
 
-debian-sid-git-build:
-  <<: *git_build_job_definition
+x86-debian-sid-dist-build:
+  <<: *dist_native_build_job_definition
   variables:
     NAME: debian-sid
 
-fedora-31-git-build:
-  <<: *git_build_job_definition
+x86-fedora-31-dist-build:
+  <<: *dist_native_build_job_definition
   variables:
     NAME: fedora-31
 
-fedora-32-git-build:
-  <<: *git_build_job_definition
+x86-fedora-32-dist-build:
+  <<: *dist_native_build_job_definition
   variables:
     NAME: fedora-32
 
-fedora-rawhide-git-build:
-  <<: *git_build_job_definition
+x86-fedora-rawhide-dist-build:
+  <<: *dist_native_build_job_definition
   variables:
     NAME: fedora-rawhide
 
-opensuse-151-git-build:
-  <<: *git_build_job_definition
+x86-opensuse-151-dist-build:
+  <<: *dist_native_build_job_definition
   variables:
     NAME: opensuse-151
+    RPM: skip
 
-ubuntu-1804-git-build:
-  <<: *git_build_job_definition
+x86-ubuntu-1804-dist-build:
+  <<: *dist_native_build_job_definition
   variables:
     NAME: ubuntu-1804
 
-ubuntu-2004-git-build:
-  <<: *git_build_job_definition
+x86-ubuntu-2004-dist-build:
+  <<: *dist_native_build_job_definition
   variables:
     NAME: ubuntu-2004

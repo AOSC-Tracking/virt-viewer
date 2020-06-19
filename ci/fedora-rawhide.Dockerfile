@@ -11,29 +11,23 @@ RUN dnf update -y --nogpgcheck fedora-gpg-keys && \
         ccache \
         chrony \
         cppi \
-        cyrus-sasl-devel \
         gcc \
         gdb \
-        gdk-pixbuf2-devel \
         gettext \
         gettext-devel \
         git \
         glib2-devel \
         glibc-devel \
         glibc-langpack-en \
-        gnutls-devel \
-        gobject-introspection-devel \
-        gtk-doc \
+        gtk-vnc2-devel \
         gtk3-devel \
-        intltool \
-        libgcrypt-devel \
+        icoutils \
         libgovirt-devel \
-        libnl3-devel \
-        libtirpc-devel \
         libtool \
+        libvirt-devel \
+        libvirt-gobject-devel \
         libxml2 \
         libxml2-devel \
-        libxslt \
         lsof \
         make \
         meson \
@@ -41,19 +35,18 @@ RUN dnf update -y --nogpgcheck fedora-gpg-keys && \
         ninja-build \
         patch \
         perl \
+        perl-App-cpanminus \
         pkgconfig \
-        pulseaudio-libs-devel \
         python3 \
-        python3-docutils \
+        python3-pip \
         python3-setuptools \
         python3-wheel \
-        rpcgen \
+        rest-devel \
         rpm-build \
         screen \
         spice-gtk3-devel \
         strace \
         sudo \
-        vala \
         vim && \
     dnf autoremove -y && \
     dnf clean all -y && \
