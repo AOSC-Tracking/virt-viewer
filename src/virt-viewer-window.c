@@ -1513,7 +1513,7 @@ window_key_pressed (GtkWidget *widget G_GNUC_UNUSED,
     priv = self->priv;
     display = priv->display;
     event = (GdkEventKey *)ev;
-    
+
     gtk_widget_grab_focus(GTK_WIDGET(display));
 
     // Look through keymaps - if set for mappings and intercept
@@ -1529,7 +1529,7 @@ window_key_pressed (GtkWidget *widget G_GNUC_UNUSED,
                         break;
                 }
                 ptr++;
-        } while (matched == NULL);    
+        } while (matched == NULL);
 
         if (matched) {
                 if (matched->mappedKeys == NULL) {

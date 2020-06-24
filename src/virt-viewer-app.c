@@ -585,7 +585,7 @@ void virt_viewer_app_set_keymap(VirtViewerApp *self, const gchar *keymap_string)
     g_debug("keymap string set to %s", keymap_string);
 
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
-       
+
     g_debug("keymap command-line set to %s", keymap_string);
     if (keymap_string) {
         keymaps = g_strsplit(keymap_string, ",", -1);
