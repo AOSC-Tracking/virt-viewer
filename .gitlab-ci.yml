@@ -94,6 +94,11 @@ x86-centos-8-container:
   variables:
     NAME: centos-8
 
+x86-centos-stream-container:
+  <<: *container_job_definition
+  variables:
+    NAME: centos-stream
+
 x86-debian-9-container:
   <<: *container_job_definition
   variables:
@@ -149,6 +154,12 @@ x86-centos-8-git-build:
   <<: *git_native_build_job_definition
   variables:
     NAME: centos-8
+    RPM: skip
+
+x86-centos-stream-dist-build:
+  <<: *git_native_build_job_definition
+  variables:
+    NAME: centos-stream
     RPM: skip
 
 x86-debian-9-dist-build:
