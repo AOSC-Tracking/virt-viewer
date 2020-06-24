@@ -55,6 +55,7 @@ stages:
     - popd
     - ./autogen.sh --prefix="$VROOT"
     - $MAKE
+    - $MAKE syntax-check
     - $MAKE install
 
 # Check that all commits are signed-off for the DCO.
