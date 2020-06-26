@@ -168,9 +168,9 @@ virt_viewer_window_set_property (GObject *object, guint property_id,
         break;
 
     case PROP_KEYMAP:
-	g_free(priv->keyMappings);
-	priv->keyMappings = (VirtViewerKeyMapping *)g_value_get_pointer(value);
-	break;
+        g_free(priv->keyMappings);
+        priv->keyMappings = (VirtViewerKeyMapping *)g_value_get_pointer(value);
+        break;
 
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -1513,35 +1513,35 @@ window_key_pressed (GtkWidget *widget G_GNUC_UNUSED,
     priv = self->priv;
     display = priv->display;
     event = (GdkEventKey *)ev;
-    
+
     gtk_widget_grab_focus(GTK_WIDGET(display));
 
     // Look through keymaps - if set for mappings and intercept
     if (priv->keyMappings) {
-	VirtViewerKeyMapping *ptr, *matched;
-	ptr = priv->keyMappings;
-	matched = NULL;
-	do {
-		if (event->keyval == ptr->sourceKey) {
-			matched = ptr;
-		}
-		if (ptr->isLast) {
-			break;
-		}
-		ptr++;
-	} while (matched == NULL);    
+        VirtViewerKeyMapping *ptr, *matched;
+        ptr = priv->keyMappings;
+        matched = NULL;
+        do {
+                if (event->keyval == ptr->sourceKey) {
+                        matched = ptr;
+                }
+                if (ptr->isLast) {
+                        break;
+                }
+                ptr++;
+        } while (matched == NULL);
 
-	if (matched) {
-		if (matched->mappedKeys == NULL) {
-			// Key to be ignored and not pass through to VM
-			g_debug("Blocking keypress '%s'", gdk_keyval_name(matched->sourceKey));
-		} else {
-			g_debug("Sending through mapped keys");
-			virt_viewer_display_send_keys(display,
-				matched->mappedKeys, matched->numMappedKeys);
-		}
-		return TRUE;
-	}
+        if (matched) {
+                if (matched->mappedKeys == NULL) {
+                        // Key to be ignored and not pass through to VM
+                        g_debug("Blocking keypress '%s'", gdk_keyval_name(matched->sourceKey));
+                } else {
+                        g_debug("Sending through mapped keys");
+                        virt_viewer_display_send_keys(display,
+                                matched->mappedKeys, matched->numMappedKeys);
+                }
+                return TRUE;
+        }
 
     }
     g_debug("Key pressed was keycode='0x%x', gdk_keyname='%s'", event->keyval, gdk_keyval_name(event->keyval));

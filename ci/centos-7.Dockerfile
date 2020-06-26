@@ -40,48 +40,41 @@ WEiJKtQrZDJloqtyi/mmRa1VsV7RYR0VPJjhK/R8EQ7Ysshy\n\
         ca-certificates \
         ccache \
         chrony \
-        cyrus-sasl-devel \
         gcc \
         gdb \
-        gdk-pixbuf2-devel \
         gettext \
         gettext-devel \
         git \
         glib2-devel \
         glibc-common \
         glibc-devel \
-        gnutls-devel \
-        gobject-introspection-devel \
-        gtk-doc \
+        gtk-vnc2-devel \
         gtk3-devel \
-        intltool \
-        libgcrypt-devel \
+        icoutils \
         libgovirt-devel \
-        libnl3-devel \
-        libtirpc-devel \
         libtool \
+        libvirt-devel \
+        libvirt-gobject-devel \
         libxml2 \
         libxml2-devel \
-        libxslt \
         lsof \
         make \
         net-tools \
         ninja-build \
         patch \
         perl \
+        perl-App-cpanminus \
         pkgconfig \
-        pulseaudio-libs-devel \
         python3 \
         python3-pip \
         python3-setuptools \
         python3-wheel \
-        python36-docutils \
+        rest-devel \
         rpm-build \
         screen \
         spice-gtk3-devel \
         strace \
         sudo \
-        vala \
         vim && \
     yum autoremove -y && \
     yum clean all -y && \

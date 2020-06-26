@@ -577,23 +577,23 @@ void virt_viewer_app_set_keymap(VirtViewerApp *self, const gchar *keymap_string)
     guint *mappedArray, *ptrMove;
 
     if (keymap_string == NULL) {
-	g_debug("keymap string is empty - nothing to do");
-	self->priv->keyMappings = NULL;
-	return;
+        g_debug("keymap string is empty - nothing to do");
+        self->priv->keyMappings = NULL;
+        return;
     }
 
     g_debug("keymap string set to %s", keymap_string);
 
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
-       
+
     g_debug("keymap command-line set to %s", keymap_string);
     if (keymap_string) {
-	keymaps = g_strsplit(keymap_string, ",", -1);
+        keymaps = g_strsplit(keymap_string, ",", -1);
     }
 
     if (!keymaps || g_strv_length(keymaps) == 0) {
-	g_strfreev(keymaps);
-	return;
+        g_strfreev(keymaps);
+        return;
     }
 
     keyMappingPtr = keyMappingArray = g_new0(VirtViewerKeyMapping,  g_strv_length(keymaps));
@@ -601,52 +601,52 @@ void virt_viewer_app_set_keymap(VirtViewerApp *self, const gchar *keymap_string)
     g_debug("Allocated %d number of mappings",  g_strv_length(keymaps));
 
     for (key = keymaps; *key != NULL; key++) {
-	gchar *srcKey = strstr(*key, "=");
-	const gchar *value = (srcKey == NULL) ? NULL : (*srcKey = '\0', srcKey + 1);
-	if (value == NULL) {
-		g_warning("Missing mapping value for key '%s'", srcKey);
-		continue;
-	}
+        gchar *srcKey = strstr(*key, "=");
+        const gchar *value = (srcKey == NULL) ? NULL : (*srcKey = '\0', srcKey + 1);
+        if (value == NULL) {
+                g_warning("Missing mapping value for key '%s'", srcKey);
+                continue;
+        }
 
-	// Key value must be resolved to GDK key code
-	// along with mapped key which can also be void (for no action)
-	guint kcode;
-	kcode = gdk_keyval_from_name(*key);
-	if (kcode == GDK_KEY_VoidSymbol) {
-		g_warning("Unable to lookup '%s' key", *key);
-		continue;
-	}
-	g_debug("Mapped source key '%s' to %x", *key, kcode);
+        // Key value must be resolved to GDK key code
+        // along with mapped key which can also be void (for no action)
+        guint kcode;
+        kcode = gdk_keyval_from_name(*key);
+        if (kcode == GDK_KEY_VoidSymbol) {
+                g_warning("Unable to lookup '%s' key", *key);
+                continue;
+        }
+        g_debug("Mapped source key '%s' to %x", *key, kcode);
 
-	valuekeys = g_strsplit(value, "+", -1);
+        valuekeys = g_strsplit(value, "+", -1);
 
-	keyMappingPtr->sourceKey = kcode;
-	keyMappingPtr->numMappedKeys = g_strv_length(valuekeys);
-	keyMappingPtr->isLast = FALSE;
+        keyMappingPtr->sourceKey = kcode;
+        keyMappingPtr->numMappedKeys = g_strv_length(valuekeys);
+        keyMappingPtr->isLast = FALSE;
 
-	if (!valuekeys || g_strv_length(valuekeys) == 0) {
-		g_debug("No value set for key '%s' it will be blocked", *key);
-		keyMappingPtr->mappedKeys = NULL;
-		keyMappingPtr++;
-		g_strfreev(valuekeys);
-		continue;
-	}
+        if (!valuekeys || g_strv_length(valuekeys) == 0) {
+                g_debug("No value set for key '%s' it will be blocked", *key);
+                keyMappingPtr->mappedKeys = NULL;
+                keyMappingPtr++;
+                g_strfreev(valuekeys);
+                continue;
+        }
 
-	ptrMove = mappedArray = g_new0(guint, g_strv_length(valuekeys));
+        ptrMove = mappedArray = g_new0(guint, g_strv_length(valuekeys));
 
-	guint mcode;
-	for (valkey = valuekeys; *valkey != NULL; valkey++) {
-		g_debug("Value key to map '%s'", *valkey);
-		mcode = gdk_keyval_from_name(*valkey);
-		if (mcode == GDK_KEY_VoidSymbol) {
-			g_warning("Unable to lookup mapped key '%s' it will be ignored", *valkey);
-		}
-		g_debug("Mapped dest key '%s' to %x", *valkey, mcode);
-		*ptrMove++ = mcode;
-	}
-	keyMappingPtr->mappedKeys = mappedArray;
-	keyMappingPtr++;
-	g_strfreev(valuekeys);
+        guint mcode;
+        for (valkey = valuekeys; *valkey != NULL; valkey++) {
+                g_debug("Value key to map '%s'", *valkey);
+                mcode = gdk_keyval_from_name(*valkey);
+                if (mcode == GDK_KEY_VoidSymbol) {
+                        g_warning("Unable to lookup mapped key '%s' it will be ignored", *valkey);
+                }
+                g_debug("Mapped dest key '%s' to %x", *valkey, mcode);
+                *ptrMove++ = mcode;
+        }
+        keyMappingPtr->mappedKeys = mappedArray;
+        keyMappingPtr++;
+        g_strfreev(valuekeys);
 
     }
     keyMappingPtr--;

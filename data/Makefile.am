@@ -41,7 +41,7 @@ HaveGtkVnc = False
 endif
 
 buildenv.txt:
-	$(AM_V_GEN)rpm -qa | sort | unix2dos > $@
+	$(AM_V_GEN)rpm -qa | sort | sed 's/$$/\r/' > $@
 
 virt-viewer-$(WIXL_ARCH)-$(VERSION).msi: virt-viewer.wxs buildenv.txt
 	$(AM_V_GEN)DESTDIR=`mktemp -d` &&				\

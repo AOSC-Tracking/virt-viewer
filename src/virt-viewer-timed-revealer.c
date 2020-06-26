@@ -82,8 +82,8 @@ virt_viewer_timed_revealer_grab_notify(VirtViewerTimedRevealer *self,
 
 static gboolean
 virt_viewer_timed_revealer_enter_notify(VirtViewerTimedRevealer *self,
-					GdkEventCrossing *event G_GNUC_UNUSED,
-					gpointer user_data G_GNUC_UNUSED)
+                                        GdkEventCrossing *event G_GNUC_UNUSED,
+                                        gpointer user_data G_GNUC_UNUSED)
 {
     VirtViewerTimedRevealerPrivate *priv = self->priv;
 
@@ -100,8 +100,8 @@ virt_viewer_timed_revealer_enter_notify(VirtViewerTimedRevealer *self,
 
 static gboolean
 virt_viewer_timed_revealer_leave_notify(VirtViewerTimedRevealer *self,
-					GdkEventCrossing *event G_GNUC_UNUSED,
-					gpointer user_data G_GNUC_UNUSED)
+                                        GdkEventCrossing *event G_GNUC_UNUSED,
+                                        gpointer user_data G_GNUC_UNUSED)
 {
     VirtViewerTimedRevealerPrivate *priv = self->priv;
 

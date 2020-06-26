@@ -12,29 +12,23 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
             ca-certificates \
             ccache \
             chrony \
+            cpanminus \
             gcc \
             gdb \
             gettext \
             git \
-            gtk-doc-tools \
-            intltool \
-            libc-dev-bin \
+            icoutils \
             libc6-dev \
-            libgcrypt20-dev \
-            libgdk-pixbuf2.0-dev \
-            libgirepository1.0-dev \
             libglib2.0-dev \
-            libgnutls28-dev \
             libgovirt-dev \
             libgtk-3-dev \
-            libnl-3-dev \
-            libnl-route-3-dev \
-            libpulse-dev \
-            libsasl2-dev \
+            libgtk-vnc-2.0-dev \
+            librest-dev \
             libspice-client-gtk-3.0-dev \
-            libtirpc-dev \
             libtool \
             libtool-bin \
+            libvirt-dev \
+            libvirt-glib-1.0-dev \
             libxml2-dev \
             libxml2-utils \
             locales \
@@ -47,15 +41,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
             perl \
             pkgconf \
             python3 \
-            python3-docutils \
+            python3-pip \
             python3-setuptools \
             python3-wheel \
             screen \
             strace \
             sudo \
-            valac \
-            vim \
-            xsltproc && \
+            vim && \
     apt-get autoremove -y && \
     apt-get autoclean -y && \
     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
