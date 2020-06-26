@@ -39,23 +39,8 @@
 /* Have libgovirt? */
 #mesondefine HAVE_OVIRT
 
-/* Define to 1 if you have the `ovirt_api_search_vms' function. */
-#undef HAVE_OVIRT_API_SEARCH_VMS
-
-/* Define to 1 if you have the `ovirt_cluster_get_data_center' function. */
-#undef HAVE_OVIRT_CLUSTER_GET_DATA_CENTER
-
-/* Have support for data center */
-#undef HAVE_OVIRT_DATA_CENTER
-
-/* Define to 1 if you have the `ovirt_host_get_cluster' function. */
-#undef HAVE_OVIRT_HOST_GET_CLUSTER
-
-/* Define to 1 if you have the `ovirt_storage_domain_get_disks' function. */
-#undef HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS
-
-/* Define to 1 if you have the `ovirt_vm_get_host' function. */
-#undef HAVE_OVIRT_VM_GET_HOST
+/* Have ovirt_storage_domain_get_disks function? */
+#mesondefine HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS
 
 /* Have spice-gtk? */
 #mesondefine HAVE_SPICE_GTK

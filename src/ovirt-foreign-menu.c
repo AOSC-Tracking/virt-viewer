@@ -54,11 +54,9 @@ typedef enum {
     STATE_0,
     STATE_API,
     STATE_VM,
-#ifdef HAVE_OVIRT_DATA_CENTER
     STATE_HOST,
     STATE_CLUSTER,
     STATE_DATA_CENTER,
-#endif
     STATE_STORAGE_DOMAIN,
     STATE_VM_CDROM,
     STATE_CDROM_FILE,
@@ -68,11 +66,9 @@ typedef enum {
 static void ovirt_foreign_menu_next_async_step(OvirtForeignMenu *menu, GTask *task, OvirtForeignMenuState state);
 static void ovirt_foreign_menu_fetch_api_async(OvirtForeignMenu *menu, GTask *task);
 static void ovirt_foreign_menu_fetch_vm_async(OvirtForeignMenu *menu, GTask *task);
-#ifdef HAVE_OVIRT_DATA_CENTER
 static void ovirt_foreign_menu_fetch_host_async(OvirtForeignMenu *menu, GTask *task);
 static void ovirt_foreign_menu_fetch_cluster_async(OvirtForeignMenu *menu, GTask *task);
 static void ovirt_foreign_menu_fetch_data_center_async(OvirtForeignMenu *menu, GTask *task);
-#endif
 static void ovirt_foreign_menu_fetch_storage_domain_async(OvirtForeignMenu *menu, GTask *task);
 static void ovirt_foreign_menu_fetch_vm_cdrom_async(OvirtForeignMenu *menu, GTask *task);
 static void ovirt_foreign_menu_refresh_cdrom_file_async(OvirtForeignMenu *menu, GTask *task);
@@ -84,11 +80,9 @@ struct _OvirtForeignMenu {
     OvirtProxy *proxy;
     OvirtApi *api;
     OvirtVm *vm;
-#ifdef HAVE_OVIRT_DATA_CENTER
     OvirtHost *host;
     OvirtCluster *cluster;
     OvirtDataCenter *data_center;
-#endif
     char *vm_guid;
 
     OvirtCollection *files;
@@ -215,11 +209,9 @@ ovirt_foreign_menu_dispose(GObject *obj)
     g_clear_object(&self->proxy);
     g_clear_object(&self->api);
     g_clear_object(&self->vm);
-#ifdef HAVE_OVIRT_DATA_CENTER
     g_clear_object(&self->host);
     g_clear_object(&self->cluster);
     g_clear_object(&self->data_center);
-#endif
     g_clear_pointer(&self->vm_guid, g_free);
     g_clear_object(&self->files);
     g_clear_object(&self->cdrom);
@@ -333,7 +325,6 @@ ovirt_foreign_menu_next_async_step(OvirtForeignMenu *menu,
             ovirt_foreign_menu_fetch_vm_async(menu, task);
             break;
         }
-#ifdef HAVE_OVIRT_DATA_CENTER
         G_GNUC_FALLTHROUGH;
     case STATE_HOST:
         if (menu->host == NULL) {
@@ -352,7 +343,6 @@ ovirt_foreign_menu_next_async_step(OvirtForeignMenu *menu,
             ovirt_foreign_menu_fetch_data_center_async(menu, task);
             break;
         }
-#endif
         G_GNUC_FALLTHROUGH;
     case STATE_STORAGE_DOMAIN:
         if (menu->files == NULL) {
@@ -648,7 +638,6 @@ static void ovirt_foreign_menu_fetch_vm_cdrom_async(OvirtForeignMenu *menu,
                                  cdroms_fetched_cb, task);
 }
 
-#ifdef HAVE_OVIRT_DATA_CENTER
 static gboolean strv_contains(const gchar * const *strv, const gchar *str)
 {
   return g_strv_contains (strv, str);
@@ -669,7 +658,6 @@ static gboolean storage_domain_attached_to_data_center(OvirtStorageDomain *domai
 
     return match;
 }
-#endif
 
 static gboolean storage_domain_validate(OvirtForeignMenu *menu G_GNUC_UNUSED,
                                         OvirtStorageDomain *domain)
@@ -690,12 +678,10 @@ static gboolean storage_domain_validate(OvirtForeignMenu *menu G_GNUC_UNUSED,
         ret = FALSE;
     }
 
-#ifdef HAVE_OVIRT_DATA_CENTER
     if (!storage_domain_attached_to_data_center(domain, menu->data_center)) {
         g_debug("Storage domain '%s' is not attached to data center", name);
         ret = FALSE;
     }
-#endif
 
     g_debug ("Storage domain '%s' is %s", name, ret ? "valid" : "not valid");
     g_free(name);
@@ -794,15 +780,11 @@ static void ovirt_foreign_menu_fetch_storage_domain_async(OvirtForeignMenu *menu
 {
     OvirtCollection *collection = NULL;
 
-#ifdef HAVE_OVIRT_DATA_CENTER
     g_return_if_fail(OVIRT_IS_FOREIGN_MENU(menu));
     g_return_if_fail(OVIRT_IS_PROXY(menu->proxy));
     g_return_if_fail(OVIRT_IS_DATA_CENTER(menu->data_center));
 
     collection = ovirt_data_center_get_storage_domains(menu->data_center);
-#else
-    collection = ovirt_api_get_storage_domains(menu->api);
-#endif
 
     g_debug("Start fetching iso file collection");
     ovirt_collection_fetch_async(collection, menu->proxy,
@@ -811,7 +793,6 @@ static void ovirt_foreign_menu_fetch_storage_domain_async(OvirtForeignMenu *menu
 }
 
 
-#ifdef HAVE_OVIRT_DATA_CENTER
 static void data_center_fetched_cb(GObject *source_object,
                                    GAsyncResult *result,
                                    gpointer user_data)
@@ -921,7 +902,6 @@ static void ovirt_foreign_menu_fetch_host_async(OvirtForeignMenu *menu,
                                  host_fetched_cb,
                                  task);
 }
-#endif /* HAVE_OVIRT_DATA_CENTER */
 
 
 static void vms_fetched_cb(GObject *source_object,
@@ -978,13 +958,9 @@ static void ovirt_foreign_menu_fetch_vm_async(OvirtForeignMenu *menu,
     g_return_if_fail(OVIRT_IS_PROXY(menu->proxy));
     g_return_if_fail(OVIRT_IS_API(menu->api));
 
-#ifdef HAVE_OVIRT_API_SEARCH_VMS
     char * query = g_strdup_printf("id=%s", menu->vm_guid);
     vms = ovirt_api_search_vms(menu->api, query);
     g_free(query);
-#else
-    vms = ovirt_api_get_vms(menu->api);
-#endif
 
     ovirt_collection_fetch_async(vms, menu->proxy,
                                  g_task_get_cancellable(task),

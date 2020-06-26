@@ -38,7 +38,7 @@ libvirt_glib_min_version='>=0.1.8'
 gtk_vnc_min_version='>=0.4.0'
 spice_gtk_min_version='>=0.35'
 spice_protocol_min_version='>=0.12.7'
-govirt_min_version='>=0.3.3'
+govirt_min_version='>=0.3.7'
 rest_min_version='>=0.8'
 vte_min_version='>=0.46.0'
 bash_completion_version='2.0'
@@ -446,6 +446,9 @@ if get_option('ovirt').auto()
   endif
 endif
 if govirt_dep.found()
+  if cc.has_function('ovirt_storage_domain_get_disks', dependencies: govirt_dep)
+    conf_data.set('HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS', '1')
+  endif
   conf_data.set('HAVE_OVIRT', '1')
 endif
 
