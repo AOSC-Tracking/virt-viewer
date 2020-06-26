@@ -481,6 +481,18 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
     for (it = files; it != NULL; it = it->next) {
         char *name;
         g_object_get(it->data, "name", &name, NULL);
+
+#ifdef HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS
+        if (OVIRT_IS_DISK(it->data)) {
+            OvirtDiskContentType content_type;
+            g_object_get(it->data, "content-type", &content_type, NULL);
+            if (content_type != OVIRT_DISK_CONTENT_TYPE_ISO) {
+                g_debug("Ignoring %s disk which content-type is not ISO", name);
+                continue;
+            }
+        }
+#endif
+
         /* The oVirt REST API is supposed to have a 'type' node
          * associated with file resources , but as of 3.2, this node
          * is not present, so we do an extension check instead
@@ -686,6 +698,26 @@ static gboolean ovirt_foreign_menu_set_file_collection(OvirtForeignMenu *menu, O
     return TRUE;
 }
 
+static OvirtCollection *storage_domain_get_files(OvirtStorageDomain *domain)
+{
+    OvirtCollection *files = NULL;
+    OvirtStorageDomainType type;
+
+    if (domain == NULL)
+        return NULL;
+
+    g_object_get(domain, "type", &type, NULL);
+
+    if (type == OVIRT_STORAGE_DOMAIN_TYPE_ISO)
+        files = ovirt_storage_domain_get_files(domain);
+#ifdef HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS
+    else if (type == OVIRT_STORAGE_DOMAIN_TYPE_DATA)
+        files = ovirt_storage_domain_get_disks(domain);
+#endif
+
+    return files;
+}
+
 static void storage_domains_fetched_cb(GObject *source_object,
                                        GAsyncResult *result,
                                        gpointer user_data)
@@ -716,7 +748,7 @@ static void storage_domains_fetched_cb(GObject *source_object,
         if (!domain_valid)
             domain_valid = TRUE;
 
-        file_collection = ovirt_storage_domain_get_files(domain);
+        file_collection = storage_domain_get_files(domain);
         if (!ovirt_foreign_menu_set_file_collection(menu, file_collection))
             continue;
 

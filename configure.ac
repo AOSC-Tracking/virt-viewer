@@ -203,7 +203,7 @@ AS_IF([test "x$with_ovirt" = "xyes"],
        SAVED_LIBS="$LIBS"
        CFLAGS="$SAVED_CFLAGS $OVIRT_CFLAGS"
        LIBS="$SAVED_LIBS $OVIRT_LIBS"
-       AC_CHECK_FUNCS([ovirt_api_search_vms ovirt_vm_get_host ovirt_host_get_cluster ovirt_cluster_get_data_center],
+       AC_CHECK_FUNCS([ovirt_api_search_vms ovirt_vm_get_host ovirt_host_get_cluster ovirt_cluster_get_data_center ovirt_storage_domain_get_disks],
                       [AC_DEFINE([HAVE_OVIRT_DATA_CENTER], 1, [Have support for data center])],
                       []
                       )
