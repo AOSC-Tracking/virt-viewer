@@ -481,6 +481,18 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
     for (it = files; it != NULL; it = it->next) {
         char *name;
         g_object_get(it->data, "name", &name, NULL);
+
+#ifdef HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS
+        if (OVIRT_IS_DISK(it->data)) {
+            OvirtDiskContentType content_type;
+            g_object_get(it->data, "content-type", &content_type, NULL);
+            if (content_type != OVIRT_DISK_CONTENT_TYPE_ISO) {
+                g_debug("Ignoring %s disk which content-type is not ISO", name);
+                continue;
+            }
+        }
+#endif
+
         /* The oVirt REST API is supposed to have a 'type' node
          * associated with file resources , but as of 3.2, this node
          * is not present, so we do an extension check instead
@@ -686,6 +698,26 @@ static gboolean ovirt_foreign_menu_set_file_collection(OvirtForeignMenu *menu, O
     return TRUE;
 }
 
+static OvirtCollection *storage_domain_get_files(OvirtStorageDomain *domain)
+{
+    OvirtCollection *files = NULL;
+    OvirtStorageDomainType type;
+
+    if (domain == NULL)
+        return NULL;
+
+    g_object_get(domain, "type", &type, NULL);
+
+    if (type == OVIRT_STORAGE_DOMAIN_TYPE_ISO)
+        files = ovirt_storage_domain_get_files(domain);
+#ifdef HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS
+    else if (type == OVIRT_STORAGE_DOMAIN_TYPE_DATA)
+        files = ovirt_storage_domain_get_disks(domain);
+#endif
+
+    return files;
+}
+
 static void storage_domains_fetched_cb(GObject *source_object,
                                        GAsyncResult *result,
                                        gpointer user_data)
@@ -695,8 +727,8 @@ static void storage_domains_fetched_cb(GObject *source_object,
     OvirtForeignMenu *menu = OVIRT_FOREIGN_MENU(g_task_get_source_object(task));
     OvirtCollection *collection = OVIRT_COLLECTION(source_object);
     GHashTableIter iter;
-    OvirtStorageDomain *domain;
-    gboolean domain_valid = FALSE;
+    OvirtStorageDomain *domain, *valid_domain = NULL;
+    OvirtCollection *file_collection;
 
     ovirt_collection_fetch_finish(collection, result, &error);
     if (error != NULL) {
@@ -708,32 +740,36 @@ static void storage_domains_fetched_cb(GObject *source_object,
 
     g_hash_table_iter_init(&iter, ovirt_collection_get_resources(collection));
     while (g_hash_table_iter_next(&iter, NULL, (gpointer *)&domain)) {
-        OvirtCollection *file_collection;
-
         if (!storage_domain_validate(menu, domain))
             continue;
 
-        if (!domain_valid)
-            domain_valid = TRUE;
+        /* Storage domain of type ISO has precedence over type DATA */
+        if (valid_domain != NULL) {
+            OvirtStorageDomainType domain_type, valid_type;
+            g_object_get(domain, "type", &domain_type, NULL);
+            g_object_get(valid_domain, "type", &valid_type, NULL);
 
-        file_collection = ovirt_storage_domain_get_files(domain);
-        if (!ovirt_foreign_menu_set_file_collection(menu, file_collection))
+            if (domain_type > valid_type)
+                valid_domain = domain;
+
             continue;
+        }
 
-        break; /* There can only be one valid storage domain at a time,
-                  no need to iterate more on the list */
+        valid_domain = domain;
     }
 
-    if (menu->priv->files != NULL) {
-        ovirt_foreign_menu_next_async_step(menu, task, STATE_STORAGE_DOMAIN);
-    } else {
-        const char *msg = domain_valid ? "Could not find ISO file collection"
+    file_collection = storage_domain_get_files(valid_domain);
+    if (!ovirt_foreign_menu_set_file_collection(menu, file_collection)) {
+        const char *msg = valid_domain ? "Could not find ISO file collection"
                                        : "Could not find valid ISO storage domain";
 
         g_debug("%s", msg);
         g_task_return_new_error(task, OVIRT_ERROR, OVIRT_ERROR_FAILED, "%s", msg);
         g_object_unref(task);
+        return;
     }
+
+    ovirt_foreign_menu_next_async_step(menu, task, STATE_STORAGE_DOMAIN);
 }
 
 
