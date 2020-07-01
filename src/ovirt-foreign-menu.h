@@ -53,6 +53,7 @@ GList *ovirt_foreign_menu_fetch_iso_names_finish(OvirtForeignMenu *foreign_menu,
 
 void ovirt_foreign_menu_set_current_iso_name_async(OvirtForeignMenu *foreign_menu,
                                                    const char *name,
+                                                   const char *id,
                                                    GCancellable *cancellable,
                                                    GAsyncReadyCallback callback,
                                                    gpointer user_data);
@@ -64,4 +65,4 @@ gboolean ovirt_foreign_menu_set_current_iso_name_finish(OvirtForeignMenu *foreig
 GtkWidget *ovirt_foreign_menu_get_gtk_menu(OvirtForeignMenu *foreign_menu);
 gchar *ovirt_foreign_menu_get_current_iso_name(OvirtForeignMenu *menu);
 GList *ovirt_foreign_menu_get_iso_names(OvirtForeignMenu *menu);
-
+GStrv  ovirt_foreign_menu_get_current_iso_info(OvirtForeignMenu *menu);

@@ -22,6 +22,7 @@
 
 #include <glib/gi18n.h>
 
+#include "glib-compat.h"
 #include "remote-viewer-iso-list-dialog.h"
 #include "virt-viewer-util.h"
 #include "ovirt-foreign-menu.h"
@@ -48,6 +49,7 @@ enum RemoteViewerISOListDialogModel
     ISO_IS_ACTIVE = 0,
     ISO_NAME,
     FONT_WEIGHT,
+    ISO_ID,
 };
 
 enum RemoteViewerISOListDialogProperties {
@@ -114,18 +116,23 @@ remote_viewer_iso_list_dialog_show_files(RemoteViewerISOListDialog *self)
 }
 
 static void
-remote_viewer_iso_list_dialog_foreach(char *name, RemoteViewerISOListDialog *self)
+remote_viewer_iso_list_dialog_foreach(GStrv info, RemoteViewerISOListDialog *self)
 {
-    gchar *current_iso = ovirt_foreign_menu_get_current_iso_name(self->foreign_menu);
-    gboolean active = (g_strcmp0(current_iso, name) == 0);
+    GStrv current_iso = ovirt_foreign_menu_get_current_iso_info(self->foreign_menu);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    gboolean active = (g_strv_equal((const gchar * const *) current_iso,
+                                    (const gchar * const *) info) == TRUE);
+G_GNUC_END_IGNORE_DEPRECATIONS
     gint weight = active ? PANGO_WEIGHT_BOLD : PANGO_WEIGHT_NORMAL;
     GtkTreeIter iter;
 
     gtk_list_store_append(self->list_store, &iter);
     gtk_list_store_set(self->list_store, &iter,
                        ISO_IS_ACTIVE, active,
-                       ISO_NAME, name,
-                       FONT_WEIGHT, weight, -1);
+                       ISO_NAME, info[0],
+                       FONT_WEIGHT, weight,
+                       ISO_ID, info[1],
+                       -1);
 
     if (active) {
         GtkTreePath *path = gtk_tree_model_get_path(GTK_TREE_MODEL(self->list_store), &iter);
@@ -133,8 +140,6 @@ remote_viewer_iso_list_dialog_foreach(char *name, RemoteViewerISOListDialog *sel
         gtk_tree_view_scroll_to_cell(GTK_TREE_VIEW(self->tree_view), path, NULL, TRUE, 0.5, 0.5);
         gtk_tree_path_free(path);
     }
-
-    g_free(current_iso);
 }
 
 static void
@@ -215,24 +220,29 @@ remote_viewer_iso_list_dialog_toggled(GtkCellRendererToggle *cell_renderer G_GNU
     GtkTreePath *tree_path = gtk_tree_path_new_from_string(path);
     GtkTreeIter iter;
     gboolean active;
-    gchar *name;
+    gchar *name, *id;
 
     gtk_tree_view_set_cursor(GTK_TREE_VIEW(self->tree_view), tree_path, NULL, FALSE);
     gtk_tree_model_get_iter(model, &iter, tree_path);
     gtk_tree_model_get(model, &iter,
                        ISO_IS_ACTIVE, &active,
-                       ISO_NAME, &name, -1);
+                       ISO_NAME, &name,
+                       ISO_ID, &id,
+                       -1);
 
     gtk_dialog_set_response_sensitive(GTK_DIALOG(self), GTK_RESPONSE_NONE, FALSE);
     gtk_widget_set_sensitive(self->tree_view, FALSE);
 
     self->cancellable = g_cancellable_new();
-    ovirt_foreign_menu_set_current_iso_name_async(self->foreign_menu, active ? NULL : name,
+    ovirt_foreign_menu_set_current_iso_name_async(self->foreign_menu,
+                                                  active ? NULL : name,
+                                                  active ? NULL : id,
                                                   self->cancellable,
                                                   (GAsyncReadyCallback)ovirt_foreign_menu_iso_name_changed,
                                                   self);
     gtk_tree_path_free(tree_path);
     g_free(name);
+    g_free(id);
 }
 
 G_MODULE_EXPORT void
@@ -301,9 +311,9 @@ ovirt_foreign_menu_iso_name_changed(OvirtForeignMenu *foreign_menu,
                                     RemoteViewerISOListDialog *self)
 {
     GtkTreeModel *model = GTK_TREE_MODEL(self->list_store);
-    gchar *current_iso;
+    GStrv current_iso;
     GtkTreeIter iter;
-    gchar *name;
+    gchar *name, *id;
     gboolean active, match = FALSE;
     GError *error = NULL;
 
@@ -324,13 +334,18 @@ ovirt_foreign_menu_iso_name_changed(OvirtForeignMenu *foreign_menu,
     if (!gtk_tree_model_get_iter_first(model, &iter))
         goto end;
 
-    current_iso = ovirt_foreign_menu_get_current_iso_name(foreign_menu);
+    current_iso = ovirt_foreign_menu_get_current_iso_info(foreign_menu);
 
     do {
         gtk_tree_model_get(model, &iter,
                            ISO_IS_ACTIVE, &active,
-                           ISO_NAME, &name, -1);
-        match = (g_strcmp0(current_iso, name) == 0);
+                           ISO_NAME, &name,
+                           ISO_ID, &id,
+                           -1);
+
+        if (current_iso)
+            match = (g_strcmp0(current_iso[0], name) == 0 &&
+                     g_strcmp0(current_iso[1], id) == 0);
 
         /* iso is not active anymore */
         if (active && !match) {
@@ -344,11 +359,11 @@ ovirt_foreign_menu_iso_name_changed(OvirtForeignMenu *foreign_menu,
         }
 
         g_free(name);
+        g_free(id);
     } while (gtk_tree_model_iter_next(model, &iter));
 
     gtk_dialog_set_response_sensitive(GTK_DIALOG(self), GTK_RESPONSE_NONE, TRUE);
     gtk_widget_set_sensitive(self->tree_view, TRUE);
-    g_free(current_iso);
 
 end:
     g_clear_error(&error);
