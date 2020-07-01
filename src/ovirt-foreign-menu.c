@@ -488,6 +488,7 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
             g_object_get(it->data, "content-type", &content_type, NULL);
             if (content_type != OVIRT_DISK_CONTENT_TYPE_ISO) {
                 g_debug("Ignoring %s disk which content-type is not ISO", name);
+                g_free(name);
                 continue;
             }
         }
