@@ -7,16 +7,15 @@ MAINTAINERCLEANFILES = $(GMOFILES) $(POTFILE) $(POFILES)
 LANGS := $(shell cat $(srcdir)/LINGUAS)
 
 
-POTFILE_DEPS := $(shell $(SED) 's,^,$(top_srcdir)/,' $(srcdir)/POTFILES)
 POTFILE := $(srcdir)/$(DOMAIN).pot
-POFILES := $(LANGS:%=$(srcdir)/%.po)
-GMOFILES := $(LANGS:%=$(srcdir)/%.gmo)
+POFILES := $(LANGS:%=%.po)
+GMOFILES := $(LANGS:%=%.gmo)
 
 EXTRA_DIST = \
 	POTFILES \
+	LINGUAS \
 	$(POTFILE) \
-	$(POFILES) \
-	$(GMOFILES)
+	$(POFILES)
 
 if HAVE_GNU_GETTEXT_TOOLS
 
@@ -30,6 +29,7 @@ XGETTEXT_ARGS = \
 	--package-version="$(PACKAGE_VERSION)" \
 	--msgid-bugs-address="$(MSGID_BUGS_ADDRESS)" \
 	--directory=$(top_srcdir) \
+	--sort-output \
 	$(NULL)
 
 SED_PO_FIXUP_ARGS = \
@@ -38,46 +38,16 @@ SED_PO_FIXUP_ARGS = \
 	-e "s|Copyright (C) YEAR|Copyright (C) $$(date +'%Y')|" \
 	$(NULL)
 
-all: update-po
-
-update-po: $(POFILES)
-
-update-gmo: $(GMOFILES)
-
-update-mini-po: $(POTFILE)
-	for lang in $(LANGS); do \
-	  echo "Minimizing $$lang content" && \
-	  $(MSGMERGE) --no-location --no-fuzzy-matching --sort-output \
-	    $(srcdir)/$$lang.po $(POTFILE) | \
-	  $(SED) $(SED_PO_FIXUP_ARGS) | \
-	  $(PERL) $(top_srcdir)/build-aux/minimize-po.pl > \
-	    $(srcdir)/$$lang.mini.po ; \
-	done
-
-push-pot: $(POTFILE)
-	zanata push --push-type=source
-
-pull-po: $(POTFILE)
-	zanata pull --create-skeletons
-	$(MAKE) update-mini-po
-	$(MAKE) update-gmo
-
-$(POTFILE): POTFILES $(POTFILE_DEPS)
-	$(XGETTEXT) -o $@-t $(XGETTEXT_ARGS) \
+virt-viewer.pot:
+	$(XGETTEXT) -o $(POTFILE)-t $(XGETTEXT_ARGS) \
 	  --files-from=$(abs_srcdir)/POTFILES
-	$(SED) $(SED_PO_FIXUP_ARGS) < $@-t > $@
-	rm -f $@-t
+	$(SED) $(SED_PO_FIXUP_ARGS) < $(POTFILE)-t > $(POTFILE)
+	rm -f $(POTFILE)-t
 
-$(srcdir)/%.po: $(srcdir)/%.mini.po $(POTFILE)
-	$(MSGMERGE) --no-fuzzy-matching $< $(POTFILE) | \
-	  $(SED) $(SED_PO_FIXUP_ARGS) > $@
-
-$(srcdir)/%.gmo: $(srcdir)/%.po
+%.gmo: %.po
 	rm -f $@ $@-t
 	$(MSGFMT) -c -o $@-t $<
 	mv $@-t $@
-
-.PRECIOUS: $(POTFILE) $(POFILES)
 
 endif HAVE_GNU_GETTEXT_TOOLS
 
@@ -91,7 +61,7 @@ install-data-hook: $(GMOFILES)
 	for lang in $(LANGS); do \
 	  d=$(DESTDIR)$(langinstdir)/$$lang/LC_MESSAGES; \
 	  mkdir -p $$d; \
-	  install -m 0644 $(srcdir)/$$lang.gmo $$d/$(DOMAIN).mo; \
+	  install -m 0644 $$lang.gmo $$d/$(DOMAIN).mo; \
 	done
 
 uninstall-hook:

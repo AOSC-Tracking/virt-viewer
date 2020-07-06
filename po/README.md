@@ -1,76 +1,41 @@
+===========================
 Virt-Viewer Message Translation
 ===========================
 
-Virt-Viewer translatable messages are maintained using the GNU Gettext tools
-and file formats, in combination with the Zanata web service.
+.. image:: https://translate.fedoraproject.org/widgets/virt-viewer/-/virt-viewer/multi-auto.svg
+     :target: https://translate.fedoraproject.org/engage/virt-viewer/
+     :alt: Translation status
+
+Virt-Viewer translatable messages are maintained using the GNU Gettext tools and
+file formats, in combination with the Fedora Weblate web service.
+
+https://translate.fedoraproject.org/projects/virt-viewer/virt-viewer/
 
 Source repository
 =================
 
-The virt-viewer GIT repository does NOT store the master "virt-viewer.pot"
-file, nor does it store full "po" files for translations. The master
-"virt-viewer.pot" file can be generated at any time using
+The virt-viewer GIT repository stores the master "virt-viewer.pot" file, which is to be
+refreshed at time of feature freeze.
 
-   make virt-viewer.pot
+The "po" files stored in GIT have source locations removed in order to cut down
+on storage size, by eliminating information already present in the "pot" file.
+All files are stored with strings sorted in alphabetical order rather than
+source location order, to minimize movement of strings when source locations
+change.
 
-The translations are kept in minimized files that are the same file format
-as normal po files but with all redundant information stripped and messages
-re-ordered. The key differences between the ".mini.po" files in GIT and the
-full ".po" files are
+The "po" files are to be EXCLUSIVELY UPDATED by merge requests sent from the
+Fedora Weblate service. Other contributors MUST NEVER send changes which touch
+the "po" file content, as that will create merge conflicts for Weblate. IOW any
+bug fixes to translations should be made via the Weblate application UI.
 
-  - msgids with no current translation are omitted
-  - msgids are sorted in alphabetical order not source file order
-  - msgids with a msgstr marked "fuzzy" are discarded
-  - source file locations are omitted
+After the "pot" file in virt-viewer GIT, Weblate will automatically run "msgmerge"
+to update the "po" files itself and send back a merge request with the changes.
 
-The full po files can be created at any time using
-
-   make update-po
-
-This merges the "virt-viewer.pot" with the "$LANG.mini.po" for each language,
-to create the "$LANG.po" files. These are included in the release archives
-created by "make dist".
-
-When a full po file is updated, changes can be propagated back into the
-minimized po files using
-
-   make update-mini-po
-
-Note, however, that this is generally not something that should be run by
-developers normally, as it is triggered by 'make pull-po' when refreshing
-content from Zanata.
-
-
-Zanata web service
-==================
-
-The translation of virt-viewer messages has been outsourced to the Fedora
-translation team using the Zanata web service:
-
-  https://fedora.zanata.org/project/view/virt-viewer
-
-As such, changes to translations will generally NOT be accepted as patches
-directly to virt-viewer GIT. Any changes made to "$LANG.mini.po" files in
-virt-viewer GIT will be overwritten and lost the next time content is
-imported from Zanata.
-
-The master "virt-viewer.pot" file is periodically pushed to Zanata to provide
-the translation team with content changes, using
-
-  make push-pot
-
-New translated text is then periodically pulled down from Zanata to update the
-minimized po files, using
-
-  make pull-po
-
-Sometimes the translators make mistakes, most commonly with handling printf
-format specifiers. The "pull-po" command re-generates the .gmo files to try to
-identify such mistakes. If a mistake is made, the broken msgstr should be
-deleted in the local "$LANG.mini.po" file, and the Zanata web interface used
-to reject the translation so that the broken msgstr isn't pulled down next time.
-
-After pulling down new content the diff should be examined to look for any
-obvious mistakes that are not caught automatically. There have been bugs in
-Zanata tools which caused messges to go missing, so pay particular attention to
-diffs showing deletions where the msgid still exists in virt-viewer.pot
+Translation updates made in the Weblate Web UI will be committed to its fork of
+the GIT repo once a day. These commits will be submitted back to the master GIT
+repo via merge requests. If a merge request from Weblate is already open,
+commits will be added to this existing merge request. Weblate will take care of
+rebasing whenever changes happen in Git master. In order to avoid having to do
+translations merges 30 times a month, merge requests from Weblate will usually
+be left open until feature freeze arrives. During the freeze period, they will
+be accepted more promptly to ensure they make it into the new release.
