@@ -4,8 +4,7 @@
 #
 # Translators:
 # Ankit Patel <ankit644@yahoo.com>, 2014
-# sweta <swkothar@redhat.com>, 2010,2012-2013
-# sweta <swkothar@redhat.com>, 2013-2014
+# sweta <swkothar@redhat.com>, 2010, 2012, 2013, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

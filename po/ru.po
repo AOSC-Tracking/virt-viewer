@@ -8,10 +8,9 @@
 # triplepointfive <iya777@yandex.ru>, 2012
 # Yulia <ypoyarko@redhat.com>, 2010, 2012
 # Yulia <yulia.poyarkova@redhat.com>, 2013
-# Ilyas B Arinov <arinov.ilyas@gmail.com>, 2015. #zanata
-# yuliya <ypoyarko@redhat.com>, 2015. #zanata
-# yuliya <ypoyarko@redhat.com>, 2016. #zanata
-# Dmitry Astankov <mornie@basealt.ru>, 2019. #zanata
+# Ilyas B Arinov <arinov.ilyas@gmail.com>, 2015
+# yuliya <ypoyarko@redhat.com>, 2015, 2016
+# Dmitry Astankov <mornie@basealt.ru>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

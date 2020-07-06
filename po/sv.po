@@ -4,12 +4,8 @@
 #
 # Translators:
 # denka <dennis@dennis.se>, 2014
-# Göran Uddeborg <goeran@uddeborg.se>, 2013-2014
+# Göran Uddeborg <goeran@uddeborg.se>, 2013, 2014, 2015, 2016, 2018, 2019
 # Klap Hest <jojje3000@hotmail.com>, 2013
-# Göran Uddeborg <goeran@uddeborg.se>, 2015. #zanata
-# Göran Uddeborg <goeran@uddeborg.se>, 2016. #zanata
-# Göran Uddeborg <goeran@uddeborg.se>, 2018. #zanata
-# Göran Uddeborg <goeran@uddeborg.se>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

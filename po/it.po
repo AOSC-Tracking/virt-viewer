@@ -5,13 +5,12 @@
 # Translators:
 # Francesco D'Aluisio <fdaluisio@fedoraproject.org>, 2013
 # Francesco Tombolini <tombo@adamantio.net>, 2010
-# fvalen <fvalen@redhat.com>, 2013
-# fvalen <fvalen@redhat.com>, 2012
+# fvalen <fvalen@redhat.com>, 2012, 2013
 # Gianluca Sforna <giallu@fedoraproject.org>, 2010
 # Guido Grazioli <guido.grazioli@gmail.com>, 2013
 # Silvio Pierro <perplesso82@gmail.com>, 2012
-# Francesco Valente <fvalen@redhat.com>, 2016. #zanata
-# Frediano Ziglio <fziglio@redhat.com>, 2016. #zanata
+# Francesco Valente <fvalen@redhat.com>, 2016
+# Frediano Ziglio <fziglio@redhat.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

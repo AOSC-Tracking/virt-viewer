@@ -3,9 +3,9 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# runab <runab@redhat.com>, 2010,2012
+# runab <runab@redhat.com>, 2010, 2012
 # runa <runabh@gmail.com>, 2012
-# Saibal Ray, 2013-2014
+# Saibal Ray, 2013, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

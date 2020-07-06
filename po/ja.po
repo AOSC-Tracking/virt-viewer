@@ -3,14 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Hajime Taira <htaira@redhat.com>, 2012-2014
+# Hajime Taira <htaira@redhat.com>, 2012, 2013, 2014
 # Kiyoto Hashida <khashida@redhat.com>, 2010
 # noriko <noriko@fedoraproject.org>, 2014
-# Tomoyuki KATO <tomo@dream.daynight.jp>, 2012-2013
-# Hajime Taira <htaira@fedoraproject.org>, 2015. #zanata
-# Hajime Taira <htaira@fedoraproject.org>, 2017. #zanata
-# Casey Jones <nahareport@live.com>, 2018. #zanata
-# Hajime Taira <htaira@fedoraproject.org>, 2018. #zanata
+# Tomoyuki KATO <tomo@dream.daynight.jp>, 2012, 2013
+# Hajime Taira <htaira@fedoraproject.org>, 2015, 2017, 2018
+# Casey Jones <nahareport@live.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

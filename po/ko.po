@@ -4,9 +4,7 @@
 #
 # Translators:
 # Automatically generated, 2010
-# eukim <eukim@redhat.com>, 2013
-# eukim <eukim@redhat.com>, 2012
-# eukim <eukim@redhat.com>, 2012
+# eukim <eukim@redhat.com>, 2012, 2013
 # Hyunsok Oh <hoh@redhat.com>, 2010
 msgid ""
 msgstr ""

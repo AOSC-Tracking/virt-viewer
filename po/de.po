@@ -4,20 +4,15 @@
 #
 # Translators:
 # Automatically generated, 2010
-# Fabian Affolter <fab@fedoraproject.org>, 2012,2014
-# hpeters <hpeters@redhat.com>, 2010
-# hpeters <hpeters@redhat.com>, 2010,2012
-# hpeters <hpeters@redhat.com>, 2012
+# Fabian Affolter <fab@fedoraproject.org>, 2012, 2014
+# hpeters <hpeters@redhat.com>, 2010, 2012
 # noxin <transifex.com@davidmainzer.com>, 2013
 # Rainer Gromansperg <rgromans@redhat.com>, 2013
-# Rainer Gromansperg <rgromans@redhat.com>, 2013
-# Roman Spirgi <bigant@fedoraproject.org>, 2012
-# noxin <transifex.com@davidmainzer.com>, 2013
-# Roman Spirgi <bigant@fedoraproject.org>, 2015. #zanata
-# jasna <jdimanos@redhat.com>, 2016. #zanata
-# Florian H. <postfuerflo@gmail.com>, 2017. #zanata
-# Daniel Berrange <dan-zanata@berrange.com>, 2019. #zanata
-# Thomas Eichhorn <tomislav@posteo.de>, 2019. #zanata
+# Roman Spirgi <bigant@fedoraproject.org>, 2012, 2015
+# jasna <jdimanos@redhat.com>, 2016
+# Florian H. <postfuerflo@gmail.com>, 2017
+# Daniel Berrange <dan-zanata@berrange.com>, 2019
+# Thomas Eichhorn <tomislav@posteo.de>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

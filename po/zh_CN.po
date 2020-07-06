@@ -5,10 +5,9 @@
 # Translators:
 # Aron Xu <aronxu@gnome.org>, 2010
 # Christopher Meng <cickumqt@gmail.com>, 2013
-# Leah Liu <lliu@redhat.com>, 2010
+# Leah Liu <lliu@redhat.com>, 2010, 2016
 # Tommy He <lovenemesis@gmail.com>, 2013
-# Wei Liu <LLIU@REDHAT.COM>, 2012-2013
-# Leah Liu <lliu@redhat.com>, 2016. #zanata
+# Wei Liu <LLIU@REDHAT.COM>, 2012, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

@@ -6,10 +6,9 @@
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2013
 # Chester Cheng <ccheng@redhat.com>, 2013
 # Terry Chuang <tchuang at redhat>, 2010
-# Terry Chuang <tchuang@redhat.com>, 2012-2013
+# Terry Chuang <tchuang@redhat.com>, 2012, 2013, 2016
 # Walter Cheuk <wwycheuk@gmail.com>, 2012
-# Chester Cheng <snowlet.cheng@gmail.com>, 2016. #zanata
-# Terry Chuang <tchuang@redhat.com>, 2016. #zanata
+# Chester Cheng <snowlet.cheng@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

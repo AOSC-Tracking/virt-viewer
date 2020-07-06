@@ -5,10 +5,8 @@
 # Translators:
 # Nikolas Slivka <snicore@gmail.com>, 2010
 # Szabo Attila <atekka@gmail.com>, 2013
-# Zoltan Hoppár <zoltanh721@fedoraproject.org>, 2012-2013
-# Meskó Balázs <meskobalazs@gmail.com>, 2016. #zanata
-# Meskó Balázs <meskobalazs@gmail.com>, 2018. #zanata
-# Meskó Balázs <meskobalazs@gmail.com>, 2019. #zanata
+# Zoltan Hoppár <zoltanh721@fedoraproject.org>, 2012, 2013
+# Meskó Balázs <meskobalazs@gmail.com>, 2016, 2018, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

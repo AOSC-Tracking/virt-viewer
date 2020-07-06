@@ -5,9 +5,7 @@
 # Translators:
 # Felix I <ifelix25@gmail.com>, 2012
 # I. Felix <ifelix@redhat.com>, 2010
-# shkumar <shkumar@redhat.com>, 2012
-# shkumar <shkumar@redhat.com>, 2013-2014
-# shkumar <shkumar@redhat.com>, 2012-2013
+# shkumar <shkumar@redhat.com>, 2012, 2013, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

@@ -4,7 +4,7 @@
 #
 # Translators:
 # Amandeep Singh Saini <asaini@redhat.com>, 2013
-# Jaswinder Singh <jsingh@redhat.com>, 2010,2012
+# Jaswinder Singh <jsingh@redhat.com>, 2010, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Glaucia Freitas <gcintra@redhat.com>, 2012
-# Glaucia Freitas <gcintra@redhat.com>, 2012-2013
+# Glaucia Freitas <gcintra@redhat.com>, 2012, 2013
 # Marcelo Barbosa <firemanxbr@fedoraproject.org>, 2013
 # Paulo Sergio Klaus <klauspaulo@gmail.com>, 2014
-# Daniel Lara <danniel@fedoraproject.org>, 2016. #zanata
-# Frederico Henrique Gonçalves Lima <fred@fredericolima.com.br>, 2016. #zanata
-# Henrique Montemor Junqueira <hickijunqueira@hotmail.com>, 2018. #zanata
+# Daniel Lara <danniel@fedoraproject.org>, 2016
+# Frederico Henrique Gonçalves Lima <fred@fredericolima.com.br>, 2016
+# Henrique Montemor Junqueira <hickijunqueira@hotmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

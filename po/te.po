@@ -3,9 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Krishnababu Krothapalli <kkrothap@redhat.com>, 2010,2012
-# Krishnababu Krothapalli <kkrothap@redhat.com>, 2010,2012,2014
-# Sudheesh Singanamalla <sudheesh1995@outlook.com>, 2013
+# Krishnababu Krothapalli <kkrothap@redhat.com>, 2010, 2012, 2014
 # Sudheesh Singanamalla <sudheesh1995@outlook.com>, 2013
 msgid ""
 msgstr ""

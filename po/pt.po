@@ -4,7 +4,7 @@
 #
 # Translators:
 # Pedro Marques Daniel <danielthpro@gmail.com>, 2013
-# Rodrigo de Araujo Sousa Fonseca <rodrigodearaujo@fedoraproject.org>, 2017. #zanata
+# Rodrigo de Araujo Sousa Fonseca <rodrigodearaujo@fedoraproject.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

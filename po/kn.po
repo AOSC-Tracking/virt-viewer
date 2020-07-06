@@ -3,11 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# shanky <prasad.mvs@gmail.com>, 2013-2014
-# shanky <prasad.mvs@gmail.com>, 2012
+# shanky <prasad.mvs@gmail.com>, 2012, 2013, 2014
 # shankar <svenkate@redhat.com>, 2010, 2012
-# shankar <svenkate@redhat.com>, 2010,2012
-# shanky <prasad.mvs@gmail.com>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

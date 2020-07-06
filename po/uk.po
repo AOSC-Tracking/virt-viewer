@@ -3,11 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2011-2014
-# Yuri Chornoivan <yurchor@ukr.net>, 2015. #zanata
-# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata
-# Yuri Chornoivan <yurchor@ukr.net>, 2017. #zanata
-# Yuri Chornoivan <yurchor@ukr.net>, 2019. #zanata
+# Yuri Chornoivan <yurchor@ukr.net>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

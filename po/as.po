@@ -4,8 +4,7 @@
 #
 # Translators:
 # Amitakhya Phukan <aphukan@redhat.com>, 2010
-# Nilamdyuti Goswami <ngoswami@redhat.com>, 2012
-# Nilamdyuti Goswami <ngoswami@redhat.com>, 2012-2014
+# Nilamdyuti Goswami <ngoswami@redhat.com>, 2012, 2013, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"

@@ -4,10 +4,7 @@
 #
 # Translators:
 # Robert Antoni Buj i Gelonch, 2014
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2015. #zanata
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2016. #zanata
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017. #zanata
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2018. #zanata
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2015, 2016, 2017, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
