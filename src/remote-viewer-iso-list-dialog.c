@@ -154,12 +154,13 @@ fetch_iso_names_cb(OvirtForeignMenu *foreign_menu,
 
     if (!iso_list) {
         const gchar *msg = error ? error->message : _("No ISO files in domain");
-        gchar *markup = g_strdup_printf("<b>%s</b>", msg);
+        gchar *markup;
 
         g_debug("Error fetching ISO names: %s", msg);
         if (g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
             goto end;
 
+        markup = g_markup_printf_escaped("<b>%s</b>", msg);
         gtk_label_set_markup(GTK_LABEL(self->status), markup);
         gtk_spinner_stop(GTK_SPINNER(self->spinner));
         remote_viewer_iso_list_dialog_show_error(self, msg);
