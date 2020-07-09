@@ -153,7 +153,7 @@ fetch_iso_names_cb(OvirtForeignMenu *foreign_menu,
     iso_list = ovirt_foreign_menu_fetch_iso_names_finish(foreign_menu, result, &error);
 
     if (!iso_list) {
-        const gchar *msg = error ? error->message : _("Failed to fetch CD names");
+        const gchar *msg = error ? error->message : _("No ISO files in domain");
         gchar *markup = g_strdup_printf("<b>%s</b>", msg);
 
         g_debug("Error fetching ISO names: %s", msg);
