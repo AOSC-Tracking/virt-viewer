@@ -1395,7 +1395,7 @@ virt_viewer_window_update_title(VirtViewerWindow *self)
             g_debug("release-cursor accel key: key=%u, mods=%x, flags=%u", key.accel_key, key.accel_mods, key.accel_flags);
             label = gtk_accelerator_get_label(key.accel_key, key.accel_mods);
         } else {
-            label = g_strdup(_("Ctrl+Alt"));
+            label = g_strdup(_("Ctrl_L+Alt_L"));
         }
 
         ungrab = g_strdup_printf(_("(Press %s to release pointer)"), label);
