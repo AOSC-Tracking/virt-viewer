@@ -705,7 +705,7 @@ accel_key_to_keys(const GtkAccelKey *key)
 {
     guint i;
     guint *val, *keys;
-    const struct {
+    static const struct {
         const guint mask;
         const guint key;
     } modifiers[] = {
@@ -717,7 +717,7 @@ accel_key_to_keys(const GtkAccelKey *key)
     g_warn_if_fail((key->accel_mods &
                     ~(GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK)) == 0);
 
-    keys = val = g_new(guint, 5); /* up to 3 modifiers, key and the stop symbol */
+    keys = val = g_new(guint, G_N_ELEMENTS(modifiers) + 2); /* up to 3 modifiers, key and the stop symbol */
     /* first, send the modifiers */
     for (i = 0; i < G_N_ELEMENTS(modifiers); i++) {
         if (key->accel_mods & modifiers[i].mask)
