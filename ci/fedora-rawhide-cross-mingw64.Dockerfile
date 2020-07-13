@@ -103,3 +103,6 @@ ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
 ENV ABI "x86_64-w64-mingw32"
 ENV CONFIGURE_OPTS "--host=x86_64-w64-mingw32"
 ENV MESON_OPTS "--cross-file=/usr/share/mingw/toolchain-mingw64.meson"
+
+# Hack until https://bugzilla.redhat.com/show_bug.cgi?id=1856446 hits rawhide
+RUN perl -i -p -e "s,\[binaries\],[binaries]\nlibgcrypt-config = '/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgcrypt-config'," /usr/share/mingw/toolchain-mingw64.meson
