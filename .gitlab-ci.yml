@@ -80,7 +80,6 @@ stages:
     key: "$CI_JOB_NAME"
   before_script:
     - *script_variables
-    - export PATH=/usr/$ABI/sys-root/mingw/bin:$PATH
   script:
     - pushd "$PWD"
     - mkdir -p "$SCRATCH_DIR"
