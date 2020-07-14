@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
+"POT-Creation-Date: 2020-07-06 16:08+0100\n"
 "PO-Revision-Date: 2019-02-28 03:37+0000\n"
 "Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/virt-viewer/"
@@ -90,6 +90,9 @@ msgstr "Távoli számítógépek elérése"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "A cím túl hosszú a Unix foglalat útvonalhoz: %s"
+
+msgid "An error caused the following file transfers to fail:"
+msgstr ""
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -346,6 +349,9 @@ msgstr "Teljes képernyő elhagyása"
 msgid "Loading..."
 msgstr "Betöltés…"
 
+msgid "Minimize"
+msgstr ""
+
 msgid "Name"
 msgstr "Név"
 
@@ -368,6 +374,9 @@ msgstr ""
 
 msgid "Password:"
 msgstr "Jelszó:"
+
+msgid "Please add an extension to the file name"
+msgstr ""
 
 msgid "Preferences"
 msgstr "Beállítások"
@@ -396,6 +405,10 @@ msgstr "Frissítés"
 msgid "Release cursor"
 msgstr "Kurzor eleresztése"
 
+msgid ""
+"Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+msgstr ""
+
 msgid "Remote Viewer"
 msgstr "Távoli megjelenítő"
 
@@ -423,6 +436,9 @@ msgid "Run '%s --help' to see a full list of available command line options\n"
 msgstr ""
 "Futtassa a „%s --help” parancsot az elérhető parancssori kapcsolók "
 "listájáért\n"
+
+msgid "Save screenshot"
+msgstr ""
 
 msgid "Screenshot.png"
 msgstr "Képernyőkép.png"
@@ -453,6 +469,9 @@ msgstr "Soros"
 
 msgid "Set window title"
 msgstr "Ablak címének megadása"
+
+msgid "Share clipboard"
+msgstr ""
 
 msgid "Share folder"
 msgstr "Mappa megosztása"
@@ -653,6 +672,9 @@ msgstr "_Leállítás"
 msgid "_Preferences"
 msgstr "_Beállítások"
 
+msgid "_PrintScreen"
+msgstr ""
+
 msgid "_Quit"
 msgstr "_Kilépés"
 
@@ -680,6 +702,9 @@ msgstr "Nagyí_tás"
 msgid "failed to parse ovirt uri"
 msgstr "nem sikerült feldolgozni az ovirt URI-t"
 
+msgid "gitlab.com/virt-viewer/virt-viewer"
+msgstr ""
+
 msgid "label"
 msgstr "címke"
 
@@ -702,8 +727,8 @@ msgstr "A(z) %s oVirt VM nem fut"
 msgid "only SSH or unix socket connection supported."
 msgstr "csak az SSH vagy a Unix foglalat kapcsolat támogatott."
 
-msgid "virt-manager.org"
-msgstr "virt-manager.org"
+#~ msgid "virt-manager.org"
+#~ msgstr "virt-manager.org"
 
-msgid "virt-viewer"
-msgstr "virt-viewer"
+#~ msgid "virt-viewer"
+#~ msgstr "virt-viewer"

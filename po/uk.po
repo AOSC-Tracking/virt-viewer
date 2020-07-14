@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
+"POT-Creation-Date: 2020-07-06 16:08+0100\n"
 "PO-Revision-Date: 2019-02-21 07:53+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/virt-viewer/"
@@ -89,6 +89,9 @@ msgstr "Доступ до віддалених стільниць"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "Адреса є надто довгою для socket_path UNIX: %s"
+
+msgid "An error caused the following file transfers to fail:"
+msgstr ""
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -344,6 +347,9 @@ msgstr "Вийти з повноекранного режиму"
 msgid "Loading..."
 msgstr "Завантаження…"
 
+msgid "Minimize"
+msgstr ""
+
 msgid "Name"
 msgstr "Назва"
 
@@ -366,6 +372,9 @@ msgstr ""
 
 msgid "Password:"
 msgstr "Пароль:"
+
+msgid "Please add an extension to the file name"
+msgstr ""
 
 msgid "Preferences"
 msgstr "Параметри"
@@ -393,6 +402,10 @@ msgstr "Оновити"
 
 msgid "Release cursor"
 msgstr "Вивільнити вказівник"
+
+msgid ""
+"Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+msgstr ""
 
 msgid "Remote Viewer"
 msgstr "Віддалений переглядач"
@@ -424,6 +437,9 @@ msgstr ""
 "Щоб переглянути повний список можливих параметрів командного рядка, віддайте "
 "команду «%s --help»\n"
 
+msgid "Save screenshot"
+msgstr ""
+
 msgid "Screenshot.png"
 msgstr "Знімок_вікна.png"
 
@@ -453,6 +469,9 @@ msgstr "Послідовний"
 
 msgid "Set window title"
 msgstr "Встановити вказаний заголовок вікна"
+
+msgid "Share clipboard"
+msgstr ""
 
 msgid "Share folder"
 msgstr "Оприлюднити теку"
@@ -656,6 +675,9 @@ msgstr "Ви_мкнути"
 msgid "_Preferences"
 msgstr "_Налаштування"
 
+msgid "_PrintScreen"
+msgstr ""
+
 msgid "_Quit"
 msgstr "Ви_йти"
 
@@ -683,6 +705,9 @@ msgstr "_Масштаб"
 msgid "failed to parse ovirt uri"
 msgstr "не вдалося обробити адресу ovirt"
 
+msgid "gitlab.com/virt-viewer/virt-viewer"
+msgstr ""
+
 msgid "label"
 msgstr "мітка"
 
@@ -706,8 +731,8 @@ msgid "only SSH or unix socket connection supported."
 msgstr ""
 "передбачено підтримку встановлення з’єднань лише з сокетами SSH або unix."
 
-msgid "virt-manager.org"
-msgstr "virt-manager.org"
+#~ msgid "virt-manager.org"
+#~ msgstr "virt-manager.org"
 
-msgid "virt-viewer"
-msgstr "virt-viewer"
+#~ msgid "virt-viewer"
+#~ msgstr "virt-viewer"

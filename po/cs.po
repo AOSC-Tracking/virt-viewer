@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
+"POT-Creation-Date: 2020-07-06 16:08+0100\n"
 "PO-Revision-Date: 2019-07-05 06:57+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech\n"
@@ -85,6 +85,9 @@ msgstr "Přístup ke vzdáleným plochám"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "Adresa je příliš dlouhá pro unixovou socket_path: %s"
+
+msgid "An error caused the following file transfers to fail:"
+msgstr ""
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -347,6 +350,9 @@ msgstr "Opustit režim celé obrazovky"
 msgid "Loading..."
 msgstr "Načítání…"
 
+msgid "Minimize"
+msgstr ""
+
 # auto translated by TM merge from project: FreeIPA, version: ipa-4-5, DocId:
 # po/ipa
 msgid "Name"
@@ -375,6 +381,9 @@ msgstr ""
 # DocId: virt-manager
 msgid "Password:"
 msgstr "Heslo:"
+
+msgid "Please add an extension to the file name"
+msgstr ""
 
 # auto translated by TM merge from project: libreport, version: rhel6, DocId:
 # libreport
@@ -407,6 +416,10 @@ msgstr "Načíst znovu"
 msgid "Release cursor"
 msgstr "Uvolnit kurzor"
 
+msgid ""
+"Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+msgstr ""
+
 msgid "Remote Viewer"
 msgstr "Prohlížeč vzdálených"
 
@@ -435,6 +448,9 @@ msgid "Run '%s --help' to see a full list of available command line options\n"
 msgstr ""
 "Úplný seznam voleb příkazového řádku, které jsou k dispozici, získáte "
 "spuštěním „%s --help“\n"
+
+msgid "Save screenshot"
+msgstr ""
 
 msgid "Screenshot.png"
 msgstr "snimek_obrazovky.png"
@@ -470,6 +486,9 @@ msgstr "Sériové"
 
 msgid "Set window title"
 msgstr "Nastavit titulek okna"
+
+msgid "Share clipboard"
+msgstr ""
 
 msgid "Share folder"
 msgstr "Sdílet složku"
@@ -687,6 +706,9 @@ msgstr "Vy_pnout"
 msgid "_Preferences"
 msgstr "_Předvolby"
 
+msgid "_PrintScreen"
+msgstr ""
+
 # auto translated by TM merge from project: blivet-gui, version: master,
 # DocId: po/blivet-gui
 msgid "_Quit"
@@ -720,6 +742,9 @@ msgstr "_Přiblížení"
 msgid "failed to parse ovirt uri"
 msgstr "nepodařilo se vyhodnotit ovirt uri"
 
+msgid "gitlab.com/virt-viewer/virt-viewer"
+msgstr ""
+
 # auto translated by TM merge from project: blivet-gui, version: master,
 # DocId: po/blivet-gui
 msgid "label"
@@ -745,8 +770,8 @@ msgid "only SSH or unix socket connection supported."
 msgstr ""
 "je podporováno pouze spojení prostřednictvím ssh nebo unixových soketů."
 
-msgid "virt-manager.org"
-msgstr "virt-manager.org"
+#~ msgid "virt-manager.org"
+#~ msgstr "virt-manager.org"
 
-msgid "virt-viewer"
-msgstr "virt-viewer"
+#~ msgid "virt-viewer"
+#~ msgstr "virt-viewer"

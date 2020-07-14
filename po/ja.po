@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
+"POT-Creation-Date: 2020-07-06 16:08+0100\n"
 "PO-Revision-Date: 2018-02-26 12:49+0000\n"
 "Last-Translator: Hajime Taira <htaira@fedoraproject.org>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/virt-viewer/"
@@ -91,6 +91,9 @@ msgstr "リモートデスクトップにアクセスする"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "アドレスはUNIX ソケットパスに対して長すぎます: %s"
+
+msgid "An error caused the following file transfers to fail:"
+msgstr ""
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -192,6 +195,9 @@ msgstr "接続先アドレス(_A)"
 
 msgid "Connection details"
 msgstr "接続の詳細"
+
+msgid "Console support is compiled out!"
+msgstr ""
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
@@ -343,6 +349,9 @@ msgstr "フルスクリーンの解除"
 msgid "Loading..."
 msgstr "読み込み中..."
 
+msgid "Minimize"
+msgstr ""
+
 msgid "Name"
 msgstr "名前"
 
@@ -366,8 +375,17 @@ msgstr ""
 msgid "Password:"
 msgstr "パスワード:"
 
+msgid "Please add an extension to the file name"
+msgstr ""
+
 msgid "Preferences"
 msgstr "個人設定"
+
+msgid "QEMU debug console"
+msgstr ""
+
+msgid "QEMU human monitor"
+msgstr ""
 
 msgid "Quit on given condition in kiosk mode"
 msgstr "Kiosk モードを与えられた条件で終了します"
@@ -386,6 +404,10 @@ msgstr "更新"
 
 msgid "Release cursor"
 msgstr "カーソルの開放"
+
+msgid ""
+"Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+msgstr ""
 
 msgid "Remote Viewer"
 msgstr "リモートビューアー"
@@ -416,6 +438,9 @@ msgstr ""
 "利用可能なコマンドラインオプションの完全な一覧を確認するには '%s --help' を実"
 "行してください\n"
 
+msgid "Save screenshot"
+msgstr ""
+
 msgid "Screenshot.png"
 msgstr "Screenshot.png"
 
@@ -440,8 +465,14 @@ msgstr "選択済み"
 msgid "Send key combination"
 msgstr "組み合わせキーの送信"
 
+msgid "Serial"
+msgstr ""
+
 msgid "Set window title"
 msgstr "ウィンドウタイトルの設定"
+
+msgid "Share clipboard"
+msgstr ""
 
 msgid "Share folder"
 msgstr "共有フォルダー"
@@ -490,6 +521,11 @@ msgstr ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
 
+#, c-format
+msgid "Transferring %u file of %u..."
+msgid_plural "Transferring %u files of %u..."
+msgstr[0] ""
+
 msgid "Transferring 1 file..."
 msgstr "1 個のファイルを転送中..."
 
@@ -532,6 +568,10 @@ msgstr "不明"
 
 msgid "Unspecified error"
 msgstr "原因不明のエラー"
+
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr ""
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
@@ -615,17 +655,32 @@ msgstr "仮想マシンの詳細(_G)"
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
+msgid "_Machine"
+msgstr ""
+
 msgid "_Normal Size"
 msgstr "元のサイズ(_N)"
 
 msgid "_OK"
 msgstr "_OK"
 
+msgid "_Pause"
+msgstr ""
+
+msgid "_Power down"
+msgstr ""
+
 msgid "_Preferences"
 msgstr "設定(_P)"
 
+msgid "_PrintScreen"
+msgstr ""
+
 msgid "_Quit"
 msgstr "終了 (_Q)"
+
+msgid "_Reset"
+msgstr ""
 
 msgid "_Save"
 msgstr "保存(_S)"
@@ -648,6 +703,9 @@ msgstr "ズーム(_Z)"
 msgid "failed to parse ovirt uri"
 msgstr "oVirt URI の構文解析に失敗しました"
 
+msgid "gitlab.com/virt-viewer/virt-viewer"
+msgstr ""
+
 msgid "label"
 msgstr "ラベル"
 
@@ -660,11 +718,15 @@ msgid "oVirt VM %s has no host information"
 msgstr "oVirt 上の仮想マシン %s はホストの情報がありません"
 
 #, c-format
+msgid "oVirt VM %s has unknown display type: %u"
+msgstr ""
+
+#, c-format
 msgid "oVirt VM %s is not running"
 msgstr "oVirt上の仮想マシン %s は稼働していません"
 
 msgid "only SSH or unix socket connection supported."
 msgstr "SSHまたはunixソケット接続のみがサポートされています。"
 
-msgid "virt-manager.org"
-msgstr "virt-manager.org"
+#~ msgid "virt-manager.org"
+#~ msgstr "virt-manager.org"
