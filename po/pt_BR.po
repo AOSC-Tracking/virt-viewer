@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
+"POT-Creation-Date: 2020-07-06 16:08+0100\n"
 "PO-Revision-Date: 2018-04-02 12:44+0000\n"
 "Last-Translator: Henrique Montemor Junqueira <hickijunqueira@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/virt-"
@@ -32,6 +32,20 @@ msgid ""
 msgstr ""
 "\n"
 "Erro: não é possível manipular múltiplas URIs\n"
+
+#, c-format
+msgid ""
+"\n"
+"No ID|UUID|DOMAIN-NAME was specified for '%s'\n"
+"\n"
+msgstr ""
+
+#, c-format
+msgid ""
+"\n"
+"Usage: %s [OPTIONS] [ID|UUID|DOMAIN-NAME]\n"
+"\n"
+msgstr ""
 
 msgid " "
 msgstr " "
@@ -73,6 +87,9 @@ msgid "Address is too long for unix socket_path: %s"
 msgstr ""
 "O endereço é muito longo para o unix socket_path (caminho do soquete unix) : "
 "%s"
+
+msgid "An error caused the following file transfers to fail:"
+msgstr ""
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -173,6 +190,9 @@ msgstr "Endereço _Conexão"
 
 msgid "Connection details"
 msgstr "Detalhes da conexão"
+
+msgid "Console support is compiled out!"
+msgstr ""
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
@@ -324,6 +344,9 @@ msgstr "Deixar tela cheia"
 msgid "Loading..."
 msgstr "Carregando..."
 
+msgid "Minimize"
+msgstr ""
+
 msgid "Name"
 msgstr "Nome"
 
@@ -347,8 +370,17 @@ msgstr ""
 msgid "Password:"
 msgstr "Senha:"
 
+msgid "Please add an extension to the file name"
+msgstr ""
+
 msgid "Preferences"
 msgstr "Preferências"
+
+msgid "QEMU debug console"
+msgstr ""
+
+msgid "QEMU human monitor"
+msgstr ""
 
 msgid "Quit on given condition in kiosk mode"
 msgstr "Sair em determinada condição em kiosk modo "
@@ -367,6 +399,10 @@ msgstr "Recarregue"
 
 msgid "Release cursor"
 msgstr "Liberar o cursor"
+
+msgid ""
+"Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+msgstr ""
 
 msgid "Remote Viewer"
 msgstr "Visualizador remoto"
@@ -397,6 +433,9 @@ msgstr ""
 "Execute '%s --help' para ver uma lista completa das opções de linha de "
 "comando disponíveis\n"
 
+msgid "Save screenshot"
+msgstr ""
+
 msgid "Screenshot.png"
 msgstr "CapturaDeTela.png"
 
@@ -421,8 +460,14 @@ msgstr "Selecionado"
 msgid "Send key combination"
 msgstr "Enviar combinação de teclas"
 
+msgid "Serial"
+msgstr ""
+
 msgid "Set window title"
 msgstr "Setando título da janela"
+
+msgid "Share clipboard"
+msgstr ""
 
 msgid "Share folder"
 msgstr "Compartilhar pasta"
@@ -471,6 +516,12 @@ msgstr ""
 "este programa; Caso não o tenha recebido, escreva para a Fundação de "
 "Software Livre, Inc. 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA\n"
 
+#, c-format
+msgid "Transferring %u file of %u..."
+msgid_plural "Transferring %u files of %u..."
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Transferring 1 file..."
 msgstr "Transferindo 1 arquivo..."
 
@@ -515,6 +566,10 @@ msgstr "Desconhecido"
 
 msgid "Unspecified error"
 msgstr "Erro não especificado"
+
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr ""
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
@@ -598,17 +653,32 @@ msgstr "_Detalhes do Convidado"
 msgid "_Help"
 msgstr "_Ajuda"
 
+msgid "_Machine"
+msgstr ""
+
 msgid "_Normal Size"
 msgstr "_Tamanho normal"
 
 msgid "_OK"
 msgstr "_OK"
 
+msgid "_Pause"
+msgstr ""
+
+msgid "_Power down"
+msgstr ""
+
 msgid "_Preferences"
 msgstr "_Preferências"
 
+msgid "_PrintScreen"
+msgstr ""
+
 msgid "_Quit"
 msgstr "_Sair"
+
+msgid "_Reset"
+msgstr ""
 
 msgid "_Save"
 msgstr "_Salvar"
@@ -631,6 +701,9 @@ msgstr "_Zoom"
 msgid "failed to parse ovirt uri"
 msgstr "falha ao analisar o uri do ovirt"
 
+msgid "gitlab.com/virt-viewer/virt-viewer"
+msgstr ""
+
 msgid "label"
 msgstr "rótulo"
 
@@ -643,11 +716,15 @@ msgid "oVirt VM %s has no host information"
 msgstr "A MV %s no oVirt não possui informações sobre o host "
 
 #, c-format
+msgid "oVirt VM %s has unknown display type: %u"
+msgstr ""
+
+#, c-format
 msgid "oVirt VM %s is not running"
 msgstr "A MV %s no oVirt  não está em execução"
 
 msgid "only SSH or unix socket connection supported."
 msgstr "Somente conexões SSH ou soquete unix são suportadas."
 
-msgid "virt-manager.org"
-msgstr "virt-manager.org"
+#~ msgid "virt-manager.org"
+#~ msgstr "virt-manager.org"

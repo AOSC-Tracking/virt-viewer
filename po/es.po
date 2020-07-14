@@ -17,8 +17,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
+"POT-Creation-Date: 2020-07-06 16:08+0100\n"
 "PO-Revision-Date: 2017-12-05 07:06+0000\n"
 "Last-Translator: Máximo Castañeda Riloba <mcrcctm@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/virt-viewer/"
@@ -95,6 +95,9 @@ msgstr "Acceso a escritorios remotos"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "La dirección es demasiado larga para el socket_path de UNIX: %s"
+
+msgid "An error caused the following file transfers to fail:"
+msgstr ""
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -196,6 +199,9 @@ msgstr "_Dirección de conexión"
 
 msgid "Connection details"
 msgstr "Detalles de conexión"
+
+msgid "Console support is compiled out!"
+msgstr ""
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
@@ -347,6 +353,9 @@ msgstr "Salir de pantalla completa"
 msgid "Loading..."
 msgstr "Cargando...|"
 
+msgid "Minimize"
+msgstr ""
+
 msgid "Name"
 msgstr "Nombre"
 
@@ -370,8 +379,17 @@ msgstr ""
 msgid "Password:"
 msgstr "Contraseña:"
 
+msgid "Please add an extension to the file name"
+msgstr ""
+
 msgid "Preferences"
 msgstr "Preferencias"
+
+msgid "QEMU debug console"
+msgstr ""
+
+msgid "QEMU human monitor"
+msgstr ""
 
 msgid "Quit on given condition in kiosk mode"
 msgstr "Abandonar sobre condición dada en modo kiosco"
@@ -390,6 +408,10 @@ msgstr "Actualizar"
 
 msgid "Release cursor"
 msgstr "Liberar cursor"
+
+msgid ""
+"Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+msgstr ""
 
 msgid "Remote Viewer"
 msgstr "Visor remoto"
@@ -419,6 +441,9 @@ msgstr ""
 "Ejecute '%s --help' para ver una lista completa de opciones de línea de "
 "comandos disponibles\n"
 
+msgid "Save screenshot"
+msgstr ""
+
 msgid "Screenshot.png"
 msgstr "Captura_de_pantalla.png"
 
@@ -443,8 +468,14 @@ msgstr "Seleccionado|"
 msgid "Send key combination"
 msgstr "Enviar combinación de teclas"
 
+msgid "Serial"
+msgstr ""
+
 msgid "Set window title"
 msgstr "Fijar el título de ventana"
+
+msgid "Share clipboard"
+msgstr ""
 
 msgid "Share folder"
 msgstr "Compartir capr"
@@ -493,6 +524,12 @@ msgstr ""
 "con este programa, si no, escriba a la Free Software  Foundation, Inc., 59 "
 "Temple Place, Suite 330, Boston, MA 02111-1307 EE.UU. \n"
 
+#, c-format
+msgid "Transferring %u file of %u..."
+msgid_plural "Transferring %u files of %u..."
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Transferring 1 file..."
 msgstr "Enviando un archivo..."
 
@@ -535,6 +572,10 @@ msgstr "Desconocido"
 
 msgid "Unspecified error"
 msgstr "Error no especificado"
+
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr ""
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
@@ -618,17 +659,32 @@ msgstr "_Detalles de Huésped"
 msgid "_Help"
 msgstr "_Ayuda"
 
+msgid "_Machine"
+msgstr ""
+
 msgid "_Normal Size"
 msgstr "Tamaño _normal"
 
 msgid "_OK"
 msgstr "_Aceptar"
 
+msgid "_Pause"
+msgstr ""
+
+msgid "_Power down"
+msgstr ""
+
 msgid "_Preferences"
 msgstr "_Ajustes"
 
+msgid "_PrintScreen"
+msgstr ""
+
 msgid "_Quit"
 msgstr "_Salir"
+
+msgid "_Reset"
+msgstr ""
 
 msgid "_Save"
 msgstr "_Guardar"
@@ -651,6 +707,9 @@ msgstr "_Enfoque"
 msgid "failed to parse ovirt uri"
 msgstr "fallo en análisis uri de ovirt"
 
+msgid "gitlab.com/virt-viewer/virt-viewer"
+msgstr ""
+
 msgid "label"
 msgstr "etiqueta"
 
@@ -663,11 +722,15 @@ msgid "oVirt VM %s has no host information"
 msgstr "oVirt VM %s no tiene información de host"
 
 #, c-format
+msgid "oVirt VM %s has unknown display type: %u"
+msgstr ""
+
+#, c-format
 msgid "oVirt VM %s is not running"
 msgstr "la MV oVirt %s no está ejecutándose"
 
 msgid "only SSH or unix socket connection supported."
 msgstr "sólo se permiten las conexiones por SSH o socket UNIX."
 
-msgid "virt-manager.org"
-msgstr "virt-manager.org"
+#~ msgid "virt-manager.org"
+#~ msgstr "virt-manager.org"

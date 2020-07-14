@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://virt-manager.org/bugs/\n"
-"POT-Creation-Date: 2019-12-16 15:59+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
+"POT-Creation-Date: 2020-07-06 16:08+0100\n"
 "PO-Revision-Date: 2019-02-20 08:01+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/virt-viewer/"
@@ -89,6 +89,9 @@ msgstr "Dostęp do zdalnych pulpitów"
 #, c-format
 msgid "Address is too long for unix socket_path: %s"
 msgstr "Adres jest za długi dla ścieżki gniazda uniksowego: %s"
+
+msgid "An error caused the following file transfers to fail:"
+msgstr ""
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -346,6 +349,9 @@ msgstr "Opuszcza pełny ekran"
 msgid "Loading..."
 msgstr "Wczytywanie…"
 
+msgid "Minimize"
+msgstr ""
+
 msgid "Name"
 msgstr "Nazwa"
 
@@ -368,6 +374,9 @@ msgstr ""
 
 msgid "Password:"
 msgstr "Hasło:"
+
+msgid "Please add an extension to the file name"
+msgstr ""
 
 msgid "Preferences"
 msgstr "Preferencje"
@@ -396,6 +405,10 @@ msgstr "Odśwież"
 msgid "Release cursor"
 msgstr "Zwolnienie kursora"
 
+msgid ""
+"Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+msgstr ""
+
 msgid "Remote Viewer"
 msgstr "Zdalne przeglądanie"
 
@@ -422,6 +435,9 @@ msgid "Run '%s --help' to see a full list of available command line options\n"
 msgstr ""
 "Polecenie „%s --help” wyświetli pełną listę dostępnych opcji wiersza "
 "poleceń\n"
+
+msgid "Save screenshot"
+msgstr ""
 
 msgid "Screenshot.png"
 msgstr "Zrzut ekranu.png"
@@ -452,6 +468,9 @@ msgstr "Szeregowo"
 
 msgid "Set window title"
 msgstr "Ustawia tytuł okna"
+
+msgid "Share clipboard"
+msgstr ""
 
 msgid "Share folder"
 msgstr "Współdziel katalog"
@@ -656,6 +675,9 @@ msgstr "Wyłą_cz"
 msgid "_Preferences"
 msgstr "_Preferencje"
 
+msgid "_PrintScreen"
+msgstr ""
+
 msgid "_Quit"
 msgstr "Za_kończ"
 
@@ -683,6 +705,9 @@ msgstr "P_owiększenie"
 msgid "failed to parse ovirt uri"
 msgstr "przetworzenie adresu URI oVirt się nie powiodło"
 
+msgid "gitlab.com/virt-viewer/virt-viewer"
+msgstr ""
+
 msgid "label"
 msgstr "etykieta"
 
@@ -705,8 +730,8 @@ msgstr "Maszyna wirtualna oVirt %s nie jest uruchomiona"
 msgid "only SSH or unix socket connection supported."
 msgstr "obsługiwane są tylko połączenia gniazd SSH lub UNIX"
 
-msgid "virt-manager.org"
-msgstr "virt-manager.org"
+#~ msgid "virt-manager.org"
+#~ msgstr "virt-manager.org"
 
-msgid "virt-viewer"
-msgstr "virt-viewer"
+#~ msgid "virt-viewer"
+#~ msgstr "virt-viewer"
