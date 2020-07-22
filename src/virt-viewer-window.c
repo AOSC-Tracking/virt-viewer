@@ -1390,7 +1390,6 @@ virt_viewer_window_update_title(VirtViewerWindow *self)
 {
     VirtViewerWindowPrivate *priv = self->priv;
     char *title;
-    gchar *ungrab = NULL;
 
     if (priv->grabbed) {
         gchar *label;
@@ -1406,29 +1405,41 @@ virt_viewer_window_update_title(VirtViewerWindow *self)
             label = g_strdup(_("Ctrl_L+Alt_L"));
         }
 
-        ungrab = g_strdup_printf(_("(Press %s to release pointer)"), label);
-        g_free(label);
-    }
+        if (priv->subtitle) {
+            /* translators:
+             * This is "<ungrab accelerator> <subtitle> - <appname>"
+             * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+             */
+            title = g_strdup_printf(_("(Press %s to release pointer) %s - %s"),
+                                    label,
+                                    priv->subtitle,
+                                    g_get_application_name());
+        } else {
+            /* translators:
+             * This is "<ungrab accelerator> - <appname>"
+             * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+             */
+            title = g_strdup_printf(_("(Press %s to release pointer) - %s"),
+                                    label,
+                                    g_get_application_name());
+        }
 
-    if (!ungrab && !priv->subtitle)
-        title = g_strdup(g_get_application_name());
-    else
+        g_free(label);
+    } else if (priv->subtitle) {
         /* translators:
-         * This is "<ungrab (or empty)><space (or empty)><subtitle (or empty)> - <appname>"
-         * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+         * This is "<subtitle> - <appname>"
+         * Such as: "BigCorpTycoon MOTD - Virt Viewer"
          */
-        title = g_strdup_printf(_("%s%s%s - %s"),
-                                /* translators: <ungrab empty> */
-                                ungrab ? ungrab : "",
-                                /* translators: <space> */
-                                ungrab && priv->subtitle ? _(" ") : "",
+        title = g_strdup_printf(_("%s - %s"),
                                 priv->subtitle,
                                 g_get_application_name());
+    } else {
+        title = g_strdup(g_get_application_name());
+    }
 
     gtk_window_set_title(GTK_WINDOW(priv->window), title);
 
     g_free(title);
-    g_free(ungrab);
 }
 
 void
