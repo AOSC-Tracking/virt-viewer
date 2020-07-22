@@ -110,7 +110,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/hicolor/*/devices/*
 %{_datadir}/applications/remote-viewer.desktop
-%{_datadir}/appdata/remote-viewer.appdata.xml
+%{_datadir}/metainfo/remote-viewer.appdata.xml
 %{_datadir}/mime/packages/virt-viewer-mime.xml
 %{_mandir}/man1/virt-viewer.1*
 %{_mandir}/man1/remote-viewer.1*
