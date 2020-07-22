@@ -17,8 +17,8 @@
     <property name="copyright" translatable="yes">Copyright (C) 2007-2012 Daniel P. Berrange
 Copyright (C) 2007-2014 Red Hat, Inc.</property>
     <property name="comments" translatable="yes">A remote desktop client built with GTK-VNC, SPICE-GTK and libvirt</property>
-    <property name="website">http://gitlab.com/virt-viewer/virt-viewer/</property>
-    <property name="website_label" translatable="yes">gitlab.com/virt-viewer/virt-viewer</property>
+    <property name="website">https://gitlab.com/virt-viewer/virt-viewer</property>
+    <property name="website_label">https://gitlab.com/virt-viewer/virt-viewer</property>
     <property name="authors">Daniel P. Berrange
 Marc-André Lureau
 </property>
