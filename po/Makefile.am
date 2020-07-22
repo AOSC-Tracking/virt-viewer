@@ -25,6 +25,7 @@ XGETTEXT_ARGS = \
 	--add-comments=TRANSLATORS: \
 	 --keyword=_ --keyword=N_ \
 	--keyword=C_:1c,2 \
+	--add-comments=translators: \
 	--copyright-holder='$(COPYRIGHT_HOLDER)' \
 	--package-name="$(PACKAGE_NAME)" \
 	--package-version="$(PACKAGE_VERSION)" \
