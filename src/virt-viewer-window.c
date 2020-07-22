@@ -1178,9 +1178,9 @@ virt_viewer_window_menu_help_guest_details(GtkWidget *menu G_GNUC_UNUSED,
     g_object_get(self->priv->app, "guest-name", &name, "uuid", &uuid, NULL);
 
     if (!name || *name == '\0')
-        name = g_strdup(_("Unknown"));
+        name = g_strdup(C_("Unknown name", "Unknown"));
     if (!uuid || *uuid == '\0')
-        uuid = g_strdup(_("Unknown"));
+        uuid = g_strdup(C_("Unknown UUID", "Unknown"));
     gtk_label_set_text(GTK_LABEL(namelabel), name);
     gtk_label_set_text(GTK_LABEL(guidlabel), uuid);
     g_free(name);
