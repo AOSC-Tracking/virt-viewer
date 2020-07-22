@@ -140,9 +140,9 @@ virt_viewer_add_option_entries(VirtViewerApp *self, GOptionContext *context, GOp
         { "domain-name", '\0', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, opt_domain_selection_cb,
           N_("Select the virtual machine only by its name"), NULL },
         { "id", '\0', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, opt_domain_selection_cb,
-          N_("Select the virtual machine only by its id"), NULL },
+          N_("Select the virtual machine only by its ID"), NULL },
         { "uuid", '\0', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, opt_domain_selection_cb,
-          N_("Select the virtual machine only by its uuid"), NULL },
+          N_("Select the virtual machine only by its UUID"), NULL },
         { G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_STRING_ARRAY, &opt_args,
           NULL, "-- ID|UUID|DOMAIN-NAME" },
         { NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL }

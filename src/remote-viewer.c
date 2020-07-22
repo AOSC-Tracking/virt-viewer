@@ -426,7 +426,7 @@ create_ovirt_session(VirtViewerApp *app, const char *uri, GError **err)
 
     if (!parse_ovirt_uri(uri, &rest_uri, &vm_name, &username)) {
         g_set_error_literal(&error, VIRT_VIEWER_ERROR, VIRT_VIEWER_ERROR_FAILED,
-                            _("failed to parse ovirt uri"));
+                            _("failed to parse oVirt URI"));
         goto error;
     }
 
