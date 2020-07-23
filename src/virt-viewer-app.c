@@ -852,7 +852,7 @@ virt_viewer_app_open_unix_sock(const char *unixsock, GError **error)
 
     if (strlen(unixsock) + 1 > sizeof(addr.sun_path)) {
         g_set_error(error, VIRT_VIEWER_ERROR, VIRT_VIEWER_ERROR_FAILED,
-                    _("Address is too long for unix socket_path: %s"), unixsock);
+                    _("Address is too long for UNIX socket_path: %s"), unixsock);
         return -1;
     }
 
@@ -862,13 +862,13 @@ virt_viewer_app_open_unix_sock(const char *unixsock, GError **error)
 
     if ((fd = socket(AF_UNIX, SOCK_STREAM, 0)) < 0) {
         g_set_error(error, VIRT_VIEWER_ERROR, VIRT_VIEWER_ERROR_FAILED,
-                    _("Creating unix socket failed: %s"), g_strerror(errno));
+                    _("Creating UNIX socket failed: %s"), g_strerror(errno));
         return -1;
     }
 
     if (connect(fd, (struct sockaddr *)&addr, sizeof addr) < 0) {
         g_set_error(error, VIRT_VIEWER_ERROR, VIRT_VIEWER_ERROR_FAILED,
-                    _("Connecting to unix socket failed: %s"), g_strerror(errno));
+                    _("Connecting to UNIX socket failed: %s"), g_strerror(errno));
         close(fd);
         return -1;
     }
@@ -1367,7 +1367,7 @@ virt_viewer_app_channel_open(VirtViewerSession *session,
         !priv->direct && fd == -1) {
         if ((fd = virt_viewer_app_open_tunnel_ssh(priv->host, priv->port, priv->user,
                                                   priv->ghost, priv->gport, priv->unixsock)) < 0) {
-            error_message = g_strdup(_("Connect to ssh failed."));
+            error_message = g_strdup(_("Connect to SSH failed."));
             g_debug("channel open ssh tunnel: %s", error_message);
         }
     }
@@ -1384,7 +1384,7 @@ virt_viewer_app_channel_open(VirtViewerSession *session,
     if (fd < 0) {
         virt_viewer_app_simple_message_dialog(self, _("Can't connect to channel: %s"),
                                               (error_message != NULL) ? error_message :
-                                              _("only SSH or unix socket connection supported."));
+                                              _("only SSH or UNIX socket connection supported."));
         g_free(error_message);
         return;
     }
@@ -2174,7 +2174,7 @@ virt_viewer_app_local_command_line (GApplication   *gapp,
 
     if (!g_option_context_parse_strv(context, args, &error)) {
         if (error != NULL) {
-            g_printerr(_("%s\n"), error->message);
+            g_printerr("%s\n", error->message);
             g_error_free(error);
         }
 
