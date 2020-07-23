@@ -81,9 +81,9 @@ mime_DATA = virt-viewer-mime.xml
 %-mime.xml: %-mime.xml.in $(PO_FILES)
 	$(AM_V_GEN)GETTEXTDATADIR=$(srcdir)/gettext $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
-appdatadir       = $(datadir)/appdata
-APPDATAFILES     = remote-viewer.appdata.xml.in
-appdata_DATA     = $(APPDATAFILES:.xml.in=.xml)
+metainfodir       = $(datadir)/metainfo
+METAINFOFILES     = remote-viewer.appdata.xml.in
+metainfo_DATA     = $(METAINFOFILES:.xml.in=.xml)
 %.appdata.xml: %.appdata.xml.in $(PO_FILES)
 	$(AM_V_GEN)$(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
@@ -99,8 +99,8 @@ if ENABLE_UPDATE_MIMEDB
 	$(UPDATE_MIME_DATABASE) "$(DESTDIR)$(datadir)/mime";
 endif
 
-CLEANFILES += $(mime_DATA) $(desktop_DATA) $(appdata_DATA)
-EXTRA_DIST += $(MIMEFILES) $(DESKTOPFILES) $(APPDATAFILES)
+CLEANFILES += $(mime_DATA) $(desktop_DATA) $(metainfo_DATA)
+EXTRA_DIST += $(MIMEFILES) $(DESKTOPFILES) $(METAINFOFILES)
 
 endif
 
