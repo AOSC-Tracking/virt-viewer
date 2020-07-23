@@ -81,7 +81,7 @@ mime_DATA = virt-viewer-mime.xml
 %-mime.xml: %-mime.xml.in $(PO_FILES)
 	$(AM_V_GEN)GETTEXTDATADIR=$(srcdir)/gettext $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
-appdatadir       = $(datadir)/appdata
+appdatadir       = $(datadir)/metainfo
 APPDATAFILES     = remote-viewer.appdata.xml.in
 appdata_DATA     = $(APPDATAFILES:.xml.in=.xml)
 %.appdata.xml: %.appdata.xml.in $(PO_FILES)
