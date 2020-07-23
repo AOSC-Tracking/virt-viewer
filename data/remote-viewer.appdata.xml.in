@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
- <id type="desktop">remote-viewer.desktop</id>
+<component type="desktop-application">
+ <id>remote-viewer</id>
  <metadata_license>CC0-1.0</metadata_license>
  <project_license>GPL-2.0+</project_license>
  <name>Remote Viewer</name>
@@ -16,14 +16,23 @@
   </p>
  </description>
  <screenshots>
-  <screenshot type="default">https://virt-manager.org/appdata/en_US/virt-viewer/general.png</screenshot>
-  <screenshot>https://virt-manager.org/appdata/en_US/virt-viewer/connection.png</screenshot>
-  <screenshot>https://virt-manager.org/appdata/en_US/virt-viewer/usbredir.png</screenshot>
-  <screenshot>https://virt-manager.org/appdata/en_US/virt-viewer/shared_folder.png</screenshot>
+  <screenshot type="default">
+    <image>https://virt-manager.org/appdata/en_US/virt-viewer/general.png</image>
+  </screenshot>
+  <screenshot>
+    <image>https://virt-manager.org/appdata/en_US/virt-viewer/connection.png</image>
+  </screenshot>
+  <screenshot>
+    <image>https://virt-manager.org/appdata/en_US/virt-viewer/usbredir.png</image>
+  </screenshot>
+  <screenshot>
+    <image>https://virt-manager.org/appdata/en_US/virt-viewer/shared_folder.png</image>
+  </screenshot>
  </screenshots>
  <provides>
   <binary>remote-viewer</binary>
  </provides>
  <url type="homepage">https://gitlab.com/virt-viewer/virt-viewer/</url>
- <updatecontact>https://gitlab.com/virt-viewer/virt-viewer/</updatecontact>
+ <url type="bugtracker">https://gitlab.com/virt-viewer/virt-viewer/-/issues</url>
+ <url type="translate">https://translate.fedoraproject.org/projects/virt-viewer/virt-viewer/</url>
 </component>
