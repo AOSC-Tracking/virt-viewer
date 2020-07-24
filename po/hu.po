@@ -7,21 +7,22 @@
 # Szabo Attila <atekka@gmail.com>, 2013
 # Zoltan Hoppár <zoltanh721@fedoraproject.org>, 2012, 2013
 # Meskó Balázs <meskobalazs@gmail.com>, 2016, 2018, 2019
+# Balázs Meskó <meskobalazs@mailbox.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
 "POT-Creation-Date: 2020-07-06 16:08+0100\n"
-"PO-Revision-Date: 2019-02-28 03:37+0000\n"
-"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
-"Language-Team: Hungarian (http://www.transifex.com/projects/p/virt-viewer/"
-"language/hu/)\n"
+"PO-Revision-Date: 2020-07-21 14:29+0000\n"
+"Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
+"Language-Team: Hungarian <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.1.1\n"
 
 msgid ""
 "\n"
@@ -92,7 +93,7 @@ msgid "Address is too long for unix socket_path: %s"
 msgstr "A cím túl hosszú a Unix foglalat útvonalhoz: %s"
 
 msgid "An error caused the following file transfers to fail:"
-msgstr ""
+msgstr "Egy hiba a következő fájlátvitelek sikertelenségét okozta:"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -296,7 +297,7 @@ msgid "Failed to change CD"
 msgstr "A CD cseréje meghiúsult"
 
 msgid "Failed to connect: "
-msgstr "Kapcsolódás sikertelen:"
+msgstr "Kapcsolódás sikertelen: "
 
 msgid "Failed to fetch CD names"
 msgstr "A CD nevek lekérése meghiúsult"
@@ -334,7 +335,7 @@ msgstr "A vendég tartomány leállt"
 
 #, c-format
 msgid "Invalid file %s: "
-msgstr "Érvénytelen fájl %s:"
+msgstr "Érvénytelen %s fájl: "
 
 #, c-format
 msgid "Invalid kiosk-quit argument: %s"
@@ -350,7 +351,7 @@ msgid "Loading..."
 msgstr "Betöltés…"
 
 msgid "Minimize"
-msgstr ""
+msgstr "Minimalizálás"
 
 msgid "Name"
 msgstr "Név"
@@ -376,7 +377,7 @@ msgid "Password:"
 msgstr "Jelszó:"
 
 msgid "Please add an extension to the file name"
-msgstr ""
+msgstr "Adjon egy kiterjesztést a fájlnévhez"
 
 msgid "Preferences"
 msgstr "Beállítások"
@@ -408,6 +409,8 @@ msgstr "Kurzor eleresztése"
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
+"Billentyűk átprogramozásának formátuma: billentyű=módosító+billentyű, "
+"például: F1=CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "Távoli megjelenítő"
@@ -438,7 +441,7 @@ msgstr ""
 "listájáért\n"
 
 msgid "Save screenshot"
-msgstr ""
+msgstr "Képernyőkép mentése"
 
 msgid "Screenshot.png"
 msgstr "Képernyőkép.png"
@@ -471,7 +474,7 @@ msgid "Set window title"
 msgstr "Ablak címének megadása"
 
 msgid "Share clipboard"
-msgstr ""
+msgstr "Vágólap megosztása"
 
 msgid "Share folder"
 msgstr "Mappa megosztása"
@@ -506,18 +509,19 @@ msgid ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
 msgstr ""
-"Ez egy szabad szoftver, terjesztheti és/vagy módosíthatja a Free Software "
-"Foundation által kiadott GNU General Public License második (vagy bármely "
+"Ez egy szabad szoftver, terjesztheti és/vagy módosíthatja a Free Software\n"
+"Foundation által kiadott GNU General Public License második (vagy bármely\n"
 "későbbi) változatában foglaltak alapján.\n"
 "\n"
-"Ezt a programot abban a reményben terjesztjük, hogy hasznos lesz, de nem "
-"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program "
-"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További "
+"Ezt a programot abban a reményben terjesztjük, hogy hasznos lesz, de nem\n"
+"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program\n"
+"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További\n"
 "részletekért tanulmányozza a GNU GPL licencet.\n"
 "\n"
 "A programhoz a GNU General Public License egy példánya is jár, ha nem kapta "
-"meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 59 Temple Place, "
-"Suite 330, Boston, MA  02111-1307  USA\n"
+"meg,\n"
+"írjon a Free Software Foundation Inc.-nek.\n"
+"Levélcímük: 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA\n"
 
 #, c-format
 msgid "Transferring %u file of %u..."
@@ -560,7 +564,7 @@ msgstr "Nem lehet kapcsolódni az oVirthez"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
-msgstr "Nem határozható meg a képfájl formátuma a(z) „%s” fájlnál."
+msgstr "Nem határozható meg a képfájl formátuma a(z) „%s” fájlnál"
 
 msgid "Unknown"
 msgstr "Ismeretlen"
@@ -673,7 +677,7 @@ msgid "_Preferences"
 msgstr "_Beállítások"
 
 msgid "_PrintScreen"
-msgstr ""
+msgstr "_PrintScreen"
 
 msgid "_Quit"
 msgstr "_Kilépés"
@@ -703,7 +707,7 @@ msgid "failed to parse ovirt uri"
 msgstr "nem sikerült feldolgozni az ovirt URI-t"
 
 msgid "gitlab.com/virt-viewer/virt-viewer"
-msgstr ""
+msgstr "gitlab.com/virt-viewer/virt-viewer"
 
 msgid "label"
 msgstr "címke"
