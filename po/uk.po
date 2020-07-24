@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
 "POT-Creation-Date: 2020-07-22 23:24+0200\n"
-"PO-Revision-Date: 2020-07-15 09:33+0000\n"
+"PO-Revision-Date: 2020-07-24 09:24+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/uk/>\n"
+"Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,7 +56,7 @@ msgstr ""
 #.
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s — %s"
 
 #, c-format
 msgid "%s version %s"
@@ -68,7 +68,7 @@ msgstr "%s, версія %s"
 #.
 #, c-format
 msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
+msgstr "(Натисніть %s, щоб звільнити вказівник) %s — %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -76,7 +76,7 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgstr "(Натисніть %s, щоб звільнити вказівник) — %s"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Завантаження…</b>"
@@ -97,7 +97,7 @@ msgstr "Доступ до віддалених стільниць"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Адреса є надто довгою для socket_path UNIX: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -176,7 +176,7 @@ msgid "Close"
 msgstr "Закрити"
 
 msgid "Connect to SSH failed."
-msgstr ""
+msgstr "Не вдалося з'єднатися із SSH."
 
 msgid "Connect to channel unsupported."
 msgstr "Встановлення з’єднання з каналом не підтримується."
@@ -189,7 +189,7 @@ msgstr "Встановлено з’єднання з графічним сер�
 
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "Не вдалося з'єднатися із сокетом UNIX: %s"
 
 msgid "Connecting to graphic server"
 msgstr "Встановлення з’єднання з графічним сервером"
@@ -215,10 +215,10 @@ msgstr "Не вдалося відкрити сеанс oVirt: "
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Не вдалося створити сокет UNIX: %s"
 
 msgid "Ctrl_L+Alt_L"
-msgstr ""
+msgstr "Ctrl_L+Alt_L"
 
 msgid "Customise hotkeys"
 msgstr "Налаштувати клавіатурні скорочення"
@@ -318,7 +318,7 @@ msgid "Name:"
 msgstr "Назва:"
 
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "У домені немає файлів ISO"
 
 msgid "No connection was chosen"
 msgstr "Не вибрано з’єднання"
@@ -416,10 +416,10 @@ msgid "Select USB devices for redirection"
 msgstr "Виберіть пристрої USB для переспрямування"
 
 msgid "Select the virtual machine only by its ID"
-msgstr ""
+msgstr "Вибрати віртуальну машину лише за її ідентифікатором"
 
 msgid "Select the virtual machine only by its UUID"
-msgstr ""
+msgstr "Вибрати віртуальну машину лише за її UUID"
 
 msgid "Select the virtual machine only by its name"
 msgstr "Вибирати віртуальну машину лише за її назвою"
@@ -505,11 +505,11 @@ msgstr "Не вдалося визначити формат образу для 
 
 msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr ""
+msgstr "Невідомий"
 
 msgctxt "Unknown name"
 msgid "Unknown"
-msgstr ""
+msgstr "Невідомий"
 
 msgid "Unspecified error"
 msgstr "Невизначена помилка"
@@ -643,7 +643,7 @@ msgid "_Zoom"
 msgstr "_Масштаб"
 
 msgid "failed to parse oVirt URI"
-msgstr ""
+msgstr "не вдалося обробити адресу oVirt"
 
 msgid "label"
 msgstr "мітка"
@@ -665,7 +665,7 @@ msgid "oVirt VM %s is not running"
 msgstr "ВМ oVirt %s не запущено"
 
 msgid "only SSH or UNIX socket connection supported."
-msgstr ""
+msgstr "передбачено підтримку лише з'єднань із SSH або сокетами UNIX."
 
 #~ msgid " "
 #~ msgstr " "
