@@ -65,6 +65,10 @@ virt_viewer_vm_connection_choose_name_dialog(GtkWindow *main_window,
         return NULL;
     }
 
+    g_assert(gtk_tree_model_get_n_columns(model) == 3);
+    gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(model),
+                                         0, GTK_SORT_ASCENDING);
+
     vm_connection = virt_viewer_util_load_ui("virt-viewer-vm-connection.ui");
     g_return_val_if_fail(vm_connection != NULL, NULL);
 
@@ -86,7 +90,7 @@ virt_viewer_vm_connection_choose_name_dialog(GtkWindow *main_window,
 
     if (dialog_response == GTK_RESPONSE_ACCEPT &&
         gtk_tree_selection_get_selected(selection, &model, &iter)) {
-        gtk_tree_model_get(model, &iter, 0, &vm_name, -1);
+        gtk_tree_model_get(model, &iter, 1, &vm_name, -1);
     } else {
         g_set_error_literal(error,
                             VIRT_VIEWER_ERROR, VIRT_VIEWER_ERROR_CANCELLED,

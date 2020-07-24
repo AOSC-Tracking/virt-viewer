@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.16.1 -->
+<!-- Generated with glade 3.36.0 -->
 <interface>
+  <requires lib="gtk+" version="3.0"/>
   <object class="GtkDialog" id="vm-connection-dialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -21,7 +22,7 @@
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="button-cancel">
-                  <property name="label" translatable="yes">_Cancel</property>
+                <property name="label" translatable="yes">_Cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -64,6 +65,7 @@
             <property name="headers_visible">False</property>
             <property name="search_column">0</property>
             <property name="enable_grid_lines">horizontal</property>
+            <property name="tooltip_column">2</property>
             <child internal-child="selection">
               <object class="GtkTreeSelection" id="treeview-selection"/>
             </child>
@@ -90,12 +92,12 @@
           <object class="GtkLabel" id="label">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="xalign">0</property>
-            <property name="yalign">0</property>
             <property name="xpad">4</property>
             <property name="label" translatable="yes">Available virtual machines</property>
             <property name="ellipsize">end</property>
             <property name="width_chars">26</property>
+            <property name="xalign">0</property>
+            <property name="yalign">0</property>
             <attributes>
               <attribute name="weight" value="bold"/>
             </attributes>
@@ -113,5 +115,8 @@
       <action-widget response="-6">button-cancel</action-widget>
       <action-widget response="-3">button-connect</action-widget>
     </action-widgets>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
   </object>
 </interface>
