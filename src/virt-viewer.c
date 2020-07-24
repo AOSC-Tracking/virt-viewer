@@ -823,8 +823,8 @@ choose_vm(GtkWindow *main_window,
     g_return_val_if_fail(vm_name != NULL, NULL);
     free(*vm_name);
 
-                               /* UI name      , key */
-    model = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_STRING);
+                               /* UI name      , key          , tooltip */
+    model = gtk_list_store_new(3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
     vms_running = virConnectListAllDomains(conn, &domains, flags);
     for (i = 0; i < vms_running; i++) {

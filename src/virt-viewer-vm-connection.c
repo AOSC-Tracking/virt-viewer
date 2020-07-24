@@ -65,7 +65,7 @@ virt_viewer_vm_connection_choose_name_dialog(GtkWindow *main_window,
         return NULL;
     }
 
-    g_assert(gtk_tree_model_get_n_columns(model) == 2);
+    g_assert(gtk_tree_model_get_n_columns(model) == 3);
 
     vm_connection = virt_viewer_util_load_ui("virt-viewer-vm-connection.ui");
     g_return_val_if_fail(vm_connection != NULL, NULL);

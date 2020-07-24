@@ -608,8 +608,8 @@ choose_vm(GtkWindow *main_window,
     g_return_val_if_fail(vm_name != NULL, NULL);
     free(*vm_name);
 
-                               /* UI name      , key */
-    model = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_STRING);
+                               /* UI name      , key          , tooltip */
+    model = gtk_list_store_new(3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
     vms = ovirt_collection_get_resources(vms_collection);
     g_hash_table_iter_init(&vms_iter, vms);
