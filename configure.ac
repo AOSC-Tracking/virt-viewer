@@ -134,14 +134,6 @@ AS_IF([test "x$with_libvirt" = "xyes"],
 )
 AM_CONDITIONAL([HAVE_LIBVIRT], [test "x$with_libvirt" = "xyes"])
 
-old_LIBS=$LIBS
-LIBS=$LIBVIRT_LIBS
-# virDomainOpenGraphicsFD was introduced in libvirt 1.2.8
-AC_CHECK_LIB([virt],
-             [virDomainOpenGraphicsFD],
-             [AC_DEFINE([HAVE_VIR_DOMAIN_OPEN_GRAPHICS_FD], 1, [Have virDomainOpenGraphicsFD?])])
-LIBS=$old_LIBS
-
 PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
 GTK_CFLAGS="$GTK_CFLAGS -DGDK_VERSION_MIN_REQUIRED=$GTK_ENCODED_VERSION \
     -DGDK_VERSION_MAX_ALLOWED=$GTK_ENCODED_VERSION"
