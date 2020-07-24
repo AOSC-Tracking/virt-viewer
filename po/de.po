@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-07-06 16:08+0100\n"
+"POT-Creation-Date: 2020-07-22 23:24+0200\n"
 "PO-Revision-Date: 2019-03-25 08:53+0000\n"
 "Last-Translator: Thomas Eichhorn <tomislav@posteo.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/virt-viewer/"
@@ -52,24 +52,33 @@ msgid ""
 "\n"
 msgstr ""
 
-msgid " "
-msgstr " "
-
+#. translators:
+#. * This is "<subtitle> - <appname>"
+#. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
+#.
 #, c-format
-msgid "%s\n"
-msgstr "%s\n"
+msgid "%s - %s"
+msgstr ""
 
 #, c-format
 msgid "%s version %s"
 msgstr "%s Version %s"
 
+#. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
 #, c-format
-msgid "%s%s%s - %s"
-msgstr "%s%s%s - %s"
+msgid "(Press %s to release pointer) %s - %s"
+msgstr ""
 
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
 #, c-format
-msgid "(Press %s to release pointer)"
-msgstr "(Drücken Sie %s, um den Mauszeiger freizugeben)"
+msgid "(Press %s to release pointer) - %s"
+msgstr ""
 
 msgid "<b>Loading...</b>"
 msgstr ""
@@ -89,10 +98,7 @@ msgid "Access remote desktops"
 msgstr "Zugriff auf Remote-Desktops"
 
 #, c-format
-msgid "Address is too long for unix socket_path: %s"
-msgstr ""
-
-msgid "An error caused the following file transfers to fail:"
+msgid "Address is too long for UNIX socket_path: %s"
 msgstr ""
 
 #, c-format
@@ -173,24 +179,24 @@ msgstr "Wählen Sie eine virtuelle Maschine"
 msgid "Close"
 msgstr "Schließen"
 
+msgid "Connect to SSH failed."
+msgstr ""
+
 msgid "Connect to channel unsupported."
 msgstr "Verbindung zu dem Kanal wird nicht unterstützt."
 
 msgid "Connect to hypervisor"
 msgstr "Verbinden mit Hypervisor"
 
-msgid "Connect to ssh failed."
-msgstr "Verbindung über SSH ist fehlgeschlagen."
-
 msgid "Connected to graphic server"
 msgstr "Verbunden mit Grafikserver"
 
+#, c-format
+msgid "Connecting to UNIX socket failed: %s"
+msgstr ""
+
 msgid "Connecting to graphic server"
 msgstr "Verbinden mit Grafikserver"
-
-#, c-format
-msgid "Connecting to unix socket failed: %s"
-msgstr ""
 
 msgid "Connection _Address"
 msgstr ""
@@ -212,53 +218,11 @@ msgid "Couldn't open oVirt session: "
 msgstr "Konnte oVirt-Sitzung nicht öffnen: "
 
 #, c-format
-msgid "Creating unix socket failed: %s"
-msgstr "Unix-Socket konnte nicht erstellt werden: %s"
+msgid "Creating UNIX socket failed: %s"
+msgstr ""
 
-msgid "Ctrl+Alt"
-msgstr "Strg+Alt"
-
-msgid "Ctrl+Alt+F11"
-msgstr "Strg+Alt+F11"
-
-msgid "Ctrl+Alt+F12"
-msgstr "Strg+Alt+F12"
-
-msgid "Ctrl+Alt+F1_0"
-msgstr "Strg+Alt+F1_0"
-
-msgid "Ctrl+Alt+F_1"
-msgstr "Strg+Alt+F_1"
-
-msgid "Ctrl+Alt+F_2"
-msgstr "Strg+Alt+F_2"
-
-msgid "Ctrl+Alt+F_3"
-msgstr "Strg+Alt+F_3"
-
-msgid "Ctrl+Alt+F_4"
-msgstr "Strg+Alt+F_4"
-
-msgid "Ctrl+Alt+F_5"
-msgstr "Strg+Alt+F_5"
-
-msgid "Ctrl+Alt+F_6"
-msgstr "Strg+Alt+F_6"
-
-msgid "Ctrl+Alt+F_7"
-msgstr "Strg+Alt+F_7"
-
-msgid "Ctrl+Alt+F_8"
-msgstr "Strg+Alt+F_8"
-
-msgid "Ctrl+Alt+F_9"
-msgstr "Strg+Alt+F_9"
-
-msgid "Ctrl+Alt+_Backspace"
-msgstr "Strg+Alt+_Rücktaste"
-
-msgid "Ctrl+Alt+_Del"
-msgstr "Strg+Alt+_Entf"
+msgid "Ctrl_L+Alt_L"
+msgstr ""
 
 msgid "Customise hotkeys"
 msgstr "eigene angepasste Hotkeys"
@@ -299,9 +263,6 @@ msgstr "Fehler beim Wechseln der CD"
 
 msgid "Failed to connect: "
 msgstr "Verbindung fehlgeschlagen:"
-
-msgid "Failed to fetch CD names"
-msgstr "CD-Namen konnten nicht abgerufen werden"
 
 msgid "Failed to initiate connection"
 msgstr "Initiieren der Verbindung fehlgeschlagen"
@@ -359,6 +320,9 @@ msgstr "Name"
 
 msgid "Name:"
 msgstr "Name:"
+
+msgid "No ISO files in domain"
+msgstr ""
 
 msgid "No connection was chosen"
 msgstr "Es wurde keine Verbindung gewählt"
@@ -446,13 +410,13 @@ msgstr "ISO-Abbild auswählen"
 msgid "Select USB devices for redirection"
 msgstr "USB-Gerät zur Weiterleitung wählen"
 
-msgid "Select the virtual machine only by its id"
+msgid "Select the virtual machine only by its ID"
+msgstr ""
+
+msgid "Select the virtual machine only by its UUID"
 msgstr ""
 
 msgid "Select the virtual machine only by its name"
-msgstr ""
-
-msgid "Select the virtual machine only by its uuid"
 msgstr ""
 
 msgid "Selected"
@@ -487,35 +451,6 @@ msgstr "Spice"
 
 msgid "The Fedora Translation Team"
 msgstr "Das Fedora Übersetzungs-Team"
-
-msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
-msgstr ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
 
 #, c-format
 msgid "Transferring %u file of %u..."
@@ -560,8 +495,13 @@ msgstr ""
 msgid "Unable to determine image format for file '%s'"
 msgstr ""
 
+msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr "Unbekannt"
+msgstr ""
+
+msgctxt "Unknown name"
+msgid "Unknown"
+msgstr ""
 
 msgid "Unspecified error"
 msgstr "Unspezifizierter Fehler"
@@ -670,9 +610,6 @@ msgstr ""
 msgid "_Preferences"
 msgstr "_Einstellungen"
 
-msgid "_PrintScreen"
-msgstr ""
-
 msgid "_Quit"
 msgstr "_Quit"
 
@@ -697,10 +634,7 @@ msgstr "_Ansicht"
 msgid "_Zoom"
 msgstr "_Zoom"
 
-msgid "failed to parse ovirt uri"
-msgstr "Parsen von ovirt uri fehlgeschlagen"
-
-msgid "gitlab.com/virt-viewer/virt-viewer"
+msgid "failed to parse oVirt URI"
 msgstr ""
 
 msgid "label"
@@ -722,8 +656,114 @@ msgstr ""
 msgid "oVirt VM %s is not running"
 msgstr "oVirt VM %s läuft nicht"
 
-msgid "only SSH or unix socket connection supported."
-msgstr "Es werden nur SSH und Unix-Sockets unterstützt."
+msgid "only SSH or UNIX socket connection supported."
+msgstr ""
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "%s\n"
+#~ msgstr "%s\n"
+
+#~ msgid "%s%s%s - %s"
+#~ msgstr "%s%s%s - %s"
+
+#~ msgid "(Press %s to release pointer)"
+#~ msgstr "(Drücken Sie %s, um den Mauszeiger freizugeben)"
+
+#~ msgid "Connect to ssh failed."
+#~ msgstr "Verbindung über SSH ist fehlgeschlagen."
+
+#~ msgid "Creating unix socket failed: %s"
+#~ msgstr "Unix-Socket konnte nicht erstellt werden: %s"
+
+#~ msgid "Ctrl+Alt"
+#~ msgstr "Strg+Alt"
+
+#~ msgid "Ctrl+Alt+F11"
+#~ msgstr "Strg+Alt+F11"
+
+#~ msgid "Ctrl+Alt+F12"
+#~ msgstr "Strg+Alt+F12"
+
+#~ msgid "Ctrl+Alt+F1_0"
+#~ msgstr "Strg+Alt+F1_0"
+
+#~ msgid "Ctrl+Alt+F_1"
+#~ msgstr "Strg+Alt+F_1"
+
+#~ msgid "Ctrl+Alt+F_2"
+#~ msgstr "Strg+Alt+F_2"
+
+#~ msgid "Ctrl+Alt+F_3"
+#~ msgstr "Strg+Alt+F_3"
+
+#~ msgid "Ctrl+Alt+F_4"
+#~ msgstr "Strg+Alt+F_4"
+
+#~ msgid "Ctrl+Alt+F_5"
+#~ msgstr "Strg+Alt+F_5"
+
+#~ msgid "Ctrl+Alt+F_6"
+#~ msgstr "Strg+Alt+F_6"
+
+#~ msgid "Ctrl+Alt+F_7"
+#~ msgstr "Strg+Alt+F_7"
+
+#~ msgid "Ctrl+Alt+F_8"
+#~ msgstr "Strg+Alt+F_8"
+
+#~ msgid "Ctrl+Alt+F_9"
+#~ msgstr "Strg+Alt+F_9"
+
+#~ msgid "Ctrl+Alt+_Backspace"
+#~ msgstr "Strg+Alt+_Rücktaste"
+
+#~ msgid "Ctrl+Alt+_Del"
+#~ msgstr "Strg+Alt+_Entf"
+
+#~ msgid "Failed to fetch CD names"
+#~ msgstr "CD-Namen konnten nicht abgerufen werden"
+
+#~ msgid ""
+#~ "This program is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "This program is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  "
+#~ "USA\n"
+#~ msgstr ""
+#~ "This program is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "This program is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  "
+#~ "USA\n"
+
+#~ msgid "Unknown"
+#~ msgstr "Unbekannt"
+
+#~ msgid "failed to parse ovirt uri"
+#~ msgstr "Parsen von ovirt uri fehlgeschlagen"
+
+#~ msgid "only SSH or unix socket connection supported."
+#~ msgstr "Es werden nur SSH und Unix-Sockets unterstützt."
 
 #~ msgid "virt-manager.org"
 #~ msgstr "virt-manager.org"

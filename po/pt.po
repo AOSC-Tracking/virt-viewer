@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-07-06 16:08+0100\n"
+"POT-Creation-Date: 2020-07-22 23:24+0200\n"
 "PO-Revision-Date: 2017-01-29 10:04+0000\n"
 "Last-Translator: Rodrigo de Araujo Sousa Fonseca "
 "<rodrigodearaujo@fedoraproject.org>\n"
@@ -42,23 +42,32 @@ msgid ""
 "\n"
 msgstr ""
 
-msgid " "
-msgstr ""
-
+#. translators:
+#. * This is "<subtitle> - <appname>"
+#. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
+#.
 #, c-format
-msgid "%s\n"
+msgid "%s - %s"
 msgstr ""
 
 #, c-format
 msgid "%s version %s"
 msgstr ""
 
+#. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
 #, c-format
-msgid "%s%s%s - %s"
+msgid "(Press %s to release pointer) %s - %s"
 msgstr ""
 
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
 #, c-format
-msgid "(Press %s to release pointer)"
+msgid "(Press %s to release pointer) - %s"
 msgstr ""
 
 msgid "<b>Loading...</b>"
@@ -77,10 +86,7 @@ msgid "Access remote desktops"
 msgstr ""
 
 #, c-format
-msgid "Address is too long for unix socket_path: %s"
-msgstr ""
-
-msgid "An error caused the following file transfers to fail:"
+msgid "Address is too long for UNIX socket_path: %s"
 msgstr ""
 
 #, c-format
@@ -153,23 +159,23 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+msgid "Connect to SSH failed."
+msgstr ""
+
 msgid "Connect to channel unsupported."
 msgstr ""
 
 msgid "Connect to hypervisor"
 msgstr ""
 
-msgid "Connect to ssh failed."
-msgstr ""
-
 msgid "Connected to graphic server"
 msgstr ""
 
-msgid "Connecting to graphic server"
+#, c-format
+msgid "Connecting to UNIX socket failed: %s"
 msgstr ""
 
-#, c-format
-msgid "Connecting to unix socket failed: %s"
+msgid "Connecting to graphic server"
 msgstr ""
 
 msgid "Connection _Address"
@@ -190,52 +196,10 @@ msgid "Couldn't open oVirt session: "
 msgstr ""
 
 #, c-format
-msgid "Creating unix socket failed: %s"
+msgid "Creating UNIX socket failed: %s"
 msgstr ""
 
-msgid "Ctrl+Alt"
-msgstr "Ctrl+Alt"
-
-msgid "Ctrl+Alt+F11"
-msgstr "Ctrl+Alt+F11"
-
-msgid "Ctrl+Alt+F12"
-msgstr "Ctrl+Alt+F12"
-
-msgid "Ctrl+Alt+F1_0"
-msgstr "Ctrl+Alt+F1_0"
-
-msgid "Ctrl+Alt+F_1"
-msgstr "Ctrl+Alt+F_1"
-
-msgid "Ctrl+Alt+F_2"
-msgstr "Ctrl+Alt+F_2"
-
-msgid "Ctrl+Alt+F_3"
-msgstr "Ctrl+Alt+F_3"
-
-msgid "Ctrl+Alt+F_4"
-msgstr "Ctrl+Alt+F_4"
-
-msgid "Ctrl+Alt+F_5"
-msgstr "Ctrl+Alt+F_5"
-
-msgid "Ctrl+Alt+F_6"
-msgstr "Ctrl+Alt+F_6"
-
-msgid "Ctrl+Alt+F_7"
-msgstr "Ctrl+Alt+F_7"
-
-msgid "Ctrl+Alt+F_8"
-msgstr "Ctrl+Alt+F_8"
-
-msgid "Ctrl+Alt+F_9"
-msgstr "Ctrl+Alt+F_9"
-
-msgid "Ctrl+Alt+_Backspace"
-msgstr ""
-
-msgid "Ctrl+Alt+_Del"
+msgid "Ctrl_L+Alt_L"
 msgstr ""
 
 msgid "Customise hotkeys"
@@ -276,9 +240,6 @@ msgid "Failed to change CD"
 msgstr ""
 
 msgid "Failed to connect: "
-msgstr ""
-
-msgid "Failed to fetch CD names"
 msgstr ""
 
 msgid "Failed to initiate connection"
@@ -336,6 +297,9 @@ msgid "Name"
 msgstr ""
 
 msgid "Name:"
+msgstr ""
+
+msgid "No ISO files in domain"
 msgstr ""
 
 msgid "No connection was chosen"
@@ -420,13 +384,13 @@ msgstr ""
 msgid "Select USB devices for redirection"
 msgstr ""
 
-msgid "Select the virtual machine only by its id"
+msgid "Select the virtual machine only by its ID"
+msgstr ""
+
+msgid "Select the virtual machine only by its UUID"
 msgstr ""
 
 msgid "Select the virtual machine only by its name"
-msgstr ""
-
-msgid "Select the virtual machine only by its uuid"
 msgstr ""
 
 msgid "Selected"
@@ -460,22 +424,6 @@ msgid "Spice"
 msgstr ""
 
 msgid "The Fedora Translation Team"
-msgstr ""
-
-msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
 msgstr ""
 
 #, c-format
@@ -521,6 +469,11 @@ msgstr ""
 msgid "Unable to determine image format for file '%s'"
 msgstr ""
 
+msgctxt "Unknown UUID"
+msgid "Unknown"
+msgstr ""
+
+msgctxt "Unknown name"
 msgid "Unknown"
 msgstr ""
 
@@ -631,9 +584,6 @@ msgstr ""
 msgid "_Preferences"
 msgstr ""
 
-msgid "_PrintScreen"
-msgstr ""
-
 msgid "_Quit"
 msgstr ""
 
@@ -658,10 +608,7 @@ msgstr ""
 msgid "_Zoom"
 msgstr ""
 
-msgid "failed to parse ovirt uri"
-msgstr ""
-
-msgid "gitlab.com/virt-viewer/virt-viewer"
+msgid "failed to parse oVirt URI"
 msgstr ""
 
 msgid "label"
@@ -683,5 +630,44 @@ msgstr ""
 msgid "oVirt VM %s is not running"
 msgstr ""
 
-msgid "only SSH or unix socket connection supported."
+msgid "only SSH or UNIX socket connection supported."
 msgstr ""
+
+#~ msgid "Ctrl+Alt"
+#~ msgstr "Ctrl+Alt"
+
+#~ msgid "Ctrl+Alt+F11"
+#~ msgstr "Ctrl+Alt+F11"
+
+#~ msgid "Ctrl+Alt+F12"
+#~ msgstr "Ctrl+Alt+F12"
+
+#~ msgid "Ctrl+Alt+F1_0"
+#~ msgstr "Ctrl+Alt+F1_0"
+
+#~ msgid "Ctrl+Alt+F_1"
+#~ msgstr "Ctrl+Alt+F_1"
+
+#~ msgid "Ctrl+Alt+F_2"
+#~ msgstr "Ctrl+Alt+F_2"
+
+#~ msgid "Ctrl+Alt+F_3"
+#~ msgstr "Ctrl+Alt+F_3"
+
+#~ msgid "Ctrl+Alt+F_4"
+#~ msgstr "Ctrl+Alt+F_4"
+
+#~ msgid "Ctrl+Alt+F_5"
+#~ msgstr "Ctrl+Alt+F_5"
+
+#~ msgid "Ctrl+Alt+F_6"
+#~ msgstr "Ctrl+Alt+F_6"
+
+#~ msgid "Ctrl+Alt+F_7"
+#~ msgstr "Ctrl+Alt+F_7"
+
+#~ msgid "Ctrl+Alt+F_8"
+#~ msgstr "Ctrl+Alt+F_8"
+
+#~ msgid "Ctrl+Alt+F_9"
+#~ msgstr "Ctrl+Alt+F_9"

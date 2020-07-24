@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-07-06 16:08+0100\n"
+"POT-Creation-Date: 2020-07-22 23:24+0200\n"
 "PO-Revision-Date: 2020-07-20 12:29+0000\n"
 "Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
-"Language-Team: Dutch <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/nl/>\n"
+"Language-Team: Dutch <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,24 +49,33 @@ msgstr ""
 "Gebruik: %s [OPTIES] [ID|UUID|DOMEIN-NAAM]\n"
 "\n"
 
-msgid " "
-msgstr " "
-
+#. translators:
+#. * This is "<subtitle> - <appname>"
+#. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
+#.
 #, c-format
-msgid "%s\n"
-msgstr "%s\n"
+msgid "%s - %s"
+msgstr ""
 
 #, c-format
 msgid "%s version %s"
 msgstr "%s versie %s"
 
+#. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
 #, c-format
-msgid "%s%s%s - %s"
-msgstr "%s%s%s - %s"
+msgid "(Press %s to release pointer) %s - %s"
+msgstr ""
 
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
 #, c-format
-msgid "(Press %s to release pointer)"
-msgstr "(Druk op %s om wijzer vrij te geven)"
+msgid "(Press %s to release pointer) - %s"
+msgstr ""
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Bezig met laden...</b>"
@@ -85,11 +94,8 @@ msgid "Access remote desktops"
 msgstr "Toegang tot bureaubladen op afstand"
 
 #, c-format
-msgid "Address is too long for unix socket_path: %s"
-msgstr "Adres is te lang voor unix socket_path: %s"
-
-msgid "An error caused the following file transfers to fail:"
-msgstr "Door een fout zijn de volgende bestandsoverdrachten mislukt:"
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr ""
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -167,24 +173,24 @@ msgstr "Kies een virtuele machine"
 msgid "Close"
 msgstr "Afsluiten"
 
+msgid "Connect to SSH failed."
+msgstr ""
+
 msgid "Connect to channel unsupported."
 msgstr "Verbinding maken met kanaal wordt niet ondersteund."
 
 msgid "Connect to hypervisor"
 msgstr "Verbindt met hypervisor"
 
-msgid "Connect to ssh failed."
-msgstr "Verbinden met ssh mislukte."
-
 msgid "Connected to graphic server"
 msgstr "Verbonden met grafische server"
 
+#, c-format
+msgid "Connecting to UNIX socket failed: %s"
+msgstr ""
+
 msgid "Connecting to graphic server"
 msgstr "Verbinding maken met grafische server"
-
-#, c-format
-msgid "Connecting to unix socket failed: %s"
-msgstr "Verbinden met unix socket mislukt: %s"
 
 msgid "Connection _Address"
 msgstr "Verbindings_adres"
@@ -206,53 +212,11 @@ msgid "Couldn't open oVirt session: "
 msgstr "Kan oVirt-sessie niet openen: "
 
 #, c-format
-msgid "Creating unix socket failed: %s"
-msgstr "Aanmaken van unix socket mislukt: %s"
+msgid "Creating UNIX socket failed: %s"
+msgstr ""
 
-msgid "Ctrl+Alt"
-msgstr "Ctrl+Alt"
-
-msgid "Ctrl+Alt+F11"
-msgstr "Ctrl+Alt+F11"
-
-msgid "Ctrl+Alt+F12"
-msgstr "Ctrl+Alt+F12"
-
-msgid "Ctrl+Alt+F1_0"
-msgstr "Ctrl+Alt+F1_0"
-
-msgid "Ctrl+Alt+F_1"
-msgstr "Ctrl+Alt+F_1"
-
-msgid "Ctrl+Alt+F_2"
-msgstr "Ctrl+Alt+F_2"
-
-msgid "Ctrl+Alt+F_3"
-msgstr "Ctrl+Alt+F_3"
-
-msgid "Ctrl+Alt+F_4"
-msgstr "Ctrl+Alt+F_4"
-
-msgid "Ctrl+Alt+F_5"
-msgstr "Ctrl+Alt+F_5"
-
-msgid "Ctrl+Alt+F_6"
-msgstr "Ctrl+Alt+F_6"
-
-msgid "Ctrl+Alt+F_7"
-msgstr "Ctrl+Alt+F_7"
-
-msgid "Ctrl+Alt+F_8"
-msgstr "Ctrl+Alt+F_8"
-
-msgid "Ctrl+Alt+F_9"
-msgstr "Ctrl+Alt+F_9"
-
-msgid "Ctrl+Alt+_Backspace"
-msgstr "Ctrl+Alt+_Backspace"
-
-msgid "Ctrl+Alt+_Del"
-msgstr "Ctrl+Alt+_Del"
+msgid "Ctrl_L+Alt_L"
+msgstr ""
 
 msgid "Customise hotkeys"
 msgstr "Pas sneltoetsen aan"
@@ -293,9 +257,6 @@ msgstr "CD veranderen mislukt"
 
 msgid "Failed to connect: "
 msgstr "Kon niet verbinden: "
-
-msgid "Failed to fetch CD names"
-msgstr "Kan CD-namen niet ophalen"
 
 msgid "Failed to initiate connection"
 msgstr "Verbinding initiëren mislukte"
@@ -354,6 +315,9 @@ msgstr "Naam"
 msgid "Name:"
 msgstr "Naam:"
 
+msgid "No ISO files in domain"
+msgstr ""
+
 msgid "No connection was chosen"
 msgstr "Er is geen verbinding gekozen"
 
@@ -404,8 +368,8 @@ msgstr "Geef cursor vrij"
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"Herindeling toetsenformat key = keymod + key bijv. "
-"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+"Herindeling toetsenformat key = keymod + key bijv. F1=SHIFT+CTRL+F1,1=SHIFT"
+"+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "Viewer op afstand"
@@ -448,14 +412,14 @@ msgstr "Selecteer ISO"
 msgid "Select USB devices for redirection"
 msgstr "Selecteer USB apparaten voor omleiding"
 
-msgid "Select the virtual machine only by its id"
-msgstr "Selecteer de virtuele machine alleen op ID"
+msgid "Select the virtual machine only by its ID"
+msgstr ""
+
+msgid "Select the virtual machine only by its UUID"
+msgstr ""
 
 msgid "Select the virtual machine only by its name"
 msgstr "Selecteer de virtuele machine alleen op naam"
-
-msgid "Select the virtual machine only by its uuid"
-msgstr "Selecteer de virtuele machine alleen op uuid"
 
 msgid "Selected"
 msgstr "Geselecteerd"
@@ -489,35 +453,6 @@ msgstr "Spice"
 
 msgid "The Fedora Translation Team"
 msgstr "Het Fedora vertaal team"
-
-msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
-msgstr ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
 
 #, c-format
 msgid "Transferring %u file of %u..."
@@ -562,8 +497,13 @@ msgstr "Kan niet verbinden met oVirt"
 msgid "Unable to determine image format for file '%s'"
 msgstr "Kan beeldformaat niet bepalen voor bestand '%s'"
 
+msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr "Onbekend"
+msgstr ""
+
+msgctxt "Unknown name"
+msgid "Unknown"
+msgstr ""
 
 msgid "Unspecified error"
 msgstr "Niet-gespecificeerde fout"
@@ -672,9 +612,6 @@ msgstr "_Uitschakelen"
 msgid "_Preferences"
 msgstr "_Voorkeuren"
 
-msgid "_PrintScreen"
-msgstr "_Schermafdruk"
-
 msgid "_Quit"
 msgstr "_Stoppen"
 
@@ -699,11 +636,8 @@ msgstr "_View"
 msgid "_Zoom"
 msgstr "_Zoom"
 
-msgid "failed to parse ovirt uri"
-msgstr "kon ovirt uri niet ontleden"
-
-msgid "gitlab.com/virt-viewer/virt-viewer"
-msgstr "gitlab.com/virt-viewer/virt-viewer"
+msgid "failed to parse oVirt URI"
+msgstr ""
 
 msgid "label"
 msgstr "label"
@@ -724,8 +658,135 @@ msgstr "oVirt VM %s heeft onbekend display type: %u"
 msgid "oVirt VM %s is not running"
 msgstr "oVirt VM %s is niet actief"
 
-msgid "only SSH or unix socket connection supported."
-msgstr "alleen SSH of unix socket verbindingen worden ondersteund."
+msgid "only SSH or UNIX socket connection supported."
+msgstr ""
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "%s\n"
+#~ msgstr "%s\n"
+
+#~ msgid "%s%s%s - %s"
+#~ msgstr "%s%s%s - %s"
+
+#~ msgid "(Press %s to release pointer)"
+#~ msgstr "(Druk op %s om wijzer vrij te geven)"
+
+#~ msgid "Address is too long for unix socket_path: %s"
+#~ msgstr "Adres is te lang voor unix socket_path: %s"
+
+#~ msgid "An error caused the following file transfers to fail:"
+#~ msgstr "Door een fout zijn de volgende bestandsoverdrachten mislukt:"
+
+#~ msgid "Connect to ssh failed."
+#~ msgstr "Verbinden met ssh mislukte."
+
+#~ msgid "Connecting to unix socket failed: %s"
+#~ msgstr "Verbinden met unix socket mislukt: %s"
+
+#~ msgid "Creating unix socket failed: %s"
+#~ msgstr "Aanmaken van unix socket mislukt: %s"
+
+#~ msgid "Ctrl+Alt"
+#~ msgstr "Ctrl+Alt"
+
+#~ msgid "Ctrl+Alt+F11"
+#~ msgstr "Ctrl+Alt+F11"
+
+#~ msgid "Ctrl+Alt+F12"
+#~ msgstr "Ctrl+Alt+F12"
+
+#~ msgid "Ctrl+Alt+F1_0"
+#~ msgstr "Ctrl+Alt+F1_0"
+
+#~ msgid "Ctrl+Alt+F_1"
+#~ msgstr "Ctrl+Alt+F_1"
+
+#~ msgid "Ctrl+Alt+F_2"
+#~ msgstr "Ctrl+Alt+F_2"
+
+#~ msgid "Ctrl+Alt+F_3"
+#~ msgstr "Ctrl+Alt+F_3"
+
+#~ msgid "Ctrl+Alt+F_4"
+#~ msgstr "Ctrl+Alt+F_4"
+
+#~ msgid "Ctrl+Alt+F_5"
+#~ msgstr "Ctrl+Alt+F_5"
+
+#~ msgid "Ctrl+Alt+F_6"
+#~ msgstr "Ctrl+Alt+F_6"
+
+#~ msgid "Ctrl+Alt+F_7"
+#~ msgstr "Ctrl+Alt+F_7"
+
+#~ msgid "Ctrl+Alt+F_8"
+#~ msgstr "Ctrl+Alt+F_8"
+
+#~ msgid "Ctrl+Alt+F_9"
+#~ msgstr "Ctrl+Alt+F_9"
+
+#~ msgid "Ctrl+Alt+_Backspace"
+#~ msgstr "Ctrl+Alt+_Backspace"
+
+#~ msgid "Ctrl+Alt+_Del"
+#~ msgstr "Ctrl+Alt+_Del"
+
+#~ msgid "Failed to fetch CD names"
+#~ msgstr "Kan CD-namen niet ophalen"
+
+#~ msgid "Select the virtual machine only by its id"
+#~ msgstr "Selecteer de virtuele machine alleen op ID"
+
+#~ msgid "Select the virtual machine only by its uuid"
+#~ msgstr "Selecteer de virtuele machine alleen op uuid"
+
+#~ msgid ""
+#~ "This program is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "This program is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  "
+#~ "USA\n"
+#~ msgstr ""
+#~ "This program is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "This program is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  "
+#~ "USA\n"
+
+#~ msgid "Unknown"
+#~ msgstr "Onbekend"
+
+#~ msgid "_PrintScreen"
+#~ msgstr "_Schermafdruk"
+
+#~ msgid "failed to parse ovirt uri"
+#~ msgstr "kon ovirt uri niet ontleden"
+
+#~ msgid "gitlab.com/virt-viewer/virt-viewer"
+#~ msgstr "gitlab.com/virt-viewer/virt-viewer"
+
+#~ msgid "only SSH or unix socket connection supported."
+#~ msgstr "alleen SSH of unix socket verbindingen worden ondersteund."
 
 #~ msgid "virt-manager.org"
 #~ msgstr "virt-manager.org"

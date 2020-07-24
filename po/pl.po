@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-07-06 16:08+0100\n"
+"POT-Creation-Date: 2020-07-22 23:24+0200\n"
 "PO-Revision-Date: 2020-07-14 12:07+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <https://translate.fedoraproject.org/projects/virt-"
@@ -50,24 +50,33 @@ msgstr ""
 "Użycie: %s [OPCJE] [IDENTYFIKATOR|UUID|NAZWA-DOMENY]\n"
 "\n"
 
-msgid " "
-msgstr " "
-
+#. translators:
+#. * This is "<subtitle> - <appname>"
+#. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
+#.
 #, c-format
-msgid "%s\n"
-msgstr "%s\n"
+msgid "%s - %s"
+msgstr ""
 
 #, c-format
 msgid "%s version %s"
 msgstr "%s w wersji %s"
 
+#. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
 #, c-format
-msgid "%s%s%s - %s"
-msgstr "%s%s%s — %s"
+msgid "(Press %s to release pointer) %s - %s"
+msgstr ""
 
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
 #, c-format
-msgid "(Press %s to release pointer)"
-msgstr "(Naciśnięcie klawiszy %s uwalnia wskaźnik)"
+msgid "(Press %s to release pointer) - %s"
+msgstr ""
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Wczytywanie…</b>"
@@ -87,11 +96,8 @@ msgid "Access remote desktops"
 msgstr "Dostęp do zdalnych pulpitów"
 
 #, c-format
-msgid "Address is too long for unix socket_path: %s"
-msgstr "Adres jest za długi dla ścieżki gniazda uniksowego: %s"
-
-msgid "An error caused the following file transfers to fail:"
-msgstr "Błąd spowodował niepowodzenie przesłania tych plików:"
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr ""
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -169,24 +175,24 @@ msgstr "Wybór maszyny wirtualnej"
 msgid "Close"
 msgstr "Zamknij"
 
+msgid "Connect to SSH failed."
+msgstr ""
+
 msgid "Connect to channel unsupported."
 msgstr "Łączenie z kanałem jest nieobsługiwane."
 
 msgid "Connect to hypervisor"
 msgstr "Łączy z nadzorcą"
 
-msgid "Connect to ssh failed."
-msgstr "Połączenie z usługą ssh się nie powiodło."
-
 msgid "Connected to graphic server"
 msgstr "Połączono z serwerem grafiki"
 
+#, c-format
+msgid "Connecting to UNIX socket failed: %s"
+msgstr ""
+
 msgid "Connecting to graphic server"
 msgstr "Łączenie z serwerem grafiki"
-
-#, c-format
-msgid "Connecting to unix socket failed: %s"
-msgstr "Połączenie z gniazdem uniksowym się nie powiodło: %s"
 
 msgid "Connection _Address"
 msgstr "_Adres połączenia"
@@ -208,53 +214,11 @@ msgid "Couldn't open oVirt session: "
 msgstr "Nie można otworzyć sesji oVirt: "
 
 #, c-format
-msgid "Creating unix socket failed: %s"
-msgstr "Utworzenie gniazda uniksowego się nie powiodło: %s"
+msgid "Creating UNIX socket failed: %s"
+msgstr ""
 
-msgid "Ctrl+Alt"
-msgstr "Ctrl+Alt"
-
-msgid "Ctrl+Alt+F11"
-msgstr "Ctrl+Alt+F11"
-
-msgid "Ctrl+Alt+F12"
-msgstr "Ctrl+Alt+F12"
-
-msgid "Ctrl+Alt+F1_0"
-msgstr "Ctrl+Alt+F1_0"
-
-msgid "Ctrl+Alt+F_1"
-msgstr "Ctrl+Alt+F_1"
-
-msgid "Ctrl+Alt+F_2"
-msgstr "Ctrl+Alt+F_2"
-
-msgid "Ctrl+Alt+F_3"
-msgstr "Ctrl+Alt+F_3"
-
-msgid "Ctrl+Alt+F_4"
-msgstr "Ctrl+Alt+F_4"
-
-msgid "Ctrl+Alt+F_5"
-msgstr "Ctrl+Alt+F_5"
-
-msgid "Ctrl+Alt+F_6"
-msgstr "Ctrl+Alt+F_6"
-
-msgid "Ctrl+Alt+F_7"
-msgstr "Ctrl+Alt+F_7"
-
-msgid "Ctrl+Alt+F_8"
-msgstr "Ctrl+Alt+F_8"
-
-msgid "Ctrl+Alt+F_9"
-msgstr "Ctrl+Alt+F_9"
-
-msgid "Ctrl+Alt+_Backspace"
-msgstr "Ctrl+Alt+_Backspace"
-
-msgid "Ctrl+Alt+_Del"
-msgstr "Ctrl+Alt+_Del"
+msgid "Ctrl_L+Alt_L"
+msgstr ""
 
 msgid "Customise hotkeys"
 msgstr "Dostosowuje skróty"
@@ -297,9 +261,6 @@ msgstr "Zmiana płyty CD się nie powiodła"
 
 msgid "Failed to connect: "
 msgstr "Połączenie się nie powiodło: "
-
-msgid "Failed to fetch CD names"
-msgstr "Pobranie nazw płyt CD się nie powiodło"
 
 msgid "Failed to initiate connection"
 msgstr "Zainicjowanie połączenia się nie powiodło"
@@ -357,6 +318,9 @@ msgstr "Nazwa"
 
 msgid "Name:"
 msgstr "Nazwa:"
+
+msgid "No ISO files in domain"
+msgstr ""
 
 msgid "No connection was chosen"
 msgstr "Nie wybrano połączenia"
@@ -450,14 +414,14 @@ msgstr "Wybierz plik ISO"
 msgid "Select USB devices for redirection"
 msgstr "Wybór urządzeń USB do przekierowania"
 
-msgid "Select the virtual machine only by its id"
-msgstr "Wybierz maszynę wirtualną tylko przez jej identyfikator"
+msgid "Select the virtual machine only by its ID"
+msgstr ""
+
+msgid "Select the virtual machine only by its UUID"
+msgstr ""
 
 msgid "Select the virtual machine only by its name"
 msgstr "Wybierz maszynę wirtualną tylko przez jej nazwę"
-
-msgid "Select the virtual machine only by its uuid"
-msgstr "Wybierz maszynę wirtualną tylko przez jej UUID"
 
 msgid "Selected"
 msgstr "Wybrane"
@@ -491,37 +455,6 @@ msgstr "Spice"
 
 msgid "The Fedora Translation Team"
 msgstr "Zespół tłumaczenia Fedory"
-
-msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
-msgstr ""
-"Niniejszy program jest wolnym oprogramowaniem; można go rozprowadzać dalej\n"
-"i/lub modyfikować na warunkach Powszechnej Licencji Publicznej GNU, wydanej\n"
-"przez Fundację Wolnego Oprogramowania (Free Software Foundation) — według\n"
-"wersji drugiej tej Licencji lub którejś z późniejszych wersji.\n"
-"\n"
-"Niniejszy program rozpowszechniany jest z nadzieją, iż będzie on użyteczny\n"
-"— jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet domyślnej gwarancji\n"
-"PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI DO OKREŚLONYCH ZASTOSOWAŃ. W celu\n"
-"uzyskania bliższych informacji należy zapoznać się z Powszechną Licencją\n"
-"Publiczną GNU.\n"
-"\n"
-"Z pewnością wraz z niniejszym programem dostarczono także egzemplarz\n"
-"Powszechnej Licencji Publicznej GNU (GNU General Public License); jeśli nie\n"
-"— proszę napisać do Free Software Foundation, Inc., 59 Temple Place, Suite\n"
-"330, Boston, MA  02111-1307, USA.\n"
 
 #, c-format
 msgid "Transferring %u file of %u..."
@@ -567,8 +500,13 @@ msgstr "Nie można połączyć z oVirt"
 msgid "Unable to determine image format for file '%s'"
 msgstr "Nie można ustalić formatu obrazu dla pliku „%s”"
 
+msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr "Nieznane"
+msgstr ""
+
+msgctxt "Unknown name"
+msgid "Unknown"
+msgstr ""
 
 msgid "Unspecified error"
 msgstr "Nieokreślony błąd"
@@ -677,9 +615,6 @@ msgstr "Wyłą_cz"
 msgid "_Preferences"
 msgstr "_Preferencje"
 
-msgid "_PrintScreen"
-msgstr "_Print Screen"
-
 msgid "_Quit"
 msgstr "Za_kończ"
 
@@ -704,11 +639,8 @@ msgstr "_Widok"
 msgid "_Zoom"
 msgstr "P_owiększenie"
 
-msgid "failed to parse ovirt uri"
-msgstr "przetworzenie adresu URI oVirt się nie powiodło"
-
-msgid "gitlab.com/virt-viewer/virt-viewer"
-msgstr "gitlab.com/virt-viewer/virt-viewer"
+msgid "failed to parse oVirt URI"
+msgstr ""
 
 msgid "label"
 msgstr "etykieta"
@@ -729,8 +661,143 @@ msgstr "Maszyna wirtualna oVirt %s ma nieznany typ ekranu: %u"
 msgid "oVirt VM %s is not running"
 msgstr "Maszyna wirtualna oVirt %s nie jest uruchomiona"
 
-msgid "only SSH or unix socket connection supported."
-msgstr "obsługiwane są tylko połączenia gniazd SSH lub UNIX."
+msgid "only SSH or UNIX socket connection supported."
+msgstr ""
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "%s\n"
+#~ msgstr "%s\n"
+
+#~ msgid "%s%s%s - %s"
+#~ msgstr "%s%s%s — %s"
+
+#~ msgid "(Press %s to release pointer)"
+#~ msgstr "(Naciśnięcie klawiszy %s uwalnia wskaźnik)"
+
+#~ msgid "Address is too long for unix socket_path: %s"
+#~ msgstr "Adres jest za długi dla ścieżki gniazda uniksowego: %s"
+
+#~ msgid "An error caused the following file transfers to fail:"
+#~ msgstr "Błąd spowodował niepowodzenie przesłania tych plików:"
+
+#~ msgid "Connect to ssh failed."
+#~ msgstr "Połączenie z usługą ssh się nie powiodło."
+
+#~ msgid "Connecting to unix socket failed: %s"
+#~ msgstr "Połączenie z gniazdem uniksowym się nie powiodło: %s"
+
+#~ msgid "Creating unix socket failed: %s"
+#~ msgstr "Utworzenie gniazda uniksowego się nie powiodło: %s"
+
+#~ msgid "Ctrl+Alt"
+#~ msgstr "Ctrl+Alt"
+
+#~ msgid "Ctrl+Alt+F11"
+#~ msgstr "Ctrl+Alt+F11"
+
+#~ msgid "Ctrl+Alt+F12"
+#~ msgstr "Ctrl+Alt+F12"
+
+#~ msgid "Ctrl+Alt+F1_0"
+#~ msgstr "Ctrl+Alt+F1_0"
+
+#~ msgid "Ctrl+Alt+F_1"
+#~ msgstr "Ctrl+Alt+F_1"
+
+#~ msgid "Ctrl+Alt+F_2"
+#~ msgstr "Ctrl+Alt+F_2"
+
+#~ msgid "Ctrl+Alt+F_3"
+#~ msgstr "Ctrl+Alt+F_3"
+
+#~ msgid "Ctrl+Alt+F_4"
+#~ msgstr "Ctrl+Alt+F_4"
+
+#~ msgid "Ctrl+Alt+F_5"
+#~ msgstr "Ctrl+Alt+F_5"
+
+#~ msgid "Ctrl+Alt+F_6"
+#~ msgstr "Ctrl+Alt+F_6"
+
+#~ msgid "Ctrl+Alt+F_7"
+#~ msgstr "Ctrl+Alt+F_7"
+
+#~ msgid "Ctrl+Alt+F_8"
+#~ msgstr "Ctrl+Alt+F_8"
+
+#~ msgid "Ctrl+Alt+F_9"
+#~ msgstr "Ctrl+Alt+F_9"
+
+#~ msgid "Ctrl+Alt+_Backspace"
+#~ msgstr "Ctrl+Alt+_Backspace"
+
+#~ msgid "Ctrl+Alt+_Del"
+#~ msgstr "Ctrl+Alt+_Del"
+
+#~ msgid "Failed to fetch CD names"
+#~ msgstr "Pobranie nazw płyt CD się nie powiodło"
+
+#~ msgid "Select the virtual machine only by its id"
+#~ msgstr "Wybierz maszynę wirtualną tylko przez jej identyfikator"
+
+#~ msgid "Select the virtual machine only by its uuid"
+#~ msgstr "Wybierz maszynę wirtualną tylko przez jej UUID"
+
+#~ msgid ""
+#~ "This program is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "This program is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  "
+#~ "USA\n"
+#~ msgstr ""
+#~ "Niniejszy program jest wolnym oprogramowaniem; można go rozprowadzać "
+#~ "dalej\n"
+#~ "i/lub modyfikować na warunkach Powszechnej Licencji Publicznej GNU, "
+#~ "wydanej\n"
+#~ "przez Fundację Wolnego Oprogramowania (Free Software Foundation) — "
+#~ "według\n"
+#~ "wersji drugiej tej Licencji lub którejś z późniejszych wersji.\n"
+#~ "\n"
+#~ "Niniejszy program rozpowszechniany jest z nadzieją, iż będzie on "
+#~ "użyteczny\n"
+#~ "— jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet domyślnej gwarancji\n"
+#~ "PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI DO OKREŚLONYCH ZASTOSOWAŃ. "
+#~ "W celu\n"
+#~ "uzyskania bliższych informacji należy zapoznać się z Powszechną Licencją\n"
+#~ "Publiczną GNU.\n"
+#~ "\n"
+#~ "Z pewnością wraz z niniejszym programem dostarczono także egzemplarz\n"
+#~ "Powszechnej Licencji Publicznej GNU (GNU General Public License); jeśli "
+#~ "nie\n"
+#~ "— proszę napisać do Free Software Foundation, Inc., 59 Temple Place, "
+#~ "Suite\n"
+#~ "330, Boston, MA  02111-1307, USA.\n"
+
+#~ msgid "Unknown"
+#~ msgstr "Nieznane"
+
+#~ msgid "_PrintScreen"
+#~ msgstr "_Print Screen"
+
+#~ msgid "failed to parse ovirt uri"
+#~ msgstr "przetworzenie adresu URI oVirt się nie powiodło"
+
+#~ msgid "gitlab.com/virt-viewer/virt-viewer"
+#~ msgstr "gitlab.com/virt-viewer/virt-viewer"
+
+#~ msgid "only SSH or unix socket connection supported."
+#~ msgstr "obsługiwane są tylko połączenia gniazd SSH lub UNIX."
 
 #~ msgid "virt-manager.org"
 #~ msgstr "virt-manager.org"
