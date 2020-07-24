@@ -823,12 +823,14 @@ choose_vm(GtkWindow *main_window,
     g_return_val_if_fail(vm_name != NULL, NULL);
     free(*vm_name);
 
-    model = gtk_list_store_new(1, G_TYPE_STRING);
+                               /* UI name      , key */
+    model = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_STRING);
 
     vms_running = virConnectListAllDomains(conn, &domains, flags);
     for (i = 0; i < vms_running; i++) {
+        const char *name = virDomainGetName(domains[i]);
         gtk_list_store_append(model, &iter);
-        gtk_list_store_set(model, &iter, 0, virDomainGetName(domains[i]), -1);
+        gtk_list_store_set(model, &iter, 0, name, 1, name, -1);
         virDomainFree(domains[i]);
     }
     free(domains);
