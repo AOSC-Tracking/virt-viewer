@@ -22,7 +22,7 @@ GTK_REQUIRED="3.12"
 GTK_ENCODED_VERSION="GDK_VERSION_3_12"
 
 LIBXML2_REQUIRED="2.6.0"
-LIBVIRT_REQUIRED="0.10.0"
+LIBVIRT_REQUIRED="1.2.8"
 LIBVIRT_GLIB_REQUIRED="0.1.8"
 GTK_VNC_REQUIRED="0.4.0"
 SPICE_GTK_REQUIRED="0.35"
@@ -133,14 +133,6 @@ AS_IF([test "x$with_libvirt" = "xyes"],
       [AC_DEFINE([HAVE_LIBVIRT], 1, [Have libvirt?])]
 )
 AM_CONDITIONAL([HAVE_LIBVIRT], [test "x$with_libvirt" = "xyes"])
-
-old_LIBS=$LIBS
-LIBS=$LIBVIRT_LIBS
-# virDomainOpenGraphicsFD was introduced in libvirt 1.2.8
-AC_CHECK_LIB([virt],
-             [virDomainOpenGraphicsFD],
-             [AC_DEFINE([HAVE_VIR_DOMAIN_OPEN_GRAPHICS_FD], 1, [Have virDomainOpenGraphicsFD?])])
-LIBS=$old_LIBS
 
 PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
 GTK_CFLAGS="$GTK_CFLAGS -DGDK_VERSION_MIN_REQUIRED=$GTK_ENCODED_VERSION \

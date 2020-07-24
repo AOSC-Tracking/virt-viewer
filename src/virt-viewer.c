@@ -676,9 +676,7 @@ virt_viewer_open_connection(VirtViewerApp *self G_GNUC_UNUSED, int *fd)
 {
     VirtViewer *viewer = VIRT_VIEWER(self);
     VirtViewerPrivate *priv = viewer->priv;
-#if defined(HAVE_SOCKETPAIR) || defined(HAVE_VIR_DOMAIN_OPEN_GRAPHICS_FD)
     virErrorPtr err;
-#endif
 #if defined(HAVE_SOCKETPAIR)
     int pair[2];
 #endif
@@ -687,7 +685,6 @@ virt_viewer_open_connection(VirtViewerApp *self G_GNUC_UNUSED, int *fd)
     if (!priv->dom)
         return TRUE;
 
-#ifdef HAVE_VIR_DOMAIN_OPEN_GRAPHICS_FD
     if ((*fd = virDomainOpenGraphicsFD(priv->dom, 0,
                                        VIR_DOMAIN_OPEN_GRAPHICS_SKIPAUTH)) >= 0)
         return TRUE;
@@ -697,7 +694,6 @@ virt_viewer_open_connection(VirtViewerApp *self G_GNUC_UNUSED, int *fd)
         g_debug("Error %s", err->message ? err->message : "Unknown");
         return TRUE;
     }
-#endif
 
 #if defined(HAVE_SOCKETPAIR)
     if (socketpair(PF_UNIX, SOCK_STREAM, 0, pair) < 0)
