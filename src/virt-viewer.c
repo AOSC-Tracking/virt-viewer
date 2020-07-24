@@ -829,9 +829,11 @@ choose_vm(GtkWindow *main_window,
     vms_running = virConnectListAllDomains(conn, &domains, flags);
     for (i = 0; i < vms_running; i++) {
         const char *name = virDomainGetName(domains[i]);
+        char *title = virDomainGetMetadata(domains[i], VIR_DOMAIN_METADATA_TITLE, NULL, 0);
         gtk_list_store_append(model, &iter);
-        gtk_list_store_set(model, &iter, 0, name, 1, name, -1);
+        gtk_list_store_set(model, &iter, 0, title ? title : name, 1, name, -1);
         virDomainFree(domains[i]);
+        free(title);
     }
     free(domains);
 
