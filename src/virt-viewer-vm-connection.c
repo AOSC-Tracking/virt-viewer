@@ -66,6 +66,8 @@ virt_viewer_vm_connection_choose_name_dialog(GtkWindow *main_window,
     }
 
     g_assert(gtk_tree_model_get_n_columns(model) == 3);
+    gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(model),
+                                         0, GTK_SORT_ASCENDING);
 
     vm_connection = virt_viewer_util_load_ui("virt-viewer-vm-connection.ui");
     g_return_val_if_fail(vm_connection != NULL, NULL);
