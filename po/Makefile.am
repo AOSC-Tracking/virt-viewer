@@ -41,7 +41,8 @@ SED_PO_FIXUP_ARGS = \
 	$(NULL)
 
 virt-viewer.pot:
-	$(XGETTEXT) -o $(POTFILE)-t $(XGETTEXT_ARGS) \
+	GETTEXTDATADIR=$(top_srcdir)/data/gettext \
+	  $(XGETTEXT) -o $(POTFILE)-t $(XGETTEXT_ARGS) \
 	  --files-from=$(abs_srcdir)/POTFILES
 	$(SED) $(SED_PO_FIXUP_ARGS) < $(POTFILE)-t > $(POTFILE)
 	rm -f $(POTFILE)-t
