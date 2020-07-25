@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-07-22 23:24+0200\n"
+"POT-Creation-Date: 2020-07-25 06:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,7 +114,7 @@ msgstr ""
 msgid "Attach to the local display using libvirt"
 msgstr ""
 
-#: src/virt-viewer.c:1052
+#: src/virt-viewer.c:1056
 msgid "Authentication failed."
 msgstr ""
 
@@ -136,7 +136,7 @@ msgstr ""
 msgid "Authentication required"
 msgstr ""
 
-#: src/remote-viewer.c:448 src/virt-viewer.c:1105
+#: src/remote-viewer.c:448 src/virt-viewer.c:1109
 msgid "Authentication was cancelled"
 msgstr ""
 
@@ -145,7 +145,7 @@ msgid "Available virtual machines"
 msgstr ""
 
 #: src/resources/ui/remote-viewer-connect.ui:134
-#: src/resources/ui/virt-viewer-vm-connection.ui:38
+#: src/resources/ui/virt-viewer-vm-connection.ui:39
 msgid "C_onnect"
 msgstr ""
 
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Can't connect to channel: %s"
 msgstr ""
 
-#: src/remote-viewer.c:791
+#: src/remote-viewer.c:792
 msgid "Cannot determine the connection type from URI"
 msgstr ""
 
@@ -168,7 +168,7 @@ msgstr ""
 msgid "Cannot determine the host for the guest %s"
 msgstr ""
 
-#: src/virt-viewer.c:924
+#: src/virt-viewer.c:928
 msgid "Cannot get guest state"
 msgstr ""
 
@@ -176,11 +176,11 @@ msgstr ""
 msgid "Change CD"
 msgstr ""
 
-#: src/virt-viewer.c:921
+#: src/virt-viewer.c:925
 msgid "Checking guest domain status"
 msgstr ""
 
-#: src/resources/ui/virt-viewer-vm-connection.ui:7
+#: src/resources/ui/virt-viewer-vm-connection.ui:8
 msgid "Choose a virtual machine"
 msgstr ""
 
@@ -231,7 +231,7 @@ msgid ""
 "Copyright (C) 2007-2014 Red Hat, Inc."
 msgstr ""
 
-#: src/remote-viewer.c:690
+#: src/remote-viewer.c:691
 msgid "Couldn't open oVirt session: "
 msgstr ""
 
@@ -293,15 +293,15 @@ msgstr ""
 msgid "Failed to change CD"
 msgstr ""
 
-#: src/virt-viewer.c:1112
+#: src/virt-viewer.c:1116
 msgid "Failed to connect: "
 msgstr ""
 
-#: src/remote-viewer.c:718
+#: src/remote-viewer.c:719
 msgid "Failed to initiate connection"
 msgstr ""
 
-#: src/remote-viewer.c:764
+#: src/remote-viewer.c:765
 msgid "Failed to read stdin: "
 msgstr ""
 
@@ -309,7 +309,7 @@ msgstr ""
 msgid "File Transfers"
 msgstr ""
 
-#: src/virt-viewer.c:885
+#: src/virt-viewer.c:889
 msgid "Finding guest domain"
 msgstr ""
 
@@ -338,7 +338,7 @@ msgstr ""
 msgid "Guest domain has shutdown"
 msgstr ""
 
-#: src/remote-viewer.c:781
+#: src/remote-viewer.c:782
 #, c-format
 msgid "Invalid file %s: "
 msgstr ""
@@ -365,7 +365,7 @@ msgid "Minimize"
 msgstr ""
 
 #: src/resources/ui/remote-viewer-iso-list.ui:129
-#: src/resources/ui/virt-viewer-vm-connection.ui:72
+#: src/resources/ui/virt-viewer-vm-connection.ui:74
 msgid "Name"
 msgstr ""
 
@@ -377,7 +377,7 @@ msgstr ""
 msgid "No ISO files in domain"
 msgstr ""
 
-#: src/remote-viewer.c:747
+#: src/remote-viewer.c:748
 msgid "No connection was chosen"
 msgstr ""
 
@@ -385,7 +385,7 @@ msgstr ""
 msgid "No running virtual machine found"
 msgstr ""
 
-#: src/virt-viewer-vm-connection.c:93
+#: src/virt-viewer-vm-connection.c:97
 msgid "No virtual machine was chosen"
 msgstr ""
 
@@ -571,7 +571,7 @@ msgstr ""
 msgid "Unable to authenticate with remote desktop server: %s"
 msgstr ""
 
-#: src/virt-viewer.c:1044
+#: src/virt-viewer.c:1048
 #, c-format
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr ""
@@ -581,7 +581,7 @@ msgstr ""
 msgid "Unable to connect to the graphic server %s"
 msgstr ""
 
-#: src/remote-viewer.c:810
+#: src/remote-viewer.c:811
 #, c-format
 msgid "Unable to connect: %s"
 msgstr ""
@@ -632,7 +632,11 @@ msgstr ""
 msgid "Virt Viewer"
 msgstr ""
 
-#: src/virt-viewer.c:856
+#: data/virt-viewer-mime.xml.in:5
+msgid "Virt-Viewer connection file"
+msgstr ""
+
+#: src/virt-viewer.c:860
 #, c-format
 msgid "Virtual machine %s is not running"
 msgstr ""
@@ -650,7 +654,7 @@ msgstr ""
 msgid "Waiting for display %d..."
 msgstr ""
 
-#: src/virt-viewer.c:889
+#: src/virt-viewer.c:893
 msgid "Waiting for guest domain to be created"
 msgstr ""
 
@@ -658,11 +662,11 @@ msgstr ""
 msgid "Waiting for guest domain to re-start"
 msgstr ""
 
-#: src/virt-viewer.c:930
+#: src/virt-viewer.c:934
 msgid "Waiting for guest domain to start"
 msgstr ""
 
-#: src/virt-viewer.c:881
+#: src/virt-viewer.c:885
 msgid "Waiting for libvirt to start"
 msgstr ""
 
@@ -683,7 +687,7 @@ msgstr ""
 msgid "Zoom level of window, in percentage"
 msgstr ""
 
-#: src/virt-viewer.c:1045
+#: src/virt-viewer.c:1049
 msgid "[none]"
 msgstr ""
 
@@ -693,7 +697,7 @@ msgstr ""
 
 #: src/resources/ui/remote-viewer-connect.ui:120
 #: src/resources/ui/virt-viewer-auth.ui:27 src/virt-viewer-window.c:1085
-#: src/resources/ui/virt-viewer-vm-connection.ui:24
+#: src/resources/ui/virt-viewer-vm-connection.ui:25
 #: src/resources/ui/virt-viewer-file-transfer-dialog.ui:28
 msgid "_Cancel"
 msgstr ""
