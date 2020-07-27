@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-07-22 23:24+0200\n"
+"POT-Creation-Date: 2020-07-25 06:54+0200\n"
 "PO-Revision-Date: 2020-07-20 12:29+0000\n"
 "Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
 "Language-Team: Dutch <https://translate.fedoraproject.org/projects/virt-"
@@ -524,6 +524,9 @@ msgstr "VNC biedt geen GUID aan"
 
 msgid "Virt Viewer"
 msgstr "Virt viewer"
+
+msgid "Virt-Viewer connection file"
+msgstr ""
 
 #, c-format
 msgid "Virtual machine %s is not running"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-07-22 23:24+0200\n"
+"POT-Creation-Date: 2020-07-25 06:54+0200\n"
 "PO-Revision-Date: 2018-02-26 12:49+0000\n"
 "Last-Translator: Hajime Taira <htaira@fedoraproject.org>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/virt-viewer/"
@@ -525,6 +525,9 @@ msgstr "VNC が GUID を提供していません"
 
 msgid "Virt Viewer"
 msgstr "仮想マシンビューアー"
+
+msgid "Virt-Viewer connection file"
+msgstr ""
 
 #, c-format
 msgid "Virtual machine %s is not running"

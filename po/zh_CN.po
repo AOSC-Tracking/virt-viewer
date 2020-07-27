@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-07-22 23:24+0200\n"
+"POT-Creation-Date: 2020-07-25 06:54+0200\n"
 "PO-Revision-Date: 2016-02-23 12:28+0000\n"
 "Last-Translator: Leah Liu <lliu@redhat.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/virt-"
@@ -503,6 +503,9 @@ msgstr "VNC 不提供 GUID"
 
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
+
+msgid "Virt-Viewer connection file"
+msgstr ""
 
 #, c-format
 msgid "Virtual machine %s is not running"
