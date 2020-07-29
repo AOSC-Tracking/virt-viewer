@@ -1,22 +1,23 @@
 # Zdenek <chmelarz@gmail.com>, 2016. #zanata
 # Thomas Rohlik <rohrto@gmail.com>, 2017. #zanata
 # Zdenek <chmelarz@gmail.com>, 2017. #zanata
-# Pavel Borecki <pavel.borecki@gmail.com>, 2018. #zanata
-# Pavel Borecki <pavel.borecki@gmail.com>, 2019. #zanata
+# Pavel Borecki <pavel.borecki@gmail.com>, 2018. #zanata, 2020.
+# Pavel Borecki <pavel.borecki@gmail.com>, 2019. #zanata, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
 "POT-Creation-Date: 2020-07-25 06:54+0200\n"
-"PO-Revision-Date: 2019-07-05 06:57+0000\n"
+"PO-Revision-Date: 2020-07-29 13:29+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech\n"
+"Language-Team: Czech <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.1.1\n"
 
 msgid ""
 "\n"
@@ -35,6 +36,7 @@ msgid ""
 msgstr ""
 "\n"
 "Pro „%s“ nebylo zadáno žádné ID|UUID|NAZEV-DOMENY\n"
+"\n"
 
 #, c-format
 msgid ""
@@ -52,7 +54,7 @@ msgstr ""
 #.
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s – %s"
 
 #, c-format
 msgid "%s version %s"
@@ -64,7 +66,7 @@ msgstr "%s verze %s"
 #.
 #, c-format
 msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
+msgstr "(Pro uvolnění kurzoru stiskněte %s) %s – %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -72,7 +74,7 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgstr "(Pro uvolnění kurzoru stiskněte %s) – %s"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Načítání…</b>"
@@ -91,7 +93,7 @@ msgstr "Přístup ke vzdáleným plochám"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Adresa je pro UNIX socket_path příliš dlouhá: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -172,7 +174,7 @@ msgid "Close"
 msgstr "Zavřít"
 
 msgid "Connect to SSH failed."
-msgstr ""
+msgstr "Připojení k SSH se nezdařilo."
 
 msgid "Connect to channel unsupported."
 msgstr "Připojení ke kanálu není podporováno."
@@ -185,7 +187,7 @@ msgstr "Připojeno ke grafickému serveru"
 
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "Připojování k unixovému soketu se nezdařilo: %s"
 
 msgid "Connecting to graphic server"
 msgstr "Připojování ke grafickému serveru"
@@ -207,14 +209,14 @@ msgstr ""
 "Autorská práva © 2007-2014 Red Hat, Inc."
 
 msgid "Couldn't open oVirt session: "
-msgstr "Nedaří se otevřít oVirt relaci:"
+msgstr "Nedaří se otevřít oVirt relaci: "
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Vytvoření k unixovému soketu se nezdařilo: %s"
 
 msgid "Ctrl_L+Alt_L"
-msgstr ""
+msgstr "Ctrl_L+Alt_L"
 
 msgid "Customise hotkeys"
 msgstr "Přizpůsobit klávesové zkratky"
@@ -255,13 +257,13 @@ msgid "Failed to change CD"
 msgstr "Nepodařilo se vyměnit CD"
 
 msgid "Failed to connect: "
-msgstr "Nepodařilo se připojit:"
+msgstr "Nepodařilo se připojit: "
 
 msgid "Failed to initiate connection"
 msgstr "Nepodařilo se navázat spojení"
 
 msgid "Failed to read stdin: "
-msgstr "Nepodařilo se číst ze standardního vstupu:"
+msgstr "Nepodařilo se číst ze standardního vstupu: "
 
 msgid "File Transfers"
 msgstr "Přenosy souborů"
@@ -290,7 +292,7 @@ msgstr "Doména hosta se vypíná"
 
 #, c-format
 msgid "Invalid file %s: "
-msgstr "Neplatný soubor %s:"
+msgstr "Neplatný soubor %s: "
 
 #, c-format
 msgid "Invalid kiosk-quit argument: %s"
@@ -310,7 +312,7 @@ msgid "Loading..."
 msgstr "Načítání…"
 
 msgid "Minimize"
-msgstr ""
+msgstr "Minimalizovat"
 
 # auto translated by TM merge from project: FreeIPA, version: ipa-4-5, DocId:
 # po/ipa
@@ -323,7 +325,7 @@ msgid "Name:"
 msgstr "Název:"
 
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "Ve virt. doméně není vložen žádný ISO soubor"
 
 msgid "No connection was chosen"
 msgstr "Nebylo zvoleno žádné spojení"
@@ -345,7 +347,7 @@ msgid "Password:"
 msgstr "Heslo:"
 
 msgid "Please add an extension to the file name"
-msgstr ""
+msgstr "Prosím přidejte k názvu souboru příponu"
 
 # auto translated by TM merge from project: libreport, version: rhel6, DocId:
 # libreport
@@ -381,6 +383,8 @@ msgstr "Uvolnit kurzor"
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
+"Formát přemapování klávesy key=keymod+key např. "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "Prohlížeč vzdálených"
@@ -412,7 +416,7 @@ msgstr ""
 "spuštěním „%s --help“\n"
 
 msgid "Save screenshot"
-msgstr ""
+msgstr "Uložit snímek obrazovky"
 
 msgid "Screenshot.png"
 msgstr "snimek_obrazovky.png"
@@ -424,10 +428,12 @@ msgid "Select USB devices for redirection"
 msgstr "Vyberte USB zařízení, které chcete přesměrovat"
 
 msgid "Select the virtual machine only by its ID"
-msgstr ""
+msgstr "Vybrat virtuální stroj pouze podle jeho identifikátoru"
 
 msgid "Select the virtual machine only by its UUID"
 msgstr ""
+"Vybrat virtuální stroj pouze pomocí jeho nikde se neopakujícího "
+"identifikátoru (UUID)"
 
 msgid "Select the virtual machine only by its name"
 msgstr "Vybrat virtuální stroj pouze podle jeho názvu"
@@ -449,7 +455,7 @@ msgid "Set window title"
 msgstr "Nastavit titulek okna"
 
 msgid "Share clipboard"
-msgstr ""
+msgstr "Sdílet schránku"
 
 msgid "Share folder"
 msgstr "Sdílet složku"
@@ -517,11 +523,11 @@ msgstr "U souboru „%s“ se nedaří zjistit formát obrazu"
 
 msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr ""
+msgstr "Neznámé"
 
 msgctxt "Unknown name"
 msgid "Unknown"
-msgstr ""
+msgstr "Neznámé"
 
 msgid "Unspecified error"
 msgstr "Neurčená chyba"
@@ -546,7 +552,7 @@ msgid "Virt Viewer"
 msgstr "Virt Viewer"
 
 msgid "Virt-Viewer connection file"
-msgstr ""
+msgstr "Soubor s připojením pro Virt-Viewer"
 
 #, c-format
 msgid "Virtual machine %s is not running"
@@ -676,7 +682,7 @@ msgid "_Zoom"
 msgstr "_Přiblížení"
 
 msgid "failed to parse oVirt URI"
-msgstr ""
+msgstr "nepodařilo se zpracovat oVirt URI"
 
 # auto translated by TM merge from project: blivet-gui, version: master,
 # DocId: po/blivet-gui
@@ -700,7 +706,7 @@ msgid "oVirt VM %s is not running"
 msgstr "oVirt virt. stroj %s není spuštěný"
 
 msgid "only SSH or UNIX socket connection supported."
-msgstr ""
+msgstr "je podporováno připojení pouze přes SSH nebo k unixovému soketu."
 
 #~ msgid " "
 #~ msgstr " "
