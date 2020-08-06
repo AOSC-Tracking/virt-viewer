@@ -363,6 +363,12 @@ virt_viewer_display_spice_set_desktop(VirtViewerDisplay *display,
 {
     VirtViewerDisplaySpicePrivate *priv;
     guint desktopWidth, desktopHeight;
+    gint scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(display));
+
+    /* parameter width and height are guest monitor physical pixel sizes */
+    /* convert to application pixel sizes */
+    width /= scale_factor;
+    height /= scale_factor;
 
     g_return_if_fail(VIRT_VIEWER_IS_DISPLAY_SPICE(display));
 

@@ -721,6 +721,14 @@ void virt_viewer_display_get_preferred_monitor_geometry(VirtViewerDisplay* self,
         preferred->width = round(preferred->width * NORMAL_ZOOM_LEVEL / (double) zoom);
         preferred->height = round(preferred->height * NORMAL_ZOOM_LEVEL / (double) zoom);
     }
+
+    /* calculate device pixel size on HiDPI screens */
+    gint scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(self));
+
+    preferred->x *= scale_factor;
+    preferred->y *= scale_factor;
+    preferred->width *= scale_factor;
+    preferred->height *= scale_factor;
 }
 
 gint
