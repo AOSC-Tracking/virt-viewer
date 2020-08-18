@@ -47,7 +47,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
             screen \
             strace \
             sudo \
-            vim && \
+            vim \
+            xz-utils && \
     apt-get autoremove -y && \
     apt-get autoclean -y && \
     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \

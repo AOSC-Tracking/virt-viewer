@@ -1,6 +1,6 @@
 FROM fedora:rawhide
 
-RUN dnf update -y --nogpgcheck fedora-gpg-keys && \
+RUN dnf update -y --nogpgcheck fedora-gpg-keys fedora-release-container && \
     dnf update -y && \
     dnf install -y \
         augeas \
@@ -11,6 +11,7 @@ RUN dnf update -y --nogpgcheck fedora-gpg-keys && \
         ca-certificates \
         ccache \
         chrony \
+        clang \
         cppi \
         dnsmasq \
         dwarves \
@@ -61,6 +62,7 @@ RUN dnf update -y --nogpgcheck fedora-gpg-keys && \
         sudo \
         vala \
         vim \
+        xz \
         zfs-fuse && \
     dnf autoremove -y && \
     dnf clean all -y && \
@@ -103,6 +105,3 @@ ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
 ENV ABI "i686-w64-mingw32"
 ENV CONFIGURE_OPTS "--host=i686-w64-mingw32"
 ENV MESON_OPTS "--cross-file=/usr/share/mingw/toolchain-mingw32.meson"
-
-# Hack until https://bugzilla.redhat.com/show_bug.cgi?id=1856446 hits rawhide
-RUN perl -i -p -e "s,\[binaries\],[binaries]\nlibgcrypt-config = '/usr/i686-w64-mingw32/sys-root/mingw/bin/libgcrypt-config'," /usr/share/mingw/toolchain-mingw32.meson

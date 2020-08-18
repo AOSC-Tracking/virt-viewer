@@ -46,7 +46,8 @@ RUN dnf update -y && \
         spice-gtk3-devel \
         strace \
         sudo \
-        vim && \
+        vim \
+        xz && \
     dnf autoremove -y && \
     dnf clean all -y && \
     mkdir -p /usr/libexec/ccache-wrappers && \

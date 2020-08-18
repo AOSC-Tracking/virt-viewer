@@ -14,7 +14,7 @@ then
     exit 1
 fi
 
-HOSTS=$($LCITOOL hosts | grep -v freebsd | sed -e 's/libvirt-//')
+HOSTS=$($LCITOOL hosts | grep -v -E '(freebsd|macos)' | sed -e 's/libvirt-//')
 
 for host in $HOSTS
 do
