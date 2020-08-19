@@ -4,23 +4,23 @@
 #
 # Translators:
 # denka <dennis@dennis.se>, 2014
-# Göran Uddeborg <goeran@uddeborg.se>, 2013, 2014, 2015, 2016, 2018, 2019
+# Göran Uddeborg <goeran@uddeborg.se>, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # Klap Hest <jojje3000@hotmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
 "POT-Creation-Date: 2020-07-25 06:54+0200\n"
-"PO-Revision-Date: 2019-09-29 03:45+0000\n"
+"PO-Revision-Date: 2020-08-19 20:06+0000\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
-"Language-Team: Swedish (http://www.transifex.com/projects/p/virt-viewer/"
-"language/sv/)\n"
+"Language-Team: Swedish <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.1.1\n"
 
 msgid ""
 "\n"
@@ -57,7 +57,7 @@ msgstr ""
 #.
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s — %s"
 
 #, c-format
 msgid "%s version %s"
@@ -69,7 +69,7 @@ msgstr "%s version %s"
 #.
 #, c-format
 msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
+msgstr "(Tryck %s för att släppa markören) %s — %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -77,7 +77,7 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgstr "(Tryck %s för att släppa markören) %s"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Laddar…</b>"
@@ -96,7 +96,7 @@ msgstr "Gå till fjärrskrivbord"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Adressen är för lång för en UNIX-uttagssökväg: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -175,7 +175,7 @@ msgid "Close"
 msgstr "Stäng"
 
 msgid "Connect to SSH failed."
-msgstr ""
+msgstr "Att ansluta till SSH misslyckades."
 
 msgid "Connect to channel unsupported."
 msgstr "Anslutning till kanalen stödjs inte."
@@ -188,7 +188,7 @@ msgstr "Ansluten till grafikserver"
 
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "Att ansluta till ett UNIX-uttag misslyckades: %s"
 
 msgid "Connecting to graphic server"
 msgstr "Anslutning till grafikserver"
@@ -214,10 +214,10 @@ msgstr "Kunde inte öppna oVirt-sessionen:"
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Att skapa et UNIX-uttag misslyckades: %s"
 
 msgid "Ctrl_L+Alt_L"
-msgstr ""
+msgstr "Ctrl_L+Alt_L"
 
 msgid "Customise hotkeys"
 msgstr "Anpassa snabbtangenter"
@@ -308,7 +308,7 @@ msgid "Loading..."
 msgstr "Laddar…"
 
 msgid "Minimize"
-msgstr ""
+msgstr "Minimera"
 
 msgid "Name"
 msgstr "Namn"
@@ -317,7 +317,7 @@ msgid "Name:"
 msgstr "Namn:"
 
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "Inga ISO-filer i domänen"
 
 msgid "No connection was chosen"
 msgstr "Ingen anslutning valdes"
@@ -336,7 +336,7 @@ msgid "Password:"
 msgstr "Lösenord:"
 
 msgid "Please add an extension to the file name"
-msgstr ""
+msgstr "Lägg till en ändelse till filnamnet"
 
 msgid "Preferences"
 msgstr "Inställningar"
@@ -368,6 +368,8 @@ msgstr "Släpp markören"
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
+"Bind om tangenter format tangent=tangentmod+tangent t.ex. "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "Fjärrvisare"
@@ -397,7 +399,7 @@ msgstr ""
 "Kör ”%s --help” för att se hela listan av tillgängliga kommandoradsflaggor\n"
 
 msgid "Save screenshot"
-msgstr ""
+msgstr "Spara skärmbild"
 
 msgid "Screenshot.png"
 msgstr "Skärmbild.png"
@@ -409,10 +411,10 @@ msgid "Select USB devices for redirection"
 msgstr "Välj USB-enheter att omdirigera"
 
 msgid "Select the virtual machine only by its ID"
-msgstr ""
+msgstr "Välj den virtuella maskinen endast via dess ID"
 
 msgid "Select the virtual machine only by its UUID"
-msgstr ""
+msgstr "Välj den virtuella maskinen endast via dess UUID"
 
 msgid "Select the virtual machine only by its name"
 msgstr "Välj den virtuella maskinen endast vi dess namn"
@@ -430,7 +432,7 @@ msgid "Set window title"
 msgstr "Ange fönstertitel"
 
 msgid "Share clipboard"
-msgstr ""
+msgstr "Dela urklipp"
 
 msgid "Share folder"
 msgstr "Dela mapp"
@@ -495,11 +497,11 @@ msgstr "Kan inte avgöra avbildsformatet för filen ”%s”"
 
 msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr ""
+msgstr "Okänd"
 
 msgctxt "Unknown name"
 msgid "Unknown"
-msgstr ""
+msgstr "Okänd"
 
 msgid "Unspecified error"
 msgstr "Ospecificerat fel"
@@ -522,7 +524,7 @@ msgid "Virt Viewer"
 msgstr "Virt Viewer"
 
 msgid "Virt-Viewer connection file"
-msgstr ""
+msgstr "Virt-Viewers anslutningsfil"
 
 #, c-format
 msgid "Virtual machine %s is not running"
@@ -636,7 +638,7 @@ msgid "_Zoom"
 msgstr "_Zoom"
 
 msgid "failed to parse oVirt URI"
-msgstr ""
+msgstr "kunde inte analysera oVirt-URI"
 
 msgid "label"
 msgstr "etikett"
@@ -658,7 +660,7 @@ msgid "oVirt VM %s is not running"
 msgstr "oVirt-VM %s kör inte"
 
 msgid "only SSH or UNIX socket connection supported."
-msgstr ""
+msgstr "endast SSH- eller UNIX-uttagsförbindelser stödjs."
 
 #~ msgid " "
 #~ msgstr " "
