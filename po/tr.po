@@ -4,27 +4,31 @@
 #
 # Translators:
 # Necdet Yücel <necdetyucel@gmail.com>, 2012
+# Oğuz Ersen <oguzersen@protonmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
 "POT-Creation-Date: 2020-07-25 06:54+0200\n"
-"PO-Revision-Date: 2015-02-20 08:11+0000\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language-Team: Turkish (http://www.transifex.com/projects/p/virt-viewer/"
-"language/tr/)\n"
+"PO-Revision-Date: 2020-08-06 09:29+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"X-Generator: Weblate 4.1.1\n"
 
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
 "\n"
 msgstr ""
+"\n"
+"Hata: birden fazla URI işlenemiyor\n"
+"\n"
 
 #, c-format
 msgid ""
@@ -32,6 +36,9 @@ msgid ""
 "No ID|UUID|DOMAIN-NAME was specified for '%s'\n"
 "\n"
 msgstr ""
+"\n"
+"'%s' için KİMLİK|UUID|ETKİ-ALANI-ADI belirtilmedi\n"
+"\n"
 
 #, c-format
 msgid ""
@@ -39,6 +46,9 @@ msgid ""
 "Usage: %s [OPTIONS] [ID|UUID|DOMAIN-NAME]\n"
 "\n"
 msgstr ""
+"\n"
+"Kullanım: %s [SEÇENEKLER] [KİMLİK|UUID|ETKİ-ALANI-ADI]\n"
+"\n"
 
 #. translators:
 #. * This is "<subtitle> - <appname>"
@@ -46,11 +56,11 @@ msgstr ""
 #.
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #, c-format
 msgid "%s version %s"
-msgstr ""
+msgstr "%s sürüm %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> <subtitle> - <appname>"
@@ -58,7 +68,7 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
+msgstr "(İşaretçiyi serbest bırakmak için %s tuşuna basın) %s - %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -66,42 +76,45 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgstr "(İşaretçiyi serbest bırakmak için %s tuşuna basın) %s"
 
 msgid "<b>Loading...</b>"
-msgstr ""
+msgstr "<b>Yükleniyor...</b>"
 
 msgid "<never|on-disconnect>"
-msgstr ""
+msgstr "<asla|bağlantı-kesildiğinde>"
 
 msgid "A remote desktop client built with GTK-VNC, SPICE-GTK and libvirt"
 msgstr ""
+"GTK-VNC, SPICE-GTK ve libvirt ile oluşturulmuş bir uzak masaüstü istemcisi"
 
 msgid "About Virt-Viewer"
-msgstr ""
+msgstr "Virt-Viewer hakkında"
 
 msgid "Access remote desktops"
-msgstr ""
+msgstr "Uzak masaüstlerine erişin"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Adres UNIX socket_path için çok uzun: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
-msgstr ""
+msgstr "Bu bağlantıyı kurmak için en az %s sürüm %s gereklidir"
 
 #, c-format
 msgid ""
 "At least %s version %s is required to setup this connection, see %s for "
 "details"
 msgstr ""
+"Bu bağlantıyı kurmak için en az %s sürüm %s gereklidir, ayrıntılar için %s "
+"sayfasına bakın"
 
 msgid "Attach to the local display using libvirt"
-msgstr ""
+msgstr "Libvirt kullanarak yerel ekrana bağlanın"
 
 msgid "Authentication failed."
-msgstr ""
+msgstr "Kimlik doğrulama başarısız oldu."
 
 #, c-format
 msgid ""
@@ -110,247 +123,256 @@ msgid ""
 "<b>%s</b>\n"
 "\n"
 msgstr ""
+"%s bağlantısı için kimlik doğrulama gerekli:\n"
+"\n"
+"<b>%s</b>\n"
+"\n"
 
 #, c-format
 msgid "Authentication is required for the %s connection:\n"
-msgstr ""
+msgstr "%s bağlantısı için kimlik doğrulama gerekli:\n"
 
 msgid "Authentication required"
 msgstr "Kimlik Doğrulama gerekli"
 
 msgid "Authentication was cancelled"
-msgstr ""
+msgstr "Kimlik doğrulama iptal edildi"
 
 msgid "Available virtual machines"
-msgstr ""
+msgstr "Kullanılabilir sanal makineler"
 
 msgid "C_onnect"
-msgstr ""
+msgstr "_Bağlan"
 
 #, c-format
 msgid "Can't connect to channel: %s"
-msgstr ""
+msgstr "Kanala bağlanamıyor: %s"
 
 msgid "Cannot determine the connection type from URI"
-msgstr ""
+msgstr "URI'den bağlantı türü belirlenemiyor"
 
 #, c-format
 msgid "Cannot determine the graphic type for the guest %s"
-msgstr ""
+msgstr "%s konuğu için grafik türü belirlenemiyor"
 
 #, c-format
 msgid "Cannot determine the host for the guest %s"
-msgstr ""
+msgstr "%s konuğu için ana makine belirlenemiyor"
 
 msgid "Cannot get guest state"
-msgstr ""
+msgstr "Konuk durumu alınamıyor"
 
 msgid "Change CD"
-msgstr ""
+msgstr "CD değiştir"
 
 msgid "Checking guest domain status"
-msgstr ""
+msgstr "Konuk etki alanı durumu denetleniyor"
 
 msgid "Choose a virtual machine"
-msgstr ""
+msgstr "Bir sanal makine seçin"
 
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 msgid "Connect to SSH failed."
-msgstr ""
+msgstr "SSH'ye bağlanamadı."
 
 msgid "Connect to channel unsupported."
-msgstr ""
+msgstr "Kanala bağlanma desteklenmiyor."
 
 msgid "Connect to hypervisor"
-msgstr ""
+msgstr "Hipervizöre bağlan"
 
 msgid "Connected to graphic server"
 msgstr "Grafik sunucuya bağlandı"
 
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "UNIX soketine bağlanamadı: %s"
 
 msgid "Connecting to graphic server"
 msgstr "Grafik sunucuya bağlanıyor"
 
 msgid "Connection _Address"
-msgstr ""
+msgstr "Bağlantı _Adresi"
 
 msgid "Connection details"
-msgstr ""
+msgstr "Bağlantı ayrıntıları"
 
 msgid "Console support is compiled out!"
-msgstr ""
+msgstr "Konsol desteği derlenmedi!"
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 "Copyright (C) 2007-2014 Red Hat, Inc."
 msgstr ""
+"Telif Hakkı (C) 2007-2012 Daniel P. Berrange\n"
+"Telif Hakkı (C) 2007-2014 Red Hat, Inc."
 
 msgid "Couldn't open oVirt session: "
-msgstr ""
+msgstr "oVirt oturumu açılamadı: "
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "UNIX soketi oluşturulamadı: %s"
 
 msgid "Ctrl_L+Alt_L"
-msgstr ""
+msgstr "Ctrl_L+Alt_L"
 
 msgid "Customise hotkeys"
-msgstr ""
+msgstr "Kısayol tuşlarını özelleştir"
 
 msgid "Direct connection with no automatic tunnels"
-msgstr ""
+msgstr "Otomatik tünel olmadan doğrudan bağlantı"
 
 msgid "Disconnect"
 msgstr "Bağlantıyı Kes"
 
 #, c-format
 msgid "Display _%d"
-msgstr ""
+msgstr "Ekran _%d"
 
 msgid "Display can only be attached through libvirt with --attach"
-msgstr ""
+msgstr "Ekran sadece --atttach seçeneği ile libvirt yoluyla bağlanılabilir"
 
 msgid "Display debugging information"
-msgstr "Hata ayıklama bilgisini görüntüle"
+msgstr "Hata ayıklama bilgilerini görüntüle"
 
 msgid "Display verbose information"
-msgstr ""
+msgstr "Ayrıntılı bilgileri görüntüle"
 
 msgid "Display version information"
-msgstr "Sürüm bilgisini göster"
+msgstr "Sürüm bilgilerini görüntüle"
 
 msgid "Do not ask me again"
-msgstr ""
+msgstr "Tekrar sorma"
 
 msgid "Do you want to close the session?"
-msgstr ""
+msgstr "Oturumu kapatmak istiyor musunuz?"
 
 msgid "Enable kiosk mode"
-msgstr ""
+msgstr "Kiosk modunu etkinleştir"
 
 msgid "Failed to change CD"
-msgstr ""
+msgstr "CD değiştirilemedi"
 
 msgid "Failed to connect: "
-msgstr ""
+msgstr "Bağlanamadı: "
 
 msgid "Failed to initiate connection"
-msgstr ""
+msgstr "Bağlantı başlatılamadı"
 
 msgid "Failed to read stdin: "
-msgstr ""
+msgstr "Standart giriş okunamadı: "
 
 msgid "File Transfers"
-msgstr ""
+msgstr "Dosya Aktarımları"
 
 msgid "Finding guest domain"
-msgstr ""
+msgstr "Konuk etki alanı bulma"
 
 msgid "Folder sharing"
-msgstr ""
+msgstr "Klasör paylaşımı"
 
 msgid "For example, spice://foo.example.org:5900"
-msgstr ""
+msgstr "Örneğin, spice://foo.example.org:5900"
 
 msgid "GUID:"
-msgstr ""
+msgstr "GUID:"
 
 #, c-format
 msgid "Guest '%s' is not reachable"
-msgstr ""
+msgstr "Konuk '%s' ulaşılabilir değil"
 
 msgid "Guest Details"
-msgstr ""
+msgstr "Konuk Ayrıntıları"
 
 msgid "Guest domain has shutdown"
-msgstr ""
+msgstr "Konuk etki alanı kapatıldı"
 
 #, c-format
 msgid "Invalid file %s: "
-msgstr ""
+msgstr "Geçersiz dosya %s: "
 
 #, c-format
 msgid "Invalid kiosk-quit argument: %s"
-msgstr ""
+msgstr "Geçersiz kiosk-quit argümanı: %s"
 
 msgid "Invalid password"
-msgstr ""
+msgstr "Geçersiz parola"
 
 msgid "Leave fullscreen"
 msgstr "Tam ekrandan ayrıl"
 
 msgid "Loading..."
-msgstr ""
+msgstr "Yükleniyor..."
 
 msgid "Minimize"
-msgstr ""
+msgstr "Küçült"
 
 msgid "Name"
-msgstr ""
+msgstr "Ad"
 
 msgid "Name:"
-msgstr ""
+msgstr "Ad:"
 
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "Etki alanında ISO dosyası yok"
 
 msgid "No connection was chosen"
-msgstr ""
+msgstr "Bağlantı seçilmedi"
 
 msgid "No running virtual machine found"
-msgstr ""
+msgstr "Çalışan sanal makine bulunamadı"
 
 msgid "No virtual machine was chosen"
-msgstr ""
+msgstr "Sanal makine seçilmedi"
 
 msgid "Open in full screen mode (adjusts guest resolution to fit the client)"
 msgstr ""
+"Tam ekran modunda aç (konuk çözünürlüğünü istemciye uyacak şekilde ayarlar)"
 
 msgid "Password:"
 msgstr "Parola:"
 
 msgid "Please add an extension to the file name"
-msgstr ""
+msgstr "Lütfen dosya adına bir uzantı ekleyin"
 
 msgid "Preferences"
-msgstr ""
+msgstr "Tercihler"
 
 msgid "QEMU debug console"
-msgstr ""
+msgstr "QEMU hata ayıklama konsolu"
 
 msgid "QEMU human monitor"
-msgstr ""
+msgstr "QEMU insan monitörü"
 
 msgid "Quit on given condition in kiosk mode"
-msgstr ""
+msgstr "Kiosk modunda belirtilen koşuldan çık"
 
 msgid "Read-only"
-msgstr ""
+msgstr "Salt-okunur"
 
 msgid "Recent connections"
-msgstr ""
+msgstr "Son bağlantılar"
 
 msgid "Reconnect to domain upon restart"
-msgstr ""
+msgstr "Yeniden başlattıktan sonra etki alanına yeniden bağlan"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Yenile"
 
 msgid "Release cursor"
-msgstr ""
+msgstr "İmleci serbest bırak"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
+"Yeniden tuş atama biçimi tuş=değiştirici+tuş, örn. "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
-msgstr ""
+msgstr "Remote Viewer"
 
 msgid ""
 "Remote Viewer provides a graphical viewer for the guest OS display. At this "
@@ -359,67 +381,75 @@ msgid ""
 "can connect directly to both local and remotely hosted guest OS, optionally "
 "using SSL/TLS encryption."
 msgstr ""
+"Remote Viewer, konuk işletim sistemi ekranı için bir grafik görüntüleyici "
+"sağlar. Şu anda VNC veya SPICE protokollerini kullanan konuk işletim "
+"sistemlerini desteklemektedir. Kullanıcı talebine göre gelecekte daha fazla "
+"protokol desteklenebilir. Görüntüleyici, isteğe bağlı olarak SSL/TLS "
+"şifrelemesi kullanarak doğrudan hem yerel hem de uzaktan barındırılan konuk "
+"işletim sistemine bağlanabilir."
 
 msgid "Remote viewer client"
-msgstr ""
+msgstr "Uzaktan görüntüleyici istemcisi"
 
 msgid "Remotely access virtual machines"
-msgstr ""
+msgstr "Sanal makinelere uzaktan erişin"
 
 #, c-format
 msgid "Run '%s --help' to see a full list of available command line options\n"
 msgstr ""
+"Kullanılabilir komut satırı seçeneklerinin tam listesini görmek için '%s --"
+"help' komutunu çalıştırın\n"
 
 msgid "Save screenshot"
-msgstr ""
+msgstr "Ekran görüntüsünü kaydet"
 
 msgid "Screenshot.png"
-msgstr ""
+msgstr "Screenshot.png"
 
 msgid "Select ISO"
-msgstr ""
+msgstr "ISO dosyası seç"
 
 msgid "Select USB devices for redirection"
-msgstr ""
+msgstr "Yeniden yönlendirme için USB aygıtlarını seç"
 
 msgid "Select the virtual machine only by its ID"
-msgstr ""
+msgstr "Sanal makineyi sadece kimliğine göre seç"
 
 msgid "Select the virtual machine only by its UUID"
-msgstr ""
+msgstr "Sanal makineyi sadece UUID değerine göre seç"
 
 msgid "Select the virtual machine only by its name"
-msgstr ""
+msgstr "Sanal makineyi sadece adına göre seç"
 
 msgid "Selected"
-msgstr ""
+msgstr "Seçildi"
 
 msgid "Send key combination"
-msgstr ""
+msgstr "Tuş dizisi gönder"
 
 msgid "Serial"
-msgstr ""
+msgstr "Seri"
 
 msgid "Set window title"
-msgstr ""
+msgstr "Pencere başlığını ayarla"
 
 msgid "Share clipboard"
-msgstr ""
+msgstr "Panoyu paylaş"
 
 msgid "Share folder"
-msgstr ""
+msgstr "Klasör paylaş"
 
 msgid "Show password"
-msgstr ""
+msgstr "Parolayı göster"
 
 msgid "Smartcard insertion"
-msgstr ""
+msgstr "Akıllı kart takma"
 
 msgid "Smartcard removal"
-msgstr ""
+msgstr "Akıllı kart kaldırma"
 
 msgid "Spice"
-msgstr ""
+msgstr "Spice"
 
 msgid "The Fedora Translation Team"
 msgstr "Fedora Çeviri Ekibi"
@@ -427,11 +457,11 @@ msgstr "Fedora Çeviri Ekibi"
 #, c-format
 msgid "Transferring %u file of %u..."
 msgid_plural "Transferring %u files of %u..."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u / %u dosya aktarılıyor..."
+msgstr[1] "%u / %u dosya aktarılıyor..."
 
 msgid "Transferring 1 file..."
-msgstr ""
+msgstr "1 dosya aktarılıyor..."
 
 msgid "USB device selection"
 msgstr "USB aygıt seçimi"
@@ -443,196 +473,197 @@ msgstr "USB yönlendirme hatası: %s"
 #, c-format
 msgid "Unable to authenticate with remote desktop server at %s: %s\n"
 msgstr ""
+"%s konumundaki uzak masaüstü sunucusuyla kimlik doğrulaması yapılamadı: %s\n"
 
 #, c-format
 msgid "Unable to authenticate with remote desktop server: %s"
-msgstr ""
+msgstr "Uzak masaüstü sunucusuyla kimlik doğrulaması yapılamadı: %s"
 
 #, c-format
 msgid "Unable to connect to libvirt with URI: %s."
-msgstr ""
+msgstr "URI ile libvirt'e bağlanamadı: %s."
 
 #, c-format
 msgid "Unable to connect to the graphic server %s"
-msgstr ""
+msgstr "%s grafik sunucusuna bağlanamadı"
 
 #, c-format
 msgid "Unable to connect: %s"
-msgstr ""
+msgstr "Bağlanamadı: %s"
 
 msgid "Unable to connnect to oVirt"
-msgstr ""
+msgstr "oVirt'e bağlanamadı"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
-msgstr ""
+msgstr "'%s' dosyası için görüntü biçimi belirlenemedi"
 
 msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr ""
+msgstr "Bilinmeyen"
 
 msgctxt "Unknown name"
 msgid "Unknown"
-msgstr ""
+msgstr "Bilinmeyen"
 
 msgid "Unspecified error"
-msgstr ""
+msgstr "Belirlenemeyen hata"
 
 #, c-format
 msgid "Unsupported authentication type %u"
-msgstr ""
+msgstr "Desteklenmeyen kimlik doğrulama türü %u"
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
-msgstr ""
+msgstr "Desteklenmeyen grafik türü '%s'"
 
 msgid "Username:"
 msgstr "Kullanıcı Adı:"
 
 msgid "VNC does not provide GUID"
-msgstr ""
+msgstr "VNC GUID sağlamıyor"
 
 msgid "Virt Viewer"
-msgstr ""
+msgstr "Virt Viewer"
 
 msgid "Virt-Viewer connection file"
-msgstr ""
+msgstr "Virt-Viewer bağlantı dosyası"
 
 #, c-format
 msgid "Virtual machine %s is not running"
-msgstr ""
+msgstr "%s sanal makinesi çalışmıyor"
 
 msgid "Virtual machine graphical console"
-msgstr ""
+msgstr "Sanal makine grafiksel konsolu"
 
 msgid "Wait for domain to start"
-msgstr ""
+msgstr "Etki alanının başlamasını bekle"
 
 #, c-format
 msgid "Waiting for display %d..."
-msgstr ""
+msgstr "Ekran %d bekleniyor..."
 
 msgid "Waiting for guest domain to be created"
-msgstr ""
+msgstr "Konuk etki alanının oluşturulması bekleniyor"
 
 msgid "Waiting for guest domain to re-start"
-msgstr ""
+msgstr "Konuk etki alanının yeniden başlaması bekleniyor"
 
 msgid "Waiting for guest domain to start"
-msgstr ""
+msgstr "Konuk etki alanının başlaması bekleniyor"
 
 msgid "Waiting for libvirt to start"
-msgstr ""
+msgstr "libvirt'in başlaması bekleniyor"
 
 msgid "Zoom _In"
-msgstr ""
+msgstr "_Yakınlaştır"
 
 msgid "Zoom _Out"
-msgstr ""
+msgstr "_Uzaklaştır"
 
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
-msgstr ""
+msgstr "Yakınlaştırma seviyesi %d-%d arasında olmalı\n"
 
 msgid "Zoom level of window, in percentage"
-msgstr ""
+msgstr "Pencerenin yakınlaştırma seviyesi, yüzde olarak"
 
 msgid "[none]"
-msgstr ""
+msgstr "[yok]"
 
 msgid "_About"
-msgstr ""
+msgstr "_Hakkında"
 
 msgid "_Cancel"
-msgstr ""
+msgstr "_İptal"
 
 msgid "_Change CD"
-msgstr ""
+msgstr "_CD değiştir"
 
 msgid "_Close"
-msgstr ""
+msgstr "_Kapat"
 
 msgid "_Displays"
-msgstr ""
+msgstr "_Ekranlar"
 
 msgid "_File"
 msgstr "_Dosya"
 
 msgid "_Full screen"
-msgstr ""
+msgstr "_Tam ekran"
 
 msgid "_Guest Details"
-msgstr ""
+msgstr "_Konuk Ayrıntıları"
 
 msgid "_Help"
 msgstr "_Yardım"
 
 msgid "_Machine"
-msgstr ""
+msgstr "_Makine"
 
 msgid "_Normal Size"
-msgstr ""
+msgstr "_Normal Boyut"
 
 msgid "_OK"
-msgstr ""
+msgstr "_Tamam"
 
 msgid "_Pause"
-msgstr ""
+msgstr "_Duraklat"
 
 msgid "_Power down"
-msgstr ""
+msgstr "_Kapat"
 
 msgid "_Preferences"
-msgstr ""
+msgstr "_Tercihler"
 
 msgid "_Quit"
-msgstr ""
+msgstr "_Çıkış"
 
 msgid "_Reset"
-msgstr ""
+msgstr "_Sıfırla"
 
 msgid "_Save"
-msgstr ""
+msgstr "_Kaydet"
 
 msgid "_Screenshot"
-msgstr ""
+msgstr "_Ekran görüntüsü"
 
 msgid "_Send key"
-msgstr ""
+msgstr "_Tuş gönder"
 
 msgid "_USB device selection"
-msgstr ""
+msgstr "_USB aygıtı seçimi"
 
 msgid "_View"
-msgstr ""
+msgstr "_Görüntüle"
 
 msgid "_Zoom"
-msgstr ""
+msgstr "_Yakınlaştır"
 
 msgid "failed to parse oVirt URI"
-msgstr ""
+msgstr "oVirt URI'sı ayrıştırılamadı"
 
 msgid "label"
 msgstr "etiket"
 
 #, c-format
 msgid "oVirt VM %s has no display"
-msgstr ""
+msgstr "%s oVirt sanal makinesinin ekranı yok"
 
 #, c-format
 msgid "oVirt VM %s has no host information"
-msgstr ""
+msgstr "%s oVirt sanal makinesinin ana makine bilgileri yok"
 
 #, c-format
 msgid "oVirt VM %s has unknown display type: %u"
-msgstr ""
+msgstr "%s oVirt sanal makinesinin ekran türü bilinmiyor: %u"
 
 #, c-format
 msgid "oVirt VM %s is not running"
-msgstr ""
+msgstr "%s oVirt sanal makinesi çalışmıyor"
 
 msgid "only SSH or UNIX socket connection supported."
-msgstr ""
+msgstr "sadece SSH veya UNIX soket bağlantısı destekleniyor."
 
 #~ msgid " "
 #~ msgstr " "
