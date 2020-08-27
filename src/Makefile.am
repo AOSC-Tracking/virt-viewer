@@ -131,6 +131,20 @@ COMMON_CFLAGS = \
 	$(WARN_CFLAGS) \
 	$(NULL)
 
+if OS_WIN32
+# binutils does not take into account entry point when
+# -pie is used so we need to provide it manually
+# ENTRY_PREFIX is empty for x86_64, underscore ("_") otherwise
+ENTRY_PREFIX := $(if $(filter x86_64,$(host_cpu)),,_)
+
+# --dynamicbase to enable ASLR protection
+# --nxcompat is to enable NX protection
+# -pie as --dynamicbase requires relocations
+LDFLAGS_SECURITY_COMMON = -Wl,--dynamicbase,-pie,--nxcompat
+LDFLAGS_SECURITY_GUI = $(LDFLAGS_SECURITY_COMMON) -Wl,-e,$(ENTRY_PREFIX)WinMainCRTStartup -mwindows
+LDFLAGS_SECURITY_CUI = $(LDFLAGS_SECURITY_COMMON) -Wl,-e,$(ENTRY_PREFIX)mainCRTStartup -mconsole
+endif
+
 libvirt_viewer_util_la_LIBADD = \
 	$(GLIB2_LIBS) \
 	$(GTK_LIBS) \
@@ -171,6 +185,9 @@ virt_viewer_LDADD = \
 	libvirt-viewer-util.la \
 	libvirt-viewer.la \
 	$(NULL)
+if OS_WIN32
+virt_viewer_LDFLAGS += $(LDFLAGS_SECURITY_GUI)
+endif
 endif
 
 
@@ -194,7 +211,7 @@ remote_viewer_LDADD = \
 	$(NULL)
 
 if OS_WIN32
-remote_viewer_LDFLAGS += -Wl,--subsystem,windows
+remote_viewer_LDFLAGS += $(LDFLAGS_SECURITY_GUI)
 endif
 
 VIRT_VIEWER_RES = virt-viewer.rc virt-viewer.manifest
@@ -205,7 +222,7 @@ EXTRA_DIST += $(VIRT_VIEWER_RES)
 if OS_WIN32
 bin_PROGRAMS += windows-cmdline-wrapper
 windows_cmdline_wrapper_SOURCES = windows-cmdline-wrapper.c
-windows_cmdline_wrapper_LDFLAGS = -lpsapi
+windows_cmdline_wrapper_LDFLAGS = -lpsapi $(LDFLAGS_SECURITY_CUI)
 
 virt-viewer_rc.$(OBJEXT): $(VIRT_VIEWER_RES) $(ICONDIR)/virt-viewer.ico
 	$(AM_V_GEN)$(WINDRES)				\
