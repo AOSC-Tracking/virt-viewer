@@ -10,21 +10,22 @@
 # Sam Friedmann <sam.friedmann@redhat.com>, 2010, 2012
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2016, 2019
 # Sam Friedmann <sfriedma@redhat.com>, 2016
+# Julien Humbert <julroy67@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
 "POT-Creation-Date: 2020-07-25 06:54+0200\n"
-"PO-Revision-Date: 2019-03-05 05:18+0000\n"
-"Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/virt-viewer/"
-"language/fr/)\n"
+"PO-Revision-Date: 2020-08-28 03:29+0000\n"
+"Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
+"Language-Team: French <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.2.1\n"
 
 msgid ""
 "\n"
@@ -33,6 +34,7 @@ msgid ""
 msgstr ""
 "\n"
 "Erreur : impossible de gérer plusieurs URI\n"
+"\n"
 
 #, c-format
 msgid ""
@@ -60,7 +62,7 @@ msgstr ""
 #.
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s — %s"
 
 #, c-format
 msgid "%s version %s"
@@ -72,7 +74,7 @@ msgstr "%s version %s"
 #.
 #, c-format
 msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
+msgstr "(Appuyez sur %s pour relâcher le pointeur) %s — %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -80,7 +82,7 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgstr "(Appuyez sur %s pour relâcher le pointeur) — %s"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Chargement...</b>"
@@ -99,7 +101,7 @@ msgstr "Accéder à des bureaux distants"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "L’adresse est trop longue pour le socket_path UNIX : %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -133,9 +135,7 @@ msgstr ""
 
 #, c-format
 msgid "Authentication is required for the %s connection:\n"
-msgstr ""
-"L'authentification est requise pour la connexion %s :\n"
-"\n"
+msgstr "L’authentification est requise pour la connexion %s :\n"
 
 msgid "Authentication required"
 msgstr "Authentification requise"
@@ -180,7 +180,7 @@ msgid "Close"
 msgstr "Fermer"
 
 msgid "Connect to SSH failed."
-msgstr ""
+msgstr "Échec de la connexion à SSH."
 
 msgid "Connect to channel unsupported."
 msgstr "La connexion au canal n'est pas prise en charge."
@@ -193,7 +193,7 @@ msgstr "Connecté au serveur d'affichage"
 
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "Échec de la connexion au socket UNIX : %s"
 
 msgid "Connecting to graphic server"
 msgstr "Connexion au serveur d'affichage"
@@ -211,18 +211,18 @@ msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 "Copyright (C) 2007-2014 Red Hat, Inc."
 msgstr ""
-"Copyright (C) 2007-2012 Daniel P. Berrange\n"
-"Copyright (C) 2007-2014 Red Hat, Inc."
+"Copyright © 2007-2012 Daniel P. Berrange\n"
+"Copyright © 2007-2014 Red Hat, Inc."
 
 msgid "Couldn't open oVirt session: "
 msgstr "Impossible d'ouvrir une session oVirt : "
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Échec de la création du socket UNIX : %s"
 
 msgid "Ctrl_L+Alt_L"
-msgstr ""
+msgstr "Ctrl_L + Alt_L"
 
 msgid "Customise hotkeys"
 msgstr "Personnaliser les raccourcis clavier"
@@ -253,7 +253,7 @@ msgid "Do not ask me again"
 msgstr "Ne plus demander"
 
 msgid "Do you want to close the session?"
-msgstr "Êtes-vous sûr de vouloir mettre fin à la session?"
+msgstr "Êtes-vous sûr de vouloir mettre fin à la session ?"
 
 msgid "Enable kiosk mode"
 msgstr "Activer le mode kiosque"
@@ -262,13 +262,13 @@ msgid "Failed to change CD"
 msgstr "Échec du changement de CD"
 
 msgid "Failed to connect: "
-msgstr "Échec de connexion :"
+msgstr "Échec de connexion : "
 
 msgid "Failed to initiate connection"
 msgstr "Impossible d'initier la connexion"
 
 msgid "Failed to read stdin: "
-msgstr "Échec de la lecture de stdin :"
+msgstr "Échec de la lecture de stdin : "
 
 msgid "File Transfers"
 msgstr "Transferts de fichier"
@@ -297,7 +297,7 @@ msgstr "Le domaine invité est fermé"
 
 #, c-format
 msgid "Invalid file %s: "
-msgstr "Fichier invalide %s  :"
+msgstr "Fichier invalide %s  : "
 
 #, c-format
 msgid "Invalid kiosk-quit argument: %s"
@@ -313,7 +313,7 @@ msgid "Loading..."
 msgstr "Chargement..."
 
 msgid "Minimize"
-msgstr ""
+msgstr "Réduire"
 
 msgid "Name"
 msgstr "Nom"
@@ -322,7 +322,7 @@ msgid "Name:"
 msgstr "Nom :"
 
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "Pas de fichier ISO dans le domaine"
 
 msgid "No connection was chosen"
 msgstr "Aucune connexion n'a été choisie"
@@ -342,7 +342,7 @@ msgid "Password:"
 msgstr "Mot de passe :"
 
 msgid "Please add an extension to the file name"
-msgstr ""
+msgstr "Veuillez ajouter une extension au nom du fichier"
 
 msgid "Preferences"
 msgstr "Préférences"
@@ -374,6 +374,8 @@ msgstr "Libérer le curseur"
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
+"Réattribuer le format de touches touche=keymod+touche p. ex. "
+"F1=MAJ+CTRL+F1,1=MAJ+F1,ALT_L=Vide"
 
 msgid "Remote Viewer"
 msgstr "Afficheur distant"
@@ -405,7 +407,7 @@ msgstr ""
 "commande disponibles.\n"
 
 msgid "Save screenshot"
-msgstr ""
+msgstr "Enregistrer la capture d’écran"
 
 msgid "Screenshot.png"
 msgstr "Screenshot.png"
@@ -417,10 +419,10 @@ msgid "Select USB devices for redirection"
 msgstr "Sélectionnez les périphériques USB à rediriger"
 
 msgid "Select the virtual machine only by its ID"
-msgstr ""
+msgstr "Sélectionner la machine virtuelle uniquement par son identifiant"
 
 msgid "Select the virtual machine only by its UUID"
-msgstr ""
+msgstr "Sélectionner la machine virtuelle uniquement par son UUID"
 
 msgid "Select the virtual machine only by its name"
 msgstr "Sélectionnez la machine virtuelle uniquement par son nom"
@@ -438,7 +440,7 @@ msgid "Set window title"
 msgstr "Définir le titre de la fenêtre"
 
 msgid "Share clipboard"
-msgstr ""
+msgstr "Partager le presse-papier"
 
 msgid "Share folder"
 msgstr "Partager le dossier"
@@ -487,7 +489,7 @@ msgstr ""
 
 #, c-format
 msgid "Unable to connect to libvirt with URI: %s."
-msgstr "Impossible d'établir la connexion à libvirt avec l'URI : %s"
+msgstr "Impossible d’établir la connexion à libvirt avec l’URI : %s."
 
 #, c-format
 msgid "Unable to connect to the graphic server %s"
@@ -506,11 +508,11 @@ msgstr "Incapable de déterminer le format d'image du fichier « %s »"
 
 msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr ""
+msgstr "Inconnu"
 
 msgctxt "Unknown name"
 msgid "Unknown"
-msgstr ""
+msgstr "Inconnu"
 
 msgid "Unspecified error"
 msgstr "Erreur inconnue"
@@ -533,7 +535,7 @@ msgid "Virt Viewer"
 msgstr "Virt Viewer"
 
 msgid "Virt-Viewer connection file"
-msgstr ""
+msgstr "Fichier de connexion Virt-Viewer"
 
 #, c-format
 msgid "Virtual machine %s is not running"
@@ -647,7 +649,7 @@ msgid "_Zoom"
 msgstr "_Zoom"
 
 msgid "failed to parse oVirt URI"
-msgstr ""
+msgstr "échec de l’analyse de l’URI oVirt"
 
 msgid "label"
 msgstr "étiquette"
@@ -669,7 +671,7 @@ msgid "oVirt VM %s is not running"
 msgstr "oVirt VM %s n'est pas en cours d'exécution"
 
 msgid "only SSH or UNIX socket connection supported."
-msgstr ""
+msgstr "seule la connexion par socket SSH ou UNIX est prise en charge."
 
 #~ msgid " "
 #~ msgstr " "
