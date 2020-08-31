@@ -8,27 +8,31 @@
 # Leah Liu <lliu@redhat.com>, 2010, 2016
 # Tommy He <lovenemesis@gmail.com>, 2013
 # Wei Liu <LLIU@REDHAT.COM>, 2012, 2013
+# Whired Planck <fungdaat31@outlook.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
 "POT-Creation-Date: 2020-07-25 06:54+0200\n"
-"PO-Revision-Date: 2016-02-23 12:28+0000\n"
-"Last-Translator: Leah Liu <lliu@redhat.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/virt-"
-"viewer/language/zh_CN/)\n"
+"PO-Revision-Date: 2020-08-31 03:29+0000\n"
+"Last-Translator: Whired Planck <fungdaat31@outlook.com>\n"
+"Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
+"projects/virt-viewer/virt-viewer/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Zanata 4.6.2\n"
+"X-Generator: Weblate 4.2.1\n"
 
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
 "\n"
 msgstr ""
+"\n"
+"错误：无法处理多 URI\n"
+"\n"
 
 #, c-format
 msgid ""
@@ -36,6 +40,9 @@ msgid ""
 "No ID|UUID|DOMAIN-NAME was specified for '%s'\n"
 "\n"
 msgstr ""
+"\n"
+"没有为 '%s' 指定的 ID|UUID|DOMAIN-NAME\n"
+"\n"
 
 #, c-format
 msgid ""
@@ -43,6 +50,9 @@ msgid ""
 "Usage: %s [OPTIONS] [ID|UUID|DOMAIN-NAME]\n"
 "\n"
 msgstr ""
+"\n"
+"用法: %s [选项] [ID|UUID|DOMAIN-NAME]\n"
+"\n"
 
 #. translators:
 #. * This is "<subtitle> - <appname>"
@@ -50,11 +60,11 @@ msgstr ""
 #.
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #, c-format
 msgid "%s version %s"
-msgstr ""
+msgstr "%s 的 %s 版本"
 
 #. translators:
 #. * This is "<ungrab accelerator> <subtitle> - <appname>"
@@ -62,7 +72,7 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
+msgstr "(按下 %s to 以释放指针) %s - %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -70,26 +80,26 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgstr "(按下 %s 以释放指针) - %s"
 
 msgid "<b>Loading...</b>"
-msgstr ""
+msgstr "<b>正在加载...</b>"
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
 
 msgid "A remote desktop client built with GTK-VNC, SPICE-GTK and libvirt"
-msgstr "使用 GTK-VNC, SPICE-GTK 和 libvirt 构建远程桌面客户端"
+msgstr "使用 GTK-VNC, SPICE-GTK 和 libvirt 构建的远程桌面客户端"
 
 msgid "About Virt-Viewer"
-msgstr ""
+msgstr "关于虚拟系统查看器"
 
 msgid "Access remote desktops"
 msgstr "访问远程桌面"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "地址对于 UNIX 套接字路径来说太长(_P)：%s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -102,7 +112,7 @@ msgid ""
 msgstr "设置这个连接至少需要 %s 的 %s 版本，详情请查看 %s"
 
 msgid "Attach to the local display using libvirt"
-msgstr "使用 libvirt 附加本地画面"
+msgstr "使用 libvirt 附加本地显示"
 
 msgid "Authentication failed."
 msgstr "认证失败。"
@@ -133,11 +143,11 @@ msgid "Available virtual machines"
 msgstr "可用虚拟机"
 
 msgid "C_onnect"
-msgstr ""
+msgstr "连接(_O)"
 
 #, c-format
 msgid "Can't connect to channel: %s"
-msgstr ""
+msgstr "无法连接到通道：%s"
 
 msgid "Cannot determine the connection type from URI"
 msgstr "无法确定 URI 的连接类型"
@@ -154,7 +164,7 @@ msgid "Cannot get guest state"
 msgstr "无法获得虚拟机状态"
 
 msgid "Change CD"
-msgstr ""
+msgstr "更改 CD"
 
 msgid "Checking guest domain status"
 msgstr "正在检查虚拟机域状态"
@@ -163,10 +173,10 @@ msgid "Choose a virtual machine"
 msgstr "选择虚拟机"
 
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 msgid "Connect to SSH failed."
-msgstr ""
+msgstr "连接到 SSH 失败。"
 
 msgid "Connect to channel unsupported."
 msgstr "无法连接到不支持的通道。"
@@ -179,36 +189,36 @@ msgstr "已连接到图形服务器"
 
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "连接到 UNIX 套接字时失败：%s"
 
 msgid "Connecting to graphic server"
 msgstr "正在连接到图形服务器"
 
 msgid "Connection _Address"
-msgstr ""
+msgstr "连接地址(_A)"
 
 msgid "Connection details"
 msgstr "连接详情"
 
 msgid "Console support is compiled out!"
-msgstr ""
+msgstr "控制台支持已编译！"
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 "Copyright (C) 2007-2014 Red Hat, Inc."
 msgstr ""
 "版权所有 (C) 2007-2012 Daniel P. Berrange\n"
-"版权所有 (C) 2007-2010 Red Hat, Inc."
+"版权所有 (C) 2007-2014 Red Hat, Inc."
 
 msgid "Couldn't open oVirt session: "
-msgstr "无法打开 oVirt 会话："
+msgstr "无法打开 oVirt 会话： "
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "创建 UNIX 套接字时失败：%s"
 
 msgid "Ctrl_L+Alt_L"
-msgstr ""
+msgstr "Ctrl_L+Alt_L"
 
 msgid "Customise hotkeys"
 msgstr "自定义快捷键"
@@ -221,7 +231,7 @@ msgstr "断开连接"
 
 #, c-format
 msgid "Display _%d"
-msgstr ""
+msgstr "显示 _%d"
 
 msgid "Display can only be attached through libvirt with --attach"
 msgstr "只能通过 libvirt 使用 --attach 连接显示器"
@@ -245,19 +255,19 @@ msgid "Enable kiosk mode"
 msgstr "启用 kiosk 模式"
 
 msgid "Failed to change CD"
-msgstr ""
+msgstr "无法更改 CD"
 
 msgid "Failed to connect: "
-msgstr "无法连接："
+msgstr "无法连接： "
 
 msgid "Failed to initiate connection"
 msgstr "初始化连接失败"
 
 msgid "Failed to read stdin: "
-msgstr ""
+msgstr "无法读取标准输入(stdin)： "
 
 msgid "File Transfers"
-msgstr ""
+msgstr "文件传输"
 
 msgid "Finding guest domain"
 msgstr "正在查找虚拟机域"
@@ -283,7 +293,7 @@ msgstr "已关闭虚拟机域"
 
 #, c-format
 msgid "Invalid file %s: "
-msgstr "无效文件 %s："
+msgstr "无效文件 %s： "
 
 #, c-format
 msgid "Invalid kiosk-quit argument: %s"
@@ -293,13 +303,13 @@ msgid "Invalid password"
 msgstr "无效密码"
 
 msgid "Leave fullscreen"
-msgstr "离开全屏"
+msgstr "推出全屏"
 
 msgid "Loading..."
-msgstr ""
+msgstr "正在加载..."
 
 msgid "Minimize"
-msgstr ""
+msgstr "最小化"
 
 msgid "Name"
 msgstr "名称"
@@ -308,34 +318,34 @@ msgid "Name:"
 msgstr "名称："
 
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "域中没有 ISO 文件"
 
 msgid "No connection was chosen"
 msgstr "没有选择任何连接"
 
 msgid "No running virtual machine found"
-msgstr ""
+msgstr "找不到正在运行的虚拟系统"
 
 msgid "No virtual machine was chosen"
 msgstr "未选择虚拟机"
 
 msgid "Open in full screen mode (adjusts guest resolution to fit the client)"
-msgstr "以全屏模式打开（调整虚拟机解析度使其适用于客户端）"
+msgstr "以全屏模式打开（调整虚拟机分辨率使其适用于客户端）"
 
 msgid "Password:"
 msgstr "密码："
 
 msgid "Please add an extension to the file name"
-msgstr ""
+msgstr "请在文件名中添加扩展名"
 
 msgid "Preferences"
 msgstr "属性"
 
 msgid "QEMU debug console"
-msgstr ""
+msgstr "QEMU 调试控制台"
 
 msgid "QEMU human monitor"
-msgstr ""
+msgstr "QEMU 人类监视器"
 
 msgid "Quit on given condition in kiosk mode"
 msgstr "以 kiosk 模式中给出的条件退出"
@@ -350,14 +360,14 @@ msgid "Reconnect to domain upon restart"
 msgstr "重启后重新连接到域"
 
 msgid "Refresh"
-msgstr ""
+msgstr "刷新"
 
 msgid "Release cursor"
 msgstr "释放光标"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
-msgstr ""
+msgstr "重新映射快捷键格式为 key=keymod+key 例如，F1=SHIFT+CTRL+F1, 1=SHIFT+F1, ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "远程查看程序"
@@ -369,52 +379,54 @@ msgid ""
 "can connect directly to both local and remotely hosted guest OS, optionally "
 "using SSL/TLS encryption."
 msgstr ""
+"远程查看器 (Remote Viewer) 为客户机操作系统显示提供了图形查看器。目前支持使用 VNC 或 SPICE "
+"协议的客户机操作系统。根据用户需求，未来可能会支持更多协议。查看器可以直接连接到本地和远程托管的客户机操作系统，可以选用 SSL/TLS 加密。"
 
 msgid "Remote viewer client"
 msgstr "远程查看客户端"
 
 msgid "Remotely access virtual machines"
-msgstr ""
+msgstr "远程访问虚拟系统"
 
 #, c-format
 msgid "Run '%s --help' to see a full list of available command line options\n"
-msgstr ""
+msgstr "运行 '%s --help' 以查阅可用命令行选项的完整列表\n"
 
 msgid "Save screenshot"
-msgstr ""
+msgstr "保存截屏"
 
 msgid "Screenshot.png"
-msgstr ""
+msgstr "Screenshot.png"
 
 msgid "Select ISO"
-msgstr ""
+msgstr "选择 ISO"
 
 msgid "Select USB devices for redirection"
 msgstr "为重新定向选择 USB 设备"
 
 msgid "Select the virtual machine only by its ID"
-msgstr ""
+msgstr "仅通过 ID 选择虚拟系统"
 
 msgid "Select the virtual machine only by its UUID"
-msgstr ""
+msgstr "仅通过 UUID 选择虚拟系统"
 
 msgid "Select the virtual machine only by its name"
-msgstr ""
+msgstr "仅通过名称选择虚拟系统"
 
 msgid "Selected"
-msgstr ""
+msgstr "已选择"
 
 msgid "Send key combination"
 msgstr "发送按键组合"
 
 msgid "Serial"
-msgstr ""
+msgstr "串行接口"
 
 msgid "Set window title"
 msgstr "设置窗口标题"
 
 msgid "Share clipboard"
-msgstr ""
+msgstr "共享剪贴板"
 
 msgid "Share folder"
 msgstr "共享文件夹"
@@ -437,10 +449,10 @@ msgstr "Fedora 翻译团队"
 #, c-format
 msgid "Transferring %u file of %u..."
 msgid_plural "Transferring %u files of %u..."
-msgstr[0] ""
+msgstr[0] "正在传输 %u 份文件，共 %u 份..."
 
 msgid "Transferring 1 file..."
-msgstr ""
+msgstr "正在传输 1 份文件..."
 
 msgid "USB device selection"
 msgstr "USB 设备选择"
@@ -451,7 +463,7 @@ msgstr "USB 重新定向错误：%s"
 
 #, c-format
 msgid "Unable to authenticate with remote desktop server at %s: %s\n"
-msgstr "无法使用远程桌面服务器在  %s 认证： %s\n"
+msgstr "无法使用远程桌面服务器在 %s 认证： %s\n"
 
 #, c-format
 msgid "Unable to authenticate with remote desktop server: %s"
@@ -459,7 +471,7 @@ msgstr "无法使用远程桌面服务器验证：%s"
 
 #, c-format
 msgid "Unable to connect to libvirt with URI: %s."
-msgstr "无论使用 URI 连接到 libvirt：%s"
+msgstr "无法使用 URI 连接到 libvirt：%s。"
 
 #, c-format
 msgid "Unable to connect to the graphic server %s"
@@ -467,29 +479,29 @@ msgstr "无法连接到图形服务器 %s"
 
 #, c-format
 msgid "Unable to connect: %s"
-msgstr ""
+msgstr "无法连接：%s"
 
 msgid "Unable to connnect to oVirt"
-msgstr ""
+msgstr "无法连接到 oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
-msgstr ""
+msgstr "无法确定文件 '%s' 的图像格式"
 
 msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr ""
+msgstr "未知"
 
 msgctxt "Unknown name"
 msgid "Unknown"
-msgstr ""
+msgstr "未知"
 
 msgid "Unspecified error"
-msgstr ""
+msgstr "未指定错误"
 
 #, c-format
 msgid "Unsupported authentication type %u"
-msgstr ""
+msgstr "不支持的认证类型 %u"
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
@@ -502,10 +514,10 @@ msgid "VNC does not provide GUID"
 msgstr "VNC 不提供 GUID"
 
 msgid "Virt Viewer"
-msgstr "Virt Viewer"
+msgstr "虚拟系统查看器"
 
 msgid "Virt-Viewer connection file"
-msgstr ""
+msgstr "虚拟系统查看器连接文件"
 
 #, c-format
 msgid "Virtual machine %s is not running"
@@ -534,10 +546,10 @@ msgid "Waiting for libvirt to start"
 msgstr "等待 libvirt 启动"
 
 msgid "Zoom _In"
-msgstr ""
+msgstr "放大(_I)"
 
 msgid "Zoom _Out"
-msgstr ""
+msgstr "缩小(_O)"
 
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
@@ -550,25 +562,25 @@ msgid "[none]"
 msgstr "[无]"
 
 msgid "_About"
-msgstr ""
+msgstr "关于(_A)"
 
 msgid "_Cancel"
-msgstr ""
+msgstr "取消(_C)"
 
 msgid "_Change CD"
 msgstr "更换设备（_C）"
 
 msgid "_Close"
-msgstr ""
+msgstr "关闭(_C)"
 
 msgid "_Displays"
-msgstr ""
+msgstr "显示(_D)"
 
 msgid "_File"
 msgstr "文件（_F）"
 
 msgid "_Full screen"
-msgstr ""
+msgstr "全屏(_F)"
 
 msgid "_Guest Details"
 msgstr "虚拟机详情（_G）"
@@ -577,40 +589,40 @@ msgid "_Help"
 msgstr "帮助（_H）"
 
 msgid "_Machine"
-msgstr ""
+msgstr "机器(_M)"
 
 msgid "_Normal Size"
-msgstr ""
+msgstr "正常大小(_N)"
 
 msgid "_OK"
-msgstr ""
+msgstr "确定(_O)"
 
 msgid "_Pause"
-msgstr ""
+msgstr "暂停(_P)"
 
 msgid "_Power down"
-msgstr ""
+msgstr "关闭电源(_P)"
 
 msgid "_Preferences"
-msgstr ""
+msgstr "偏好设置(_P)"
 
 msgid "_Quit"
-msgstr ""
+msgstr "退出(_Q)"
 
 msgid "_Reset"
-msgstr ""
+msgstr "重置(_R)"
 
 msgid "_Save"
-msgstr ""
+msgstr "保存(_S)"
 
 msgid "_Screenshot"
-msgstr ""
+msgstr "截屏(_S)"
 
 msgid "_Send key"
 msgstr "发送按键（_S）"
 
 msgid "_USB device selection"
-msgstr ""
+msgstr "USB 设备选择(_U)"
 
 msgid "_View"
 msgstr "查看（_V）"
@@ -619,7 +631,7 @@ msgid "_Zoom"
 msgstr "缩放（_Z）"
 
 msgid "failed to parse oVirt URI"
-msgstr ""
+msgstr "无法解析 oVirt URI"
 
 msgid "label"
 msgstr "标签"
@@ -634,14 +646,14 @@ msgstr "oVirt VM %s 没有主机虚拟系"
 
 #, c-format
 msgid "oVirt VM %s has unknown display type: %u"
-msgstr ""
+msgstr "oVirt 虚拟系统 %s 的显示类型未知：%u"
 
 #, c-format
 msgid "oVirt VM %s is not running"
 msgstr "oVirt VM %s 未运行"
 
 msgid "only SSH or UNIX socket connection supported."
-msgstr ""
+msgstr "仅支持 SSH 或 UNIX 套接字连接。"
 
 #~ msgid " "
 #~ msgstr " "
