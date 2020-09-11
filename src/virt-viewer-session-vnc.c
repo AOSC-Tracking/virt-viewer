@@ -423,6 +423,9 @@ virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window)
     g_object_ref_sink(session->priv->vnc);
     session->priv->main_window = g_object_ref(main_window);
 
+    vnc_display_set_shared_flag(session->priv->vnc,
+                                virt_viewer_app_get_shared(app));
+
     g_signal_connect(session->priv->vnc, "vnc-connected",
                      G_CALLBACK(virt_viewer_session_vnc_connected), session);
     g_signal_connect(session->priv->vnc, "vnc-initialized",

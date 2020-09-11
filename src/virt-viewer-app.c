@@ -133,6 +133,7 @@ struct _VirtViewerAppPrivate {
     gboolean started;
     gboolean fullscreen;
     gboolean attach;
+    gboolean shared;
     gboolean quitting;
     gboolean kiosk;
     gboolean vm_ui;
@@ -2475,6 +2476,22 @@ virt_viewer_app_get_attach(VirtViewerApp *self)
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
     return self->priv->attach;
+}
+
+void
+virt_viewer_app_set_shared(VirtViewerApp *self, gboolean shared)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_APP(self));
+
+    self->priv->shared = shared;
+}
+
+gboolean
+virt_viewer_app_get_shared(VirtViewerApp *self)
+{
+    g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
+
+    return self->priv->shared;
 }
 
 gboolean

@@ -78,6 +78,10 @@ necessary. This is currently implemented by the Spice backend only.
 To specify which client monitors are used in fullscreen mode, see the
 CONFIGURATION section below.
 
+=item -s, --shared
+
+Permitted a shared session with multiple clients
+
 =item --debug
 
 Print debugging information

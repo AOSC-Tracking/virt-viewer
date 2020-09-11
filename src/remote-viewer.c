@@ -107,6 +107,7 @@ remote_viewer_deactivated(VirtViewerApp *app, gboolean connect_error)
 
 static gchar **opt_args = NULL;
 static char *opt_title = NULL;
+static gboolean opt_shared = FALSE;
 
 static void
 remote_viewer_add_option_entries(VirtViewerApp *self, GOptionContext *context, GOptionGroup *group)
@@ -114,6 +115,8 @@ remote_viewer_add_option_entries(VirtViewerApp *self, GOptionContext *context, G
     static const GOptionEntry options[] = {
         { "title", 't', 0, G_OPTION_ARG_STRING, &opt_title,
           N_("Set window title"), NULL },
+        { "shared", 's', 0, G_OPTION_ARG_NONE,  &opt_shared,
+          N_("Share client session"), NULL },
         { G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_STRING_ARRAY, &opt_args,
           NULL, "URI|VV-FILE" },
         { NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL }
@@ -157,7 +160,9 @@ remote_viewer_local_command_line (GApplication   *gapp,
     if (opt_title)
         g_object_set(app, "title", opt_title, NULL);
 
-end:
+    virt_viewer_app_set_shared(app, opt_shared);
+
+ end:
     if (ret && *status)
         g_printerr(_("Run '%s --help' to see a full list of available command line options\n"), g_get_prgname());
 

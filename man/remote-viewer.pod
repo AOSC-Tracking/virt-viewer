@@ -58,6 +58,10 @@ CONFIGURATION section below.
 
 Set the window title to B<TITLE>
 
+=item -s, --shared
+
+Permitted a shared session with multiple clients
+
 =item --debug
 
 Print debugging information

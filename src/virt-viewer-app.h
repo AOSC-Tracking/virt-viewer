@@ -80,6 +80,8 @@ void virt_viewer_app_set_direct(VirtViewerApp *self, gboolean direct);
 void virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys);
 void virt_viewer_app_set_attach(VirtViewerApp *self, gboolean attach);
 gboolean virt_viewer_app_get_attach(VirtViewerApp *self);
+void virt_viewer_app_set_shared(VirtViewerApp *self, gboolean shared);
+gboolean virt_viewer_app_get_shared(VirtViewerApp *self);
 gboolean virt_viewer_app_has_session(VirtViewerApp *self);
 void virt_viewer_app_set_connect_info(VirtViewerApp *self,
                                       const gchar *host,

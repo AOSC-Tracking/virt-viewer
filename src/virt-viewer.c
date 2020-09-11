@@ -83,6 +83,7 @@ static gboolean opt_direct = FALSE;
 static gboolean opt_attach = FALSE;
 static gboolean opt_waitvm = FALSE;
 static gboolean opt_reconnect = FALSE;
+static gboolean opt_shared = FALSE;
 
 typedef enum {
     DOMAIN_SELECTION_ID = (1 << 0),
@@ -143,6 +144,8 @@ virt_viewer_add_option_entries(VirtViewerApp *self, GOptionContext *context, GOp
           N_("Select the virtual machine only by its ID"), NULL },
         { "uuid", '\0', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, opt_domain_selection_cb,
           N_("Select the virtual machine only by its UUID"), NULL },
+        { "shared", 's', 0, G_OPTION_ARG_NONE,  &opt_shared,
+          N_("Share client session"), NULL },
         { G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_STRING_ARRAY, &opt_args,
           NULL, "-- ID|UUID|DOMAIN-NAME" },
         { NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL }
@@ -192,6 +195,7 @@ virt_viewer_local_command_line (GApplication   *gapp,
 
     virt_viewer_app_set_direct(app, opt_direct);
     virt_viewer_app_set_attach(app, opt_attach);
+    virt_viewer_app_set_shared(app, opt_shared);
     self->priv->reconnect = opt_reconnect;
     self->priv->uri = g_strdup(opt_uri);
 
