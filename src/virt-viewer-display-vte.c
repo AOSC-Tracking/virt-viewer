@@ -147,7 +147,6 @@ virt_viewer_display_vte_commit(VirtViewerDisplayVte *self,
 {
     g_signal_emit_by_name(self, "commit", text, size);
 }
-#endif
 
 static void
 virt_viewer_display_vte_adj_changed(VirtViewerDisplayVte *self,
@@ -156,12 +155,16 @@ virt_viewer_display_vte_adj_changed(VirtViewerDisplayVte *self,
     gtk_widget_set_visible(self->priv->scroll,
         gtk_adjustment_get_upper(adjustment) > gtk_adjustment_get_page_size(adjustment));
 }
+#endif
 
 GtkWidget *
 virt_viewer_display_vte_new(VirtViewerSession *session, const char *name)
 {
     VirtViewerDisplayVte *self;
-    GtkWidget *grid, *scroll = NULL, *vte;
+    GtkWidget *grid, *vte;
+#ifdef HAVE_VTE
+    GtkWidget *scroll = NULL;
+#endif
 
     self = g_object_new(VIRT_VIEWER_TYPE_DISPLAY_VTE,
                         "session", session,
@@ -185,6 +188,8 @@ virt_viewer_display_vte_new(VirtViewerSession *session, const char *name)
     grid = gtk_grid_new();
 
     gtk_container_add(GTK_CONTAINER(grid), vte);
+
+#ifdef HAVE_VTE
     if (scroll) {
         gtk_container_add(GTK_CONTAINER(grid), scroll);
         gtk_widget_hide(scroll);
@@ -192,6 +197,7 @@ virt_viewer_display_vte_new(VirtViewerSession *session, const char *name)
                                           "changed", G_CALLBACK(virt_viewer_display_vte_adj_changed),
                                           self, G_CONNECT_SWAPPED);
     }
+#endif
 
     gtk_container_add(GTK_CONTAINER(self), grid);
 
