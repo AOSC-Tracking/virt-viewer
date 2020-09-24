@@ -896,9 +896,6 @@ virt_viewer_window_enable_modifiers(VirtViewerWindow *self)
 
     /* This allows global accelerators like Ctrl+Q == Quit */
     for (accels = priv->accel_list ; accels ; accels = accels->next) {
-        if (virt_viewer_app_get_enable_accel(priv->app) &&
-            priv->accel_group == accels->data)
-            continue;
         gtk_window_add_accel_group(GTK_WINDOW(priv->window), accels->data);
     }
 
