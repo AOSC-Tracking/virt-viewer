@@ -83,6 +83,7 @@ static void virt_viewer_session_spice_channel_destroyed(SpiceSession *s,
                                                         VirtViewerSession *session);
 static void virt_viewer_session_spice_session_disconnected(SpiceSession *s,
                                                            VirtViewerSessionSpice *session);
+static void virt_viewer_session_spice_usb_device_reset(VirtViewerSession *session);
 static void virt_viewer_session_spice_smartcard_insert(VirtViewerSession *session);
 static void virt_viewer_session_spice_smartcard_remove(VirtViewerSession *session);
 static gboolean virt_viewer_session_spice_fullscreen_auto_conf(VirtViewerSessionSpice *self);
@@ -262,6 +263,7 @@ virt_viewer_session_spice_class_init(VirtViewerSessionSpiceClass *klass)
     dclass->open_uri = virt_viewer_session_spice_open_uri;
     dclass->channel_open_fd = virt_viewer_session_spice_channel_open_fd;
     dclass->usb_device_selection = virt_viewer_session_spice_usb_device_selection;
+    dclass->usb_device_reset = virt_viewer_session_spice_usb_device_reset;
     dclass->smartcard_insert = virt_viewer_session_spice_smartcard_insert;
     dclass->smartcard_remove = virt_viewer_session_spice_smartcard_remove;
     dclass->mime_type = virt_viewer_session_spice_mime_type;
@@ -1410,6 +1412,70 @@ virt_viewer_session_spice_get_main_channel(VirtViewerSessionSpice *self)
     g_return_val_if_fail(VIRT_VIEWER_IS_SESSION_SPICE(self), NULL);
 
     return self->priv->main_channel;
+}
+
+static void
+usb_device_reset_connect_cb(GObject *gobject, GAsyncResult *res, gpointer user_data)
+{
+    SpiceUsbDeviceManager *usb_manager = SPICE_USB_DEVICE_MANAGER(gobject);
+    SpiceUsbDevice *device = (SpiceUsbDevice *)user_data;
+    GError *err = NULL;
+
+    spice_usb_device_manager_connect_device_finish(usb_manager, res, &err);
+    if (err) {
+        g_critical("USB device reset failed; could not connect %p", device);
+        return;
+    }
+
+    g_debug("USB device reset success; did reset %p", device);
+}
+
+static void
+usb_device_reset_disconnect_cb(GObject *gobject, GAsyncResult *res, gpointer user_data)
+{
+    SpiceUsbDeviceManager *usb_manager = SPICE_USB_DEVICE_MANAGER(gobject);
+    SpiceUsbDevice *device = (SpiceUsbDevice *)user_data;
+    GError *err = NULL;
+
+    spice_usb_device_manager_disconnect_device_finish(usb_manager, res, &err);
+    if (err) {
+        g_critical("USB device reset failed; could not disconnect %p", device);
+        return;
+    }
+
+    spice_usb_device_manager_connect_device_async(usb_manager, device, NULL,
+            usb_device_reset_connect_cb, device);
+}
+
+static void
+virt_viewer_session_spice_usb_device_reset(VirtViewerSession *session)
+{
+    VirtViewerSessionSpice *self = VIRT_VIEWER_SESSION_SPICE(session);
+    SpiceUsbDeviceManager *usb_manager;
+
+    g_return_if_fail(self != NULL);
+
+    usb_manager = spice_usb_device_manager_get(self->priv->session, NULL);
+    if (usb_manager) {
+        int i;
+        GPtrArray *devices = spice_usb_device_manager_get_devices(usb_manager);
+
+        if (devices == NULL) {
+            g_warning("Couldn't get USB device list");
+            return;
+        }
+
+        for (i = 0; i < devices->len; ++i) {
+            SpiceUsbDevice *device = g_ptr_array_index(devices, i);
+            if (spice_usb_device_manager_is_device_connected(usb_manager, device)) {
+                g_debug("Attempting to reset USB device connection: %p", device);
+                spice_usb_device_manager_disconnect_device_async(usb_manager, device, NULL,
+                        usb_device_reset_disconnect_cb, device);
+            }
+        }
+
+        g_ptr_array_unref(devices);
+    }
 }
 
 static void

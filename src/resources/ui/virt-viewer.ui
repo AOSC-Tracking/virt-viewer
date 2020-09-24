@@ -55,6 +55,17 @@
                           </object>
                         </child>
                         <child>
+                          <object class="GtkMenuItem" id="menu-file-usb-device-reset">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="accel_path">&lt;virt-viewer&gt;/file/usb-device-reset</property>
+                            <property name="label" translatable="yes">USB device _reset</property>
+                            <property name="use_underline">True</property>
+                            <signal name="activate" handler="virt_viewer_window_menu_file_usb_device_reset" swapped="no"/>
+                          </object>
+                        </child>
+                        <child>
                           <object class="GtkMenuItem" id="menu-file-smartcard-insert">
                             <property name="can_focus">False</property>
                             <property name="use_action_appearance">False</property>

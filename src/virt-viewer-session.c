@@ -613,6 +613,21 @@ void virt_viewer_session_usb_device_selection(VirtViewerSession   *self,
     klass->usb_device_selection(self, parent);
 }
 
+void virt_viewer_session_usb_device_reset(VirtViewerSession *self)
+{
+    VirtViewerSessionClass *klass;
+
+    g_return_if_fail(VIRT_VIEWER_IS_SESSION(self));
+
+    klass = VIRT_VIEWER_SESSION_GET_CLASS(self);
+    if (klass->usb_device_reset == NULL) {
+        g_debug("No session usbredir support");
+        return;
+    }
+
+    klass->usb_device_reset(self);
+}
+
 void virt_viewer_session_smartcard_insert(VirtViewerSession *self)
 {
     VirtViewerSessionClass *klass;

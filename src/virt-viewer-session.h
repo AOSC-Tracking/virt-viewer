@@ -79,6 +79,7 @@ struct _VirtViewerSessionClass {
     gboolean (* open_uri) (VirtViewerSession* session, const gchar *uri, GError **error);
     gboolean (* channel_open_fd) (VirtViewerSession* session, VirtViewerSessionChannel *channel, int fd);
     void (* usb_device_selection) (VirtViewerSession* session, GtkWindow *parent);
+    void (* usb_device_reset) (VirtViewerSession* session);
     void (* smartcard_insert) (VirtViewerSession* session);
     void (* smartcard_remove) (VirtViewerSession* session);
     const gchar* (* mime_type) (VirtViewerSession* session);
@@ -116,6 +117,7 @@ void virt_viewer_session_set_has_usbredir(VirtViewerSession* session, gboolean h
 gboolean virt_viewer_session_get_has_usbredir(VirtViewerSession *self);
 
 void virt_viewer_session_usb_device_selection(VirtViewerSession *self, GtkWindow *parent);
+void virt_viewer_session_usb_device_reset(VirtViewerSession *self);
 void virt_viewer_session_smartcard_insert(VirtViewerSession *self);
 void virt_viewer_session_smartcard_remove(VirtViewerSession *self);
 VirtViewerApp* virt_viewer_session_get_app(VirtViewerSession *self);

@@ -998,6 +998,20 @@ virt_viewer_app_set_usb_options_sensitive(VirtViewerApp *self, gboolean sensitiv
                    GINT_TO_POINTER(sensitive));
 }
 
+static void set_usb_reset_sensitive(gpointer value,
+                                    gpointer user_data)
+{
+    virt_viewer_window_set_usb_reset_sensitive(VIRT_VIEWER_WINDOW(value),
+                                               GPOINTER_TO_INT(user_data));
+}
+
+static void
+virt_viewer_app_set_usb_reset_sensitive(VirtViewerApp *self, gboolean sensitive)
+{
+    g_list_foreach(self->priv->windows, set_usb_reset_sensitive,
+                   GINT_TO_POINTER(sensitive));
+}
+
 static void
 set_menus_sensitive(gpointer value, gpointer user_data)
 {
@@ -1048,6 +1062,7 @@ virt_viewer_app_window_new(VirtViewerApp *self, gint nth)
 {
     VirtViewerWindow* window;
     GtkWindow *w;
+    gboolean has_usbredir;
 
     window = virt_viewer_app_get_nth_window(self, nth);
     if (window)
@@ -1061,7 +1076,10 @@ virt_viewer_app_window_new(VirtViewerApp *self, gint nth)
     self->priv->windows = g_list_append(self->priv->windows, window);
     virt_viewer_app_set_window_subtitle(self, window, nth);
     virt_viewer_app_update_menu_displays(self);
-    virt_viewer_window_set_usb_options_sensitive(window, virt_viewer_app_has_usbredir(self));
+
+    has_usbredir = virt_viewer_app_has_usbredir(self);
+    virt_viewer_window_set_usb_options_sensitive(window, has_usbredir);
+    virt_viewer_window_set_usb_reset_sensitive(window, has_usbredir);
 
     w = virt_viewer_window_get_window(window);
     g_object_set_data(G_OBJECT(w), "virt-viewer-window", window);
@@ -1249,8 +1267,10 @@ virt_viewer_app_has_usbredir_updated(VirtViewerSession *session,
                                      GParamSpec *pspec G_GNUC_UNUSED,
                                      VirtViewerApp *self)
 {
-    virt_viewer_app_set_usb_options_sensitive(self,
-                    virt_viewer_session_get_has_usbredir(session));
+    gboolean has_usbredir = virt_viewer_session_get_has_usbredir(session);
+
+    virt_viewer_app_set_usb_options_sensitive(self, has_usbredir);
+    virt_viewer_app_set_usb_reset_sensitive(self, has_usbredir);
 }
 
 static void notify_software_reader_cb(GObject    *gobject G_GNUC_UNUSED,
@@ -1691,6 +1711,7 @@ virt_viewer_app_disconnected(VirtViewerSession *session G_GNUC_UNUSED, const gch
         gtk_widget_destroy(dialog);
     }
     virt_viewer_app_set_usb_options_sensitive(self, FALSE);
+    virt_viewer_app_set_usb_reset_sensitive(self, FALSE);
     virt_viewer_app_deactivate(self, connect_error);
 }
 

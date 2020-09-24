@@ -64,6 +64,7 @@ void virt_viewer_window_menu_view_fullscreen(GtkWidget *menu, VirtViewerWindow *
 void virt_viewer_window_menu_send(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_file_screenshot(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_file_usb_device_selection(GtkWidget *menu, VirtViewerWindow *self);
+void virt_viewer_window_menu_file_usb_device_reset(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_file_smartcard_insert(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_file_smartcard_remove(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_view_release_cursor(GtkWidget *menu, VirtViewerWindow *self);
@@ -1131,6 +1132,13 @@ virt_viewer_window_menu_file_usb_device_selection(GtkWidget *menu G_GNUC_UNUSED,
 }
 
 G_MODULE_EXPORT void
+virt_viewer_window_menu_file_usb_device_reset(GtkWidget *menu G_GNUC_UNUSED,
+                                              VirtViewerWindow *self)
+{
+    virt_viewer_session_usb_device_reset(virt_viewer_app_get_session(self->priv->app));
+}
+
+G_MODULE_EXPORT void
 virt_viewer_window_menu_file_smartcard_insert(GtkWidget *menu G_GNUC_UNUSED,
                                               VirtViewerWindow *self)
 {
@@ -1467,6 +1475,19 @@ virt_viewer_window_set_usb_options_sensitive(VirtViewerWindow *self, gboolean se
     menu = GTK_WIDGET(gtk_builder_get_object(priv->builder, "menu-file-usb-device-selection"));
     gtk_widget_set_sensitive(menu, sensitive);
     gtk_widget_set_visible(priv->toolbar_usb_device_selection, sensitive);
+}
+
+void
+virt_viewer_window_set_usb_reset_sensitive(VirtViewerWindow *self, gboolean sensitive)
+{
+    VirtViewerWindowPrivate *priv;
+    GtkWidget *menu;
+
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(self));
+
+    priv = self->priv;
+    menu = GTK_WIDGET(gtk_builder_get_object(priv->builder, "menu-file-usb-device-reset"));
+    gtk_widget_set_sensitive(menu, sensitive);
 }
 
 void
