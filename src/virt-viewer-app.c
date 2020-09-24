@@ -112,6 +112,7 @@ static void virt_viewer_app_update_pretty_address(VirtViewerApp *self);
 static void virt_viewer_app_set_fullscreen(VirtViewerApp *self, gboolean fullscreen);
 static void virt_viewer_app_update_menu_displays(VirtViewerApp *self);
 static void virt_viewer_update_smartcard_accels(VirtViewerApp *self);
+static void virt_viewer_update_usbredir_accels(VirtViewerApp *self);
 static void virt_viewer_app_add_option_entries(VirtViewerApp *self, GOptionContext *context, GOptionGroup *group);
 static VirtViewerWindow *virt_viewer_app_get_nth_window(VirtViewerApp *self, gint nth);
 
@@ -165,6 +166,9 @@ struct _VirtViewerAppPrivate {
     GdkModifierType insert_smartcard_accel_mods;
     guint remove_smartcard_accel_key;
     GdkModifierType remove_smartcard_accel_mods;
+    gboolean usb_device_reset_accel_valid;
+    guint usb_device_reset_accel_key;
+    GdkModifierType usb_device_reset_accel_mods;
     gboolean quit_on_disconnect;
     gboolean supports_share_clipboard;
     VirtViewerKeyMapping *keyMappings;
@@ -1271,6 +1275,7 @@ virt_viewer_app_has_usbredir_updated(VirtViewerSession *session,
 
     virt_viewer_app_set_usb_options_sensitive(self, has_usbredir);
     virt_viewer_app_set_usb_reset_sensitive(self, has_usbredir);
+    virt_viewer_update_usbredir_accels(self);
 }
 
 static void notify_software_reader_cb(GObject    *gobject G_GNUC_UNUSED,
@@ -2129,6 +2134,44 @@ virt_viewer_update_smartcard_accels(VirtViewerApp *self)
 }
 
 static void
+virt_viewer_set_usb_device_reset_accel(VirtViewerApp *self,
+                                       guint accel_key,
+                                       GdkModifierType accel_mods,
+                                       gboolean overwrite)
+{
+    VirtViewerAppPrivate *priv = self->priv;
+
+    if (overwrite || !priv->usb_device_reset_accel_valid) {
+        priv->usb_device_reset_accel_valid = TRUE;
+        priv->usb_device_reset_accel_key = accel_key;
+        priv->usb_device_reset_accel_mods = accel_mods;
+    }
+}
+
+static void
+virt_viewer_update_usbredir_accels(VirtViewerApp *self)
+{
+    gboolean has_usbredir;
+    VirtViewerAppPrivate *priv = self->priv;
+
+    if (self->priv->session != NULL) {
+        g_object_get(G_OBJECT(self->priv->session),
+                     "has-usbredir", &has_usbredir, NULL);
+    } else {
+        has_usbredir = FALSE;
+    }
+
+    if (has_usbredir) {
+        gtk_accel_map_change_entry("<virt-viewer>/file/usb-device-reset",
+                                   priv->usb_device_reset_accel_key,
+                                   priv->usb_device_reset_accel_mods,
+                                   TRUE);
+    } else {
+        gtk_accel_map_change_entry("<virt-viewer>/file/usb-device-reset", 0, 0, TRUE);
+    }
+}
+
+static void
 virt_viewer_app_on_application_startup(GApplication *app)
 {
     VirtViewerApp *self = VIRT_VIEWER_APP(app);
@@ -2163,6 +2206,8 @@ virt_viewer_app_on_application_startup(GApplication *app)
 
     virt_viewer_set_insert_smartcard_accel(self, GDK_KEY_F8, GDK_SHIFT_MASK);
     virt_viewer_set_remove_smartcard_accel(self, GDK_KEY_F9, GDK_SHIFT_MASK);
+    virt_viewer_set_usb_device_reset_accel(self, GDK_KEY_r, GDK_SHIFT_MASK | GDK_CONTROL_MASK, FALSE);
+
     gtk_accel_map_add_entry("<virt-viewer>/view/toggle-fullscreen", GDK_KEY_F11, 0);
     gtk_accel_map_add_entry("<virt-viewer>/view/release-cursor", GDK_KEY_F12, GDK_SHIFT_MASK);
     gtk_accel_map_add_entry("<virt-viewer>/view/zoom-reset", GDK_KEY_0, GDK_CONTROL_MASK);
@@ -2414,6 +2459,7 @@ virt_viewer_app_clear_hotkeys(VirtViewerApp *self)
     gtk_accel_map_change_entry("<virt-viewer>/send/secure-attention", 0, 0, TRUE);
     virt_viewer_set_insert_smartcard_accel(self, 0, 0);
     virt_viewer_set_remove_smartcard_accel(self, 0, 0);
+    virt_viewer_set_usb_device_reset_accel(self, 0, 0, TRUE);
 }
 
 void
@@ -2471,6 +2517,8 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
             virt_viewer_set_insert_smartcard_accel(self, accel_key, accel_mods);
         } else if (g_str_equal(*hotkey, "smartcard-remove")) {
             virt_viewer_set_remove_smartcard_accel(self, accel_key, accel_mods);
+        } else if (g_str_equal(*hotkey, "usb-device-reset")) {
+            virt_viewer_set_usb_device_reset_accel(self, accel_key, accel_mods, TRUE);
         } else {
             g_warning("Unknown hotkey command %s", *hotkey);
         }
@@ -2481,6 +2529,7 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
 
     virt_viewer_app_set_enable_accel(self, TRUE);
     virt_viewer_update_smartcard_accels(self);
+    virt_viewer_update_usbredir_accels(self);
 }
 
 void
