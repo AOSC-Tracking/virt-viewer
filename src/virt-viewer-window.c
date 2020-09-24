@@ -1672,9 +1672,6 @@ virt_viewer_window_show(VirtViewerWindow *self)
 
     gtk_widget_show(self->priv->window);
 
-    if (self->priv->kiosk)
-        virt_viewer_window_enable_kiosk(self);
-
     if (self->priv->fullscreen)
         virt_viewer_window_move_to_monitor(self);
 }
