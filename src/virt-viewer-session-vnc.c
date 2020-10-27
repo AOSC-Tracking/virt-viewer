@@ -129,6 +129,15 @@ virt_viewer_session_vnc_disconnected(VncDisplay *vnc G_GNUC_UNUSED,
 }
 
 static void
+virt_viewer_session_vnc_error(VncDisplay *vnc G_GNUC_UNUSED,
+                              const gchar* msg,
+                              VirtViewerSessionVnc *session)
+{
+    g_warning("vnc-session: got vnc error %s", msg);
+    g_signal_emit_by_name(session, "session-error", msg);
+}
+
+static void
 virt_viewer_session_vnc_initialized(VncDisplay *vnc G_GNUC_UNUSED,
                                     VirtViewerSessionVnc *session)
 {
@@ -386,6 +395,8 @@ virt_viewer_session_vnc_close(VirtViewerSession* session)
                      G_CALLBACK(virt_viewer_session_vnc_initialized), session);
     g_signal_connect(self->priv->vnc, "vnc-disconnected",
                      G_CALLBACK(virt_viewer_session_vnc_disconnected), session);
+    g_signal_connect(self->priv->vnc, "vnc-error",
+                     G_CALLBACK(virt_viewer_session_vnc_error), session);
 
     g_signal_connect(self->priv->vnc, "vnc-bell",
                      G_CALLBACK(virt_viewer_session_vnc_bell), session);
@@ -418,6 +429,8 @@ virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window)
                      G_CALLBACK(virt_viewer_session_vnc_initialized), session);
     g_signal_connect(session->priv->vnc, "vnc-disconnected",
                      G_CALLBACK(virt_viewer_session_vnc_disconnected), session);
+    g_signal_connect(session->priv->vnc, "vnc-error",
+                     G_CALLBACK(virt_viewer_session_vnc_error), session);
 
     g_signal_connect(session->priv->vnc, "vnc-bell",
                      G_CALLBACK(virt_viewer_session_vnc_bell), session);

@@ -78,6 +78,9 @@ void virt_viewer_app_about_delete(GtkWidget *dialog, void *dummy, VirtViewerApp 
 /* Internal methods */
 static void virt_viewer_app_connected(VirtViewerSession *session,
                                       VirtViewerApp *self);
+static void virt_viewer_app_error(VirtViewerSession *session G_GNUC_UNUSED,
+                                  const gchar *msg,
+                                  VirtViewerApp *self);
 static void virt_viewer_app_initialized(VirtViewerSession *session,
                                         VirtViewerApp *self);
 static void virt_viewer_app_disconnected(VirtViewerSession *session,
@@ -1292,6 +1295,8 @@ virt_viewer_app_create_session(VirtViewerApp *self, const gchar *type, GError **
 
     g_signal_connect(priv->session, "session-initialized",
                      G_CALLBACK(virt_viewer_app_initialized), self);
+    g_signal_connect(priv->session, "session-error",
+                     G_CALLBACK(virt_viewer_app_error), self);
     g_signal_connect(priv->session, "session-connected",
                      G_CALLBACK(virt_viewer_app_connected), self);
     g_signal_connect(priv->session, "session-disconnected",
@@ -1654,8 +1659,6 @@ virt_viewer_app_connected(VirtViewerSession *session G_GNUC_UNUSED,
         virt_viewer_app_show_status(self, _("Connected to graphic server"));
 }
 
-
-
 static void
 virt_viewer_app_initialized(VirtViewerSession *session G_GNUC_UNUSED,
                             VirtViewerApp *self)
@@ -1690,6 +1693,18 @@ virt_viewer_app_disconnected(VirtViewerSession *session G_GNUC_UNUSED, const gch
     virt_viewer_app_deactivate(self, connect_error);
 }
 
+static void
+virt_viewer_app_error(VirtViewerSession *session G_GNUC_UNUSED,
+                      const gchar *msg,
+                      VirtViewerApp *self)
+{
+    VirtViewerAppPrivate *priv = self->priv;
+
+    priv->connected = FALSE; /* display error dialog */
+
+    virt_viewer_app_disconnected(session, msg, self);
+}
+
 static void virt_viewer_app_cancelled(VirtViewerSession *session,
                                       VirtViewerApp *self)
 {
@@ -1697,7 +1712,6 @@ static void virt_viewer_app_cancelled(VirtViewerSession *session,
     priv->cancelled = TRUE;
     virt_viewer_app_disconnected(session, NULL, self);
 }
-
 
 static void virt_viewer_app_auth_refused(VirtViewerSession *session,
                                          const char *msg,
