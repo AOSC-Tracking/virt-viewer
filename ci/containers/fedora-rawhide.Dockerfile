@@ -1,6 +1,6 @@
-FROM fedora:rawhide
+FROM registry.fedoraproject.org/fedora:rawhide
 
-RUN dnf update -y --nogpgcheck fedora-gpg-keys fedora-release-container && \
+RUN dnf update -y --nogpgcheck fedora-gpg-keys && \
     dnf update -y && \
     dnf install -y \
         autoconf \
@@ -9,10 +9,7 @@ RUN dnf update -y --nogpgcheck fedora-gpg-keys fedora-release-container && \
         bash-completion \
         ca-certificates \
         ccache \
-        chrony \
-        cppi \
         gcc \
-        gdb \
         gettext \
         gettext-devel \
         git \
@@ -28,11 +25,7 @@ RUN dnf update -y --nogpgcheck fedora-gpg-keys fedora-release-container && \
         libvirt-gobject-devel \
         libxml2 \
         libxml2-devel \
-        lsof \
         make \
-        meson \
-        net-tools \
-        ninja-build \
         patch \
         perl \
         perl-App-cpanminus \
@@ -43,12 +36,7 @@ RUN dnf update -y --nogpgcheck fedora-gpg-keys fedora-release-container && \
         python3-wheel \
         rest-devel \
         rpm-build \
-        screen \
-        spice-gtk3-devel \
-        strace \
-        sudo \
-        vim \
-        xz && \
+        spice-gtk3-devel && \
     dnf autoremove -y && \
     dnf clean all -y && \
     mkdir -p /usr/libexec/ccache-wrappers && \

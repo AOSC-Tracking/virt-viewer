@@ -1,8 +1,9 @@
-FROM centos:8
+FROM registry.centos.org/centos:8
 
 RUN dnf install -y centos-release-stream && \
     dnf install 'dnf-command(config-manager)' -y && \
     dnf config-manager --set-enabled -y Stream-PowerTools && \
+    dnf install -y centos-release-advanced-virtualization && \
     dnf install -y epel-release && \
     dnf update -y && \
     dnf install -y \
@@ -12,10 +13,8 @@ RUN dnf install -y centos-release-stream && \
         bash-completion \
         ca-certificates \
         ccache \
-        chrony \
         cyrus-sasl-devel \
         gcc \
-        gdb \
         gdk-pixbuf2-devel \
         gettext \
         gettext-devel \
@@ -36,9 +35,7 @@ RUN dnf install -y centos-release-stream && \
         libxml2 \
         libxml2-devel \
         libxslt \
-        lsof \
         make \
-        net-tools \
         ninja-build \
         patch \
         perl \
@@ -52,13 +49,8 @@ RUN dnf install -y centos-release-stream && \
         python3-wheel \
         rpcgen \
         rpm-build \
-        screen \
         spice-gtk3-devel \
-        strace \
-        sudo \
-        vala \
-        vim \
-        xz && \
+        vala && \
     dnf autoremove -y && \
     dnf clean all -y && \
     mkdir -p /usr/libexec/ccache-wrappers && \

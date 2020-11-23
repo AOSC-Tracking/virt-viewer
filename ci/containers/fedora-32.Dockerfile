@@ -1,4 +1,4 @@
-FROM fedora:32
+FROM registry.fedoraproject.org/fedora:32
 
 RUN dnf update -y && \
     dnf install -y \
@@ -8,10 +8,7 @@ RUN dnf update -y && \
         bash-completion \
         ca-certificates \
         ccache \
-        chrony \
-        cppi \
         gcc \
-        gdb \
         gettext \
         gettext-devel \
         git \
@@ -27,11 +24,7 @@ RUN dnf update -y && \
         libvirt-gobject-devel \
         libxml2 \
         libxml2-devel \
-        lsof \
         make \
-        meson \
-        net-tools \
-        ninja-build \
         patch \
         perl \
         perl-App-cpanminus \
@@ -42,12 +35,7 @@ RUN dnf update -y && \
         python3-wheel \
         rest-devel \
         rpm-build \
-        screen \
-        spice-gtk3-devel \
-        strace \
-        sudo \
-        vim \
-        xz && \
+        spice-gtk3-devel && \
     dnf autoremove -y && \
     dnf clean all -y && \
     mkdir -p /usr/libexec/ccache-wrappers && \
