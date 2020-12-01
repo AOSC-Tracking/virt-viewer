@@ -14,7 +14,7 @@ then
     exit 1
 fi
 
-HOSTS=$($LCITOOL hosts | grep -v -E '(freebsd|macos)' | sed -e 's/libvirt-//')
+HOSTS=$($LCITOOL hosts | grep -v -E '(freebsd|macos)')
 
 for host in $HOSTS
 do
@@ -22,14 +22,14 @@ do
     then
         for cross in mingw32 mingw64
         do
-            $LCITOOL dockerfile libvirt-$host libvirt,libvirt-glib,gtk-vnc,virt-viewer --cross $cross >$host-cross-$cross.Dockerfile
+            $LCITOOL dockerfile $host libvirt,libvirt-glib,gtk-vnc,virt-viewer --cross $cross > ci-$host-cross-$cross.Dockerfile
         done
     fi
 
     if test "$host" = "centos-8" || test "$host" = "centos-stream"
     then
-        $LCITOOL dockerfile libvirt-$host libvirt+minimal,libvirt-glib,gtk-vnc,virt-viewer > $host.Dockerfile
+        $LCITOOL dockerfile $host libvirt+minimal,libvirt-glib,gtk-vnc,virt-viewer > ci-$host.Dockerfile
     else
-        $LCITOOL dockerfile libvirt-$host libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer > $host.Dockerfile
+        $LCITOOL dockerfile $host libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer > ci-$host.Dockerfile
     fi
 done
