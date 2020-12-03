@@ -887,6 +887,7 @@ virt_viewer_window_enable_modifiers(VirtViewerWindow *self)
     VirtViewerWindowPrivate *priv = self->priv;
     GSList *accels;
     guint i;
+    GtkAccelKey key;
 
     if (priv->accel_enabled)
         return;
@@ -904,15 +905,20 @@ virt_viewer_window_enable_modifiers(VirtViewerWindow *self)
                  "gtk-enable-mnemonics", priv->enable_mnemonics_save,
                  NULL);
 
-    g_action_map_add_action_entries(G_ACTION_MAP(priv->window),
-                                    keypad_action_entries, G_N_ELEMENTS(keypad_action_entries),
-                                    self);
-    for (i = 0; i < G_N_ELEMENTS(keypad_action_entries); i++) {
-        gchar *detailed_name = g_strdup_printf("win.%s", keypad_action_entries[i].name);
-        gtk_application_set_accels_for_action(GTK_APPLICATION(priv->app),
-                                              detailed_name,
-                                              keypad_action_accels[i]);
-        g_free(detailed_name);
+    /* if zoom actions using "normal" +/-/0 keys are enabled,
+     * allow the user to use the numpad +/-/0 keys as well */
+    if (gtk_accel_map_lookup_entry("<virt-viewer>/view/zoom-out", &key)
+        && key.accel_key != 0) {
+        g_action_map_add_action_entries(G_ACTION_MAP(priv->window),
+                                        keypad_action_entries, G_N_ELEMENTS(keypad_action_entries),
+                                        self);
+        for (i = 0; i < G_N_ELEMENTS(keypad_action_entries); i++) {
+            gchar *detailed_name = g_strdup_printf("win.%s", keypad_action_entries[i].name);
+            gtk_application_set_accels_for_action(GTK_APPLICATION(priv->app),
+                                                  detailed_name,
+                                                  keypad_action_accels[i]);
+            g_free(detailed_name);
+        }
     }
 
     priv->accel_enabled = TRUE;
