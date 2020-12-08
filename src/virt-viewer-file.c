@@ -57,6 +57,9 @@
  * - title: string
  * - toggle-fullscreen: string in spice hotkey format
  * - release-cursor: string in spice hotkey format
+ * - zoom-in: zoom in and make the client window larger
+ * - zoom-out: zoom out and make the client window smaller
+ * - zoom-reset: reset zoom and client window size
  * - smartcard-insert: string in spice hotkey format
  * - smartcard-remove: string in spice hotkey format
  * - secure-attention: string in spice hotkey format
@@ -117,6 +120,9 @@ enum  {
     PROP_TITLE,
     PROP_TOGGLE_FULLSCREEN,
     PROP_RELEASE_CURSOR,
+    PROP_ZOOM_IN,
+    PROP_ZOOM_OUT,
+    PROP_ZOOM_RESET,
     PROP_ENABLE_SMARTCARD,
     PROP_ENABLE_USBREDIR,
     PROP_COLOR_DEPTH,
@@ -513,6 +519,46 @@ virt_viewer_file_set_release_cursor(VirtViewerFile* self, const gchar* value)
     virt_viewer_file_set_string(self, MAIN_GROUP, "release-cursor", value);
     g_object_notify(G_OBJECT(self), "release-cursor");
 }
+
+gchar*
+virt_viewer_file_get_zoom_in(VirtViewerFile* self)
+{
+    return virt_viewer_file_get_string(self, MAIN_GROUP, "zoom-in");
+}
+
+void
+virt_viewer_file_set_zoom_in(VirtViewerFile* self, const gchar* value)
+{
+    virt_viewer_file_set_string(self, MAIN_GROUP, "zoom-in", value);
+    g_object_notify(G_OBJECT(self), "zoom-in");
+}
+
+gchar*
+virt_viewer_file_get_zoom_out(VirtViewerFile* self)
+{
+    return virt_viewer_file_get_string(self, MAIN_GROUP, "zoom-out");
+}
+
+void
+virt_viewer_file_set_zoom_out(VirtViewerFile* self, const gchar* value)
+{
+    virt_viewer_file_set_string(self, MAIN_GROUP, "zoom-out", value);
+    g_object_notify(G_OBJECT(self), "zoom-out");
+}
+
+gchar*
+virt_viewer_file_get_zoom_reset(VirtViewerFile* self)
+{
+    return virt_viewer_file_get_string(self, MAIN_GROUP, "zoom-reset");
+}
+
+void
+virt_viewer_file_set_zoom_reset(VirtViewerFile* self, const gchar* value)
+{
+    virt_viewer_file_set_string(self, MAIN_GROUP, "zoom-reset", value);
+    g_object_notify(G_OBJECT(self), "zoom-reset");
+}
+
 
 gchar*
 virt_viewer_file_get_secure_attention(VirtViewerFile* self)
@@ -917,6 +963,9 @@ virt_viewer_file_fill_app(VirtViewerFile* self, VirtViewerApp *app, GError **err
         } accels[] = {
             { "release-cursor", "<virt-viewer>/view/release-cursor" },
             { "toggle-fullscreen", "<virt-viewer>/view/toggle-fullscreen" },
+            { "zoom-in", "<virt-viewer>/view/zoom-in" },
+            { "zoom-out", "<virt-viewer>/view/zoom-out" },
+            { "zoom-reset", "<virt-viewer>/view/zoom-reset" },
             { "smartcard-insert", "<virt-viewer>/file/smartcard-insert" },
             { "smartcard-remove", "<virt-viewer>/file/smartcard-remove" },
             { "secure-attention", "<virt-viewer>/send/secure-attention" }
@@ -994,6 +1043,15 @@ virt_viewer_file_set_property(GObject* object, guint property_id,
         break;
     case PROP_RELEASE_CURSOR:
         virt_viewer_file_set_release_cursor(self, g_value_get_string(value));
+        break;
+    case PROP_ZOOM_IN:
+        virt_viewer_file_set_zoom_in(self, g_value_get_string(value));
+        break;
+    case PROP_ZOOM_OUT:
+        virt_viewer_file_set_zoom_out(self, g_value_get_string(value));
+        break;
+    case PROP_ZOOM_RESET:
+        virt_viewer_file_set_zoom_reset(self, g_value_get_string(value));
         break;
     case PROP_SECURE_ATTENTION:
         virt_viewer_file_set_secure_attention(self, g_value_get_string(value));
@@ -1111,6 +1169,15 @@ virt_viewer_file_get_property(GObject* object, guint property_id,
         break;
     case PROP_RELEASE_CURSOR:
         g_value_take_string(value, virt_viewer_file_get_release_cursor(self));
+        break;
+    case PROP_ZOOM_IN:
+        g_value_take_string(value, virt_viewer_file_get_zoom_in(self));
+        break;
+    case PROP_ZOOM_OUT:
+        g_value_take_string(value, virt_viewer_file_get_zoom_out(self));
+        break;
+    case PROP_ZOOM_RESET:
+        g_value_take_string(value, virt_viewer_file_get_zoom_reset(self));
         break;
     case PROP_SECURE_ATTENTION:
         g_value_take_string(value, virt_viewer_file_get_secure_attention(self));
@@ -1253,6 +1320,18 @@ virt_viewer_file_class_init(VirtViewerFileClass* klass)
 
     g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_RELEASE_CURSOR,
         g_param_spec_string("release-cursor", "release-cursor", "release-cursor", NULL,
+                            G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
+
+    g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_ZOOM_IN,
+        g_param_spec_string("zoom-in", "zoom-in", "zoom-in", NULL,
+                            G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
+
+    g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_ZOOM_OUT,
+        g_param_spec_string("zoom-out", "zoom-out", "zoom-out", NULL,
+                            G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
+
+    g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_ZOOM_RESET,
+        g_param_spec_string("zoom-reset", "zoom-reset", "zoom-reset", NULL,
                             G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
 
     g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_SECURE_ATTENTION,
