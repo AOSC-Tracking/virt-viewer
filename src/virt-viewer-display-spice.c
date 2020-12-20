@@ -238,10 +238,14 @@ enable_accel_changed(VirtViewerApp *app,
                      VirtViewerDisplaySpice *self)
 {
     GtkAccelKey key = {0, 0, 0};
+    gboolean kiosk;
+
     if (virt_viewer_app_get_enable_accel(app))
         gtk_accel_map_lookup_entry("<virt-viewer>/view/release-cursor", &key);
 
-    if (key.accel_key || key.accel_mods) {
+    g_object_get(app, "kiosk", &kiosk, NULL);
+
+    if (key.accel_key || key.accel_mods || kiosk) {
         SpiceGrabSequence *seq = spice_grab_sequence_new(0, NULL);
         /* disable default grab sequence */
         spice_display_set_grab_keys(self->priv->display, seq);
