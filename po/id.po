@@ -9,8 +9,8 @@ msgstr ""
 "POT-Creation-Date: 2020-09-11 11:34+0200\n"
 "PO-Revision-Date: 2021-01-03 09:36+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
-"Language-Team: Indonesian <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/id/>\n"
+"Language-Team: Indonesian <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +18,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.4\n"
 
-#: src/remote-viewer.c:148
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -28,7 +27,6 @@ msgstr ""
 "Kesalahan: tidak dapat menangani banyak URI\n"
 "\n"
 
-#: src/virt-viewer.c:183
 #, c-format
 msgid ""
 "\n"
@@ -39,7 +37,6 @@ msgstr ""
 "Tidak ada ID|UUID|DOMAIN-NAME yang dinyatakan untuk '%s'\n"
 "\n"
 
-#: src/virt-viewer.c:171
 #, c-format
 msgid ""
 "\n"
@@ -54,12 +51,10 @@ msgstr ""
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
-#: src/virt-viewer-window.c:1433
 #, c-format
 msgid "%s - %s"
 msgstr "%s - %s"
 
-#: src/virt-viewer-app.c:2187
 #, c-format
 msgid "%s version %s"
 msgstr "%s versi %s"
@@ -68,7 +63,6 @@ msgstr "%s versi %s"
 #. * This is "<ungrab accelerator> <subtitle> - <appname>"
 #. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
 #.
-#: src/virt-viewer-window.c:1413
 #, c-format
 msgid "(Press %s to release pointer) %s - %s"
 msgstr "(Tekan %s untuk melepas penunjuk) %s - %s"
@@ -77,43 +71,34 @@ msgstr "(Tekan %s untuk melepas penunjuk) %s - %s"
 #. * This is "<ungrab accelerator> - <appname>"
 #. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
 #.
-#: src/virt-viewer-window.c:1422
 #, c-format
 msgid "(Press %s to release pointer) - %s"
 msgstr "(Tekan %s untuk melepas penunjuk) - %s"
 
-#: src/remote-viewer-iso-list-dialog.c:206
 msgid "<b>Loading...</b>"
 msgstr "<b>Memuat...</b>"
 
-#: src/virt-viewer-app.c:2948
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
 
-#: src/resources/ui/virt-viewer-about.ui:19
 msgid "A remote desktop client built with GTK-VNC, SPICE-GTK and libvirt"
 msgstr ""
 "Klien desktop jarak jauh yang dibuat dengan GTK-VNC, SPICE-GTK, dan libvirt"
 
-#: src/resources/ui/virt-viewer-about.ui:8
 msgid "About Virt-Viewer"
 msgstr "Tentang Virt-Viewer"
 
-#: data/remote-viewer.desktop.in:4
 msgid "Access remote desktops"
 msgstr "Akses desktop jauh"
 
-#: src/virt-viewer-app.c:855
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "Alamat terlalu panjang untuk UNIX socket_path: %s"
 
-#: src/virt-viewer-file.c:883
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
 msgstr "Setidaknya diperlukan %s versi %s untuk menyiapkan koneksi ini"
 
-#: src/virt-viewer-file.c:875
 #, c-format
 msgid ""
 "At least %s version %s is required to setup this connection, see %s for "
@@ -122,15 +107,12 @@ msgstr ""
 "Setidaknya diperlukan %s versi %s untuk menyiapkan koneksi ini, lihat %s "
 "untuk detailnya"
 
-#: src/virt-viewer.c:133
 msgid "Attach to the local display using libvirt"
 msgstr "Cantolkan ke tampilan lokal menggunakan libvirt"
 
-#: src/virt-viewer.c:1056
 msgid "Authentication failed."
 msgstr "Otentikasi gagal."
 
-#: src/virt-viewer-auth.c:89
 #, c-format
 msgid ""
 "Authentication is required for the %s connection to:\n"
@@ -143,107 +125,82 @@ msgstr ""
 "<b>%s</b>\n"
 "\n"
 
-#: src/virt-viewer-auth.c:93
 #, c-format
 msgid "Authentication is required for the %s connection:\n"
 msgstr "Autentikasi diperlukan untuk koneksi %s:\n"
 
-#: src/resources/ui/virt-viewer-auth.ui:7
 msgid "Authentication required"
 msgstr "Autentikasi diperlukan"
 
-#: src/remote-viewer.c:448 src/virt-viewer.c:1109
 msgid "Authentication was cancelled"
 msgstr "Autentikasi dibatalkan"
 
-#: src/resources/ui/virt-viewer-vm-connection.ui:96
 msgid "Available virtual machines"
 msgstr "Mesin virtual yang tersedia"
 
-#: src/resources/ui/remote-viewer-connect.ui:134
-#: src/resources/ui/virt-viewer-vm-connection.ui:39
 #, fuzzy
 msgid "C_onnect"
 msgstr "_Sambung"
 
-#: src/virt-viewer-app.c:1385
 #, c-format
 msgid "Can't connect to channel: %s"
 msgstr "Tidak dapat terhubung ke saluran: %s"
 
-#: src/remote-viewer.c:792
 msgid "Cannot determine the connection type from URI"
 msgstr "Tidak dapat menentukan jenis koneksi dari URI"
 
-#: src/virt-viewer.c:550
 #, c-format
 msgid "Cannot determine the graphic type for the guest %s"
 msgstr "Tidak dapat menentukan jenis grafik untuk guest %s"
 
-#: src/virt-viewer.c:599
 #, c-format
 msgid "Cannot determine the host for the guest %s"
 msgstr "Tidak dapat menentukan host untuk guest %s"
 
-#: src/virt-viewer.c:928
 msgid "Cannot get guest state"
 msgstr "Tidak bisa memperoleh status guest"
 
-#: src/remote-viewer-iso-list-dialog.c:371
 msgid "Change CD"
 msgstr "Ubah CD"
 
-#: src/virt-viewer.c:925
 msgid "Checking guest domain status"
 msgstr "Memeriksa status domain guest"
 
-#: src/resources/ui/virt-viewer-vm-connection.ui:8
 msgid "Choose a virtual machine"
 msgstr "Pilih mesin virtual"
 
-#: src/remote-viewer-iso-list-dialog.c:278
 msgid "Close"
 msgstr "Tutup"
 
-#: src/virt-viewer-app.c:1370
 msgid "Connect to SSH failed."
 msgstr "Sambungan ke SSH gagal."
 
-#: src/virt-viewer-app.c:1404
 msgid "Connect to channel unsupported."
 msgstr "Sambungkan ke saluran tidak didukung."
 
-#: src/virt-viewer.c:135
 msgid "Connect to hypervisor"
 msgstr "Hubungkan ke hypervisor"
 
-#: src/virt-viewer-app.c:1654
 msgid "Connected to graphic server"
 msgstr "Terhubung ke server grafis"
 
-#: src/virt-viewer-app.c:871
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "Gagal menyambung ke soket UNIX: %s"
 
-#: src/virt-viewer-app.c:1494
 msgid "Connecting to graphic server"
 msgstr "Menghubungkan ke server grafis"
 
-#: src/resources/ui/remote-viewer-connect.ui:24
 msgid "Connection _Address"
 msgstr "_Alamat Sambungan"
 
-#: src/resources/ui/remote-viewer-connect.ui:6
 msgid "Connection details"
 msgstr "Rincian sambungan"
 
-#: src/virt-viewer-display-vte.c:181
 #, fuzzy
 msgid "Console support is compiled out!"
 msgstr "Dukungan konsol telah disusun!"
 
-#: src/resources/ui/virt-viewer-about.ui:17
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 "Copyright (C) 2007-2020 Red Hat, Inc."
@@ -251,254 +208,202 @@ msgstr ""
 "Hak Cipta (C) 2007-2012 Daniel P. Berrange\n"
 "Hak Cipta (C) 2007-2020 Red Hat, Inc."
 
-#: src/remote-viewer.c:691
 msgid "Couldn't open oVirt session: "
 msgstr "Tidak dapat membuka sesi oVirt: "
 
-#: src/virt-viewer-app.c:865
 #, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "Gagal membuat soket UNIX: %s"
 
-#: src/virt-viewer-window.c:1405
 msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
-#: src/virt-viewer-app.c:2942
 #, fuzzy
 msgid "Customise hotkeys"
 msgstr "Sesuaikan hotkeys"
 
-#: src/virt-viewer.c:131
 msgid "Direct connection with no automatic tunnels"
 msgstr "Koneksi langsung tanpa terowongan otomatis"
 
-#: src/virt-viewer-window.c:1294
 msgid "Disconnect"
 msgstr "Putuskan"
 
-#: src/virt-viewer-app.c:2641
 #, c-format
 msgid "Display _%d"
 msgstr "Tampilan _ %d"
 
-#: src/virt-viewer-app.c:1469
 msgid "Display can only be attached through libvirt with --attach"
 msgstr "Tampilan hanya dapat dicantolkan melalui libvirt dengan --attach"
 
-#: src/virt-viewer-app.c:2952
 #, fuzzy
 msgid "Display debugging information"
 msgstr "Tampilkan informasi debugging"
 
-#: src/virt-viewer-app.c:2950
 #, fuzzy
 msgid "Display verbose information"
 msgstr "Tampilkan informasi verbose"
 
-#: src/virt-viewer-app.c:2936
 #, fuzzy
 msgid "Display version information"
 msgstr "Tampilkan informasi versi"
 
-#: src/virt-viewer-app.c:684
 #, fuzzy
 msgid "Do not ask me again"
 msgstr "Jangan tanya saya lagi"
 
-#: src/virt-viewer-app.c:682
 #, fuzzy
 msgid "Do you want to close the session?"
 msgstr "Apakah Anda ingin menutup sesi?"
 
-#: src/virt-viewer-app.c:2946
 #, fuzzy
 msgid "Enable kiosk mode"
 msgstr "Aktifkan mode kios"
 
-#: src/remote-viewer-iso-list-dialog.c:319
 #, fuzzy
 msgid "Failed to change CD"
 msgstr "Gagal mengubah CD"
 
-#: src/virt-viewer.c:1116
 #, fuzzy
 msgid "Failed to connect: "
 msgstr "Gagal terhubung. "
 
-#: src/remote-viewer.c:719
 #, fuzzy
 msgid "Failed to initiate connection"
 msgstr "Gagal memulai koneksi"
 
-#: src/remote-viewer.c:765
 #, fuzzy
 msgid "Failed to read stdin: "
 msgstr "Gagal membaca stdin: "
 
-#: src/virt-viewer-file-transfer-dialog.c:124
 #, fuzzy
 msgid "File Transfers"
 msgstr "Transfer Berkas"
 
-#: src/virt-viewer.c:889
 #, fuzzy
 msgid "Finding guest domain"
 msgstr "Menemukan domain tamu"
 
-#: src/resources/ui/virt-viewer-preferences.ui:48
 #, fuzzy
 msgid "Folder sharing"
 msgstr "Berbagi folder"
 
-#: src/resources/ui/remote-viewer-connect.ui:54
 #, fuzzy
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Misalnya, spice: //foo.example.org: 5900"
 
-#: src/resources/ui/virt-viewer-guest-details.ui:68
 msgid "GUID:"
 msgstr "GUID:"
 
-#: src/virt-viewer.c:627
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Guest '%s' is not reachable"
 msgstr "Tamu '%s' tidak dapat dihubungi"
 
-#: src/resources/ui/virt-viewer-guest-details.ui:7
 #, fuzzy
 msgid "Guest Details"
 msgstr "Rincian Pengunjung"
 
-#: src/virt-viewer-app.c:1593
 #, fuzzy
 msgid "Guest domain has shutdown"
 msgstr "Domain tamu telah ditutup"
 
-#: src/remote-viewer.c:782
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Invalid file %s: "
 msgstr "File tidak valid %s: "
 
-#: src/virt-viewer-app.c:2925
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Invalid kiosk-quit argument: %s"
 msgstr "Argumen keluar dari kios tidak valid: %s"
 
-#: src/virt-viewer-session-spice.c:731
 #, fuzzy
 msgid "Invalid password"
 msgstr "Password tidak valid"
 
-#: src/virt-viewer-window.c:1330 src/virt-viewer-window.c:1331
 #, fuzzy
 msgid "Leave fullscreen"
 msgstr "Ke_luar dari Layar Penuh"
 
-#: src/resources/ui/remote-viewer-iso-list.ui:28
 #, fuzzy
 msgid "Loading..."
 msgstr "Memuat..."
 
-#: src/virt-viewer-window.c:1302
 #, fuzzy
 msgid "Minimize"
 msgstr "Minimalkan"
 
-#: src/resources/ui/remote-viewer-iso-list.ui:129
-#: src/resources/ui/virt-viewer-vm-connection.ui:74
 #, fuzzy
 msgid "Name"
 msgstr "Nama"
 
-#: src/resources/ui/virt-viewer-guest-details.ui:56
 #, fuzzy
 msgid "Name:"
 msgstr "Nama:"
 
-#: src/remote-viewer-iso-list-dialog.c:156
 #, fuzzy
 msgid "No ISO files in domain"
 msgstr "Tidak ada file ISO di domain"
 
-#: src/remote-viewer.c:748
 #, fuzzy
 msgid "No connection was chosen"
 msgstr "Tidak ada koneksi yang dipilih"
 
-#: src/virt-viewer-vm-connection.c:64
 #, fuzzy
 msgid "No running virtual machine found"
 msgstr "Tidak ditemukan mesin virtual yang sedang berjalan"
 
-#: src/virt-viewer-vm-connection.c:97
 #, fuzzy
 msgid "No virtual machine was chosen"
 msgstr "Tidak ada mesin virtual yang dipilih"
 
-#: src/virt-viewer-app.c:2940
 #, fuzzy
 msgid "Open in full screen mode (adjusts guest resolution to fit the client)"
 msgstr ""
 "Buka dalam mode layar penuh (sesuaikan resolusi tamu agar sesuai dengan "
 "klien)"
 
-#: src/resources/ui/virt-viewer-auth.ui:93
 #, fuzzy
 msgid "Password:"
 msgstr "Kata Sandi:"
 
-#: src/virt-viewer-window.c:1108
 #, fuzzy
 msgid "Please add an extension to the file name"
 msgstr "Harap tambahkan ekstensi ke nama file"
 
-#: src/resources/ui/virt-viewer-preferences.ui:8
 #, fuzzy
 msgid "Preferences"
 msgstr "Preferensi"
 
-#: src/virt-viewer-session-spice.c:1023
 #, fuzzy
 msgid "QEMU debug console"
 msgstr "Konsol debug QEMU"
 
-#: src/virt-viewer-session-spice.c:1021
 #, fuzzy
 msgid "QEMU human monitor"
 msgstr "Monitor manusia QEMU"
 
-#: src/virt-viewer-app.c:2948
 #, fuzzy
 msgid "Quit on given condition in kiosk mode"
 msgstr "Berhenti pada kondisi tertentu dalam mode kios"
 
-#: src/resources/ui/virt-viewer-preferences.ui:82
 #, fuzzy
 msgid "Read-only"
 msgstr "Hanya baca"
 
-#: src/resources/ui/remote-viewer-connect.ui:78
 #, fuzzy
 msgid "Recent connections"
 msgstr "Koneksi terkini"
 
-#: src/virt-viewer.c:139
 #, fuzzy
 msgid "Reconnect to domain upon restart"
 msgstr "Sambungkan kembali ke domain saat memulai ulang"
 
-#: src/remote-viewer-iso-list-dialog.c:277
 #, fuzzy
 msgid "Refresh"
 msgstr "Segarkan"
 
-#: src/resources/ui/virt-viewer.ui:255
 #, fuzzy
 msgid "Release cursor"
 msgstr "Lepaskan kursor"
 
-#: src/virt-viewer-app.c:2944
 #, fuzzy
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -506,13 +411,10 @@ msgstr ""
 "Remap key format key = keymod + key misalnya F1 = SHIFT + CTRL + F1,1 = "
 "SHIFT + F1, ALT_L = Void"
 
-#: data/remote-viewer.appdata.xml.in:6 data/remote-viewer.desktop.in:3
-#: src/remote-viewer-main.c:39
 #, fuzzy
 msgid "Remote Viewer"
 msgstr "Penampil Jarak Jauh"
 
-#: data/remote-viewer.appdata.xml.in:9
 #, fuzzy
 msgid ""
 "Remote Viewer provides a graphical viewer for the guest OS display. At this "
@@ -527,438 +429,346 @@ msgstr ""
 "terhubung langsung ke OS tamu lokal dan yang dihosting dari jarak jauh, "
 "secara opsional menggunakan enkripsi SSL / TLS."
 
-#: src/remote-viewer.c:123
 #, fuzzy
 msgid "Remote viewer client"
 msgstr "Klien penampil jarak jauh"
 
-#: data/remote-viewer.appdata.xml.in:7
 #, fuzzy
 msgid "Remotely access virtual machines"
 msgstr "Akses mesin virtual dari jarak jauh"
 
-#: src/remote-viewer.c:162 src/virt-viewer.c:200
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Run '%s --help' to see a full list of available command line options\n"
 msgstr ""
 "Jalankan '%s --help' untuk melihat daftar lengkap opsi baris perintah yang "
 "tersedia\n"
 
-#: src/virt-viewer-window.c:1082
 #, fuzzy
 msgid "Save screenshot"
 msgstr "Simpan tangkapan layar"
 
-#: src/virt-viewer-window.c:1094
 #, fuzzy
 msgid "Screenshot.png"
 msgstr "Screenshot.png"
 
-#: src/resources/ui/remote-viewer-iso-list.ui:78
 #, fuzzy
 msgid "Select ISO"
 msgstr "Pilih"
 
-#: src/virt-viewer-session-spice.c:829
 #, fuzzy
 msgid "Select USB devices for redirection"
 msgstr "Pilih perangkat USB yang akan dialihkan"
 
-#: src/virt-viewer.c:143
 #, fuzzy
 msgid "Select the virtual machine only by its ID"
 msgstr "Pilih mesin virtual hanya dengan ID-nya"
 
-#: src/virt-viewer.c:145
 #, fuzzy
 msgid "Select the virtual machine only by its UUID"
 msgstr "Pilih mesin virtual hanya dengan UUID-nya"
 
-#: src/virt-viewer.c:141
 #, fuzzy
 msgid "Select the virtual machine only by its name"
 msgstr "Pilih mesin virtual hanya dengan namanya"
 
-#: src/resources/ui/remote-viewer-iso-list.ui:116
 #, fuzzy
 msgid "Selected"
 msgstr "Dipilih"
 
-#: src/virt-viewer-window.c:1320
 #, fuzzy
 msgid "Send key combination"
 msgstr "Kirim kombinasi tombol"
 
-#: src/virt-viewer-session-spice.c:1019
 #, fuzzy
 msgid "Serial"
 msgstr "Serial"
 
-#: src/remote-viewer.c:116
 #, fuzzy
 msgid "Set window title"
 msgstr "Judul jendela"
 
-#: src/resources/ui/virt-viewer-preferences.ui:96
 #, fuzzy
 msgid "Share clipboard"
 msgstr "Bagikan papan klip"
 
-#: src/resources/ui/virt-viewer-preferences.ui:70
 #, fuzzy
 msgid "Share folder"
 msgstr "Bagikan folder"
 
-#: src/resources/ui/virt-viewer-auth.ui:137
 #, fuzzy
 msgid "Show password"
 msgstr "Tampilkan sandi"
 
-#: src/resources/ui/virt-viewer.ui:62
 #, fuzzy
 msgid "Smartcard insertion"
 msgstr "Penyisipan kartu pintar"
 
-#: src/resources/ui/virt-viewer.ui:72
 #, fuzzy
 msgid "Smartcard removal"
 msgstr "Penghapusan kartu pintar"
 
-#: src/resources/ui/virt-viewer-preferences.ui:132
 #, fuzzy
 msgid "Spice"
 msgstr "Rempah-rempah"
 
-#: src/resources/ui/virt-viewer-about.ui:25
 #, fuzzy
 msgid "The Fedora Translation Team"
 msgstr "Tim Penerjemah Fedora"
 
-#: src/virt-viewer-file-transfer-dialog.c:152
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Transferring %u file of %u..."
 msgid_plural "Transferring %u files of %u..."
 msgstr[0] "Mentransfer %u file dari %u ..."
 
-#: src/virt-viewer-file-transfer-dialog.c:150
 #, fuzzy
 msgid "Transferring 1 file..."
 msgstr "Mentransfer 1 file ..."
 
-#: src/virt-viewer-window.c:1310 src/virt-viewer-window.c:1311
 #, fuzzy
 msgid "USB device selection"
 msgstr "Pemilihan perangkat USB"
 
-#: src/virt-viewer-app.c:1731
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "USB redirection error: %s"
 msgstr "Kesalahan pengalihan USB"
 
-#: src/virt-viewer-app.c:1709
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unable to authenticate with remote desktop server at %s: %s\n"
 msgstr ""
 "Tidak dapat mengautentikasi dengan server desktop jarak jauh pada %s: %s\n"
 
-#: src/virt-viewer-app.c:1723
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unable to authenticate with remote desktop server: %s"
 msgstr "Tidak dapat mengautentikasi dengan server desktop jarak jauh: %s"
 
-#: src/virt-viewer.c:1048
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "Tidak dapat tersambung ke libvirt dengan URI: %s."
 
-#: src/virt-viewer-app.c:1683
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "Tidak dapat terhubung ke server grafis %s"
 
-#: src/remote-viewer.c:811
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unable to connect: %s"
 msgstr "Tidak dapat terhubung: %s"
 
-#: src/virt-viewer-window.c:1271
 #, fuzzy
 msgid "Unable to connnect to oVirt"
 msgstr "Tidak dapat terhubung ke oVirt"
 
-#: src/virt-viewer-window.c:1059
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unable to determine image format for file '%s'"
 msgstr "Tidak dapat menentukan format gambar untuk file '%s'"
 
-#: src/virt-viewer-window.c:1183
 #, fuzzy
 msgctxt "Unknown UUID"
 msgid "Unknown"
 msgstr "Tak dikenal"
 
-#: src/virt-viewer-window.c:1181
 #, fuzzy
 msgctxt "Unknown name"
 msgid "Unknown"
 msgstr "Tak dikenal"
 
-#: src/remote-viewer-iso-list-dialog.c:298
-#: src/virt-viewer-file-transfer-dialog.c:197
 #, fuzzy
 msgid "Unspecified error"
 msgstr "Kesalahan tidak jelas"
 
-#: src/virt-viewer-session-vnc.c:158
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unsupported authentication type %u"
 msgstr "Jenis otentikasi tidak didukung %u"
 
-#: src/virt-viewer-app.c:1286
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unsupported graphic type '%s'"
 msgstr "Jenis grafik '%s' tidak didukung"
 
-#: src/resources/ui/virt-viewer-auth.ui:105
 #, fuzzy
 msgid "Username:"
 msgstr "Nama Pengguna:"
 
-#: src/virt-viewer-display-vnc.c:130
 #, fuzzy
 msgid "VNC does not provide GUID"
 msgstr "VNC tidak menyediakan GUID"
 
-#: src/virt-viewer-main.c:38
 #, fuzzy
 msgid "Virt Viewer"
 msgstr ""
-"<computeroutput>$ </computeroutput><userinput>virt-viewer --connect "
-"qemu+ssh://root@<replaceable>server</replaceable>/system testkvm\n"
+"<computeroutput>$ </computeroutput><userinput>virt-viewer --connect qemu"
+"+ssh://root@<replaceable>server</replaceable>/system testkvm\n"
 "</userinput><computeroutput>root@server's password: \n"
 "root@server's password: </computeroutput>"
 
-#: data/virt-viewer-mime.xml.in:5
 #, fuzzy
 msgid "Virt-Viewer connection file"
 msgstr "File koneksi Virt-Viewer"
 
-#: src/virt-viewer.c:860
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Virtual machine %s is not running"
 msgstr "Mesin virtual %s tidak berjalan"
 
-#: src/virt-viewer.c:152
 #, fuzzy
 msgid "Virtual machine graphical console"
 msgstr "Konsol grafis mesin virtual"
 
-#: src/virt-viewer.c:137
 #, fuzzy
 msgid "Wait for domain to start"
 msgstr "Tunggu domain dimulai"
 
-#: src/virt-viewer-app.c:1170
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Waiting for display %d..."
 msgstr "Menunggu tampilan %d ..."
 
-#: src/virt-viewer.c:893
 #, fuzzy
 msgid "Waiting for guest domain to be created"
 msgstr "Menunggu domain tamu dibuat"
 
-#: src/virt-viewer.c:296
 #, fuzzy
 msgid "Waiting for guest domain to re-start"
 msgstr "Menunggu domain tamu untuk memulai kembali"
 
-#: src/virt-viewer.c:934
 #, fuzzy
 msgid "Waiting for guest domain to start"
 msgstr "Menunggu domain tamu untuk dimulai"
 
-#: src/virt-viewer.c:885
 #, fuzzy
 msgid "Waiting for libvirt to start"
 msgstr "Menunggu libvirt dimulai"
 
-#: src/resources/ui/virt-viewer.ui:201
 #, fuzzy
 msgid "Zoom _In"
 msgstr "Perbesar"
 
-#: src/resources/ui/virt-viewer.ui:212
 #, fuzzy
 msgid "Zoom _Out"
 msgstr "Perkecil"
 
-#: src/virt-viewer-app.c:2122
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "Tingkat pembesaran harus dalam %d-% d\n"
 
-#: src/virt-viewer-app.c:2938
 #, fuzzy
 msgid "Zoom level of window, in percentage"
 msgstr "Tingkat zoom jendela, dalam persentase"
 
-#: src/virt-viewer.c:1049
 #, fuzzy
 msgid "[none]"
 msgstr "(tidak ada)"
 
-#: src/resources/ui/virt-viewer.ui:297
 #, fuzzy
 msgid "_About"
 msgstr "Tent_ang"
 
-#: src/resources/ui/remote-viewer-connect.ui:120
-#: src/resources/ui/virt-viewer-auth.ui:27 src/virt-viewer-window.c:1085
-#: src/resources/ui/virt-viewer-vm-connection.ui:25
-#: src/resources/ui/virt-viewer-file-transfer-dialog.ui:28
 #, fuzzy
 msgid "_Cancel"
 msgstr "Ba_tal"
 
-#: src/resources/ui/virt-viewer.ui:80
 #, fuzzy
 msgid "_Change CD"
 msgstr "_Ubah CD"
 
-#: src/virt-viewer-session-spice.c:831
-#: src/resources/ui/virt-viewer-guest-details.ui:23
 #, fuzzy
 msgid "_Close"
 msgstr "_Tutup"
 
-#: src/resources/ui/virt-viewer.ui:246
 #, fuzzy
 msgid "_Displays"
 msgstr "_Displays"
 
-#: src/resources/ui/virt-viewer.ui:28
 #, fuzzy
 msgid "_File"
 msgstr "_Berkas"
 
-#: src/resources/ui/virt-viewer.ui:180
 #, fuzzy
 msgid "_Full screen"
 msgstr "Modus layar-penuh"
 
-#: src/resources/ui/virt-viewer.ui:290
 #, fuzzy
 msgid "_Guest Details"
 msgstr "Detail _Guest"
 
-#: src/resources/ui/virt-viewer.ui:279
 #, fuzzy
 msgid "_Help"
 msgstr "_Bantuan"
 
-#: src/resources/ui/virt-viewer.ui:119
 #, fuzzy
 msgid "_Machine"
 msgstr "Mengelola Mesin Secara Utuh"
 
-#: src/resources/ui/virt-viewer.ui:229
 #, fuzzy
 msgid "_Normal Size"
 msgstr "Ukura_n Normal"
 
-#: src/resources/ui/virt-viewer-auth.ui:42
 msgid "_OK"
 msgstr "_OK"
 
-#: src/resources/ui/virt-viewer.ui:129
 #, fuzzy
 msgid "_Pause"
 msgstr "_Jeda"
 
-#: src/resources/ui/virt-viewer.ui:153
 #, fuzzy
 msgid "_Power down"
 msgstr "_Power down"
 
-#: src/resources/ui/virt-viewer.ui:90
 #, fuzzy
 msgid "_Preferences"
 msgstr "_Preferensi"
 
-#: src/resources/ui/virt-viewer.ui:103
 #, fuzzy
 msgid "_Quit"
 msgstr "_Keluar"
 
-#: src/resources/ui/virt-viewer.ui:144
 #, fuzzy
 msgid "_Reset"
 msgstr "_Reset"
 
-#: src/virt-viewer-window.c:1086
 #, fuzzy
 msgid "_Save"
 msgstr "_Simpan"
 
-#: src/resources/ui/virt-viewer.ui:41
 #, fuzzy
 msgid "_Screenshot"
 msgstr "Simpan tangkapan layar"
 
-#: src/resources/ui/virt-viewer.ui:270
 #, fuzzy
 msgid "_Send key"
 msgstr "_Kirim kunci"
 
-#: src/resources/ui/virt-viewer.ui:52
 #, fuzzy
 msgid "_USB device selection"
 msgstr "_Pilihan perangkat USB"
 
-#: src/resources/ui/virt-viewer.ui:167
 #, fuzzy
 msgid "_View"
 msgstr "Pandangan"
 
-#: src/resources/ui/virt-viewer.ui:191
 #, fuzzy
 msgid "_Zoom"
 msgstr "Perbesar"
 
-#: src/remote-viewer.c:429
 #, fuzzy
 msgid "failed to parse oVirt URI"
 msgstr "gagal untuk mengurai URI oVirt"
 
-#: src/resources/ui/virt-viewer-auth.ui:71
-#: src/resources/ui/virt-viewer-guest-details.ui:82
-#: src/resources/ui/virt-viewer-guest-details.ui:96
-#: src/resources/ui/virt-viewer-file-transfer-dialog.ui:57
 msgid "label"
 msgstr "label"
 
-#: src/remote-viewer.c:486
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "oVirt VM %s has no display"
 msgstr "oVirt VM %s tidak memiliki tampilan"
 
-#: src/remote-viewer.c:512
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "oVirt VM %s has no host information"
 msgstr "oVirt VM %s tidak memiliki informasi host"
 
-#: src/remote-viewer.c:523
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "oVirt VM %s has unknown display type: %u"
 msgstr "oVirt VM %s memiliki jenis tampilan yang tidak diketahui: %u"
 
-#: src/remote-viewer.c:472
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "oVirt VM %s is not running"
 msgstr "oVirt VM %s tidak berjalan"
 
-#: src/virt-viewer-app.c:1387
 #, fuzzy
 msgid "only SSH or UNIX socket connection supported."
 msgstr "hanya koneksi soket SSH atau UNIX yang didukung."
