@@ -86,6 +86,13 @@ gchar* virt_viewer_file_get_toggle_fullscreen(VirtViewerFile* self);
 void virt_viewer_file_set_toggle_fullscreen(VirtViewerFile* self, const gchar* value);
 gchar* virt_viewer_file_get_release_cursor(VirtViewerFile* self);
 void virt_viewer_file_set_release_cursor(VirtViewerFile* self, const gchar* value);
+gchar* virt_viewer_file_get_zoom_in(VirtViewerFile* self);
+void virt_viewer_file_set_zoom_in(VirtViewerFile* self, const gchar* value);
+gchar* virt_viewer_file_get_zoom_out(VirtViewerFile* self);
+void virt_viewer_file_set_zoom_out(VirtViewerFile* self, const gchar* value);
+gchar* virt_viewer_file_get_zoom_reset(VirtViewerFile* self);
+void virt_viewer_file_set_zoom_reset(VirtViewerFile* self, const gchar* value);
+
 gint virt_viewer_file_get_enable_smartcard(VirtViewerFile* self);
 void virt_viewer_file_set_enable_smartcard(VirtViewerFile* self, gint value);
 gint virt_viewer_file_get_enable_usbredir(VirtViewerFile* self);

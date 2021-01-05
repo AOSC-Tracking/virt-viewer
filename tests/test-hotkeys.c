@@ -67,6 +67,7 @@ test_hotkeys_good(void)
     const gchar *hotkeys[] = {
         "toggle-fullscreen=shift+f11",
         "release-cursor=shift+f12,secure-attention=ctrl+shift+b",
+        "zoom-in=shift+f2,zoom-out=shift+f3,zoom-reset=shift+f4",
         "smartcard-insert=shift+I,smartcard-remove=shift+R",
     };
 

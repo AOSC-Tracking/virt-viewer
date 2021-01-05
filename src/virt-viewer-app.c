@@ -2511,6 +2511,12 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
             status = gtk_accel_map_change_entry("<virt-viewer>/view/toggle-fullscreen", accel_key, accel_mods, TRUE);
         } else if (g_str_equal(*hotkey, "release-cursor")) {
             status = gtk_accel_map_change_entry("<virt-viewer>/view/release-cursor", accel_key, accel_mods, TRUE);
+        } else if (g_str_equal(*hotkey, "zoom-reset")) {
+            status = gtk_accel_map_change_entry("<virt-viewer>/view/zoom-reset", accel_key, accel_mods, TRUE);
+        } else if (g_str_equal(*hotkey, "zoom-out")) {
+            status = gtk_accel_map_change_entry("<virt-viewer>/view/zoom-out", accel_key, accel_mods, TRUE);
+        } else if (g_str_equal(*hotkey, "zoom-in")) {
+            status = gtk_accel_map_change_entry("<virt-viewer>/view/zoom-in", accel_key, accel_mods, TRUE);
         } else if (g_str_equal(*hotkey, "secure-attention")) {
             status = gtk_accel_map_change_entry("<virt-viewer>/send/secure-attention", accel_key, accel_mods, TRUE);
         } else if (g_str_equal(*hotkey, "smartcard-insert")) {
