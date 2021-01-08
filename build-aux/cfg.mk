@@ -107,9 +107,6 @@ sc_copyright_format:
 	halt='spell Red Hat as two words'				\
 	  $(_sc_search_regexp)
 
-# We don't use this feature of maint.mk.
-prev_version_file = /dev/null
-
 
 exclude_file_name_regexp--sc_preprocessor_indentation = ^*/*.[ch]
 exclude_file_name_regexp--sc_prohibit_strcmp = ^*/*.[ch]
