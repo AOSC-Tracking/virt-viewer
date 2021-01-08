@@ -9,9 +9,9 @@ EXTRA_DIST =					\
 	$(PACKAGE).spec	$(PACKAGE).spec.in	\
 	mingw-$(PACKAGE).spec.in		\
 	GNUmakefile				\
-	maint.mk				\
-	cfg.mk					\
+	build-aux/cfg.mk			\
 	build-aux/gitlog-to-changelog		\
+	build-aux/maint.mk			\
 	build-aux/useless-if-before-free	\
 	build-aux/vc-list-files			\
 	AUTHORS.in				\
