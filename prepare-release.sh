@@ -3,77 +3,38 @@
 set -e
 set -v
 
-test -n "$1" && RESULTS=$1 || RESULTS=results.log
-INSTALL_ROOT=$HOME/builder
-
-# Make things clean.
-test -f Makefile && make -k distclean || :
-
 rm -rf build
-mkdir build
-cd build
 
-../autogen.sh --prefix=$INSTALL_ROOT \
-    --enable-compile-warnings=error
+meson --prefix="`pwd`/build/vroot" build/native
 
-make
-make install
-
-# set -o pipefail is a bashism; this use of exec is the POSIX alternative
-exec 3>&1
-st=$(
-  exec 4>&1 >&3
-  { make syntax-check 2>&1 3>&- 4>&-; echo $? >&4; } | tee "$RESULTS"
-)
-exec 3>&-
-test "$st" = 0
-
-
-rm -f *.tar.gz
-make dist
-
+ninja -C build/native dist
 
 if [ -f /usr/bin/rpmbuild ]; then
-  rpmbuild \
-     --define "_sourcedir `pwd`" \
-     -ba --clean virt-viewer.spec
+  rpmbuild --nodeps \
+    --define "_sourcedir `pwd`/build/native/meson-dist" \
+    -ba --clean build/native/virt-viewer.spec
 fi
 
-if [ -x /usr/bin/i686-w64-mingw32-gcc ]; then
-  make distclean
+# Test mingw32 cross-compile
+if test -x /usr/bin/i686-w64-mingw32-gcc ; then
+  meson --prefix="`pwd`/build/vroot" \
+	--cross-file=/usr/share/mingw/toolchain-mingw32.meson build/win32
 
-  PKG_CONFIG_LIBDIR="/usr/i686-w64-mingw32/sys-root/mingw/lib/pkgconfig:/usr/i686-w64-mingw32/sys-root/mingw/share/pkgconfig" \
-  PKG_CONFIG_PATH="$INSTALL_ROOT/i686-w64-mingw32/sys-root/mingw/lib/pkgconfig" \
-  CC="i686-w64-mingw32-gcc" \
-  ../configure \
-    --build=$(uname -m)-w64-linux \
-    --host=i686-w64-mingw32 \
-    --prefix="$INSTALL_ROOT/i686-w64-mingw32/sys-root/mingw"
-
-  make
-  make install
+  ninja -C build/win32
 fi
 
+# Test mingw64 cross-compile
+if test -x /usr/bin/x86_64-w64-mingw32-gcc ; then
+  meson --prefix="`pwd`/build/vroot" \
+	--cross-file=/usr/share/mingw/toolchain-mingw64.meson build/win64
 
-if [ -x /usr/bin/x86_64-w64-mingw32-gcc ]; then
-  make distclean
-
-  PKG_CONFIG_LIBDIR="/usr/x86_64-w64-mingw32/sys-root/mingw/lib/pkgconfig:/usr/x86_64-w64-mingw32/sys-root/mingw/share/pkgconfig" \
-  PKG_CONFIG_PATH="$INSTALL_ROOT/x86_64-w64-mingw32/sys-root/mingw/lib/pkgconfig" \
-  CC="x86_64-w64-mingw32-gcc" \
-  ../configure \
-    --build=$(uname -m)-w64-linux \
-    --host=x86_64-w64-mingw32 \
-    --prefix="$INSTALL_ROOT/x86_64-w64-mingw32/sys-root/mingw"
-
-  make
-  make install
+  ninja -C build/win64
 fi
 
 if test -x /usr/bin/i686-w64-mingw32-gcc && test -x /usr/bin/x86_64-w64-mingw32-gcc ; then
-  if [ -f /usr/bin/rpmbuild ]; then
-    rpmbuild \
-       --define "_sourcedir `pwd`" \
-       -ba --clean mingw-virt-viewer.spec
+  if test -f /usr/bin/rpmbuild ; then
+    rpmbuild --nodeps \
+      --define "_sourcedir `pwd`/build/native/meson-dist" \
+      -ba --clean build/native/mingw-virt-viewer.spec
   fi
 fi
