@@ -48,7 +48,8 @@
 #include <assert.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+int main(int argc __attribute__((unused)),
+         char *argv[] __attribute__((unused)))
 {
     STARTUPINFO si = { 0, };
     PROCESS_INFORMATION pi = { 0, };
