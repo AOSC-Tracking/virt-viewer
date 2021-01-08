@@ -42,7 +42,7 @@
 #include <libxml/xpath.h>
 #include <libxml/uri.h>
 
-#if defined(HAVE_SOCKETPAIR)
+#ifndef G_OS_WIN32
 #include <sys/socket.h>
 #endif
 
@@ -681,7 +681,7 @@ virt_viewer_open_connection(VirtViewerApp *self G_GNUC_UNUSED, int *fd)
     VirtViewer *viewer = VIRT_VIEWER(self);
     VirtViewerPrivate *priv = viewer->priv;
     virErrorPtr err;
-#if defined(HAVE_SOCKETPAIR)
+#ifndef G_OS_WIN32
     int pair[2];
 #endif
     *fd = -1;
@@ -699,7 +699,7 @@ virt_viewer_open_connection(VirtViewerApp *self G_GNUC_UNUSED, int *fd)
         return TRUE;
     }
 
-#if defined(HAVE_SOCKETPAIR)
+#ifndef G_OS_WIN32
     if (socketpair(PF_UNIX, SOCK_STREAM, 0, pair) < 0)
         return FALSE;
 

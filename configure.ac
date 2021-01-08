@@ -204,11 +204,6 @@ AS_IF([test "x$with_ovirt" = "xyes"],
 )
 AM_CONDITIONAL([HAVE_OVIRT], [test "x$with_ovirt" = "xyes"])
 
-dnl Decide if this platform can support the SSH tunnel feature.
-AC_CHECK_HEADERS([sys/socket.h sys/un.h windows.h])
-AC_CHECK_FUNCS([fork socketpair])
-
-
 if test "x$with_gtk_vnc" != "xyes" && test "x$with_spice_gtk" != "xyes"; then
     AC_MSG_ERROR([At least one of spice or vnc must be used])
 fi

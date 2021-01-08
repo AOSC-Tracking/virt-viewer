@@ -39,17 +39,9 @@
 
 #ifndef G_OS_WIN32
 #include <glib-unix.h>
-#endif
-
-#ifdef HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
-#endif
-
-#ifdef HAVE_SYS_UN_H
 #include <sys/un.h>
-#endif
-
-#ifdef HAVE_WINDOWS_H
+#else
 #include <windows.h>
 #endif
 
@@ -768,7 +760,7 @@ virt_viewer_app_about_delete(GtkWidget *dialog,
     gtk_widget_destroy(dialog);
 }
 
-#if defined(HAVE_SOCKETPAIR) && defined(HAVE_FORK)
+#ifndef G_OS_WIN32
 
 static int
 virt_viewer_app_open_tunnel(const char **cmd)
@@ -885,7 +877,7 @@ virt_viewer_app_open_unix_sock(const char *unixsock, GError **error)
     return fd;
 }
 
-#endif /* defined(HAVE_SOCKETPAIR) && defined(HAVE_FORK) */
+#endif /* ! G_OS_WIN32 */
 
 void
 virt_viewer_app_trace(VirtViewerApp *self,
@@ -1377,7 +1369,7 @@ virt_viewer_app_open_connection(VirtViewerApp *self, int *fd)
 }
 
 
-#if defined(HAVE_SOCKETPAIR) && defined(HAVE_FORK)
+#ifndef G_OS_WIN32
 static void
 virt_viewer_app_channel_open(VirtViewerSession *session,
                              VirtViewerSessionChannel *channel,
@@ -1448,7 +1440,7 @@ virt_viewer_app_default_activate(VirtViewerApp *self, GError **error)
 
     g_debug("After open connection callback fd=%d", fd);
 
-#if defined(HAVE_SOCKETPAIR) && defined(HAVE_FORK)
+#ifndef G_OS_WIN32
     if (priv->transport &&
         g_ascii_strcasecmp(priv->transport, "ssh") == 0 &&
         !priv->direct &&
