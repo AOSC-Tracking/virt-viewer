@@ -751,7 +751,7 @@ virt_viewer_domain_event(virConnectPtr conn G_GNUC_UNUSED,
     case VIR_DOMAIN_EVENT_STARTED:
         virt_viewer_update_display(self, dom, &error);
         if (error) {
-            virt_viewer_app_simple_message_dialog(app, error->message);
+            virt_viewer_app_simple_message_dialog(app, "%s", error->message);
             g_clear_error(&error);
         }
 

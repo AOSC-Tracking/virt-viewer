@@ -68,8 +68,8 @@ void virt_viewer_app_set_debug(gboolean debug);
 gboolean virt_viewer_app_start(VirtViewerApp *app, GError **error);
 void virt_viewer_app_maybe_quit(VirtViewerApp *self, VirtViewerWindow *window);
 VirtViewerWindow* virt_viewer_app_get_main_window(VirtViewerApp *self);
-void virt_viewer_app_trace(VirtViewerApp *self, const char *fmt, ...);
-void virt_viewer_app_simple_message_dialog(VirtViewerApp *self, const char *fmt, ...);
+void virt_viewer_app_trace(VirtViewerApp *self, const char *fmt, ...) G_GNUC_PRINTF(2, 3);
+void virt_viewer_app_simple_message_dialog(VirtViewerApp *self, const char *fmt, ...) G_GNUC_PRINTF(2, 3);
 gboolean virt_viewer_app_is_active(VirtViewerApp *app);
 void virt_viewer_app_free_connect_info(VirtViewerApp *self);
 gboolean virt_viewer_app_create_session(VirtViewerApp *self, const gchar *type, GError **error);
@@ -94,7 +94,7 @@ void virt_viewer_app_set_connect_info(VirtViewerApp *self,
                                       gint port,
                                       const gchar *guri);
 
-void virt_viewer_app_show_status(VirtViewerApp *self, const gchar *fmt, ...);
+void virt_viewer_app_show_status(VirtViewerApp *self, const gchar *fmt, ...) G_GNUC_PRINTF(2, 3);
 void virt_viewer_app_show_display(VirtViewerApp *self);
 GList* virt_viewer_app_get_windows(VirtViewerApp *self);
 gboolean virt_viewer_app_get_enable_accel(VirtViewerApp *self);
