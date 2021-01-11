@@ -96,7 +96,7 @@ stages:
     - $MAKE install
     - cd ../../gtk-vnc
     - git submodule update --init
-    - meson build $MESON_OPTS --prefix="$VROOT" --libdir="$LIBDIR" -Dintrospection=false -Dwith-vala=false
+    - meson build $MESON_OPTS --prefix="$VROOT" --libdir="$LIBDIR" -Dintrospection=disabled
     - $NINJA -C build install
     - popd
     - ./autogen.sh $CONFIGURE_OPTS --prefix="$VROOT"
