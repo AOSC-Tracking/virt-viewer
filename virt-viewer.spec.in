@@ -5,7 +5,7 @@
 # touch configure.ac or Makefile.am.
 %{!?enable_autotools:%global enable_autotools 0}
 
-Name: @PACKAGE@
+Name: virt-viewer
 Version: @VERSION@
 Release: 1%{?dist}
 Summary: Virtual Machine Viewer
