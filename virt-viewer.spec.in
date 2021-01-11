@@ -44,24 +44,24 @@ BuildRequires: libtool
 %endif
 
 BuildRequires: gcc
-BuildRequires: pkgconfig(glib-2.0) >= @GLIB2_REQUIRED@
-BuildRequires: pkgconfig(gtk+-3.0) >= @GTK_REQUIRED@
-BuildRequires: pkgconfig(libvirt) >= @LIBVIRT_REQUIRED@
-BuildRequires: pkgconfig(libvirt-glib-1.0) >= @LIBVIRT_GLIB_REQUIRED@
-BuildRequires: pkgconfig(libxml-2.0) >= @LIBXML2_REQUIRED@
-BuildRequires: pkgconfig(gtk-vnc-2.0) >= @GTK_VNC_REQUIRED@
+BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(gtk+-3.0)
+BuildRequires: pkgconfig(libvirt)
+BuildRequires: pkgconfig(libvirt-glib-1.0)
+BuildRequires: pkgconfig(libxml-2.0)
+BuildRequires: pkgconfig(gtk-vnc-2.0)
 %if %{with_spice}
-BuildRequires: pkgconfig(spice-client-gtk-3.0) >= @SPICE_GTK_REQUIRED@
-BuildRequires: pkgconfig(spice-protocol) >= @SPICE_PROTOCOL_REQUIRED@
+BuildRequires: pkgconfig(spice-client-gtk-3.0)
+BuildRequires: pkgconfig(spice-protocol)
 %endif
 BuildRequires: /usr/bin/pod2man
 BuildRequires: gettext
 %if %{with_govirt}
-BuildRequires: pkgconfig(govirt-1.0) >= @GOVIRT_REQUIRED@
-BuildRequires: pkgconfig(rest-0.7) >= @REST_REQUIRED@
+BuildRequires: pkgconfig(govirt-1.0)
+BuildRequires: pkgconfig(rest-0.7)
 %endif
 %if %{with_bash_completion}
-BuildRequires: pkgconfig(bash-completion) >= @BASH_COMPLETION_REQUIRED@
+BuildRequires: pkgconfig(bash-completion)
 %endif
 
 %if 0%{?fedora} >= 20
