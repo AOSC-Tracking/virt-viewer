@@ -315,6 +315,7 @@ int WINAPI WinMain(HINSTANCE hInstance G_GNUC_UNUSED, HINSTANCE hPrevInstance G_
     assert(log_f);
     setbuf(log_f, NULL);
 
+    assert(argv[0]);
     fprintf(log_f, "argc %d argv[0] %s \n", argc, argv[0]);
 
     if (argc >= 1) {
