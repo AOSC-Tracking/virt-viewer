@@ -17,8 +17,9 @@ Summary:        MinGW Windows virt-viewer console application
 
 License:        GPLv2+
 URL:            https://gitlab.com/virt-viewer/virt-viewer
-Source0:        https://virt-manager.org/download/sources/virt-viewer/virt-viewer-%{version}.tar.gz
+Source0:        https://virt-manager.org/download/sources/virt-viewer/virt-viewer-%{version}.tar.xz
 
+BuildRequires:  meson
 BuildRequires:  mingw32-adwaita-icon-theme
 BuildRequires:  mingw64-adwaita-icon-theme
 BuildRequires:  mingw32-filesystem
@@ -105,32 +106,31 @@ MinGW Windows virt-viewer MSI
 %setup -q -n virt-viewer-%{version}
 
 %build
-%mingw_configure --with-gtk=3.0 --with-buildid=%{buildid}
-
-%mingw_make %{?_smp_mflags} V=1
-%mingw_make %{?_smp_mflags} V=1 -C data msi
-
-%install
-%mingw_make_install DESTDIR=$RPM_BUILD_ROOT
+%mingw_meson -Dbuildid=%{buildid}
+%mingw_ninja
 
 %if 0%{?mingw_build_win32} == 1
+%endif
+
+%if 0%{?mingw_build_win64} == 1
+%endif
+
+%install
+%mingw_ninja_install
+
+%if 0%{?mingw_build_win32} == 1
+DESTDIR=%{buildroot} ninja -C build_win32$MINGW_BUILDDIR_SUFFIX data/virt-viewer-x86-@VERSION@.msi
 mkdir $RPM_BUILD_ROOT/%{mingw32_datadir}/virt-viewer
 cp build_win32$MINGW_BUILDDIR_SUFFIX/data/virt-viewer-x86-@VERSION@.msi $RPM_BUILD_ROOT/%{mingw32_datadir}/virt-viewer
 %endif
 
 %if 0%{?mingw_build_win64} == 1
+DESTDIR=%{buildroot} ninja -C build_win64$MINGW_BUILDDIR_SUFFIX data/virt-viewer-x64-@VERSION@.msi
 mkdir $RPM_BUILD_ROOT/%{mingw64_datadir}/virt-viewer
 cp build_win64$MINGW_BUILDDIR_SUFFIX/data/virt-viewer-x64-@VERSION@.msi $RPM_BUILD_ROOT/%{mingw64_datadir}/virt-viewer
 %endif
 
 %find_lang virt-viewer
-
-# Don't need the XDG desktop files on Windows
-find $RPM_BUILD_ROOT -name "*.desktop" -delete
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 
 %files -n mingw32-virt-viewer -f virt-viewer.lang
 %defattr(-,root,root)
