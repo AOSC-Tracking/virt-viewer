@@ -5,18 +5,6 @@
 # touch configure.ac or Makefile.am.
 %{!?enable_autotools:%global enable_autotools 0}
 
-%define with_spice 0
-%if 0%{?fedora} >= 17 || 0%{?rhel} >= 6
-%define with_spice 1
-%endif
-
-%define with_govirt 0
-%define with_bash_completion 0
-%if 0%{?fedora} > 19 || 0%{?rhel} >= 7
-%define with_govirt 1
-%define with_bash_completion 1
-%endif
-
 Name: @PACKAGE@
 Version: @VERSION@
 Release: 1%{?dist}
@@ -30,10 +18,8 @@ Requires(postun): %{_sbindir}/update-alternatives
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 
-%if %{with_bash_completion}
 # Our bash completion script uses virsh to list domains
 Requires: libvirt-client
-%endif
 
 
 %if 0%{?enable_autotools}
@@ -50,19 +36,13 @@ BuildRequires: pkgconfig(libvirt)
 BuildRequires: pkgconfig(libvirt-glib-1.0)
 BuildRequires: pkgconfig(libxml-2.0)
 BuildRequires: pkgconfig(gtk-vnc-2.0)
-%if %{with_spice}
 BuildRequires: pkgconfig(spice-client-gtk-3.0)
 BuildRequires: pkgconfig(spice-protocol)
-%endif
 BuildRequires: /usr/bin/pod2man
 BuildRequires: gettext
-%if %{with_govirt}
 BuildRequires: pkgconfig(govirt-1.0)
 BuildRequires: pkgconfig(rest-0.7)
-%endif
-%if %{with_bash_completion}
 BuildRequires: pkgconfig(bash-completion)
-%endif
 
 %if 0%{?fedora} >= 20
 Obsoletes: spice-client < 0.12.3-2
@@ -83,17 +63,7 @@ the display, and libvirt for looking up VNC/SPICE server details.
 autoreconf -if
 %endif
 
-%if %{with_spice}
-%define spice_arg --with-spice-gtk
-%else
-%define spice_arg --without-spice-gtk
-%endif
-
-%if %{with_govirt}
-%define govirt_arg --with-ovirt
-%endif
-
-%configure %{spice_arg} %{govirt_arg} --with-buildid=%{release} --disable-update-mimedb
+%configure --with-buildid=%{release} --disable-update-mimedb
 %__make %{?_smp_mflags}
 
 
@@ -114,8 +84,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mime/packages/virt-viewer-mime.xml
 %{_mandir}/man1/virt-viewer.1*
 %{_mandir}/man1/remote-viewer.1*
-%if %{with_bash_completion}
 %{_datadir}/bash-completion/completions/virt-viewer
-%endif
 
 %changelog
