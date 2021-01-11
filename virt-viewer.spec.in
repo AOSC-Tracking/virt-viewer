@@ -13,8 +13,6 @@ License: GPLv2+
 URL: https://gitlab.com/virt-viewer/virt-viewer
 Source0: https://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
 Requires: openssh-clients
-Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
 
 # Our bash completion script uses virsh to list domains
 Requires: libvirt-client
