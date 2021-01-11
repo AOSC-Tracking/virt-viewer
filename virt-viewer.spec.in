@@ -44,10 +44,6 @@ BuildRequires: pkgconfig(govirt-1.0)
 BuildRequires: pkgconfig(rest-0.7)
 BuildRequires: pkgconfig(bash-completion)
 
-%if 0%{?fedora} >= 20
-Obsoletes: spice-client < 0.12.3-2
-%endif
-
 
 %description
 Virtual Machine Viewer provides a graphical console client for connecting
