@@ -153,6 +153,7 @@ libvirt_viewer_util_la_LIBADD = \
 
 libvirt_viewer_util_la_CFLAGS = \
 	-DLOCALE_DIR=\""$(datadir)/locale"\" \
+	$(COMMON_CFLAGS) \
 	$(GLIB2_CFLAGS) \
 	$(GTK_CFLAGS) \
 	$(LIBXML2_CFLAGS) \

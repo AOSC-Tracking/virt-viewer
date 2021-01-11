@@ -65,7 +65,7 @@ test_monitor_align(MonitorAlignFunc monitor_align, const TestCase *test_cases, c
             g_hash_table_insert(displays, GUINT_TO_POINTER(j), displays_in[j]);
         }
         for (j = 0; j < G_N_ELEMENTS(test_cases[i].messages) && test_cases[i].messages[j]; j++) {
-            g_test_expect_message(NULL, test_cases[i].log_level, test_cases[i].messages[j]);
+            g_test_expect_message(G_LOG_DOMAIN, test_cases[i].log_level, test_cases[i].messages[j]);
         }
         monitor_align(displays);
         g_test_assert_expected_messages();
