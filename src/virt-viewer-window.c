@@ -905,9 +905,11 @@ virt_viewer_window_enable_modifiers(VirtViewerWindow *self)
                  "gtk-enable-mnemonics", priv->enable_mnemonics_save,
                  NULL);
 
-    /* if zoom actions using "normal" +/-/0 keys are enabled,
+    /* if the user did not set hotkeys and
+     * zoom actions using "normal" +/-/0 keys are enabled,
      * allow the user to use the numpad +/-/0 keys as well */
-    if (gtk_accel_map_lookup_entry("<virt-viewer>/view/zoom-out", &key)
+    if (!virt_viewer_app_get_enable_accel(priv->app)
+        && gtk_accel_map_lookup_entry("<virt-viewer>/view/zoom-out", &key)
         && key.accel_key != 0) {
         g_action_map_add_action_entries(G_ACTION_MAP(priv->window),
                                         keypad_action_entries, G_N_ELEMENTS(keypad_action_entries),
