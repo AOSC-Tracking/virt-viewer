@@ -55,11 +55,9 @@ stages:
     - meson build -Ddriver_libvirtd=disabled "--prefix=$VROOT" "--libdir=$LIBDIR"
     - ninja -C build install
     - cd ../libvirt-glib
-    - mkdir build
-    - cd build
-    - ../autogen.sh --prefix="$VROOT" --libdir="$LIBDIR"
-    - $MAKE install
-    - cd ../../gtk-vnc
+    - meson build --prefix="$VROOT" --libdir="$LIBDIR" -Ddocs=disabled
+    - $NINJA -C build install
+    - cd ../gtk-vnc
     - git submodule update --init
     - meson build --prefix="$VROOT" --libdir="$LIBDIR"
     - $NINJA -C build install
@@ -90,11 +88,9 @@ stages:
     - meson build -Ddriver_libvirtd=disabled "--prefix=$VROOT" "--libdir=$LIBDIR" $MESON_OPTS
     - ninja -C build install
     - cd ../libvirt-glib
-    - mkdir build
-    - cd build
-    - ../autogen.sh $CONFIGURE_OPTS --prefix="$VROOT" --libdir="$LIBDIR"
-    - $MAKE install
-    - cd ../../gtk-vnc
+    - meson build --prefix="$VROOT" --libdir="$LIBDIR" -Ddocs=disabled $MESON_OPTS
+    - $NINJA -C build install
+    - cd ../gtk-vnc
     - git submodule update --init
     - meson build $MESON_OPTS --prefix="$VROOT" --libdir="$LIBDIR" -Dintrospection=disabled
     - $NINJA -C build install
