@@ -2,7 +2,7 @@
 #
 #  $ lcitool dockerfile --cross mingw64 fedora-rawhide libvirt,libvirt-glib,gtk-vnc,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/860993e19c005848fde8087941acdbd7ffdcf295
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/318adcadcf442daba1883f5046ad1970b65e5ca0
 FROM registry.fedoraproject.org/fedora:rawhide
 
 RUN dnf install -y nosync && \
@@ -19,8 +19,6 @@ exec "$@"' > /usr/bin/nosync && \
     nosync dnf update -y && \
     nosync dnf install -y \
         augeas \
-        autoconf \
-        automake \
         bash-completion \
         ca-certificates \
         ccache \
@@ -30,7 +28,6 @@ exec "$@"' > /usr/bin/nosync && \
         dwarves \
         ebtables \
         firewalld-filesystem \
-        gettext-devel \
         git \
         glibc-langpack-en \
         gtk-doc \
@@ -102,5 +99,4 @@ ENV PYTHON "/usr/bin/python3"
 ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
 
 ENV ABI "x86_64-w64-mingw32"
-ENV CONFIGURE_OPTS "--host=x86_64-w64-mingw32"
 ENV MESON_OPTS "--cross-file=/usr/share/mingw/toolchain-mingw64.meson"

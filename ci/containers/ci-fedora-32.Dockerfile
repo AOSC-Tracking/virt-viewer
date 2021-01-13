@@ -2,7 +2,7 @@
 #
 #  $ lcitool dockerfile fedora-32 libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/860993e19c005848fde8087941acdbd7ffdcf295
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/318adcadcf442daba1883f5046ad1970b65e5ca0
 FROM registry.fedoraproject.org/fedora:32
 
 RUN dnf install -y nosync && \
@@ -17,13 +17,10 @@ exec "$@"' > /usr/bin/nosync && \
     chmod +x /usr/bin/nosync && \
     nosync dnf update -y && \
     nosync dnf install -y \
-        autoconf \
-        automake \
         bash-completion \
         ca-certificates \
         ccache \
         gcc \
-        gettext-devel \
         git \
         glib2-devel \
         glibc-langpack-en \
@@ -37,6 +34,8 @@ exec "$@"' > /usr/bin/nosync && \
         libxml2 \
         libxml2-devel \
         make \
+        meson \
+        ninja-build \
         pkgconfig \
         rest-devel \
         rpm-build \
@@ -51,4 +50,5 @@ exec "$@"' > /usr/bin/nosync && \
 
 ENV LANG "en_US.UTF-8"
 ENV MAKE "/usr/bin/make"
+ENV NINJA "/usr/bin/ninja"
 ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
