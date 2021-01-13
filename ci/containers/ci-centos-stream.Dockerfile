@@ -2,7 +2,7 @@
 #
 #  $ lcitool dockerfile centos-stream libvirt+minimal,libvirt-glib,gtk-vnc,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/b098ec6631a85880f818f2dd25c437d509e53680
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/860993e19c005848fde8087941acdbd7ffdcf295
 FROM docker.io/library/centos:8
 
 RUN dnf update -y && \
@@ -52,7 +52,8 @@ RUN dnf update -y && \
         rpcgen \
         rpm-build \
         spice-gtk3-devel \
-        vala && \
+        vala \
+        vte291-devel && \
     dnf autoremove -y && \
     dnf clean all -y && \
     rpm -qa | sort > /packages.txt && \

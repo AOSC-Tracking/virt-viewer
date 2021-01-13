@@ -151,10 +151,10 @@ x86-fedora-rawhide-container:
   variables:
     NAME: fedora-rawhide
 
-x86-opensuse-151-container:
+x86-opensuse-152-container:
   <<: *container_job_definition
   variables:
-    NAME: opensuse-151
+    NAME: opensuse-152
 
 x86-ubuntu-1804-container:
   <<: *container_job_definition
@@ -219,10 +219,10 @@ x86-fedora-rawhide-dist-build:
   variables:
     NAME: fedora-rawhide
 
-x86-opensuse-151-dist-build:
+x86-opensuse-152-dist-build:
   <<: *dist_native_build_job_definition
   variables:
-    NAME: opensuse-151
+    NAME: opensuse-152
     RPM: skip
 
 x86-ubuntu-1804-dist-build:

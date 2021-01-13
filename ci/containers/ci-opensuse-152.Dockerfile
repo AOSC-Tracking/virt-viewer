@@ -1,9 +1,9 @@
 # THIS FILE WAS AUTO-GENERATED
 #
-#  $ lcitool dockerfile opensuse-151 libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer
+#  $ lcitool dockerfile opensuse-152 libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/b098ec6631a85880f818f2dd25c437d509e53680
-FROM registry.opensuse.org/opensuse/leap:15.1
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/860993e19c005848fde8087941acdbd7ffdcf295
+FROM registry.opensuse.org/opensuse/leap:15.2
 
 RUN zypper update -y && \
     zypper install -y \
@@ -17,7 +17,7 @@ RUN zypper update -y && \
            git \
            glib2-devel \
            glibc-locale \
-           gtk-vnc2-devel \
+           gtk-vnc-devel \
            gtk3-devel \
            icoutils \
            libgovirt-devel \
@@ -30,7 +30,8 @@ RUN zypper update -y && \
            make \
            pkgconfig \
            rpm-build \
-           spice-gtk-devel && \
+           spice-gtk-devel \
+           vte-devel && \
     zypper clean --all && \
     rpm -qa | sort > /packages.txt && \
     mkdir -p /usr/libexec/ccache-wrappers && \

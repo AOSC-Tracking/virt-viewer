@@ -2,7 +2,7 @@
 #
 #  $ lcitool dockerfile debian-10 libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/b098ec6631a85880f818f2dd25c437d509e53680
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/860993e19c005848fde8087941acdbd7ffdcf295
 FROM docker.io/library/debian:10-slim
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
@@ -29,6 +29,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
             libtool-bin \
             libvirt-dev \
             libvirt-glib-1.0-dev \
+            libvte-2.91-dev \
             libxml2-dev \
             libxml2-utils \
             locales \

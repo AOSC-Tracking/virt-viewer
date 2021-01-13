@@ -2,7 +2,7 @@
 #
 #  $ lcitool dockerfile centos-7 libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/b098ec6631a85880f818f2dd25c437d509e53680
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/860993e19c005848fde8087941acdbd7ffdcf295
 FROM registry.centos.org/centos:7
 
 RUN yum update -y && \
@@ -32,7 +32,8 @@ RUN yum update -y && \
         pkgconfig \
         rest-devel \
         rpm-build \
-        spice-gtk3-devel && \
+        spice-gtk3-devel \
+        vte291-devel && \
     yum autoremove -y && \
     yum clean all -y && \
     rpm -qa | sort > /packages.txt && \

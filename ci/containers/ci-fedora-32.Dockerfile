@@ -2,7 +2,7 @@
 #
 #  $ lcitool dockerfile fedora-32 libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/b098ec6631a85880f818f2dd25c437d509e53680
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/860993e19c005848fde8087941acdbd7ffdcf295
 FROM registry.fedoraproject.org/fedora:32
 
 RUN dnf install -y nosync && \
@@ -40,7 +40,8 @@ exec "$@"' > /usr/bin/nosync && \
         pkgconfig \
         rest-devel \
         rpm-build \
-        spice-gtk3-devel && \
+        spice-gtk3-devel \
+        vte291-devel && \
     nosync dnf autoremove -y && \
     nosync dnf clean all -y && \
     rpm -qa | sort > /packages.txt && \
