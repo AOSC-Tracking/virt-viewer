@@ -252,6 +252,7 @@ AC_CONFIG_FILES([
     icons/32x32/Makefile
     icons/48x48/Makefile
     icons/256x256/Makefile
+    icons/scalable/Makefile
     man/Makefile
     mingw-virt-viewer.spec
     po/Makefile

@@ -1,4 +1,4 @@
-SUBDIRS = 16x16 22x22 24x24 32x32 48x48 256x256
+SUBDIRS = 16x16 22x22 24x24 32x32 48x48 256x256 scalable
 
 if OS_WIN32
 noinst_DATA = virt-viewer.ico
