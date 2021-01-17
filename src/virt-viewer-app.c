@@ -139,6 +139,7 @@ struct _VirtViewerAppPrivate {
     gboolean kiosk;
     gboolean vm_ui;
     gboolean vm_running;
+    gboolean initialized;
 
     VirtViewerSession *session;
     gboolean active;
@@ -1651,6 +1652,7 @@ virt_viewer_app_deactivate(VirtViewerApp *self, gboolean connect_error)
         virt_viewer_session_close(VIRT_VIEWER_SESSION(priv->session));
     }
 
+    priv->initialized = FALSE;
     priv->connected = FALSE;
     priv->active = FALSE;
     priv->started = FALSE;
@@ -1689,6 +1691,7 @@ static void
 virt_viewer_app_initialized(VirtViewerSession *session G_GNUC_UNUSED,
                             VirtViewerApp *self)
 {
+    self->priv->initialized = TRUE;
     virt_viewer_app_update_title(self);
 }
 
@@ -1727,7 +1730,10 @@ virt_viewer_app_error(VirtViewerSession *session G_GNUC_UNUSED,
 {
     VirtViewerAppPrivate *priv = self->priv;
 
-    priv->connected = FALSE; /* display error dialog */
+    /* Do not open a dialog if the connection was initialized
+     * This happens when the VNC server closes the connection */
+    if (!priv->initialized)
+        priv->connected = FALSE; /* display error dialog */
 
     virt_viewer_app_disconnected(session, msg, self);
 }
