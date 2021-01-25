@@ -39,17 +39,9 @@
 
 #ifndef G_OS_WIN32
 #include <glib-unix.h>
-#endif
-
-#ifdef HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
-#endif
-
-#ifdef HAVE_SYS_UN_H
 #include <sys/un.h>
-#endif
-
-#ifdef HAVE_WINDOWS_H
+#else
 #include <windows.h>
 #endif
 
@@ -213,7 +205,7 @@ virt_viewer_app_set_debug(gboolean debug)
     doDebug = debug;
 }
 
-static GtkWidget*
+static GtkWidget* G_GNUC_PRINTF(2, 3)
 virt_viewer_app_make_message_dialog(VirtViewerApp *self,
                                     const char *fmt, ...)
 {
@@ -252,7 +244,7 @@ virt_viewer_app_simple_message_dialog(VirtViewerApp *self,
     msg = g_strdup_vprintf(fmt, vargs);
     va_end(vargs);
 
-    dialog = virt_viewer_app_make_message_dialog(self, msg);
+    dialog = virt_viewer_app_make_message_dialog(self, "%s", msg);
     gtk_dialog_run(GTK_DIALOG(dialog));
     gtk_widget_destroy(dialog);
 
@@ -768,7 +760,7 @@ virt_viewer_app_about_delete(GtkWidget *dialog,
     gtk_widget_destroy(dialog);
 }
 
-#if defined(HAVE_SOCKETPAIR) && defined(HAVE_FORK)
+#ifndef G_OS_WIN32
 
 static int
 virt_viewer_app_open_tunnel(const char **cmd)
@@ -885,7 +877,7 @@ virt_viewer_app_open_unix_sock(const char *unixsock, GError **error)
     return fd;
 }
 
-#endif /* defined(HAVE_SOCKETPAIR) && defined(HAVE_FORK) */
+#endif /* ! G_OS_WIN32 */
 
 void
 virt_viewer_app_trace(VirtViewerApp *self,
@@ -1377,7 +1369,7 @@ virt_viewer_app_open_connection(VirtViewerApp *self, int *fd)
 }
 
 
-#if defined(HAVE_SOCKETPAIR) && defined(HAVE_FORK)
+#ifndef G_OS_WIN32
 static void
 virt_viewer_app_channel_open(VirtViewerSession *session,
                              VirtViewerSessionChannel *channel,
@@ -1448,7 +1440,7 @@ virt_viewer_app_default_activate(VirtViewerApp *self, GError **error)
 
     g_debug("After open connection callback fd=%d", fd);
 
-#if defined(HAVE_SOCKETPAIR) && defined(HAVE_FORK)
+#ifndef G_OS_WIN32
     if (priv->transport &&
         g_ascii_strcasecmp(priv->transport, "ssh") == 0 &&
         !priv->direct &&
@@ -1520,7 +1512,7 @@ virt_viewer_app_activate(VirtViewerApp *self, GError **error)
 
     if (ret == FALSE) {
         if(error != NULL && *error != NULL)
-            virt_viewer_app_show_status(self, (*error)->message);
+            virt_viewer_app_show_status(self, "%s", (*error)->message);
         priv->connected = FALSE;
     } else {
         virt_viewer_app_show_status(self, _("Connecting to graphic server"));
@@ -1682,7 +1674,7 @@ virt_viewer_app_connected(VirtViewerSession *session G_GNUC_UNUSED,
     priv->connected = TRUE;
 
     if (self->priv->kiosk)
-        virt_viewer_app_show_status(self, "");
+        virt_viewer_app_show_status(self, "%s", "");
     else
         virt_viewer_app_show_status(self, _("Connected to graphic server"));
 }
@@ -2226,7 +2218,7 @@ virt_viewer_app_on_application_startup(GApplication *app)
 
     if (!virt_viewer_app_start(self, &error)) {
         if (error && !g_error_matches(error, VIRT_VIEWER_ERROR, VIRT_VIEWER_ERROR_CANCELLED))
-            virt_viewer_app_simple_message_dialog(self, error->message);
+            virt_viewer_app_simple_message_dialog(self, "%s", error->message);
 
         g_clear_error(&error);
         g_application_quit(app);
@@ -2871,7 +2863,7 @@ show_status_cb(gpointer value,
     VirtViewerNotebook *nb = virt_viewer_window_get_notebook(VIRT_VIEWER_WINDOW(value));
     gchar *text = (gchar*)user_data;
 
-    virt_viewer_notebook_show_status(nb, text);
+    virt_viewer_notebook_show_status(nb, "%s", text);
 }
 
 void

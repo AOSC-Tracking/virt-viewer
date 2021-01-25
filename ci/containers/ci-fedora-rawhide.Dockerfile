@@ -2,7 +2,7 @@
 #
 #  $ lcitool dockerfile fedora-rawhide libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/b098ec6631a85880f818f2dd25c437d509e53680
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/318adcadcf442daba1883f5046ad1970b65e5ca0
 FROM registry.fedoraproject.org/fedora:rawhide
 
 RUN dnf install -y nosync && \
@@ -18,13 +18,10 @@ exec "$@"' > /usr/bin/nosync && \
     nosync dnf update -y --nogpgcheck fedora-gpg-keys && \
     nosync dnf update -y && \
     nosync dnf install -y \
-        autoconf \
-        automake \
         bash-completion \
         ca-certificates \
         ccache \
         gcc \
-        gettext-devel \
         git \
         glib2-devel \
         glibc-langpack-en \
@@ -38,10 +35,13 @@ exec "$@"' > /usr/bin/nosync && \
         libxml2 \
         libxml2-devel \
         make \
+        meson \
+        ninja-build \
         pkgconfig \
         rest-devel \
         rpm-build \
-        spice-gtk3-devel && \
+        spice-gtk3-devel \
+        vte291-devel && \
     nosync dnf autoremove -y && \
     nosync dnf clean all -y && \
     rpm -qa | sort > /packages.txt && \
@@ -51,4 +51,5 @@ exec "$@"' > /usr/bin/nosync && \
 
 ENV LANG "en_US.UTF-8"
 ENV MAKE "/usr/bin/make"
+ENV NINJA "/usr/bin/ninja"
 ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"

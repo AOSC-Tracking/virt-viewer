@@ -2,7 +2,7 @@
 #
 #  $ lcitool dockerfile centos-8 libvirt+minimal,libvirt-glib,gtk-vnc,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/b098ec6631a85880f818f2dd25c437d509e53680
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/318adcadcf442daba1883f5046ad1970b65e5ca0
 FROM docker.io/library/centos:8
 
 RUN dnf update -y && \
@@ -11,8 +11,6 @@ RUN dnf update -y && \
     dnf install -y centos-release-advanced-virtualization && \
     dnf install -y epel-release && \
     dnf install -y \
-        autoconf \
-        automake \
         bash-completion \
         ca-certificates \
         ccache \
@@ -20,7 +18,6 @@ RUN dnf update -y && \
         gcc \
         gdk-pixbuf2-devel \
         gettext \
-        gettext-devel \
         git \
         glib2-devel \
         glibc-devel \
@@ -51,7 +48,8 @@ RUN dnf update -y && \
         rpcgen \
         rpm-build \
         spice-gtk3-devel \
-        vala && \
+        vala \
+        vte291-devel && \
     dnf autoremove -y && \
     dnf clean all -y && \
     rpm -qa | sort > /packages.txt && \

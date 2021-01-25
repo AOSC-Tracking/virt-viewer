@@ -2,7 +2,7 @@
 #
 #  $ lcitool dockerfile debian-10 libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/b098ec6631a85880f818f2dd25c437d509e53680
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/318adcadcf442daba1883f5046ad1970b65e5ca0
 FROM docker.io/library/debian:10-slim
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
@@ -10,9 +10,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y eatmydata && \
     eatmydata apt-get dist-upgrade -y && \
     eatmydata apt-get install --no-install-recommends -y \
-            autoconf \
-            automake \
-            autopoint \
             bash-completion \
             ca-certificates \
             ccache \
@@ -29,11 +26,16 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
             libtool-bin \
             libvirt-dev \
             libvirt-glib-1.0-dev \
+            libvte-2.91-dev \
             libxml2-dev \
             libxml2-utils \
             locales \
             make \
-            pkgconf && \
+            ninja-build \
+            pkgconf \
+            python3-pip \
+            python3-setuptools \
+            python3-wheel && \
     eatmydata apt-get autoremove -y && \
     eatmydata apt-get autoclean -y && \
     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
@@ -43,6 +45,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/cc && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/$(basename /usr/bin/gcc)
 
+RUN pip3 install \
+         meson==0.54.0
+
 ENV LANG "en_US.UTF-8"
 ENV MAKE "/usr/bin/make"
+ENV NINJA "/usr/bin/ninja"
 ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"

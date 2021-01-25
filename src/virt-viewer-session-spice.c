@@ -803,6 +803,7 @@ virt_viewer_session_spice_main_channel_event(SpiceChannel *channel,
     case SPICE_CHANNEL_ERROR_TLS:
         spice_session_disconnect(self->priv->session);
         break;
+    case SPICE_CHANNEL_NONE:
     default:
         g_warning("unhandled spice main channel event: %u", event);
         break;

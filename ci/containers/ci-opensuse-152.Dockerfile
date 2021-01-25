@@ -1,23 +1,20 @@
 # THIS FILE WAS AUTO-GENERATED
 #
-#  $ lcitool dockerfile opensuse-151 libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer
+#  $ lcitool dockerfile opensuse-152 libvirt+dist,libvirt-glib+dist,gtk-vnc+dist,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/b098ec6631a85880f818f2dd25c437d509e53680
-FROM registry.opensuse.org/opensuse/leap:15.1
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/318adcadcf442daba1883f5046ad1970b65e5ca0
+FROM registry.opensuse.org/opensuse/leap:15.2
 
 RUN zypper update -y && \
     zypper install -y \
-           autoconf \
-           automake \
            bash-completion \
            ca-certificates \
            ccache \
            gcc \
-           gettext-devel \
            git \
            glib2-devel \
            glibc-locale \
-           gtk-vnc2-devel \
+           gtk-vnc-devel \
            gtk3-devel \
            icoutils \
            libgovirt-devel \
@@ -28,15 +25,24 @@ RUN zypper update -y && \
            libxml2 \
            libxml2-devel \
            make \
+           ninja \
            pkgconfig \
+           python3-pip \
+           python3-setuptools \
+           python3-wheel \
            rpm-build \
-           spice-gtk-devel && \
+           spice-gtk-devel \
+           vte-devel && \
     zypper clean --all && \
     rpm -qa | sort > /packages.txt && \
     mkdir -p /usr/libexec/ccache-wrappers && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/cc && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/$(basename /usr/bin/gcc)
 
+RUN pip3 install \
+         meson==0.54.0
+
 ENV LANG "en_US.UTF-8"
 ENV MAKE "/usr/bin/make"
+ENV NINJA "/usr/bin/ninja"
 ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"

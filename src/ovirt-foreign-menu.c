@@ -31,6 +31,14 @@
 #include "virt-viewer-util.h"
 #include "glib-compat.h"
 
+#if !GLIB_CHECK_VERSION(2, 60, 0)
+# if __GNUC_PREREQ (7, 0)
+#  define G_GNUC_FALLTHROUGH __attribute__((fallthrough))
+# else
+#  define G_GNUC_FALLTHROUGH do {} while(0)
+# endif
+#endif
+
 typedef enum {
     STATE_0,
     STATE_API,
@@ -310,45 +318,45 @@ ovirt_foreign_menu_next_async_step(OvirtForeignMenu *menu,
             ovirt_foreign_menu_fetch_api_async(menu, task);
             break;
         }
-        /* fall through */
+        G_GNUC_FALLTHROUGH;
     case STATE_VM:
         if (menu->priv->vm == NULL) {
             ovirt_foreign_menu_fetch_vm_async(menu, task);
             break;
         }
 #ifdef HAVE_OVIRT_DATA_CENTER
-        /* fall through */
+        G_GNUC_FALLTHROUGH;
     case STATE_HOST:
         if (menu->priv->host == NULL) {
             ovirt_foreign_menu_fetch_host_async(menu, task);
             break;
         }
-        /* fall through */
+        G_GNUC_FALLTHROUGH;
     case STATE_CLUSTER:
         if (menu->priv->cluster == NULL) {
             ovirt_foreign_menu_fetch_cluster_async(menu, task);
             break;
         }
-        /* fall through */
+        G_GNUC_FALLTHROUGH;
     case STATE_DATA_CENTER:
         if (menu->priv->data_center == NULL) {
             ovirt_foreign_menu_fetch_data_center_async(menu, task);
             break;
         }
 #endif
-        /* fall through */
+        G_GNUC_FALLTHROUGH;
     case STATE_STORAGE_DOMAIN:
         if (menu->priv->files == NULL) {
             ovirt_foreign_menu_fetch_storage_domain_async(menu, task);
             break;
         }
-        /* fall through */
+        G_GNUC_FALLTHROUGH;
     case STATE_VM_CDROM:
         if (menu->priv->cdrom == NULL) {
             ovirt_foreign_menu_fetch_vm_cdrom_async(menu, task);
             break;
         }
-        /* fall through */
+        G_GNUC_FALLTHROUGH;
     case STATE_CDROM_FILE:
         ovirt_foreign_menu_refresh_cdrom_file_async(menu, task);
         break;

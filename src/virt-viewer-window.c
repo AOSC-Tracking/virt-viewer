@@ -1122,7 +1122,7 @@ retry_dialog:
 
         if (!virt_viewer_window_save_screenshot(self, filename, &error)) {
             virt_viewer_app_simple_message_dialog(self->priv->app,
-                                                  error->message);
+                                                  "%s", error->message);
             g_error_free(error);
         }
         g_free(filename);

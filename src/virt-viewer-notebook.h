@@ -60,8 +60,8 @@ typedef struct {
 GType virt_viewer_notebook_get_type (void);
 
 VirtViewerNotebook* virt_viewer_notebook_new (void);
-void virt_viewer_notebook_show_status_va(VirtViewerNotebook *self, const gchar *fmt, va_list args);
-void virt_viewer_notebook_show_status(VirtViewerNotebook *nb, const gchar *fmt, ...);
+void virt_viewer_notebook_show_status_va(VirtViewerNotebook *self, const gchar *fmt, va_list args) G_GNUC_PRINTF(2, 0);
+void virt_viewer_notebook_show_status(VirtViewerNotebook *nb, const gchar *fmt, ...) G_GNUC_PRINTF(2, 3);
 void virt_viewer_notebook_show_display(VirtViewerNotebook *nb);
 
 G_END_DECLS

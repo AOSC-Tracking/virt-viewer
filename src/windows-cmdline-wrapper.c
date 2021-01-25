@@ -48,7 +48,8 @@
 #include <assert.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+int main(int argc __attribute__((unused)),
+         char *argv[] __attribute__((unused)))
 {
     STARTUPINFO si = { 0, };
     PROCESS_INFORMATION pi = { 0, };
@@ -62,7 +63,7 @@ int main(int argc, char *argv[])
         // We expect our helper to end with .com
         assert(strncmp(name + len - 3, "com", 4) == 0);
         // replace .com with .exe
-        strncpy(name + len - 3, "exe", 3);
+        memcpy(name + len - 3, "exe", 3);
     }
 
     si.cb = sizeof(si);

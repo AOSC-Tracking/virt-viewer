@@ -1,7 +1,7 @@
 stages:
-  - prebuild
   - containers
   - builds
+  - sanity_checks
 
 .container_job_template: &container_job_definition
   image: docker:stable
@@ -35,9 +35,18 @@ stages:
   before_script:
     - *script_variables
   script:
-    - ./autogen.sh --prefix="$VROOT"
-    - $MAKE dist
-    - if test -x /usr/bin/rpmbuild && test "$RPM" != "skip" ; then rpmbuild --nodeps -ta virt-viewer*.tar.gz ; fi
+    - meson build
+    - if test "$DIST" != "skip";
+      then
+        ninja -C build dist;
+      else
+        ninja -C build;
+        ninja -C build test;
+      fi
+    - if test -x /usr/bin/rpmbuild && test "$RPM" != "skip";
+      then
+        rpmbuild --nodeps -ta build/meson-dist/virt-viewer-*.tar.xz;
+      fi
 
 .git_native_build_job_template: &git_native_build_job_definition
   image: $CI_REGISTRY_IMAGE/ci-$NAME:latest
@@ -62,10 +71,18 @@ stages:
     - meson build --prefix="$VROOT" --libdir="$LIBDIR"
     - $NINJA -C build install
     - popd
-    - ./autogen.sh --prefix="$VROOT"
-    - $MAKE syntax-check
-    - $MAKE dist
-    - if test -x /usr/bin/rpmbuild && test "$RPM" != "skip" ; then rpmbuild --nodeps -ta virt-viewer*.tar.gz ; fi
+    - meson build
+    - if test "$DIST" != "skip";
+      then
+        ninja -C build dist;
+      else
+        ninja -C build;
+        ninja -C build test;
+      fi
+    - if test -x /usr/bin/rpmbuild && test "$RPM" != "skip";
+      then
+        rpmbuild --nodeps -ta build/meson-dist/virt-viewer-*.tar.xz;
+      fi
 
 # Default cross build jobs that are always run
 .git_cross_build_default_job_template: &git_cross_build_default_job_definition
@@ -95,15 +112,16 @@ stages:
     - meson build $MESON_OPTS --prefix="$VROOT" --libdir="$LIBDIR" -Dintrospection=disabled
     - $NINJA -C build install
     - popd
-    - ./autogen.sh $CONFIGURE_OPTS --prefix="$VROOT"
-    - $MAKE install
+    - meson build $MESON_OPTS
+    - $NINJA -C build
 
 # Check that all commits are signed-off for the DCO.
 # Skip on "virt-viewer" namespace, since we only need to run
 # this test on developer's personal forks from which
 # merge requests are submitted
 check-dco:
-  stage: prebuild
+  stage: sanity_checks
+  needs: []
   image: registry.gitlab.com/libvirt/libvirt-ci/check-dco:master
   script:
     - /check-dco virt-viewer
@@ -151,10 +169,10 @@ x86-fedora-rawhide-container:
   variables:
     NAME: fedora-rawhide
 
-x86-opensuse-151-container:
+x86-opensuse-152-container:
   <<: *container_job_definition
   variables:
-    NAME: opensuse-151
+    NAME: opensuse-152
 
 x86-ubuntu-1804-container:
   <<: *container_job_definition
@@ -177,66 +195,104 @@ mingw64-fedora-rawhide-container:
     NAME: fedora-rawhide-cross-mingw64
 
 
+codestyle:
+  stage: sanity_checks
+  image: $CI_REGISTRY_IMAGE/ci-centos-8:latest
+  needs:
+    - x86-centos-8-container
+  before_script:
+    - *script_variables
+  script:
+    - meson build || (cat build/meson-logs/meson-log.txt && exit 1)
+    - meson test -C build --suite syntax-check --no-rebuild || (cat build/meson-logs/testlog.txt && exit 1)
+
 x86-centos-7-dist-build:
   <<: *dist_native_build_job_definition
+  needs:
+    - x86-centos-7-container
   variables:
     NAME: centos-7
+    # git is too old for -C args
+    DIST: skip
+    RPM: skip
 
 x86-centos-8-git-build:
   <<: *git_native_build_job_definition
+  needs:
+    - x86-centos-8-container
   variables:
     NAME: centos-8
     RPM: skip
 
 x86-centos-stream-dist-build:
   <<: *git_native_build_job_definition
+  needs:
+    - x86-centos-stream-container
   variables:
     NAME: centos-stream
     RPM: skip
 
 x86-debian-10-dist-build:
   <<: *dist_native_build_job_definition
+  needs:
+    - x86-debian-10-container
   variables:
     NAME: debian-10
 
 x86-debian-sid-dist-build:
   <<: *dist_native_build_job_definition
+  needs:
+    - x86-debian-sid-container
   variables:
     NAME: debian-sid
 
 x86-fedora-32-dist-build:
   <<: *dist_native_build_job_definition
+  needs:
+    - x86-fedora-32-container
   variables:
     NAME: fedora-32
 
 x86-fedora-33-dist-build:
   <<: *dist_native_build_job_definition
+  needs:
+    - x86-fedora-33-container
   variables:
     NAME: fedora-33
 
 x86-fedora-rawhide-dist-build:
   <<: *dist_native_build_job_definition
+  needs:
+    - x86-fedora-rawhide-container
   variables:
     NAME: fedora-rawhide
 
-x86-opensuse-151-dist-build:
+x86-opensuse-152-dist-build:
   <<: *dist_native_build_job_definition
+  needs:
+    - x86-opensuse-152-container
   variables:
-    NAME: opensuse-151
+    NAME: opensuse-152
     RPM: skip
 
 x86-ubuntu-1804-dist-build:
   <<: *dist_native_build_job_definition
+  needs:
+    - x86-ubuntu-1804-container
   variables:
     NAME: ubuntu-1804
 
 x86-ubuntu-2004-dist-build:
   <<: *dist_native_build_job_definition
+  needs:
+    - x86-ubuntu-2004-container
   variables:
     NAME: ubuntu-2004
 
 mingw32-fedora-rawhide-git-build:
   <<: *git_cross_build_default_job_definition
+  needs:
+    - mingw32-fedora-rawhide-container
   variables:
     NAME: fedora-rawhide-cross-mingw32
   artifacts:
@@ -248,6 +304,8 @@ mingw32-fedora-rawhide-git-build:
 
 mingw64-fedora-rawhide-git-build:
   <<: *git_cross_build_default_job_definition
+  needs:
+    - mingw64-fedora-rawhide-container
   variables:
     NAME: fedora-rawhide-cross-mingw64
   artifacts:
