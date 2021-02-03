@@ -40,6 +40,7 @@ struct _VirtViewerSessionVnc {
     /* XXX we should really just have a VncConnection */
     VncDisplay *vnc;
     gboolean auth_dialog_cancelled;
+    gchar *error_msg;
 };
 
 G_DEFINE_TYPE(VirtViewerSessionVnc, virt_viewer_session_vnc, VIRT_VIEWER_TYPE_SESSION)
@@ -63,6 +64,7 @@ virt_viewer_session_vnc_finalize(GObject *obj)
     }
     if (self->main_window)
         g_object_unref(self->main_window);
+    g_free(self->error_msg);
 
     G_OBJECT_CLASS(virt_viewer_session_vnc_parent_class)->finalize(obj);
 }
@@ -122,7 +124,7 @@ virt_viewer_session_vnc_disconnected(VncDisplay *vnc G_GNUC_UNUSED,
     virt_viewer_session_clear_displays(VIRT_VIEWER_SESSION(self));
     display = virt_viewer_display_vnc_new(self, self->vnc);
     g_debug("Disconnected");
-    g_signal_emit_by_name(self, "session-disconnected", NULL);
+    g_signal_emit_by_name(self, "session-disconnected", self->error_msg);
     virt_viewer_display_set_enabled(VIRT_VIEWER_DISPLAY(display), FALSE);
     virt_viewer_display_set_show_hint(VIRT_VIEWER_DISPLAY(display),
                                       VIRT_VIEWER_DISPLAY_SHOW_HINT_READY, FALSE);
@@ -135,6 +137,10 @@ virt_viewer_session_vnc_error(VncDisplay *vnc G_GNUC_UNUSED,
 {
     g_warning("vnc-session: got vnc error %s", msg);
     g_signal_emit_by_name(session, "session-error", msg);
+    /* "vnc-error" is always followed by "vnc-disconnected",
+     * so save the error for that signal */
+    g_free(session->error_msg);
+    session->error_msg = g_strdup(msg);
 }
 
 static void
@@ -162,8 +168,9 @@ virt_viewer_session_vnc_bell(VncDisplay *vnc G_GNUC_UNUSED,
 static void
 virt_viewer_session_vnc_auth_unsupported(VncDisplay *vnc G_GNUC_UNUSED,
                                          unsigned int authType,
-                                         VirtViewerSession *session)
+                                         VirtViewerSessionVnc *session)
 {
+    g_clear_pointer(&session->error_msg, g_free);
     gchar *msg = g_strdup_printf(_("Unsupported authentication type %u"),
                                  authType);
     g_signal_emit_by_name(session, "session-auth-unsupported", msg);
@@ -173,9 +180,9 @@ virt_viewer_session_vnc_auth_unsupported(VncDisplay *vnc G_GNUC_UNUSED,
 static void
 virt_viewer_session_vnc_auth_failure(VncDisplay *vnc G_GNUC_UNUSED,
                                      const gchar *reason,
-                                     VirtViewerSession *session)
+                                     VirtViewerSessionVnc *session)
 {
-
+    g_clear_pointer(&session->error_msg, g_free);
     g_signal_emit_by_name(session, "session-auth-refused", reason);
 }
 
