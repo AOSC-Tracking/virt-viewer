@@ -395,26 +395,26 @@ virt_viewer_session_vnc_close(VirtViewerSession* session)
     self->vnc = VNC_DISPLAY(vnc_display_new());
     g_object_ref_sink(self->vnc);
 
-    g_signal_connect(self->vnc, "vnc-connected",
-                     G_CALLBACK(virt_viewer_session_vnc_connected), session);
-    g_signal_connect(self->vnc, "vnc-initialized",
-                     G_CALLBACK(virt_viewer_session_vnc_initialized), session);
-    g_signal_connect(self->vnc, "vnc-disconnected",
-                     G_CALLBACK(virt_viewer_session_vnc_disconnected), session);
-    g_signal_connect(self->vnc, "vnc-error",
-                     G_CALLBACK(virt_viewer_session_vnc_error), session);
+    g_signal_connect_object(self->vnc, "vnc-connected",
+                            G_CALLBACK(virt_viewer_session_vnc_connected), session, 0);
+    g_signal_connect_object(self->vnc, "vnc-initialized",
+                            G_CALLBACK(virt_viewer_session_vnc_initialized), session, 0);
+    g_signal_connect_object(self->vnc, "vnc-disconnected",
+                            G_CALLBACK(virt_viewer_session_vnc_disconnected), session, 0);
+    g_signal_connect_object(self->vnc, "vnc-error",
+                            G_CALLBACK(virt_viewer_session_vnc_error), session, 0);
 
-    g_signal_connect(self->vnc, "vnc-bell",
-                     G_CALLBACK(virt_viewer_session_vnc_bell), session);
-    g_signal_connect(self->vnc, "vnc-auth-failure",
-                     G_CALLBACK(virt_viewer_session_vnc_auth_failure), session);
-    g_signal_connect(self->vnc, "vnc-auth-unsupported",
-                     G_CALLBACK(virt_viewer_session_vnc_auth_unsupported), session);
-    g_signal_connect(self->vnc, "vnc-server-cut-text",
-                     G_CALLBACK(virt_viewer_session_vnc_cut_text), session);
+    g_signal_connect_object(self->vnc, "vnc-bell",
+                            G_CALLBACK(virt_viewer_session_vnc_bell), session, 0);
+    g_signal_connect_object(self->vnc, "vnc-auth-failure",
+                            G_CALLBACK(virt_viewer_session_vnc_auth_failure), session, 0);
+    g_signal_connect_object(self->vnc, "vnc-auth-unsupported",
+                            G_CALLBACK(virt_viewer_session_vnc_auth_unsupported), session, 0);
+    g_signal_connect_object(self->vnc, "vnc-server-cut-text",
+                            G_CALLBACK(virt_viewer_session_vnc_cut_text), session, 0);
 
-    g_signal_connect(self->vnc, "vnc-auth-credential",
-                     G_CALLBACK(virt_viewer_session_vnc_auth_credential), session);
+    g_signal_connect_object(self->vnc, "vnc-auth-credential",
+                            G_CALLBACK(virt_viewer_session_vnc_auth_credential), session, 0);
 
 }
 
@@ -432,26 +432,26 @@ virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window)
     vnc_display_set_shared_flag(self->vnc,
                                 virt_viewer_app_get_shared(app));
 
-    g_signal_connect(self->vnc, "vnc-connected",
-                     G_CALLBACK(virt_viewer_session_vnc_connected), self);
-    g_signal_connect(self->vnc, "vnc-initialized",
-                     G_CALLBACK(virt_viewer_session_vnc_initialized), self);
-    g_signal_connect(self->vnc, "vnc-disconnected",
-                     G_CALLBACK(virt_viewer_session_vnc_disconnected), self);
-    g_signal_connect(self->vnc, "vnc-error",
-                     G_CALLBACK(virt_viewer_session_vnc_error), self);
+    g_signal_connect_object(self->vnc, "vnc-connected",
+                            G_CALLBACK(virt_viewer_session_vnc_connected), self, 0);
+    g_signal_connect_object(self->vnc, "vnc-initialized",
+                            G_CALLBACK(virt_viewer_session_vnc_initialized), self, 0);
+    g_signal_connect_object(self->vnc, "vnc-disconnected",
+                            G_CALLBACK(virt_viewer_session_vnc_disconnected), self, 0);
+    g_signal_connect_object(self->vnc, "vnc-error",
+                            G_CALLBACK(virt_viewer_session_vnc_error), self, 0);
 
-    g_signal_connect(self->vnc, "vnc-bell",
-                     G_CALLBACK(virt_viewer_session_vnc_bell), self);
-    g_signal_connect(self->vnc, "vnc-auth-failure",
-                     G_CALLBACK(virt_viewer_session_vnc_auth_failure), self);
-    g_signal_connect(self->vnc, "vnc-auth-unsupported",
-                     G_CALLBACK(virt_viewer_session_vnc_auth_unsupported), self);
-    g_signal_connect(self->vnc, "vnc-server-cut-text",
-                     G_CALLBACK(virt_viewer_session_vnc_cut_text), self);
+    g_signal_connect_object(self->vnc, "vnc-bell",
+                            G_CALLBACK(virt_viewer_session_vnc_bell), self, 0);
+    g_signal_connect_object(self->vnc, "vnc-auth-failure",
+                            G_CALLBACK(virt_viewer_session_vnc_auth_failure), self, 0);
+    g_signal_connect_object(self->vnc, "vnc-auth-unsupported",
+                            G_CALLBACK(virt_viewer_session_vnc_auth_unsupported), self, 0);
+    g_signal_connect_object(self->vnc, "vnc-server-cut-text",
+                            G_CALLBACK(virt_viewer_session_vnc_cut_text), self, 0);
 
-    g_signal_connect(self->vnc, "vnc-auth-credential",
-                     G_CALLBACK(virt_viewer_session_vnc_auth_credential), self);
+    g_signal_connect_object(self->vnc, "vnc-auth-credential",
+                            G_CALLBACK(virt_viewer_session_vnc_auth_credential), self, 0);
 
     return VIRT_VIEWER_SESSION(self);
 }
