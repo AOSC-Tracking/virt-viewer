@@ -26,26 +26,11 @@
 G_BEGIN_DECLS
 
 #define VIRT_VIEWER_TYPE_FILE            (virt_viewer_file_get_type ())
-#define VIRT_VIEWER_FILE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_FILE, VirtViewerFile))
-#define VIRT_VIEWER_FILE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_FILE, VirtViewerFileClass))
-#define VIRT_VIEWER_IS_FILE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_FILE))
-#define VIRT_VIEWER_IS_FILE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_FILE))
-#define VIRT_VIEWER_FILE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_FILE, VirtViewerFileClass))
-
-typedef struct _VirtViewerFile VirtViewerFile;
-typedef struct _VirtViewerFileClass VirtViewerFileClass;
-typedef struct _VirtViewerFilePrivate VirtViewerFilePrivate;
-
-struct _VirtViewerFile
-{
-    GObject parent;
-    VirtViewerFilePrivate *priv;
-};
-
-struct _VirtViewerFileClass
-{
-    GObjectClass parent_class;
-};
+G_DECLARE_FINAL_TYPE(VirtViewerFile,
+                     virt_viewer_file,
+                     VIRT_VIEWER,
+                     FILE,
+                     GObject)
 
 GType virt_viewer_file_get_type(void);
 
