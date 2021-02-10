@@ -2,8 +2,10 @@
 
 %if 0%{?rhel} >= 9
 %global with_govirt 0
+%global with_spice 0
 %else
 %global with_govirt 1
+%global with_spice 1
 %endif
 
 Name: virt-viewer
@@ -26,8 +28,10 @@ BuildRequires: pkgconfig(libvirt)
 BuildRequires: pkgconfig(libvirt-glib-1.0)
 BuildRequires: pkgconfig(libxml-2.0)
 BuildRequires: pkgconfig(gtk-vnc-2.0)
+%if %{with_spice}
 BuildRequires: pkgconfig(spice-client-gtk-3.0)
 BuildRequires: pkgconfig(spice-protocol)
+%endif
 BuildRequires: /usr/bin/pod2man
 BuildRequires: gettext
 %if %{with_govirt}
