@@ -39,7 +39,8 @@ typedef enum {
     AUTO_RESIZE_NEVER,
 } AutoResizeState;
 
-struct _VirtViewerDisplaySpicePrivate {
+struct _VirtViewerDisplaySpice {
+    VirtViewerDisplay parent;
     SpiceChannel *channel; /* weak reference */
     SpiceDisplay *display;
     AutoResizeState auto_resize;
@@ -47,7 +48,7 @@ struct _VirtViewerDisplaySpicePrivate {
     guint y;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (VirtViewerDisplaySpice, virt_viewer_display_spice, VIRT_VIEWER_TYPE_DISPLAY)
+G_DEFINE_TYPE(VirtViewerDisplaySpice, virt_viewer_display_spice, VIRT_VIEWER_TYPE_DISPLAY)
 
 static void virt_viewer_display_spice_send_keys(VirtViewerDisplay *display,
                                                 const guint *keyvals,
@@ -120,10 +121,9 @@ static void virt_viewer_display_spice_disable(VirtViewerDisplay *self)
 }
 
 static void
-virt_viewer_display_spice_init(VirtViewerDisplaySpice *self G_GNUC_UNUSED)
+virt_viewer_display_spice_init(VirtViewerDisplaySpice *self)
 {
-    self->priv = virt_viewer_display_spice_get_instance_private(self);
-    self->priv->auto_resize = AUTO_RESIZE_ALWAYS;
+    self->auto_resize = AUTO_RESIZE_ALWAYS;
 
     g_signal_connect(self, "notify::show-hint", G_CALLBACK(show_hint_changed), NULL);
 }
@@ -136,9 +136,9 @@ virt_viewer_display_spice_send_keys(VirtViewerDisplay *display,
     VirtViewerDisplaySpice *self = VIRT_VIEWER_DISPLAY_SPICE(display);
 
     g_return_if_fail(self != NULL);
-    g_return_if_fail(self->priv->display != NULL);
+    g_return_if_fail(self->display != NULL);
 
-    spice_display_send_keys(self->priv->display, keyvals, nkeyvals, SPICE_DISPLAY_KEY_EVENT_CLICK);
+    spice_display_send_keys(self->display, keyvals, nkeyvals, SPICE_DISPLAY_KEY_EVENT_CLICK);
 }
 
 static GdkPixbuf *
@@ -147,9 +147,9 @@ virt_viewer_display_spice_get_pixbuf(VirtViewerDisplay *display)
     VirtViewerDisplaySpice *self = VIRT_VIEWER_DISPLAY_SPICE(display);
 
     g_return_val_if_fail(self != NULL, NULL);
-    g_return_val_if_fail(self->priv->display != NULL, NULL);
+    g_return_val_if_fail(self->display != NULL, NULL);
 
-    return spice_display_get_pixbuf(self->priv->display);
+    return spice_display_get_pixbuf(self->display);
 }
 
 static void
@@ -157,7 +157,7 @@ update_display_ready(VirtViewerDisplaySpice *self)
 {
     gboolean ready;
 
-    g_object_get(self->priv->display, "ready", &ready, NULL);
+    g_object_get(self->display, "ready", &ready, NULL);
 
     virt_viewer_display_set_show_hint(VIRT_VIEWER_DISPLAY(self),
                                       VIRT_VIEWER_DISPLAY_SHOW_HINT_READY, ready);
@@ -214,11 +214,11 @@ virt_viewer_display_spice_size_allocate(VirtViewerDisplaySpice *self,
         return;
     }
 
-    if (self->priv->auto_resize != AUTO_RESIZE_NEVER)
+    if (self->auto_resize != AUTO_RESIZE_NEVER)
         virt_viewer_display_spice_monitor_geometry_changed(self);
 
-    if (self->priv->auto_resize == AUTO_RESIZE_FULLSCREEN)
-        self->priv->auto_resize = AUTO_RESIZE_NEVER;
+    if (self->auto_resize == AUTO_RESIZE_FULLSCREEN)
+        self->auto_resize = AUTO_RESIZE_NEVER;
 }
 
 static void
@@ -226,7 +226,7 @@ zoom_level_changed(VirtViewerDisplaySpice *self,
                    GParamSpec *pspec G_GNUC_UNUSED,
                    VirtViewerApp *app G_GNUC_UNUSED)
 {
-    if (self->priv->auto_resize != AUTO_RESIZE_NEVER)
+    if (self->auto_resize != AUTO_RESIZE_NEVER)
         return;
 
     virt_viewer_display_spice_monitor_geometry_changed(self);
@@ -248,10 +248,10 @@ enable_accel_changed(VirtViewerApp *app,
     if (key.accel_key || key.accel_mods || kiosk) {
         SpiceGrabSequence *seq = spice_grab_sequence_new(0, NULL);
         /* disable default grab sequence */
-        spice_display_set_grab_keys(self->priv->display, seq);
+        spice_display_set_grab_keys(self->display, seq);
         spice_grab_sequence_free(seq);
     } else {
-        spice_display_set_grab_keys(self->priv->display, NULL);
+        spice_display_set_grab_keys(self->display, NULL);
     }
 }
 
@@ -264,11 +264,11 @@ fullscreen_changed(VirtViewerDisplaySpice *self,
         gboolean auto_conf;
         g_object_get(app, "fullscreen", &auto_conf, NULL);
         if (auto_conf)
-            self->priv->auto_resize = AUTO_RESIZE_NEVER;
+            self->auto_resize = AUTO_RESIZE_NEVER;
         else
-            self->priv->auto_resize = AUTO_RESIZE_FULLSCREEN;
+            self->auto_resize = AUTO_RESIZE_FULLSCREEN;
     } else
-        self->priv->auto_resize = AUTO_RESIZE_ALWAYS;
+        self->auto_resize = AUTO_RESIZE_ALWAYS;
 }
 
 GtkWidget *
@@ -297,29 +297,29 @@ virt_viewer_display_spice_new(VirtViewerSessionSpice *session,
                         // for example
                         "nth-display", channelid + monitorid,
                         NULL);
-    self->priv->channel = channel;
+    self->channel = channel;
 
     g_object_get(session, "spice-session", &s, NULL);
-    self->priv->display = spice_display_new_with_monitor(s, channelid, monitorid);
+    self->display = spice_display_new_with_monitor(s, channelid, monitorid);
     g_object_unref(s);
 
-    virt_viewer_signal_connect_object(self->priv->display, "notify::ready",
+    virt_viewer_signal_connect_object(self->display, "notify::ready",
                                       G_CALLBACK(update_display_ready), self,
                                       G_CONNECT_SWAPPED);
     update_display_ready(self);
 
-    gtk_container_add(GTK_CONTAINER(self), GTK_WIDGET(self->priv->display));
-    gtk_widget_show(GTK_WIDGET(self->priv->display));
-    g_object_set(self->priv->display,
+    gtk_container_add(GTK_CONTAINER(self), GTK_WIDGET(self->display));
+    gtk_widget_show(GTK_WIDGET(self->display));
+    g_object_set(self->display,
                  "grab-keyboard", TRUE,
                  "grab-mouse", TRUE,
                  "resize-guest", FALSE,
                  "scaling", TRUE,
                  NULL);
 
-    virt_viewer_signal_connect_object(self->priv->display, "keyboard-grab",
+    virt_viewer_signal_connect_object(self->display, "keyboard-grab",
                                       G_CALLBACK(virt_viewer_display_spice_keyboard_grab), self, 0);
-    virt_viewer_signal_connect_object(self->priv->display, "mouse-grab",
+    virt_viewer_signal_connect_object(self->display, "mouse-grab",
                                       G_CALLBACK(virt_viewer_display_spice_mouse_grab), self, 0);
     virt_viewer_signal_connect_object(self, "size-allocate",
                                       G_CALLBACK(virt_viewer_display_spice_size_allocate), self, 0);
@@ -343,7 +343,7 @@ virt_viewer_display_spice_release_cursor(VirtViewerDisplay *display)
 {
     VirtViewerDisplaySpice *self = VIRT_VIEWER_DISPLAY_SPICE(display);
 
-    spice_display_mouse_ungrab(self->priv->display);
+    spice_display_mouse_ungrab(self->display);
 }
 
 static gboolean
@@ -365,7 +365,7 @@ virt_viewer_display_spice_set_desktop(VirtViewerDisplay *display,
                                       guint x, guint y,
                                       guint width, guint height)
 {
-    VirtViewerDisplaySpicePrivate *priv;
+    VirtViewerDisplaySpice *self;
     guint desktopWidth, desktopHeight;
     gint scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(display));
 
@@ -375,17 +375,16 @@ virt_viewer_display_spice_set_desktop(VirtViewerDisplay *display,
     height /= scale_factor;
 
     g_return_if_fail(VIRT_VIEWER_IS_DISPLAY_SPICE(display));
+    self = VIRT_VIEWER_DISPLAY_SPICE(display);
 
     virt_viewer_display_get_desktop_size(display, &desktopWidth, &desktopHeight);
 
-    priv = VIRT_VIEWER_DISPLAY_SPICE(display)->priv;
-
-    if (desktopWidth == width && desktopHeight == height && priv->x == x && priv->y == y)
+    if (desktopWidth == width && desktopHeight == height && self->x == x && self->y == y)
         return;
 
     g_object_set(G_OBJECT(display), "desktop-width", width, "desktop-height", height, NULL);
-    priv->x = x;
-    priv->y = y;
+    self->x = x;
+    self->y = y;
 
     virt_viewer_display_queue_resize(display);
 
