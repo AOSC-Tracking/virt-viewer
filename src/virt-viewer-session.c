@@ -276,15 +276,6 @@ virt_viewer_session_class_init(VirtViewerSessionClass *class)
                  G_TYPE_NONE,
                  0);
 
-    g_signal_new("session-error",
-                 G_OBJECT_CLASS_TYPE(object_class),
-                 G_SIGNAL_RUN_FIRST,
-                 0,
-                 NULL, NULL,
-                 g_cclosure_marshal_VOID__STRING,
-                 G_TYPE_NONE,
-                 1,
-                 G_TYPE_STRING);
     g_signal_new("session-disconnected",
                  G_OBJECT_CLASS_TYPE(object_class),
                  G_SIGNAL_RUN_FIRST,

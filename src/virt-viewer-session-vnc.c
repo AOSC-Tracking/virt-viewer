@@ -136,7 +136,6 @@ virt_viewer_session_vnc_error(VncDisplay *vnc G_GNUC_UNUSED,
                               VirtViewerSessionVnc *session)
 {
     g_warning("vnc-session: got vnc error %s", msg);
-    g_signal_emit_by_name(session, "session-error", msg);
     /* "vnc-error" is always followed by "vnc-disconnected",
      * so save the error for that signal */
     g_free(session->error_msg);

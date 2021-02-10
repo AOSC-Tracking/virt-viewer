@@ -70,9 +70,6 @@ void virt_viewer_app_about_delete(GtkWidget *dialog, void *dummy, VirtViewerApp 
 /* Internal methods */
 static void virt_viewer_app_connected(VirtViewerSession *session,
                                       VirtViewerApp *self);
-static void virt_viewer_app_error(VirtViewerSession *session G_GNUC_UNUSED,
-                                  const gchar *msg,
-                                  VirtViewerApp *self);
 static void virt_viewer_app_initialized(VirtViewerSession *session,
                                         VirtViewerApp *self);
 static void virt_viewer_app_disconnected(VirtViewerSession *session,
@@ -745,7 +742,8 @@ static void hide_one_window(gpointer value,
 {
     VirtViewerApp* self = VIRT_VIEWER_APP(user_data);
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    gboolean connect_error = !priv->connected && !priv->cancelled;
+    gboolean connect_error = !priv->cancelled &&
+        !(VIRT_VIEWER_IS_SESSION_VNC(priv->session) ? priv->initialized : priv->connected);
 
     if (connect_error || priv->main_window != value)
         virt_viewer_window_hide(VIRT_VIEWER_WINDOW(value));
@@ -1342,8 +1340,6 @@ virt_viewer_app_create_session(VirtViewerApp *self, const gchar *type, GError **
 
     g_signal_connect(priv->session, "session-initialized",
                      G_CALLBACK(virt_viewer_app_initialized), self);
-    g_signal_connect(priv->session, "session-error",
-                     G_CALLBACK(virt_viewer_app_error), self);
     g_signal_connect(priv->session, "session-connected",
                      G_CALLBACK(virt_viewer_app_connected), self);
     g_signal_connect(priv->session, "session-disconnected",
@@ -1721,7 +1717,8 @@ virt_viewer_app_disconnected(VirtViewerSession *session G_GNUC_UNUSED, const gch
                              VirtViewerApp *self)
 {
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    gboolean connect_error = !priv->connected && !priv->cancelled;
+    gboolean connect_error = !priv->cancelled &&
+        !(VIRT_VIEWER_IS_SESSION_VNC(session) ? priv->initialized : priv->connected);
 
     if (!priv->kiosk)
         virt_viewer_app_hide_all_windows(self);
@@ -1742,21 +1739,6 @@ virt_viewer_app_disconnected(VirtViewerSession *session G_GNUC_UNUSED, const gch
     virt_viewer_app_set_usb_options_sensitive(self, FALSE);
     virt_viewer_app_set_usb_reset_sensitive(self, FALSE);
     virt_viewer_app_deactivate(self, connect_error);
-}
-
-static void
-virt_viewer_app_error(VirtViewerSession *session G_GNUC_UNUSED,
-                      const gchar *msg,
-                      VirtViewerApp *self)
-{
-    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-
-    /* Do not open a dialog if the connection was initialized
-     * This happens when the VNC server closes the connection */
-    if (!priv->initialized)
-        priv->connected = FALSE; /* display error dialog */
-
-    virt_viewer_app_disconnected(session, msg, self);
 }
 
 static void virt_viewer_app_cancelled(VirtViewerSession *session,
@@ -1781,15 +1763,22 @@ static void virt_viewer_app_auth_refused(VirtViewerSession *session,
      * VirtViewerApp needs to schedule a new connection to retry */
     priv->authretry = (!virt_viewer_session_can_retry_auth(session) &&
                        !virt_viewer_session_get_file(session));
+
+    /* don't display another dialog in virt_viewer_app_disconnected when using VNC */
+    priv->initialized = TRUE;
 }
 
 static void virt_viewer_app_auth_unsupported(VirtViewerSession *session G_GNUC_UNUSED,
                                         const char *msg,
                                         VirtViewerApp *self)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     virt_viewer_app_simple_message_dialog(self,
                                           _("Unable to authenticate with remote desktop server: %s"),
                                           msg);
+
+    /* don't display another dialog in virt_viewer_app_disconnected when using VNC */
+    priv->initialized = TRUE;
 }
 
 static void virt_viewer_app_usb_failed(VirtViewerSession *session G_GNUC_UNUSED,
