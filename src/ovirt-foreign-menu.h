@@ -34,35 +34,11 @@
 G_BEGIN_DECLS
 
 #define OVIRT_TYPE_FOREIGN_MENU ovirt_foreign_menu_get_type()
-
-#define OVIRT_FOREIGN_MENU(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), OVIRT_TYPE_FOREIGN_MENU, OvirtForeignMenu))
-
-#define OVIRT_FOREIGN_MENU_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), OVIRT_TYPE_FOREIGN_MENU, OvirtForeignMenuClass))
-
-#define OVIRT_IS_FOREIGN_MENU(obj)                                \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), OVIRT_TYPE_FOREIGN_MENU))
-
-#define OVIRTIS_FOREIGN_MENU_CLASS(klass)                        \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), OVIRT_TYPE_FOREIGN_MENU))
-
-#define OVIRT_FOREIGN_MENU_GET_CLASS(obj)                        \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), OVIRT_TYPE_FOREIGN_MENU, OvirtForeignMenuClass))
-
-typedef struct _OvirtForeignMenu OvirtForeignMenu;
-typedef struct _OvirtForeignMenuClass OvirtForeignMenuClass;
-typedef struct _OvirtForeignMenuPrivate OvirtForeignMenuPrivate;
-
-struct _OvirtForeignMenu {
-    GObject parent;
-
-    OvirtForeignMenuPrivate *priv;
-};
-
-struct _OvirtForeignMenuClass {
-    GObjectClass parent_class;
-};
+G_DECLARE_FINAL_TYPE(OvirtForeignMenu,
+                     ovirt_foreign_menu,
+                     OVIRT,
+                     FOREIGN_MENU,
+                     GObject)
 
 GType ovirt_foreign_menu_get_type(void);
 
