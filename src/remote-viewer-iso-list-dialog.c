@@ -41,11 +41,6 @@ struct _RemoteViewerISOListDialog
     GCancellable *cancellable;
 };
 
-struct _RemoteViewerISOListDialogClass
-{
-    GtkDialogClass parent_class;
-};
-
 G_DEFINE_TYPE(RemoteViewerISOListDialog, remote_viewer_iso_list_dialog, GTK_TYPE_DIALOG)
 
 enum RemoteViewerISOListDialogModel
