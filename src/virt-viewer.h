@@ -29,22 +29,11 @@
 G_BEGIN_DECLS
 
 #define VIRT_VIEWER_TYPE virt_viewer_get_type()
-#define VIRT_VIEWER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE, VirtViewer))
-#define VIRT_VIEWER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE, VirtViewerClass))
-#define VIRT_VIEWER_IS(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE))
-#define VIRT_VIEWER_IS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE))
-#define VIRT_VIEWER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE, VirtViewerClass))
-
-typedef struct _VirtViewerPrivate VirtViewerPrivate;
-
-typedef struct {
-    VirtViewerApp parent;
-    VirtViewerPrivate *priv;
-} VirtViewer;
-
-typedef struct {
-    VirtViewerAppClass parent_class;
-} VirtViewerClass;
+G_DECLARE_FINAL_TYPE(VirtViewer,
+                     virt_viewer,
+                     VIRT,
+                     VIEWER,
+                     VirtViewerApp);
 
 GType virt_viewer_get_type (void);
 

@@ -56,7 +56,8 @@
 #include "virt-viewer-session-spice.h"
 #endif
 
-struct _VirtViewerPrivate {
+struct _VirtViewer {
+    VirtViewerApp parent;
     char *uri;
     virConnectPtr conn;
     virDomainPtr dom;
@@ -68,7 +69,7 @@ struct _VirtViewerPrivate {
     guint reconnect_poll; /* source id */
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (VirtViewer, virt_viewer, VIRT_VIEWER_TYPE_APP)
+G_DEFINE_TYPE(VirtViewer, virt_viewer, VIRT_VIEWER_TYPE_APP)
 
 static gboolean virt_viewer_initial_connect(VirtViewerApp *self, GError **error);
 static gboolean virt_viewer_open_connection(VirtViewerApp *self, int *fd);
@@ -177,12 +178,12 @@ virt_viewer_local_command_line (GApplication   *gapp,
             goto end;
         }
 
-        self->priv->domkey = g_strdup(opt_args[0]);
+        self->domkey = g_strdup(opt_args[0]);
     }
 
 
     if (opt_waitvm || domain_selection_type != DOMAIN_SELECTION_DEFAULT) {
-        if (!self->priv->domkey) {
+        if (!self->domkey) {
             g_printerr(_("\nNo ID|UUID|DOMAIN-NAME was specified for '%s'\n\n"),
                        opt_waitvm ? "--wait" : domain_selection_to_opt[domain_selection_type]);
             ret = TRUE;
@@ -190,14 +191,14 @@ virt_viewer_local_command_line (GApplication   *gapp,
             goto end;
         }
 
-        self->priv->waitvm = opt_waitvm;
+        self->waitvm = opt_waitvm;
     }
 
     virt_viewer_app_set_direct(app, opt_direct);
     virt_viewer_app_set_attach(app, opt_attach);
     virt_viewer_app_set_shared(app, opt_shared);
-    self->priv->reconnect = opt_reconnect;
-    self->priv->uri = g_strdup(opt_uri);
+    self->reconnect = opt_reconnect;
+    self->uri = g_strdup(opt_uri);
 
 end:
     if (ret && *status)
@@ -229,8 +230,7 @@ virt_viewer_class_init (VirtViewerClass *klass)
 static void
 virt_viewer_init(VirtViewer *self)
 {
-    self->priv = virt_viewer_get_instance_private(self);
-    self->priv->domain_event = -1;
+    self->domain_event = -1;
 }
 
 static gboolean
@@ -246,7 +246,7 @@ virt_viewer_connect_timer(void *opaque)
         g_application_quit(G_APPLICATION(app));
 
     if (virt_viewer_app_is_active(app)) {
-        self->priv->reconnect_poll = 0;
+        self->reconnect_poll = 0;
         return FALSE;
     }
 
@@ -256,49 +256,44 @@ virt_viewer_connect_timer(void *opaque)
 static void
 virt_viewer_start_reconnect_poll(VirtViewer *self)
 {
-    VirtViewerPrivate *priv = self->priv;
+    g_debug("reconnect_poll: %u", self->reconnect_poll);
 
-    g_debug("reconnect_poll: %u", priv->reconnect_poll);
-
-    if (priv->reconnect_poll != 0)
+    if (self->reconnect_poll != 0)
         return;
 
-    priv->reconnect_poll = g_timeout_add(500, virt_viewer_connect_timer, self);
+    self->reconnect_poll = g_timeout_add(500, virt_viewer_connect_timer, self);
 }
 
 static void
 virt_viewer_stop_reconnect_poll(VirtViewer *self)
 {
-    VirtViewerPrivate *priv = self->priv;
+    g_debug("reconnect_poll: %u", self->reconnect_poll);
 
-    g_debug("reconnect_poll: %u", priv->reconnect_poll);
-
-    if (priv->reconnect_poll == 0)
+    if (self->reconnect_poll == 0)
         return;
 
-    g_source_remove(priv->reconnect_poll);
-    priv->reconnect_poll = 0;
+    g_source_remove(self->reconnect_poll);
+    self->reconnect_poll = 0;
 }
 
 static void
 virt_viewer_deactivated(VirtViewerApp *app, gboolean connect_error)
 {
     VirtViewer *self = VIRT_VIEWER(app);
-    VirtViewerPrivate *priv = self->priv;
 
-    if (priv->dom) {
-        virDomainFree(priv->dom);
-        priv->dom = NULL;
+    if (self->dom) {
+        virDomainFree(self->dom);
+        self->dom = NULL;
     }
 
-    if (priv->reconnect && !virt_viewer_app_get_session_cancelled(app)) {
-        if (priv->domain_event < 0) {
+    if (self->reconnect && !virt_viewer_app_get_session_cancelled(app)) {
+        if (self->domain_event < 0) {
             g_debug("No domain events, falling back to polling");
             virt_viewer_start_reconnect_poll(self);
         }
 
         virt_viewer_app_show_status(app, _("Waiting for guest domain to re-start"));
-        virt_viewer_app_trace(app, "Guest %s display has disconnected, waiting to reconnect", priv->domkey);
+        virt_viewer_app_trace(app, "Guest %s display has disconnected, waiting to reconnect", self->domkey);
         virt_viewer_app_set_menus_sensitive(app, FALSE);
     } else {
         VIRT_VIEWER_APP_CLASS(virt_viewer_parent_class)->deactivated(app, connect_error);
@@ -352,30 +347,29 @@ static virDomainPtr
 virt_viewer_lookup_domain(VirtViewer *self)
 {
     char *end;
-    VirtViewerPrivate *priv = self->priv;
     virDomainPtr dom = NULL;
 
-    if (priv->domkey == NULL) {
+    if (self->domkey == NULL) {
         return NULL;
     }
 
     if (domain_selection_type & DOMAIN_SELECTION_ID) {
-        long int id = strtol(priv->domkey, &end, 10);
+        long int id = strtol(self->domkey, &end, 10);
         if (id >= 0 && end && !*end) {
-            dom = virDomainLookupByID(priv->conn, id);
+            dom = virDomainLookupByID(self->conn, id);
         }
     }
 
     if (domain_selection_type & DOMAIN_SELECTION_UUID) {
         unsigned char uuid[16];
-        if (dom == NULL && virt_viewer_parse_uuid(priv->domkey, uuid) == 0) {
-            dom = virDomainLookupByUUID(priv->conn, uuid);
+        if (dom == NULL && virt_viewer_parse_uuid(self->domkey, uuid) == 0) {
+            dom = virDomainLookupByUUID(self->conn, uuid);
         }
     }
 
     if (domain_selection_type & DOMAIN_SELECTION_NAME) {
         if (dom == NULL) {
-            dom = virDomainLookupByName(priv->conn, priv->domkey);
+            dom = virDomainLookupByName(self->conn, self->domkey);
         }
     }
 
@@ -388,8 +382,7 @@ virt_viewer_matches_domain(VirtViewer *self,
 {
     char *end;
     const char *name;
-    VirtViewerPrivate *priv = self->priv;
-    int id = strtol(priv->domkey, &end, 10);
+    int id = strtol(self->domkey, &end, 10);
     unsigned char wantuuid[16];
     unsigned char domuuid[16];
 
@@ -397,14 +390,14 @@ virt_viewer_matches_domain(VirtViewer *self,
         if (virDomainGetID(dom) == id)
             return 1;
     }
-    if (virt_viewer_parse_uuid(priv->domkey, wantuuid) == 0) {
+    if (virt_viewer_parse_uuid(self->domkey, wantuuid) == 0) {
         virDomainGetUUID(dom, domuuid);
         if (memcmp(wantuuid, domuuid, VIR_UUID_BUFLEN) == 0)
             return 1;
     }
 
     name = virDomainGetName(dom);
-    if (strcmp(name, priv->domkey) == 0)
+    if (strcmp(name, self->domkey) == 0)
         return 1;
 
     return 0;
@@ -533,7 +526,6 @@ virt_viewer_extract_connect_info(VirtViewer *self,
     char *xpath = NULL;
     gboolean retval = FALSE;
     char *xmldesc = virDomainGetXMLDesc(dom, 0);
-    VirtViewerPrivate *priv = self->priv;
     VirtViewerApp *app = VIRT_VIEWER_APP(self);
     gchar *gport = NULL;
     gchar *gtlsport = NULL;
@@ -551,7 +543,7 @@ virt_viewer_extract_connect_info(VirtViewer *self,
     if ((type = virt_viewer_extract_xpath_string(xmldesc, "string(/domain/devices/graphics/@type)")) == NULL) {
         g_set_error(error,
                     VIRT_VIEWER_ERROR, VIRT_VIEWER_ERROR_FAILED,
-                    _("Cannot determine the graphic type for the guest %s"), priv->domkey);
+                    _("Cannot determine the graphic type for the guest %s"), self->domkey);
 
         goto cleanup;
     }
@@ -596,11 +588,11 @@ virt_viewer_extract_connect_info(VirtViewer *self,
         goto cleanup;
     }
 
-    uri = virConnectGetURI(priv->conn);
+    uri = virConnectGetURI(self->conn);
     if (virt_viewer_util_extract_host(uri, NULL, &host, &transport, &user, &port) < 0) {
         g_set_error(error,
                     VIRT_VIEWER_ERROR, VIRT_VIEWER_ERROR_FAILED,
-                    _("Cannot determine the host for the guest %s"), priv->domkey);
+                    _("Cannot determine the host for the guest %s"), self->domkey);
 
         goto cleanup;
     }
@@ -628,7 +620,7 @@ virt_viewer_extract_connect_info(VirtViewer *self,
     if (!virt_viewer_is_reachable(ghost, transport, host, direct)) {
         g_set_error(error,
                     VIRT_VIEWER_ERROR, VIRT_VIEWER_ERROR_FAILED,
-                    _("Guest '%s' is not reachable"), priv->domkey);
+                    _("Guest '%s' is not reachable"), self->domkey);
 
         g_debug("graphics listen '%s' is not reachable from this machine",
                 ghost ? ghost : "");
@@ -658,16 +650,15 @@ virt_viewer_extract_connect_info(VirtViewer *self,
 static gboolean
 virt_viewer_update_display(VirtViewer *self, virDomainPtr dom, GError **error)
 {
-    VirtViewerPrivate *priv = self->priv;
     VirtViewerApp *app = VIRT_VIEWER_APP(self);
 
-    if (priv->dom)
-        virDomainFree(priv->dom);
-    priv->dom = dom;
-    virDomainRef(priv->dom);
+    if (self->dom)
+        virDomainFree(self->dom);
+    self->dom = dom;
+    virDomainRef(self->dom);
 
     virt_viewer_app_trace(app, "Guest %s is running, determining display",
-                          priv->domkey);
+                          self->domkey);
 
     if (virt_viewer_app_has_session(app))
         return TRUE;
@@ -676,20 +667,19 @@ virt_viewer_update_display(VirtViewer *self, virDomainPtr dom, GError **error)
 }
 
 static gboolean
-virt_viewer_open_connection(VirtViewerApp *self G_GNUC_UNUSED, int *fd)
+virt_viewer_open_connection(VirtViewerApp *viewer, int *fd)
 {
-    VirtViewer *viewer = VIRT_VIEWER(self);
-    VirtViewerPrivate *priv = viewer->priv;
+    VirtViewer *self = VIRT_VIEWER(viewer);
     virErrorPtr err;
 #ifndef G_OS_WIN32
     int pair[2];
 #endif
     *fd = -1;
 
-    if (!priv->dom)
+    if (!self->dom)
         return TRUE;
 
-    if ((*fd = virDomainOpenGraphicsFD(priv->dom, 0,
+    if ((*fd = virDomainOpenGraphicsFD(self->dom, 0,
                                        VIR_DOMAIN_OPEN_GRAPHICS_SKIPAUTH)) >= 0)
         return TRUE;
 
@@ -703,7 +693,7 @@ virt_viewer_open_connection(VirtViewerApp *self G_GNUC_UNUSED, int *fd)
     if (socketpair(PF_UNIX, SOCK_STREAM, 0, pair) < 0)
         return FALSE;
 
-    if (virDomainOpenGraphics(priv->dom, 0, pair[0],
+    if (virDomainOpenGraphics(self->dom, 0, pair[0],
                               VIR_DOMAIN_OPEN_GRAPHICS_SKIPAUTH) < 0) {
         err = virGetLastError();
         g_debug("Error %s", err && err->message ? err->message : "Unknown");
@@ -774,12 +764,11 @@ virt_viewer_conn_event(virConnectPtr conn G_GNUC_UNUSED,
                        void *opaque)
 {
     VirtViewer *self = opaque;
-    VirtViewerPrivate *priv = self->priv;
 
     g_debug("Got connection event %d", reason);
 
-    virConnectClose(priv->conn);
-    priv->conn = NULL;
+    virConnectClose(self->conn);
+    self->conn = NULL;
 
     virt_viewer_start_reconnect_poll(self);
 }
@@ -788,27 +777,26 @@ static void
 virt_viewer_dispose (GObject *object)
 {
     VirtViewer *self = VIRT_VIEWER(object);
-    VirtViewerPrivate *priv = self->priv;
 
-    if (priv->conn) {
-        if (priv->domain_event >= 0) {
-            virConnectDomainEventDeregisterAny(priv->conn,
-                                               priv->domain_event);
-            priv->domain_event = -1;
+    if (self->conn) {
+        if (self->domain_event >= 0) {
+            virConnectDomainEventDeregisterAny(self->conn,
+                                               self->domain_event);
+            self->domain_event = -1;
         }
-        virConnectUnregisterCloseCallback(priv->conn,
+        virConnectUnregisterCloseCallback(self->conn,
                                           virt_viewer_conn_event);
-        virConnectClose(priv->conn);
-        priv->conn = NULL;
+        virConnectClose(self->conn);
+        self->conn = NULL;
     }
-    if (priv->dom) {
-        virDomainFree(priv->dom);
-        priv->dom = NULL;
+    if (self->dom) {
+        virDomainFree(self->dom);
+        self->dom = NULL;
     }
-    g_free(priv->uri);
-    priv->uri = NULL;
-    g_free(priv->domkey);
-    priv->domkey = NULL;
+    g_free(self->uri);
+    self->uri = NULL;
+    g_free(self->domkey);
+    self->domkey = NULL;
     G_OBJECT_CLASS(virt_viewer_parent_class)->dispose (object);
 }
 
@@ -876,7 +864,6 @@ virt_viewer_initial_connect(VirtViewerApp *app, GError **error)
     virDomainInfo info;
     gboolean ret = FALSE;
     VirtViewer *self = VIRT_VIEWER(app);
-    VirtViewerPrivate *priv = self->priv;
     char uuid_string[VIR_UUID_STRING_BUFLEN];
     const char *guest_name;
     char *title;
@@ -884,7 +871,7 @@ virt_viewer_initial_connect(VirtViewerApp *app, GError **error)
 
     g_debug("initial connect");
 
-    if (!priv->conn &&
+    if (!self->conn &&
         virt_viewer_connect(app, &err) < 0) {
         virt_viewer_app_show_status(app, _("Waiting for libvirt to start"));
         goto wait;
@@ -893,16 +880,16 @@ virt_viewer_initial_connect(VirtViewerApp *app, GError **error)
     virt_viewer_app_show_status(app, _("Finding guest domain"));
     dom = virt_viewer_lookup_domain(self);
     if (!dom) {
-        if (priv->waitvm) {
+        if (self->waitvm) {
             virt_viewer_app_show_status(app, _("Waiting for guest domain to be created"));
             goto wait;
         } else {
             VirtViewerWindow *main_window = virt_viewer_app_get_main_window(app);
-            if (priv->domkey != NULL)
-                g_debug("Cannot find guest %s", priv->domkey);
+            if (self->domkey != NULL)
+                g_debug("Cannot find guest %s", self->domkey);
             dom = choose_vm(virt_viewer_window_get_window(main_window),
-                            &priv->domkey,
-                            priv->conn,
+                            &self->domkey,
+                            self->conn,
                             &err);
             if (dom == NULL) {
                 goto cleanup;
@@ -948,7 +935,7 @@ virt_viewer_initial_connect(VirtViewerApp *app, GError **error)
 
 wait:
     virt_viewer_app_trace(app, "Guest %s has not activated its display yet, waiting "
-                          "for it to start", priv->domkey);
+                          "for it to start", self->domkey);
     ret = TRUE;
 
 cleanup:
@@ -974,8 +961,7 @@ virt_viewer_auth_libvirt_credentials(virConnectCredentialPtr cred,
                                      void *cbdata)
 {
     char **username = NULL, **password = NULL;
-    VirtViewer *app = cbdata;
-    VirtViewerPrivate *priv = app->priv;
+    VirtViewer *self = cbdata;
     int i;
     int ret = 0;
 
@@ -997,17 +983,17 @@ virt_viewer_auth_libvirt_credentials(virConnectCredentialPtr cred,
     }
 
     if (username || password) {
-        VirtViewerWindow *vwin = virt_viewer_app_get_main_window(VIRT_VIEWER_APP(app));
+        VirtViewerWindow *vwin = virt_viewer_app_get_main_window(VIRT_VIEWER_APP(self));
         GtkWindow *win = virt_viewer_window_get_window(vwin);
 
         if (username && (*username == NULL || **username == '\0'))
             *username = g_strdup(g_get_user_name());
 
-        priv->auth_cancelled = !virt_viewer_auth_collect_credentials(win,
+        self->auth_cancelled = !virt_viewer_auth_collect_credentials(win,
                                                                      "libvirt",
-                                                                     app->priv->uri,
+                                                                     self->uri,
                                                                      username, password);
-        if (priv->auth_cancelled) {
+        if (self->auth_cancelled) {
             ret = -1;
             goto cleanup;
         }
@@ -1046,11 +1032,10 @@ static gchar *
 virt_viewer_get_error_message_from_vir_error(VirtViewer *self,
                                              virErrorPtr error)
 {
-    VirtViewerPrivate *priv = self->priv;
     const gchar *error_details = NULL;
     gchar *detailed_error_message = NULL;
     gchar *error_message = g_strdup_printf(_("Unable to connect to libvirt with URI: %s."),
-                                           priv->uri ? priv->uri : _("[none]"));
+                                           self->uri ? self->uri : _("[none]"));
 
     g_debug("Error: %s", error->message);
 
@@ -1076,7 +1061,6 @@ static int
 virt_viewer_connect(VirtViewerApp *app, GError **err)
 {
     VirtViewer *self = VIRT_VIEWER(app);
-    VirtViewerPrivate *priv = self->priv;
     int cred_types[] =
         { VIR_CRED_AUTHNAME, VIR_CRED_PASSPHRASE };
     virConnectAuth auth_libvirt = {
@@ -1094,13 +1078,13 @@ virt_viewer_connect(VirtViewerApp *app, GError **err)
     g_debug("connecting ...");
 
     virt_viewer_app_trace(app, "Opening connection to libvirt with URI %s",
-                          priv->uri ? priv->uri : "<null>");
-    priv->conn = virConnectOpenAuth(priv->uri,
+                          self->uri ? self->uri : "<null>");
+    self->conn = virConnectOpenAuth(self->uri,
                                     //virConnectAuthPtrDefault,
                                     &auth_libvirt,
                                     oflags);
-    if (!priv->conn) {
-        if (!priv->auth_cancelled) {
+    if (!self->conn) {
+        if (!self->auth_cancelled) {
             gchar *error_message = virt_viewer_get_error_message_from_vir_error(self, virGetLastError());
             g_set_error_literal(&error,
                                 VIRT_VIEWER_ERROR, VIRT_VIEWER_ERROR_FAILED,
@@ -1121,13 +1105,13 @@ virt_viewer_connect(VirtViewerApp *app, GError **err)
         return -1;
     }
 
-    priv->domain_event = virConnectDomainEventRegisterAny(priv->conn,
-                                                          priv->dom,
+    self->domain_event = virConnectDomainEventRegisterAny(self->conn,
+                                                          self->dom,
                                                           VIR_DOMAIN_EVENT_ID_LIFECYCLE,
                                                           VIR_DOMAIN_EVENT_CALLBACK(virt_viewer_domain_event),
                                                           self,
                                                           NULL);
-    if (priv->domain_event < 0 &&
+    if (self->domain_event < 0 &&
         !virt_viewer_app_is_active(app)) {
         g_debug("No domain events, falling back to polling");
         virt_viewer_start_reconnect_poll(self);
@@ -1137,14 +1121,14 @@ virt_viewer_connect(VirtViewerApp *app, GError **err)
         virt_viewer_stop_reconnect_poll(self);
     }
 
-    if (virConnectRegisterCloseCallback(priv->conn,
+    if (virConnectRegisterCloseCallback(self->conn,
                                         virt_viewer_conn_event,
                                         self,
                                         NULL) < 0) {
         g_debug("Unable to register close callback on libvirt connection");
     }
 
-    if (virConnectSetKeepAlive(priv->conn, 5, 3) < 0) {
+    if (virConnectSetKeepAlive(self->conn, 5, 3) < 0) {
         g_debug("Unable to set keep alive");
     }
 
