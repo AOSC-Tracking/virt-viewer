@@ -33,23 +33,11 @@
 G_BEGIN_DECLS
 
 #define VIRT_VIEWER_TYPE_SESSION virt_viewer_session_get_type()
-
-#define VIRT_VIEWER_SESSION(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_SESSION, VirtViewerSession))
-
-#define VIRT_VIEWER_SESSION_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_SESSION, VirtViewerSessionClass))
-
-#define VIRT_VIEWER_IS_SESSION(obj)                                     \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_SESSION))
-
-#define VIRT_VIEWER_IS_SESSION_CLASS(klass)                             \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_SESSION))
-
-#define VIRT_VIEWER_SESSION_GET_CLASS(obj)                                \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_SESSION, VirtViewerSessionClass))
-
-typedef struct _VirtViewerSessionPrivate VirtViewerSessionPrivate;
+G_DECLARE_DERIVABLE_TYPE(VirtViewerSession,
+                         virt_viewer_session,
+                         VIRT_VIEWER,
+                         SESSION,
+                         GObject);
 
 typedef struct _VirtViewerSessionChannel VirtViewerSessionChannel;
 
@@ -61,13 +49,6 @@ enum {
     VIRT_VIEWER_SESSION_VM_ACTION_CONTINUE,
 };
 
-
-/* perhaps this become an interface, and be pushed in gtkvnc and spice? */
-struct _VirtViewerSession {
-    GObject parent;
-
-    VirtViewerSessionPrivate *priv;
-};
 
 struct _VirtViewerSessionClass {
     GObjectClass parent_class;
