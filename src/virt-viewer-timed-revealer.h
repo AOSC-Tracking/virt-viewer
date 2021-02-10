@@ -30,32 +30,11 @@
 G_BEGIN_DECLS
 
 #define VIRT_VIEWER_TYPE_TIMED_REVEALER virt_viewer_timed_revealer_get_type()
-
-#define VIRT_VIEWER_TIMED_REVEALER(obj) \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_TIMED_REVEALER, VirtViewerTimedRevealer))
-
-#define VIRT_VIEWER_TIMED_REVEALER_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_TIMED_REVEALER, VirtViewerTimedRevealerClass))
-
-#define VIRT_VIEWER_IS_TIMED_REVEALER(obj) \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_TIMED_REVEALER))
-
-#define VIRT_VIEWER_IS_TIMED_REVEALER_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_TIMED_REVEALER))
-
-#define VIRT_VIEWER_TIMED_REVEALER_GET_CLASS(obj) \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_TIMED_REVEALER, VirtViewerTimedRevealerClass))
-
-typedef struct _VirtViewerTimedRevealerPrivate VirtViewerTimedRevealerPrivate;
-
-typedef struct {
-    GtkEventBox parent;
-    VirtViewerTimedRevealerPrivate *priv;
-} VirtViewerTimedRevealer;
-
-typedef struct {
-    GtkEventBoxClass parent_class;
-} VirtViewerTimedRevealerClass;
+G_DECLARE_FINAL_TYPE(VirtViewerTimedRevealer,
+		     virt_viewer_timed_revealer,
+		     VIRT_VIEWER,
+		     TIMED_REVEALER,
+		     GtkEventBox)
 
 GType virt_viewer_timed_revealer_get_type (void);
 

@@ -25,34 +25,31 @@
 
 #include "virt-viewer-timed-revealer.h"
 
-struct _VirtViewerTimedRevealerPrivate
+struct _VirtViewerTimedRevealer
 {
+    GtkEventBox parent;
     gboolean fullscreen;
     guint timeout_id;
 
     GtkWidget *revealer;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (VirtViewerTimedRevealer, virt_viewer_timed_revealer, GTK_TYPE_EVENT_BOX)
+G_DEFINE_TYPE(VirtViewerTimedRevealer, virt_viewer_timed_revealer, GTK_TYPE_EVENT_BOX)
 
 static void
 virt_viewer_timed_revealer_unregister_timeout(VirtViewerTimedRevealer *self)
 {
-    VirtViewerTimedRevealerPrivate *priv = self->priv;
-
-    if (priv->timeout_id) {
-        g_source_remove(priv->timeout_id);
-        priv->timeout_id = 0;
+    if (self->timeout_id) {
+        g_source_remove(self->timeout_id);
+        self->timeout_id = 0;
     }
 }
 
 static gboolean
 schedule_unreveal_timeout_cb(VirtViewerTimedRevealer *self)
 {
-    VirtViewerTimedRevealerPrivate *priv = self->priv;
-
-    gtk_revealer_set_reveal_child(GTK_REVEALER(priv->revealer), FALSE);
-    priv->timeout_id = 0;
+    gtk_revealer_set_reveal_child(GTK_REVEALER(self->revealer), FALSE);
+    self->timeout_id = 0;
 
     return FALSE;
 }
@@ -61,12 +58,10 @@ static void
 virt_viewer_timed_revealer_schedule_unreveal_timeout(VirtViewerTimedRevealer *self,
                                                      guint timeout)
 {
-    VirtViewerTimedRevealerPrivate *priv = self->priv;
-
-    if (priv->timeout_id != 0)
+    if (self->timeout_id != 0)
         return;
 
-    priv->timeout_id = g_timeout_add(timeout,
+    self->timeout_id = g_timeout_add(timeout,
                                      (GSourceFunc)schedule_unreveal_timeout_cb,
                                      self);
 }
@@ -85,14 +80,12 @@ virt_viewer_timed_revealer_enter_notify(VirtViewerTimedRevealer *self,
                                         GdkEventCrossing *event G_GNUC_UNUSED,
                                         gpointer user_data G_GNUC_UNUSED)
 {
-    VirtViewerTimedRevealerPrivate *priv = self->priv;
-
-    if (!priv->fullscreen)
+    if (!self->fullscreen)
         return FALSE;
 
     virt_viewer_timed_revealer_unregister_timeout(self);
-    if (!gtk_revealer_get_reveal_child(GTK_REVEALER(priv->revealer))) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(priv->revealer), TRUE);
+    if (!gtk_revealer_get_reveal_child(GTK_REVEALER(self->revealer))) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(self->revealer), TRUE);
     }
 
     return FALSE;
@@ -103,16 +96,14 @@ virt_viewer_timed_revealer_leave_notify(VirtViewerTimedRevealer *self,
                                         GdkEventCrossing *event G_GNUC_UNUSED,
                                         gpointer user_data G_GNUC_UNUSED)
 {
-    VirtViewerTimedRevealerPrivate *priv = self->priv;
-
-    if (!priv->fullscreen)
+    if (!self->fullscreen)
         return FALSE;
 
     /*
      * Pointer exited the toolbar, and toolbar is revealed. Schedule
      * a timeout to close it, if one isn't already scheduled.
      */
-    if (gtk_revealer_get_reveal_child(GTK_REVEALER(priv->revealer))) {
+    if (gtk_revealer_get_reveal_child(GTK_REVEALER(self->revealer))) {
         virt_viewer_timed_revealer_schedule_unreveal_timeout(self, 1000);
     }
 
@@ -120,22 +111,20 @@ virt_viewer_timed_revealer_leave_notify(VirtViewerTimedRevealer *self,
 }
 
 static void
-virt_viewer_timed_revealer_init(VirtViewerTimedRevealer *self)
+virt_viewer_timed_revealer_init(VirtViewerTimedRevealer *self G_GNUC_UNUSED)
 {
-    self->priv = virt_viewer_timed_revealer_get_instance_private(self);
 }
 
 static void
 virt_viewer_timed_revealer_dispose(GObject *object)
 {
     VirtViewerTimedRevealer *self = VIRT_VIEWER_TIMED_REVEALER(object);
-    VirtViewerTimedRevealerPrivate *priv = self->priv;
 
-    priv->revealer = NULL;
+    self->revealer = NULL;
 
-    if (priv->timeout_id) {
-        g_source_remove(priv->timeout_id);
-        priv->timeout_id = 0;
+    if (self->timeout_id) {
+        g_source_remove(self->timeout_id);
+        self->timeout_id = 0;
     }
 
     G_OBJECT_CLASS(virt_viewer_timed_revealer_parent_class)->dispose(object);
@@ -154,17 +143,14 @@ VirtViewerTimedRevealer *
 virt_viewer_timed_revealer_new(GtkWidget *toolbar)
 {
     VirtViewerTimedRevealer *self;
-    VirtViewerTimedRevealerPrivate *priv;
 
     self = g_object_new(VIRT_VIEWER_TYPE_TIMED_REVEALER, NULL);
 
-    priv = self->priv;
+    self->fullscreen = FALSE;
+    self->timeout_id = 0;
 
-    priv->fullscreen = FALSE;
-    priv->timeout_id = 0;
-
-    priv->revealer = gtk_revealer_new();
-    gtk_container_add(GTK_CONTAINER(priv->revealer), toolbar);
+    self->revealer = gtk_revealer_new();
+    gtk_container_add(GTK_CONTAINER(self->revealer), toolbar);
 
     /*
      * Adding the revealer to the eventbox seems to ensure the
@@ -173,7 +159,7 @@ virt_viewer_timed_revealer_new(GtkWidget *toolbar)
      * the hidden toolbar.
      */
 
-    gtk_container_add(GTK_CONTAINER(self), priv->revealer);
+    gtk_container_add(GTK_CONTAINER(self), self->revealer);
     gtk_widget_set_halign(GTK_WIDGET(self), GTK_ALIGN_CENTER);
     gtk_widget_set_valign(GTK_WIDGET(self), GTK_ALIGN_START);
     gtk_widget_show_all(GTK_WIDGET(self));
@@ -198,14 +184,10 @@ void
 virt_viewer_timed_revealer_force_reveal(VirtViewerTimedRevealer *self,
                                         gboolean fullscreen)
 {
-    VirtViewerTimedRevealerPrivate *priv;
-
     g_return_if_fail(VIRT_VIEWER_IS_TIMED_REVEALER(self));
 
-    priv = self->priv;
-
     virt_viewer_timed_revealer_unregister_timeout(self);
-    priv->fullscreen = fullscreen;
-    gtk_revealer_set_reveal_child(GTK_REVEALER(priv->revealer), fullscreen);
+    self->fullscreen = fullscreen;
+    gtk_revealer_set_reveal_child(GTK_REVEALER(self->revealer), fullscreen);
     virt_viewer_timed_revealer_schedule_unreveal_timeout(self, 2000);
 }
