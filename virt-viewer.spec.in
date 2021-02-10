@@ -1,5 +1,11 @@
 # -*- rpm-spec -*-
 
+%if 0%{?rhel} >= 9
+%global with_govirt 0
+%else
+%global with_govirt 1
+%endif
+
 Name: virt-viewer
 Version: @VERSION@
 Release: 1%{?dist}
@@ -24,8 +30,10 @@ BuildRequires: pkgconfig(spice-client-gtk-3.0)
 BuildRequires: pkgconfig(spice-protocol)
 BuildRequires: /usr/bin/pod2man
 BuildRequires: gettext
+%if %{with_govirt}
 BuildRequires: pkgconfig(govirt-1.0)
 BuildRequires: pkgconfig(rest-0.7)
+%endif
 BuildRequires: pkgconfig(bash-completion)
 
 
