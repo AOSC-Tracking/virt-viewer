@@ -36,31 +36,11 @@ G_BEGIN_DECLS
 
 #define VIRT_VIEWER_TYPE_WINDOW virt_viewer_window_get_type()
 
-#define VIRT_VIEWER_WINDOW(obj)                                                \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_WINDOW, VirtViewerWindow))
-
-#define VIRT_VIEWER_WINDOW_CLASS(klass)                                        \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_WINDOW, VirtViewerWindowClass))
-
-#define VIRT_VIEWER_IS_WINDOW(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_WINDOW))
-
-#define VIRT_VIEWER_IS_WINDOW_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_WINDOW))
-
-#define VIRT_VIEWER_WINDOW_GET_CLASS(obj)                                \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_WINDOW, VirtViewerWindowClass))
-
-typedef struct _VirtViewerWindowPrivate VirtViewerWindowPrivate;
-
-typedef struct {
-    GObject parent;
-    VirtViewerWindowPrivate *priv;
-} VirtViewerWindow;
-
-typedef struct {
-    GObjectClass parent_class;
-} VirtViewerWindowClass;
+G_DECLARE_FINAL_TYPE(VirtViewerWindow,
+                     virt_viewer_window,
+                     VIRT_VIEWER,
+                     WINDOW,
+                     GObject)
 
 GType virt_viewer_window_get_type (void);
 
