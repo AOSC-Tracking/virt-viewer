@@ -24,8 +24,9 @@
 #include "virt-viewer-util.h"
 #include <glib/gi18n.h>
 
-struct _VirtViewerFileTransferDialogPrivate
+struct _VirtViewerFileTransferDialog
 {
+    GtkDialog parent;
     GSList *file_transfers;
     GSList *failed;
     guint timer_show_src;
@@ -37,16 +38,16 @@ struct _VirtViewerFileTransferDialogPrivate
     GtkWidget *progressbar;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE(VirtViewerFileTransferDialog, virt_viewer_file_transfer_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE(VirtViewerFileTransferDialog, virt_viewer_file_transfer_dialog, GTK_TYPE_DIALOG)
 
 static void
 virt_viewer_file_transfer_dialog_dispose(GObject *object)
 {
     VirtViewerFileTransferDialog *self = VIRT_VIEWER_FILE_TRANSFER_DIALOG(object);
 
-    if (self->priv->file_transfers) {
-        g_slist_free_full(self->priv->file_transfers, g_object_unref);
-        self->priv->file_transfers = NULL;
+    if (self->file_transfers) {
+        g_slist_free_full(self->file_transfers, g_object_unref);
+        self->file_transfers = NULL;
     }
 
     G_OBJECT_CLASS(virt_viewer_file_transfer_dialog_parent_class)->dispose(object);
@@ -60,12 +61,12 @@ virt_viewer_file_transfer_dialog_class_init(VirtViewerFileTransferDialogClass *k
 
     gtk_widget_class_set_template_from_resource(widget_class,
                                                 VIRT_VIEWER_RESOURCE_PREFIX "/ui/virt-viewer-file-transfer-dialog.ui");
-    gtk_widget_class_bind_template_child_private(widget_class,
-                                                 VirtViewerFileTransferDialog,
-                                                 transfer_summary);
-    gtk_widget_class_bind_template_child_private(widget_class,
-                                                 VirtViewerFileTransferDialog,
-                                                 progressbar);
+    gtk_widget_class_bind_template_child(widget_class,
+                                         VirtViewerFileTransferDialog,
+                                         transfer_summary);
+    gtk_widget_class_bind_template_child(widget_class,
+                                         VirtViewerFileTransferDialog,
+                                         progressbar);
 
     object_class->dispose = virt_viewer_file_transfer_dialog_dispose;
 }
@@ -81,12 +82,12 @@ dialog_response(GtkDialog *dialog,
     switch (response_id) {
         case GTK_RESPONSE_CANCEL:
             /* cancel all current tasks */
-            for (slist = self->priv->file_transfers; slist != NULL; slist = g_slist_next(slist)) {
+            for (slist = self->file_transfers; slist != NULL; slist = g_slist_next(slist)) {
                 spice_file_transfer_task_cancel(SPICE_FILE_TRANSFER_TASK(slist->data));
             }
-            self->priv->num_files = 0;
-            self->priv->total_transfer_size = 0;
-            self->priv->completed_transfer_size = 0;
+            self->num_files = 0;
+            self->total_transfer_size = 0;
+            self->completed_transfer_size = 0;
             break;
         case GTK_RESPONSE_DELETE_EVENT:
             /* silently ignore */
@@ -111,8 +112,6 @@ virt_viewer_file_transfer_dialog_init(VirtViewerFileTransferDialog *self)
 {
     gtk_widget_init_template(GTK_WIDGET(self));
 
-    self->priv = virt_viewer_file_transfer_dialog_get_instance_private(self);
-
     g_signal_connect(self, "response", G_CALLBACK(dialog_response), NULL);
     g_signal_connect(self, "delete-event", G_CALLBACK(delete_event), NULL);
 }
@@ -135,26 +134,26 @@ static void update_global_progress(VirtViewerFileTransferDialog *self)
     guint n_files = 0;
     gdouble fraction = 1.0;
 
-    for (slist = self->priv->file_transfers; slist != NULL; slist = g_slist_next(slist)) {
+    for (slist = self->file_transfers; slist != NULL; slist = g_slist_next(slist)) {
         SpiceFileTransferTask *task = slist->data;
         transferred += spice_file_transfer_task_get_transferred_bytes(task);
         n_files++;
     }
 
     if (n_files > 0) {
-        transferred += self->priv->completed_transfer_size;
-        fraction = (gdouble)transferred / self->priv->total_transfer_size;
+        transferred += self->completed_transfer_size;
+        fraction = (gdouble)transferred / self->total_transfer_size;
     }
 
-    if (self->priv->num_files == 1) {
+    if (self->num_files == 1) {
         message = g_strdup(_("Transferring 1 file..."));
     } else {
         message = g_strdup_printf(ngettext("Transferring %u file of %u...",
                                            "Transferring %u files of %u...", n_files),
-                                  n_files, self->priv->num_files);
+                                  n_files, self->num_files);
     }
-    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(self->priv->progressbar), fraction);
-    gtk_label_set_text(GTK_LABEL(self->priv->transfer_summary), message);
+    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(self->progressbar), fraction);
+    gtk_label_set_text(GTK_LABEL(self->transfer_summary), message);
     g_free(message);
 }
 
@@ -174,8 +173,8 @@ static void task_total_bytes_notify(GObject *object,
     VirtViewerFileTransferDialog *self = VIRT_VIEWER_FILE_TRANSFER_DIALOG(user_data);
     SpiceFileTransferTask *task = SPICE_FILE_TRANSFER_TASK(object);
 
-    self->priv->total_transfer_size += spice_file_transfer_task_get_total_bytes(task);
-    self->priv->num_files++;
+    self->total_transfer_size += spice_file_transfer_task_get_total_bytes(task);
+    self->num_files++;
     update_global_progress(self);
 }
 
@@ -211,10 +210,10 @@ static gboolean hide_transfer_dialog(gpointer data)
     gtk_widget_hide(GTK_WIDGET(self));
     gtk_dialog_set_response_sensitive(GTK_DIALOG(self),
                                       GTK_RESPONSE_CANCEL, FALSE);
-    self->priv->timer_hide_src = 0;
+    self->timer_hide_src = 0;
 
     /* When all ongoing file transfers are finished, show errors */
-    if (self->priv->failed) {
+    if (self->failed) {
         GSList *sl;
         GString *msg = g_string_new("");
         GtkWidget *dialog, *files_label, *scrolled_window, *area;
@@ -222,9 +221,9 @@ static gboolean hide_transfer_dialog(gpointer data)
         const gchar *last_error = NULL;
         const gchar *group_separator = "";
 
-        self->priv->failed = g_slist_sort(self->priv->failed, compare_file_error);
+        self->failed = g_slist_sort(self->failed, compare_file_error);
 
-        for (sl = self->priv->failed; sl != NULL; sl = g_slist_next(sl)) {
+        for (sl = self->failed; sl != NULL; sl = g_slist_next(sl)) {
             SpiceFileTransferTask *failed_task = sl->data;
             gchar *filename = spice_file_transfer_task_get_filename(failed_task);
 
@@ -252,8 +251,8 @@ static gboolean hide_transfer_dialog(gpointer data)
             g_free(escaped_filename);
             g_free(filename);
         }
-        g_slist_free_full(self->priv->failed, g_object_unref);
-        self->priv->failed = NULL;
+        g_slist_free_full(self->failed, g_object_unref);
+        self->failed = NULL;
 
         dialog = gtk_message_dialog_new(GTK_WINDOW(self), 0, GTK_MESSAGE_ERROR,
                                         GTK_BUTTONS_OK, NULL);
@@ -295,27 +294,27 @@ static void task_finished(SpiceFileTransferTask *task,
     if (error && !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
         g_object_set_data_full(G_OBJECT(task), "virt-viewer-error",
                                g_error_copy(error), (GDestroyNotify) g_error_free);
-        self->priv->failed = g_slist_prepend(self->priv->failed, g_object_ref(task));
+        self->failed = g_slist_prepend(self->failed, g_object_ref(task));
         g_warning("File transfer task %p failed: %s", task, error->message);
     }
 
-    self->priv->file_transfers = g_slist_remove(self->priv->file_transfers, task);
-    self->priv->completed_transfer_size += spice_file_transfer_task_get_total_bytes(task);
+    self->file_transfers = g_slist_remove(self->file_transfers, task);
+    self->completed_transfer_size += spice_file_transfer_task_get_total_bytes(task);
     g_object_unref(task);
     update_global_progress(self);
 
     /* if this is the last transfer, close the dialog */
-    if (self->priv->file_transfers == NULL) {
-        self->priv->num_files = 0;
-        self->priv->total_transfer_size = 0;
-        self->priv->completed_transfer_size = 0;
+    if (self->file_transfers == NULL) {
+        self->num_files = 0;
+        self->total_transfer_size = 0;
+        self->completed_transfer_size = 0;
         /* cancel any pending 'show' operations if all tasks complete before
          * the dialog can be shown */
-        if (self->priv->timer_show_src) {
-            g_source_remove(self->priv->timer_show_src);
-            self->priv->timer_show_src = 0;
+        if (self->timer_show_src) {
+            g_source_remove(self->timer_show_src);
+            self->timer_show_src = 0;
         }
-        self->priv->timer_hide_src = g_timeout_add(500, hide_transfer_dialog,
+        self->timer_hide_src = g_timeout_add(500, hide_transfer_dialog,
                                                    self);
     }
 }
@@ -324,7 +323,7 @@ static gboolean show_transfer_dialog_delayed(gpointer user_data)
 {
     VirtViewerFileTransferDialog *self = user_data;
 
-    self->priv->timer_show_src = 0;
+    self->timer_show_src = 0;
     update_global_progress(self);
     gtk_widget_show(GTK_WIDGET(self));
 
@@ -334,16 +333,16 @@ static gboolean show_transfer_dialog_delayed(gpointer user_data)
 static void show_transfer_dialog(VirtViewerFileTransferDialog *self)
 {
     /* if there's a pending 'hide', cancel it */
-    if (self->priv->timer_hide_src) {
-        g_source_remove(self->priv->timer_hide_src);
-        self->priv->timer_hide_src = 0;
+    if (self->timer_hide_src) {
+        g_source_remove(self->timer_hide_src);
+        self->timer_hide_src = 0;
     }
 
     /* don't show the dialog immediately. For very quick transfers, it doesn't
      * make sense to show a dialog and immediately hide it. But if there's
      * already a pending 'show' operation, don't trigger another one */
-    if (self->priv->timer_show_src == 0)
-        self->priv->timer_show_src = g_timeout_add(250,
+    if (self->timer_show_src == 0)
+        self->timer_show_src = g_timeout_add(250,
                                                    show_transfer_dialog_delayed,
                                                    self);
 
@@ -354,7 +353,7 @@ static void show_transfer_dialog(VirtViewerFileTransferDialog *self)
 void virt_viewer_file_transfer_dialog_add_task(VirtViewerFileTransferDialog *self,
                                                SpiceFileTransferTask *task)
 {
-    self->priv->file_transfers = g_slist_prepend(self->priv->file_transfers, g_object_ref(task));
+    self->file_transfers = g_slist_prepend(self->file_transfers, g_object_ref(task));
     g_signal_connect(task, "notify::progress", G_CALLBACK(task_progress_notify), self);
     g_signal_connect(task, "notify::total-bytes", G_CALLBACK(task_total_bytes_notify), self);
     g_signal_connect(task, "finished", G_CALLBACK(task_finished), self);
