@@ -31,8 +31,6 @@
 
 #include "virt-viewer-file.h"
 
-G_BEGIN_DECLS
-
 #define OVIRT_TYPE_FOREIGN_MENU ovirt_foreign_menu_get_type()
 G_DECLARE_FINAL_TYPE(OvirtForeignMenu,
                      ovirt_foreign_menu,
@@ -67,4 +65,3 @@ GtkWidget *ovirt_foreign_menu_get_gtk_menu(OvirtForeignMenu *foreign_menu);
 gchar *ovirt_foreign_menu_get_current_iso_name(OvirtForeignMenu *menu);
 GList *ovirt_foreign_menu_get_iso_names(OvirtForeignMenu *menu);
 
-G_END_DECLS

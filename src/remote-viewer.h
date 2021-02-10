@@ -25,8 +25,6 @@
 #include <glib-object.h>
 #include "virt-viewer-app.h"
 
-G_BEGIN_DECLS
-
 #define REMOTE_VIEWER_TYPE remote_viewer_get_type()
 G_DECLARE_FINAL_TYPE(RemoteViewer,
                      remote_viewer,
@@ -38,4 +36,3 @@ GType remote_viewer_get_type (void);
 
 RemoteViewer *remote_viewer_new (void);
 
-G_END_DECLS

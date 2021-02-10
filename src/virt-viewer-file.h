@@ -23,8 +23,6 @@
 
 #include "virt-viewer-app.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_FILE            (virt_viewer_file_get_type ())
 G_DECLARE_FINAL_TYPE(VirtViewerFile,
                      virt_viewer_file,
@@ -119,5 +117,3 @@ gchar* virt_viewer_file_get_ovirt_sso_token(VirtViewerFile* self);
 void virt_viewer_file_set_ovirt_sso_token(VirtViewerFile* self, const gchar* value);
 gchar* virt_viewer_file_get_ovirt_ca(VirtViewerFile* self);
 void virt_viewer_file_set_ovirt_ca(VirtViewerFile* self, const gchar* value);
-
-G_END_DECLS

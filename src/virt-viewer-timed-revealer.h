@@ -26,8 +26,6 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_TIMED_REVEALER virt_viewer_timed_revealer_get_type()
 G_DECLARE_FINAL_TYPE(VirtViewerTimedRevealer,
 		     virt_viewer_timed_revealer,
@@ -43,5 +41,3 @@ virt_viewer_timed_revealer_new(GtkWidget *toolbar);
 void
 virt_viewer_timed_revealer_force_reveal(VirtViewerTimedRevealer *self,
                                         gboolean fullscreen);
-
-G_END_DECLS

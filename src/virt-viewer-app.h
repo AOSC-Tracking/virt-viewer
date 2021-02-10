@@ -26,8 +26,6 @@
 #include <gtk/gtk.h>
 #include "virt-viewer-window.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_APP virt_viewer_app_get_type()
 G_DECLARE_DERIVABLE_TYPE(VirtViewerApp,
                          virt_viewer_app,
@@ -105,5 +103,3 @@ void virt_viewer_app_set_config_share_clipboard(VirtViewerApp *self, gboolean en
 
 gboolean virt_viewer_app_get_supports_share_clipboard(VirtViewerApp *self);
 void virt_viewer_app_set_supports_share_clipboard(VirtViewerApp *self, gboolean enable);
-
-G_END_DECLS

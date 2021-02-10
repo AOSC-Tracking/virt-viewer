@@ -28,8 +28,6 @@
 #include "virt-viewer-notebook.h"
 #include "virt-viewer-display.h"
 
-G_BEGIN_DECLS
-
 #define MIN_ZOOM_LEVEL 10
 #define MAX_ZOOM_LEVEL 400
 #define NORMAL_ZOOM_LEVEL 100
@@ -62,5 +60,3 @@ void virt_viewer_window_enter_fullscreen(VirtViewerWindow *self, gint monitor);
 GtkMenuItem *virt_viewer_window_get_menu_displays(VirtViewerWindow *self);
 GtkBuilder* virt_viewer_window_get_builder(VirtViewerWindow *window);
 void virt_viewer_window_set_kiosk(VirtViewerWindow *self, gboolean enabled);
-
-G_END_DECLS

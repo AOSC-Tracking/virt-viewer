@@ -26,8 +26,6 @@
 
 #include "virt-viewer-app.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TEST_TYPE virt_viewer_test_get_type()
 G_DECLARE_FINAL_TYPE(VirtViewerTest,
                      virt_viewer_test,
@@ -44,8 +42,6 @@ GType virt_viewer_test_get_type (void);
 G_DEFINE_TYPE (VirtViewerTest, virt_viewer_test, VIRT_VIEWER_TYPE_APP)
 
 VirtViewerTest *virt_viewer_test_new (void);
-
-G_END_DECLS
 
 static void
 virt_viewer_test_class_init (VirtViewerTestClass *klass G_GNUC_UNUSED)

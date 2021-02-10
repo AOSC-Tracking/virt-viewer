@@ -26,8 +26,6 @@
 
 #include "virt-viewer-display.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_DISPLAY_VTE virt_viewer_display_vte_get_type()
 G_DECLARE_FINAL_TYPE(VirtViewerDisplayVte,
                      virt_viewer_display_vte,
@@ -44,6 +42,4 @@ void virt_viewer_display_vte_feed(VirtViewerDisplayVte *vte, gpointer data, int 
 void virt_viewer_display_vte_zoom_reset(VirtViewerDisplayVte *vte);
 void virt_viewer_display_vte_zoom_in(VirtViewerDisplayVte *vte);
 void virt_viewer_display_vte_zoom_out(VirtViewerDisplayVte *vte);
-
-G_END_DECLS
 

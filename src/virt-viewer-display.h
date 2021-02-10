@@ -27,8 +27,6 @@
 #include <gtk/gtk.h>
 #include "virt-viewer-enums.h"
 
-G_BEGIN_DECLS
-
 #define MIN_DISPLAY_WIDTH 320
 #define MIN_DISPLAY_HEIGHT 200
 
@@ -111,5 +109,3 @@ gboolean virt_viewer_display_get_selectable(VirtViewerDisplay *display);
 void virt_viewer_display_queue_resize(VirtViewerDisplay *display);
 void virt_viewer_display_get_preferred_monitor_geometry(VirtViewerDisplay *self, GdkRectangle* preferred);
 gint virt_viewer_display_get_nth(VirtViewerDisplay *self);
-
-G_END_DECLS

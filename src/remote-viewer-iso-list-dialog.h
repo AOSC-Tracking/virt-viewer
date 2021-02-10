@@ -22,8 +22,6 @@
 
 #include <gtk/gtk.h>
 
-G_BEGIN_DECLS
-
 #define REMOTE_VIEWER_TYPE_ISO_LIST_DIALOG remote_viewer_iso_list_dialog_get_type()
 G_DECLARE_FINAL_TYPE(RemoteViewerISOListDialog,
                      remote_viewer_iso_list_dialog,
@@ -34,5 +32,3 @@ G_DECLARE_FINAL_TYPE(RemoteViewerISOListDialog,
 GType remote_viewer_iso_list_dialog_get_type(void) G_GNUC_CONST;
 
 GtkWidget *remote_viewer_iso_list_dialog_new(GtkWindow *parent, GObject *foreign_menu);
-
-G_END_DECLS

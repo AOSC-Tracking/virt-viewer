@@ -30,8 +30,6 @@
 #include "virt-viewer-file.h"
 #include "virt-viewer-display.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_SESSION virt_viewer_session_get_type()
 G_DECLARE_DERIVABLE_TYPE(VirtViewerSession,
                          virt_viewer_session,
@@ -109,5 +107,3 @@ gboolean virt_viewer_session_can_share_folder(VirtViewerSession *self);
 gboolean virt_viewer_session_can_retry_auth(VirtViewerSession *self);
 
 void virt_viewer_session_vm_action(VirtViewerSession *self, gint action);
-
-G_END_DECLS

@@ -29,8 +29,6 @@
 
 #include "virt-viewer-session.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_SESSION_VNC virt_viewer_session_vnc_get_type()
 G_DECLARE_FINAL_TYPE(VirtViewerSessionVnc,
                      virt_viewer_session_vnc,
@@ -41,5 +39,3 @@ G_DECLARE_FINAL_TYPE(VirtViewerSessionVnc,
 GType virt_viewer_session_vnc_get_type(void);
 
 VirtViewerSession *virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window);
-
-G_END_DECLS

@@ -29,8 +29,6 @@
 
 #include "virt-viewer-session.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_SESSION_SPICE virt_viewer_session_spice_get_type()
 G_DECLARE_FINAL_TYPE(VirtViewerSessionSpice,
                      virt_viewer_session_spice,
@@ -42,5 +40,3 @@ GType virt_viewer_session_spice_get_type(void);
 
 VirtViewerSession* virt_viewer_session_spice_new(VirtViewerApp *app, GtkWindow *main_window);
 SpiceMainChannel* virt_viewer_session_spice_get_main_channel(VirtViewerSessionSpice *self);
-
-G_END_DECLS

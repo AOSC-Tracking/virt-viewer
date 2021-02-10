@@ -23,8 +23,6 @@
 #include <gtk/gtk.h>
 #include <spice-client.h>
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_FILE_TRANSFER_DIALOG virt_viewer_file_transfer_dialog_get_type()
 G_DECLARE_FINAL_TYPE(VirtViewerFileTransferDialog,
                      virt_viewer_file_transfer_dialog,
@@ -37,5 +35,3 @@ GType virt_viewer_file_transfer_dialog_get_type(void) G_GNUC_CONST;
 VirtViewerFileTransferDialog *virt_viewer_file_transfer_dialog_new(GtkWindow *parent);
 void virt_viewer_file_transfer_dialog_add_task(VirtViewerFileTransferDialog *self,
                                                SpiceFileTransferTask *task);
-
-G_END_DECLS

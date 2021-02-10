@@ -27,8 +27,6 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_NOTEBOOK virt_viewer_notebook_get_type()
 G_DECLARE_FINAL_TYPE(VirtViewerNotebook,
                      virt_viewer_notebook,
@@ -42,5 +40,3 @@ VirtViewerNotebook* virt_viewer_notebook_new (void);
 void virt_viewer_notebook_show_status_va(VirtViewerNotebook *self, const gchar *fmt, va_list args) G_GNUC_PRINTF(2, 0);
 void virt_viewer_notebook_show_status(VirtViewerNotebook *nb, const gchar *fmt, ...) G_GNUC_PRINTF(2, 3);
 void virt_viewer_notebook_show_display(VirtViewerNotebook *nb);
-
-G_END_DECLS

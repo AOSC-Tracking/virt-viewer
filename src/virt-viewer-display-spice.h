@@ -30,8 +30,6 @@
 #include "virt-viewer-display.h"
 #include "virt-viewer-session-spice.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_DISPLAY_SPICE virt_viewer_display_spice_get_type()
 G_DECLARE_FINAL_TYPE(VirtViewerDisplaySpice,
                      virt_viewer_display_spice,
@@ -45,4 +43,3 @@ GtkWidget* virt_viewer_display_spice_new(VirtViewerSessionSpice *session, SpiceC
 
 void virt_viewer_display_spice_set_desktop(VirtViewerDisplay *display, guint x, guint y,
                                            guint width, guint height);
-G_END_DECLS

@@ -25,8 +25,6 @@
 #include <glib-object.h>
 #include "virt-viewer-app.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE virt_viewer_get_type()
 G_DECLARE_FINAL_TYPE(VirtViewer,
                      virt_viewer,
@@ -37,5 +35,3 @@ G_DECLARE_FINAL_TYPE(VirtViewer,
 GType virt_viewer_get_type (void);
 
 VirtViewer *virt_viewer_new (void);
-
-G_END_DECLS
