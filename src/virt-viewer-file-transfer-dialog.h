@@ -18,8 +18,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __VIRT_VIEWER_FILE_TRANSFER_DIALOG_H__
-#define __VIRT_VIEWER_FILE_TRANSFER_DIALOG_H__
+#pragma once
 
 #include <gtk/gtk.h>
 #include <spice-client.h>
@@ -40,5 +39,3 @@ void virt_viewer_file_transfer_dialog_add_task(VirtViewerFileTransferDialog *sel
                                                SpiceFileTransferTask *task);
 
 G_END_DECLS
-
-#endif /* __VIRT_VIEWER_FILE_TRANSFER_DIALOG_H__ */

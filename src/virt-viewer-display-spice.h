@@ -21,8 +21,8 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_DISPLAY_SPICE_H
-#define _VIRT_VIEWER_DISPLAY_SPICE_H
+
+#pragma once
 
 #include <glib-object.h>
 #include <spice-client.h>
@@ -46,5 +46,3 @@ GtkWidget* virt_viewer_display_spice_new(VirtViewerSessionSpice *session, SpiceC
 void virt_viewer_display_spice_set_desktop(VirtViewerDisplay *display, guint x, guint y,
                                            guint width, guint height);
 G_END_DECLS
-
-#endif /* _VIRT_VIEWER_DISPLAY_SPICE_H */

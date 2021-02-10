@@ -21,8 +21,8 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_DISPLAY_H
-#define _VIRT_VIEWER_DISPLAY_H
+
+#pragma once
 
 #include <gtk/gtk.h>
 #include "virt-viewer-enums.h"
@@ -113,5 +113,3 @@ void virt_viewer_display_get_preferred_monitor_geometry(VirtViewerDisplay *self,
 gint virt_viewer_display_get_nth(VirtViewerDisplay *self);
 
 G_END_DECLS
-
-#endif /* _VIRT_VIEWER_DISPLAY_H */

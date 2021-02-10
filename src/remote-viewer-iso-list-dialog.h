@@ -18,8 +18,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __REMOTE_VIEWER_ISO_LIST_DIALOG_H__
-#define __REMOTE_VIEWER_ISO_LIST_DIALOG_H__
+#pragma once
 
 #include <gtk/gtk.h>
 
@@ -37,5 +36,3 @@ GType remote_viewer_iso_list_dialog_get_type(void) G_GNUC_CONST;
 GtkWidget *remote_viewer_iso_list_dialog_new(GtkWindow *parent, GObject *foreign_menu);
 
 G_END_DECLS
-
-#endif /* __REMOTE_VIEWER_ISO_LIST_DIALOG_H__ */

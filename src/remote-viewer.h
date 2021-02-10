@@ -20,8 +20,7 @@
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
 
-#ifndef REMOTE_VIEWER_H
-#define REMOTE_VIEWER_H
+#pragma once
 
 #include <glib-object.h>
 #include "virt-viewer-app.h"
@@ -40,5 +39,3 @@ GType remote_viewer_get_type (void);
 RemoteViewer *remote_viewer_new (void);
 
 G_END_DECLS
-
-#endif /* REMOTE_VIEWER_H */

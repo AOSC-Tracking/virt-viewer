@@ -21,8 +21,8 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_SESSION_SPICE_H
-#define _VIRT_VIEWER_SESSION_SPICE_H
+
+#pragma once
 
 #include <glib-object.h>
 #include <spice-client.h>
@@ -44,5 +44,3 @@ VirtViewerSession* virt_viewer_session_spice_new(VirtViewerApp *app, GtkWindow *
 SpiceMainChannel* virt_viewer_session_spice_get_main_channel(VirtViewerSessionSpice *self);
 
 G_END_DECLS
-
-#endif /* _VIRT_VIEWER_SESSION_SPICE_H */

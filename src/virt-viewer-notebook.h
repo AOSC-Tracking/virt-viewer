@@ -21,8 +21,8 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_NOTEBOOK
-#define _VIRT_VIEWER_NOTEBOOK
+
+#pragma once
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -44,5 +44,3 @@ void virt_viewer_notebook_show_status(VirtViewerNotebook *nb, const gchar *fmt, 
 void virt_viewer_notebook_show_display(VirtViewerNotebook *nb);
 
 G_END_DECLS
-
-#endif /* _VIRT_VIEWER_NOTEBOOK */

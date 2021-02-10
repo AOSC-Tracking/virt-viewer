@@ -20,15 +20,10 @@
  * Author: Eduardo Lima (Etrunko) <etrunko@redhat.com>
  */
 
-#include <config.h>
-
-#ifndef GLIB_COMPAT_H
-#define GLIB_COMPAT_H 1
+#pragma once
 
 #include <glib.h>
 
 G_BEGIN_DECLS
 
 G_END_DECLS
-
-#endif // GLIB_COMPAT_H

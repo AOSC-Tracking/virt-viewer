@@ -18,11 +18,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef REMOTE_VIEWER_CONNECT_H
-#define REMOTE_VIEWER_CONNECT_H
+#pragma once
 
 #include <gtk/gtk.h>
 
 gboolean remote_viewer_connect_dialog(GtkWindow *main_window, gchar **uri);
-
-#endif /* REMOTE_VIEWER_CONNECT_H */

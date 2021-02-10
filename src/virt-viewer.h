@@ -20,8 +20,7 @@
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
 
-#ifndef VIRT_VIEWER_H
-#define VIRT_VIEWER_H
+#pragma once
 
 #include <glib-object.h>
 #include "virt-viewer-app.h"
@@ -40,5 +39,3 @@ GType virt_viewer_get_type (void);
 VirtViewer *virt_viewer_new (void);
 
 G_END_DECLS
-
-#endif /* VIRT_VIEWER_H */

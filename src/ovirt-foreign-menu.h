@@ -22,8 +22,8 @@
  * Author: Daniel P. Berrange <berrange@redhat.com>
  *         Christophe Fergeau <cfergeau@redhat.com>
  */
-#ifndef _OVIRT_FOREIGN_MENU_H
-#define _OVIRT_FOREIGN_MENU_H
+
+#pragma once
 
 #include <glib-object.h>
 #include <govirt/govirt.h>
@@ -68,5 +68,3 @@ gchar *ovirt_foreign_menu_get_current_iso_name(OvirtForeignMenu *menu);
 GList *ovirt_foreign_menu_get_iso_names(OvirtForeignMenu *menu);
 
 G_END_DECLS
-
-#endif /* _OVIRT_FOREIGN_MENU_H */

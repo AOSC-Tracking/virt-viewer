@@ -21,8 +21,8 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_SESSION_H
-#define _VIRT_VIEWER_SESSION_H
+
+#pragma once
 
 #include <gtk/gtk.h>
 
@@ -111,5 +111,3 @@ gboolean virt_viewer_session_can_retry_auth(VirtViewerSession *self);
 void virt_viewer_session_vm_action(VirtViewerSession *self, gint action);
 
 G_END_DECLS
-
-#endif /* _VIRT_VIEWER_SESSION_H */

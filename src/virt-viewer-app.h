@@ -20,8 +20,7 @@
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
 
-#ifndef VIRT_VIEWER_APP_H
-#define VIRT_VIEWER_APP_H
+#pragma once
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -108,5 +107,3 @@ gboolean virt_viewer_app_get_supports_share_clipboard(VirtViewerApp *self);
 void virt_viewer_app_set_supports_share_clipboard(VirtViewerApp *self, gboolean enable);
 
 G_END_DECLS
-
-#endif /* VIRT_VIEWER_APP_H */

@@ -21,8 +21,8 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_WINDOW
-#define _VIRT_VIEWER_WINDOW
+
+#pragma once
 
 #include <glib-object.h>
 #include "virt-viewer-notebook.h"
@@ -64,5 +64,3 @@ GtkBuilder* virt_viewer_window_get_builder(VirtViewerWindow *window);
 void virt_viewer_window_set_kiosk(VirtViewerWindow *self, gboolean enabled);
 
 G_END_DECLS
-
-#endif /* _VIRT_VIEWER_WINDOW */

@@ -18,8 +18,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
  */
-#ifndef __VIRT_VIEWER_FILE_H__
-#define __VIRT_VIEWER_FILE_H__
+
+#pragma once
 
 #include "virt-viewer-app.h"
 
@@ -121,5 +121,3 @@ gchar* virt_viewer_file_get_ovirt_ca(VirtViewerFile* self);
 void virt_viewer_file_set_ovirt_ca(VirtViewerFile* self, const gchar* value);
 
 G_END_DECLS
-
-#endif /* __VIRT_VIEWER_FILE_H__ */

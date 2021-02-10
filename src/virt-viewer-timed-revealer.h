@@ -21,8 +21,7 @@
  * Author: Fabiano Fidêncio <fidencio@redhat.com>
  */
 
-#ifndef _VIRT_VIEWER_TIMED_REVEALER_H
-#define _VIRT_VIEWER_TIMED_REVEALER_H
+#pragma once
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -46,5 +45,3 @@ virt_viewer_timed_revealer_force_reveal(VirtViewerTimedRevealer *self,
                                         gboolean fullscreen);
 
 G_END_DECLS
-
-#endif /* _VIRT_VIEWER_TIMED_REVEALER_H */

@@ -21,8 +21,8 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_SESSION_VNC_H
-#define _VIRT_VIEWER_SESSION_VNC_H
+
+#pragma once
 
 #include <glib-object.h>
 #include <vncdisplay.h>
@@ -43,5 +43,3 @@ GType virt_viewer_session_vnc_get_type(void);
 VirtViewerSession *virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window);
 
 G_END_DECLS
-
-#endif /* _VIRT_VIEWER_SESSION_VNC_H */

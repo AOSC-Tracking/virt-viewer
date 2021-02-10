@@ -19,8 +19,8 @@
  *
  * Author: Marc-André Lureau <marcandre.lureau@redhat.com>
  */
-#ifndef _VIRT_VIEWER_DISPLAY_VTE_H
-#define _VIRT_VIEWER_DISPLAY_VTE_H
+
+#pragma once
 
 #include <glib-object.h>
 
@@ -47,4 +47,3 @@ void virt_viewer_display_vte_zoom_out(VirtViewerDisplayVte *vte);
 
 G_END_DECLS
 
-#endif /* _VIRT_VIEWER_DISPLAY_VTE_H */

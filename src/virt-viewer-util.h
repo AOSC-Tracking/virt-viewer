@@ -21,8 +21,7 @@
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
 
-#ifndef VIRT_VIEWER_UTIL_H
-#define VIRT_VIEWER_UTIL_H
+#pragma once
 
 #include <gtk/gtk.h>
 
@@ -65,4 +64,3 @@ void virt_viewer_shift_monitors_to_origin(GHashTable *displays);
 GHashTable* virt_viewer_parse_monitor_mappings(gchar **mappings,
                                                const gsize nmappings,
                                                const gint nmonitors);
-#endif
