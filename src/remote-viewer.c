@@ -47,14 +47,15 @@
 #include "remote-viewer.h"
 #include "remote-viewer-connect.h"
 
-struct _RemoteViewerPrivate {
+struct _RemoteViewer {
+    VirtViewerApp parent;
 #ifdef HAVE_OVIRT
     OvirtForeignMenu *ovirt_foreign_menu;
 #endif
     gboolean open_recent_dialog;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (RemoteViewer, remote_viewer, VIRT_VIEWER_TYPE_APP)
+G_DEFINE_TYPE(RemoteViewer, remote_viewer, VIRT_VIEWER_TYPE_APP)
 
 enum RemoteViewerProperties {
     PROP_0,
@@ -77,13 +78,12 @@ remote_viewer_dispose (GObject *object)
 {
 #if defined(HAVE_OVIRT)
     RemoteViewer *self = REMOTE_VIEWER(object);
-    RemoteViewerPrivate *priv = self->priv;
 #endif
 
 #ifdef HAVE_OVIRT
-    if (priv->ovirt_foreign_menu) {
-        g_object_unref(priv->ovirt_foreign_menu);
-        priv->ovirt_foreign_menu = NULL;
+    if (self->ovirt_foreign_menu) {
+        g_object_unref(self->ovirt_foreign_menu);
+        self->ovirt_foreign_menu = NULL;
     }
 #endif
 
@@ -94,9 +94,8 @@ static void
 remote_viewer_deactivated(VirtViewerApp *app, gboolean connect_error)
 {
     RemoteViewer *self = REMOTE_VIEWER(app);
-    RemoteViewerPrivate *priv = self->priv;
 
-    if (connect_error && priv->open_recent_dialog) {
+    if (connect_error && self->open_recent_dialog) {
         if (virt_viewer_app_start(app, NULL)) {
             return;
         }
@@ -145,7 +144,7 @@ remote_viewer_local_command_line (GApplication   *gapp,
         goto end;
 
     if (!opt_args) {
-        self->priv->open_recent_dialog = TRUE;
+        self->open_recent_dialog = TRUE;
     } else {
         if (g_strv_length(opt_args) > 1) {
             g_printerr(_("\nError: can't handle multiple URIs\n\n"));
@@ -177,13 +176,12 @@ remote_viewer_get_property(GObject *object, guint property_id,
 {
 #ifdef HAVE_OVIRT
     RemoteViewer *self = REMOTE_VIEWER(object);
-    RemoteViewerPrivate *priv = self->priv;
 #endif
 
     switch (property_id) {
 #ifdef HAVE_OVIRT
     case PROP_OVIRT_FOREIGN_MENU:
-        g_value_set_object(value, priv->ovirt_foreign_menu);
+        g_value_set_object(value, self->ovirt_foreign_menu);
         break;
 #endif
 
@@ -220,9 +218,8 @@ remote_viewer_class_init (RemoteViewerClass *klass)
 }
 
 static void
-remote_viewer_init(RemoteViewer *self)
+remote_viewer_init(RemoteViewer *self G_GNUC_UNUSED)
 {
-    self->priv = remote_viewer_get_instance_private(self);
 }
 
 RemoteViewer *
@@ -362,7 +359,7 @@ ovirt_foreign_menu_update(GtkApplication *gtkapp, GtkWindow *gtkwin, G_GNUC_UNUS
     VirtViewerWindow *win = g_object_get_data(G_OBJECT(gtkwin), "virt-viewer-window");
     GtkBuilder *builder = virt_viewer_window_get_builder(win);
     GtkWidget *menu = GTK_WIDGET(gtk_builder_get_object(builder, "menu-change-cd"));
-    gtk_widget_set_visible(menu, self->priv->ovirt_foreign_menu != NULL);
+    gtk_widget_set_visible(menu, self->ovirt_foreign_menu != NULL);
 }
 
 static void
@@ -389,12 +386,12 @@ virt_viewer_app_set_ovirt_foreign_menu(VirtViewerApp *app,
                                        OvirtForeignMenu *foreign_menu)
 {
     RemoteViewer *self;
-    g_return_if_fail(REMOTE_VIEWER_IS(app));
+    g_return_if_fail(REMOTE_IS_VIEWER(app));
     g_return_if_fail(OVIRT_IS_FOREIGN_MENU(foreign_menu));
 
     self = REMOTE_VIEWER(app);
-    g_clear_object(&self->priv->ovirt_foreign_menu);
-    self->priv->ovirt_foreign_menu = foreign_menu;
+    g_clear_object(&self->ovirt_foreign_menu);
+    self->ovirt_foreign_menu = foreign_menu;
     g_signal_connect(G_OBJECT(app), "window-added",
                      (GCallback)ovirt_foreign_menu_update, NULL);
     ovirt_foreign_menu_updated(self);
@@ -732,10 +729,9 @@ remote_viewer_initial_connect(RemoteViewer *self, const gchar *type, const gchar
 static gboolean
 remote_viewer_start(VirtViewerApp *app, GError **err)
 {
-    g_return_val_if_fail(REMOTE_VIEWER_IS(app), FALSE);
+    g_return_val_if_fail(REMOTE_IS_VIEWER(app), FALSE);
 
     RemoteViewer *self = REMOTE_VIEWER(app);
-    RemoteViewerPrivate *priv = self->priv;
     GFile *file = NULL;
     VirtViewerFile *vvfile = NULL;
     gboolean ret = FALSE;
@@ -745,7 +741,7 @@ remote_viewer_start(VirtViewerApp *app, GError **err)
 
 retry_dialog:
     {
-        if (priv->open_recent_dialog) {
+        if (self->open_recent_dialog) {
             VirtViewerWindow *main_window = virt_viewer_app_get_main_window(app);
             if (!remote_viewer_connect_dialog(virt_viewer_window_get_window(main_window), &guri)) {
                 g_set_error_literal(&error,
@@ -811,7 +807,7 @@ cleanup:
     g_free(type);
     type = NULL;
 
-    if (!ret && priv->open_recent_dialog) {
+    if (!ret && self->open_recent_dialog) {
         if (error != NULL) {
             virt_viewer_app_simple_message_dialog(app, _("Unable to connect: %s"), error->message);
         }
