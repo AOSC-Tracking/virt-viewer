@@ -30,32 +30,11 @@
 G_BEGIN_DECLS
 
 #define VIRT_VIEWER_TYPE_NOTEBOOK virt_viewer_notebook_get_type()
-
-#define VIRT_VIEWER_NOTEBOOK(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_NOTEBOOK, VirtViewerNotebook))
-
-#define VIRT_VIEWER_NOTEBOOK_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_NOTEBOOK, VirtViewerNotebookClass))
-
-#define VIRT_VIEWER_IS_NOTEBOOK(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_NOTEBOOK))
-
-#define VIRT_VIEWER_IS_NOTEBOOK_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_NOTEBOOK))
-
-#define VIRT_VIEWER_NOTEBOOK_GET_CLASS(obj)                                \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_NOTEBOOK, VirtViewerNotebookClass))
-
-typedef struct _VirtViewerNotebookPrivate VirtViewerNotebookPrivate;
-
-typedef struct {
-    GtkNotebook parent;
-    VirtViewerNotebookPrivate *priv;
-} VirtViewerNotebook;
-
-typedef struct {
-    GtkNotebookClass parent_class;
-} VirtViewerNotebookClass;
+G_DECLARE_FINAL_TYPE(VirtViewerNotebook,
+                     virt_viewer_notebook,
+                     VIRT_VIEWER,
+                     NOTEBOOK,
+                     GtkNotebook);
 
 GType virt_viewer_notebook_get_type (void);
 
