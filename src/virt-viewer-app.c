@@ -109,6 +109,7 @@ static void virt_viewer_app_add_option_entries(VirtViewerApp *self, GOptionConte
 static VirtViewerWindow *virt_viewer_app_get_nth_window(VirtViewerApp *self, gint nth);
 
 
+typedef struct _VirtViewerAppPrivate VirtViewerAppPrivate;
 struct _VirtViewerAppPrivate {
     VirtViewerWindow *main_window;
     GtkWidget *main_notebook;
@@ -210,7 +211,8 @@ virt_viewer_app_make_message_dialog(VirtViewerApp *self,
                                     const char *fmt, ...)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), NULL);
-    GtkWindow *window = GTK_WINDOW(virt_viewer_window_get_window(self->priv->main_window));
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    GtkWindow *window = GTK_WINDOW(virt_viewer_window_get_window(priv->main_window));
     GtkWidget *dialog;
     char *msg;
     va_list vargs;
@@ -254,7 +256,7 @@ virt_viewer_app_simple_message_dialog(VirtViewerApp *self,
 static void
 virt_viewer_app_save_config(VirtViewerApp *self)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GError *error = NULL;
     gchar *dir, *data;
 
@@ -293,8 +295,8 @@ static void
 virt_viewer_app_quit(VirtViewerApp *self)
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
-    g_return_if_fail(!self->priv->kiosk);
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    g_return_if_fail(!priv->kiosk);
 
     virt_viewer_app_save_config(self);
 
@@ -322,7 +324,9 @@ get_n_client_monitors(void)
 
 GList* virt_viewer_app_get_initial_displays(VirtViewerApp* self)
 {
-    if (!self->priv->initial_display_map) {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+
+    if (!priv->initial_display_map) {
         GList *l = NULL;
         gint i;
         gint n = get_n_client_monitors();
@@ -332,16 +336,18 @@ GList* virt_viewer_app_get_initial_displays(VirtViewerApp* self)
         }
         return l;
     }
-    return g_hash_table_get_keys(self->priv->initial_display_map);
+    return g_hash_table_get_keys(priv->initial_display_map);
 }
 
 static gint virt_viewer_app_get_first_monitor(VirtViewerApp *self)
 {
-    if (self->priv->fullscreen && self->priv->initial_display_map) {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+
+    if (priv->fullscreen && priv->initial_display_map) {
         gint first = G_MAXINT;
         GHashTableIter iter;
         gpointer key, value;
-        g_hash_table_iter_init(&iter, self->priv->initial_display_map);
+        g_hash_table_iter_init(&iter, priv->initial_display_map);
         while (g_hash_table_iter_next(&iter, &key, &value)) {
             gint monitor = GPOINTER_TO_INT(key);
             first = MIN(first, monitor);
@@ -353,11 +359,12 @@ static gint virt_viewer_app_get_first_monitor(VirtViewerApp *self)
 
 gint virt_viewer_app_get_initial_monitor_for_display(VirtViewerApp* self, gint display)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     gint monitor = display;
 
-    if (self->priv->initial_display_map) {
+    if (priv->initial_display_map) {
         gpointer value = NULL;
-        if (g_hash_table_lookup_extended(self->priv->initial_display_map, GINT_TO_POINTER(display), NULL, &value)) {
+        if (g_hash_table_lookup_extended(priv->initial_display_map, GINT_TO_POINTER(display), NULL, &value)) {
             monitor = GPOINTER_TO_INT(value);
         } else {
             monitor = -1;
@@ -387,12 +394,13 @@ app_window_try_fullscreen(VirtViewerApp *self G_GNUC_UNUSED,
 static GHashTable*
 virt_viewer_app_get_monitor_mapping_for_section(VirtViewerApp *self, const gchar *section)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GError *error = NULL;
     gsize nmappings = 0;
     gchar **mappings = NULL;
     GHashTable *mapping = NULL;
 
-    mappings = g_key_file_get_string_list(self->priv->config,
+    mappings = g_key_file_get_string_list(priv->config,
                                           section, "monitor-mapping", &nmappings, &error);
     if (error) {
         if (error->code != G_KEY_FILE_ERROR_GROUP_NOT_FOUND
@@ -413,6 +421,7 @@ virt_viewer_app_get_monitor_mapping_for_section(VirtViewerApp *self, const gchar
 static void virt_viewer_app_set_monitor_mapping_for_display(VirtViewerApp *self,
                                                             VirtViewerDisplay *display)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GError *error = NULL;
     gsize nmappings = 0;
     gchar **mappings = NULL;
@@ -456,13 +465,13 @@ static void virt_viewer_app_set_monitor_mapping_for_display(VirtViewerApp *self,
     virt_viewer_display++;
     virt_viewer_monitor++;
 
-    mappings = g_key_file_get_string_list(self->priv->config, self->priv->uuid,
+    mappings = g_key_file_get_string_list(priv->config, priv->uuid,
                                           "monitor-mapping", &nmappings, &error);
     if (error) {
         if (error->code != G_KEY_FILE_ERROR_GROUP_NOT_FOUND
                 && error->code != G_KEY_FILE_ERROR_KEY_NOT_FOUND)
             g_warning("Error reading monitor assignments for %s: %s",
-                      self->priv->uuid, error->message);
+                      priv->uuid, error->message);
         g_clear_error(&error);
 
         // no mapping available for the VM: we will create a new one
@@ -515,7 +524,7 @@ static void virt_viewer_app_set_monitor_mapping_for_display(VirtViewerApp *self,
         mappings[nmappings - 1] = g_strdup_printf("%d:%d", virt_viewer_display, virt_viewer_monitor);
         mappings[nmappings] = NULL;
     }
-    g_key_file_set_string_list(self->priv->config, self->priv->uuid, "monitor-mapping",
+    g_key_file_set_string_list(priv->config, priv->uuid, "monitor-mapping",
                                (const gchar * const *) mappings, nmappings);
     virt_viewer_app_save_config(self);
 
@@ -526,22 +535,23 @@ end:
 static
 void virt_viewer_app_apply_monitor_mapping(VirtViewerApp *self)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GHashTable *mapping = NULL;
 
     // apply mapping only in fullscreen
     if (!virt_viewer_app_get_fullscreen(self))
         return;
 
-    mapping = virt_viewer_app_get_monitor_mapping_for_section(self, self->priv->uuid);
+    mapping = virt_viewer_app_get_monitor_mapping_for_section(self, priv->uuid);
     if (!mapping) {
         g_debug("No guest-specific fullscreen config, using fallback");
         mapping = virt_viewer_app_get_monitor_mapping_for_section(self, "fallback");
     }
 
-    if (self->priv->initial_display_map)
-        g_hash_table_unref(self->priv->initial_display_map);
+    if (priv->initial_display_map)
+        g_hash_table_unref(priv->initial_display_map);
 
-    self->priv->initial_display_map = mapping;
+    priv->initial_display_map = mapping;
 
     // if we're changing our initial display map, move any existing windows to
     // the appropriate monitors according to the per-vm configuration
@@ -549,7 +559,7 @@ void virt_viewer_app_apply_monitor_mapping(VirtViewerApp *self)
         GList *l;
         gint i = 0;
 
-        for (l = self->priv->windows; l; l = l->next) {
+        for (l = priv->windows; l; l = l->next) {
             app_window_try_fullscreen(self, VIRT_VIEWER_WINDOW(l->data), i);
             i++;
         }
@@ -559,13 +569,14 @@ void virt_viewer_app_apply_monitor_mapping(VirtViewerApp *self)
 static
 void virt_viewer_app_set_uuid_string(VirtViewerApp *self, const gchar *uuid_string)
 {
-    if (g_strcmp0(self->priv->uuid, uuid_string) == 0)
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    if (g_strcmp0(priv->uuid, uuid_string) == 0)
         return;
 
     g_debug("%s: UUID changed to %s", G_STRFUNC, uuid_string);
 
-    g_free(self->priv->uuid);
-    self->priv->uuid = g_strdup(uuid_string);
+    g_free(priv->uuid);
+    priv->uuid = g_strdup(uuid_string);
 
     virt_viewer_app_apply_monitor_mapping(self);
 }
@@ -573,13 +584,14 @@ void virt_viewer_app_set_uuid_string(VirtViewerApp *self, const gchar *uuid_stri
 static
 void virt_viewer_app_set_keymap(VirtViewerApp *self, const gchar *keymap_string)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     gchar **key, **keymaps, **valkey, **valuekeys = NULL;
     VirtViewerKeyMapping *keyMappingArray, *keyMappingPtr;
     guint *mappedArray, *ptrMove;
 
     if (keymap_string == NULL) {
         g_debug("keymap string is empty - nothing to do");
-        self->priv->keyMappings = NULL;
+        priv->keyMappings = NULL;
         return;
     }
 
@@ -653,21 +665,22 @@ void virt_viewer_app_set_keymap(VirtViewerApp *self, const gchar *keymap_string)
     keyMappingPtr--;
     keyMappingPtr->isLast=TRUE;
 
-    self->priv->keyMappings = keyMappingArray;
+    priv->keyMappings = keyMappingArray;
     g_strfreev(keymaps);
 }
 
 void
 virt_viewer_app_maybe_quit(VirtViewerApp *self, VirtViewerWindow *window)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GError *error = NULL;
 
-    if (self->priv->kiosk) {
+    if (priv->kiosk) {
         g_warning("The app is in kiosk mode and can't quit");
         return;
     }
 
-    gboolean ask = g_key_file_get_boolean(self->priv->config,
+    gboolean ask = g_key_file_get_boolean(priv->config,
                                           "virt-viewer", "ask-quit", &error);
     if (error) {
         ask = TRUE;
@@ -691,7 +704,7 @@ virt_viewer_app_maybe_quit(VirtViewerApp *self, VirtViewerWindow *window)
 
         gboolean dont_ask = FALSE;
         g_object_get(check, "active", &dont_ask, NULL);
-        g_key_file_set_boolean(self->priv->config,
+        g_key_file_set_boolean(priv->config,
                     "virt-viewer", "ask-quit", !dont_ask);
 
         gtk_widget_destroy(dialog);
@@ -721,8 +734,9 @@ static void count_window_visible(gpointer value,
 static guint
 virt_viewer_app_get_n_windows_visible(VirtViewerApp *self)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     guint n = 0;
-    g_list_foreach(self->priv->windows, count_window_visible, &n);
+    g_list_foreach(priv->windows, count_window_visible, &n);
     return n;
 }
 
@@ -730,17 +744,18 @@ static void hide_one_window(gpointer value,
                             gpointer user_data G_GNUC_UNUSED)
 {
     VirtViewerApp* self = VIRT_VIEWER_APP(user_data);
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     gboolean connect_error = !priv->connected && !priv->cancelled;
 
-    if (connect_error || self->priv->main_window != value)
+    if (connect_error || priv->main_window != value)
         virt_viewer_window_hide(VIRT_VIEWER_WINDOW(value));
 }
 
 static void
-virt_viewer_app_hide_all_windows(VirtViewerApp *app)
+virt_viewer_app_hide_all_windows(VirtViewerApp *self)
 {
-    g_list_foreach(app->priv->windows, hide_one_window, app);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    g_list_foreach(priv->windows, hide_one_window, self);
 }
 
 G_MODULE_EXPORT void
@@ -885,7 +900,7 @@ virt_viewer_app_trace(VirtViewerApp *self,
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
     va_list ap;
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     if (doDebug) {
         va_start(ap, fmt);
@@ -904,14 +919,15 @@ virt_viewer_app_trace(VirtViewerApp *self,
 static const gchar*
 virt_viewer_app_get_title(VirtViewerApp *self)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     const gchar *title;
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), NULL);
 
-    title = self->priv->title;
+    title = priv->title;
     if (!title)
-        title = self->priv->guest_name;
+        title = priv->guest_name;
     if (!title)
-        title = self->priv->guri;
+        title = priv->guri;
 
     return title;
 }
@@ -964,9 +980,10 @@ set_subtitle(gpointer value,
 }
 
 static void
-virt_viewer_app_set_all_window_subtitles(VirtViewerApp *app)
+virt_viewer_app_set_all_window_subtitles(VirtViewerApp *self)
 {
-    g_list_foreach(app->priv->windows, set_subtitle, app);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    g_list_foreach(priv->windows, set_subtitle, self);
 }
 
 static void update_title(gpointer value,
@@ -978,7 +995,8 @@ static void update_title(gpointer value,
 static void
 virt_viewer_app_update_title(VirtViewerApp *self)
 {
-    g_list_foreach(self->priv->windows, update_title, NULL);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    g_list_foreach(priv->windows, update_title, NULL);
 }
 
 static void set_usb_options_sensitive(gpointer value,
@@ -991,7 +1009,8 @@ static void set_usb_options_sensitive(gpointer value,
 static void
 virt_viewer_app_set_usb_options_sensitive(VirtViewerApp *self, gboolean sensitive)
 {
-    g_list_foreach(self->priv->windows, set_usb_options_sensitive,
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    g_list_foreach(priv->windows, set_usb_options_sensitive,
                    GINT_TO_POINTER(sensitive));
 }
 
@@ -1005,7 +1024,8 @@ static void set_usb_reset_sensitive(gpointer value,
 static void
 virt_viewer_app_set_usb_reset_sensitive(VirtViewerApp *self, gboolean sensitive)
 {
-    g_list_foreach(self->priv->windows, set_usb_reset_sensitive,
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    g_list_foreach(priv->windows, set_usb_reset_sensitive,
                    GINT_TO_POINTER(sensitive));
 }
 
@@ -1019,18 +1039,20 @@ set_menus_sensitive(gpointer value, gpointer user_data)
 void
 virt_viewer_app_set_menus_sensitive(VirtViewerApp *self, gboolean sensitive)
 {
-    g_list_foreach(self->priv->windows, set_menus_sensitive, GINT_TO_POINTER(sensitive));
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    g_list_foreach(priv->windows, set_menus_sensitive, GINT_TO_POINTER(sensitive));
 }
 
 static VirtViewerWindow *
 virt_viewer_app_get_nth_window(VirtViewerApp *self, gint nth)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GList *l;
 
     if (nth < 0)
         return NULL;
 
-    for (l = self->priv->windows; l; l = l->next) {
+    for (l = priv->windows; l; l = l->next) {
         VirtViewerDisplay *display = virt_viewer_window_get_display(l->data);
         if (display
             && (virt_viewer_display_get_nth(display) == nth)) {
@@ -1057,6 +1079,7 @@ virt_viewer_app_has_usbredir(VirtViewerApp *self)
 static VirtViewerWindow*
 virt_viewer_app_window_new(VirtViewerApp *self, gint nth)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     VirtViewerWindow* window;
     GtkWindow *w;
     gboolean has_usbredir;
@@ -1066,11 +1089,11 @@ virt_viewer_app_window_new(VirtViewerApp *self, gint nth)
         return window;
 
     window = g_object_new(VIRT_VIEWER_TYPE_WINDOW, "app", self, NULL);
-    virt_viewer_window_set_kiosk(window, self->priv->kiosk);
-    if (self->priv->main_window)
-        virt_viewer_window_set_zoom_level(window, virt_viewer_window_get_zoom_level(self->priv->main_window));
+    virt_viewer_window_set_kiosk(window, priv->kiosk);
+    if (priv->main_window)
+        virt_viewer_window_set_zoom_level(window, virt_viewer_window_get_zoom_level(priv->main_window));
 
-    self->priv->windows = g_list_append(self->priv->windows, window);
+    priv->windows = g_list_append(priv->windows, window);
     virt_viewer_app_set_window_subtitle(self, window, nth);
     virt_viewer_app_update_menu_displays(self);
 
@@ -1082,14 +1105,14 @@ virt_viewer_app_window_new(VirtViewerApp *self, gint nth)
     g_object_set_data(G_OBJECT(w), "virt-viewer-window", window);
     gtk_application_add_window(GTK_APPLICATION(self), w);
 
-    if (self->priv->fullscreen)
+    if (priv->fullscreen)
         app_window_try_fullscreen(self, window, nth);
 
     g_signal_connect(w, "hide", G_CALLBACK(viewer_window_visible_cb), self);
     g_signal_connect(w, "show", G_CALLBACK(viewer_window_visible_cb), self);
 
-    if (self->priv->keyMappings) {
-       g_object_set(window, "keymap", self->priv->keyMappings, NULL);
+    if (priv->keyMappings) {
+       g_object_set(window, "keymap", priv->keyMappings, NULL);
     }
 
     return window;
@@ -1106,6 +1129,7 @@ window_weak_notify(gpointer data, GObject *where_was G_GNUC_UNUSED)
 static VirtViewerWindow *
 ensure_window_for_display(VirtViewerApp *self, VirtViewerDisplay *display)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     gint nth = virt_viewer_display_get_nth(display);
     VirtViewerWindow *win = virt_viewer_app_get_nth_window(self, nth);
 
@@ -1114,7 +1138,7 @@ ensure_window_for_display(VirtViewerApp *self, VirtViewerDisplay *display)
     }
 
     if (win == NULL) {
-        GList *l = self->priv->windows;
+        GList *l = priv->windows;
 
         /* There should always be at least a main window created at startup */
         g_return_val_if_fail(l != NULL, NULL);
@@ -1127,7 +1151,7 @@ ensure_window_for_display(VirtViewerApp *self, VirtViewerDisplay *display)
         if (l && virt_viewer_window_get_display(VIRT_VIEWER_WINDOW(l->data)) == NULL) {
             win = VIRT_VIEWER_WINDOW(l->data);
             g_debug("Found a window without a display, reusing for display #%d", nth);
-            if (self->priv->fullscreen && !self->priv->kiosk)
+            if (priv->fullscreen && !priv->kiosk)
                 app_window_try_fullscreen(self, win, nth);
         } else {
             win = virt_viewer_app_window_new(self, nth);
@@ -1160,6 +1184,7 @@ display_show_hint(VirtViewerDisplay *display,
                   gpointer user_data G_GNUC_UNUSED)
 {
     VirtViewerApp *self = virt_viewer_session_get_app(virt_viewer_display_get_session(display));
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     VirtViewerNotebook *nb;
     VirtViewerWindow *win;
     gint nth;
@@ -1172,7 +1197,7 @@ display_show_hint(VirtViewerDisplay *display,
 
     win = virt_viewer_app_get_nth_window(self, nth);
 
-    if (self->priv->fullscreen &&
+    if (priv->fullscreen &&
         nth >= get_n_client_monitors()) {
         if (win)
             virt_viewer_window_hide(win);
@@ -1184,7 +1209,7 @@ display_show_hint(VirtViewerDisplay *display,
             win = display_show_notebook_get_window(self, display);
             virt_viewer_window_show(win);
         } else {
-            if (!self->priv->kiosk && win) {
+            if (!priv->kiosk && win) {
                 nb = virt_viewer_window_get_notebook(win);
                 virt_viewer_notebook_show_status(nb, _("Waiting for display %d..."), nth + 1);
             }
@@ -1198,6 +1223,7 @@ virt_viewer_app_display_added(VirtViewerSession *session G_GNUC_UNUSED,
                               VirtViewerDisplay *display,
                               VirtViewerApp *self)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     gint nth;
 
     g_object_get(display, "nth-display", &nth, NULL);
@@ -1210,7 +1236,7 @@ virt_viewer_app_display_added(VirtViewerSession *session G_GNUC_UNUSED,
         return;
     }
 
-    g_hash_table_insert(self->priv->displays, GINT_TO_POINTER(nth), g_object_ref(display));
+    g_hash_table_insert(priv->displays, GINT_TO_POINTER(nth), g_object_ref(display));
 
     g_signal_connect(display, "notify::show-hint",
                      G_CALLBACK(display_show_hint), NULL);
@@ -1220,18 +1246,19 @@ virt_viewer_app_display_added(VirtViewerSession *session G_GNUC_UNUSED,
 static void virt_viewer_app_remove_nth_window(VirtViewerApp *self,
                                               gint nth)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     VirtViewerWindow *win = virt_viewer_app_get_nth_window(self, nth);
     if (!win)
         return;
     virt_viewer_window_set_display(win, NULL);
-    if (win == self->priv->main_window) {
+    if (win == priv->main_window) {
         g_debug("Not removing main window %d %p", nth, win);
         return;
     }
     virt_viewer_window_hide(win);
 
     g_debug("Remove window %d %p", nth, win);
-    self->priv->windows = g_list_remove(self->priv->windows, win);
+    priv->windows = g_list_remove(priv->windows, win);
 
     g_object_unref(win);
 }
@@ -1241,6 +1268,7 @@ virt_viewer_app_display_removed(VirtViewerSession *session G_GNUC_UNUSED,
                                 VirtViewerDisplay *display,
                                 VirtViewerApp *self)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     gint nth;
 
     if(virt_viewer_display_get_fullscreen(display))
@@ -1248,7 +1276,7 @@ virt_viewer_app_display_removed(VirtViewerSession *session G_GNUC_UNUSED,
 
     g_object_get(display, "nth-display", &nth, NULL);
     virt_viewer_app_remove_nth_window(self, nth);
-    g_hash_table_remove(self->priv->displays, GINT_TO_POINTER(nth));
+    g_hash_table_remove(priv->displays, GINT_TO_POINTER(nth));
     virt_viewer_app_update_menu_displays(self);
 }
 
@@ -1282,7 +1310,7 @@ gboolean
 virt_viewer_app_create_session(VirtViewerApp *self, const gchar *type, GError **error)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     g_return_val_if_fail(priv->session == NULL, FALSE);
     g_return_val_if_fail(type != NULL, FALSE);
 
@@ -1386,7 +1414,7 @@ virt_viewer_app_channel_open(VirtViewerSession *session,
 
     g_debug("After open connection callback fd=%d", fd);
 
-    priv = self->priv;
+    priv = virt_viewer_app_get_instance_private(self);
     if (priv->transport && g_ascii_strcasecmp(priv->transport, "ssh") == 0 &&
         !priv->direct && fd == -1) {
         if ((fd = virt_viewer_app_open_tunnel_ssh(priv->host, priv->port, priv->user,
@@ -1432,7 +1460,7 @@ virt_viewer_app_channel_open(VirtViewerSession *session G_GNUC_UNUSED,
 static gboolean
 virt_viewer_app_default_activate(VirtViewerApp *self, GError **error)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     int fd = -1;
 
     if (!virt_viewer_app_open_connection(self, &fd))
@@ -1504,7 +1532,7 @@ virt_viewer_app_activate(VirtViewerApp *self, GError **error)
 
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
-    priv = self->priv;
+    priv = virt_viewer_app_get_instance_private(self);
     if (priv->active)
         return FALSE;
 
@@ -1533,7 +1561,7 @@ virt_viewer_app_clipboard_copy(GtkClipboard *clipboard G_GNUC_UNUSED,
                                guint info G_GNUC_UNUSED,
                                VirtViewerApp *self)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     gtk_selection_data_set_text(data, priv->clipboard, -1);
 }
@@ -1545,7 +1573,7 @@ virt_viewer_app_server_cut_text(VirtViewerSession *session G_GNUC_UNUSED,
 {
     GtkClipboard *cb;
     gsize a, b;
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GtkTargetEntry targets[] = {
         {g_strdup("UTF8_STRING"), 0, 0},
         {g_strdup("COMPOUND_TEXT"), 0, 0},
@@ -1575,7 +1603,7 @@ virt_viewer_app_server_cut_text(VirtViewerSession *session G_GNUC_UNUSED,
 static void virt_viewer_app_bell(VirtViewerSession *session G_GNUC_UNUSED,
                                  VirtViewerApp *self)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     gdk_window_beep(gtk_widget_get_window(GTK_WIDGET(virt_viewer_window_get_window(priv->main_window))));
 }
@@ -1611,7 +1639,7 @@ virt_viewer_app_retryauth(gpointer opaque)
 static void
 virt_viewer_app_default_deactivated(VirtViewerApp *self, gboolean connect_error)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     if (!connect_error) {
         virt_viewer_app_show_status(self, _("Guest domain has shutdown"));
@@ -1619,7 +1647,7 @@ virt_viewer_app_default_deactivated(VirtViewerApp *self, gboolean connect_error)
                               priv->guest_name);
     }
 
-    if (self->priv->quit_on_disconnect)
+    if (priv->quit_on_disconnect)
         g_application_quit(G_APPLICATION(self));
 }
 
@@ -1635,7 +1663,7 @@ virt_viewer_app_deactivated(VirtViewerApp *self, gboolean connect_error)
 static void
 virt_viewer_app_deactivate(VirtViewerApp *self, gboolean connect_error)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     if (!priv->active)
         return;
@@ -1669,11 +1697,11 @@ static void
 virt_viewer_app_connected(VirtViewerSession *session G_GNUC_UNUSED,
                           VirtViewerApp *self)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     priv->connected = TRUE;
 
-    if (self->priv->kiosk)
+    if (priv->kiosk)
         virt_viewer_app_show_status(self, "%s", "");
     else
         virt_viewer_app_show_status(self, _("Connected to graphic server"));
@@ -1683,7 +1711,8 @@ static void
 virt_viewer_app_initialized(VirtViewerSession *session G_GNUC_UNUSED,
                             VirtViewerApp *self)
 {
-    self->priv->initialized = TRUE;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    priv->initialized = TRUE;
     virt_viewer_app_update_title(self);
 }
 
@@ -1691,7 +1720,7 @@ static void
 virt_viewer_app_disconnected(VirtViewerSession *session G_GNUC_UNUSED, const gchar *msg,
                              VirtViewerApp *self)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     gboolean connect_error = !priv->connected && !priv->cancelled;
 
     if (!priv->kiosk)
@@ -1720,7 +1749,7 @@ virt_viewer_app_error(VirtViewerSession *session G_GNUC_UNUSED,
                       const gchar *msg,
                       VirtViewerApp *self)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     /* Do not open a dialog if the connection was initialized
      * This happens when the VNC server closes the connection */
@@ -1733,7 +1762,7 @@ virt_viewer_app_error(VirtViewerSession *session G_GNUC_UNUSED,
 static void virt_viewer_app_cancelled(VirtViewerSession *session,
                                       VirtViewerApp *self)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     priv->cancelled = TRUE;
     virt_viewer_app_disconnected(session, NULL, self);
 }
@@ -1742,7 +1771,7 @@ static void virt_viewer_app_auth_refused(VirtViewerSession *session,
                                          const char *msg,
                                          VirtViewerApp *self)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     virt_viewer_app_simple_message_dialog(self,
                                           _("Unable to authenticate with remote desktop server at %s: %s\n"),
@@ -1773,22 +1802,23 @@ static void virt_viewer_app_usb_failed(VirtViewerSession *session G_GNUC_UNUSED,
 static void
 virt_viewer_app_set_kiosk(VirtViewerApp *self, gboolean enabled)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     int i;
     GList *l;
 
-    self->priv->kiosk = enabled;
+    priv->kiosk = enabled;
     if (!enabled)
         return;
 
     virt_viewer_app_set_fullscreen(self, enabled);
 
     /* create windows for each client monitor */
-    for (i = g_list_length(self->priv->windows);
+    for (i = g_list_length(priv->windows);
          i < get_n_client_monitors(); i++) {
         virt_viewer_app_window_new(self, i);
     }
 
-    for (l = self->priv->windows; l != NULL; l = l ->next) {
+    for (l = priv->windows; l != NULL; l = l ->next) {
         VirtViewerWindow *win = l->data;
 
         virt_viewer_window_show(win);
@@ -1803,7 +1833,7 @@ virt_viewer_app_get_property (GObject *object, guint property_id,
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(object));
     VirtViewerApp *self = VIRT_VIEWER_APP(object);
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     switch (property_id) {
     case PROP_VERBOSE:
@@ -1873,7 +1903,7 @@ virt_viewer_app_set_property (GObject *object, guint property_id,
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(object));
     VirtViewerApp *self = VIRT_VIEWER_APP(object);
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     switch (property_id) {
     case PROP_VERBOSE:
@@ -1896,8 +1926,8 @@ virt_viewer_app_set_property (GObject *object, guint property_id,
         break;
 
     case PROP_TITLE:
-        g_free(self->priv->title);
-        self->priv->title = g_value_dup_string(value);
+        g_free(priv->title);
+        priv->title = g_value_dup_string(value);
         break;
 
     case PROP_ENABLE_ACCEL:
@@ -1941,7 +1971,7 @@ static void
 virt_viewer_app_dispose (GObject *object)
 {
     VirtViewerApp *self = VIRT_VIEWER_APP(object);
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     if (priv->preferences)
         gtk_widget_destroy(priv->preferences);
@@ -1993,7 +2023,8 @@ virt_viewer_app_dispose (GObject *object)
 static gboolean
 virt_viewer_app_default_start(VirtViewerApp *self, GError **error G_GNUC_UNUSED)
 {
-    virt_viewer_window_show(self->priv->main_window);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    virt_viewer_window_show(priv->main_window);
     return TRUE;
 }
 
@@ -2002,12 +2033,13 @@ gboolean virt_viewer_app_start(VirtViewerApp *self, GError **error)
     VirtViewerAppClass *klass;
 
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     klass = VIRT_VIEWER_APP_GET_CLASS(self);
 
-    g_return_val_if_fail(!self->priv->started, TRUE);
+    g_return_val_if_fail(!priv->started, TRUE);
 
-    self->priv->started = klass->start(self, error);
-    return self->priv->started;
+    priv->started = klass->start(self, error);
+    return priv->started;
 }
 
 static int opt_zoom = NORMAL_ZOOM_LEVEL;
@@ -2025,7 +2057,7 @@ static gboolean
 sigint_cb(gpointer data)
 {
     VirtViewerApp *self = VIRT_VIEWER_APP(data);
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     g_debug("got SIGINT, quitting\n");
     if (priv->started)
@@ -2046,8 +2078,9 @@ title_maybe_changed(VirtViewerApp *self, GParamSpec* pspec G_GNUC_UNUSED, gpoint
 static void
 virt_viewer_app_init(VirtViewerApp *self)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GError *error = NULL;
-    self->priv = virt_viewer_app_get_instance_private(self);
+    priv = virt_viewer_app_get_instance_private(self);
 
     gtk_window_set_default_icon_name("virt-viewer");
 
@@ -2055,15 +2088,15 @@ virt_viewer_app_init(VirtViewerApp *self)
     g_unix_signal_add (SIGINT, sigint_cb, self);
 #endif
 
-    self->priv->displays = g_hash_table_new_full(g_direct_hash, g_direct_equal, NULL, g_object_unref);
-    self->priv->config = g_key_file_new();
-    self->priv->config_file = g_build_filename(g_get_user_config_dir(),
+    priv->displays = g_hash_table_new_full(g_direct_hash, g_direct_equal, NULL, g_object_unref);
+    priv->config = g_key_file_new();
+    priv->config_file = g_build_filename(g_get_user_config_dir(),
                                                "virt-viewer", "settings", NULL);
-    g_key_file_load_from_file(self->priv->config, self->priv->config_file,
+    g_key_file_load_from_file(priv->config, priv->config_file,
                     G_KEY_FILE_KEEP_COMMENTS|G_KEY_FILE_KEEP_TRANSLATIONS, &error);
 
     if (g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-        g_debug("No configuration file %s", self->priv->config_file);
+        g_debug("No configuration file %s", priv->config_file);
     else if (error)
         g_warning("Couldn't load configuration: %s", error->message);
 
@@ -2079,7 +2112,7 @@ virt_viewer_set_insert_smartcard_accel(VirtViewerApp *self,
                                        guint accel_key,
                                        GdkModifierType accel_mods)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     priv->insert_smartcard_accel_key = accel_key;
     priv->insert_smartcard_accel_mods = accel_mods;
@@ -2090,7 +2123,7 @@ virt_viewer_set_remove_smartcard_accel(VirtViewerApp *self,
                                        guint accel_key,
                                        GdkModifierType accel_mods)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     priv->remove_smartcard_accel_key = accel_key;
     priv->remove_smartcard_accel_mods = accel_mods;
@@ -2100,10 +2133,10 @@ static void
 virt_viewer_update_smartcard_accels(VirtViewerApp *self)
 {
     gboolean sw_smartcard;
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
-    if (self->priv->session != NULL) {
-        g_object_get(G_OBJECT(self->priv->session),
+    if (priv->session != NULL) {
+        g_object_get(G_OBJECT(priv->session),
                      "software-smartcard-reader", &sw_smartcard,
                      NULL);
     } else {
@@ -2137,7 +2170,7 @@ virt_viewer_set_usb_device_reset_accel(VirtViewerApp *self,
                                        GdkModifierType accel_mods,
                                        gboolean overwrite)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     if (overwrite || !priv->usb_device_reset_accel_valid) {
         priv->usb_device_reset_accel_valid = TRUE;
@@ -2150,10 +2183,10 @@ static void
 virt_viewer_update_usbredir_accels(VirtViewerApp *self)
 {
     gboolean has_usbredir;
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
-    if (self->priv->session != NULL) {
-        g_object_get(G_OBJECT(self->priv->session),
+    if (priv->session != NULL) {
+        g_object_get(G_OBJECT(priv->session),
                      "has-usbredir", &has_usbredir, NULL);
     } else {
         has_usbredir = FALSE;
@@ -2173,24 +2206,25 @@ static void
 virt_viewer_app_on_application_startup(GApplication *app)
 {
     VirtViewerApp *self = VIRT_VIEWER_APP(app);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GError *error = NULL;
 
     G_APPLICATION_CLASS(virt_viewer_app_parent_class)->startup(app);
 
-    self->priv->resource = virt_viewer_get_resource();
+    priv->resource = virt_viewer_get_resource();
 
     virt_viewer_app_set_debug(opt_debug);
     virt_viewer_app_set_fullscreen(self, opt_fullscreen);
 
     virt_viewer_app_set_keymap(self, opt_keymap);
 
-    self->priv->verbose = opt_verbose;
-    self->priv->quit_on_disconnect = opt_kiosk ? opt_kiosk_quit : TRUE;
+    priv->verbose = opt_verbose;
+    priv->quit_on_disconnect = opt_kiosk ? opt_kiosk_quit : TRUE;
 
-    self->priv->main_window = virt_viewer_app_window_new(self,
+    priv->main_window = virt_viewer_app_window_new(self,
                                                          virt_viewer_app_get_first_monitor(self));
-    self->priv->main_notebook = GTK_WIDGET(virt_viewer_window_get_notebook(self->priv->main_window));
-    self->priv->initial_display_map = virt_viewer_app_get_monitor_mapping_for_section(self, "fallback");
+    priv->main_notebook = GTK_WIDGET(virt_viewer_window_get_notebook(priv->main_window));
+    priv->initial_display_map = virt_viewer_app_get_monitor_mapping_for_section(self, "fallback");
 
     virt_viewer_app_set_kiosk(self, opt_kiosk);
     virt_viewer_app_set_hotkeys(self, opt_hotkeys);
@@ -2200,7 +2234,7 @@ virt_viewer_app_on_application_startup(GApplication *app)
         opt_zoom = NORMAL_ZOOM_LEVEL;
     }
 
-    virt_viewer_window_set_zoom_level(self->priv->main_window, opt_zoom);
+    virt_viewer_window_set_zoom_level(priv->main_window, opt_zoom);
 
     virt_viewer_set_insert_smartcard_accel(self, GDK_KEY_F8, GDK_SHIFT_MASK);
     virt_viewer_set_remove_smartcard_accel(self, GDK_KEY_F9, GDK_SHIFT_MASK);
@@ -2435,14 +2469,16 @@ virt_viewer_app_set_direct(VirtViewerApp *self, gboolean direct)
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
 
-    self->priv->direct = direct;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    priv->direct = direct;
 }
 
 gboolean virt_viewer_app_get_direct(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
-    return self->priv->direct;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->direct;
 }
 
 void
@@ -2463,7 +2499,8 @@ virt_viewer_app_clear_hotkeys(VirtViewerApp *self)
 void
 virt_viewer_app_set_enable_accel(VirtViewerApp *self, gboolean enable)
 {
-    self->priv->enable_accel = enable;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    priv->enable_accel = enable;
     g_object_notify(G_OBJECT(self), "enable-accel");
 }
 
@@ -2541,7 +2578,8 @@ virt_viewer_app_set_attach(VirtViewerApp *self, gboolean attach)
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
 
-    self->priv->attach = attach;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    priv->attach = attach;
 }
 
 gboolean
@@ -2549,7 +2587,8 @@ virt_viewer_app_get_attach(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
-    return self->priv->attach;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->attach;
 }
 
 void
@@ -2557,7 +2596,8 @@ virt_viewer_app_set_shared(VirtViewerApp *self, gboolean shared)
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
 
-    self->priv->shared = shared;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    priv->shared = shared;
 }
 
 gboolean
@@ -2565,7 +2605,8 @@ virt_viewer_app_get_shared(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
-    return self->priv->shared;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->shared;
 }
 
 gboolean
@@ -2573,7 +2614,8 @@ virt_viewer_app_is_active(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
-    return self->priv->active;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->active;
 }
 
 gboolean
@@ -2581,15 +2623,14 @@ virt_viewer_app_has_session(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
-    return self->priv->session != NULL;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->session != NULL;
 }
 
 static void
 virt_viewer_app_update_pretty_address(VirtViewerApp *self)
 {
-    VirtViewerAppPrivate *priv;
-
-    priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     g_free(priv->pretty_address);
     priv->pretty_address = NULL;
     if (priv->guri)
@@ -2630,13 +2671,14 @@ virt_viewer_app_get_fullscreen(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
-    return self->priv->fullscreen;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->fullscreen;
 }
 
 static void
 virt_viewer_app_set_fullscreen(VirtViewerApp *self, gboolean fullscreen)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     FullscreenOptions options  = {
         .app = self,
         .fullscreen = fullscreen,
@@ -2723,8 +2765,9 @@ window_update_menu_displays_cb(gpointer value,
                                gpointer user_data)
 {
     VirtViewerApp *self = VIRT_VIEWER_APP(user_data);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GtkMenuShell *submenu;
-    GList *keys = g_hash_table_get_keys(self->priv->displays);
+    GList *keys = g_hash_table_get_keys(priv->displays);
     GList *tmp;
     gboolean sensitive;
 
@@ -2738,7 +2781,7 @@ window_update_menu_displays_cb(gpointer value,
     while (tmp) {
         int nth = GPOINTER_TO_INT(tmp->data);
         VirtViewerWindow *vwin = virt_viewer_app_get_nth_window(self, nth);
-        VirtViewerDisplay *display = VIRT_VIEWER_DISPLAY(g_hash_table_lookup(self->priv->displays, tmp->data));
+        VirtViewerDisplay *display = VIRT_VIEWER_DISPLAY(g_hash_table_lookup(priv->displays, tmp->data));
         GtkWidget *item;
         gboolean visible;
         gchar *label;
@@ -2768,7 +2811,7 @@ window_update_menu_displays_cb(gpointer value,
         tmp = tmp->next;
     }
 
-    for (tmp = self->priv->windows; tmp; tmp = tmp->next) {
+    for (tmp = priv->windows; tmp; tmp = tmp->next) {
         VirtViewerWindow *win = VIRT_VIEWER_WINDOW(tmp->data);
         VirtViewerDisplay *display = virt_viewer_window_get_display(win);
 
@@ -2795,9 +2838,10 @@ window_update_menu_displays_cb(gpointer value,
 static void
 virt_viewer_app_update_menu_displays(VirtViewerApp *self)
 {
-    if (!self->priv->windows)
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    if (!priv->windows)
         return;
-    g_list_foreach(self->priv->windows, window_update_menu_displays_cb, self);
+    g_list_foreach(priv->windows, window_update_menu_displays_cb, self);
 }
 
 void
@@ -2813,7 +2857,7 @@ virt_viewer_app_set_connect_info(VirtViewerApp *self,
                                  const gchar *guri)
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     g_debug("Set connect info: %s,%s,%s,%s,%s,%s,%s,%d",
               host, ghost, gport ? gport : "-1", gtlsport ? gtlsport : "-1", transport, unixsock, user, port);
@@ -2853,7 +2897,8 @@ virt_viewer_app_get_main_window(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), NULL);
 
-    return self->priv->main_window;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->main_window;
 }
 
 static void
@@ -2875,11 +2920,13 @@ virt_viewer_app_show_status(VirtViewerApp *self, const gchar *fmt, ...)
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
     g_return_if_fail(fmt != NULL);
 
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+
     va_start(args, fmt);
     text = g_strdup_vprintf(fmt, args);
     va_end(args);
 
-    g_list_foreach(self->priv->windows, show_status_cb, text);
+    g_list_foreach(priv->windows, show_status_cb, text);
     g_free(text);
 }
 
@@ -2896,7 +2943,8 @@ void
 virt_viewer_app_show_display(VirtViewerApp *self)
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
-    g_list_foreach(self->priv->windows, show_display_cb, self);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    g_list_foreach(priv->windows, show_display_cb, self);
 }
 
 gboolean
@@ -2904,7 +2952,8 @@ virt_viewer_app_get_enable_accel(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
-    return self->priv->enable_accel;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->enable_accel;
 }
 
 VirtViewerSession*
@@ -2912,22 +2961,25 @@ virt_viewer_app_get_session(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
-    return self->priv->session;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->session;
 }
 
 GList*
 virt_viewer_app_get_windows(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), NULL);
-    return self->priv->windows;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->windows;
 }
 
 static void
 share_folder_changed(VirtViewerApp *self)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     gchar *folder;
 
-    folder = gtk_file_chooser_get_filename(self->priv->preferences_shared_folder);
+    folder = gtk_file_chooser_get_filename(priv->preferences_shared_folder);
 
     g_object_set(virt_viewer_app_get_session(self),
                  "shared-folder", folder, NULL);
@@ -2938,10 +2990,11 @@ share_folder_changed(VirtViewerApp *self)
 static GtkWidget *
 virt_viewer_app_get_preferences(VirtViewerApp *self)
 {
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     VirtViewerSession *session = virt_viewer_app_get_session(self);
     GtkBuilder *builder = virt_viewer_util_load_ui("virt-viewer-preferences.ui");
     gboolean can_share_folder = virt_viewer_session_can_share_folder(session);
-    GtkWidget *preferences = self->priv->preferences;
+    GtkWidget *preferences = priv->preferences;
     gchar *path;
 
     if (preferences)
@@ -2950,7 +3003,7 @@ virt_viewer_app_get_preferences(VirtViewerApp *self)
     gtk_builder_connect_signals(builder, self);
 
     preferences = GTK_WIDGET(gtk_builder_get_object(builder, "preferences"));
-    self->priv->preferences = preferences;
+    priv->preferences = preferences;
 
     g_object_bind_property(self,
                            "config-share-clipboard",
@@ -2982,16 +3035,16 @@ virt_viewer_app_get_preferences(VirtViewerApp *self)
                            "active",
                            G_BINDING_BIDIRECTIONAL|G_BINDING_SYNC_CREATE);
 
-    self->priv->preferences_shared_folder =
+    priv->preferences_shared_folder =
         GTK_FILE_CHOOSER(gtk_builder_get_object(builder, "fcsharefolder"));
 
     g_object_get(virt_viewer_app_get_session(self),
                  "shared-folder", &path, NULL);
 
-    gtk_file_chooser_set_filename(self->priv->preferences_shared_folder, path);
+    gtk_file_chooser_set_filename(priv->preferences_shared_folder, path);
     g_free(path);
 
-    virt_viewer_signal_connect_object(self->priv->preferences_shared_folder,
+    virt_viewer_signal_connect_object(priv->preferences_shared_folder,
                                       "file-set",
                                       G_CALLBACK(share_folder_changed), self,
                                       G_CONNECT_SWAPPED);
@@ -3063,12 +3116,13 @@ virt_viewer_app_add_option_entries(G_GNUC_UNUSED VirtViewerApp *self,
 
 gboolean virt_viewer_app_get_session_cancelled(VirtViewerApp *self)
 {
-    return self->priv->cancelled;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->cancelled;
 }
 
 gboolean virt_viewer_app_get_config_share_clipboard(VirtViewerApp *self)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     GError *error = NULL;
     gboolean share_clipboard;
@@ -3086,7 +3140,7 @@ gboolean virt_viewer_app_get_config_share_clipboard(VirtViewerApp *self)
 
 void virt_viewer_app_set_config_share_clipboard(VirtViewerApp *self, gboolean enable)
 {
-    VirtViewerAppPrivate *priv = self->priv;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     g_key_file_set_boolean(priv->config,
                            "virt-viewer", "share-clipboard", enable);
@@ -3097,17 +3151,20 @@ gboolean virt_viewer_app_get_supports_share_clipboard(VirtViewerApp *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
 
-    return self->priv->supports_share_clipboard;
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+
+    return priv->supports_share_clipboard;
 }
 
 void virt_viewer_app_set_supports_share_clipboard(VirtViewerApp *self, gboolean enable)
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
 
-    if (self->priv->supports_share_clipboard == enable)
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    if (priv->supports_share_clipboard == enable)
         return;
 
-    self->priv->supports_share_clipboard = enable;
+    priv->supports_share_clipboard = enable;
     g_object_notify(G_OBJECT(self), "supports-share-clipboard");
 }
 
