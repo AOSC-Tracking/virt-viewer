@@ -33,35 +33,11 @@
 G_BEGIN_DECLS
 
 #define VIRT_VIEWER_TYPE_DISPLAY_VNC virt_viewer_display_vnc_get_type()
-
-#define VIRT_VIEWER_DISPLAY_VNC(obj)                                    \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_DISPLAY_VNC, VirtViewerDisplayVnc))
-
-#define VIRT_VIEWER_DISPLAY_VNC_CLASS(klass)                            \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_DISPLAY_VNC, VirtViewerDisplayVncClass))
-
-#define VIRT_VIEWER_IS_DISPLAY_VNC(obj)                                 \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_DISPLAY_VNC))
-
-#define VIRT_VIEWER_IS_DISPLAY_VNC_CLASS(klass)                         \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_DISPLAY_VNC))
-
-#define VIRT_VIEWER_DISPLAY_VNC_GET_CLASS(obj)                          \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_DISPLAY_VNC, VirtViewerDisplayVncClass))
-
-typedef struct _VirtViewerDisplayVnc VirtViewerDisplayVnc;
-typedef struct _VirtViewerDisplayVncClass VirtViewerDisplayVncClass;
-typedef struct _VirtViewerDisplayVncPrivate VirtViewerDisplayVncPrivate;
-
-struct _VirtViewerDisplayVnc {
-    VirtViewerDisplay parent;
-
-    VirtViewerDisplayVncPrivate *priv;
-};
-
-struct _VirtViewerDisplayVncClass {
-    VirtViewerDisplayClass parent_class;
-};
+G_DECLARE_FINAL_TYPE(VirtViewerDisplayVnc,
+                     virt_viewer_display_vnc,
+                     VIRT_VIEWER,
+                     DISPLAY_VNC,
+                     VirtViewerDisplay);
 
 GType virt_viewer_display_vnc_get_type(void);
 
