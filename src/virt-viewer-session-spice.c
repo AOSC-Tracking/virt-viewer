@@ -1505,11 +1505,3 @@ virt_viewer_session_spice_apply_monitor_geometry(VirtViewerSession *session, GHa
                                           rect->y, rect->width, rect->height, TRUE);
     }
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

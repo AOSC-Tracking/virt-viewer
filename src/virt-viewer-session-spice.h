@@ -46,10 +46,3 @@ SpiceMainChannel* virt_viewer_session_spice_get_main_channel(VirtViewerSessionSp
 G_END_DECLS
 
 #endif /* _VIRT_VIEWER_SESSION_SPICE_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

@@ -3167,11 +3167,3 @@ void virt_viewer_app_set_supports_share_clipboard(VirtViewerApp *self, gboolean 
     priv->supports_share_clipboard = enable;
     g_object_notify(G_OBJECT(self), "supports-share-clipboard");
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

@@ -46,10 +46,3 @@ GtkWidget* virt_viewer_display_vnc_new(VirtViewerSessionVnc *session, VncDisplay
 G_END_DECLS
 
 #endif /* _VIRT_VIEWER_DISPLAY_VNC_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

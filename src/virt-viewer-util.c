@@ -732,11 +732,3 @@ configerror:
     g_hash_table_unref(displaymap);
     return NULL;
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

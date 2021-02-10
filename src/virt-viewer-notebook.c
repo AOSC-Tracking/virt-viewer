@@ -123,11 +123,3 @@ virt_viewer_notebook_new (void)
 {
     return g_object_new (VIRT_VIEWER_TYPE_NOTEBOOK, NULL);
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

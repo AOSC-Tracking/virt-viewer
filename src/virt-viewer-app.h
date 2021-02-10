@@ -110,10 +110,3 @@ void virt_viewer_app_set_supports_share_clipboard(VirtViewerApp *self, gboolean 
 G_END_DECLS
 
 #endif /* VIRT_VIEWER_APP_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

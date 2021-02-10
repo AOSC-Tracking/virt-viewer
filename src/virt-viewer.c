@@ -1156,11 +1156,3 @@ virt_viewer_new(void)
                         "flags", G_APPLICATION_NON_UNIQUE,
                         NULL);
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

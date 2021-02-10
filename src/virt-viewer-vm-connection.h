@@ -29,10 +29,3 @@ gchar* virt_viewer_vm_connection_choose_name_dialog(GtkWindow *main_window,
                                                     GError **error);
 
 #endif
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

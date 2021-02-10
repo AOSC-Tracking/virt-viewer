@@ -42,10 +42,3 @@ RemoteViewer *remote_viewer_new (void);
 G_END_DECLS
 
 #endif /* REMOTE_VIEWER_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

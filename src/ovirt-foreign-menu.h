@@ -70,10 +70,3 @@ GList *ovirt_foreign_menu_get_iso_names(OvirtForeignMenu *menu);
 G_END_DECLS
 
 #endif /* _OVIRT_FOREIGN_MENU_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

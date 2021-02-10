@@ -115,10 +115,3 @@ gint virt_viewer_display_get_nth(VirtViewerDisplay *self);
 G_END_DECLS
 
 #endif /* _VIRT_VIEWER_DISPLAY_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

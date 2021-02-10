@@ -740,10 +740,3 @@ void virt_viewer_session_vm_action(VirtViewerSession *self, gint action)
     if (klass->vm_action)
         klass->vm_action(self, action);
 }
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

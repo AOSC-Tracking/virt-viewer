@@ -269,11 +269,3 @@ virt_viewer_display_vnc_close(VirtViewerDisplay *display)
      */
     gtk_container_remove(GTK_CONTAINER(display), GTK_WIDGET(self->vnc));
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

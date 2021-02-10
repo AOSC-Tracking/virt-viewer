@@ -752,11 +752,3 @@ virt_viewer_display_get_nth(VirtViewerDisplay *self)
     priv = virt_viewer_display_get_instance_private(self);
     return priv->nth_display;
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

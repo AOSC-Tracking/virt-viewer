@@ -113,11 +113,3 @@ void virt_viewer_session_vm_action(VirtViewerSession *self, gint action);
 G_END_DECLS
 
 #endif /* _VIRT_VIEWER_SESSION_H */
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

@@ -449,11 +449,3 @@ virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window)
 
     return VIRT_VIEWER_SESSION(self);
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

@@ -253,11 +253,3 @@ remote_viewer_connect_dialog(GtkWindow *main_window, gchar **uri)
 
     return ci.response;
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

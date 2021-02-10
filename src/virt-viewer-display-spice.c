@@ -390,11 +390,3 @@ virt_viewer_display_spice_set_desktop(VirtViewerDisplay *display,
 
     g_signal_emit_by_name(display, "display-desktop-resize");
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

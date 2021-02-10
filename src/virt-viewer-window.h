@@ -66,11 +66,3 @@ void virt_viewer_window_set_kiosk(VirtViewerWindow *self, gboolean enabled);
 G_END_DECLS
 
 #endif /* _VIRT_VIEWER_WINDOW */
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

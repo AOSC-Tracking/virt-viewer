@@ -46,10 +46,3 @@ void virt_viewer_notebook_show_display(VirtViewerNotebook *nb);
 G_END_DECLS
 
 #endif /* _VIRT_VIEWER_NOTEBOOK */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

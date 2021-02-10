@@ -48,10 +48,3 @@ void virt_viewer_display_spice_set_desktop(VirtViewerDisplay *display, guint x, 
 G_END_DECLS
 
 #endif /* _VIRT_VIEWER_DISPLAY_SPICE_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

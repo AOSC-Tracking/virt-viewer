@@ -48,10 +48,3 @@ void virt_viewer_display_vte_zoom_out(VirtViewerDisplayVte *vte);
 G_END_DECLS
 
 #endif /* _VIRT_VIEWER_DISPLAY_VTE_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

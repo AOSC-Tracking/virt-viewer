@@ -26,11 +26,3 @@
 gboolean remote_viewer_connect_dialog(GtkWindow *main_window, gchar **uri);
 
 #endif /* REMOTE_VIEWER_CONNECT_H */
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

@@ -34,10 +34,3 @@ gboolean virt_viewer_auth_collect_credentials(GtkWindow *window,
                                               char **password);
 
 #endif
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */
