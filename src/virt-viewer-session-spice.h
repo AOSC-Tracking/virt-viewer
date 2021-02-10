@@ -32,35 +32,11 @@
 G_BEGIN_DECLS
 
 #define VIRT_VIEWER_TYPE_SESSION_SPICE virt_viewer_session_spice_get_type()
-
-#define VIRT_VIEWER_SESSION_SPICE(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_SESSION_SPICE, VirtViewerSessionSpice))
-
-#define VIRT_VIEWER_SESSION_SPICE_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_SESSION_SPICE, VirtViewerSessionSpiceClass))
-
-#define VIRT_VIEWER_IS_SESSION_SPICE(obj)                                \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_SESSION_SPICE))
-
-#define VIRT_VIEWER_IS_SESSION_SPICE_CLASS(klass)                        \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_SESSION_SPICE))
-
-#define VIRT_VIEWER_SESSION_SPICE_GET_CLASS(obj)                        \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_SESSION_SPICE, VirtViewerSessionSpiceClass))
-
-typedef struct _VirtViewerSessionSpice VirtViewerSessionSpice;
-typedef struct _VirtViewerSessionSpiceClass VirtViewerSessionSpiceClass;
-typedef struct _VirtViewerSessionSpicePrivate VirtViewerSessionSpicePrivate;
-
-struct _VirtViewerSessionSpice {
-    VirtViewerSession parent;
-
-    VirtViewerSessionSpicePrivate *priv;
-};
-
-struct _VirtViewerSessionSpiceClass {
-    VirtViewerSessionClass parent_class;
-};
+G_DECLARE_FINAL_TYPE(VirtViewerSessionSpice,
+                     virt_viewer_session_spice,
+                     VIRT_VIEWER,
+                     SESSION_SPICE,
+                     VirtViewerSession)
 
 GType virt_viewer_session_spice_get_type(void);
 
