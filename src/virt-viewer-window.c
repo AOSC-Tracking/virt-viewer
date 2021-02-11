@@ -80,6 +80,8 @@ static void virt_viewer_window_toolbar_setup(VirtViewerWindow *self);
 static GtkMenu* virt_viewer_window_get_keycombo_menu(VirtViewerWindow *self);
 static void virt_viewer_window_get_minimal_dimensions(VirtViewerWindow *self, guint *width, guint *height);
 static gint virt_viewer_window_get_minimal_zoom_level(VirtViewerWindow *self);
+static void virt_viewer_window_set_fullscreen(VirtViewerWindow *self,
+                                              gboolean fullscreen);
 
 enum {
     PROP_0,
@@ -340,6 +342,221 @@ can_activate_cb (GtkWidget *widget G_GNUC_UNUSED,
 }
 
 static void
+virt_viewer_window_action_zoom_out(GSimpleAction *act G_GNUC_UNUSED,
+                                   GVariant *param G_GNUC_UNUSED,
+                                   gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    virt_viewer_window_zoom_out(VIRT_VIEWER_WINDOW(opaque));
+}
+
+static void
+virt_viewer_window_action_zoom_in(GSimpleAction *act G_GNUC_UNUSED,
+                                  GVariant *param G_GNUC_UNUSED,
+                                  gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    virt_viewer_window_zoom_in(VIRT_VIEWER_WINDOW(opaque));
+}
+
+static void
+virt_viewer_window_action_zoom_reset(GSimpleAction *act G_GNUC_UNUSED,
+                                     GVariant *param G_GNUC_UNUSED,
+                                     gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    virt_viewer_window_zoom_reset(VIRT_VIEWER_WINDOW(opaque));
+}
+
+static void
+virt_viewer_window_action_quit(GSimpleAction *act G_GNUC_UNUSED,
+                               GVariant *param G_GNUC_UNUSED,
+                               gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    VirtViewerWindow *self = VIRT_VIEWER_WINDOW(opaque);
+
+    virt_viewer_app_maybe_quit(self->app, self);
+}
+
+static void
+virt_viewer_window_action_minimize(GSimpleAction *act G_GNUC_UNUSED,
+                                   GVariant *param G_GNUC_UNUSED,
+                                   gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    VirtViewerWindow *self = VIRT_VIEWER_WINDOW(opaque);
+
+    gtk_window_iconify(GTK_WINDOW(self->window));
+}
+
+static void
+virt_viewer_window_action_about(GSimpleAction *act G_GNUC_UNUSED,
+                                GVariant *param G_GNUC_UNUSED,
+                                gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    virt_viewer_window_show_about(VIRT_VIEWER_WINDOW(opaque));
+}
+
+static void
+virt_viewer_window_action_guest_details(GSimpleAction *act G_GNUC_UNUSED,
+                                        GVariant *param G_GNUC_UNUSED,
+                                        gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    virt_viewer_window_show_guest_details(VIRT_VIEWER_WINDOW(opaque));
+}
+
+static void
+virt_viewer_window_action_fullscreen(GSimpleAction *act,
+                                     GVariant *state,
+                                     gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    VirtViewerWindow *self = VIRT_VIEWER_WINDOW(opaque);
+    gboolean fullscreen = g_variant_get_boolean(state);
+
+    g_simple_action_set_state(act, g_variant_new_boolean(fullscreen));
+
+    virt_viewer_window_set_fullscreen(self, fullscreen);
+}
+
+static void
+virt_viewer_window_action_send_key(GSimpleAction *act G_GNUC_UNUSED,
+                                   GVariant *param,
+                                   gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    VirtViewerWindow *self = VIRT_VIEWER_WINDOW(opaque);
+
+    g_return_if_fail(self->display != NULL);
+    gsize nkeys = 0;
+    const guint *keys = g_variant_get_fixed_array(param,
+                                                  &nkeys,
+                                                  sizeof(guint32));
+    g_return_if_fail(keys != NULL);
+
+    virt_viewer_display_send_keys(VIRT_VIEWER_DISPLAY(self->display),
+                                  keys, nkeys);
+}
+
+static void
+virt_viewer_window_action_screenshot(GSimpleAction *act G_GNUC_UNUSED,
+                                     GVariant *param G_GNUC_UNUSED,
+                                     gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    virt_viewer_window_screenshot(VIRT_VIEWER_WINDOW(opaque));
+}
+
+static void
+virt_viewer_window_action_usb_device_select(GSimpleAction *act G_GNUC_UNUSED,
+                                            GVariant *param G_GNUC_UNUSED,
+                                            gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    VirtViewerWindow *self = VIRT_VIEWER_WINDOW(opaque);
+
+    virt_viewer_session_usb_device_selection(virt_viewer_app_get_session(self->app),
+                                             GTK_WINDOW(self->window));
+}
+
+static void
+virt_viewer_window_action_usb_device_reset(GSimpleAction *act G_GNUC_UNUSED,
+                                           GVariant *param G_GNUC_UNUSED,
+                                           gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    VirtViewerWindow *self = VIRT_VIEWER_WINDOW(opaque);
+
+    virt_viewer_session_usb_device_reset(virt_viewer_app_get_session(self->app));
+}
+
+
+static void
+virt_viewer_window_action_release_cursor(GSimpleAction *act G_GNUC_UNUSED,
+                                         GVariant *param G_GNUC_UNUSED,
+                                         gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    VirtViewerWindow *self = VIRT_VIEWER_WINDOW(opaque);
+
+    g_return_if_fail(self->display != NULL);
+    virt_viewer_display_release_cursor(VIRT_VIEWER_DISPLAY(self->display));
+}
+
+static void
+virt_viewer_window_action_preferences(GSimpleAction *act G_GNUC_UNUSED,
+                                      GVariant *param G_GNUC_UNUSED,
+                                      gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    VirtViewerWindow *self = VIRT_VIEWER_WINDOW(opaque);
+
+    virt_viewer_app_show_preferences(self->app, self->window);
+}
+
+static void
+virt_viewer_window_action_change_cd(GSimpleAction *act G_GNUC_UNUSED,
+                                    GVariant *param G_GNUC_UNUSED,
+                                    gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    virt_viewer_window_change_cd(VIRT_VIEWER_WINDOW(opaque));
+}
+
+static GActionEntry actions[] = {
+    { .name = "zoom-out",
+      .activate = virt_viewer_window_action_zoom_out },
+    { .name = "zoom-in",
+      .activate = virt_viewer_window_action_zoom_in },
+    { .name = "zoom-reset",
+      .activate = virt_viewer_window_action_zoom_reset },
+    { .name = "quit",
+      .activate = virt_viewer_window_action_quit },
+    { .name = "minimize",
+      .activate = virt_viewer_window_action_minimize },
+    { .name = "about",
+      .activate = virt_viewer_window_action_about },
+    { .name = "guest-details",
+      .activate = virt_viewer_window_action_guest_details },
+    { .name = "fullscreen",
+      .state = "false",
+      .change_state = virt_viewer_window_action_fullscreen },
+    { .name = "send-key",
+      .parameter_type = "au",
+      .activate = virt_viewer_window_action_send_key },
+    { .name = "screenshot",
+      .activate = virt_viewer_window_action_screenshot },
+    { .name = "usb-device-select",
+      .activate = virt_viewer_window_action_usb_device_select },
+    { .name = "usb-device-reset",
+      .activate = virt_viewer_window_action_usb_device_reset },
+    { .name = "release-cursor",
+      .activate = virt_viewer_window_action_release_cursor },
+    { .name = "preferences",
+      .activate = virt_viewer_window_action_preferences },
+    { .name = "change-cd",
+      .activate = virt_viewer_window_action_change_cd },
+};
+
+static void
 virt_viewer_window_init (VirtViewerWindow *self)
 {
     GtkWidget *vbox;
@@ -381,6 +598,10 @@ virt_viewer_window_init (VirtViewerWindow *self)
     gtk_box_pack_end(GTK_BOX(vbox), GTK_WIDGET(self->notebook), TRUE, TRUE, 0);
 
     self->window = GTK_WIDGET(gtk_builder_get_object(self->builder, "viewer"));
+
+    g_action_map_add_action_entries(G_ACTION_MAP(self->window), actions,
+                                    G_N_ELEMENTS(actions), self);
+
     gtk_window_add_accel_group(GTK_WINDOW(self->window), self->accel_group);
 
     virt_viewer_window_update_title(self);
@@ -639,7 +860,7 @@ virt_viewer_window_enter_fullscreen(VirtViewerWindow *self, gint monitor)
 
 #define MAX_KEY_COMBO 4
 struct keyComboDef {
-    guint keys[MAX_KEY_COMBO];
+    guint32 keys[MAX_KEY_COMBO];
     const char *accel_label;
     const gchar* accel_path;
 };
@@ -665,7 +886,7 @@ static const struct keyComboDef keyCombos[] = {
 };
 
 static guint
-get_nkeys(const guint *keys)
+get_nkeys(const guint32 *keys)
 {
     guint i;
 
@@ -680,7 +901,7 @@ virt_viewer_window_menu_send(GtkWidget *menu,
                              VirtViewerWindow *self)
 {
     g_return_if_fail(self->display != NULL);
-    guint *keys = g_object_get_data(G_OBJECT(menu), "vv-keys");
+    guint32 *keys = g_object_get_data(G_OBJECT(menu), "vv-keys");
     g_return_if_fail(keys != NULL);
 
     virt_viewer_display_send_keys(VIRT_VIEWER_DISPLAY(self->display),
@@ -702,7 +923,7 @@ virt_viewer_menu_add_combo(VirtViewerWindow *self, GtkMenu *menu,
             /* make accel work in fullscreen */
             g_signal_connect(item, "can-activate-accel", G_CALLBACK(can_activate_cb), self);
         }
-        guint *ckeys = g_memdup(keys, (get_nkeys(keys) + 1) * sizeof(guint));
+        guint32 *ckeys = g_memdup(keys, (get_nkeys(keys) + 1) * sizeof(guint32));
         g_object_set_data_full(G_OBJECT(item), "vv-keys", ckeys, g_free);
         g_signal_connect(item, "activate", G_CALLBACK(virt_viewer_window_menu_send), self);
     }
@@ -805,36 +1026,6 @@ virt_viewer_window_get_keycombo_menu(VirtViewerWindow *self)
     return menu;
 }
 
-static void
-action_zoom_in(G_GNUC_UNUSED GSimpleAction *action,
-               G_GNUC_UNUSED GVariant *state,
-               gpointer user_data)
-{
-    virt_viewer_window_zoom_in(VIRT_VIEWER_WINDOW(user_data));
-}
-
-static void
-action_zoom_out(G_GNUC_UNUSED GSimpleAction *action,
-                G_GNUC_UNUSED GVariant *state,
-                gpointer user_data)
-{
-    virt_viewer_window_zoom_out(VIRT_VIEWER_WINDOW(user_data));
-}
-
-static void
-action_zoom_reset(G_GNUC_UNUSED GSimpleAction *action,
-                  G_GNUC_UNUSED GVariant *state,
-                  gpointer user_data)
-{
-    virt_viewer_window_zoom_reset(VIRT_VIEWER_WINDOW(user_data));
-}
-
-/* Keep keypad_action_entries and keypad_action_accels in sync */
-static const GActionEntry keypad_action_entries[] = {
-    { .name = "zoom-in", .activate = action_zoom_in },
-    { .name = "zoom-out", .activate = action_zoom_out },
-    { .name = "zoom-reset", .activate = action_zoom_reset },
-};
 
 struct VirtViewerActionAccels {
     const char *accels[2];
@@ -928,9 +1119,6 @@ virt_viewer_window_enable_modifiers(VirtViewerWindow *self)
     if (!virt_viewer_app_get_enable_accel(self->app)
         && gtk_accel_map_lookup_entry("<virt-viewer>/view/zoom-out", &key)
         && key.accel_key != 0) {
-        g_action_map_add_action_entries(G_ACTION_MAP(self->window),
-                                        keypad_action_entries, G_N_ELEMENTS(keypad_action_entries),
-                                        self);
         for (i = 0; i < G_N_ELEMENTS(action_accels); i++) {
             gtk_application_set_accels_for_action(GTK_APPLICATION(self->app),
                                                   action_accels[i].action,
