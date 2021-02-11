@@ -70,20 +70,20 @@
                           <object class="GtkMenuItem" id="menu-file-smartcard-insert">
                             <property name="use-action-appearance">False</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">app.smartcard-insert</property>
                             <property name="accel-path">&lt;virt-viewer&gt;/file/smartcard-insert</property>
                             <property name="label" translatable="yes">Smartcard insertion</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_file_smartcard_insert" swapped="no"/>
                           </object>
                         </child>
                         <child>
                           <object class="GtkMenuItem" id="menu-file-smartcard-remove">
                             <property name="use-action-appearance">False</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">app.smartcard-remove</property>
                             <property name="accel-path">&lt;virt-viewer&gt;/file/smartcard-remove</property>
                             <property name="label" translatable="yes">Smartcard removal</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_file_smartcard_remove" swapped="no"/>
                           </object>
                         </child>
                         <child>
@@ -138,9 +138,9 @@
                           <object class="GtkCheckMenuItem" id="menu-vm-pause">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">app.machine-pause</property>
                             <property name="label" translatable="yes">_Pause</property>
                             <property name="use-underline">True</property>
-                            <signal name="toggled" handler="virt_viewer_window_menu_machine_pause" swapped="no"/>
                           </object>
                         </child>
                         <child>
@@ -153,18 +153,18 @@
                           <object class="GtkMenuItem" id="menu-vm-reset">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">app.machine-reset</property>
                             <property name="label" translatable="yes">_Reset</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_machine_reset" swapped="no"/>
                           </object>
                         </child>
                         <child>
                           <object class="GtkMenuItem" id="menu-vm-powerdown">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">app.machine-powerdown</property>
                             <property name="label" translatable="yes">_Power down</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_machine_powerdown" swapped="no"/>
                           </object>
                         </child>
                       </object>

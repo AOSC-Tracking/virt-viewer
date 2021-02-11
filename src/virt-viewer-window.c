@@ -52,9 +52,6 @@
 void virt_viewer_window_menu_view_zoom_out(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_view_zoom_in(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_view_zoom_reset(GtkWidget *menu, VirtViewerWindow *self);
-void virt_viewer_window_menu_machine_reset(GtkWidget *menu, VirtViewerWindow *self);
-void virt_viewer_window_menu_machine_powerdown(GtkWidget *menu, VirtViewerWindow *self);
-void virt_viewer_window_menu_machine_pause(GtkWidget *menu, VirtViewerWindow *self);
 gboolean virt_viewer_window_delete(GtkWidget *src, void *dummy, VirtViewerWindow *self);
 void virt_viewer_window_menu_file_quit(GtkWidget *src, VirtViewerWindow *self);
 void virt_viewer_window_guest_details_response(GtkDialog *dialog, gint response_id, gpointer user_data);
@@ -65,8 +62,6 @@ void virt_viewer_window_menu_send(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_file_screenshot(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_file_usb_device_selection(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_file_usb_device_reset(GtkWidget *menu, VirtViewerWindow *self);
-void virt_viewer_window_menu_file_smartcard_insert(GtkWidget *menu, VirtViewerWindow *self);
-void virt_viewer_window_menu_file_smartcard_remove(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_view_release_cursor(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_preferences_cb(GtkWidget *menu, VirtViewerWindow *self);
 void virt_viewer_window_menu_change_cd_activate(GtkWidget *menu, VirtViewerWindow *self);
@@ -640,36 +635,6 @@ virt_viewer_window_get_real_zoom_level(VirtViewerWindow *self)
     virt_viewer_display_get_desktop_size(self->display, &width, &height);
 
     return round((double) NORMAL_ZOOM_LEVEL * allocation.width / width);
-}
-
-G_MODULE_EXPORT void
-virt_viewer_window_menu_machine_reset(GtkWidget *menu G_GNUC_UNUSED,
-                                      VirtViewerWindow *self)
-{
-    virt_viewer_session_vm_action(virt_viewer_app_get_session(self->app),
-                                  VIRT_VIEWER_SESSION_VM_ACTION_RESET);
-}
-
-G_MODULE_EXPORT void
-virt_viewer_window_menu_machine_powerdown(GtkWidget *menu G_GNUC_UNUSED,
-                                      VirtViewerWindow *self)
-{
-    virt_viewer_session_vm_action(virt_viewer_app_get_session(self->app),
-                                  VIRT_VIEWER_SESSION_VM_ACTION_POWER_DOWN);
-}
-
-G_MODULE_EXPORT void
-virt_viewer_window_menu_machine_pause(GtkWidget *menu G_GNUC_UNUSED,
-                                      VirtViewerWindow *self)
-{
-    gint action;
-
-    if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menu)))
-        action = VIRT_VIEWER_SESSION_VM_ACTION_PAUSE;
-    else
-        action = VIRT_VIEWER_SESSION_VM_ACTION_CONTINUE;
-
-    virt_viewer_session_vm_action(virt_viewer_app_get_session(self->app), action);
 }
 
 void
@@ -1353,20 +1318,6 @@ virt_viewer_window_menu_file_usb_device_reset(GtkWidget *menu G_GNUC_UNUSED,
                                               VirtViewerWindow *self)
 {
     virt_viewer_session_usb_device_reset(virt_viewer_app_get_session(self->app));
-}
-
-G_MODULE_EXPORT void
-virt_viewer_window_menu_file_smartcard_insert(GtkWidget *menu G_GNUC_UNUSED,
-                                              VirtViewerWindow *self)
-{
-    virt_viewer_session_smartcard_insert(virt_viewer_app_get_session(self->app));
-}
-
-G_MODULE_EXPORT void
-virt_viewer_window_menu_file_smartcard_remove(GtkWidget *menu G_GNUC_UNUSED,
-                                              VirtViewerWindow *self)
-{
-    virt_viewer_session_smartcard_remove(virt_viewer_app_get_session(self->app));
 }
 
 G_MODULE_EXPORT void
