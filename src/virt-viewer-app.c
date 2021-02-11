@@ -105,6 +105,7 @@ static void virt_viewer_update_usbredir_accels(VirtViewerApp *self);
 static void virt_viewer_app_add_option_entries(VirtViewerApp *self, GOptionContext *context, GOptionGroup *group);
 static VirtViewerWindow *virt_viewer_app_get_nth_window(VirtViewerApp *self, gint nth);
 static VirtViewerWindow *virt_viewer_app_get_vte_window(VirtViewerApp *self, const gchar *name);
+static void virt_viewer_app_set_actions_sensitive(VirtViewerApp *self);
 
 /* Application actions */
 static void virt_viewer_app_action_monitor(GSimpleAction *act,
@@ -1033,17 +1034,38 @@ virt_viewer_app_set_usb_reset_sensitive(VirtViewerApp *self, gboolean sensitive)
 }
 
 static void
-set_menus_sensitive(gpointer value, gpointer user_data)
+set_actions_sensitive(gpointer value, gpointer user_data)
 {
-    virt_viewer_window_set_menus_sensitive(VIRT_VIEWER_WINDOW(value),
-                                           GPOINTER_TO_INT(user_data));
+    VirtViewerApp *self = VIRT_VIEWER_APP(user_data);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    virt_viewer_window_set_actions_sensitive(VIRT_VIEWER_WINDOW(value),
+                                             priv->connected);
 }
 
-void
-virt_viewer_app_set_menus_sensitive(VirtViewerApp *self, gboolean sensitive)
+static void
+virt_viewer_app_set_actions_sensitive(VirtViewerApp *self)
 {
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    g_list_foreach(priv->windows, set_menus_sensitive, GINT_TO_POINTER(sensitive));
+    GActionMap *map = G_ACTION_MAP(self);
+    GAction *action;
+
+    g_list_foreach(priv->windows, set_actions_sensitive, self);
+
+    action = g_action_map_lookup_action(map, "machine-pause");
+    g_simple_action_set_enabled(G_SIMPLE_ACTION(action),
+                                priv->connected &&
+                                priv->vm_ui);
+
+    action = g_action_map_lookup_action(map, "machine-reset");
+    g_simple_action_set_enabled(G_SIMPLE_ACTION(action),
+                                priv->connected &&
+                                priv->vm_ui);
+
+    action = g_action_map_lookup_action(map, "machine-powerdown");
+    g_simple_action_set_enabled(G_SIMPLE_ACTION(action),
+                                priv->connected &&
+                                priv->vm_ui);
+
 }
 
 static VirtViewerWindow *
@@ -1709,6 +1731,7 @@ virt_viewer_app_deactivate(VirtViewerApp *self, gboolean connect_error)
 #endif
     priv->grabbed = FALSE;
     virt_viewer_app_update_title(self);
+    virt_viewer_app_set_actions_sensitive(self);
 
     if (priv->authretry) {
         priv->authretry = FALSE;
@@ -1732,6 +1755,8 @@ virt_viewer_app_connected(VirtViewerSession *session G_GNUC_UNUSED,
         virt_viewer_app_show_status(self, "%s", "");
     else
         virt_viewer_app_show_status(self, _("Connected to graphic server"));
+
+    virt_viewer_app_set_actions_sensitive(self);
 }
 
 static void
@@ -1924,6 +1949,7 @@ virt_viewer_app_set_property (GObject *object, guint property_id,
     g_return_if_fail(VIRT_VIEWER_IS_APP(object));
     VirtViewerApp *self = VIRT_VIEWER_APP(object);
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    GAction *action;
 
     switch (property_id) {
     case PROP_VERBOSE:
@@ -1968,10 +1994,16 @@ virt_viewer_app_set_property (GObject *object, guint property_id,
 
     case PROP_VM_UI:
         priv->vm_ui = g_value_get_boolean(value);
+
+        virt_viewer_app_set_actions_sensitive(self);
         break;
 
     case PROP_VM_RUNNING:
         priv->vm_running = g_value_get_boolean(value);
+
+        action = g_action_map_lookup_action(G_ACTION_MAP(self), "machine-pause");
+        g_simple_action_set_state(G_SIMPLE_ACTION(action),
+                                  g_variant_new_boolean(priv->vm_running));
         break;
 
     case PROP_CONFIG_SHARE_CLIPBOARD:
@@ -2421,6 +2453,7 @@ virt_viewer_app_on_application_startup(GApplication *app)
         opt_zoom = NORMAL_ZOOM_LEVEL;
     }
 
+    virt_viewer_app_set_actions_sensitive(self);
     virt_viewer_window_set_zoom_level(priv->main_window, opt_zoom);
 
     // Restore initial state of config-share-clipboard property from config and notify about it
@@ -2881,35 +2914,6 @@ update_menu_displays_sort(gconstpointer a, gconstpointer b)
         return 0;
 }
 
-static GtkMenuShell *
-window_empty_display_submenu(VirtViewerWindow *window)
-{
-    /* Because of what apparently is a gtk+2 bug (rhbz#922712), we
-     * cannot recreate the submenu every time we need to refresh it,
-     * otherwise the application may get frozen with the keyboard and
-     * mouse grabbed if gtk_menu_item_set_submenu is called while
-     * the menu is displayed. Reusing the same menu every time
-     * works around this issue.
-     */
-    GtkMenuItem *menu = virt_viewer_window_get_menu_displays(window);
-    GtkMenuShell *submenu;
-
-    submenu = GTK_MENU_SHELL(gtk_menu_item_get_submenu(menu));
-    if (submenu) {
-        GList *subitems;
-        GList *it;
-        subitems = gtk_container_get_children(GTK_CONTAINER(submenu));
-        for (it = subitems; it != NULL; it = it->next) {
-            gtk_container_remove(GTK_CONTAINER(submenu), GTK_WIDGET(it->data));
-        }
-        g_list_free(subitems);
-    } else {
-        submenu = GTK_MENU_SHELL(gtk_menu_new());
-        gtk_menu_item_set_submenu(menu, GTK_WIDGET(submenu));
-    }
-
-    return submenu;
-}
 
 static void
 window_update_menu_displays_cb(gpointer value,
@@ -2917,32 +2921,29 @@ window_update_menu_displays_cb(gpointer value,
 {
     VirtViewerApp *self = VIRT_VIEWER_APP(user_data);
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    GtkMenuShell *submenu;
+    VirtViewerWindow *window = VIRT_VIEWER_WINDOW(value);
+    GMenuModel *menu;
     GList *keys = g_hash_table_get_keys(priv->displays);
     GList *tmp;
-    gboolean sensitive;
     int nth;
 
     keys = g_list_sort(keys, update_menu_displays_sort);
-    submenu = window_empty_display_submenu(VIRT_VIEWER_WINDOW(value));
 
-    sensitive = (keys != NULL);
-    virt_viewer_window_set_menu_displays_sensitive(VIRT_VIEWER_WINDOW(value), sensitive);
+    menu = virt_viewer_window_get_menu_displays(window);
+    g_menu_remove_all(G_MENU(menu));
 
     tmp = keys;
     while (tmp) {
-        GtkWidget *item;
+        GMenuItem *item;
         gchar *label;
         gchar *actionname;
 
         nth = GPOINTER_TO_INT(tmp->data);
         actionname = g_strdup_printf("app.monitor-%d", nth);
         label = g_strdup_printf(_("Display _%d"), nth + 1);
-        item = gtk_check_menu_item_new_with_mnemonic(label);
+        item = g_menu_item_new(label, actionname);
 
-        gtk_actionable_set_action_name(GTK_ACTIONABLE(item), actionname);
-
-        gtk_menu_shell_append(submenu, item);
+        g_menu_append_item(G_MENU(menu), item);
 
         g_free(label);
         g_free(actionname);
@@ -2956,24 +2957,21 @@ window_update_menu_displays_cb(gpointer value,
 
         if (VIRT_VIEWER_IS_DISPLAY_VTE(display)) {
             gchar *name = NULL;
-            GtkWidget *item;
+            GMenuItem *item;
             gchar *actionname;
 
             g_object_get(display, "name", &name, NULL);
             actionname = g_strdup_printf("app.vte-%d", nth);
 
-            item = gtk_check_menu_item_new_with_label(name);
+            item = g_menu_item_new(name, actionname);
 
-            gtk_actionable_set_action_name(GTK_ACTIONABLE(item), actionname);
-
-            gtk_menu_shell_append(submenu, item);
+            g_menu_append_item(G_MENU(menu), item);
 
             g_free(actionname);
             g_free(name);
         }
     }
 
-    gtk_widget_show_all(GTK_WIDGET(submenu));
     g_list_free(keys);
 }
 

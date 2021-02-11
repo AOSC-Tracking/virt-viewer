@@ -18,316 +18,106 @@
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkMenuBar" id="top-menu">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <child>
-                  <object class="GtkMenuItem" id="menu-file">
-                    <property name="use-action-appearance">False</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">_File</property>
-                    <property name="use-underline">True</property>
-                    <child type="submenu">
-                      <object class="GtkMenu" id="menu1">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="accel-group">accelgroup</property>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-file-screenshot">
-                            <property name="use-action-appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">win.screenshot</property>
-                            <property name="label" translatable="yes">_Screenshot</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-file-usb-device-selection">
-                            <property name="use-action-appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">win.usb-device-select</property>
-                            <property name="label" translatable="yes">_USB device selection</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-file-usb-device-reset">
-                            <property name="use-action-appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">win.usb-device-reset</property>
-                            <property name="accel-path">&lt;virt-viewer&gt;/file/usb-device-reset</property>
-                            <property name="label" translatable="yes">USB device _reset</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-file-smartcard-insert">
-                            <property name="use-action-appearance">False</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">app.smartcard-insert</property>
-                            <property name="accel-path">&lt;virt-viewer&gt;/file/smartcard-insert</property>
-                            <property name="label" translatable="yes">Smartcard insertion</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-file-smartcard-remove">
-                            <property name="use-action-appearance">False</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">app.smartcard-remove</property>
-                            <property name="accel-path">&lt;virt-viewer&gt;/file/smartcard-remove</property>
-                            <property name="label" translatable="yes">Smartcard removal</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-change-cd">
-                            <property name="can-focus">False</property>
-                            <property name="action-name">win.change-cd</property>
-                            <property name="label" translatable="yes">_Change CD</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-preferences">
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">win.preferences</property>
-                            <property name="label" translatable="yes">_Preferences</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkSeparatorMenuItem" id="separatormenuitem1">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="imagemenuitem5">
-                            <property name="use-action-appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">win.quit</property>
-                            <property name="label" translatable="yes">_Quit</property>
-                            <property name="use-underline">True</property>
-                            <accelerator key="q" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkMenuItem" id="menu-machine">
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">_Machine</property>
-                    <property name="use-underline">True</property>
-                    <child type="submenu">
-                      <object class="GtkMenu">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <child>
-                          <object class="GtkCheckMenuItem" id="menu-vm-pause">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">app.machine-pause</property>
-                            <property name="label" translatable="yes">_Pause</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkSeparatorMenuItem">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-vm-reset">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">app.machine-reset</property>
-                            <property name="label" translatable="yes">_Reset</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-vm-powerdown">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">app.machine-powerdown</property>
-                            <property name="label" translatable="yes">_Power down</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkMenuItem" id="menu-view">
-                    <property name="use-action-appearance">False</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">_View</property>
-                    <property name="use-underline">True</property>
-                    <child type="submenu">
-                      <object class="GtkMenu" id="menu2">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="accel-group">accelgroup</property>
-                        <child>
-                          <object class="GtkCheckMenuItem" id="menu-view-fullscreen">
-                            <property name="use-action-appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">win.fullscreen</property>
-                            <property name="accel-path">&lt;virt-viewer&gt;/view/toggle-fullscreen</property>
-                            <property name="label" translatable="yes">_Full screen</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-view-zoom">
-                            <property name="use-action-appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">_Zoom</property>
-                            <property name="use-underline">True</property>
-                            <child type="submenu">
-                              <object class="GtkMenu" id="menu4">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="accel-group">accelgroup</property>
-                                <child>
-                                  <object class="GtkMenuItem" id="menu-view-zoom-in">
-                                    <property name="use-action-appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="action-name">win.zoom-in</property>
-                                    <property name="accel-path">&lt;virt-viewer&gt;/view/zoom-in</property>
-                                    <property name="label" translatable="yes">Zoom _In</property>
-                                    <property name="use-underline">True</property>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkMenuItem" id="menu-view-zoom-out">
-                                    <property name="use-action-appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="action-name">win.zoom-out</property>
-                                    <property name="accel-path">&lt;virt-viewer&gt;/view/zoom-out</property>
-                                    <property name="label" translatable="yes">Zoom _Out</property>
-                                    <property name="use-underline">True</property>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkSeparatorMenuItem" id="separatormenuitem4">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkMenuItem" id="menu-view-zoom-reset">
-                                    <property name="use-action-appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="action-name">win.zoom-reset</property>
-                                    <property name="accel-path">&lt;virt-viewer&gt;/view/zoom-reset</property>
-                                    <property name="label" translatable="yes">_Normal Size</property>
-                                    <property name="use-underline">True</property>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-displays">
-                            <property name="use-action-appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">_Displays</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-view-release-cursor">
-                            <property name="use-action-appearance">False</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">win.release-cursor</property>
-                            <property name="accel-path">&lt;virt-viewer&gt;/view/release-cursor</property>
-                            <property name="label" translatable="yes">Release cursor</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkMenuItem" id="menu-send">
-                    <property name="use-action-appearance">False</property>
-                    <property name="visible">True</property>
-                    <property name="sensitive">False</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">_Send key</property>
-                    <property name="use-underline">True</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkMenuItem" id="menu-help">
-                    <property name="use-action-appearance">False</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">_Help</property>
-                    <property name="use-underline">True</property>
-                    <child type="submenu">
-                      <object class="GtkMenu" id="menu3">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <child>
-                          <object class="GtkMenuItem" id="menu-help-guest-details">
-                            <property name="use-action-appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">win.guest-details</property>
-                            <property name="label" translatable="yes">_Guest Details</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuItem" id="imagemenuitem10">
-                            <property name="use-action-appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="action-name">win.about</property>
-                            <property name="label" translatable="yes">_About</property>
-                            <property name="use-underline">True</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>
             <property name="index">-1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="header">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="show-close-button">True</property>
+        <child>
+          <object class="GtkMenuButton" id="header-action">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">open-menu-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="header-send-key">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">preferences-desktop-keyboard-shortcuts-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="header-usb">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="action-name">win.usb-device-select</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">audio-card-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="header-machine">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">computer-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="header-fullscreen">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="action-name">win.fullscreen</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">view-fullscreen-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+            <property name="position">4</property>
           </packing>
         </child>
       </object>
