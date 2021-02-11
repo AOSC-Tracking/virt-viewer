@@ -2187,6 +2187,92 @@ virt_viewer_update_usbredir_accels(VirtViewerApp *self)
 }
 
 static void
+virt_viewer_app_action_machine_reset(GSimpleAction *act G_GNUC_UNUSED,
+                                     GVariant *param G_GNUC_UNUSED,
+                                     gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_APP(opaque));
+
+    VirtViewerApp *self = VIRT_VIEWER_APP(opaque);
+
+    virt_viewer_session_vm_action(virt_viewer_app_get_session(self),
+                                  VIRT_VIEWER_SESSION_VM_ACTION_RESET);
+}
+
+static void
+virt_viewer_app_action_machine_powerdown(GSimpleAction *act G_GNUC_UNUSED,
+                                         GVariant *param G_GNUC_UNUSED,
+                                         gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_APP(opaque));
+
+    VirtViewerApp *self = VIRT_VIEWER_APP(opaque);
+
+    virt_viewer_session_vm_action(virt_viewer_app_get_session(self),
+                                  VIRT_VIEWER_SESSION_VM_ACTION_POWER_DOWN);
+}
+
+static void
+virt_viewer_app_action_machine_pause(GSimpleAction *act,
+                                     GVariant *state,
+                                     gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_APP(opaque));
+
+    VirtViewerApp *self = VIRT_VIEWER_APP(opaque);
+    gboolean paused = g_variant_get_boolean(state);
+    gint action;
+
+    g_simple_action_set_state(act, g_variant_new_boolean(paused));
+
+    if (paused)
+        action = VIRT_VIEWER_SESSION_VM_ACTION_PAUSE;
+    else
+        action = VIRT_VIEWER_SESSION_VM_ACTION_CONTINUE;
+
+    virt_viewer_session_vm_action(virt_viewer_app_get_session(self), action);
+}
+
+
+static void
+virt_viewer_app_action_smartcard_insert(GSimpleAction *act G_GNUC_UNUSED,
+                                        GVariant *param G_GNUC_UNUSED,
+                                        gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_APP(opaque));
+
+    VirtViewerApp *self = VIRT_VIEWER_APP(opaque);
+
+    virt_viewer_session_smartcard_insert(virt_viewer_app_get_session(self));
+}
+
+static void
+virt_viewer_app_action_smartcard_remove(GSimpleAction *act G_GNUC_UNUSED,
+                                        GVariant *param G_GNUC_UNUSED,
+                                        gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_APP(opaque));
+
+    VirtViewerApp *self = VIRT_VIEWER_APP(opaque);
+
+    virt_viewer_session_smartcard_remove(virt_viewer_app_get_session(self));
+}
+
+static GActionEntry actions[] = {
+    { .name = "machine-reset",
+      .activate = virt_viewer_app_action_machine_reset },
+    { .name = "machine-powerdown",
+      .activate = virt_viewer_app_action_machine_powerdown },
+    { .name = "machine-pause",
+      .state = "false",
+      .change_state = virt_viewer_app_action_machine_pause },
+    { .name = "smartcard-insert",
+      .activate = virt_viewer_app_action_smartcard_insert },
+    { .name = "smartcard-remove",
+      .activate = virt_viewer_app_action_smartcard_remove },
+};
+
+static void
 virt_viewer_app_on_application_startup(GApplication *app)
 {
     VirtViewerApp *self = VIRT_VIEWER_APP(app);
@@ -2194,6 +2280,11 @@ virt_viewer_app_on_application_startup(GApplication *app)
     GError *error = NULL;
 
     G_APPLICATION_CLASS(virt_viewer_app_parent_class)->startup(app);
+
+    g_action_map_add_action_entries(G_ACTION_MAP(self),
+                                    actions,
+                                    G_N_ELEMENTS(actions),
+                                    self);
 
     priv->resource = virt_viewer_get_resource();
 
