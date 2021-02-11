@@ -385,7 +385,6 @@ virt_viewer_window_init (VirtViewerWindow *self)
 
     virt_viewer_window_update_title(self);
     gtk_window_set_resizable(GTK_WINDOW(self->window), TRUE);
-    gtk_window_set_has_resize_grip(GTK_WINDOW(self->window), FALSE);
     self->accel_enabled = TRUE;
 
     accels = gtk_accel_groups_from_object(G_OBJECT(self->window));
