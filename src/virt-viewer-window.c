@@ -1188,10 +1188,11 @@ virt_viewer_window_menu_view_release_cursor(GtkWidget *menu G_GNUC_UNUSED,
     virt_viewer_display_release_cursor(VIRT_VIEWER_DISPLAY(self->display));
 }
 
-G_MODULE_EXPORT void
-virt_viewer_window_menu_help_guest_details(GtkWidget *menu G_GNUC_UNUSED,
-                                           VirtViewerWindow *self)
+void
+virt_viewer_window_show_guest_details(VirtViewerWindow *self)
 {
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(self));
+
     GtkBuilder *ui = virt_viewer_util_load_ui("virt-viewer-guest-details.ui");
     char *name = NULL;
     char *uuid = NULL;
@@ -1226,6 +1227,13 @@ virt_viewer_window_menu_help_guest_details(GtkWidget *menu G_GNUC_UNUSED,
 }
 
 G_MODULE_EXPORT void
+virt_viewer_window_menu_help_guest_details(GtkWidget *menu G_GNUC_UNUSED,
+                                           VirtViewerWindow *self)
+{
+    virt_viewer_window_show_guest_details(self);
+}
+
+G_MODULE_EXPORT void
 virt_viewer_window_guest_details_response(GtkDialog *dialog,
                                           gint response_id,
                                           gpointer user_data G_GNUC_UNUSED)
@@ -1234,10 +1242,11 @@ virt_viewer_window_guest_details_response(GtkDialog *dialog,
         gtk_widget_hide(GTK_WIDGET(dialog));
 }
 
-G_MODULE_EXPORT void
-virt_viewer_window_menu_help_about(GtkWidget *menu G_GNUC_UNUSED,
-                                   VirtViewerWindow *self)
+void
+virt_viewer_window_show_about(VirtViewerWindow *self)
 {
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(self));
+
     GtkBuilder *about;
     GtkWidget *dialog;
     GdkPixbuf *icon;
@@ -1264,6 +1273,13 @@ virt_viewer_window_menu_help_about(GtkWidget *menu G_GNUC_UNUSED,
     gtk_widget_show_all(dialog);
 
     g_object_unref(G_OBJECT(about));
+}
+
+G_MODULE_EXPORT void
+virt_viewer_window_menu_help_about(GtkWidget *menu G_GNUC_UNUSED,
+                                   VirtViewerWindow *self)
+{
+    virt_viewer_window_show_about(self);
 }
 
 #if HAVE_OVIRT
