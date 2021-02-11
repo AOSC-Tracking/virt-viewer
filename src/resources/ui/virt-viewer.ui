@@ -39,9 +39,9 @@
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">win.screenshot</property>
                             <property name="label" translatable="yes">_Screenshot</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_file_screenshot" swapped="no"/>
                           </object>
                         </child>
                         <child>
@@ -50,9 +50,9 @@
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">win.usb-device-select</property>
                             <property name="label" translatable="yes">_USB device selection</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_file_usb_device_selection" swapped="no"/>
                           </object>
                         </child>
                         <child>
@@ -60,10 +60,10 @@
                             <property name="use-action-appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">win.usb-device-reset</property>
                             <property name="accel-path">&lt;virt-viewer&gt;/file/usb-device-reset</property>
                             <property name="label" translatable="yes">USB device _reset</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_file_usb_device_reset" swapped="no"/>
                           </object>
                         </child>
                         <child>
@@ -89,9 +89,9 @@
                         <child>
                           <object class="GtkMenuItem" id="menu-change-cd">
                             <property name="can-focus">False</property>
+                            <property name="action-name">win.change-cd</property>
                             <property name="label" translatable="yes">_Change CD</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_change_cd_activate" swapped="no"/>
                           </object>
                         </child>
                         <child>
@@ -99,9 +99,9 @@
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">win.preferences</property>
                             <property name="label" translatable="yes">_Preferences</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_preferences_cb" swapped="no"/>
                           </object>
                         </child>
                         <child>
@@ -115,9 +115,9 @@
                             <property name="use-action-appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">win.quit</property>
                             <property name="label" translatable="yes">_Quit</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_file_quit" swapped="no"/>
                             <accelerator key="q" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                           </object>
                         </child>
@@ -188,10 +188,10 @@
                             <property name="use-action-appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">win.fullscreen</property>
                             <property name="accel-path">&lt;virt-viewer&gt;/view/toggle-fullscreen</property>
                             <property name="label" translatable="yes">_Full screen</property>
                             <property name="use-underline">True</property>
-                            <signal name="toggled" handler="virt_viewer_window_menu_view_fullscreen" swapped="no"/>
                           </object>
                         </child>
                         <child>
@@ -212,10 +212,10 @@
                                     <property name="use-action-appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
+                                    <property name="action-name">win.zoom-in</property>
                                     <property name="accel-path">&lt;virt-viewer&gt;/view/zoom-in</property>
                                     <property name="label" translatable="yes">Zoom _In</property>
                                     <property name="use-underline">True</property>
-                                    <signal name="activate" handler="virt_viewer_window_menu_view_zoom_in" swapped="no"/>
                                   </object>
                                 </child>
                                 <child>
@@ -223,10 +223,10 @@
                                     <property name="use-action-appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
+                                    <property name="action-name">win.zoom-out</property>
                                     <property name="accel-path">&lt;virt-viewer&gt;/view/zoom-out</property>
                                     <property name="label" translatable="yes">Zoom _Out</property>
                                     <property name="use-underline">True</property>
-                                    <signal name="activate" handler="virt_viewer_window_menu_view_zoom_out" swapped="no"/>
                                   </object>
                                 </child>
                                 <child>
@@ -240,10 +240,10 @@
                                     <property name="use-action-appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
+                                    <property name="action-name">win.zoom-reset</property>
                                     <property name="accel-path">&lt;virt-viewer&gt;/view/zoom-reset</property>
                                     <property name="label" translatable="yes">_Normal Size</property>
                                     <property name="use-underline">True</property>
-                                    <signal name="activate" handler="virt_viewer_window_menu_view_zoom_reset" swapped="no"/>
                                   </object>
                                 </child>
                               </object>
@@ -263,10 +263,10 @@
                           <object class="GtkMenuItem" id="menu-view-release-cursor">
                             <property name="use-action-appearance">False</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">win.release-cursor</property>
                             <property name="accel-path">&lt;virt-viewer&gt;/view/release-cursor</property>
                             <property name="label" translatable="yes">Release cursor</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_view_release_cursor" swapped="no"/>
                           </object>
                         </child>
                       </object>
@@ -299,9 +299,9 @@
                             <property name="use-action-appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">win.guest-details</property>
                             <property name="label" translatable="yes">_Guest Details</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_help_guest_details" swapped="no"/>
                           </object>
                         </child>
                         <child>
@@ -309,9 +309,9 @@
                             <property name="use-action-appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="action-name">win.about</property>
                             <property name="label" translatable="yes">_About</property>
                             <property name="use-underline">True</property>
-                            <signal name="activate" handler="virt_viewer_window_menu_help_about" swapped="no"/>
                           </object>
                         </child>
                       </object>
