@@ -104,6 +104,15 @@ static void virt_viewer_update_smartcard_accels(VirtViewerApp *self);
 static void virt_viewer_update_usbredir_accels(VirtViewerApp *self);
 static void virt_viewer_app_add_option_entries(VirtViewerApp *self, GOptionContext *context, GOptionGroup *group);
 static VirtViewerWindow *virt_viewer_app_get_nth_window(VirtViewerApp *self, gint nth);
+static VirtViewerWindow *virt_viewer_app_get_vte_window(VirtViewerApp *self, const gchar *name);
+
+/* Application actions */
+static void virt_viewer_app_action_monitor(GSimpleAction *act,
+                                           GVariant *param,
+                                           gpointer opaque);
+static void virt_viewer_app_action_vte(GSimpleAction *act,
+                                       GVariant *state,
+                                       gpointer opaque);
 
 
 typedef struct _VirtViewerAppPrivate VirtViewerAppPrivate;
@@ -1054,6 +1063,32 @@ virt_viewer_app_get_nth_window(VirtViewerApp *self, gint nth)
         if (display
             && (virt_viewer_display_get_nth(display) == nth)) {
             return l->data;
+        }
+    }
+    return NULL;
+}
+
+static VirtViewerWindow *
+virt_viewer_app_get_vte_window(VirtViewerApp *self, const gchar *name)
+{
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    GList *l;
+
+    if (!name)
+        return NULL;
+
+    for (l = priv->windows; l; l = l->next) {
+        VirtViewerDisplay *display = virt_viewer_window_get_display(l->data);
+        if (display &&
+            VIRT_VIEWER_IS_DISPLAY_VTE(display)) {
+            char *thisname = NULL;
+            gboolean match;
+            g_object_get(display, "name", &thisname, NULL);
+            match = thisname && g_str_equal(name, thisname);
+            g_free(thisname);
+            if (match) {
+                return l->data;
+            }
         }
     }
     return NULL;
@@ -2258,6 +2293,87 @@ virt_viewer_app_action_smartcard_remove(GSimpleAction *act G_GNUC_UNUSED,
     virt_viewer_session_smartcard_remove(virt_viewer_app_get_session(self));
 }
 
+static void
+virt_viewer_app_action_window(VirtViewerApp *self,
+                              VirtViewerWindow *win,
+                              GSimpleAction *act,
+                              GVariant *state)
+{
+    VirtViewerDisplay *display;
+    VirtViewerAppPrivate *priv;
+    gboolean visible = g_variant_get_boolean(state);
+
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(win));
+
+    priv = virt_viewer_app_get_instance_private(self);
+    display = virt_viewer_window_get_display(win);
+
+    if (visible) {
+        virt_viewer_window_show(win);
+    } else {
+        if (virt_viewer_app_get_n_windows_visible(self) > 1) {
+            virt_viewer_window_hide(win);
+        } else {
+            virt_viewer_app_maybe_quit(self, win);
+            if (!priv->quitting)
+                /* the last item remains active, doesn't matter if we quit */
+                g_action_change_state(G_ACTION(act),
+                                      g_variant_new_boolean(TRUE));
+        }
+    }
+
+    if (!priv->quitting)
+        virt_viewer_session_update_displays_geometry(virt_viewer_display_get_session(display));
+
+    g_simple_action_set_state(act, g_variant_new_boolean(visible));
+}
+
+
+static void
+virt_viewer_app_action_monitor(GSimpleAction *act,
+                               GVariant *state,
+                               gpointer opaque)
+{
+    VirtViewerApp *self;
+    VirtViewerWindow *win;
+    VirtViewerAppPrivate *priv;
+    int nth;
+
+    g_return_if_fail(VIRT_VIEWER_IS_APP(opaque));
+    self = VIRT_VIEWER_APP(opaque);
+
+    priv = virt_viewer_app_get_instance_private(self);
+    if (priv->quitting)
+        return;
+
+    nth = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(act), "nth"));
+    win = virt_viewer_app_get_nth_window(self, nth);
+
+    virt_viewer_app_action_window(self, win, act, state);
+}
+
+static void
+virt_viewer_app_action_vte(GSimpleAction *act,
+                           GVariant *state,
+                           gpointer opaque)
+{
+    VirtViewerApp *self;
+    VirtViewerWindow *win;
+    VirtViewerAppPrivate *priv;
+    const gchar *name;
+
+    g_return_if_fail(VIRT_VIEWER_IS_APP(opaque));
+    self = VIRT_VIEWER_APP(opaque);
+
+    priv = virt_viewer_app_get_instance_private(self);
+    if (priv->quitting)
+        return;
+
+    name = g_object_get_data(G_OBJECT(act), "vte");
+    win = virt_viewer_app_get_vte_window(self, name);
+    virt_viewer_app_action_window(self, win, act, state);
+}
+
 static GActionEntry actions[] = {
     { .name = "machine-reset",
       .activate = virt_viewer_app_action_machine_reset },
@@ -2766,30 +2882,6 @@ virt_viewer_app_set_fullscreen(VirtViewerApp *self, gboolean fullscreen)
     g_object_notify(G_OBJECT(self), "fullscreen");
 }
 
-static void
-menu_display_visible_toggled_cb(GtkCheckMenuItem *checkmenuitem,
-                                VirtViewerDisplay *display)
-{
-    VirtViewerApp *self = virt_viewer_session_get_app(virt_viewer_display_get_session(display));
-    gboolean visible = gtk_check_menu_item_get_active(checkmenuitem);
-    VirtViewerWindow *vwin;
-
-    vwin = ensure_window_for_display(self, display);
-
-    if (visible) {
-        virt_viewer_window_show(vwin);
-    } else {
-        if (virt_viewer_app_get_n_windows_visible(self) > 1) {
-            virt_viewer_window_hide(vwin);
-        } else {
-            virt_viewer_app_maybe_quit(self, vwin);
-            /* the last item remains active, doesn't matter if we quit */
-            gtk_check_menu_item_set_active(checkmenuitem, TRUE);
-        }
-    }
-
-    virt_viewer_session_update_displays_geometry(virt_viewer_display_get_session(display));
-}
 
 static gint
 update_menu_displays_sort(gconstpointer a, gconstpointer b)
@@ -2845,6 +2937,7 @@ window_update_menu_displays_cb(gpointer value,
     GList *keys = g_hash_table_get_keys(priv->displays);
     GList *tmp;
     gboolean sensitive;
+    int nth;
 
     keys = g_list_sort(keys, update_menu_displays_sort);
     submenu = window_empty_display_submenu(VIRT_VIEWER_WINDOW(value));
@@ -2854,19 +2947,92 @@ window_update_menu_displays_cb(gpointer value,
 
     tmp = keys;
     while (tmp) {
-        int nth = GPOINTER_TO_INT(tmp->data);
-        VirtViewerWindow *vwin = virt_viewer_app_get_nth_window(self, nth);
-        VirtViewerDisplay *display = VIRT_VIEWER_DISPLAY(g_hash_table_lookup(priv->displays, tmp->data));
         GtkWidget *item;
-        gboolean visible;
         gchar *label;
+        gchar *actionname;
 
+        nth = GPOINTER_TO_INT(tmp->data);
+        actionname = g_strdup_printf("app.monitor-%d", nth);
         label = g_strdup_printf(_("Display _%d"), nth + 1);
         item = gtk_check_menu_item_new_with_mnemonic(label);
-        g_free(label);
 
+        gtk_actionable_set_action_name(GTK_ACTIONABLE(item), actionname);
+
+        gtk_menu_shell_append(submenu, item);
+
+        g_free(label);
+        g_free(actionname);
+
+        tmp = tmp->next;
+    }
+
+    for (tmp = priv->windows, nth = 0; tmp; tmp = tmp->next, nth++) {
+        VirtViewerWindow *win = VIRT_VIEWER_WINDOW(tmp->data);
+        VirtViewerDisplay *display = virt_viewer_window_get_display(win);
+
+        if (VIRT_VIEWER_IS_DISPLAY_VTE(display)) {
+            gchar *name = NULL;
+            GtkWidget *item;
+            gchar *actionname;
+
+            g_object_get(display, "name", &name, NULL);
+            actionname = g_strdup_printf("app.vte-%d", nth);
+
+            item = gtk_check_menu_item_new_with_label(name);
+
+            gtk_actionable_set_action_name(GTK_ACTIONABLE(item), actionname);
+
+            gtk_menu_shell_append(submenu, item);
+
+            g_free(actionname);
+            g_free(name);
+        }
+    }
+
+    gtk_widget_show_all(GTK_WIDGET(submenu));
+    g_list_free(keys);
+}
+
+static void
+virt_viewer_app_clear_window_actions(VirtViewerApp *self)
+{
+    gchar **oldactions = g_action_group_list_actions(G_ACTION_GROUP(self));
+    int i;
+
+    for (i = 0; oldactions && oldactions[i] != NULL; i++) {
+        if (g_str_has_prefix(oldactions[i], "monitor-") ||
+            g_str_has_prefix(oldactions[i], "vte-")) {
+            g_action_map_remove_action(G_ACTION_MAP(self), oldactions[i]);
+        }
+    }
+
+    g_strfreev(oldactions);
+}
+
+
+static void
+virt_viewer_app_create_window_actions(VirtViewerApp *self)
+{
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    GList *keys = g_hash_table_get_keys(priv->displays);
+    GList *tmp;
+    gboolean sensitive;
+    gboolean visible;
+    GSimpleAction *action;
+    gchar *actionname;
+    int nth;
+
+    tmp = keys;
+    while (tmp) {
+        VirtViewerWindow *vwin;
+        VirtViewerDisplay *display;
+
+        nth = GPOINTER_TO_INT(tmp->data);
+        actionname = g_strdup_printf("monitor-%d", nth);
+
+        vwin = virt_viewer_app_get_nth_window(self, nth);
+        display = VIRT_VIEWER_DISPLAY(g_hash_table_lookup(priv->displays, tmp->data));
         visible = vwin && gtk_widget_get_visible(GTK_WIDGET(virt_viewer_window_get_window(vwin)));
-        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(item), visible);
 
         sensitive = visible;
         if (display) {
@@ -2878,35 +3044,57 @@ window_update_menu_displays_cb(gpointer value,
             if (virt_viewer_display_get_selectable(display))
                 sensitive = TRUE;
         }
-        gtk_widget_set_sensitive(item, sensitive);
 
-        virt_viewer_signal_connect_object(G_OBJECT(item), "toggled",
-                                          G_CALLBACK(menu_display_visible_toggled_cb), display, 0);
-        gtk_menu_shell_append(submenu, item);
+        action = g_simple_action_new_stateful(actionname,
+                                              NULL,
+                                              g_variant_new_boolean(visible));
+        g_object_set_data(G_OBJECT(action), "nth", GINT_TO_POINTER(nth));
+        g_simple_action_set_enabled(action,
+                                    sensitive);
+
+        g_signal_connect(action, "change-state",
+                         G_CALLBACK(virt_viewer_app_action_monitor),
+                         self);
+
+        g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(action));
+
+
+        g_free(actionname);
+
         tmp = tmp->next;
     }
 
-    for (tmp = priv->windows; tmp; tmp = tmp->next) {
+    for (tmp = priv->windows, nth = 0; tmp; tmp = tmp->next, nth++) {
         VirtViewerWindow *win = VIRT_VIEWER_WINDOW(tmp->data);
         VirtViewerDisplay *display = virt_viewer_window_get_display(win);
+        gchar *name;
 
-        if (VIRT_VIEWER_IS_DISPLAY_VTE(display)) {
-            gchar *name = NULL;
-            GtkWidget *item;
-
-            g_object_get(display, "name", &name, NULL);
-            item = gtk_check_menu_item_new_with_label(name);
-            g_free(name);
-
-            virt_viewer_signal_connect_object(G_OBJECT(item), "toggled",
-                G_CALLBACK(menu_display_visible_toggled_cb), display, 0);
-            gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(item),
-                gtk_widget_get_visible(GTK_WIDGET(virt_viewer_window_get_window(win))));
-            gtk_menu_shell_append(submenu, item);
+        if (!VIRT_VIEWER_IS_DISPLAY_VTE(display)) {
+            continue;
         }
+
+        g_object_get(display, "name", &name, NULL);
+        actionname = g_strdup_printf("vte-%d", nth);
+
+        visible = gtk_widget_get_visible(GTK_WIDGET(virt_viewer_window_get_window(win)));
+
+        action = g_simple_action_new_stateful(actionname,
+                                              NULL,
+                                              g_variant_new_boolean(visible));
+        g_object_set_data_full(G_OBJECT(action), "vte", g_strdup(name), g_free);
+        g_simple_action_set_enabled(G_SIMPLE_ACTION(action),
+                                    TRUE);
+
+        g_signal_connect(action, "change-state",
+                         G_CALLBACK(virt_viewer_app_action_vte),
+                         self);
+
+        g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(action));
+
+        g_free(actionname);
+        g_free(name);
     }
 
-    gtk_widget_show_all(GTK_WIDGET(submenu));
     g_list_free(keys);
 }
 
@@ -2916,6 +3104,8 @@ virt_viewer_app_update_menu_displays(VirtViewerApp *self)
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     if (!priv->windows)
         return;
+    virt_viewer_app_clear_window_actions(self);
+    virt_viewer_app_create_window_actions(self);
     g_list_foreach(priv->windows, window_update_menu_displays_cb, self);
 }
 
