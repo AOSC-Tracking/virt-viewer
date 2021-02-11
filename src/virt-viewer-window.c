@@ -451,10 +451,11 @@ virt_viewer_window_menu_machine_pause(GtkWidget *menu G_GNUC_UNUSED,
     virt_viewer_session_vm_action(virt_viewer_app_get_session(self->app), action);
 }
 
-G_MODULE_EXPORT void
-virt_viewer_window_menu_view_zoom_out(GtkWidget *menu G_GNUC_UNUSED,
-                                      VirtViewerWindow *self)
+void
+virt_viewer_window_zoom_out(VirtViewerWindow *self)
 {
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(self));
+
     if (VIRT_VIEWER_IS_DISPLAY_VTE(self->display)) {
         virt_viewer_display_vte_zoom_out(VIRT_VIEWER_DISPLAY_VTE(self->display));
     } else {
@@ -463,10 +464,11 @@ virt_viewer_window_menu_view_zoom_out(GtkWidget *menu G_GNUC_UNUSED,
     }
 }
 
-G_MODULE_EXPORT void
-virt_viewer_window_menu_view_zoom_in(GtkWidget *menu G_GNUC_UNUSED,
-                                     VirtViewerWindow *self)
+void
+virt_viewer_window_zoom_in(VirtViewerWindow *self)
 {
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(self));
+
     if (VIRT_VIEWER_IS_DISPLAY_VTE(self->display)) {
         virt_viewer_display_vte_zoom_in(VIRT_VIEWER_DISPLAY_VTE(self->display));
     } else {
@@ -475,15 +477,37 @@ virt_viewer_window_menu_view_zoom_in(GtkWidget *menu G_GNUC_UNUSED,
     }
 }
 
-G_MODULE_EXPORT void
-virt_viewer_window_menu_view_zoom_reset(GtkWidget *menu G_GNUC_UNUSED,
-                                        VirtViewerWindow *self)
+void
+virt_viewer_window_zoom_reset(VirtViewerWindow *self)
 {
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(self));
+
     if (VIRT_VIEWER_IS_DISPLAY_VTE(self->display)) {
         virt_viewer_display_vte_zoom_reset(VIRT_VIEWER_DISPLAY_VTE(self->display));
     } else {
         virt_viewer_window_set_zoom_level(self, NORMAL_ZOOM_LEVEL);
     }
+}
+
+G_MODULE_EXPORT void
+virt_viewer_window_menu_view_zoom_out(GtkWidget *menu G_GNUC_UNUSED,
+                                      VirtViewerWindow *self)
+{
+    virt_viewer_window_zoom_out(self);
+}
+
+G_MODULE_EXPORT void
+virt_viewer_window_menu_view_zoom_in(GtkWidget *menu G_GNUC_UNUSED,
+                                     VirtViewerWindow *self)
+{
+    virt_viewer_window_zoom_in(self);
+}
+
+G_MODULE_EXPORT void
+virt_viewer_window_menu_view_zoom_reset(GtkWidget *menu G_GNUC_UNUSED,
+                                        VirtViewerWindow *self)
+{
+    virt_viewer_window_zoom_reset(self);
 }
 
 /* Kick GtkWindow to tell it to adjust to our new widget sizes */
@@ -786,7 +810,7 @@ action_zoom_in(G_GNUC_UNUSED GSimpleAction *action,
                G_GNUC_UNUSED GVariant *state,
                gpointer user_data)
 {
-    virt_viewer_window_menu_view_zoom_in(NULL, VIRT_VIEWER_WINDOW(user_data));
+    virt_viewer_window_zoom_in(VIRT_VIEWER_WINDOW(user_data));
 }
 
 static void
@@ -794,7 +818,7 @@ action_zoom_out(G_GNUC_UNUSED GSimpleAction *action,
                 G_GNUC_UNUSED GVariant *state,
                 gpointer user_data)
 {
-    virt_viewer_window_menu_view_zoom_out(NULL, VIRT_VIEWER_WINDOW(user_data));
+    virt_viewer_window_zoom_out(VIRT_VIEWER_WINDOW(user_data));
 }
 
 static void
@@ -802,7 +826,7 @@ action_zoom_reset(G_GNUC_UNUSED GSimpleAction *action,
                   G_GNUC_UNUSED GVariant *state,
                   gpointer user_data)
 {
-    virt_viewer_window_menu_view_zoom_reset(NULL, VIRT_VIEWER_WINDOW(user_data));
+    virt_viewer_window_zoom_reset(VIRT_VIEWER_WINDOW(user_data));
 }
 
 /* Keep keypad_action_entries and keypad_action_accels in sync */
