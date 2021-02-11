@@ -1092,10 +1092,11 @@ virt_viewer_window_save_screenshot(VirtViewerWindow *self,
     return result;
 }
 
-G_MODULE_EXPORT void
-virt_viewer_window_menu_file_screenshot(GtkWidget *menu G_GNUC_UNUSED,
-                                        VirtViewerWindow *self)
+void
+virt_viewer_window_screenshot(VirtViewerWindow *self)
 {
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(self));
+
     GtkWidget *dialog;
     const char *image_dir;
 
@@ -1142,6 +1143,13 @@ retry_dialog:
     }
 
     gtk_widget_destroy(dialog);
+}
+
+G_MODULE_EXPORT void
+virt_viewer_window_menu_file_screenshot(GtkWidget *menu G_GNUC_UNUSED,
+                                        VirtViewerWindow *self)
+{
+    virt_viewer_window_screenshot(self);
 }
 
 G_MODULE_EXPORT void
@@ -1295,9 +1303,8 @@ iso_dialog_response(GtkDialog *dialog,
 }
 #endif
 
-G_MODULE_EXPORT void
-virt_viewer_window_menu_change_cd_activate(GtkWidget *menu G_GNUC_UNUSED,
-                                           VirtViewerWindow *self G_GNUC_UNUSED)
+void
+virt_viewer_window_change_cd(VirtViewerWindow *self G_GNUC_UNUSED)
 {
 #if HAVE_OVIRT
     GtkWidget *dialog;
@@ -1318,6 +1325,13 @@ virt_viewer_window_menu_change_cd_activate(GtkWidget *menu G_GNUC_UNUSED,
     gtk_widget_show_all(dialog);
     gtk_dialog_run(GTK_DIALOG(dialog));
 #endif
+}
+
+G_MODULE_EXPORT void
+virt_viewer_window_menu_change_cd_activate(GtkWidget *menu G_GNUC_UNUSED,
+                                           VirtViewerWindow *self)
+{
+    virt_viewer_window_change_cd(self);
 }
 
 static void
