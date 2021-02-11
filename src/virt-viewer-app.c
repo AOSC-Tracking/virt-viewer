@@ -2416,6 +2416,9 @@ virt_viewer_app_on_application_startup(GApplication *app)
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     GError *error = NULL;
     gint i;
+#ifndef G_OS_WIN32
+    GtkSettings *gtk_settings;
+#endif
 
     G_APPLICATION_CLASS(virt_viewer_app_parent_class)->startup(app);
 
@@ -2423,6 +2426,13 @@ virt_viewer_app_on_application_startup(GApplication *app)
                                     actions,
                                     G_N_ELEMENTS(actions),
                                     self);
+
+#ifndef G_OS_WIN32
+    gtk_settings = gtk_settings_get_default();
+    g_object_set(G_OBJECT(gtk_settings),
+                 "gtk-application-prefer-dark-theme",
+                 TRUE, NULL);
+#endif
 
     priv->resource = virt_viewer_get_resource();
 
