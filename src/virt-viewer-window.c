@@ -812,13 +812,17 @@ static const GActionEntry keypad_action_entries[] = {
     { .name = "zoom-reset", .activate = action_zoom_reset },
 };
 
-static const gchar *const keypad_action_accels[][2] = {
-    /* numpad keys are not handled automatically by gtk, see bgo#699823 */
-    {"<control>KP_Add", NULL},
-    {"<control>KP_Subtract", NULL},
-    {"<control>KP_0", NULL},
+struct VirtViewerActionAccels {
+    const char *accels[2];
+    const char *action;
 };
-G_STATIC_ASSERT(G_N_ELEMENTS(keypad_action_entries) == G_N_ELEMENTS(keypad_action_accels));
+
+static const struct VirtViewerActionAccels action_accels[] = {
+    /* numpad keys are not handled automatically by gtk, see bgo#699823 */
+    { {"<control>KP_Add", NULL}, "win.zoom-in" },
+    { {"<control>KP_Subtract", NULL}, "win.zoom-out" },
+    { {"<control>KP_0", NULL}, "win.zoom-reset" },
+};
 
 void
 virt_viewer_window_disable_modifiers(VirtViewerWindow *self)
@@ -854,8 +858,11 @@ virt_viewer_window_disable_modifiers(VirtViewerWindow *self)
                  "gtk-enable-mnemonics", FALSE,
                  NULL);
 
-    for (i = 0; i < G_N_ELEMENTS(keypad_action_entries); i++) {
-        g_action_map_remove_action(G_ACTION_MAP(self->window), keypad_action_entries[i].name);
+    for (i = 0; i < G_N_ELEMENTS(action_accels); i++) {
+        const char *noaccels[1] = { NULL };
+        gtk_application_set_accels_for_action(GTK_APPLICATION(self->app),
+                                              action_accels[i].action,
+                                              noaccels);
     }
 
     self->accel_enabled = FALSE;
@@ -900,12 +907,10 @@ virt_viewer_window_enable_modifiers(VirtViewerWindow *self)
         g_action_map_add_action_entries(G_ACTION_MAP(self->window),
                                         keypad_action_entries, G_N_ELEMENTS(keypad_action_entries),
                                         self);
-        for (i = 0; i < G_N_ELEMENTS(keypad_action_entries); i++) {
-            gchar *detailed_name = g_strdup_printf("win.%s", keypad_action_entries[i].name);
+        for (i = 0; i < G_N_ELEMENTS(action_accels); i++) {
             gtk_application_set_accels_for_action(GTK_APPLICATION(self->app),
-                                                  detailed_name,
-                                                  keypad_action_accels[i]);
-            g_free(detailed_name);
+                                                  action_accels[i].action,
+                                                  action_accels[i].accels);
         }
     }
 
