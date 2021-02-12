@@ -1283,6 +1283,12 @@ void
 virt_viewer_window_update_title(VirtViewerWindow *self)
 {
     char *title;
+    char *grabhint = NULL;
+    GtkWidget *header;
+    GtkWidget *toolbar;
+
+    header = GTK_WIDGET(gtk_builder_get_object(self->builder, "header"));
+    toolbar = GTK_WIDGET(gtk_builder_get_object(self->builder, "toolbar"));
 
     if (self->grabbed) {
         gchar *label;
@@ -1304,13 +1310,15 @@ virt_viewer_window_update_title(VirtViewerWindow *self)
             label = g_strdup(_("Ctrl_L+Alt_L"));
         }
 
+        grabhint = g_strdup_printf(_("(Press %s to release pointer)"), label);
+
         if (self->subtitle) {
             /* translators:
              * This is "<ungrab accelerator> <subtitle> - <appname>"
              * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
              */
-            title = g_strdup_printf(_("(Press %s to release pointer) %s - %s"),
-                                    label,
+            title = g_strdup_printf(_("%s %s - %s"),
+                                    grabhint,
                                     self->subtitle,
                                     g_get_application_name());
         } else {
@@ -1318,8 +1326,8 @@ virt_viewer_window_update_title(VirtViewerWindow *self)
              * This is "<ungrab accelerator> - <appname>"
              * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
              */
-            title = g_strdup_printf(_("(Press %s to release pointer) - %s"),
-                                    label,
+            title = g_strdup_printf(_("%s - %s"),
+                                    grabhint,
                                     g_get_application_name());
         }
 
@@ -1337,8 +1345,23 @@ virt_viewer_window_update_title(VirtViewerWindow *self)
     }
 
     gtk_window_set_title(GTK_WINDOW(self->window), title);
+    if (self->subtitle) {
+        gtk_header_bar_set_title(GTK_HEADER_BAR(header), self->subtitle);
+        gtk_header_bar_set_title(GTK_HEADER_BAR(toolbar), self->subtitle);
+    } else {
+        gtk_header_bar_set_title(GTK_HEADER_BAR(header), g_get_application_name());
+        gtk_header_bar_set_title(GTK_HEADER_BAR(toolbar), g_get_application_name());
+    }
+    if (grabhint) {
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(header), grabhint);
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(toolbar), grabhint);
+    } else {
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(header), "");
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(toolbar), "");
+    }
 
     g_free(title);
+    g_free(grabhint);
 }
 
 void
