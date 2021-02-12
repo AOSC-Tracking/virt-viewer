@@ -501,6 +501,20 @@ virt_viewer_window_action_change_cd(GSimpleAction *act G_GNUC_UNUSED,
     virt_viewer_window_change_cd(VIRT_VIEWER_WINDOW(opaque));
 }
 
+static void
+virt_viewer_window_action_secure_attention(GSimpleAction *action G_GNUC_UNUSED,
+                                           GVariant *param G_GNUC_UNUSED,
+                                           gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_WINDOW(opaque));
+
+    VirtViewerWindow *self =  VIRT_VIEWER_WINDOW(opaque);
+    guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
+
+    virt_viewer_display_send_keys(VIRT_VIEWER_DISPLAY(self->display),
+                                  keys, G_N_ELEMENTS(keys));
+}
+
 static GActionEntry actions[] = {
     { .name = "zoom-out",
       .activate = virt_viewer_window_action_zoom_out },
@@ -534,6 +548,8 @@ static GActionEntry actions[] = {
       .activate = virt_viewer_window_action_preferences },
     { .name = "change-cd",
       .activate = virt_viewer_window_action_change_cd },
+    { .name = "secure-attention",
+      .activate = virt_viewer_window_action_secure_attention },
 };
 
 static void
@@ -789,27 +805,26 @@ virt_viewer_window_enter_fullscreen(VirtViewerWindow *self, gint monitor)
 struct keyComboDef {
     guint32 keys[MAX_KEY_COMBO];
     const char *accel_label;
-    const gchar* accel_path;
 };
 
 static const struct keyComboDef keyCombos[] = {
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete, GDK_KEY_VoidSymbol }, "<Control><Alt>Delete", "<virt-viewer>/send/secure-attention"},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_BackSpace, GDK_KEY_VoidSymbol }, "<Control><Alt>BackSpace", NULL},
-    { { GDK_KEY_VoidSymbol }, "" , NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F1, GDK_KEY_VoidSymbol }, "<Control><Alt>F1", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F2, GDK_KEY_VoidSymbol }, "<Control><Alt>F2", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F3, GDK_KEY_VoidSymbol }, "<Control><Alt>F3", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F4, GDK_KEY_VoidSymbol }, "<Control><Alt>F4", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F5, GDK_KEY_VoidSymbol }, "<Control><Alt>F5", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F6, GDK_KEY_VoidSymbol }, "<Control><Alt>F6", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F7, GDK_KEY_VoidSymbol }, "<Control><Alt>F7", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F8, GDK_KEY_VoidSymbol }, "<Control><Alt>F8", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F9, GDK_KEY_VoidSymbol }, "<Control><Alt>F9", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F10, GDK_KEY_VoidSymbol }, "<Control><Alt>F10", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F11, GDK_KEY_VoidSymbol }, "<Control><Alt>F11", NULL},
-    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F12, GDK_KEY_VoidSymbol }, "<Control><Alt>F12", NULL},
-    { { GDK_KEY_VoidSymbol }, "" , NULL},
-    { { GDK_KEY_Print, GDK_KEY_VoidSymbol }, "Print", NULL},
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete, GDK_KEY_VoidSymbol }, "<Control><Alt>Delete" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_BackSpace, GDK_KEY_VoidSymbol }, "<Control><Alt>BackSpace" },
+    { { GDK_KEY_VoidSymbol }, "" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F1, GDK_KEY_VoidSymbol }, "<Control><Alt>F1" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F2, GDK_KEY_VoidSymbol }, "<Control><Alt>F2" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F3, GDK_KEY_VoidSymbol }, "<Control><Alt>F3" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F4, GDK_KEY_VoidSymbol }, "<Control><Alt>F4" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F5, GDK_KEY_VoidSymbol }, "<Control><Alt>F5" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F6, GDK_KEY_VoidSymbol }, "<Control><Alt>F6" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F7, GDK_KEY_VoidSymbol }, "<Control><Alt>F7" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F8, GDK_KEY_VoidSymbol }, "<Control><Alt>F8" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F9, GDK_KEY_VoidSymbol }, "<Control><Alt>F9" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F10, GDK_KEY_VoidSymbol }, "<Control><Alt>F10" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F11, GDK_KEY_VoidSymbol }, "<Control><Alt>F11" },
+    { { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F12, GDK_KEY_VoidSymbol }, "<Control><Alt>F12" },
+    { { GDK_KEY_VoidSymbol }, "" },
+    { { GDK_KEY_Print, GDK_KEY_VoidSymbol }, "Print" },
 };
 
 static guint
@@ -824,8 +839,8 @@ get_nkeys(const guint32 *keys)
 }
 
 static void
-virt_viewer_menu_add_combo(VirtViewerWindow *self, GtkMenu *menu,
-                           const guint *keys, const gchar *label, const gchar* accel_path)
+virt_viewer_menu_add_combo(VirtViewerWindow *self G_GNUC_UNUSED, GtkMenu *menu,
+                           const guint *keys, const gchar *label)
 {
     GtkWidget *item;
 
@@ -833,11 +848,6 @@ virt_viewer_menu_add_combo(VirtViewerWindow *self, GtkMenu *menu,
         item = gtk_separator_menu_item_new();
     } else {
         item = gtk_menu_item_new_with_label(label);
-        if (accel_path) {
-            gtk_menu_item_set_accel_path(GTK_MENU_ITEM(item), accel_path);
-            /* make accel work in fullscreen */
-            g_signal_connect(item, "can-activate-accel", G_CALLBACK(can_activate_cb), self);
-        }
         gtk_actionable_set_action_name(GTK_ACTIONABLE(item), "win.send-key");
         gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item),
                                                g_variant_new_fixed_array(G_VARIANT_TYPE_UINT32,
@@ -850,7 +860,8 @@ virt_viewer_menu_add_combo(VirtViewerWindow *self, GtkMenu *menu,
 }
 
 static guint*
-accel_key_to_keys(const GtkAccelKey *key)
+accel_key_to_keys(guint accel_key,
+                  GdkModifierType accel_mods)
 {
     guint i;
     guint *val, *keys;
@@ -863,59 +874,28 @@ accel_key_to_keys(const GtkAccelKey *key)
         {GDK_MOD1_MASK, GDK_KEY_Alt_L},
     };
 
-    g_warn_if_fail((key->accel_mods &
+    g_warn_if_fail((accel_mods &
                     ~(GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK)) == 0);
 
     keys = val = g_new(guint, G_N_ELEMENTS(modifiers) + 2); /* up to 3 modifiers, key and the stop symbol */
     /* first, send the modifiers */
     for (i = 0; i < G_N_ELEMENTS(modifiers); i++) {
-        if (key->accel_mods & modifiers[i].mask)
+        if (accel_mods & modifiers[i].mask)
             *val++ = modifiers[i].key;
     }
 
     /* only after, the non-modifier key (ctrl-t, not t-ctrl) */
-    *val++ = key->accel_key;
+    *val++ = accel_key;
     /* stop symbol */
     *val = GDK_KEY_VoidSymbol;
 
     return keys;
 }
 
-struct accelCbData
-{
-    VirtViewerWindow *self;
-    GtkMenu *menu;
-};
-
-static void
-accel_map_item_cb(gpointer data,
-                  const gchar *accel_path,
-                  guint accel_key,
-                  GdkModifierType accel_mods,
-                  gboolean changed G_GNUC_UNUSED)
-{
-    struct accelCbData *d = data;
-    GtkAccelKey key = {
-        .accel_key = accel_key,
-        .accel_mods = accel_mods
-    };
-
-    if (!g_str_has_prefix(accel_path, "<virt-viewer>"))
-        return;
-    if (accel_key == GDK_KEY_VoidSymbol || accel_key == 0)
-        return;
-
-    guint *keys = accel_key_to_keys(&key);
-    gchar *label = gtk_accelerator_get_label(accel_key, accel_mods);
-    virt_viewer_menu_add_combo(d->self, d->menu, keys, label, NULL);
-    g_free(label);
-    g_free(keys);
-}
-
 static GtkMenu*
 virt_viewer_window_get_keycombo_menu(VirtViewerWindow *self)
 {
-    gint i;
+    gint i, j;
     GtkMenu *menu = GTK_MENU(gtk_menu_new());
     gtk_menu_set_accel_group(menu, self->accel_group);
 
@@ -927,35 +907,37 @@ virt_viewer_window_get_keycombo_menu(VirtViewerWindow *self)
             gtk_accelerator_parse(keyCombos[i].accel_label, &key, &mods);
             label = gtk_accelerator_get_label(key, mods);
         }
-        virt_viewer_menu_add_combo(self, menu, keyCombos[i].keys, label, keyCombos[i].accel_path);
+        virt_viewer_menu_add_combo(self, menu, keyCombos[i].keys, label);
         g_free(label);
     }
 
     if (virt_viewer_app_get_enable_accel(self->app)) {
-        struct accelCbData d = {
-            .self = self,
-            .menu = menu
-        };
+        gchar **accelactions = gtk_application_list_action_descriptions(GTK_APPLICATION(self->app));
 
-        gtk_accel_map_foreach(&d, accel_map_item_cb);
+        for (i = 0; accelactions[i] != NULL; i++) {
+            gchar **accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self->app),
+                                                                   accelactions[i]);
+
+            for (j = 0; accels[j] != NULL; j++) {
+                guint accel_key;
+                GdkModifierType accel_mods;
+                gtk_accelerator_parse(accels[j], &accel_key, &accel_mods);
+
+                guint *keys = accel_key_to_keys(accel_key, accel_mods);
+                gchar *label = gtk_accelerator_get_label(accel_key, accel_mods);
+                virt_viewer_menu_add_combo(self, menu, keys, label);
+                g_free(label);
+                g_free(keys);
+            }
+            g_strfreev(accels);
+        }
+
+        g_strfreev(accelactions);
     }
 
     gtk_widget_show_all(GTK_WIDGET(menu));
     return menu;
 }
-
-
-struct VirtViewerActionAccels {
-    const char *accels[2];
-    const char *action;
-};
-
-static const struct VirtViewerActionAccels action_accels[] = {
-    /* numpad keys are not handled automatically by gtk, see bgo#699823 */
-    { {"<control>KP_Add", NULL}, "win.zoom-in" },
-    { {"<control>KP_Subtract", NULL}, "win.zoom-out" },
-    { {"<control>KP_0", NULL}, "win.zoom-reset" },
-};
 
 void
 virt_viewer_window_disable_modifiers(VirtViewerWindow *self)
@@ -963,7 +945,6 @@ virt_viewer_window_disable_modifiers(VirtViewerWindow *self)
     GtkSettings *settings = gtk_settings_get_default();
     GValue empty;
     GSList *accels;
-    guint i;
 
     if (!self->accel_enabled)
         return;
@@ -991,13 +972,6 @@ virt_viewer_window_disable_modifiers(VirtViewerWindow *self)
                  "gtk-enable-mnemonics", FALSE,
                  NULL);
 
-    for (i = 0; i < G_N_ELEMENTS(action_accels); i++) {
-        const char *noaccels[1] = { NULL };
-        gtk_application_set_accels_for_action(GTK_APPLICATION(self->app),
-                                              action_accels[i].action,
-                                              noaccels);
-    }
-
     self->accel_enabled = FALSE;
 }
 
@@ -1006,8 +980,6 @@ virt_viewer_window_enable_modifiers(VirtViewerWindow *self)
 {
     GtkSettings *settings = gtk_settings_get_default();
     GSList *accels;
-    guint i;
-    GtkAccelKey key;
     GSList *attached_accels;
 
     if (self->accel_enabled)
@@ -1030,19 +1002,6 @@ virt_viewer_window_enable_modifiers(VirtViewerWindow *self)
     g_object_set(settings,
                  "gtk-enable-mnemonics", self->enable_mnemonics_save,
                  NULL);
-
-    /* if the user did not set hotkeys and
-     * zoom actions using "normal" +/-/0 keys are enabled,
-     * allow the user to use the numpad +/-/0 keys as well */
-    if (!virt_viewer_app_get_enable_accel(self->app)
-        && gtk_accel_map_lookup_entry("<virt-viewer>/view/zoom-out", &key)
-        && key.accel_key != 0) {
-        for (i = 0; i < G_N_ELEMENTS(action_accels); i++) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self->app),
-                                                  action_accels[i].action,
-                                                  action_accels[i].accels);
-        }
-    }
 
     self->accel_enabled = TRUE;
 }
@@ -1453,14 +1412,20 @@ virt_viewer_window_update_title(VirtViewerWindow *self)
 
     if (self->grabbed) {
         gchar *label;
-        GtkAccelKey key = {0, 0, 0};
+        guint accel_key = 0;
+        GdkModifierType accel_mods = 0;
+        gchar **accels;
 
-        if (virt_viewer_app_get_enable_accel(self->app))
-            gtk_accel_map_lookup_entry("<virt-viewer>/view/release-cursor", &key);
+        if (virt_viewer_app_get_enable_accel(self->app)) {
+            accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self->app), "win.release-cursor");
+            if (accels[0])
+                gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
+            g_strfreev(accels);
+        }
 
-        if (key.accel_key || key.accel_mods) {
-            g_debug("release-cursor accel key: key=%u, mods=%x, flags=%u", key.accel_key, key.accel_mods, key.accel_flags);
-            label = gtk_accelerator_get_label(key.accel_key, key.accel_mods);
+        if (accel_key || accel_mods) {
+            g_debug("release-cursor accel key: key=%u, mods=%x", accel_key, accel_mods);
+            label = gtk_accelerator_get_label(accel_key, accel_mods);
         } else {
             label = g_strdup(_("Ctrl_L+Alt_L"));
         }

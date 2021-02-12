@@ -187,15 +187,21 @@ enable_accel_changed(VirtViewerApp *app,
                      GParamSpec *pspec G_GNUC_UNUSED,
                      VncDisplay *vnc)
 {
-    GtkAccelKey key = {0, 0, 0};
     gboolean kiosk;
+    guint accel_key = 0;
+    GdkModifierType accel_mods = 0;
+    gchar **accels;
 
-    if (virt_viewer_app_get_enable_accel(app))
-        gtk_accel_map_lookup_entry("<virt-viewer>/view/release-cursor", &key);
+    if (virt_viewer_app_get_enable_accel(app)){
+        accels = gtk_application_get_accels_for_action(GTK_APPLICATION(app), "win.release-cursor");
+        if (accels[0])
+            gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
+        g_strfreev(accels);
+    }
 
     g_object_get(app, "kiosk", &kiosk, NULL);
 
-    if (key.accel_key || key.accel_mods || kiosk) {
+    if (accel_key || accel_mods || kiosk) {
         VncGrabSequence *seq = vnc_grab_sequence_new(0, NULL);
         /* disable default grab sequence */
         vnc_display_set_grab_keys(vnc, seq);
