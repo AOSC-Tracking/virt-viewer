@@ -106,7 +106,7 @@ MinGW Windows virt-viewer MSI
 %setup -q -n virt-viewer-%{version}
 
 %build
-%mingw_meson -Dbuildid=%{buildid}
+%mingw_meson -Dbuild-id=%{buildid}
 %mingw_ninja
 
 %if 0%{?mingw_build_win32} == 1
