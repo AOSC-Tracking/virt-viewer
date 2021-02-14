@@ -888,15 +888,21 @@ virt_viewer_window_enable_modifiers(VirtViewerWindow *self)
     GSList *accels;
     guint i;
     GtkAccelKey key;
+    GSList *attached_accels;
 
     if (priv->accel_enabled)
         return;
 
     /* This allows F10 activating menu bar */
     g_object_set_property(G_OBJECT(settings), "gtk-menu-bar-accel", &priv->accel_setting);
+    attached_accels = gtk_accel_groups_from_object(G_OBJECT(priv->window));
 
     /* This allows global accelerators like Ctrl+Q == Quit */
     for (accels = priv->accel_list ; accels ; accels = accels->next) {
+        /* Do not attach accels that are already attached. */
+        if (attached_accels && g_slist_find(attached_accels, accels->data))
+            continue;
+
         gtk_window_add_accel_group(GTK_WINDOW(priv->window), accels->data);
     }
 
