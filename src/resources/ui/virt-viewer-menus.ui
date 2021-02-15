@@ -31,6 +31,10 @@
         <attribute name="action">win.about</attribute>
       </item>
       <item>
+        <attribute name="label" translatable="yes">_Keyboard shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">_Guest details</attribute>
         <attribute name="action">win.guest-details</attribute>
       </item>
