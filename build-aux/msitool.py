@@ -69,7 +69,7 @@ def build_msi():
             "-D", "HaveSpiceGtk=" + have_spice,
             "-D", "HaveGtkVnc=" + have_vnc,
             "-D", "HaveLibvirt=" + have_libvirt,
-            "-D", "HaveOvirt=" + have_ovirt,
+            "-D", "HaveOVirt=" + have_ovirt,
             "--arch", arch,
             "-o", msifile,
             wxs, wxsfilelist,

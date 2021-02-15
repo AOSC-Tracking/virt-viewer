@@ -1,6 +1,6 @@
 project(
   'virt-viewer','c',
-  version: '3.0',
+  version: '10.0',
   license: 'GPLv3+',
   default_options: [
     'buildtype=debugoptimized',
@@ -472,7 +472,12 @@ if bash_completion_dep.found()
   endif
 endif
 
-conf_data.set('BUILDID', get_option('build-id'))
+id = get_option('build-id')
+if id != ''
+  conf_data.set('BUILDID', '-@0@'.format(id))
+else
+  conf_data.set('BUILDID', '')
+endif
 conf_data.set('OS_ID', get_option('os-id'))
 
 arr_version = meson.project_version().split('.')
