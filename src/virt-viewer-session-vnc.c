@@ -34,14 +34,15 @@
 #include <glib/gi18n.h>
 #include <libxml/uri.h>
 
-struct _VirtViewerSessionVncPrivate {
+struct _VirtViewerSessionVnc {
+    VirtViewerSession parent;
     GtkWindow *main_window;
     /* XXX we should really just have a VncConnection */
     VncDisplay *vnc;
     gboolean auth_dialog_cancelled;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE(VirtViewerSessionVnc, virt_viewer_session_vnc, VIRT_VIEWER_TYPE_SESSION)
+G_DEFINE_TYPE(VirtViewerSessionVnc, virt_viewer_session_vnc, VIRT_VIEWER_TYPE_SESSION)
 
 static void virt_viewer_session_vnc_close(VirtViewerSession* session);
 static gboolean virt_viewer_session_vnc_open_fd(VirtViewerSession* session, int fd);
@@ -54,14 +55,14 @@ static gboolean virt_viewer_session_vnc_channel_open_fd(VirtViewerSession* sessi
 static void
 virt_viewer_session_vnc_finalize(GObject *obj)
 {
-    VirtViewerSessionVnc *vnc = VIRT_VIEWER_SESSION_VNC(obj);
+    VirtViewerSessionVnc *self = VIRT_VIEWER_SESSION_VNC(obj);
 
-    if (vnc->priv->vnc) {
-        vnc_display_close(vnc->priv->vnc);
-        g_object_unref(vnc->priv->vnc);
+    if (self->vnc) {
+        vnc_display_close(self->vnc);
+        g_object_unref(self->vnc);
     }
-    if (vnc->priv->main_window)
-        g_object_unref(vnc->priv->main_window);
+    if (self->main_window)
+        g_object_unref(self->main_window);
 
     G_OBJECT_CLASS(virt_viewer_session_vnc_parent_class)->finalize(obj);
 }
@@ -91,38 +92,37 @@ virt_viewer_session_vnc_class_init(VirtViewerSessionVncClass *klass)
 static void
 virt_viewer_session_vnc_init(VirtViewerSessionVnc *self G_GNUC_UNUSED)
 {
-    self->priv = virt_viewer_session_vnc_get_instance_private(self);
 }
 
 static void
 virt_viewer_session_vnc_connected(VncDisplay *vnc G_GNUC_UNUSED,
-                                  VirtViewerSessionVnc *session)
+                                  VirtViewerSessionVnc *self)
 {
-    GtkWidget *display = virt_viewer_display_vnc_new(session, session->priv->vnc);
-    VirtViewerApp *app = virt_viewer_session_get_app(VIRT_VIEWER_SESSION(session));
+    GtkWidget *display = virt_viewer_display_vnc_new(self, self->vnc);
+    VirtViewerApp *app = virt_viewer_session_get_app(VIRT_VIEWER_SESSION(self));
 
-    session->priv->auth_dialog_cancelled = FALSE;
+    self->auth_dialog_cancelled = FALSE;
 
     virt_viewer_window_set_display(virt_viewer_app_get_main_window(app),
                                    VIRT_VIEWER_DISPLAY(display));
 
-    g_signal_emit_by_name(session, "session-connected");
-    virt_viewer_session_add_display(VIRT_VIEWER_SESSION(session),
+    g_signal_emit_by_name(self, "session-connected");
+    virt_viewer_session_add_display(VIRT_VIEWER_SESSION(self),
                                     VIRT_VIEWER_DISPLAY(display));
 }
 
 static void
 virt_viewer_session_vnc_disconnected(VncDisplay *vnc G_GNUC_UNUSED,
-                                     VirtViewerSessionVnc *session)
+                                     VirtViewerSessionVnc *self)
 {
     GtkWidget *display;
-    if (session->priv->auth_dialog_cancelled)
+    if (self->auth_dialog_cancelled)
         return;
 
-    virt_viewer_session_clear_displays(VIRT_VIEWER_SESSION(session));
-    display = virt_viewer_display_vnc_new(session, session->priv->vnc);
+    virt_viewer_session_clear_displays(VIRT_VIEWER_SESSION(self));
+    display = virt_viewer_display_vnc_new(self, self->vnc);
     g_debug("Disconnected");
-    g_signal_emit_by_name(session, "session-disconnected", NULL);
+    g_signal_emit_by_name(self, "session-disconnected", NULL);
     virt_viewer_display_set_enabled(VIRT_VIEWER_DISPLAY(display), FALSE);
     virt_viewer_display_set_show_hint(VIRT_VIEWER_DISPLAY(display),
                                       VIRT_VIEWER_DISPLAY_SHOW_HINT_READY, FALSE);
@@ -188,9 +188,9 @@ virt_viewer_session_vnc_open_fd(VirtViewerSession* session,
     VirtViewerSessionVnc *self = VIRT_VIEWER_SESSION_VNC(session);
 
     g_return_val_if_fail(self != NULL, FALSE);
-    g_return_val_if_fail(self->priv->vnc != NULL, FALSE);
+    g_return_val_if_fail(self->vnc != NULL, FALSE);
 
-    return vnc_display_open_fd(self->priv->vnc, fd);
+    return vnc_display_open_fd(self->vnc, fd);
 }
 
 static gboolean
@@ -211,9 +211,9 @@ virt_viewer_session_vnc_open_host(VirtViewerSession* session,
     VirtViewerSessionVnc *self = VIRT_VIEWER_SESSION_VNC(session);
 
     g_return_val_if_fail(self != NULL, FALSE);
-    g_return_val_if_fail(self->priv->vnc != NULL, FALSE);
+    g_return_val_if_fail(self->vnc != NULL, FALSE);
 
-    return vnc_display_open_host(self->priv->vnc, host, port);
+    return vnc_display_open_host(self->vnc, host, port);
 }
 
 static gboolean
@@ -229,7 +229,7 @@ virt_viewer_session_vnc_open_uri(VirtViewerSession* session,
     gboolean ret;
 
     g_return_val_if_fail(self != NULL, FALSE);
-    g_return_val_if_fail(self->priv->vnc != NULL, FALSE);
+    g_return_val_if_fail(self->vnc != NULL, FALSE);
 
     if (file) {
         g_return_val_if_fail(virt_viewer_file_is_set(file, "port"), FALSE);
@@ -261,7 +261,7 @@ virt_viewer_session_vnc_open_uri(VirtViewerSession* session,
         xmlFreeURI(uri);
     }
 
-    ret = vnc_display_open_host(self->priv->vnc,
+    ret = vnc_display_open_host(self->vnc,
                                 hoststr,
                                 portstr);
     g_free(portstr);
@@ -296,7 +296,7 @@ virt_viewer_session_vnc_auth_credential(GtkWidget *src G_GNUC_UNUSED,
             break;
         default:
             g_debug("Unsupported credential type %d", g_value_get_enum(cred));
-            vnc_display_close(self->priv->vnc);
+            vnc_display_close(self->vnc);
             goto cleanup;
         }
     }
@@ -318,14 +318,14 @@ virt_viewer_session_vnc_auth_credential(GtkWidget *src G_GNUC_UNUSED,
     }
 
     if (wantUsername || wantPassword) {
-        gboolean ret = virt_viewer_auth_collect_credentials(self->priv->main_window,
+        gboolean ret = virt_viewer_auth_collect_credentials(self->main_window,
                                                             "VNC", NULL,
                                                             wantUsername ? &username : NULL,
                                                             wantPassword ? &password : NULL);
 
         if (!ret) {
-            vnc_display_close(self->priv->vnc);
-            self->priv->auth_dialog_cancelled = TRUE;
+            vnc_display_close(self->vnc);
+            self->auth_dialog_cancelled = TRUE;
             g_signal_emit_by_name(self, "session-cancelled");
             goto cleanup;
         }
@@ -336,33 +336,33 @@ virt_viewer_session_vnc_auth_credential(GtkWidget *src G_GNUC_UNUSED,
         switch (g_value_get_enum(cred)) {
         case VNC_DISPLAY_CREDENTIAL_USERNAME:
             if (!username ||
-                vnc_display_set_credential(self->priv->vnc,
+                vnc_display_set_credential(self->vnc,
                                            g_value_get_enum(cred),
                                            username)) {
                 g_debug("Failed to set credential type %d", g_value_get_enum(cred));
-                vnc_display_close(self->priv->vnc);
+                vnc_display_close(self->vnc);
             }
             break;
         case VNC_DISPLAY_CREDENTIAL_PASSWORD:
             if (!password ||
-                vnc_display_set_credential(self->priv->vnc,
+                vnc_display_set_credential(self->vnc,
                                            g_value_get_enum(cred),
                                            password)) {
                 g_debug("Failed to set credential type %d", g_value_get_enum(cred));
-                vnc_display_close(self->priv->vnc);
+                vnc_display_close(self->vnc);
             }
             break;
         case VNC_DISPLAY_CREDENTIAL_CLIENTNAME:
-            if (vnc_display_set_credential(self->priv->vnc,
+            if (vnc_display_set_credential(self->vnc,
                                            g_value_get_enum(cred),
                                            "libvirt")) {
                 g_debug("Failed to set credential type %d", g_value_get_enum(cred));
-                vnc_display_close(self->priv->vnc);
+                vnc_display_close(self->vnc);
             }
             break;
         default:
             g_debug("Unsupported credential type %d", g_value_get_enum(cred));
-            vnc_display_close(self->priv->vnc);
+            vnc_display_close(self->vnc);
         }
     }
 
@@ -379,35 +379,35 @@ virt_viewer_session_vnc_close(VirtViewerSession* session)
 
     g_return_if_fail(self != NULL);
 
-    g_debug("close vnc=%p", self->priv->vnc);
-    if (self->priv->vnc != NULL) {
+    g_debug("close vnc=%p", self->vnc);
+    if (self->vnc != NULL) {
         virt_viewer_session_clear_displays(session);
-        vnc_display_close(self->priv->vnc);
-        g_object_unref(self->priv->vnc);
+        vnc_display_close(self->vnc);
+        g_object_unref(self->vnc);
     }
 
-    self->priv->vnc = VNC_DISPLAY(vnc_display_new());
-    g_object_ref_sink(self->priv->vnc);
+    self->vnc = VNC_DISPLAY(vnc_display_new());
+    g_object_ref_sink(self->vnc);
 
-    g_signal_connect(self->priv->vnc, "vnc-connected",
+    g_signal_connect(self->vnc, "vnc-connected",
                      G_CALLBACK(virt_viewer_session_vnc_connected), session);
-    g_signal_connect(self->priv->vnc, "vnc-initialized",
+    g_signal_connect(self->vnc, "vnc-initialized",
                      G_CALLBACK(virt_viewer_session_vnc_initialized), session);
-    g_signal_connect(self->priv->vnc, "vnc-disconnected",
+    g_signal_connect(self->vnc, "vnc-disconnected",
                      G_CALLBACK(virt_viewer_session_vnc_disconnected), session);
-    g_signal_connect(self->priv->vnc, "vnc-error",
+    g_signal_connect(self->vnc, "vnc-error",
                      G_CALLBACK(virt_viewer_session_vnc_error), session);
 
-    g_signal_connect(self->priv->vnc, "vnc-bell",
+    g_signal_connect(self->vnc, "vnc-bell",
                      G_CALLBACK(virt_viewer_session_vnc_bell), session);
-    g_signal_connect(self->priv->vnc, "vnc-auth-failure",
+    g_signal_connect(self->vnc, "vnc-auth-failure",
                      G_CALLBACK(virt_viewer_session_vnc_auth_failure), session);
-    g_signal_connect(self->priv->vnc, "vnc-auth-unsupported",
+    g_signal_connect(self->vnc, "vnc-auth-unsupported",
                      G_CALLBACK(virt_viewer_session_vnc_auth_unsupported), session);
-    g_signal_connect(self->priv->vnc, "vnc-server-cut-text",
+    g_signal_connect(self->vnc, "vnc-server-cut-text",
                      G_CALLBACK(virt_viewer_session_vnc_cut_text), session);
 
-    g_signal_connect(self->priv->vnc, "vnc-auth-credential",
+    g_signal_connect(self->vnc, "vnc-auth-credential",
                      G_CALLBACK(virt_viewer_session_vnc_auth_credential), session);
 
 }
@@ -415,45 +415,37 @@ virt_viewer_session_vnc_close(VirtViewerSession* session)
 VirtViewerSession *
 virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window)
 {
-    VirtViewerSessionVnc *session;
+    VirtViewerSessionVnc *self;
 
-    session = g_object_new(VIRT_VIEWER_TYPE_SESSION_VNC, "app", app, NULL);
+    self = g_object_new(VIRT_VIEWER_TYPE_SESSION_VNC, "app", app, NULL);
 
-    session->priv->vnc = VNC_DISPLAY(vnc_display_new());
-    g_object_ref_sink(session->priv->vnc);
-    session->priv->main_window = g_object_ref(main_window);
+    self->vnc = VNC_DISPLAY(vnc_display_new());
+    g_object_ref_sink(self->vnc);
+    self->main_window = g_object_ref(main_window);
 
-    vnc_display_set_shared_flag(session->priv->vnc,
+    vnc_display_set_shared_flag(self->vnc,
                                 virt_viewer_app_get_shared(app));
 
-    g_signal_connect(session->priv->vnc, "vnc-connected",
-                     G_CALLBACK(virt_viewer_session_vnc_connected), session);
-    g_signal_connect(session->priv->vnc, "vnc-initialized",
-                     G_CALLBACK(virt_viewer_session_vnc_initialized), session);
-    g_signal_connect(session->priv->vnc, "vnc-disconnected",
-                     G_CALLBACK(virt_viewer_session_vnc_disconnected), session);
-    g_signal_connect(session->priv->vnc, "vnc-error",
-                     G_CALLBACK(virt_viewer_session_vnc_error), session);
+    g_signal_connect(self->vnc, "vnc-connected",
+                     G_CALLBACK(virt_viewer_session_vnc_connected), self);
+    g_signal_connect(self->vnc, "vnc-initialized",
+                     G_CALLBACK(virt_viewer_session_vnc_initialized), self);
+    g_signal_connect(self->vnc, "vnc-disconnected",
+                     G_CALLBACK(virt_viewer_session_vnc_disconnected), self);
+    g_signal_connect(self->vnc, "vnc-error",
+                     G_CALLBACK(virt_viewer_session_vnc_error), self);
 
-    g_signal_connect(session->priv->vnc, "vnc-bell",
-                     G_CALLBACK(virt_viewer_session_vnc_bell), session);
-    g_signal_connect(session->priv->vnc, "vnc-auth-failure",
-                     G_CALLBACK(virt_viewer_session_vnc_auth_failure), session);
-    g_signal_connect(session->priv->vnc, "vnc-auth-unsupported",
-                     G_CALLBACK(virt_viewer_session_vnc_auth_unsupported), session);
-    g_signal_connect(session->priv->vnc, "vnc-server-cut-text",
-                     G_CALLBACK(virt_viewer_session_vnc_cut_text), session);
+    g_signal_connect(self->vnc, "vnc-bell",
+                     G_CALLBACK(virt_viewer_session_vnc_bell), self);
+    g_signal_connect(self->vnc, "vnc-auth-failure",
+                     G_CALLBACK(virt_viewer_session_vnc_auth_failure), self);
+    g_signal_connect(self->vnc, "vnc-auth-unsupported",
+                     G_CALLBACK(virt_viewer_session_vnc_auth_unsupported), self);
+    g_signal_connect(self->vnc, "vnc-server-cut-text",
+                     G_CALLBACK(virt_viewer_session_vnc_cut_text), self);
 
-    g_signal_connect(session->priv->vnc, "vnc-auth-credential",
-                     G_CALLBACK(virt_viewer_session_vnc_auth_credential), session);
+    g_signal_connect(self->vnc, "vnc-auth-credential",
+                     G_CALLBACK(virt_viewer_session_vnc_auth_credential), self);
 
-    return VIRT_VIEWER_SESSION(session);
+    return VIRT_VIEWER_SESSION(self);
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

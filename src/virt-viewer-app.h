@@ -20,28 +20,18 @@
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
 
-#ifndef VIRT_VIEWER_APP_H
-#define VIRT_VIEWER_APP_H
+#pragma once
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
 #include "virt-viewer-window.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_APP virt_viewer_app_get_type()
-#define VIRT_VIEWER_APP(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_APP, VirtViewerApp))
-#define VIRT_VIEWER_APP_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_APP, VirtViewerAppClass))
-#define VIRT_VIEWER_IS_APP(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_APP))
-#define VIRT_VIEWER_IS_APP_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_APP))
-#define VIRT_VIEWER_APP_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_APP, VirtViewerAppClass))
-
-typedef struct _VirtViewerAppPrivate VirtViewerAppPrivate;
-
-typedef struct {
-    GtkApplication parent;
-    VirtViewerAppPrivate *priv;
-} VirtViewerApp;
+G_DECLARE_DERIVABLE_TYPE(VirtViewerApp,
+                         virt_viewer_app,
+                         VIRT_VIEWER,
+                         APP,
+                         GtkApplication)
 
 typedef struct {
     guint sourceKey;
@@ -50,7 +40,7 @@ typedef struct {
     gboolean isLast;
 } VirtViewerKeyMapping;
 
-typedef struct {
+struct _VirtViewerAppClass {
     GtkApplicationClass parent_class;
 
     /*< private >*/
@@ -60,7 +50,7 @@ typedef struct {
     void (*deactivated) (VirtViewerApp *self, gboolean connect_error);
     gboolean (*open_connection)(VirtViewerApp *self, int *fd);
     void (*add_option_entries)(VirtViewerApp *self, GOptionContext *context, GOptionGroup *group);
-} VirtViewerAppClass;
+};
 
 GType virt_viewer_app_get_type (void);
 
@@ -113,14 +103,3 @@ void virt_viewer_app_set_config_share_clipboard(VirtViewerApp *self, gboolean en
 
 gboolean virt_viewer_app_get_supports_share_clipboard(VirtViewerApp *self);
 void virt_viewer_app_set_supports_share_clipboard(VirtViewerApp *self, gboolean enable);
-
-G_END_DECLS
-
-#endif /* VIRT_VIEWER_APP_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

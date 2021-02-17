@@ -21,14 +21,12 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_WINDOW
-#define _VIRT_VIEWER_WINDOW
+
+#pragma once
 
 #include <glib-object.h>
 #include "virt-viewer-notebook.h"
 #include "virt-viewer-display.h"
-
-G_BEGIN_DECLS
 
 #define MIN_ZOOM_LEVEL 10
 #define MAX_ZOOM_LEVEL 400
@@ -36,31 +34,11 @@ G_BEGIN_DECLS
 
 #define VIRT_VIEWER_TYPE_WINDOW virt_viewer_window_get_type()
 
-#define VIRT_VIEWER_WINDOW(obj)                                                \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_WINDOW, VirtViewerWindow))
-
-#define VIRT_VIEWER_WINDOW_CLASS(klass)                                        \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_WINDOW, VirtViewerWindowClass))
-
-#define VIRT_VIEWER_IS_WINDOW(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_WINDOW))
-
-#define VIRT_VIEWER_IS_WINDOW_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_WINDOW))
-
-#define VIRT_VIEWER_WINDOW_GET_CLASS(obj)                                \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_WINDOW, VirtViewerWindowClass))
-
-typedef struct _VirtViewerWindowPrivate VirtViewerWindowPrivate;
-
-typedef struct {
-    GObject parent;
-    VirtViewerWindowPrivate *priv;
-} VirtViewerWindow;
-
-typedef struct {
-    GObjectClass parent_class;
-} VirtViewerWindowClass;
+G_DECLARE_FINAL_TYPE(VirtViewerWindow,
+                     virt_viewer_window,
+                     VIRT_VIEWER,
+                     WINDOW,
+                     GObject)
 
 GType virt_viewer_window_get_type (void);
 
@@ -82,15 +60,3 @@ void virt_viewer_window_enter_fullscreen(VirtViewerWindow *self, gint monitor);
 GtkMenuItem *virt_viewer_window_get_menu_displays(VirtViewerWindow *self);
 GtkBuilder* virt_viewer_window_get_builder(VirtViewerWindow *window);
 void virt_viewer_window_set_kiosk(VirtViewerWindow *self, gboolean enabled);
-
-G_END_DECLS
-
-#endif /* _VIRT_VIEWER_WINDOW */
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

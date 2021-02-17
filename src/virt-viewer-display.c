@@ -31,6 +31,7 @@
 #include "virt-viewer-display.h"
 #include "virt-viewer-util.h"
 
+typedef struct _VirtViewerDisplayPrivate VirtViewerDisplayPrivate;
 struct _VirtViewerDisplayPrivate
 {
     guint desktopWidth;
@@ -242,14 +243,13 @@ virt_viewer_display_class_init(VirtViewerDisplayClass *class)
 static void
 virt_viewer_display_init(VirtViewerDisplay *display)
 {
+    VirtViewerDisplayPrivate *priv = virt_viewer_display_get_instance_private(display);
     gtk_widget_set_has_window(GTK_WIDGET(display), FALSE);
     gtk_widget_set_redraw_on_allocate(GTK_WIDGET(display), FALSE);
 
-    display->priv = virt_viewer_display_get_instance_private(display);
-
-    display->priv->desktopWidth = MIN_DISPLAY_WIDTH;
-    display->priv->desktopHeight = MIN_DISPLAY_HEIGHT;
-    display->priv->zoom_level = NORMAL_ZOOM_LEVEL;
+    priv->desktopWidth = MIN_DISPLAY_WIDTH;
+    priv->desktopHeight = MIN_DISPLAY_HEIGHT;
+    priv->zoom_level = NORMAL_ZOOM_LEVEL;
 }
 
 GtkWidget*
@@ -265,7 +265,7 @@ virt_viewer_display_set_property(GObject *object,
                                  GParamSpec *pspec)
 {
     VirtViewerDisplay *display = VIRT_VIEWER_DISPLAY(object);
-    VirtViewerDisplayPrivate *priv = display->priv;
+    VirtViewerDisplayPrivate *priv = virt_viewer_display_get_instance_private(display);
 
     switch (prop_id) {
     case PROP_DESKTOP_WIDTH:
@@ -298,7 +298,7 @@ virt_viewer_display_get_property(GObject *object,
                                  GParamSpec *pspec)
 {
     VirtViewerDisplay *display = VIRT_VIEWER_DISPLAY(object);
-    VirtViewerDisplayPrivate *priv = display->priv;
+    VirtViewerDisplayPrivate *priv = virt_viewer_display_get_instance_private(display);
 
     switch (prop_id) {
     case PROP_DESKTOP_WIDTH:
@@ -367,7 +367,7 @@ static void virt_viewer_display_get_preferred_width(GtkWidget *widget,
                                                     int *defwidth)
 {
     VirtViewerDisplay *display = VIRT_VIEWER_DISPLAY(widget);
-    VirtViewerDisplayPrivate *priv = display->priv;
+    VirtViewerDisplayPrivate *priv = virt_viewer_display_get_instance_private(display);
 
     virt_viewer_display_get_preferred_dimension_from_desktop(display,
                                                              MIN_DISPLAY_WIDTH,
@@ -382,7 +382,7 @@ static void virt_viewer_display_get_preferred_height(GtkWidget *widget,
                                                      int *defheight)
 {
     VirtViewerDisplay *display = VIRT_VIEWER_DISPLAY(widget);
-    VirtViewerDisplayPrivate *priv = display->priv;
+    VirtViewerDisplayPrivate *priv = virt_viewer_display_get_instance_private(display);
 
     virt_viewer_display_get_preferred_dimension_from_desktop(display,
                                                              MIN_DISPLAY_HEIGHT,
@@ -398,7 +398,7 @@ virt_viewer_display_size_allocate(GtkWidget *widget,
 {
     GtkBin *bin = GTK_BIN(widget);
     VirtViewerDisplay *display = VIRT_VIEWER_DISPLAY(widget);
-    VirtViewerDisplayPrivate *priv = display->priv;
+    VirtViewerDisplayPrivate *priv = virt_viewer_display_get_instance_private(display);
     GtkAllocation child_allocation;
     gint width, height;
     gint border_width;
@@ -441,7 +441,7 @@ void virt_viewer_display_set_desktop_size(VirtViewerDisplay *display,
                                           guint width,
                                           guint height)
 {
-    VirtViewerDisplayPrivate *priv = display->priv;
+    VirtViewerDisplayPrivate *priv = virt_viewer_display_get_instance_private(display);
 
     if (width == priv->desktopWidth && height == priv->desktopHeight)
         return;
@@ -459,7 +459,7 @@ void virt_viewer_display_get_desktop_size(VirtViewerDisplay *display,
                                           guint *width,
                                           guint *height)
 {
-    VirtViewerDisplayPrivate *priv = display->priv;
+    VirtViewerDisplayPrivate *priv = virt_viewer_display_get_instance_private(display);
 
     *width = priv->desktopWidth;
     *height = priv->desktopHeight;
@@ -478,7 +478,7 @@ void virt_viewer_display_queue_resize(VirtViewerDisplay *display)
 void virt_viewer_display_set_zoom_level(VirtViewerDisplay *display,
                                         guint zoom)
 {
-    VirtViewerDisplayPrivate *priv = display->priv;
+    VirtViewerDisplayPrivate *priv = virt_viewer_display_get_instance_private(display);
 
     if (zoom < MIN_ZOOM_LEVEL)
         zoom = MIN_ZOOM_LEVEL;
@@ -497,7 +497,7 @@ void virt_viewer_display_set_zoom_level(VirtViewerDisplay *display,
 
 guint virt_viewer_display_get_zoom_level(VirtViewerDisplay *display)
 {
-    VirtViewerDisplayPrivate *priv = display->priv;
+    VirtViewerDisplayPrivate *priv = virt_viewer_display_get_instance_private(display);
     return priv->zoom_level;
 }
 
@@ -524,9 +524,11 @@ GdkPixbuf* virt_viewer_display_get_pixbuf(VirtViewerDisplay *display)
 
 guint virt_viewer_display_get_show_hint(VirtViewerDisplay *self)
 {
+    VirtViewerDisplayPrivate *priv;
     g_return_val_if_fail(VIRT_VIEWER_IS_DISPLAY(self), 0);
 
-    return self->priv->show_hint;
+    priv = virt_viewer_display_get_instance_private(self);
+    return priv->show_hint;
 }
 
 void virt_viewer_display_set_show_hint(VirtViewerDisplay *self, guint mask, gboolean enable)
@@ -535,7 +537,7 @@ void virt_viewer_display_set_show_hint(VirtViewerDisplay *self, guint mask, gboo
     guint hint;
     g_return_if_fail(VIRT_VIEWER_IS_DISPLAY(self));
 
-    priv = self->priv;
+    priv = virt_viewer_display_get_instance_private(self);
     hint = priv->show_hint;
 
     if (enable)
@@ -595,30 +597,38 @@ void virt_viewer_display_set_enabled(VirtViewerDisplay *self, gboolean enabled)
 
 gboolean virt_viewer_display_get_enabled(VirtViewerDisplay *self)
 {
-    return ((self->priv->show_hint & VIRT_VIEWER_DISPLAY_SHOW_HINT_SET) &&
-        !(self->priv->show_hint & VIRT_VIEWER_DISPLAY_SHOW_HINT_DISABLED));
+    VirtViewerDisplayPrivate *priv;
+    priv = virt_viewer_display_get_instance_private(self);
+    return ((priv->show_hint & VIRT_VIEWER_DISPLAY_SHOW_HINT_SET) &&
+        !(priv->show_hint & VIRT_VIEWER_DISPLAY_SHOW_HINT_DISABLED));
 }
 
 VirtViewerSession* virt_viewer_display_get_session(VirtViewerDisplay *self)
 {
+    VirtViewerDisplayPrivate *priv;
     g_return_val_if_fail(VIRT_VIEWER_IS_DISPLAY(self), NULL);
 
-    return self->priv->session;
+    priv = virt_viewer_display_get_instance_private(self);
+    return priv->session;
 }
 
 void virt_viewer_display_set_monitor(VirtViewerDisplay *self, gint monitor)
 {
+    VirtViewerDisplayPrivate *priv;
     g_return_if_fail(VIRT_VIEWER_IS_DISPLAY(self));
 
-    self->priv->monitor = monitor;
+    priv = virt_viewer_display_get_instance_private(self);
+    priv->monitor = monitor;
     g_object_notify(G_OBJECT(self), "monitor");
 }
 
 gint virt_viewer_display_get_monitor(VirtViewerDisplay *self)
 {
+    VirtViewerDisplayPrivate *priv;
     g_return_val_if_fail(VIRT_VIEWER_IS_DISPLAY(self), -1);
 
-    return self->priv->monitor;
+    priv = virt_viewer_display_get_instance_private(self);
+    return priv->monitor;
 }
 
 void virt_viewer_display_release_cursor(VirtViewerDisplay *self)
@@ -659,20 +669,24 @@ void virt_viewer_display_close(VirtViewerDisplay *self)
 
 void virt_viewer_display_set_fullscreen(VirtViewerDisplay *self, gboolean fullscreen)
 {
+    VirtViewerDisplayPrivate *priv;
     g_return_if_fail(VIRT_VIEWER_IS_DISPLAY(self));
 
-    if (self->priv->fullscreen == fullscreen)
+    priv = virt_viewer_display_get_instance_private(self);
+    if (priv->fullscreen == fullscreen)
         return;
 
-    self->priv->fullscreen = fullscreen;
+    priv->fullscreen = fullscreen;
     g_object_notify(G_OBJECT(self), "fullscreen");
 }
 
 gboolean virt_viewer_display_get_fullscreen(VirtViewerDisplay *self)
 {
+    VirtViewerDisplayPrivate *priv;
     g_return_val_if_fail(VIRT_VIEWER_IS_DISPLAY(self), FALSE);
 
-    return self->priv->fullscreen;
+    priv = virt_viewer_display_get_instance_private(self);
+    return priv->fullscreen;
 }
 
 void virt_viewer_display_get_preferred_monitor_geometry(VirtViewerDisplay* self,
@@ -734,13 +748,7 @@ void virt_viewer_display_get_preferred_monitor_geometry(VirtViewerDisplay* self,
 gint
 virt_viewer_display_get_nth(VirtViewerDisplay *self)
 {
-    return self->priv->nth_display;
+    VirtViewerDisplayPrivate *priv;
+    priv = virt_viewer_display_get_instance_private(self);
+    return priv->nth_display;
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

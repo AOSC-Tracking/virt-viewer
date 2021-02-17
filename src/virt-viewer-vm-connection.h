@@ -18,8 +18,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef VIRT_VIEWER_VM_CONNECTION_H
-#define VIRT_VIEWER_VM_CONNECTION_H
+#pragma once
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -27,12 +26,3 @@
 gchar* virt_viewer_vm_connection_choose_name_dialog(GtkWindow *main_window,
                                                     GtkTreeModel *model,
                                                     GError **error);
-
-#endif
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

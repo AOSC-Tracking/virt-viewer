@@ -115,11 +115,3 @@ virt_viewer_auth_collect_credentials(GtkWindow *window,
 
     return response == GTK_RESPONSE_OK;
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

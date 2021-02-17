@@ -21,40 +21,24 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_DISPLAY_H
-#define _VIRT_VIEWER_DISPLAY_H
+
+#pragma once
 
 #include <gtk/gtk.h>
 #include "virt-viewer-enums.h"
-
-G_BEGIN_DECLS
 
 #define MIN_DISPLAY_WIDTH 320
 #define MIN_DISPLAY_HEIGHT 200
 
 #define VIRT_VIEWER_TYPE_DISPLAY virt_viewer_display_get_type()
-
-#define VIRT_VIEWER_DISPLAY(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_DISPLAY, VirtViewerDisplay))
-
-#define VIRT_VIEWER_DISPLAY_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_DISPLAY, VirtViewerDisplayClass))
-
-#define VIRT_VIEWER_IS_DISPLAY(obj)                                     \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_DISPLAY))
-
-#define VIRT_VIEWER_IS_DISPLAY_CLASS(klass)                             \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_DISPLAY))
-
-#define VIRT_VIEWER_DISPLAY_GET_CLASS(obj)                                \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_DISPLAY, VirtViewerDisplayClass))
+G_DECLARE_DERIVABLE_TYPE(VirtViewerDisplay,
+                         virt_viewer_display,
+                         VIRT_VIEWER,
+                         DISPLAY,
+                         GtkBin)
 
 typedef struct _VirtViewerSession       VirtViewerSession;
 typedef struct _VirtViewerSessionClass  VirtViewerSessionClass;
-
-typedef struct _VirtViewerDisplay       VirtViewerDisplay;
-typedef struct _VirtViewerDisplayClass  VirtViewerDisplayClass;
-typedef struct _VirtViewerDisplayPrivate VirtViewerDisplayPrivate;
 
 typedef struct _VirtViewerDisplayChannel VirtViewerDisplayChannel;
 
@@ -63,13 +47,6 @@ typedef enum {
     VIRT_VIEWER_DISPLAY_SHOW_HINT_DISABLED         = 1 << 1,
     VIRT_VIEWER_DISPLAY_SHOW_HINT_SET              = 1 << 2,
 } VirtViewerDisplayShowHintFlags;
-
-/* perhaps this become an interface, and be pushed in gtkvnc and spice? */
-struct _VirtViewerDisplay {
-    GtkBin parent;
-
-    VirtViewerDisplayPrivate *priv;
-};
 
 struct _VirtViewerDisplayClass {
     GtkBinClass parent_class;
@@ -132,14 +109,3 @@ gboolean virt_viewer_display_get_selectable(VirtViewerDisplay *display);
 void virt_viewer_display_queue_resize(VirtViewerDisplay *display);
 void virt_viewer_display_get_preferred_monitor_geometry(VirtViewerDisplay *self, GdkRectangle* preferred);
 gint virt_viewer_display_get_nth(VirtViewerDisplay *self);
-
-G_END_DECLS
-
-#endif /* _VIRT_VIEWER_DISPLAY_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

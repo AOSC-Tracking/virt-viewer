@@ -18,28 +18,17 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __REMOTE_VIEWER_ISO_LIST_DIALOG_H__
-#define __REMOTE_VIEWER_ISO_LIST_DIALOG_H__
+#pragma once
 
 #include <gtk/gtk.h>
 
-G_BEGIN_DECLS
-
 #define REMOTE_VIEWER_TYPE_ISO_LIST_DIALOG remote_viewer_iso_list_dialog_get_type()
-
-#define REMOTE_VIEWER_ISO_LIST_DIALOG(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), REMOTE_VIEWER_TYPE_ISO_LIST_DIALOG, RemoteViewerISOListDialog))
-#define REMOTE_VIEWER_ISO_LIST_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), REMOTE_VIEWER_TYPE_ISO_LIST_DIALOG, RemoteViewerISOListDialogClass))
-#define REMOTE_VIEWER_IS_ISO_LIST_DIALOG(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMOTE_VIEWER_TYPE_ISO_LIST_DIALOG))
-#define REMOTE_VIEWER_IS_ISO_LIST_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), REMOTE_VIEWER_TYPE_ISO_LIST_DIALOG))
-#define REMOTE_VIEWER_ISO_LIST_DIALOG_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), REMOTE_VIEWER_TYPE_ISO_LIST_DIALOG, RemoteViewerISOListDialogClass))
-
-typedef struct _RemoteViewerISOListDialog RemoteViewerISOListDialog;
-typedef struct _RemoteViewerISOListDialogClass RemoteViewerISOListDialogClass;
+G_DECLARE_FINAL_TYPE(RemoteViewerISOListDialog,
+                     remote_viewer_iso_list_dialog,
+                     REMOTE_VIEWER,
+                     ISO_LIST_DIALOG,
+                     GtkDialog)
 
 GType remote_viewer_iso_list_dialog_get_type(void) G_GNUC_CONST;
 
 GtkWidget *remote_viewer_iso_list_dialog_new(GtkWindow *parent, GObject *foreign_menu);
-
-G_END_DECLS
-
-#endif /* __REMOTE_VIEWER_ISO_LIST_DIALOG_H__ */

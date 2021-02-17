@@ -21,58 +21,21 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_SESSION_VNC_H
-#define _VIRT_VIEWER_SESSION_VNC_H
+
+#pragma once
 
 #include <glib-object.h>
 #include <vncdisplay.h>
 
 #include "virt-viewer-session.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_SESSION_VNC virt_viewer_session_vnc_get_type()
-
-#define VIRT_VIEWER_SESSION_VNC(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_SESSION_VNC, VirtViewerSessionVnc))
-
-#define VIRT_VIEWER_SESSION_VNC_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_SESSION_VNC, VirtViewerSessionVncClass))
-
-#define VIRT_VIEWER_IS_SESSION_VNC(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_SESSION_VNC))
-
-#define VIRT_VIEWER_IS_SESSION_VNC_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_SESSION_VNC))
-
-#define VIRT_VIEWER_SESSION_VNC_GET_CLASS(obj)                                \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_SESSION_VNC, VirtViewerSessionVncClass))
-
-typedef struct _VirtViewerSessionVnc VirtViewerSessionVnc;
-typedef struct _VirtViewerSessionVncClass VirtViewerSessionVncClass;
-typedef struct _VirtViewerSessionVncPrivate VirtViewerSessionVncPrivate;
-
-struct _VirtViewerSessionVnc {
-    VirtViewerSession parent;
-
-    VirtViewerSessionVncPrivate *priv;
-};
-
-struct _VirtViewerSessionVncClass {
-    VirtViewerSessionClass parent_class;
-};
+G_DECLARE_FINAL_TYPE(VirtViewerSessionVnc,
+                     virt_viewer_session_vnc,
+                     VIRT_VIEWER,
+                     SESSION_VNC,
+                     VirtViewerSession)
 
 GType virt_viewer_session_vnc_get_type(void);
 
 VirtViewerSession *virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window);
-
-G_END_DECLS
-
-#endif /* _VIRT_VIEWER_SESSION_VNC_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

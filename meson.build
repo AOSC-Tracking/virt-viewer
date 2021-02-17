@@ -25,8 +25,8 @@ conf_data.set('VERSION', meson.project_version())
 conf_data.set('PACKAGE_STRING', 'virt-viewer ' + meson.project_version())
 
 # Keep these two definitions in agreement.
-glib_min_version='>=2.40'
-glib_min_version_symbol='GLIB_VERSION_2_40'
+glib_min_version='>=2.48'
+glib_min_version_symbol='GLIB_VERSION_2_48'
 
 # Keep these two definitions in agreement.
 gtk_min_version='>=3.12'

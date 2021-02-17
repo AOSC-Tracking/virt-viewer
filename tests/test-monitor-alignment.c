@@ -25,11 +25,6 @@
 
 #include <virt-viewer-util.h>
 
-/* GLIB_CHECK_VERSION(2, 40, 0) */
-#ifndef g_assert_nonnull
-#define g_assert_nonnull g_assert
-#endif
-
 gboolean doDebug = FALSE;
 
 #define MAX_DISPLAYS 4

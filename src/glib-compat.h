@@ -20,20 +20,6 @@
  * Author: Eduardo Lima (Etrunko) <etrunko@redhat.com>
  */
 
-#include <config.h>
-
-#ifndef GLIB_COMPAT_H
-#define GLIB_COMPAT_H 1
+#pragma once
 
 #include <glib.h>
-
-G_BEGIN_DECLS
-
-#if !GLIB_CHECK_VERSION(2,44,0)
-gboolean              g_strv_contains  (const gchar * const *strv,
-                                        const gchar         *str);
-#endif
-
-G_END_DECLS
-
-#endif // GLIB_COMPAT_H

@@ -68,7 +68,8 @@ static void ovirt_foreign_menu_refresh_cdrom_file_async(OvirtForeignMenu *menu, 
 static void ovirt_foreign_menu_fetch_iso_list_async(OvirtForeignMenu *menu, GTask *task);
 
 
-struct _OvirtForeignMenuPrivate {
+struct _OvirtForeignMenu {
+    GObject parent;
     OvirtProxy *proxy;
     OvirtApi *api;
     OvirtVm *vm;
@@ -93,7 +94,7 @@ struct _OvirtForeignMenuPrivate {
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (OvirtForeignMenu, ovirt_foreign_menu, G_TYPE_OBJECT)
+G_DEFINE_TYPE(OvirtForeignMenu, ovirt_foreign_menu, G_TYPE_OBJECT)
 
 
 enum {
@@ -111,11 +112,11 @@ ovirt_foreign_menu_get_current_iso_name(OvirtForeignMenu *foreign_menu)
 {
     gchar *name;
 
-    if (foreign_menu->priv->cdrom == NULL) {
+    if (foreign_menu->cdrom == NULL) {
         return NULL;
     }
 
-    g_object_get(foreign_menu->priv->cdrom, "file", &name, NULL);
+    g_object_get(foreign_menu->cdrom, "file", &name, NULL);
 
     return name;
 }
@@ -124,7 +125,7 @@ ovirt_foreign_menu_get_current_iso_name(OvirtForeignMenu *foreign_menu)
 GList*
 ovirt_foreign_menu_get_iso_names(OvirtForeignMenu *foreign_menu)
 {
-    return foreign_menu->priv->iso_names;
+    return foreign_menu->iso_names;
 }
 
 
@@ -133,27 +134,26 @@ ovirt_foreign_menu_get_property(GObject *object, guint property_id,
                                        GValue *value, GParamSpec *pspec)
 {
     OvirtForeignMenu *self = OVIRT_FOREIGN_MENU(object);
-    OvirtForeignMenuPrivate *priv = self->priv;
 
     switch (property_id) {
     case PROP_PROXY:
-        g_value_set_object(value, priv->proxy);
+        g_value_set_object(value, self->proxy);
         break;
     case PROP_API:
-        g_value_set_object(value, priv->api);
+        g_value_set_object(value, self->api);
         break;
     case PROP_VM:
-        g_value_set_object(value, priv->vm);
+        g_value_set_object(value, self->vm);
         break;
     case PROP_FILE:
         g_value_take_string(value,
                             ovirt_foreign_menu_get_current_iso_name(self));
         break;
     case PROP_FILES:
-        g_value_set_pointer(value, priv->iso_names);
+        g_value_set_pointer(value, self->iso_names);
         break;
     case PROP_VM_GUID:
-        g_value_set_string(value, priv->vm_guid);
+        g_value_set_string(value, self->vm_guid);
         break;
 
     default:
@@ -167,29 +167,28 @@ ovirt_foreign_menu_set_property(GObject *object, guint property_id,
                                        const GValue *value G_GNUC_UNUSED, GParamSpec *pspec)
 {
     OvirtForeignMenu *self = OVIRT_FOREIGN_MENU(object);
-    OvirtForeignMenuPrivate *priv = self->priv;
 
     switch (property_id) {
     case PROP_PROXY:
-        g_clear_object(&priv->proxy);
-        priv->proxy = g_value_dup_object(value);
+        g_clear_object(&self->proxy);
+        self->proxy = g_value_dup_object(value);
         break;
     case PROP_API:
-        g_clear_object(&priv->api);
-        priv->api = g_value_dup_object(value);
+        g_clear_object(&self->api);
+        self->api = g_value_dup_object(value);
         break;
     case PROP_VM:
-        g_clear_object(&priv->vm);
-        priv->vm = g_value_dup_object(value);
-        g_clear_pointer(&priv->vm_guid, g_free);
-        if (priv->vm != NULL) {
-            g_object_get(G_OBJECT(priv->vm), "guid", &priv->vm_guid, NULL);
+        g_clear_object(&self->vm);
+        self->vm = g_value_dup_object(value);
+        g_clear_pointer(&self->vm_guid, g_free);
+        if (self->vm != NULL) {
+            g_object_get(G_OBJECT(self->vm), "guid", &self->vm_guid, NULL);
         }
         break;
     case PROP_VM_GUID:
-        g_clear_object(&priv->vm);
-        g_free(priv->vm_guid);
-        priv->vm_guid = g_value_dup_string(value);
+        g_clear_object(&self->vm);
+        g_free(self->vm_guid);
+        self->vm_guid = g_value_dup_string(value);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -202,25 +201,25 @@ ovirt_foreign_menu_dispose(GObject *obj)
 {
     OvirtForeignMenu *self = OVIRT_FOREIGN_MENU(obj);
 
-    g_clear_object(&self->priv->proxy);
-    g_clear_object(&self->priv->api);
-    g_clear_object(&self->priv->vm);
+    g_clear_object(&self->proxy);
+    g_clear_object(&self->api);
+    g_clear_object(&self->vm);
 #ifdef HAVE_OVIRT_DATA_CENTER
-    g_clear_object(&self->priv->host);
-    g_clear_object(&self->priv->cluster);
-    g_clear_object(&self->priv->data_center);
+    g_clear_object(&self->host);
+    g_clear_object(&self->cluster);
+    g_clear_object(&self->data_center);
 #endif
-    g_clear_pointer(&self->priv->vm_guid, g_free);
-    g_clear_object(&self->priv->files);
-    g_clear_object(&self->priv->cdrom);
+    g_clear_pointer(&self->vm_guid, g_free);
+    g_clear_object(&self->files);
+    g_clear_object(&self->cdrom);
 
-    if (self->priv->iso_names) {
-        g_list_free_full(self->priv->iso_names, (GDestroyNotify)g_free);
-        self->priv->iso_names = NULL;
+    if (self->iso_names) {
+        g_list_free_full(self->iso_names, (GDestroyNotify)g_free);
+        self->iso_names = NULL;
     }
 
-    g_clear_pointer(&self->priv->current_iso_name, g_free);
-    g_clear_pointer(&self->priv->next_iso_name, g_free);
+    g_clear_pointer(&self->current_iso_name, g_free);
+    g_clear_pointer(&self->next_iso_name, g_free);
 
     G_OBJECT_CLASS(ovirt_foreign_menu_parent_class)->dispose(obj);
 }
@@ -288,9 +287,8 @@ ovirt_foreign_menu_class_init(OvirtForeignMenuClass *klass)
 
 
 static void
-ovirt_foreign_menu_init(OvirtForeignMenu *self)
+ovirt_foreign_menu_init(OvirtForeignMenu *self G_GNUC_UNUSED)
 {
-    self->priv = ovirt_foreign_menu_get_instance_private(self);
 }
 
 
@@ -314,45 +312,45 @@ ovirt_foreign_menu_next_async_step(OvirtForeignMenu *menu,
      */
     switch (current_state + 1) {
     case STATE_API:
-        if (menu->priv->api == NULL) {
+        if (menu->api == NULL) {
             ovirt_foreign_menu_fetch_api_async(menu, task);
             break;
         }
         G_GNUC_FALLTHROUGH;
     case STATE_VM:
-        if (menu->priv->vm == NULL) {
+        if (menu->vm == NULL) {
             ovirt_foreign_menu_fetch_vm_async(menu, task);
             break;
         }
 #ifdef HAVE_OVIRT_DATA_CENTER
         G_GNUC_FALLTHROUGH;
     case STATE_HOST:
-        if (menu->priv->host == NULL) {
+        if (menu->host == NULL) {
             ovirt_foreign_menu_fetch_host_async(menu, task);
             break;
         }
         G_GNUC_FALLTHROUGH;
     case STATE_CLUSTER:
-        if (menu->priv->cluster == NULL) {
+        if (menu->cluster == NULL) {
             ovirt_foreign_menu_fetch_cluster_async(menu, task);
             break;
         }
         G_GNUC_FALLTHROUGH;
     case STATE_DATA_CENTER:
-        if (menu->priv->data_center == NULL) {
+        if (menu->data_center == NULL) {
             ovirt_foreign_menu_fetch_data_center_async(menu, task);
             break;
         }
 #endif
         G_GNUC_FALLTHROUGH;
     case STATE_STORAGE_DOMAIN:
-        if (menu->priv->files == NULL) {
+        if (menu->files == NULL) {
             ovirt_foreign_menu_fetch_storage_domain_async(menu, task);
             break;
         }
         G_GNUC_FALLTHROUGH;
     case STATE_VM_CDROM:
-        if (menu->priv->cdrom == NULL) {
+        if (menu->cdrom == NULL) {
             ovirt_foreign_menu_fetch_vm_cdrom_async(menu, task);
             break;
         }
@@ -361,10 +359,10 @@ ovirt_foreign_menu_next_async_step(OvirtForeignMenu *menu,
         ovirt_foreign_menu_refresh_cdrom_file_async(menu, task);
         break;
     case STATE_ISOS:
-        g_warn_if_fail(menu->priv->api != NULL);
-        g_warn_if_fail(menu->priv->vm != NULL);
-        g_warn_if_fail(menu->priv->files != NULL);
-        g_warn_if_fail(menu->priv->cdrom != NULL);
+        g_warn_if_fail(menu->api != NULL);
+        g_warn_if_fail(menu->vm != NULL);
+        g_warn_if_fail(menu->files != NULL);
+        g_warn_if_fail(menu->cdrom != NULL);
 
         ovirt_foreign_menu_fetch_iso_list_async(menu, task);
         break;
@@ -410,10 +408,10 @@ static void iso_name_set_cb(GObject *source_object,
     updated = ovirt_cdrom_update_finish(OVIRT_CDROM(source_object),
                                         result, &error);
     if (updated) {
-        g_debug("Finished updating cdrom content: %s", foreign_menu->priv->next_iso_name);
-        g_free(foreign_menu->priv->current_iso_name);
-        foreign_menu->priv->current_iso_name = foreign_menu->priv->next_iso_name;
-        foreign_menu->priv->next_iso_name = NULL;
+        g_debug("Finished updating cdrom content: %s", foreign_menu->next_iso_name);
+        g_free(foreign_menu->current_iso_name);
+        foreign_menu->current_iso_name = foreign_menu->next_iso_name;
+        foreign_menu->next_iso_name = NULL;
         g_task_return_boolean(task, TRUE);
         goto end;
     }
@@ -421,10 +419,10 @@ static void iso_name_set_cb(GObject *source_object,
     /* Reset old state back as we were not successful in switching to
      * the new ISO */
     g_debug("setting OvirtCdrom:file back to '%s'",
-            foreign_menu->priv->current_iso_name);
-    g_object_set(foreign_menu->priv->cdrom, "file",
-                 foreign_menu->priv->current_iso_name, NULL);
-    g_clear_pointer(&foreign_menu->priv->next_iso_name, g_free);
+            foreign_menu->current_iso_name);
+    g_object_set(foreign_menu->cdrom, "file",
+                 foreign_menu->current_iso_name, NULL);
+    g_clear_pointer(&foreign_menu->next_iso_name, g_free);
 
     if (error != NULL) {
         g_warning("failed to update cdrom resource: %s", error->message);
@@ -448,24 +446,24 @@ void ovirt_foreign_menu_set_current_iso_name_async(OvirtForeignMenu *foreign_men
 {
     GTask *task;
 
-    g_return_if_fail(foreign_menu->priv->cdrom != NULL);
-    g_return_if_fail(foreign_menu->priv->next_iso_name == NULL);
+    g_return_if_fail(foreign_menu->cdrom != NULL);
+    g_return_if_fail(foreign_menu->next_iso_name == NULL);
 
     if (name) {
         g_debug("Updating VM cdrom image to '%s'", name);
-        foreign_menu->priv->next_iso_name = g_strdup(name);
+        foreign_menu->next_iso_name = g_strdup(name);
     } else {
         g_debug("Removing current cdrom image");
-        foreign_menu->priv->next_iso_name = NULL;
+        foreign_menu->next_iso_name = NULL;
     }
 
-    g_object_set(foreign_menu->priv->cdrom,
+    g_object_set(foreign_menu->cdrom,
                  "file", name,
                  NULL);
 
     task = g_task_new(foreign_menu, cancellable, callback, user_data);
-    ovirt_cdrom_update_async(foreign_menu->priv->cdrom, TRUE,
-                             foreign_menu->priv->proxy, cancellable,
+    ovirt_cdrom_update_async(foreign_menu->cdrom, TRUE,
+                             foreign_menu->proxy, cancellable,
                              iso_name_set_cb, task);
 }
 
@@ -515,7 +513,7 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
                                             (GCompareFunc)g_strcmp0);
     }
 
-    for (it = sorted_files, it2 = menu->priv->iso_names;
+    for (it = sorted_files, it2 = menu->iso_names;
          (it != NULL) && (it2 != NULL);
          it = it->next, it2 = it2->next) {
         if (g_strcmp0(it->data, it2->data) != 0) {
@@ -524,13 +522,13 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
     }
 
     if ((it == NULL) && (it2 == NULL)) {
-        /* sorted_files and menu->priv->files content was the same */
+        /* sorted_files and menu->files content was the same */
         g_list_free_full(sorted_files, (GDestroyNotify)g_free);
         return;
     }
 
-    g_list_free_full(menu->priv->iso_names, (GDestroyNotify)g_free);
-    menu->priv->iso_names = sorted_files;
+    g_list_free_full(menu->iso_names, (GDestroyNotify)g_free);
+    menu->iso_names = sorted_files;
 }
 
 
@@ -552,13 +550,13 @@ static void cdrom_file_refreshed_cb(GObject *source_object,
     }
 
     /* Content of OvirtCdrom is now current */
-    g_clear_pointer(&menu->priv->current_iso_name, g_free);
-    if (menu->priv->cdrom != NULL) {
-        g_object_get(G_OBJECT(menu->priv->cdrom),
-                     "file", &menu->priv->current_iso_name,
+    g_clear_pointer(&menu->current_iso_name, g_free);
+    if (menu->cdrom != NULL) {
+        g_object_get(G_OBJECT(menu->cdrom),
+                     "file", &menu->current_iso_name,
                      NULL);
     }
-    if (menu->priv->cdrom != NULL) {
+    if (menu->cdrom != NULL) {
         ovirt_foreign_menu_next_async_step(menu, task, STATE_CDROM_FILE);
     } else {
         g_debug("Could not find VM cdrom through oVirt REST API");
@@ -572,10 +570,10 @@ static void cdrom_file_refreshed_cb(GObject *source_object,
 static void ovirt_foreign_menu_refresh_cdrom_file_async(OvirtForeignMenu *menu,
                                                         GTask *task)
 {
-    g_return_if_fail(OVIRT_IS_RESOURCE(menu->priv->cdrom));
+    g_return_if_fail(OVIRT_IS_RESOURCE(menu->cdrom));
 
-    ovirt_resource_refresh_async(OVIRT_RESOURCE(menu->priv->cdrom),
-                                 menu->priv->proxy, g_task_get_cancellable(task),
+    ovirt_resource_refresh_async(OVIRT_RESOURCE(menu->cdrom),
+                                 menu->proxy, g_task_get_cancellable(task),
                                  cdrom_file_refreshed_cb, task);
 }
 
@@ -610,14 +608,14 @@ static void cdroms_fetched_cb(GObject *source_object,
      * device per-VM
      */
     if (g_hash_table_iter_next(&iter, NULL, (gpointer *)&cdrom)) {
-        if (menu->priv->cdrom != NULL) {
-            g_object_unref(G_OBJECT(menu->priv->cdrom));
+        if (menu->cdrom != NULL) {
+            g_object_unref(G_OBJECT(menu->cdrom));
         }
-        menu->priv->cdrom = g_object_ref(G_OBJECT(cdrom));
-        g_debug("Set VM cdrom to %p", menu->priv->cdrom);
+        menu->cdrom = g_object_ref(G_OBJECT(cdrom));
+        g_debug("Set VM cdrom to %p", menu->cdrom);
     }
 
-    if (menu->priv->cdrom != NULL) {
+    if (menu->cdrom != NULL) {
         ovirt_foreign_menu_next_async_step(menu, task, STATE_VM_CDROM);
     } else {
         g_debug("Could not find VM cdrom through oVirt REST API");
@@ -633,8 +631,8 @@ static void ovirt_foreign_menu_fetch_vm_cdrom_async(OvirtForeignMenu *menu,
 {
     OvirtCollection *cdrom_collection;
 
-    cdrom_collection = ovirt_vm_get_cdroms(menu->priv->vm);
-    ovirt_collection_fetch_async(cdrom_collection, menu->priv->proxy,
+    cdrom_collection = ovirt_vm_get_cdroms(menu->vm);
+    ovirt_collection_fetch_async(cdrom_collection, menu->proxy,
                                  g_task_get_cancellable(task),
                                  cdroms_fetched_cb, task);
 }
@@ -684,7 +682,7 @@ static gboolean storage_domain_validate(OvirtForeignMenu *menu G_GNUC_UNUSED,
     }
 
 #ifdef HAVE_OVIRT_DATA_CENTER
-    if (!storage_domain_attached_to_data_center(domain, menu->priv->data_center)) {
+    if (!storage_domain_attached_to_data_center(domain, menu->data_center)) {
         g_debug("Storage domain '%s' is not attached to data center", name);
         ret = FALSE;
     }
@@ -699,11 +697,11 @@ static gboolean ovirt_foreign_menu_set_file_collection(OvirtForeignMenu *menu, O
 {
     g_return_val_if_fail(file_collection != NULL, FALSE);
 
-    if (menu->priv->files) {
-        g_object_unref(G_OBJECT(menu->priv->files));
+    if (menu->files) {
+        g_object_unref(G_OBJECT(menu->files));
     }
-    menu->priv->files = g_object_ref(G_OBJECT(file_collection));
-    g_debug("Set VM files to %p", menu->priv->files);
+    menu->files = g_object_ref(G_OBJECT(file_collection));
+    g_debug("Set VM files to %p", menu->files);
     return TRUE;
 }
 
@@ -789,16 +787,16 @@ static void ovirt_foreign_menu_fetch_storage_domain_async(OvirtForeignMenu *menu
 
 #ifdef HAVE_OVIRT_DATA_CENTER
     g_return_if_fail(OVIRT_IS_FOREIGN_MENU(menu));
-    g_return_if_fail(OVIRT_IS_PROXY(menu->priv->proxy));
-    g_return_if_fail(OVIRT_IS_DATA_CENTER(menu->priv->data_center));
+    g_return_if_fail(OVIRT_IS_PROXY(menu->proxy));
+    g_return_if_fail(OVIRT_IS_DATA_CENTER(menu->data_center));
 
-    collection = ovirt_data_center_get_storage_domains(menu->priv->data_center);
+    collection = ovirt_data_center_get_storage_domains(menu->data_center);
 #else
-    collection = ovirt_api_get_storage_domains(menu->priv->api);
+    collection = ovirt_api_get_storage_domains(menu->api);
 #endif
 
     g_debug("Start fetching iso file collection");
-    ovirt_collection_fetch_async(collection, menu->priv->proxy,
+    ovirt_collection_fetch_async(collection, menu->proxy,
                                  g_task_get_cancellable(task),
                                  storage_domains_fetched_cb, task);
 }
@@ -830,12 +828,12 @@ static void ovirt_foreign_menu_fetch_data_center_async(OvirtForeignMenu *menu,
                                                        GTask *task)
 {
     g_return_if_fail(OVIRT_IS_FOREIGN_MENU(menu));
-    g_return_if_fail(OVIRT_IS_PROXY(menu->priv->proxy));
-    g_return_if_fail(OVIRT_IS_CLUSTER(menu->priv->cluster));
+    g_return_if_fail(OVIRT_IS_PROXY(menu->proxy));
+    g_return_if_fail(OVIRT_IS_CLUSTER(menu->cluster));
 
-    menu->priv->data_center = ovirt_cluster_get_data_center(menu->priv->cluster);
-    ovirt_resource_refresh_async(OVIRT_RESOURCE(menu->priv->data_center),
-                                 menu->priv->proxy,
+    menu->data_center = ovirt_cluster_get_data_center(menu->cluster);
+    ovirt_resource_refresh_async(OVIRT_RESOURCE(menu->data_center),
+                                 menu->proxy,
                                  g_task_get_cancellable(task),
                                  data_center_fetched_cb,
                                  task);
@@ -867,12 +865,12 @@ static void ovirt_foreign_menu_fetch_cluster_async(OvirtForeignMenu *menu,
                                                    GTask *task)
 {
     g_return_if_fail(OVIRT_IS_FOREIGN_MENU(menu));
-    g_return_if_fail(OVIRT_IS_PROXY(menu->priv->proxy));
-    g_return_if_fail(OVIRT_IS_HOST(menu->priv->host));
+    g_return_if_fail(OVIRT_IS_PROXY(menu->proxy));
+    g_return_if_fail(OVIRT_IS_HOST(menu->host));
 
-    menu->priv->cluster = ovirt_host_get_cluster(menu->priv->host);
-    ovirt_resource_refresh_async(OVIRT_RESOURCE(menu->priv->cluster),
-                                 menu->priv->proxy,
+    menu->cluster = ovirt_host_get_cluster(menu->host);
+    ovirt_resource_refresh_async(OVIRT_RESOURCE(menu->cluster),
+                                 menu->proxy,
                                  g_task_get_cancellable(task),
                                  cluster_fetched_cb,
                                  task);
@@ -904,12 +902,12 @@ static void ovirt_foreign_menu_fetch_host_async(OvirtForeignMenu *menu,
                                                 GTask *task)
 {
     g_return_if_fail(OVIRT_IS_FOREIGN_MENU(menu));
-    g_return_if_fail(OVIRT_IS_PROXY(menu->priv->proxy));
-    g_return_if_fail(OVIRT_IS_VM(menu->priv->vm));
+    g_return_if_fail(OVIRT_IS_PROXY(menu->proxy));
+    g_return_if_fail(OVIRT_IS_VM(menu->vm));
 
-    menu->priv->host = ovirt_vm_get_host(menu->priv->vm);
-    ovirt_resource_refresh_async(OVIRT_RESOURCE(menu->priv->host),
-                                 menu->priv->proxy,
+    menu->host = ovirt_vm_get_host(menu->vm);
+    ovirt_resource_refresh_async(OVIRT_RESOURCE(menu->host),
+                                 menu->proxy,
                                  g_task_get_cancellable(task),
                                  host_fetched_cb,
                                  task);
@@ -941,19 +939,19 @@ static void vms_fetched_cb(GObject *source_object,
         char *guid;
 
         g_object_get(G_OBJECT(vm), "guid", &guid, NULL);
-        if (g_strcmp0(guid, menu->priv->vm_guid) == 0) {
-            menu->priv->vm = g_object_ref(vm);
+        if (g_strcmp0(guid, menu->vm_guid) == 0) {
+            menu->vm = g_object_ref(vm);
             g_free(guid);
             break;
         }
         g_free(guid);
     }
-    if (menu->priv->vm != NULL) {
+    if (menu->vm != NULL) {
         ovirt_foreign_menu_next_async_step(menu, task, STATE_VM);
     } else {
-        g_warning("failed to find a VM with guid \"%s\"", menu->priv->vm_guid);
+        g_warning("failed to find a VM with guid \"%s\"", menu->vm_guid);
         g_task_return_new_error(task, OVIRT_ERROR, OVIRT_ERROR_FAILED,
-                                "Could not find a VM with guid \"%s\"", menu->priv->vm_guid);
+                                "Could not find a VM with guid \"%s\"", menu->vm_guid);
         g_object_unref(task);
     }
 
@@ -968,18 +966,18 @@ static void ovirt_foreign_menu_fetch_vm_async(OvirtForeignMenu *menu,
     OvirtCollection *vms;
 
     g_return_if_fail(OVIRT_IS_FOREIGN_MENU(menu));
-    g_return_if_fail(OVIRT_IS_PROXY(menu->priv->proxy));
-    g_return_if_fail(OVIRT_IS_API(menu->priv->api));
+    g_return_if_fail(OVIRT_IS_PROXY(menu->proxy));
+    g_return_if_fail(OVIRT_IS_API(menu->api));
 
 #ifdef HAVE_OVIRT_API_SEARCH_VMS
-    char * query = g_strdup_printf("id=%s", menu->priv->vm_guid);
-    vms = ovirt_api_search_vms(menu->priv->api, query);
+    char * query = g_strdup_printf("id=%s", menu->vm_guid);
+    vms = ovirt_api_search_vms(menu->api, query);
     g_free(query);
 #else
-    vms = ovirt_api_get_vms(menu->priv->api);
+    vms = ovirt_api_get_vms(menu->api);
 #endif
 
-    ovirt_collection_fetch_async(vms, menu->priv->proxy,
+    ovirt_collection_fetch_async(vms, menu->proxy,
                                  g_task_get_cancellable(task),
                                  vms_fetched_cb, task);
 }
@@ -994,15 +992,15 @@ static void api_fetched_cb(GObject *source_object,
     OvirtForeignMenu *menu = OVIRT_FOREIGN_MENU(g_task_get_source_object(task));
     OvirtProxy *proxy = OVIRT_PROXY(source_object);
 
-    menu->priv->api = ovirt_proxy_fetch_api_finish(proxy, result, &error);
+    menu->api = ovirt_proxy_fetch_api_finish(proxy, result, &error);
     if (error != NULL) {
         g_debug("failed to fetch toplevel API object: %s", error->message);
         g_task_return_error(task, error);
         g_object_unref(task);
         return;
     }
-    g_return_if_fail(OVIRT_IS_API(menu->priv->api));
-    g_object_ref(menu->priv->api);
+    g_return_if_fail(OVIRT_IS_API(menu->api));
+    g_object_ref(menu->api);
 
     ovirt_foreign_menu_next_async_step(menu, task, STATE_API);
 }
@@ -1014,9 +1012,9 @@ static void ovirt_foreign_menu_fetch_api_async(OvirtForeignMenu *menu,
     g_debug("Start fetching oVirt main entry point");
 
     g_return_if_fail(OVIRT_IS_FOREIGN_MENU(menu));
-    g_return_if_fail(OVIRT_IS_PROXY(menu->priv->proxy));
+    g_return_if_fail(OVIRT_IS_PROXY(menu->proxy));
 
-    ovirt_proxy_fetch_api_async(menu->priv->proxy,
+    ovirt_proxy_fetch_api_async(menu->proxy,
                                 g_task_get_cancellable(task),
                                 api_fetched_cb, task);
 }
@@ -1044,7 +1042,7 @@ static void iso_list_fetched_cb(GObject *source_object,
     files = g_hash_table_get_values(ovirt_collection_get_resources(collection));
     ovirt_foreign_menu_set_files(menu, files);
     g_list_free(files);
-    g_task_return_pointer(task, menu->priv->iso_names, NULL);
+    g_task_return_pointer(task, menu->iso_names, NULL);
     g_object_unref(task);
 }
 
@@ -1052,11 +1050,11 @@ static void iso_list_fetched_cb(GObject *source_object,
 static void ovirt_foreign_menu_fetch_iso_list_async(OvirtForeignMenu *menu,
                                                     GTask *task)
 {
-    if (menu->priv->files == NULL) {
+    if (menu->files == NULL) {
         return;
     }
 
-    ovirt_collection_fetch_async(menu->priv->files, menu->priv->proxy,
+    ovirt_collection_fetch_async(menu->files, menu->proxy,
                                  g_task_get_cancellable(task),
                                  iso_list_fetched_cb, task);
 }

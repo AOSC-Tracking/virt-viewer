@@ -94,11 +94,12 @@
  * be prefixed with x- to avoid later conflicts)
  */
 
-struct _VirtViewerFilePrivate {
+struct _VirtViewerFile {
+    GObject parent;
     GKeyFile* keyfile;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE(VirtViewerFile, virt_viewer_file, G_TYPE_OBJECT);
+G_DEFINE_TYPE(VirtViewerFile, virt_viewer_file, G_TYPE_OBJECT);
 
 #define MAIN_GROUP "virt-viewer"
 #define OVIRT_GROUP "ovirt"
@@ -150,7 +151,7 @@ virt_viewer_file_new_from_buffer(const gchar* data, gsize len,
 {
     GError* inner_error = NULL;
     VirtViewerFile* self = VIRT_VIEWER_FILE(g_object_new(VIRT_VIEWER_TYPE_FILE, NULL));
-    GKeyFile* keyfile = self->priv->keyfile;
+    GKeyFile* keyfile = self->keyfile;
 
     g_return_val_if_fail(data != NULL, NULL);
     g_key_file_load_from_data(keyfile, data, len,
@@ -209,7 +210,7 @@ virt_viewer_file_is_set(VirtViewerFile* self, const gchar* key)
     g_return_val_if_fail(VIRT_VIEWER_IS_FILE(self), FALSE);
     g_return_val_if_fail(key != NULL, FALSE);
 
-    set = g_key_file_has_key(self->priv->keyfile, MAIN_GROUP, key, &inner_error);
+    set = g_key_file_has_key(self->keyfile, MAIN_GROUP, key, &inner_error);
     if (inner_error == NULL)
         return set;
     else {
@@ -226,7 +227,7 @@ virt_viewer_file_set_string(VirtViewerFile* self, const char *group,
     g_return_if_fail(key != NULL);
     g_return_if_fail(value != NULL);
 
-    g_key_file_set_string(self->priv->keyfile, group, key, value);
+    g_key_file_set_string(self->keyfile, group, key, value);
 }
 
 static gchar*
@@ -240,7 +241,7 @@ virt_viewer_file_get_string(VirtViewerFile* self,
     g_return_val_if_fail(VIRT_VIEWER_IS_FILE(self), NULL);
     g_return_val_if_fail(key != NULL, NULL);
 
-    result = g_key_file_get_string(self->priv->keyfile, group, key, &inner_error);
+    result = g_key_file_get_string(self->keyfile, group, key, &inner_error);
     if (inner_error && inner_error->domain != G_KEY_FILE_ERROR)
         g_critical("%s", inner_error->message);
     g_clear_error(&inner_error);
@@ -256,7 +257,7 @@ virt_viewer_file_set_string_list(VirtViewerFile* self, const char *group,
     g_return_if_fail(VIRT_VIEWER_IS_FILE(self));
     g_return_if_fail(key != NULL);
 
-    g_key_file_set_string_list(self->priv->keyfile, group, key, value, length);
+    g_key_file_set_string_list(self->keyfile, group, key, value, length);
 }
 
 static gchar**
@@ -269,7 +270,7 @@ virt_viewer_file_get_string_list(VirtViewerFile* self, const char *group,
     g_return_val_if_fail(VIRT_VIEWER_IS_FILE(self), NULL);
     g_return_val_if_fail(key != NULL, NULL);
 
-    result = g_key_file_get_string_list(self->priv->keyfile, group, key, length, &inner_error);
+    result = g_key_file_get_string_list(self->keyfile, group, key, length, &inner_error);
     if (inner_error && inner_error->domain != G_KEY_FILE_ERROR)
         g_critical("%s", inner_error->message);
     g_clear_error(&inner_error);
@@ -284,7 +285,7 @@ virt_viewer_file_set_int(VirtViewerFile* self, const char *group,
     g_return_if_fail(VIRT_VIEWER_IS_FILE(self));
     g_return_if_fail(key != NULL);
 
-    g_key_file_set_integer(self->priv->keyfile, group, key, value);
+    g_key_file_set_integer(self->keyfile, group, key, value);
 }
 
 static gint
@@ -298,7 +299,7 @@ virt_viewer_file_get_int(VirtViewerFile* self,
     g_return_val_if_fail(VIRT_VIEWER_IS_FILE(self), -1);
     g_return_val_if_fail(key != NULL, -1);
 
-    result = g_key_file_get_integer(self->priv->keyfile, group, key, &inner_error);
+    result = g_key_file_get_integer(self->keyfile, group, key, &inner_error);
     if (inner_error && inner_error->domain != G_KEY_FILE_ERROR)
         g_critical("%s", inner_error->message);
     g_clear_error(&inner_error);
@@ -1248,7 +1249,7 @@ virt_viewer_file_finalize(GObject* object)
 {
     VirtViewerFile *self = VIRT_VIEWER_FILE(object);
 
-    g_clear_pointer(&self->priv->keyfile, g_key_file_free);
+    g_clear_pointer(&self->keyfile, g_key_file_free);
 
     G_OBJECT_CLASS(virt_viewer_file_parent_class)->finalize(object);
 }
@@ -1256,9 +1257,7 @@ virt_viewer_file_finalize(GObject* object)
 static void
 virt_viewer_file_init(VirtViewerFile* self)
 {
-    self->priv = virt_viewer_file_get_instance_private(self);
-
-    self->priv->keyfile = g_key_file_new();
+    self->keyfile = g_key_file_new();
 }
 
 static void

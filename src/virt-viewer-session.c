@@ -31,6 +31,7 @@
 #include "virt-viewer-util.h"
 #include "virt-viewer-display-vte.h"
 
+typedef struct _VirtViewerSessionPrivate VirtViewerSessionPrivate;
 struct _VirtViewerSessionPrivate
 {
     GList *displays;
@@ -63,17 +64,18 @@ static void
 virt_viewer_session_finalize(GObject *obj)
 {
     VirtViewerSession *session = VIRT_VIEWER_SESSION(obj);
-    GList *tmp = session->priv->displays;
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(session);
+    GList *tmp = priv->displays;
 
     while (tmp) {
         g_object_unref(tmp->data);
         tmp = tmp->next;
     }
-    g_list_free(session->priv->displays);
+    g_list_free(priv->displays);
 
-    g_free(session->priv->uri);
-    g_clear_object(&session->priv->file);
-    g_free(session->priv->shared_folder);
+    g_free(priv->uri);
+    g_clear_object(&priv->file);
+    g_free(priv->shared_folder);
 
     G_OBJECT_CLASS(virt_viewer_session_parent_class)->finalize(obj);
 }
@@ -85,6 +87,7 @@ virt_viewer_session_set_property(GObject *object,
                                  GParamSpec *pspec)
 {
     VirtViewerSession *self = VIRT_VIEWER_SESSION(object);
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
 
     switch (prop_id) {
     case PROP_AUTO_USBREDIR:
@@ -92,11 +95,11 @@ virt_viewer_session_set_property(GObject *object,
         break;
 
     case PROP_HAS_USBREDIR:
-        self->priv->has_usbredir = g_value_get_boolean(value);
+        priv->has_usbredir = g_value_get_boolean(value);
         break;
 
     case PROP_APP:
-        self->priv->app = g_value_get_object(value);
+        priv->app = g_value_get_object(value);
         break;
 
     case PROP_FILE:
@@ -104,16 +107,16 @@ virt_viewer_session_set_property(GObject *object,
         break;
 
     case PROP_SHARE_FOLDER:
-        self->priv->share_folder = g_value_get_boolean(value);
+        priv->share_folder = g_value_get_boolean(value);
         break;
 
     case PROP_SHARED_FOLDER:
-        g_free(self->priv->shared_folder);
-        self->priv->shared_folder = g_value_dup_string(value);
+        g_free(priv->shared_folder);
+        priv->shared_folder = g_value_dup_string(value);
         break;
 
     case PROP_SHARE_FOLDER_RO:
-        self->priv->share_folder_ro = g_value_get_boolean(value);
+        priv->share_folder_ro = g_value_get_boolean(value);
         break;
 
     default:
@@ -129,6 +132,7 @@ virt_viewer_session_get_property(GObject *object,
                                  GParamSpec *pspec)
 {
     VirtViewerSession *self = VIRT_VIEWER_SESSION(object);
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
 
     switch (prop_id) {
     case PROP_AUTO_USBREDIR:
@@ -136,15 +140,15 @@ virt_viewer_session_get_property(GObject *object,
         break;
 
     case PROP_HAS_USBREDIR:
-        g_value_set_boolean(value, self->priv->has_usbredir);
+        g_value_set_boolean(value, priv->has_usbredir);
         break;
 
     case PROP_APP:
-        g_value_set_object(value, self->priv->app);
+        g_value_set_object(value, priv->app);
         break;
 
     case PROP_FILE:
-        g_value_set_object(value, self->priv->file);
+        g_value_set_object(value, priv->file);
         break;
 
     case PROP_SW_SMARTCARD_READER:
@@ -152,15 +156,15 @@ virt_viewer_session_get_property(GObject *object,
         break;
 
     case PROP_SHARE_FOLDER:
-        g_value_set_boolean(value, self->priv->share_folder);
+        g_value_set_boolean(value, priv->share_folder);
         break;
 
     case PROP_SHARED_FOLDER:
-        g_value_set_string(value, self->priv->shared_folder);
+        g_value_set_string(value, priv->shared_folder);
         break;
 
     case PROP_SHARE_FOLDER_RO:
-        g_value_set_boolean(value, self->priv->share_folder_ro);
+        g_value_set_boolean(value, priv->share_folder_ro);
         break;
 
     default:
@@ -398,15 +402,15 @@ virt_viewer_session_class_init(VirtViewerSessionClass *class)
 }
 
 static void
-virt_viewer_session_init(VirtViewerSession *session)
+virt_viewer_session_init(VirtViewerSession *session G_GNUC_UNUSED)
 {
-    session->priv = virt_viewer_session_get_instance_private(session);
 }
 
 static void
 virt_viewer_session_on_monitor_geometry_changed(VirtViewerSession* self,
                                                 VirtViewerDisplay* display G_GNUC_UNUSED)
 {
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
     VirtViewerSessionClass *klass;
     gboolean all_fullscreen = TRUE;
     /* GHashTable<gint, GdkRectangle*> */
@@ -420,7 +424,7 @@ virt_viewer_session_on_monitor_geometry_changed(VirtViewerSession* self,
 
     monitors = g_hash_table_new_full(g_direct_hash, g_direct_equal, NULL, g_free);
 
-    for (l = self->priv->displays; l; l = l->next) {
+    for (l = priv->displays; l; l = l->next) {
         VirtViewerDisplay *d = VIRT_VIEWER_DISPLAY(l->data);
 
         if (VIRT_VIEWER_IS_DISPLAY_VTE(d))
@@ -458,10 +462,12 @@ cleanup:
 void virt_viewer_session_add_display(VirtViewerSession *session,
                                      VirtViewerDisplay *display)
 {
-    if (g_list_find(session->priv->displays, display))
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(session);
+
+    if (g_list_find(priv->displays, display))
         return;
 
-    session->priv->displays = g_list_append(session->priv->displays, display);
+    priv->displays = g_list_append(priv->displays, display);
     g_object_ref(display);
     g_signal_emit_by_name(session, "session-display-added", display);
 
@@ -474,17 +480,20 @@ void virt_viewer_session_add_display(VirtViewerSession *session,
 void virt_viewer_session_remove_display(VirtViewerSession *session,
                                         VirtViewerDisplay *display)
 {
-    if (!g_list_find(session->priv->displays, display))
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(session);
+
+    if (!g_list_find(priv->displays, display))
         return;
 
-    session->priv->displays = g_list_remove(session->priv->displays, display);
+    priv->displays = g_list_remove(priv->displays, display);
     g_signal_emit_by_name(session, "session-display-removed", display);
     g_object_unref(display);
 }
 
 void virt_viewer_session_clear_displays(VirtViewerSession *session)
 {
-    GList *tmp = session->priv->displays;
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(session);
+    GList *tmp = priv->displays;
 
     while (tmp) {
         VirtViewerDisplay *display = VIRT_VIEWER_DISPLAY(tmp->data);
@@ -493,8 +502,8 @@ void virt_viewer_session_clear_displays(VirtViewerSession *session)
         g_object_unref(display);
         tmp = tmp->next;
     }
-    g_list_free(session->priv->displays);
-    session->priv->displays = NULL;
+    g_list_free(priv->displays);
+    priv->displays = NULL;
 }
 
 void virt_viewer_session_update_displays_geometry(VirtViewerSession *session)
@@ -536,7 +545,8 @@ gboolean virt_viewer_session_open_uri(VirtViewerSession *session, const gchar *u
     klass = VIRT_VIEWER_SESSION_GET_CLASS(session);
     g_return_val_if_fail(klass->open_uri != NULL, FALSE);
 
-    session->priv->uri = g_strdup(uri);
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(session);
+    priv->uri = g_strdup(uri);
 
     return klass->open_uri(session, uri, error);
 }
@@ -547,7 +557,8 @@ const gchar* virt_viewer_session_mime_type(VirtViewerSession *self)
 
     g_return_val_if_fail(VIRT_VIEWER_IS_SESSION(self), FALSE);
 
-    if (self->priv->file)
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
+    if (priv->file)
         return "application/x-virt-viewer";
 
     klass = VIRT_VIEWER_SESSION_GET_CLASS(self);
@@ -568,10 +579,11 @@ void virt_viewer_session_set_auto_usbredir(VirtViewerSession *self, gboolean aut
 {
     g_return_if_fail(VIRT_VIEWER_IS_SESSION(self));
 
-    if (self->priv->auto_usbredir == auto_usbredir)
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
+    if (priv->auto_usbredir == auto_usbredir)
         return;
 
-    self->priv->auto_usbredir = auto_usbredir;
+    priv->auto_usbredir = auto_usbredir;
     g_object_notify(G_OBJECT(self), "auto-usbredir");
 }
 
@@ -579,17 +591,19 @@ gboolean virt_viewer_session_get_auto_usbredir(VirtViewerSession *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_SESSION(self), FALSE);
 
-    return self->priv->auto_usbredir;
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
+    return priv->auto_usbredir;
 }
 
 void virt_viewer_session_set_has_usbredir(VirtViewerSession *self, gboolean has_usbredir)
 {
     g_return_if_fail(VIRT_VIEWER_IS_SESSION(self));
 
-    if (self->priv->has_usbredir == has_usbredir)
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
+    if (priv->has_usbredir == has_usbredir)
         return;
 
-    self->priv->has_usbredir = has_usbredir;
+    priv->has_usbredir = has_usbredir;
     g_object_notify(G_OBJECT(self), "has-usbredir");
 }
 
@@ -597,7 +611,8 @@ gboolean virt_viewer_session_get_has_usbredir(VirtViewerSession *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_SESSION(self), FALSE);
 
-    return self->priv->has_usbredir;
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
+    return priv->has_usbredir;
 }
 
 void virt_viewer_session_usb_device_selection(VirtViewerSession   *self,
@@ -662,30 +677,34 @@ VirtViewerApp* virt_viewer_session_get_app(VirtViewerSession *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_SESSION(self), NULL);
 
-    return self->priv->app;
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
+    return priv->app;
 }
 
 gchar* virt_viewer_session_get_uri(VirtViewerSession *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_SESSION(self), FALSE);
 
-    return g_strdup(self->priv->uri);
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
+    return g_strdup(priv->uri);
 }
 
 void virt_viewer_session_set_file(VirtViewerSession *self, VirtViewerFile *file)
 {
     g_return_if_fail(VIRT_VIEWER_IS_SESSION(self));
 
-    g_clear_object(&self->priv->file);
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
+    g_clear_object(&priv->file);
     if (file)
-        self->priv->file = g_object_ref(file);
+        priv->file = g_object_ref(file);
 }
 
 VirtViewerFile* virt_viewer_session_get_file(VirtViewerSession *self)
 {
     g_return_val_if_fail(VIRT_VIEWER_IS_SESSION(self), NULL);
 
-    return self->priv->file;
+    VirtViewerSessionPrivate *priv = virt_viewer_session_get_instance_private(self);
+    return priv->file;
 }
 
 gboolean virt_viewer_session_can_share_folder(VirtViewerSession *self)
@@ -721,10 +740,3 @@ void virt_viewer_session_vm_action(VirtViewerSession *self, gint action)
     if (klass->vm_action)
         klass->vm_action(self, action);
 }
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

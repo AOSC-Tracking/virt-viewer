@@ -27,11 +27,12 @@
 #include "virt-viewer-notebook.h"
 #include "virt-viewer-util.h"
 
-struct _VirtViewerNotebookPrivate {
+struct _VirtViewerNotebook {
+    GtkNotebook parent;
     GtkWidget *status;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (VirtViewerNotebook, virt_viewer_notebook, GTK_TYPE_NOTEBOOK)
+G_DEFINE_TYPE(VirtViewerNotebook, virt_viewer_notebook, GTK_TYPE_NOTEBOOK)
 
 static void
 virt_viewer_notebook_get_property (GObject *object, guint property_id,
@@ -65,30 +66,23 @@ virt_viewer_notebook_class_init (VirtViewerNotebookClass *klass)
 static void
 virt_viewer_notebook_init (VirtViewerNotebook *self)
 {
-    VirtViewerNotebookPrivate *priv;
-
-    self->priv = virt_viewer_notebook_get_instance_private(self);
-    priv = self->priv;
-
-    priv->status = gtk_label_new("");
+    self->status = gtk_label_new("");
     gtk_notebook_set_show_tabs(GTK_NOTEBOOK(self), FALSE);
     gtk_notebook_set_show_border(GTK_NOTEBOOK(self), FALSE);
-    gtk_widget_show_all(priv->status);
-    gtk_notebook_append_page(GTK_NOTEBOOK(self), priv->status, NULL);
+    gtk_widget_show_all(self->status);
+    gtk_notebook_append_page(GTK_NOTEBOOK(self), self->status, NULL);
 }
 
 void
 virt_viewer_notebook_show_status_va(VirtViewerNotebook *self, const gchar *fmt, va_list args)
 {
-    VirtViewerNotebookPrivate *priv;
     gchar *text;
 
     g_debug("notebook show status %p", self);
     g_return_if_fail(VIRT_VIEWER_IS_NOTEBOOK(self));
 
     text = g_strdup_vprintf(fmt, args);
-    priv = self->priv;
-    gtk_label_set_text(GTK_LABEL(priv->status), text);
+    gtk_label_set_text(GTK_LABEL(self->status), text);
     gtk_notebook_set_current_page(GTK_NOTEBOOK(self), 0);
     gtk_widget_show_all(GTK_WIDGET(self));
     g_free(text);
@@ -129,11 +123,3 @@ virt_viewer_notebook_new (void)
 {
     return g_object_new (VIRT_VIEWER_TYPE_NOTEBOOK, NULL);
 }
-
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

@@ -15,21 +15,3 @@
 #include <config.h>
 
 #include "glib-compat.h"
-
-#if !GLIB_CHECK_VERSION(2,44,0)
-gboolean
-g_strv_contains (const gchar * const *strv,
-                 const gchar         *str)
-{
-  g_return_val_if_fail (strv != NULL, FALSE);
-  g_return_val_if_fail (str != NULL, FALSE);
-
-  for (; *strv != NULL; strv++)
-    {
-      if (g_str_equal (str, *strv))
-        return TRUE;
-    }
-
-  return FALSE;
-}
-#endif

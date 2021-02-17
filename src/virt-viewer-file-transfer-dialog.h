@@ -18,44 +18,20 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __VIRT_VIEWER_FILE_TRANSFER_DIALOG_H__
-#define __VIRT_VIEWER_FILE_TRANSFER_DIALOG_H__
+#pragma once
 
 #include <gtk/gtk.h>
 #include <spice-client.h>
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_FILE_TRANSFER_DIALOG virt_viewer_file_transfer_dialog_get_type()
-
-#define VIRT_VIEWER_FILE_TRANSFER_DIALOG(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), VIRT_VIEWER_TYPE_FILE_TRANSFER_DIALOG, VirtViewerFileTransferDialog))
-#define VIRT_VIEWER_FILE_TRANSFER_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), VIRT_VIEWER_TYPE_FILE_TRANSFER_DIALOG, VirtViewerFileTransferDialogClass))
-#define VIRT_VIEWER_IS_FILE_TRANSFER_DIALOG(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), VIRT_VIEWER_TYPE_FILE_TRANSFER_DIALOG))
-#define VIRT_VIEWER_IS_FILE_TRANSFER_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), VIRT_VIEWER_TYPE_FILE_TRANSFER_DIALOG))
-#define VIRT_VIEWER_FILE_TRANSFER_DIALOG_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), VIRT_VIEWER_TYPE_FILE_TRANSFER_DIALOG, VirtViewerFileTransferDialogClass))
-
-typedef struct _VirtViewerFileTransferDialog VirtViewerFileTransferDialog;
-typedef struct _VirtViewerFileTransferDialogClass VirtViewerFileTransferDialogClass;
-typedef struct _VirtViewerFileTransferDialogPrivate VirtViewerFileTransferDialogPrivate;
-
-struct _VirtViewerFileTransferDialog
-{
-    GtkDialog parent;
-
-    VirtViewerFileTransferDialogPrivate *priv;
-};
-
-struct _VirtViewerFileTransferDialogClass
-{
-    GtkDialogClass parent_class;
-};
+G_DECLARE_FINAL_TYPE(VirtViewerFileTransferDialog,
+                     virt_viewer_file_transfer_dialog,
+                     VIRT_VIEWER,
+                     FILE_TRANSFER_DIALOG,
+                     GtkDialog)
 
 GType virt_viewer_file_transfer_dialog_get_type(void) G_GNUC_CONST;
 
 VirtViewerFileTransferDialog *virt_viewer_file_transfer_dialog_new(GtkWindow *parent);
 void virt_viewer_file_transfer_dialog_add_task(VirtViewerFileTransferDialog *self,
                                                SpiceFileTransferTask *task);
-
-G_END_DECLS
-
-#endif /* __VIRT_VIEWER_FILE_TRANSFER_DIALOG_H__ */

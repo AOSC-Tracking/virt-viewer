@@ -21,8 +21,8 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_DISPLAY_SPICE_H
-#define _VIRT_VIEWER_DISPLAY_SPICE_H
+
+#pragma once
 
 #include <glib-object.h>
 #include <spice-client.h>
@@ -30,38 +30,12 @@
 #include "virt-viewer-display.h"
 #include "virt-viewer-session-spice.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_DISPLAY_SPICE virt_viewer_display_spice_get_type()
-
-#define VIRT_VIEWER_DISPLAY_SPICE(obj)                                  \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_DISPLAY_SPICE, VirtViewerDisplaySpice))
-
-#define VIRT_VIEWER_DISPLAY_SPICE_CLASS(klass)                          \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_DISPLAY_SPICE, VirtViewerDisplaySpiceClass))
-
-#define VIRT_VIEWER_IS_DISPLAY_SPICE(obj)                               \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_DISPLAY_SPICE))
-
-#define VIRT_VIEWER_IS_DISPLAY_SPICE_CLASS(klass)                       \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_DISPLAY_SPICE))
-
-#define VIRT_VIEWER_DISPLAY_SPICE_GET_CLASS(obj)                        \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_DISPLAY_SPICE, VirtViewerDisplaySpiceClass))
-
-typedef struct _VirtViewerDisplaySpice VirtViewerDisplaySpice;
-typedef struct _VirtViewerDisplaySpiceClass VirtViewerDisplaySpiceClass;
-typedef struct _VirtViewerDisplaySpicePrivate VirtViewerDisplaySpicePrivate;
-
-struct _VirtViewerDisplaySpice {
-    VirtViewerDisplay parent;
-
-    VirtViewerDisplaySpicePrivate *priv;
-};
-
-struct _VirtViewerDisplaySpiceClass {
-    VirtViewerDisplayClass parent_class;
-};
+G_DECLARE_FINAL_TYPE(VirtViewerDisplaySpice,
+                     virt_viewer_display_spice,
+                     VIRT_VIEWER,
+                     DISPLAY_SPICE,
+                     VirtViewerDisplay)
 
 GType virt_viewer_display_spice_get_type(void);
 
@@ -69,13 +43,3 @@ GtkWidget* virt_viewer_display_spice_new(VirtViewerSessionSpice *session, SpiceC
 
 void virt_viewer_display_spice_set_desktop(VirtViewerDisplay *display, guint x, guint y,
                                            guint width, guint height);
-G_END_DECLS
-
-#endif /* _VIRT_VIEWER_DISPLAY_SPICE_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

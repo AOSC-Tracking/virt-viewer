@@ -20,8 +20,7 @@
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
 
-#ifndef VIRT_VIEWER_AUTH_H
-#define VIRT_VIEWER_AUTH_H
+#pragma once
 
 #include "config.h"
 
@@ -32,12 +31,3 @@ gboolean virt_viewer_auth_collect_credentials(GtkWindow *window,
                                               const char *address,
                                               char **username,
                                               char **password);
-
-#endif
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

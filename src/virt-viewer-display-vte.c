@@ -31,7 +31,8 @@
 #include "virt-viewer-display-vte.h"
 #include "virt-viewer-util.h"
 
-struct _VirtViewerDisplayVtePrivate {
+struct _VirtViewerDisplayVte {
+    VirtViewerDisplay parent;
 #ifdef HAVE_VTE
     VteTerminal *vte;
 #endif
@@ -39,7 +40,7 @@ struct _VirtViewerDisplayVtePrivate {
     gchar *name;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE(VirtViewerDisplayVte, virt_viewer_display_vte, VIRT_VIEWER_TYPE_DISPLAY)
+G_DEFINE_TYPE(VirtViewerDisplayVte, virt_viewer_display_vte, VIRT_VIEWER_TYPE_DISPLAY)
 
 enum {
     PROP_0,
@@ -63,8 +64,8 @@ virt_viewer_display_vte_set_property(GObject *object,
 
     switch (prop_id) {
     case PROP_NAME:
-        g_free(self->priv->name);
-        self->priv->name = g_value_dup_string(value);
+        g_free(self->name);
+        self->name = g_value_dup_string(value);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -82,7 +83,7 @@ virt_viewer_display_vte_get_property(GObject *object,
 
     switch (prop_id) {
     case PROP_NAME:
-        g_value_set_string(value, self->priv->name);
+        g_value_set_string(value, self->name);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -135,7 +136,6 @@ virt_viewer_display_vte_class_init(VirtViewerDisplayVteClass *klass)
 static void
 virt_viewer_display_vte_init(VirtViewerDisplayVte *self G_GNUC_UNUSED)
 {
-    self->priv = virt_viewer_display_vte_get_instance_private(self);
 }
 
 #ifdef HAVE_VTE
@@ -152,7 +152,7 @@ static void
 virt_viewer_display_vte_adj_changed(VirtViewerDisplayVte *self,
                                     GtkAdjustment *adjustment)
 {
-    gtk_widget_set_visible(self->priv->scroll,
+    gtk_widget_set_visible(self->scroll,
         gtk_adjustment_get_upper(adjustment) > gtk_adjustment_get_page_size(adjustment));
 }
 #endif
@@ -173,13 +173,13 @@ virt_viewer_display_vte_new(VirtViewerSession *session, const char *name)
                         NULL);
 #ifdef HAVE_VTE
     vte = vte_terminal_new();
-    self->priv->vte = VTE_TERMINAL(g_object_ref(vte));
+    self->vte = VTE_TERMINAL(g_object_ref(vte));
     virt_viewer_signal_connect_object(vte, "commit",
                                       G_CALLBACK(virt_viewer_display_vte_commit),
                                       self, G_CONNECT_SWAPPED);
     scroll = gtk_scrollbar_new(GTK_ORIENTATION_VERTICAL,
                                gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(vte)));
-    self->priv->scroll = scroll;
+    self->scroll = scroll;
 #else
     vte = gtk_label_new(_("Console support is compiled out!"));
 #endif
@@ -277,32 +277,32 @@ find_smaller_zoom_factor (double *zoom)
 
 void virt_viewer_display_vte_feed(VirtViewerDisplayVte *display, gpointer data, int size)
 {
-    vte_terminal_feed(display->priv->vte, data, size);
+    vte_terminal_feed(display->vte, data, size);
 }
 
 void virt_viewer_display_vte_zoom_in(VirtViewerDisplayVte *self)
 {
-    double zoom = vte_terminal_get_font_scale(self->priv->vte);
+    double zoom = vte_terminal_get_font_scale(self->vte);
 
     if (!find_larger_zoom_factor(&zoom))
         return;
 
-    vte_terminal_set_font_scale(self->priv->vte, zoom);
+    vte_terminal_set_font_scale(self->vte, zoom);
 }
 
 void virt_viewer_display_vte_zoom_out(VirtViewerDisplayVte *self)
 {
-    double zoom = vte_terminal_get_font_scale(self->priv->vte);
+    double zoom = vte_terminal_get_font_scale(self->vte);
 
     if (!find_smaller_zoom_factor(&zoom))
         return;
 
-    vte_terminal_set_font_scale(self->priv->vte, zoom);
+    vte_terminal_set_font_scale(self->vte, zoom);
 }
 
 void virt_viewer_display_vte_zoom_reset(VirtViewerDisplayVte *self)
 {
-    vte_terminal_set_font_scale(self->priv->vte, PANGO_SCALE_MEDIUM);
+    vte_terminal_set_font_scale(self->vte, PANGO_SCALE_MEDIUM);
 }
 #else
 void virt_viewer_display_vte_feed(VirtViewerDisplayVte *self G_GNUC_UNUSED,

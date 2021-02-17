@@ -21,41 +21,18 @@
  *
  * Author: Daniel P. Berrange <berrange@redhat.com>
  */
-#ifndef _VIRT_VIEWER_NOTEBOOK
-#define _VIRT_VIEWER_NOTEBOOK
+
+#pragma once
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_NOTEBOOK virt_viewer_notebook_get_type()
-
-#define VIRT_VIEWER_NOTEBOOK(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_NOTEBOOK, VirtViewerNotebook))
-
-#define VIRT_VIEWER_NOTEBOOK_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_NOTEBOOK, VirtViewerNotebookClass))
-
-#define VIRT_VIEWER_IS_NOTEBOOK(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_NOTEBOOK))
-
-#define VIRT_VIEWER_IS_NOTEBOOK_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_NOTEBOOK))
-
-#define VIRT_VIEWER_NOTEBOOK_GET_CLASS(obj)                                \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_NOTEBOOK, VirtViewerNotebookClass))
-
-typedef struct _VirtViewerNotebookPrivate VirtViewerNotebookPrivate;
-
-typedef struct {
-    GtkNotebook parent;
-    VirtViewerNotebookPrivate *priv;
-} VirtViewerNotebook;
-
-typedef struct {
-    GtkNotebookClass parent_class;
-} VirtViewerNotebookClass;
+G_DECLARE_FINAL_TYPE(VirtViewerNotebook,
+                     virt_viewer_notebook,
+                     VIRT_VIEWER,
+                     NOTEBOOK,
+                     GtkNotebook);
 
 GType virt_viewer_notebook_get_type (void);
 
@@ -63,14 +40,3 @@ VirtViewerNotebook* virt_viewer_notebook_new (void);
 void virt_viewer_notebook_show_status_va(VirtViewerNotebook *self, const gchar *fmt, va_list args) G_GNUC_PRINTF(2, 0);
 void virt_viewer_notebook_show_status(VirtViewerNotebook *nb, const gchar *fmt, ...) G_GNUC_PRINTF(2, 3);
 void virt_viewer_notebook_show_display(VirtViewerNotebook *nb);
-
-G_END_DECLS
-
-#endif /* _VIRT_VIEWER_NOTEBOOK */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */

@@ -19,45 +19,19 @@
  *
  * Author: Marc-André Lureau <marcandre.lureau@redhat.com>
  */
-#ifndef _VIRT_VIEWER_DISPLAY_VTE_H
-#define _VIRT_VIEWER_DISPLAY_VTE_H
+
+#pragma once
 
 #include <glib-object.h>
 
 #include "virt-viewer-display.h"
 
-G_BEGIN_DECLS
-
 #define VIRT_VIEWER_TYPE_DISPLAY_VTE virt_viewer_display_vte_get_type()
-
-#define VIRT_VIEWER_DISPLAY_VTE(obj)                                    \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), VIRT_VIEWER_TYPE_DISPLAY_VTE, VirtViewerDisplayVte))
-
-#define VIRT_VIEWER_DISPLAY_VTE_CLASS(klass)                            \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), VIRT_VIEWER_TYPE_DISPLAY_VTE, VirtViewerDisplayVteClass))
-
-#define VIRT_VIEWER_IS_DISPLAY_VTE(obj)                                 \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), VIRT_VIEWER_TYPE_DISPLAY_VTE))
-
-#define VIRT_VIEWER_IS_DISPLAY_VTE_CLASS(klass)                         \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), VIRT_VIEWER_TYPE_DISPLAY_VTE))
-
-#define VIRT_VIEWER_DISPLAY_VTE_GET_CLASS(obj)                          \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), VIRT_VIEWER_TYPE_DISPLAY_VTE, VirtViewerDisplayVteClass))
-
-typedef struct _VirtViewerDisplayVte VirtViewerDisplayVte;
-typedef struct _VirtViewerDisplayVteClass VirtViewerDisplayVteClass;
-typedef struct _VirtViewerDisplayVtePrivate VirtViewerDisplayVtePrivate;
-
-struct _VirtViewerDisplayVte {
-    VirtViewerDisplay parent;
-
-    VirtViewerDisplayVtePrivate *priv;
-};
-
-struct _VirtViewerDisplayVteClass {
-    VirtViewerDisplayClass parent_class;
-};
+G_DECLARE_FINAL_TYPE(VirtViewerDisplayVte,
+                     virt_viewer_display_vte,
+                     VIRT_VIEWER,
+                     DISPLAY_VTE,
+                     VirtViewerDisplay)
 
 GType virt_viewer_display_vte_get_type(void);
 
@@ -69,13 +43,3 @@ void virt_viewer_display_vte_zoom_reset(VirtViewerDisplayVte *vte);
 void virt_viewer_display_vte_zoom_in(VirtViewerDisplayVte *vte);
 void virt_viewer_display_vte_zoom_out(VirtViewerDisplayVte *vte);
 
-G_END_DECLS
-
-#endif /* _VIRT_VIEWER_DISPLAY_VTE_H */
-/*
- * Local variables:
- *  c-indent-level: 4
- *  c-basic-offset: 4
- *  indent-tabs-mode: nil
- * End:
- */
