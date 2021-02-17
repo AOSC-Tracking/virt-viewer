@@ -14,21 +14,22 @@
 # Gladys Guerrero Lozano <gguerrer@redhat.com>, 2016
 # William  Moreno Reyes <williamjmorenor@gmail.com>, 2016
 # Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2017
+# Eduard Lucena <eduardlucena@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
 "POT-Creation-Date: 2020-09-11 11:34+0200\n"
-"PO-Revision-Date: 2017-12-05 07:06+0000\n"
-"Last-Translator: Máximo Castañeda Riloba <mcrcctm@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/virt-viewer/"
-"language/es/)\n"
+"PO-Revision-Date: 2021-02-17 15:21+0000\n"
+"Last-Translator: Eduard Lucena <eduardlucena@gmail.com>\n"
+"Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.4.2\n"
 
 msgid ""
 "\n"
@@ -37,6 +38,7 @@ msgid ""
 msgstr ""
 "\n"
 "Error: No se pueden manejar múltiples URIs\n"
+"\n"
 
 #, c-format
 msgid ""
@@ -56,6 +58,7 @@ msgid ""
 msgstr ""
 "\n"
 "Uso: %s [OPCIONES] [ID|UUID|NOMBRE-DOMINIO]\n"
+"\n"
 
 #. translators:
 #. * This is "<subtitle> - <appname>"
@@ -63,7 +66,7 @@ msgstr ""
 #.
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #, c-format
 msgid "%s version %s"
@@ -75,7 +78,7 @@ msgstr "%s versión %s"
 #.
 #, c-format
 msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
+msgstr "(Presione %s para liberar el puntero) %s - %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -83,7 +86,7 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgstr "(Presione %s para liberar el puntero) - %s"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Cargando...</b>"
@@ -103,7 +106,7 @@ msgstr "Acceso a escritorios remotos"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Dirección es muy larga para un socket_path UNIX: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
