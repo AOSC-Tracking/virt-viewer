@@ -29,8 +29,8 @@ glib_min_version='>=2.48'
 glib_min_version_symbol='GLIB_VERSION_2_48'
 
 # Keep these two definitions in agreement.
-gtk_min_version='>=3.12'
-gtk_min_version_symbol='GDK_VERSION_3_12'
+gtk_min_version='>=3.18'
+gtk_min_version_symbol='GDK_VERSION_3_18'
 
 libxml_min_version='>=2.6.0'
 libvirt_min_version='>=1.2.8'

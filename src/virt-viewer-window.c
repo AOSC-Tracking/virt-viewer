@@ -385,7 +385,6 @@ virt_viewer_window_init (VirtViewerWindow *self)
 
     virt_viewer_window_update_title(self);
     gtk_window_set_resizable(GTK_WINDOW(self->window), TRUE);
-    gtk_window_set_has_resize_grip(GTK_WINDOW(self->window), FALSE);
     self->accel_enabled = TRUE;
 
     accels = gtk_accel_groups_from_object(G_OBJECT(self->window));
@@ -605,19 +604,13 @@ virt_viewer_window_enter_fullscreen(VirtViewerWindow *self, gint monitor)
     }
     virt_viewer_window_move_to_monitor(self);
 
-#if GTK_CHECK_VERSION(3, 18, 0)
     if (monitor == -1) {
         // just go fullscreen on the current monitor
         gtk_window_fullscreen(GTK_WINDOW(self->window));
     } else {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
         gtk_window_fullscreen_on_monitor(GTK_WINDOW(self->window),
                                          gdk_screen_get_default(), monitor);
-G_GNUC_END_IGNORE_DEPRECATIONS
     }
-#else
-        gtk_window_fullscreen(GTK_WINDOW(self->window));
-#endif /* GTK_CHECK_VERSION */
 }
 
 #define MAX_KEY_COMBO 4

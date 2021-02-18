@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
+<!-- Generated with glade 3.38.2 -->
 <interface>
+  <requires lib="gtk+" version="3.18"/>
   <object class="GtkWindow" id="remote-viewer-connection-window">
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="title" translatable="yes">Connection details</property>
-    <property name="window-position">3</property>
+    <property name="window-position">center-always</property>
     <child>
       <object class="GtkVBox" id="main-box">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="border_width">10</property>
+        <property name="can-focus">False</property>
+        <property name="border-width">10</property>
         <property name="spacing">20</property>
         <child>
           <object class="GtkVBox" id="connection-address-box">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="spacing">6</property>
             <child>
               <object class="GtkLabel" id="connection-address-label">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="xalign">0</property>
+                <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Connection _Address</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">connection-address-entry</property>
+                <property name="use-underline">True</property>
+                <property name="mnemonic-widget">connection-address-entry</property>
+                <property name="xalign">0</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -37,7 +38,7 @@
             <child>
               <object class="GtkEntry" id="connection-address-entry">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
+                <property name="can-focus">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -48,10 +49,10 @@
             <child>
               <object class="GtkLabel" id="example-label">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="xalign">0</property>
                 <property name="sensitive">False</property>
+                <property name="can-focus">False</property>
                 <property name="label" translatable="yes">For example, spice://foo.example.org:5900</property>
+                <property name="xalign">0</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -69,12 +70,12 @@
         <child>
           <object class="GtkVBox" id="recent-chooser-box">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="spacing">6</property>
             <child>
               <object class="GtkLabel" id="recent-chooser-label">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Recent connections</property>
                 <property name="xalign">0</property>
                 <attributes>
@@ -89,11 +90,11 @@
             </child>
             <child>
               <object class="GtkRecentChooserWidget" id="recent-chooser">
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="limit">20</property>
-                <property name="local_only">False</property>
-                <property name="show_icons">False</property>
-                <property name="sort_type">mru</property>
+                <property name="local-only">False</property>
+                <property name="show-icons">False</property>
+                <property name="sort-type">mru</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -111,17 +112,17 @@
         <child>
           <object class="GtkHButtonBox" id="button-box">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="resize_mode">immediate</property>
+            <property name="can-focus">False</property>
+            <property name="resize-mode">immediate</property>
             <property name="spacing">6</property>
-            <property name="layout_style">end</property>
+            <property name="layout-style">end</property>
             <child>
               <object class="GtkButton" id="cancel-button">
                 <property name="label" translatable="yes">_Cancel</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_underline">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="use-underline">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -133,9 +134,9 @@
               <object class="GtkButton" id="connect-button">
                 <property name="label" translatable="yes">C_onnect</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_underline">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="use-underline">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -147,7 +148,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
-            <property name="pack_type">end</property>
+            <property name="pack-type">end</property>
             <property name="position">3</property>
           </packing>
         </child>
