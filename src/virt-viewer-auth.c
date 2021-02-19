@@ -114,15 +114,27 @@ virt_viewer_auth_collect_credentials(VirtViewerAuth *self,
     int response;
     char *message;
 
-    gtk_widget_set_sensitive(self->credUsername, username != NULL);
-    if (username && *username) {
-        gtk_entry_set_text(GTK_ENTRY(self->credUsername), *username);
-        /* if username is pre-filled, move focus to password field */
-        gtk_widget_grab_focus(self->credPassword);
+    if (username) {
+        gtk_widget_show(self->credUsername);
+        gtk_widget_show(self->promptUsername);
+        if (*username) {
+            gtk_entry_set_text(GTK_ENTRY(self->credUsername), *username);
+            /* if username is pre-filled, move focus to password field */
+            if (password) {
+                gtk_widget_grab_focus(self->credPassword);
+            }
+        }
+    } else {
+        gtk_widget_hide(self->credUsername);
+        gtk_widget_hide(self->promptUsername);
     }
-    gtk_widget_set_sensitive(self->promptUsername, username != NULL);
-    gtk_widget_set_sensitive(self->credPassword, password != NULL);
-    gtk_widget_set_sensitive(self->promptPassword, password != NULL);
+    if (password) {
+        gtk_widget_show(self->credPassword);
+        gtk_widget_show(self->promptPassword);
+    } else {
+        gtk_widget_hide(self->credPassword);
+        gtk_widget_hide(self->promptPassword);
+    }
 
     gtk_entry_set_icon_from_icon_name(GTK_ENTRY(self->credPassword),
                                       GTK_ENTRY_ICON_SECONDARY,
@@ -152,7 +164,7 @@ virt_viewer_auth_collect_credentials(VirtViewerAuth *self,
     gtk_label_set_markup(GTK_LABEL(self->message), message);
     g_free(message);
 
-    gtk_widget_show_all(GTK_WIDGET(self));
+    gtk_widget_show(GTK_WIDGET(self));
     response = gtk_dialog_run(GTK_DIALOG(self));
     gtk_widget_hide(GTK_WIDGET(self));
 
