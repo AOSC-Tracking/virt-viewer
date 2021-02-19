@@ -226,7 +226,7 @@ RemoteViewer *
 remote_viewer_new(void)
 {
     return g_object_new(REMOTE_VIEWER_TYPE,
-                        "application-id", "org.virt-manager.remote-viewer",
+                        "application-id", "org.virt-manager.virt-viewer",
                         "flags", G_APPLICATION_NON_UNIQUE,
                         NULL);
 }
