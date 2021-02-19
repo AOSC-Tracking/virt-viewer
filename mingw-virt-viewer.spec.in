@@ -142,7 +142,6 @@ cp build_win64$MINGW_BUILDDIR_SUFFIX/data/virt-viewer-x64-@VERSION@.msi $RPM_BUI
 
 %dir %{mingw32_datadir}/virt-viewer/
 %{mingw32_datadir}/icons/hicolor/*/apps/*
-%{mingw32_datadir}/icons/hicolor/*/devices/*
 
 %{mingw32_mandir}/man1/virt-viewer.1*
 %{mingw32_mandir}/man1/remote-viewer.1*

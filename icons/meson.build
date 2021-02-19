@@ -8,15 +8,6 @@ logo_icon_sizes = [
   'scalable',
 ]
 
-misc_icon_sizes = [
-  '24x24',
-  'scalable',
-]
-
-misc_icon_names = [
-  'usb',
-]
-
 foreach icon_size: logo_icon_sizes
   if icon_size == 'scalable'
     src_icon = 'virt-viewer.svg'
@@ -27,20 +18,6 @@ foreach icon_size: logo_icon_sizes
     join_paths(icon_size, src_icon),
     install_dir: join_paths(datadir, 'icons', 'hicolor', icon_size, 'apps')
   )
-endforeach
-
-foreach icon_size: misc_icon_sizes
-  foreach icon_name: misc_icon_names
-    if icon_size == 'scalable'
-      src_icon = 'virt-viewer-' + icon_name + '.svg'
-    else
-      src_icon = 'virt-viewer-' + icon_name + '.png'
-    endif
-    install_data(
-      join_paths(icon_size, src_icon),
-      install_dir: join_paths(datadir, 'icons', 'hicolor', icon_size, 'devices')
-    )
-  endforeach
 endforeach
 
 
