@@ -308,10 +308,10 @@ virt_viewer_app_quit(VirtViewerApp *self)
                                       VIRT_VIEWER_SESSION_VM_ACTION_QUIT);
     }
 
+    priv->quitting = TRUE;
     if (priv->session) {
         virt_viewer_session_close(VIRT_VIEWER_SESSION(priv->session));
         if (priv->connected) {
-            priv->quitting = TRUE;
             return;
         }
     }
@@ -2125,7 +2125,7 @@ sigint_cb(gpointer data)
     else
         exit(EXIT_SUCCESS);
 
-    return G_SOURCE_CONTINUE;
+    return priv->quitting ? G_SOURCE_REMOVE : G_SOURCE_CONTINUE;
 }
 #endif
 
