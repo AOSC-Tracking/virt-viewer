@@ -44,6 +44,7 @@
 struct _VirtViewerSessionSpice {
     VirtViewerSession parent;
     GtkWindow *main_window;
+    VirtViewerAuth *auth;
     SpiceSession *session;
     SpiceGtkSession *gtk_session;
     SpiceMainChannel *main_channel;
@@ -138,6 +139,7 @@ virt_viewer_session_spice_set_property(GObject *object, guint property_id,
     switch (property_id) {
     case PROP_MAIN_WINDOW:
         self->main_window = g_value_dup_object(value);
+        self->auth = virt_viewer_auth_new(self->main_window);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -157,6 +159,7 @@ virt_viewer_session_spice_dispose(GObject *obj)
 
     self->audio = NULL;
 
+    gtk_widget_destroy(GTK_WIDGET(self->auth));
     g_clear_object(&self->main_window);
     if (self->file_transfer_dialog) {
         gtk_widget_destroy(GTK_WIDGET(self->file_transfer_dialog));
@@ -480,6 +483,8 @@ virt_viewer_session_spice_close(VirtViewerSession *session)
     virt_viewer_session_spice_clear_displays(self);
 
     if (self->session) {
+        gtk_dialog_response(GTK_DIALOG(self->auth),
+                            GTK_RESPONSE_CANCEL);
         spice_session_disconnect(self->session);
         if (!self)
             return;
@@ -720,7 +725,6 @@ virt_viewer_session_spice_main_channel_event(SpiceChannel *channel,
     {
         const GError *error = NULL;
         gchar *host = NULL;
-        VirtViewerAuth *auth = virt_viewer_auth_new(self->main_window);
         g_debug("main channel: auth failure (wrong username/password?)");
 
         error = spice_channel_get_error(channel);
@@ -746,12 +750,12 @@ virt_viewer_session_spice_main_channel_event(SpiceChannel *channel,
         }
 
         g_object_get(self->session, "host", &host, NULL);
-        ret = virt_viewer_auth_collect_credentials(auth,
+        ret = virt_viewer_auth_collect_credentials(self->auth,
                                                    "SPICE",
                                                    host,
                                                    username_required ? &user : NULL,
                                                    &password);
-        gtk_widget_destroy(GTK_WIDGET(auth));
+
         g_free(host);
         if (!ret) {
             /* ret is false when dialog did not return GTK_RESPONSE_OK. We
