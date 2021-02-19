@@ -18,5 +18,7 @@
     <file alias="icons/32x32/virt-viewer.png">../../icons/32x32/virt-viewer.png</file>
     <file alias="icons/48x48/virt-viewer.png">../../icons/48x48/virt-viewer.png</file>
     <file alias="icons/256x256/virt-viewer.png">../../icons/256x256/virt-viewer.png</file>
+    <file alias="icons/eye-not-looking-symbolic.svg">../../icons/scalable/eye-not-looking-symbolic.svg</file>
+    <file alias="icons/eye-open-negative-filled-symbolic.svg">../../icons/scalable/eye-open-negative-filled-symbolic.svg</file>
   </gresource>
 </gresources>

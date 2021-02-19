@@ -34,10 +34,17 @@
 #include "virt-viewer-util.h"
 
 static void
-show_password(GtkCheckButton *check_button G_GNUC_UNUSED,
-              GtkEntry *entry)
+show_password(GtkEntry *entry,
+              GtkEntryIconPosition pos G_GNUC_UNUSED,
+              GdkEvent event G_GNUC_UNUSED)
 {
-    gtk_entry_set_visibility(entry, !gtk_entry_get_visibility(entry));
+    gboolean visible = gtk_entry_get_visibility(entry);
+    gtk_entry_set_icon_from_icon_name(GTK_ENTRY(entry),
+                                      GTK_ENTRY_ICON_SECONDARY,
+                                      visible ?
+                                      "eye-not-looking-symbolic" :
+                                      "eye-open-negative-filled-symbolic");
+    gtk_entry_set_visibility(entry, !visible);
 }
 
 /* NOTE: if username is provided, and *username is non-NULL, the user input
@@ -58,7 +65,6 @@ virt_viewer_auth_collect_credentials(GtkWindow *window,
     GtkWidget *promptUsername;
     GtkWidget *promptPassword;
     GtkWidget *labelMessage;
-    GtkWidget *checkPassword;
     int response;
     char *message;
 
@@ -71,7 +77,6 @@ virt_viewer_auth_collect_credentials(GtkWindow *window,
     promptUsername = GTK_WIDGET(gtk_builder_get_object(creds, "prompt-username"));
     credPassword = GTK_WIDGET(gtk_builder_get_object(creds, "cred-password"));
     promptPassword = GTK_WIDGET(gtk_builder_get_object(creds, "prompt-password"));
-    checkPassword = GTK_WIDGET(gtk_builder_get_object(creds, "show-password"));
 
     gtk_widget_set_sensitive(credUsername, username != NULL);
     if (username && *username) {
@@ -83,7 +88,20 @@ virt_viewer_auth_collect_credentials(GtkWindow *window,
     gtk_widget_set_sensitive(credPassword, password != NULL);
     gtk_widget_set_sensitive(promptPassword, password != NULL);
 
-    g_signal_connect(checkPassword, "clicked", G_CALLBACK(show_password), credPassword);
+    gtk_entry_set_icon_from_icon_name(GTK_ENTRY(credPassword),
+                                      GTK_ENTRY_ICON_SECONDARY,
+                                      "eye-not-looking-symbolic");
+    gtk_entry_set_icon_sensitive(GTK_ENTRY(credPassword),
+                                 GTK_ENTRY_ICON_SECONDARY,
+                                 TRUE);
+    gtk_entry_set_icon_activatable(GTK_ENTRY(credPassword),
+                                   GTK_ENTRY_ICON_SECONDARY,
+                                   TRUE);
+    gtk_entry_set_icon_tooltip_text(GTK_ENTRY(credPassword),
+                                    GTK_ENTRY_ICON_SECONDARY,
+                                    _("Show / hide password text"));
+
+    g_signal_connect(credPassword, "icon-press", G_CALLBACK(show_password), credPassword);
 
     if (address) {
         message = g_strdup_printf(_("Authentication is required for the %s connection to:\n\n<b>%s</b>\n\n"),

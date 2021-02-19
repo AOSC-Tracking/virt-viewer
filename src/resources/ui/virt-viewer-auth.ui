@@ -130,24 +130,6 @@
                 <property name="bottom-attach">2</property>
               </packing>
             </child>
-            <child>
-              <object class="GtkCheckButton" id="show-password">
-                <property name="label" translatable="yes">Show password</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">False</property>
-                <property name="draw-indicator">False</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="right-attach">2</property>
-                <property name="top-attach">2</property>
-                <property name="bottom-attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
           </object>
           <packing>
             <property name="expand">False</property>
