@@ -720,6 +720,7 @@ virt_viewer_session_spice_main_channel_event(SpiceChannel *channel,
     {
         const GError *error = NULL;
         gchar *host = NULL;
+        VirtViewerAuth *auth = virt_viewer_auth_new(self->main_window);
         g_debug("main channel: auth failure (wrong username/password?)");
 
         error = spice_channel_get_error(channel);
@@ -745,11 +746,12 @@ virt_viewer_session_spice_main_channel_event(SpiceChannel *channel,
         }
 
         g_object_get(self->session, "host", &host, NULL);
-        ret = virt_viewer_auth_collect_credentials(self->main_window,
+        ret = virt_viewer_auth_collect_credentials(auth,
                                                    "SPICE",
                                                    host,
                                                    username_required ? &user : NULL,
                                                    &password);
+        gtk_widget_destroy(GTK_WIDGET(auth));
         g_free(host);
         if (!ret) {
             /* ret is false when dialog did not return GTK_RESPONSE_OK. We
@@ -780,9 +782,10 @@ virt_viewer_session_spice_main_channel_event(SpiceChannel *channel,
         if (g_error_matches(error, G_IO_ERROR, G_IO_ERROR_PROXY_NEED_AUTH) ||
             g_error_matches(error, G_IO_ERROR, G_IO_ERROR_PROXY_AUTH_FAILED)) {
             SpiceURI *proxy = spice_session_get_proxy_uri(self->session);
+            VirtViewerAuth *auth = virt_viewer_auth_new(self->main_window);
             g_warn_if_fail(proxy != NULL);
 
-            ret = virt_viewer_auth_collect_credentials(self->main_window,
+            ret = virt_viewer_auth_collect_credentials(auth,
                                                        "proxy", spice_uri_get_hostname(proxy),
                                                        &user, &password);
             if (!ret) {

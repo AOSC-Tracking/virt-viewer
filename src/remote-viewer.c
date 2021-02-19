@@ -312,7 +312,7 @@ parse_ovirt_uri(const gchar *uri_str, char **rest_uri, char **name, char **usern
 }
 
 static gboolean
-authenticate_cb(RestProxy *proxy, G_GNUC_UNUSED RestProxyAuth *auth,
+authenticate_cb(RestProxy *proxy, RestProxyAuth *rstauth,
                 G_GNUC_UNUSED gboolean retrying, gpointer user_data)
 {
     gchar *username = NULL;
@@ -320,6 +320,7 @@ authenticate_cb(RestProxy *proxy, G_GNUC_UNUSED RestProxyAuth *auth,
     VirtViewerWindow *window;
     gboolean success = FALSE;
     gboolean kiosk = FALSE;
+    VirtViewerAuth *auth;
 
     g_object_get(proxy,
                  "username", &username,
@@ -331,8 +332,10 @@ authenticate_cb(RestProxy *proxy, G_GNUC_UNUSED RestProxyAuth *auth,
         username = g_strdup(g_get_user_name());
 
     window = virt_viewer_app_get_main_window(VIRT_VIEWER_APP(user_data));
+    auth = virt_viewer_auth_new(virt_viewer_window_get_window(window));
     do {
-        success = virt_viewer_auth_collect_credentials(virt_viewer_window_get_window(window),
+
+        success = virt_viewer_auth_collect_credentials(auth,
                                                        "oVirt",
                                                        NULL,
                                                        &username, &password);
@@ -344,9 +347,10 @@ authenticate_cb(RestProxy *proxy, G_GNUC_UNUSED RestProxyAuth *auth,
                      "password", password,
                      NULL);
     } else {
-        rest_proxy_auth_cancel(auth);
+        rest_proxy_auth_cancel(rstauth);
     }
 
+    gtk_widget_destroy(GTK_WIDGET(auth));
     g_free(username);
     g_free(password);
     return success;

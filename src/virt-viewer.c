@@ -984,14 +984,16 @@ virt_viewer_auth_libvirt_credentials(virConnectCredentialPtr cred,
     if (username || password) {
         VirtViewerWindow *vwin = virt_viewer_app_get_main_window(VIRT_VIEWER_APP(self));
         GtkWindow *win = virt_viewer_window_get_window(vwin);
+        VirtViewerAuth *auth = virt_viewer_auth_new(win);
 
         if (username && (*username == NULL || **username == '\0'))
             *username = g_strdup(g_get_user_name());
 
-        self->auth_cancelled = !virt_viewer_auth_collect_credentials(win,
+        self->auth_cancelled = !virt_viewer_auth_collect_credentials(auth,
                                                                      "libvirt",
                                                                      self->uri,
                                                                      username, password);
+        gtk_widget_destroy(GTK_WIDGET(auth));
         if (self->auth_cancelled) {
             ret = -1;
             goto cleanup;
