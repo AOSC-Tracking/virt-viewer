@@ -1,6 +1,6 @@
 %{?mingw_package_header}
 
-%define relver 1%{?dist}
+%define relver 1%{?dist}.1
 
 # We want the 1st part of the release number, and
 # the 3rd part (or 0 if not present).
