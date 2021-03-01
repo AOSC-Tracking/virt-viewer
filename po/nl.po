@@ -3,22 +3,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Geert Warrink <geert.warrink@onsnet.nu>, 2010, 2011, 2012, 2013, 2014, 2020.
+# Geert Warrink <geert.warrink@onsnet.nu>, 2010, 2011, 2012, 2013, 2014, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
 "POT-Creation-Date: 2020-09-11 11:34+0200\n"
-"PO-Revision-Date: 2020-07-20 12:29+0000\n"
+"PO-Revision-Date: 2021-02-28 12:40+0000\n"
 "Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
-"Language-Team: Dutch <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/nl/>\n"
+"Language-Team: Dutch <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1.1\n"
+"X-Generator: Weblate 4.4.2\n"
 
 msgid ""
 "\n"
@@ -55,7 +55,7 @@ msgstr ""
 #.
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #, c-format
 msgid "%s version %s"
@@ -67,7 +67,7 @@ msgstr "%s versie %s"
 #.
 #, c-format
 msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
+msgstr "(Druk op %s om de aanwijzer los te laten) %s - %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -75,7 +75,7 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgstr "(Druk op %s om de aanwijzer los te laten) - %s"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Bezig met laden...</b>"
@@ -95,7 +95,7 @@ msgstr "Toegang tot bureaubladen op afstand"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Adres is te lang voor UNIX socket_path: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -174,7 +174,7 @@ msgid "Close"
 msgstr "Afsluiten"
 
 msgid "Connect to SSH failed."
-msgstr ""
+msgstr "Verbinding met SSH mislukte."
 
 msgid "Connect to channel unsupported."
 msgstr "Verbinding maken met kanaal wordt niet ondersteund."
@@ -187,7 +187,7 @@ msgstr "Verbonden met grafische server"
 
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "Verbinding met UNIX-socket mislukte: %s"
 
 msgid "Connecting to graphic server"
 msgstr "Verbinding maken met grafische server"
@@ -205,16 +205,18 @@ msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 "Copyright (C) 2007-2020 Red Hat, Inc."
 msgstr ""
+"Copyright (C) 2007-2012 Daniel P. Berrange\n"
+"Copyright (C) 2007-2020 Red Hat, Inc."
 
 msgid "Couldn't open oVirt session: "
 msgstr "Kan oVirt-sessie niet openen: "
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Aanmaken van UNIX-socket mislukte: %s"
 
 msgid "Ctrl_L+Alt_L"
-msgstr ""
+msgstr "Ctrl_L+Alt_L"
 
 msgid "Customise hotkeys"
 msgstr "Pas sneltoetsen aan"
@@ -314,7 +316,7 @@ msgid "Name:"
 msgstr "Naam:"
 
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "Geen ISO-bestanden in domein"
 
 msgid "No connection was chosen"
 msgstr "Er is geen verbinding gekozen"
@@ -411,10 +413,10 @@ msgid "Select USB devices for redirection"
 msgstr "Selecteer USB apparaten voor omleiding"
 
 msgid "Select the virtual machine only by its ID"
-msgstr ""
+msgstr "Selecteer de virtuele machine alleen aan de hand van zijn ID"
 
 msgid "Select the virtual machine only by its UUID"
-msgstr ""
+msgstr "Selecteer de virtuele machine alleen aan de hand van zijn UUID"
 
 msgid "Select the virtual machine only by its name"
 msgstr "Selecteer de virtuele machine alleen op naam"
@@ -497,11 +499,11 @@ msgstr "Kan beeldformaat niet bepalen voor bestand '%s'"
 
 msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr ""
+msgstr "Onbekend"
 
 msgctxt "Unknown name"
 msgid "Unknown"
-msgstr ""
+msgstr "Onbekend"
 
 msgid "Unspecified error"
 msgstr "Niet-gespecificeerde fout"
@@ -524,7 +526,7 @@ msgid "Virt Viewer"
 msgstr "Virt viewer"
 
 msgid "Virt-Viewer connection file"
-msgstr ""
+msgstr "Virt-Viewer verbindingsbestand"
 
 #, c-format
 msgid "Virtual machine %s is not running"
@@ -638,7 +640,7 @@ msgid "_Zoom"
 msgstr "_Zoom"
 
 msgid "failed to parse oVirt URI"
-msgstr ""
+msgstr "ontleden van oVirt URI mislukte"
 
 msgid "label"
 msgstr "label"
@@ -660,7 +662,7 @@ msgid "oVirt VM %s is not running"
 msgstr "oVirt VM %s is niet actief"
 
 msgid "only SSH or UNIX socket connection supported."
-msgstr ""
+msgstr "alleen SSH of UNIX socket verbinding ondersteund."
 
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
