@@ -21,6 +21,10 @@ section for a description of the format.
 If URI is '-', then remote-viewer will read the standard input as a
 connection settings file and attempt to connect using it.
 
+In some circumstances the viewer may need to grab the mouse pointer. The
+default key sequence for releasing the grab is C<Ctrl_L>+C<Alt_L>, however,
+this can be overridden using the C<--hotkeys> argument documented below.
+
 =head1 OPTIONS
 
 The following options are accepted when running C<remote-viewer>:
