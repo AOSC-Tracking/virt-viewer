@@ -1,6 +1,6 @@
 %{?mingw_package_header}
 
-%define relver 1%{?dist}
+%define relver 1%{?dist}.1
 
 # We want the 1st part of the release number, and
 # the 3rd part (or 0 if not present).
@@ -9,6 +9,8 @@
 %define rel0 %(echo %{relver} | cut -d. -f1)
 %define rel1 %(test -z "`echo %{relver} | cut -d. -f3`" && echo 0 || (echo %{relver} | cut -d. -f3))
 %define buildid %(expr %{rel0} \\* 256 + %{rel1})
+
+%define msiver @VERSION@-%{rel0}.%{rel1}
 
 Name:           mingw-virt-viewer
 Version:        @VERSION@
@@ -115,12 +117,12 @@ MinGW Windows virt-viewer MSI
 
 %if 0%{?mingw_build_win32} == 1
 mkdir $RPM_BUILD_ROOT/%{mingw32_datadir}/virt-viewer
-cp build_win32$MINGW_BUILDDIR_SUFFIX/data/virt-viewer-x86-@VERSION@.msi $RPM_BUILD_ROOT/%{mingw32_datadir}/virt-viewer
+cp build_win32$MINGW_BUILDDIR_SUFFIX/data/virt-viewer-x86-@VERSION@.msi $RPM_BUILD_ROOT/%{mingw32_datadir}/virt-viewer/virt-viewer-x86-%{msiver}.msi
 %endif
 
 %if 0%{?mingw_build_win64} == 1
 mkdir $RPM_BUILD_ROOT/%{mingw64_datadir}/virt-viewer
-cp build_win64$MINGW_BUILDDIR_SUFFIX/data/virt-viewer-x64-@VERSION@.msi $RPM_BUILD_ROOT/%{mingw64_datadir}/virt-viewer
+cp build_win64$MINGW_BUILDDIR_SUFFIX/data/virt-viewer-x64-@VERSION@.msi $RPM_BUILD_ROOT/%{mingw64_datadir}/virt-viewer/virt-viewer-x64-%{msiver}.msi
 %endif
 
 %find_lang virt-viewer
@@ -146,7 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %{mingw32_mandir}/man1/remote-viewer.1*
 
 %files -n mingw32-virt-viewer-msi
-%{mingw32_datadir}/virt-viewer/virt-viewer-x86-@VERSION@.msi
+%{mingw32_datadir}/virt-viewer/virt-viewer-x86-%{msiver}.msi
 
 %files -n mingw64-virt-viewer -f virt-viewer.lang
 %defattr(-,root,root)
@@ -162,6 +164,6 @@ rm -rf $RPM_BUILD_ROOT
 %{mingw64_mandir}/man1/remote-viewer.1*
 
 %files -n mingw64-virt-viewer-msi
-%{mingw64_datadir}/virt-viewer/virt-viewer-x64-@VERSION@.msi
+%{mingw64_datadir}/virt-viewer/virt-viewer-x64-%{msiver}.msi
 
 %changelog
