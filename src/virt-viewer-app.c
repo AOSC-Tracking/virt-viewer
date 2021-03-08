@@ -748,8 +748,12 @@ static void hide_one_window(gpointer value,
 {
     VirtViewerApp* self = VIRT_VIEWER_APP(user_data);
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    gboolean connect_error = !priv->cancelled &&
-        !(VIRT_VIEWER_IS_SESSION_VNC(priv->session) ? priv->initialized : priv->connected);
+    gboolean connect_error = !priv->cancelled && !priv->connected;
+#ifdef HAVE_GTK_VNC
+    if (VIRT_VIEWER_IS_SESSION_VNC(priv->session)) {
+        connect_error = !priv->cancelled && !priv->initialized;
+    }
+#endif
 
     if (connect_error || priv->main_window != value)
         virt_viewer_window_hide(VIRT_VIEWER_WINDOW(value));
@@ -1773,8 +1777,12 @@ virt_viewer_app_disconnected(VirtViewerSession *session G_GNUC_UNUSED, const gch
                              VirtViewerApp *self)
 {
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    gboolean connect_error = !priv->cancelled &&
-        !(VIRT_VIEWER_IS_SESSION_VNC(session) ? priv->initialized : priv->connected);
+    gboolean connect_error = !priv->cancelled && !priv->connected;
+#ifdef HAVE_GTK_VNC
+    if (VIRT_VIEWER_IS_SESSION_VNC(priv->session)) {
+        connect_error = !priv->cancelled && !priv->initialized;
+    }
+#endif
 
     if (!priv->kiosk)
         virt_viewer_app_hide_all_windows(self);
