@@ -33,6 +33,10 @@ def build_msi():
               "build the MSI binary, and set DESTDIR to point "
               "to the installation virtual root.", file=sys.stderr)
         sys.exit(1)
+
+    if "MANUFACTURER" not in os.environ:
+        os.environ["MANUFACTURER"] = "The Virt Viewer Project"
+
     vroot = os.environ["DESTDIR"]
 
     manifest = []
