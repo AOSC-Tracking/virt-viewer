@@ -2127,6 +2127,7 @@ static gboolean opt_fullscreen = FALSE;
 static gboolean opt_kiosk = FALSE;
 static gboolean opt_kiosk_quit = FALSE;
 static gchar *opt_cursor = NULL;
+static gchar *opt_resize = NULL;
 
 #ifndef G_OS_WIN32
 static gboolean
@@ -2559,6 +2560,24 @@ virt_viewer_app_local_command_line (GApplication   *gapp,
             goto end;
         }
         virt_viewer_app_set_cursor(self, cursor);
+    }
+
+    if (opt_resize) {
+        GAction *resize = g_action_map_lookup_action(G_ACTION_MAP(self),
+                                                    "auto-resize");
+        gboolean enabled = TRUE;
+        if (g_str_equal(opt_resize, "always")) {
+            enabled = TRUE;
+        } else if (g_str_equal(opt_resize, "never")) {
+            enabled = FALSE;
+        } else {
+            g_printerr("--auto-resize expects 'always' or 'never'\n");
+            *status = 1;
+            ret = TRUE;
+            goto end;
+        }
+        g_simple_action_set_state(G_SIMPLE_ACTION(resize),
+                                  g_variant_new_boolean(enabled));
     }
 
 end:
@@ -3445,6 +3464,8 @@ virt_viewer_app_add_option_entries(G_GNUC_UNUSED VirtViewerApp *self,
           N_("Open in full screen mode (adjusts guest resolution to fit the client)"), NULL },
         { "hotkeys", 'H', 0, G_OPTION_ARG_STRING, &opt_hotkeys,
           N_("Customise hotkeys"), NULL },
+        { "auto-resize", 'r', 0, G_OPTION_ARG_STRING, &opt_resize,
+          N_("Automatically resize remote framebuffer"), N_("<never|always>") },
         { "keymap", 'K', 0, G_OPTION_ARG_STRING, &opt_keymap,
           N_("Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"), NULL },
         { "cursor", '\0', 0, G_OPTION_ARG_STRING, &opt_cursor,
