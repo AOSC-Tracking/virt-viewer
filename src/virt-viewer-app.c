@@ -303,7 +303,8 @@ virt_viewer_app_quit(VirtViewerApp *self)
 
     virt_viewer_app_save_config(self);
 
-    if (priv->vm_ui) {
+    if (priv->vm_ui && virt_viewer_session_has_vm_action(priv->session,
+                                                         VIRT_VIEWER_SESSION_VM_ACTION_QUIT)) {
         virt_viewer_session_vm_action(VIRT_VIEWER_SESSION(priv->session),
                                       VIRT_VIEWER_SESSION_VM_ACTION_QUIT);
     }
@@ -1058,17 +1059,23 @@ virt_viewer_app_set_actions_sensitive(VirtViewerApp *self)
     action = g_action_map_lookup_action(map, "machine-pause");
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action),
                                 priv->connected &&
-                                priv->vm_ui);
+                                priv->vm_ui &&
+                                virt_viewer_session_has_vm_action(priv->session,
+                                                                  VIRT_VIEWER_SESSION_VM_ACTION_PAUSE));
 
     action = g_action_map_lookup_action(map, "machine-reset");
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action),
                                 priv->connected &&
-                                priv->vm_ui);
+                                priv->vm_ui &&
+                                virt_viewer_session_has_vm_action(priv->session,
+                                                                  VIRT_VIEWER_SESSION_VM_ACTION_RESET));
 
     action = g_action_map_lookup_action(map, "machine-powerdown");
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action),
                                 priv->connected &&
-                                priv->vm_ui);
+                                priv->vm_ui &&
+                                virt_viewer_session_has_vm_action(priv->session,
+                                                                  VIRT_VIEWER_SESSION_VM_ACTION_POWER_DOWN));
 
 }
 
