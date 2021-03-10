@@ -91,6 +91,7 @@ static void virt_viewer_session_spice_smartcard_remove(VirtViewerSession *sessio
 static gboolean virt_viewer_session_spice_fullscreen_auto_conf(VirtViewerSessionSpice *self);
 static void virt_viewer_session_spice_apply_monitor_geometry(VirtViewerSession *self, GHashTable *monitors);
 static void virt_viewer_session_spice_vm_action(VirtViewerSession *self, gint action);
+static gboolean virt_viewer_session_spice_has_vm_action(VirtViewerSession *self, gint action);
 
 static void virt_viewer_session_spice_clear_displays(VirtViewerSessionSpice *self)
 {
@@ -274,6 +275,7 @@ virt_viewer_session_spice_class_init(VirtViewerSessionSpiceClass *klass)
     dclass->can_share_folder = virt_viewer_session_spice_can_share_folder;
     dclass->can_retry_auth = virt_viewer_session_spice_can_retry_auth;
     dclass->vm_action = virt_viewer_session_spice_vm_action;
+    dclass->has_vm_action = virt_viewer_session_spice_has_vm_action;
 
     g_object_class_install_property(oclass,
                                     PROP_SPICE_SESSION,
@@ -1061,6 +1063,28 @@ virt_viewer_session_spice_vm_action(VirtViewerSession *sess G_GNUC_UNUSED,
     }
 
     spice_qmp_port_vm_action_async(self->qmp, action, NULL, NULL, NULL);
+#endif
+}
+
+static gboolean
+virt_viewer_session_spice_has_vm_action(VirtViewerSession *sess G_GNUC_UNUSED,
+                                        gint action G_GNUC_UNUSED)
+{
+#ifdef WITH_QMP_PORT
+    VirtViewerSessionSpice *self = VIRT_VIEWER_SESSION_SPICE(sess);
+
+    switch (action) {
+    case VIRT_VIEWER_SESSION_VM_ACTION_QUIT:
+    case VIRT_VIEWER_SESSION_VM_ACTION_RESET:
+    case VIRT_VIEWER_SESSION_VM_ACTION_POWER_DOWN:
+    case VIRT_VIEWER_SESSION_VM_ACTION_PAUSE:
+    case VIRT_VIEWER_SESSION_VM_ACTION_CONTINUE:
+        return self->qmp != NULL;
+    default:
+        return FALSE;
+    }
+#else
+    return FALSE;
 #endif
 }
 
