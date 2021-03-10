@@ -24,6 +24,10 @@
         <attribute name="label" translatable="yes">_Normal Size</attribute>
         <attribute name="action">win.zoom-reset</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">_Auto resize</attribute>
+        <attribute name="action">app.auto-resize</attribute>
+      </item>
     </section>
     <section>
       <item>

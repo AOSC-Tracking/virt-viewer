@@ -106,6 +106,8 @@ static void virt_viewer_app_add_option_entries(VirtViewerApp *self, GOptionConte
 static VirtViewerWindow *virt_viewer_app_get_nth_window(VirtViewerApp *self, gint nth);
 static VirtViewerWindow *virt_viewer_app_get_vte_window(VirtViewerApp *self, const gchar *name);
 static void virt_viewer_app_set_actions_sensitive(VirtViewerApp *self);
+static void virt_viewer_app_set_display_auto_resize(VirtViewerApp *self,
+                                                    VirtViewerDisplay *display);
 
 /* Application actions */
 static void virt_viewer_app_action_monitor(GSimpleAction *act,
@@ -1078,6 +1080,9 @@ virt_viewer_app_set_actions_sensitive(VirtViewerApp *self)
                                 virt_viewer_session_has_vm_action(priv->session,
                                                                   VIRT_VIEWER_SESSION_VM_ACTION_POWER_DOWN));
 
+    action = g_action_map_lookup_action(map, "auto-resize");
+    g_simple_action_set_enabled(G_SIMPLE_ACTION(action),
+                                priv->connected);
 }
 
 static VirtViewerWindow *
@@ -1220,6 +1225,7 @@ ensure_window_for_display(VirtViewerApp *self, VirtViewerDisplay *display)
             win = virt_viewer_app_window_new(self, nth);
         }
 
+        virt_viewer_app_set_display_auto_resize(self, display);
         virt_viewer_window_set_display(win, display);
         if (VIRT_VIEWER_IS_DISPLAY_VTE(display)) {
             g_object_set_data(G_OBJECT(display), "virt-viewer-window", win);
@@ -1300,6 +1306,7 @@ virt_viewer_app_display_added(VirtViewerSession *session G_GNUC_UNUSED,
     }
 
     g_hash_table_insert(priv->displays, GINT_TO_POINTER(nth), g_object_ref(display));
+    virt_viewer_app_set_display_auto_resize(self, display);
 
     g_signal_connect(display, "notify::show-hint",
                      G_CALLBACK(display_show_hint), NULL);
@@ -2282,6 +2289,41 @@ virt_viewer_app_action_smartcard_remove(GSimpleAction *act G_GNUC_UNUSED,
     virt_viewer_session_smartcard_remove(virt_viewer_app_get_session(self));
 }
 
+
+static void
+virt_viewer_app_set_display_auto_resize(VirtViewerApp *self,
+                                        VirtViewerDisplay *display)
+{
+    GAction *action = g_action_map_lookup_action(G_ACTION_MAP(self), "auto-resize");
+    GVariant *state = g_action_get_state(action);
+    gboolean resize = g_variant_get_boolean(state);
+    virt_viewer_display_set_auto_resize(display, resize);
+}
+
+static void
+set_window_autoresize(gpointer value, gpointer user_data)
+{
+    VirtViewerApp *self = VIRT_VIEWER_APP(user_data);
+    VirtViewerDisplay *display = virt_viewer_window_get_display(VIRT_VIEWER_WINDOW(value));
+    virt_viewer_app_set_display_auto_resize(self, display);
+}
+
+static void
+virt_viewer_app_action_auto_resize(GSimpleAction *act G_GNUC_UNUSED,
+                                   GVariant *state,
+                                   gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_APP(opaque));
+
+    VirtViewerApp *self = VIRT_VIEWER_APP(opaque);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    gboolean resize = g_variant_get_boolean(state);
+
+    g_simple_action_set_state(act, g_variant_new_boolean(resize));
+
+    g_list_foreach(priv->windows, set_window_autoresize, self);
+}
+
 static void
 virt_viewer_app_action_window(VirtViewerApp *self,
                               VirtViewerWindow *win,
@@ -2375,6 +2417,9 @@ static GActionEntry actions[] = {
       .activate = virt_viewer_app_action_smartcard_insert },
     { .name = "smartcard-remove",
       .activate = virt_viewer_app_action_smartcard_remove },
+    { .name = "auto-resize",
+      .state = "true",
+      .change_state = virt_viewer_app_action_auto_resize },
 };
 
 struct VirtViewerActionAccels {

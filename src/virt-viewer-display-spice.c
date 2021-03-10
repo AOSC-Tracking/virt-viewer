@@ -262,19 +262,24 @@ enable_accel_changed(VirtViewerApp *app,
 }
 
 static void
-fullscreen_changed(VirtViewerDisplaySpice *self,
-                   GParamSpec *pspec G_GNUC_UNUSED,
-                   VirtViewerApp *app)
+resize_policy_changed(VirtViewerDisplaySpice *self,
+                      GParamSpec *pspec G_GNUC_UNUSED,
+                      VirtViewerApp *app)
 {
-    if (virt_viewer_display_get_fullscreen(VIRT_VIEWER_DISPLAY(self))) {
-        gboolean auto_conf;
-        g_object_get(app, "fullscreen", &auto_conf, NULL);
-        if (auto_conf)
-            self->auto_resize = AUTO_RESIZE_NEVER;
-        else
-            self->auto_resize = AUTO_RESIZE_FULLSCREEN;
-    } else
-        self->auto_resize = AUTO_RESIZE_ALWAYS;
+    if (virt_viewer_display_get_auto_resize(VIRT_VIEWER_DISPLAY(self))) {
+        if (virt_viewer_display_get_fullscreen(VIRT_VIEWER_DISPLAY(self))) {
+            gboolean auto_conf;
+            g_object_get(app, "fullscreen", &auto_conf, NULL);
+            if (auto_conf)
+                self->auto_resize = AUTO_RESIZE_NEVER;
+            else
+                self->auto_resize = AUTO_RESIZE_FULLSCREEN;
+        } else {
+            self->auto_resize = AUTO_RESIZE_ALWAYS;
+        }
+    } else {
+        self->auto_resize = AUTO_RESIZE_NEVER;
+    }
 }
 
 GtkWidget *
@@ -335,10 +340,12 @@ virt_viewer_display_spice_new(VirtViewerSessionSpice *session,
     virt_viewer_signal_connect_object(app, "notify::enable-accel",
                                       G_CALLBACK(enable_accel_changed), self, 0);
     virt_viewer_signal_connect_object(self, "notify::fullscreen",
-                                      G_CALLBACK(fullscreen_changed), app, 0);
+                                      G_CALLBACK(resize_policy_changed), app, 0);
+    virt_viewer_signal_connect_object(self, "notify::auto-resize",
+                                      G_CALLBACK(resize_policy_changed), app, 0);
     virt_viewer_signal_connect_object(self, "notify::zoom-level",
                                       G_CALLBACK(zoom_level_changed), app, 0);
-    fullscreen_changed(self, NULL, app);
+    resize_policy_changed(self, NULL, app);
     enable_accel_changed(app, NULL, self);
 
     return GTK_WIDGET(self);
