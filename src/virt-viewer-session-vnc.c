@@ -37,6 +37,7 @@
 struct _VirtViewerSessionVnc {
     VirtViewerSession parent;
     GtkWindow *main_window;
+    VirtViewerAuth *auth;
     /* XXX we should really just have a VncConnection */
     VncDisplay *vnc;
     gboolean auth_dialog_cancelled;
@@ -62,6 +63,7 @@ virt_viewer_session_vnc_finalize(GObject *obj)
         vnc_display_close(self->vnc);
         g_object_unref(self->vnc);
     }
+    gtk_widget_destroy(GTK_WIDGET(self->auth));
     if (self->main_window)
         g_object_unref(self->main_window);
     g_free(self->error_msg);
@@ -324,7 +326,7 @@ virt_viewer_session_vnc_auth_credential(GtkWidget *src G_GNUC_UNUSED,
     }
 
     if (wantUsername || wantPassword) {
-        gboolean ret = virt_viewer_auth_collect_credentials(self->main_window,
+        gboolean ret = virt_viewer_auth_collect_credentials(self->auth,
                                                             "VNC", NULL,
                                                             wantUsername ? &username : NULL,
                                                             wantPassword ? &password : NULL);
@@ -387,6 +389,9 @@ virt_viewer_session_vnc_close(VirtViewerSession* session)
 
     g_debug("close vnc=%p", self->vnc);
     if (self->vnc != NULL) {
+        gtk_dialog_response(GTK_DIALOG(self->auth),
+                            GTK_RESPONSE_CANCEL);
+
         virt_viewer_session_clear_displays(session);
         vnc_display_close(self->vnc);
         g_object_unref(self->vnc);
@@ -428,6 +433,7 @@ virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window)
     self->vnc = VNC_DISPLAY(vnc_display_new());
     g_object_ref_sink(self->vnc);
     self->main_window = g_object_ref(main_window);
+    self->auth = virt_viewer_auth_new(self->main_window);
 
     vnc_display_set_shared_flag(self->vnc,
                                 virt_viewer_app_get_shared(app));

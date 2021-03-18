@@ -26,7 +26,18 @@
 
 #include "virt-viewer-session.h"
 
-gboolean virt_viewer_auth_collect_credentials(GtkWindow *window,
+#define VIRT_VIEWER_TYPE_AUTH virt_viewer_auth_get_type()
+G_DECLARE_FINAL_TYPE(VirtViewerAuth,
+                     virt_viewer_auth,
+                     VIRT_VIEWER,
+                     AUTH,
+                     GtkDialog)
+
+GType virt_viewer_auth_get_type(void) G_GNUC_CONST;
+
+VirtViewerAuth *virt_viewer_auth_new(GtkWindow *parent);
+
+gboolean virt_viewer_auth_collect_credentials(VirtViewerAuth *auth,
                                               const char *type,
                                               const char *address,
                                               char **username,
