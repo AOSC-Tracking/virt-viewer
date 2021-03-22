@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
 "POT-Creation-Date: 2020-09-11 11:34+0200\n"
-"PO-Revision-Date: 2021-03-08 19:01+0000\n"
+"PO-Revision-Date: 2021-03-22 08:01+0000\n"
 "Last-Translator: simmon <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/ko/>\n"
@@ -28,6 +28,9 @@ msgid ""
 "Error: can't handle multiple URIs\n"
 "\n"
 msgstr ""
+"\n"
+"오류: 다양한 URIs을 다룰 수 없습니다\n"
+"\n"
 
 #, c-format
 msgid ""
@@ -35,6 +38,9 @@ msgid ""
 "No ID|UUID|DOMAIN-NAME was specified for '%s'\n"
 "\n"
 msgstr ""
+"\n"
+"ID|UUID|DOMAIN-NAME '%s'을 위해 지정되지 않았습니다\n"
+"\n"
 
 #, c-format
 msgid ""
@@ -42,6 +48,9 @@ msgid ""
 "Usage: %s [OPTIONS] [ID|UUID|DOMAIN-NAME]\n"
 "\n"
 msgstr ""
+"\n"
+"사용법: %s [OPTIONS] [ID|UUID|DOMAIN-NAME]\n"
+"\n"
 
 #. translators:
 #. * This is "<subtitle> - <appname>"
@@ -49,11 +58,11 @@ msgstr ""
 #.
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #, c-format
 msgid "%s version %s"
-msgstr ""
+msgstr "%s 버전 %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> <subtitle> - <appname>"
@@ -61,7 +70,7 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
+msgstr "(포인터를 놓으려면 %s를 눌러주세요) %s - %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -69,42 +78,42 @@ msgstr ""
 #.
 #, c-format
 msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgstr "(포인터를 놓으려면 %s를 눌러주세요) - %s"
 
 msgid "<b>Loading...</b>"
-msgstr ""
+msgstr "<b>적재...</b>"
 
 msgid "<never|on-disconnect>"
-msgstr ""
+msgstr "<never|on-disconnect>"
 
 msgid "A remote desktop client built with GTK-VNC, SPICE-GTK and libvirt"
 msgstr "GTK-VNC, SPICE-GTK, libvirt로 빌드된 원격 데스크톱 클라이언트"
 
 msgid "About Virt-Viewer"
-msgstr ""
+msgstr "Virt-Viewer 정보"
 
 msgid "Access remote desktops"
 msgstr "원격 데스크톱 접근"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "주소가 유닉스 소캣_경로: %s을 위해 너무 길어요"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
-msgstr ""
+msgstr "적어도 %s 버전 %s은 이 연결 설정에 필요합니다"
 
 #, c-format
 msgid ""
 "At least %s version %s is required to setup this connection, see %s for "
 "details"
-msgstr ""
+msgstr "적어도 %s 버전 %s은 이 연결 설정에 필요하며, 상세 설정을 위해 %s를 참고하세요"
 
 msgid "Attach to the local display using libvirt"
 msgstr "libvirt를 사용하여 로컬 디스플레이에 연결"
 
 msgid "Authentication failed."
-msgstr ""
+msgstr "인증이 실패하였습니다."
 
 #, c-format
 msgid ""
@@ -113,26 +122,30 @@ msgid ""
 "<b>%s</b>\n"
 "\n"
 msgstr ""
+"인증이 %s 연결하기 위해 필요합니다:\n"
+"\n"
+"<b>%s</b>\n"
+"\n"
 
 #, c-format
 msgid "Authentication is required for the %s connection:\n"
-msgstr ""
+msgstr "인증이 %s 연결하기 위해 필요합니다:\n"
 
 msgid "Authentication required"
 msgstr "인증이 필요함"
 
 msgid "Authentication was cancelled"
-msgstr ""
+msgstr "인증이 취소되었습니다"
 
 msgid "Available virtual machines"
-msgstr ""
+msgstr "이용 할 수 있는 가상 장비"
 
 msgid "C_onnect"
-msgstr ""
+msgstr "연결"
 
 #, c-format
 msgid "Can't connect to channel: %s"
-msgstr ""
+msgstr "채널: %s 에 연결 할 수 없습니다"
 
 msgid "Cannot determine the connection type from URI"
 msgstr "URI에서 연결 유형을 지정 할 수 없음"
@@ -146,22 +159,22 @@ msgid "Cannot determine the host for the guest %s"
 msgstr "게스트 %s의 호스트를 지정 할 수 없음"
 
 msgid "Cannot get guest state"
-msgstr ""
+msgstr "게스트 상태를 얻을 수 없습니다"
 
 msgid "Change CD"
-msgstr ""
+msgstr "CD 변경"
 
 msgid "Checking guest domain status"
 msgstr "게스트 도메인 상태 확인 중"
 
 msgid "Choose a virtual machine"
-msgstr ""
+msgstr "가상 장비를 선택합니다"
 
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 msgid "Connect to SSH failed."
-msgstr ""
+msgstr "SSH 연결에 실패하였습니다."
 
 msgid "Connect to channel unsupported."
 msgstr "지원되지 않는 채널에 연결합니다."
@@ -174,34 +187,36 @@ msgstr "그래픽 서버에 연결"
 
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "유닉스 소켓 연결에 실패하였습니다: %s"
 
 msgid "Connecting to graphic server"
 msgstr "그래픽 서버에 연결 중"
 
 msgid "Connection _Address"
-msgstr ""
+msgstr "연결주소"
 
 msgid "Connection details"
 msgstr "상세 연결 정보"
 
 msgid "Console support is compiled out!"
-msgstr ""
+msgstr "콘솔 지원이 컴파일 되었습니다!"
 
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 "Copyright (C) 2007-2020 Red Hat, Inc."
 msgstr ""
+"Copyright (C) 2007-2012 Daniel P. Berrange\n"
+"Copyright (C) 2007-2020 Red Hat, Inc."
 
 msgid "Couldn't open oVirt session: "
-msgstr ""
+msgstr "oVirt 세션을 연결 할 수 없습니다: "
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "유닉스 소켓 생성에 실패하였습니다: %s"
 
 msgid "Ctrl_L+Alt_L"
-msgstr ""
+msgstr "Ctrl_L+Alt_L"
 
 msgid "Customise hotkeys"
 msgstr "핫키 사용자 정의"
@@ -214,10 +229,10 @@ msgstr "연결 해제"
 
 #, c-format
 msgid "Display _%d"
-msgstr ""
+msgstr "표시_%d"
 
 msgid "Display can only be attached through libvirt with --attach"
-msgstr ""
+msgstr "화면은 --attach를 사용하여 libvirt를 통해 연결되어 질 수 있습니다"
 
 msgid "Display debugging information"
 msgstr "디버그 정보 보기"
@@ -235,115 +250,115 @@ msgid "Do you want to close the session?"
 msgstr "세션을 종료하시겠습니까?"
 
 msgid "Enable kiosk mode"
-msgstr ""
+msgstr "키오스크 방법을 활성화합니다"
 
 msgid "Failed to change CD"
-msgstr ""
+msgstr "CD 변경에 실패하였습니다"
 
 msgid "Failed to connect: "
-msgstr ""
+msgstr "연결에 실패하였습니다: "
 
 msgid "Failed to initiate connection"
 msgstr "연결 초기화 실패"
 
 msgid "Failed to read stdin: "
-msgstr ""
+msgstr "표준입력에 실패하였습니다: "
 
 msgid "File Transfers"
-msgstr ""
+msgstr "파일을 전송합니다"
 
 msgid "Finding guest domain"
 msgstr "게스트 도메인 검색 중"
 
 msgid "Folder sharing"
-msgstr ""
+msgstr "폴더 공유"
 
 msgid "For example, spice://foo.example.org:5900"
-msgstr ""
+msgstr "예를 들면, spice://foo.example.org:5900"
 
 msgid "GUID:"
-msgstr ""
+msgstr "GUID:"
 
 #, c-format
 msgid "Guest '%s' is not reachable"
-msgstr ""
+msgstr "Guest '%s'는 도달 할 수 없습니다"
 
 msgid "Guest Details"
-msgstr ""
+msgstr "게스트 상세정보"
 
 msgid "Guest domain has shutdown"
 msgstr "게스트 도메인이 종료되었습니다"
 
 #, c-format
 msgid "Invalid file %s: "
-msgstr ""
+msgstr "유효하지 않은 파일 %s: "
 
 #, c-format
 msgid "Invalid kiosk-quit argument: %s"
-msgstr ""
+msgstr "잘못된 키오스크-종료 인수: %s"
 
 msgid "Invalid password"
-msgstr ""
+msgstr "잘못된 비밀번호"
 
 msgid "Leave fullscreen"
 msgstr "전체 화면 해제"
 
 msgid "Loading..."
-msgstr ""
+msgstr "적재..."
 
 msgid "Minimize"
-msgstr ""
+msgstr "최소화합니다"
 
 msgid "Name"
-msgstr ""
+msgstr "이름"
 
 msgid "Name:"
-msgstr ""
+msgstr "이름:"
 
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "도메인에 ISO 파일이 없습니다"
 
 msgid "No connection was chosen"
-msgstr ""
+msgstr "선택되어진 연결이 없습니다"
 
 msgid "No running virtual machine found"
-msgstr ""
+msgstr "동작하는 가상 장비를 찾을 수 없습니다"
 
 msgid "No virtual machine was chosen"
-msgstr ""
+msgstr "선택한 가상장비가 없습니다"
 
 msgid "Open in full screen mode (adjusts guest resolution to fit the client)"
-msgstr ""
+msgstr "전체 화면 방법으로 개방합니다 (클라이언트에 맞게 게스트 해상도를 조정합니다)"
 
 msgid "Password:"
 msgstr "비밀번호:"
 
 msgid "Please add an extension to the file name"
-msgstr ""
+msgstr "파일 이름에 확장자를 추가해 주세요"
 
 msgid "Preferences"
-msgstr ""
+msgstr "기본 설정"
 
 msgid "QEMU debug console"
-msgstr ""
+msgstr "QEMU 디버그 콘솔"
 
 msgid "QEMU human monitor"
-msgstr ""
+msgstr "QEMU 휴먼 모니터"
 
 msgid "Quit on given condition in kiosk mode"
-msgstr ""
+msgstr "키오스크 방법에서 주어진 상태로 종료합니다"
 
 msgid "Read-only"
-msgstr ""
+msgstr "읽기 전용"
 
 msgid "Recent connections"
-msgstr ""
+msgstr "최근 연결"
 
 msgid "Reconnect to domain upon restart"
 msgstr "다시 시작시 도메인에 재연결"
 
 msgid "Refresh"
-msgstr ""
+msgstr "새로고침"
 
 msgid "Release cursor"
 msgstr "커서 개방"
@@ -351,6 +366,7 @@ msgstr "커서 개방"
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
+"키 형식 key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void 를 다시 지도화 합니다"
 
 msgid "Remote Viewer"
 msgstr "원격 뷰어"
@@ -362,58 +378,61 @@ msgid ""
 "can connect directly to both local and remotely hosted guest OS, optionally "
 "using SSL/TLS encryption."
 msgstr ""
+"원격 표시기는 게스트 운영체제 표시를 위해 그래픽 표시기를 제공합니다. 이 때에 이는 VNC 또는 SPICE 통신규약을 사용하여 게스트 "
+"운영체제를 지원합니다. 앞으로 통신규약은 사용자 요구에 따라 지원 할 것입니다. 표시기는 선택적으로 SSL/TLS 암호화를 사용하여, "
+"로컬과 원격에 초대되어진 가상 운영체제를 직접 연결 할 수 있습니다."
 
 msgid "Remote viewer client"
-msgstr ""
+msgstr "원격 보기 클라이언트"
 
 msgid "Remotely access virtual machines"
-msgstr ""
+msgstr "원격 접근 가상 장비"
 
 #, c-format
 msgid "Run '%s --help' to see a full list of available command line options\n"
-msgstr ""
+msgstr "사용 가능한 명령 줄 선택의 전체 목록을 보는데 '%s --help'를 실행합니다\n"
 
 msgid "Save screenshot"
-msgstr ""
+msgstr "스크린샷 저장"
 
 msgid "Screenshot.png"
-msgstr ""
+msgstr "Screenshot.png"
 
 msgid "Select ISO"
-msgstr ""
+msgstr "ISO 선택"
 
 msgid "Select USB devices for redirection"
 msgstr "리디렉션을 위한 USB 장치 선택"
 
 msgid "Select the virtual machine only by its ID"
-msgstr ""
+msgstr "ID로만 가상 장비를 선택합니다"
 
 msgid "Select the virtual machine only by its UUID"
-msgstr ""
+msgstr "UUID로만 가상 장비를 선택합니다"
 
 msgid "Select the virtual machine only by its name"
-msgstr ""
+msgstr "이름으로만 가상 장비를 선택합니다"
 
 msgid "Selected"
-msgstr ""
+msgstr "선택됨"
 
 msgid "Send key combination"
 msgstr "조합 키 전송"
 
 msgid "Serial"
-msgstr ""
+msgstr "직렬"
 
 msgid "Set window title"
 msgstr "창 제목 설정"
 
 msgid "Share clipboard"
-msgstr ""
+msgstr "클립보드 공유"
 
 msgid "Share folder"
-msgstr ""
+msgstr "공유 폴더"
 
 msgid "Show password"
-msgstr ""
+msgstr "비밀번호 보여주기"
 
 msgid "Smartcard insertion"
 msgstr "스마트카드 삽입"
@@ -422,7 +441,7 @@ msgid "Smartcard removal"
 msgstr "스마트카드 제거"
 
 msgid "Spice"
-msgstr ""
+msgstr "향신료"
 
 msgid "The Fedora Translation Team"
 msgstr "페도라 번역팀"
@@ -430,10 +449,10 @@ msgstr "페도라 번역팀"
 #, c-format
 msgid "Transferring %u file of %u..."
 msgid_plural "Transferring %u files of %u..."
-msgstr[0] ""
+msgstr[0] "%u의 %u 를전송중..."
 
 msgid "Transferring 1 file..."
-msgstr ""
+msgstr "1 파일 전송중..."
 
 msgid "USB device selection"
 msgstr "USB 장치 선택"
@@ -444,7 +463,7 @@ msgstr "USB 리디렉션 오류: %s"
 
 #, c-format
 msgid "Unable to authenticate with remote desktop server at %s: %s\n"
-msgstr ""
+msgstr "%s: %s에 원격 데스크탑 서버로 인증 할 수 없습니다\n"
 
 #, c-format
 msgid "Unable to authenticate with remote desktop server: %s"
@@ -452,7 +471,7 @@ msgstr "원격 데스크탑 서버로 인증할 수 없음: %s"
 
 #, c-format
 msgid "Unable to connect to libvirt with URI: %s."
-msgstr ""
+msgstr "URI: %s 로 libvirt에 연결 할 수 없습니다."
 
 #, c-format
 msgid "Unable to connect to the graphic server %s"
@@ -460,52 +479,52 @@ msgstr "그래픽 서버 %s에 연결 할 수 없음"
 
 #, c-format
 msgid "Unable to connect: %s"
-msgstr ""
+msgstr "연결 할 수 없음: %s"
 
 msgid "Unable to connnect to oVirt"
-msgstr ""
+msgstr "oVirt로 연결 할 수 있습니다"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
-msgstr ""
+msgstr "파일 '%s'을 위한 사진 형식을 결정 할 수 없습니다"
 
 msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr ""
+msgstr "알 수 없음"
 
 msgctxt "Unknown name"
 msgid "Unknown"
-msgstr ""
+msgstr "알 수 없음"
 
 msgid "Unspecified error"
-msgstr ""
+msgstr "지정되지 않은 오류"
 
 #, c-format
 msgid "Unsupported authentication type %u"
-msgstr ""
+msgstr "지원되지 않는 인증 유형 %u"
 
 #, c-format
 msgid "Unsupported graphic type '%s'"
-msgstr ""
+msgstr "그래픽 유형 '%s'를 지원하지 않습니다"
 
 msgid "Username:"
 msgstr "사용자 이름:"
 
 msgid "VNC does not provide GUID"
-msgstr ""
+msgstr "VNC는 GUID를 제공하지 않습니다"
 
 msgid "Virt Viewer"
 msgstr "가상 머신 뷰어"
 
 msgid "Virt-Viewer connection file"
-msgstr ""
+msgstr "Virt-Viewer 연결 파일"
 
 #, c-format
 msgid "Virtual machine %s is not running"
-msgstr ""
+msgstr "가상 장비 %s는 동작하지 않습니다"
 
 msgid "Virtual machine graphical console"
-msgstr ""
+msgstr "가상 장비 그래픽 콘솔"
 
 msgid "Wait for domain to start"
 msgstr "도메인 시작을 기다립니다"
@@ -527,14 +546,14 @@ msgid "Waiting for libvirt to start"
 msgstr "libvirt 시작을 기다리는 중"
 
 msgid "Zoom _In"
-msgstr ""
+msgstr "줌_인"
 
 msgid "Zoom _Out"
-msgstr ""
+msgstr "줌_아웃"
 
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
-msgstr ""
+msgstr "줌 단계는 %d-%d 안에서 필요합니다\n"
 
 msgid "Zoom level of window, in percentage"
 msgstr "윈도우의 줌 레벨 (백분율)"
@@ -543,67 +562,67 @@ msgid "[none]"
 msgstr "[없음]"
 
 msgid "_About"
-msgstr ""
+msgstr "_정보"
 
 msgid "_Cancel"
-msgstr ""
+msgstr "_취소"
 
 msgid "_Change CD"
-msgstr ""
+msgstr "_CD 변경"
 
 msgid "_Close"
-msgstr ""
+msgstr "_닫기"
 
 msgid "_Displays"
-msgstr ""
+msgstr "_표시"
 
 msgid "_File"
 msgstr "파일(_F)"
 
 msgid "_Full screen"
-msgstr ""
+msgstr "_전체 화면"
 
 msgid "_Guest Details"
-msgstr ""
+msgstr "_게스트 상세"
 
 msgid "_Help"
 msgstr "_도움말"
 
 msgid "_Machine"
-msgstr ""
+msgstr "_장비"
 
 msgid "_Normal Size"
-msgstr ""
+msgstr "_정상 크기"
 
 msgid "_OK"
-msgstr ""
+msgstr "_확인"
 
 msgid "_Pause"
-msgstr ""
+msgstr "_일시정지"
 
 msgid "_Power down"
-msgstr ""
+msgstr "_전원 종료"
 
 msgid "_Preferences"
-msgstr ""
+msgstr "_기본 설정"
 
 msgid "_Quit"
-msgstr ""
+msgstr "_종료"
 
 msgid "_Reset"
-msgstr ""
+msgstr "_다시 설정"
 
 msgid "_Save"
-msgstr ""
+msgstr "_저장"
 
 msgid "_Screenshot"
-msgstr ""
+msgstr "_스크린샷"
 
 msgid "_Send key"
 msgstr "키 전송(_S)"
 
 msgid "_USB device selection"
-msgstr ""
+msgstr "_USB 장치 선택"
 
 msgid "_View"
 msgstr "보기(_V)"
@@ -612,29 +631,29 @@ msgid "_Zoom"
 msgstr "_확대"
 
 msgid "failed to parse oVirt URI"
-msgstr ""
+msgstr "oVirt URI 구문 분석에 실패하였습니다"
 
 msgid "label"
 msgstr "표시"
 
 #, c-format
 msgid "oVirt VM %s has no display"
-msgstr ""
+msgstr "oVirt VM %s는 표시 장치를 가지고 있지 않습니다"
 
 #, c-format
 msgid "oVirt VM %s has no host information"
-msgstr ""
+msgstr "oVirt VM %s는 호스트 정보를 갖고 있지 않습니다"
 
 #, c-format
 msgid "oVirt VM %s has unknown display type: %u"
-msgstr ""
+msgstr "oVirt VM %s는 알지 못하는 표시 장치: %u를 가지고 있습니다"
 
 #, c-format
 msgid "oVirt VM %s is not running"
-msgstr ""
+msgstr "oVirt VM %s는 작동하지 않습니다"
 
 msgid "only SSH or UNIX socket connection supported."
-msgstr ""
+msgstr "단지 SSH만 또는 유닉스 소켓 연결만 지원합니다."
 
 #~ msgid " "
 #~ msgstr " "
