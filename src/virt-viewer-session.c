@@ -731,3 +731,16 @@ void virt_viewer_session_vm_action(VirtViewerSession *self, gint action)
     if (klass->vm_action)
         klass->vm_action(self, action);
 }
+
+gboolean virt_viewer_session_has_vm_action(VirtViewerSession *self, gint action)
+{
+    VirtViewerSessionClass *klass;
+
+    g_return_val_if_fail(VIRT_VIEWER_IS_SESSION(self), FALSE);
+
+    klass = VIRT_VIEWER_SESSION_GET_CLASS(self);
+
+    if (klass->has_vm_action)
+        return klass->has_vm_action(self, action);
+    return FALSE;
+}

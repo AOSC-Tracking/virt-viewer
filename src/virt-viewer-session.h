@@ -68,6 +68,7 @@ struct _VirtViewerSessionClass {
     gboolean (*can_share_folder)(VirtViewerSession *session);
     gboolean (*can_retry_auth)(VirtViewerSession *session);
     void (*vm_action)(VirtViewerSession *session, gint action);
+    gboolean (*has_vm_action)(VirtViewerSession *session, gint action);
 };
 
 GType virt_viewer_session_get_type(void);
@@ -107,3 +108,4 @@ gboolean virt_viewer_session_can_share_folder(VirtViewerSession *self);
 gboolean virt_viewer_session_can_retry_auth(VirtViewerSession *self);
 
 void virt_viewer_session_vm_action(VirtViewerSession *self, gint action);
+gboolean virt_viewer_session_has_vm_action(VirtViewerSession *self, gint action);

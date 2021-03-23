@@ -27,12 +27,21 @@
 /* gtk-vnc uses deprecated API, so disable warnings for this file */
 #define GLIB_DISABLE_DEPRECATION_WARNINGS
 
+#include <gvnc.h>
+
 #include "virt-viewer-auth.h"
 #include "virt-viewer-session-vnc.h"
 #include "virt-viewer-display-vnc.h"
 
 #include <glib/gi18n.h>
 #include <libxml/uri.h>
+
+#ifndef VNC_CHECK_VERSION
+# define VNC_CHECK_VERSION(a, b, c) 0
+#endif
+#if VNC_CHECK_VERSION(2, 0, 0)
+# define HAVE_VNC_POWER_CONTROL
+#endif
 
 struct _VirtViewerSessionVnc {
     VirtViewerSession parent;
@@ -42,6 +51,7 @@ struct _VirtViewerSessionVnc {
     VncDisplay *vnc;
     gboolean auth_dialog_cancelled;
     gchar *error_msg;
+    gboolean power_control;
 };
 
 G_DEFINE_TYPE(VirtViewerSessionVnc, virt_viewer_session_vnc, VIRT_VIEWER_TYPE_SESSION)
@@ -52,6 +62,8 @@ static gboolean virt_viewer_session_vnc_open_host(VirtViewerSession* session, co
 static gboolean virt_viewer_session_vnc_open_uri(VirtViewerSession* session, const gchar *uri, GError **error);
 static gboolean virt_viewer_session_vnc_channel_open_fd(VirtViewerSession* session,
                                                         VirtViewerSessionChannel* channel, int fd);
+static void virt_viewer_session_vnc_vm_action(VirtViewerSession *self, gint action);
+static gboolean virt_viewer_session_vnc_has_vm_action(VirtViewerSession *self, gint action);
 
 
 static void
@@ -77,6 +89,39 @@ virt_viewer_session_vnc_mime_type(VirtViewerSession *self G_GNUC_UNUSED)
     return "application/x-vnc";
 }
 
+static void virt_viewer_session_vnc_vm_action(VirtViewerSession *session G_GNUC_UNUSED,
+                                              gint action G_GNUC_UNUSED)
+{
+#ifdef HAVE_VNC_POWER_CONTROL
+    VirtViewerSessionVnc *self = VIRT_VIEWER_SESSION_VNC(session);
+    VncConnection *conn = vnc_display_get_connection(self->vnc);
+
+    switch (action) {
+    case VIRT_VIEWER_SESSION_VM_ACTION_POWER_DOWN:
+        vnc_connection_power_control(conn,
+                                     VNC_CONNECTION_POWER_ACTION_SHUTDOWN);
+        break;
+    case VIRT_VIEWER_SESSION_VM_ACTION_RESET:
+        vnc_connection_power_control(conn,
+                                     VNC_CONNECTION_POWER_ACTION_RESET);
+        break;
+    }
+#endif
+}
+
+static gboolean virt_viewer_session_vnc_has_vm_action(VirtViewerSession *session, gint action)
+{
+    VirtViewerSessionVnc *self = VIRT_VIEWER_SESSION_VNC(session);
+
+    switch (action) {
+    case VIRT_VIEWER_SESSION_VM_ACTION_POWER_DOWN:
+    case VIRT_VIEWER_SESSION_VM_ACTION_RESET:
+        return self->power_control;
+    }
+
+    return FALSE;
+}
+
 static void
 virt_viewer_session_vnc_class_init(VirtViewerSessionVncClass *klass)
 {
@@ -91,12 +136,26 @@ virt_viewer_session_vnc_class_init(VirtViewerSessionVncClass *klass)
     dclass->open_uri = virt_viewer_session_vnc_open_uri;
     dclass->channel_open_fd = virt_viewer_session_vnc_channel_open_fd;
     dclass->mime_type = virt_viewer_session_vnc_mime_type;
+    dclass->vm_action = virt_viewer_session_vnc_vm_action;
+    dclass->has_vm_action = virt_viewer_session_vnc_has_vm_action;
 }
 
 static void
 virt_viewer_session_vnc_init(VirtViewerSessionVnc *self G_GNUC_UNUSED)
 {
 }
+
+#ifdef HAVE_VNC_POWER_CONTROL
+static void
+virt_viewer_session_vnc_init_power_control(VncDisplay *vnc G_GNUC_UNUSED,
+                                           VirtViewerSessionVnc *self)
+{
+    self->power_control = TRUE;
+
+    g_object_set(virt_viewer_session_get_app(VIRT_VIEWER_SESSION(self)),
+                 "vm-ui", TRUE, NULL);
+}
+#endif
 
 static void
 virt_viewer_session_vnc_connected(VncDisplay *vnc G_GNUC_UNUSED,
@@ -421,6 +480,10 @@ virt_viewer_session_vnc_close(VirtViewerSession* session)
     g_signal_connect_object(self->vnc, "vnc-auth-credential",
                             G_CALLBACK(virt_viewer_session_vnc_auth_credential), session, 0);
 
+#ifdef HAVE_VNC_POWER_CONTROL
+    g_signal_connect(self->vnc, "vnc-power-control-initialized",
+                     G_CALLBACK(virt_viewer_session_vnc_init_power_control), session);
+#endif
 }
 
 VirtViewerSession *
@@ -458,6 +521,11 @@ virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window)
 
     g_signal_connect_object(self->vnc, "vnc-auth-credential",
                             G_CALLBACK(virt_viewer_session_vnc_auth_credential), self, 0);
+
+#ifdef HAVE_VNC_POWER_CONTROL
+    g_signal_connect(self->vnc, "vnc-power-control-initialized",
+                     G_CALLBACK(virt_viewer_session_vnc_init_power_control), self);
+#endif
 
     return VIRT_VIEWER_SESSION(self);
 }
