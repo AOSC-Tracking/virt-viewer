@@ -24,11 +24,20 @@
 
 #include <config.h>
 
+#include <gvnc.h>
+
 #include "virt-viewer-auth.h"
 #include "virt-viewer-display-vnc.h"
 #include "virt-viewer-util.h"
 
 #include <glib/gi18n.h>
+
+#ifndef VNC_CHECK_VERSION
+# define VNC_CHECK_VERSION(a, b, c) 0
+#endif
+#if VNC_CHECK_VERSION(1, 2, 0)
+# define HAVE_VNC_REMOTE_RESIZE
+#endif
 
 struct _VirtViewerDisplayVnc {
     VirtViewerDisplay parent;
@@ -212,6 +221,29 @@ enable_accel_changed(VirtViewerApp *app,
 }
 
 
+#ifdef HAVE_VNC_REMOTE_RESIZE
+static void
+resize_policy_changed(VirtViewerDisplayVnc *self,
+                      GParamSpec *pspec G_GNUC_UNUSED,
+                      VncDisplay *vnc)
+{
+    gboolean enable = virt_viewer_display_get_auto_resize(VIRT_VIEWER_DISPLAY(self));
+
+    vnc_display_set_allow_resize(vnc, enable);
+}
+
+static void
+zoom_level_changed(VirtViewerDisplay *display,
+                   GParamSpec *pspec G_GNUC_UNUSED,
+                   VncDisplay *vnc)
+{
+    guint zoom = virt_viewer_display_get_zoom_level(display);
+
+    vnc_display_set_zoom(vnc, zoom);
+}
+#endif
+
+
 GtkWidget *
 virt_viewer_display_vnc_new(VirtViewerSessionVnc *session,
                             VncDisplay *vnc)
@@ -240,6 +272,11 @@ virt_viewer_display_vnc_new(VirtViewerSessionVnc *session,
     vnc_display_set_force_size(self->vnc, FALSE);
     vnc_display_set_scaling(self->vnc, TRUE);
 
+#ifdef HAVE_VNC_REMOTE_RESIZE
+    vnc_display_set_keep_aspect_ratio(self->vnc, TRUE);
+    g_object_set(self, "force-aspect", FALSE, NULL);
+#endif
+
     /* When VNC desktop resizes, we have to resize the containing widget */
     g_signal_connect(self->vnc, "vnc-desktop-resize",
                      G_CALLBACK(virt_viewer_display_vnc_resize_desktop), self);
@@ -259,6 +296,14 @@ virt_viewer_display_vnc_new(VirtViewerSessionVnc *session,
     virt_viewer_signal_connect_object(app, "notify::enable-accel",
                                       G_CALLBACK(enable_accel_changed), self->vnc, 0);
     enable_accel_changed(app, NULL, self->vnc);
+
+#ifdef HAVE_VNC_REMOTE_RESIZE
+    virt_viewer_signal_connect_object(self, "notify::auto-resize",
+                                      G_CALLBACK(resize_policy_changed), self->vnc, 0);
+    virt_viewer_signal_connect_object(self, "notify::zoom-level",
+                                      G_CALLBACK(zoom_level_changed), self->vnc, 0);
+    resize_policy_changed(self, NULL, self->vnc);
+#endif
 
     return GTK_WIDGET(self);
 }
