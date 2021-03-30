@@ -500,6 +500,8 @@ virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window)
 
     vnc_display_set_shared_flag(self->vnc,
                                 virt_viewer_app_get_shared(app));
+    vnc_display_set_pointer_local(self->vnc,
+                                  virt_viewer_app_get_cursor(app) == VIRT_VIEWER_CURSOR_LOCAL);
 
     g_signal_connect_object(self->vnc, "vnc-connected",
                             G_CALLBACK(virt_viewer_session_vnc_connected), self, 0);

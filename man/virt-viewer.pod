@@ -86,6 +86,17 @@ CONFIGURATION section below.
 
 Permitted a shared session with multiple clients
 
+=item --cursor auto|local
+
+Control how the mouse cursor is rendered. C<auto> is the default behaviour,
+which will honour the behaviour requested by the remote server. This may
+involve the server remote rendering the cursor into the framebuffer, or
+sending the cursor details to the client to render.  C<local> overrides
+this default to request that the local desktop cursor is always rendered
+regardless of what the server requests. The latter is rarely needed, but
+can be used if the server has a bad configuration that results in its
+own cursor being hidden.
+
 =item --debug
 
 Print debugging information

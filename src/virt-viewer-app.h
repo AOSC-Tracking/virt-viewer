@@ -40,6 +40,11 @@ typedef struct {
     gboolean isLast;
 } VirtViewerKeyMapping;
 
+typedef enum {
+    VIRT_VIEWER_CURSOR_AUTO,
+    VIRT_VIEWER_CURSOR_LOCAL,
+} VirtViewerCursor;
+
 struct _VirtViewerAppClass {
     GtkApplicationClass parent_class;
 
@@ -72,6 +77,8 @@ void virt_viewer_app_set_attach(VirtViewerApp *self, gboolean attach);
 gboolean virt_viewer_app_get_attach(VirtViewerApp *self);
 void virt_viewer_app_set_shared(VirtViewerApp *self, gboolean shared);
 gboolean virt_viewer_app_get_shared(VirtViewerApp *self);
+void virt_viewer_app_set_cursor(VirtViewerApp *self, VirtViewerCursor cursor);
+VirtViewerCursor virt_viewer_app_get_cursor(VirtViewerApp *self);
 gboolean virt_viewer_app_has_session(VirtViewerApp *self);
 void virt_viewer_app_set_connect_info(VirtViewerApp *self,
                                       const gchar *host,
