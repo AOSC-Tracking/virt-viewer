@@ -39,7 +39,7 @@
 #ifndef VNC_CHECK_VERSION
 # define VNC_CHECK_VERSION(a, b, c) 0
 #endif
-#if VNC_CHECK_VERSION(2, 0, 0)
+#if VNC_CHECK_VERSION(1, 2, 0)
 # define HAVE_VNC_POWER_CONTROL
 #endif
 
