@@ -2145,38 +2145,6 @@ title_maybe_changed(VirtViewerApp *self, GParamSpec* pspec G_GNUC_UNUSED, gpoint
 }
 
 static void
-virt_viewer_app_init(VirtViewerApp *self)
-{
-    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    GError *error = NULL;
-    priv = virt_viewer_app_get_instance_private(self);
-
-    gtk_window_set_default_icon_name("virt-viewer");
-
-#ifndef G_OS_WIN32
-    g_unix_signal_add (SIGINT, sigint_cb, self);
-#endif
-
-    priv->displays = g_hash_table_new_full(g_direct_hash, g_direct_equal, NULL, g_object_unref);
-    priv->config = g_key_file_new();
-    priv->config_file = g_build_filename(g_get_user_config_dir(),
-                                               "virt-viewer", "settings", NULL);
-    g_key_file_load_from_file(priv->config, priv->config_file,
-                    G_KEY_FILE_KEEP_COMMENTS|G_KEY_FILE_KEEP_TRANSLATIONS, &error);
-
-    if (g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-        g_debug("No configuration file %s", priv->config_file);
-    else if (error)
-        g_warning("Couldn't load configuration: %s", error->message);
-
-    g_clear_error(&error);
-
-    g_signal_connect(self, "notify::guest-name", G_CALLBACK(title_maybe_changed), NULL);
-    g_signal_connect(self, "notify::title", G_CALLBACK(title_maybe_changed), NULL);
-    g_signal_connect(self, "notify::guri", G_CALLBACK(title_maybe_changed), NULL);
-}
-
-static void
 virt_viewer_update_smartcard_accels(VirtViewerApp *self)
 {
     gboolean sw_smartcard;
@@ -2438,11 +2406,6 @@ virt_viewer_app_on_application_startup(GApplication *app)
 #endif
 
     G_APPLICATION_CLASS(virt_viewer_app_parent_class)->startup(app);
-
-    g_action_map_add_action_entries(G_ACTION_MAP(self),
-                                    actions,
-                                    G_N_ELEMENTS(actions),
-                                    self);
 
 #ifndef G_OS_WIN32
     gtk_settings = gtk_settings_get_default();
@@ -2710,6 +2673,43 @@ virt_viewer_app_class_init (VirtViewerAppClass *klass)
                                                          FALSE,
                                                          G_PARAM_READWRITE |
                                                          G_PARAM_STATIC_STRINGS));
+}
+
+static void
+virt_viewer_app_init(VirtViewerApp *self)
+{
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    GError *error = NULL;
+    priv = virt_viewer_app_get_instance_private(self);
+
+    gtk_window_set_default_icon_name("virt-viewer");
+
+#ifndef G_OS_WIN32
+    g_unix_signal_add (SIGINT, sigint_cb, self);
+#endif
+
+    priv->displays = g_hash_table_new_full(g_direct_hash, g_direct_equal, NULL, g_object_unref);
+    priv->config = g_key_file_new();
+    priv->config_file = g_build_filename(g_get_user_config_dir(),
+                                               "virt-viewer", "settings", NULL);
+    g_key_file_load_from_file(priv->config, priv->config_file,
+                    G_KEY_FILE_KEEP_COMMENTS|G_KEY_FILE_KEEP_TRANSLATIONS, &error);
+
+    if (g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
+        g_debug("No configuration file %s", priv->config_file);
+    else if (error)
+        g_warning("Couldn't load configuration: %s", error->message);
+
+    g_clear_error(&error);
+
+    g_signal_connect(self, "notify::guest-name", G_CALLBACK(title_maybe_changed), NULL);
+    g_signal_connect(self, "notify::title", G_CALLBACK(title_maybe_changed), NULL);
+    g_signal_connect(self, "notify::guri", G_CALLBACK(title_maybe_changed), NULL);
+
+    g_action_map_add_action_entries(G_ACTION_MAP(self),
+                                    actions,
+                                    G_N_ELEMENTS(actions),
+                                    self);
 }
 
 void
