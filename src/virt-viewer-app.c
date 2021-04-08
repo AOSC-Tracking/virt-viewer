@@ -159,6 +159,7 @@ struct _VirtViewerAppPrivate {
     gboolean grabbed;
     char *title;
     char *uuid;
+    VirtViewerCursor cursor;
 
     GKeyFile *config;
     gchar *config_file;
@@ -2118,6 +2119,7 @@ static gboolean opt_debug = FALSE;
 static gboolean opt_fullscreen = FALSE;
 static gboolean opt_kiosk = FALSE;
 static gboolean opt_kiosk_quit = FALSE;
+static gchar *opt_cursor = NULL;
 
 #ifndef G_OS_WIN32
 static gboolean
@@ -2539,6 +2541,18 @@ virt_viewer_app_local_command_line (GApplication   *gapp,
         ret = TRUE;
     }
 
+    if (opt_cursor) {
+        int cursor = virt_viewer_enum_from_string(VIRT_VIEWER_TYPE_CURSOR,
+                                                  opt_cursor);
+        if (cursor < 0) {
+            g_printerr("unknown value '%s' for --cursor\n", opt_cursor);
+            *status = 1;
+            ret = TRUE;
+            goto end;
+        }
+        virt_viewer_app_set_cursor(self, cursor);
+    }
+
 end:
     g_option_context_free(context);
     return ret;
@@ -2840,6 +2854,22 @@ virt_viewer_app_get_shared(VirtViewerApp *self)
 
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     return priv->shared;
+}
+
+void virt_viewer_app_set_cursor(VirtViewerApp *self, VirtViewerCursor cursor)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_APP(self));
+
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    priv->cursor = cursor;
+}
+
+VirtViewerCursor virt_viewer_app_get_cursor(VirtViewerApp *self)
+{
+    g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
+
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->cursor;
 }
 
 gboolean
@@ -3372,6 +3402,8 @@ virt_viewer_app_add_option_entries(G_GNUC_UNUSED VirtViewerApp *self,
           N_("Customise hotkeys"), NULL },
         { "keymap", 'K', 0, G_OPTION_ARG_STRING, &opt_keymap,
           N_("Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"), NULL },
+        { "cursor", '\0', 0, G_OPTION_ARG_STRING, &opt_cursor,
+          N_("Cursor display mode: 'local' or 'auto'"), "MODE" },
         { "kiosk", 'k', 0, G_OPTION_ARG_NONE, &opt_kiosk,
           N_("Enable kiosk mode"), NULL },
         { "kiosk-quit", '\0', 0, G_OPTION_ARG_CALLBACK, option_kiosk_quit,

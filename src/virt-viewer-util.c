@@ -732,3 +732,21 @@ configerror:
     g_hash_table_unref(displaymap);
     return NULL;
 }
+
+int
+virt_viewer_enum_from_string(GType enum_type, gchar *name)
+{
+    GEnumClass *enum_class;
+    GEnumValue *enum_value;
+
+    g_return_val_if_fail(G_TYPE_IS_ENUM(enum_type), -1);
+
+    enum_class = g_type_class_ref(enum_type);
+    enum_value = g_enum_get_value_by_nick(enum_class, name);
+    g_type_class_unref(enum_class);
+
+    if (enum_value == NULL)
+        return -1;
+
+    return enum_value->value;
+}

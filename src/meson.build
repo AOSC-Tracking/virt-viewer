@@ -1,6 +1,7 @@
 src_include_dir = [include_directories('.')]
 
 enum_sources = [
+  'virt-viewer-app.h',
   'virt-viewer-display.h',
 ]
 

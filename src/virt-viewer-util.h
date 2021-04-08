@@ -64,3 +64,5 @@ void virt_viewer_shift_monitors_to_origin(GHashTable *displays);
 GHashTable* virt_viewer_parse_monitor_mappings(gchar **mappings,
                                                const gsize nmappings,
                                                const gint nmonitors);
+
+int virt_viewer_enum_from_string(GType enum_type, gchar *name);
