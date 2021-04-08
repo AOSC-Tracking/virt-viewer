@@ -82,6 +82,12 @@ necessary. This is currently implemented by the Spice backend only.
 To specify which client monitors are used in fullscreen mode, see the
 CONFIGURATION section below.
 
+=item -r <always|never>, --auto-resize <always|never>
+
+Controls whether it is permitted to attempt to resize the remote framebuffer
+to match the local window size. This currently defaults to on, but note that
+not all servers will support this.
+
 =item -s, --shared
 
 Permitted a shared session with multiple clients

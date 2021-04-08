@@ -106,6 +106,8 @@ static void virt_viewer_app_add_option_entries(VirtViewerApp *self, GOptionConte
 static VirtViewerWindow *virt_viewer_app_get_nth_window(VirtViewerApp *self, gint nth);
 static VirtViewerWindow *virt_viewer_app_get_vte_window(VirtViewerApp *self, const gchar *name);
 static void virt_viewer_app_set_actions_sensitive(VirtViewerApp *self);
+static void virt_viewer_app_set_display_auto_resize(VirtViewerApp *self,
+                                                    VirtViewerDisplay *display);
 
 /* Application actions */
 static void virt_viewer_app_action_monitor(GSimpleAction *act,
@@ -1078,6 +1080,9 @@ virt_viewer_app_set_actions_sensitive(VirtViewerApp *self)
                                 virt_viewer_session_has_vm_action(priv->session,
                                                                   VIRT_VIEWER_SESSION_VM_ACTION_POWER_DOWN));
 
+    action = g_action_map_lookup_action(map, "auto-resize");
+    g_simple_action_set_enabled(G_SIMPLE_ACTION(action),
+                                priv->connected);
 }
 
 static VirtViewerWindow *
@@ -1220,6 +1225,7 @@ ensure_window_for_display(VirtViewerApp *self, VirtViewerDisplay *display)
             win = virt_viewer_app_window_new(self, nth);
         }
 
+        virt_viewer_app_set_display_auto_resize(self, display);
         virt_viewer_window_set_display(win, display);
         if (VIRT_VIEWER_IS_DISPLAY_VTE(display)) {
             g_object_set_data(G_OBJECT(display), "virt-viewer-window", win);
@@ -1300,6 +1306,7 @@ virt_viewer_app_display_added(VirtViewerSession *session G_GNUC_UNUSED,
     }
 
     g_hash_table_insert(priv->displays, GINT_TO_POINTER(nth), g_object_ref(display));
+    virt_viewer_app_set_display_auto_resize(self, display);
 
     g_signal_connect(display, "notify::show-hint",
                      G_CALLBACK(display_show_hint), NULL);
@@ -2120,6 +2127,7 @@ static gboolean opt_fullscreen = FALSE;
 static gboolean opt_kiosk = FALSE;
 static gboolean opt_kiosk_quit = FALSE;
 static gchar *opt_cursor = NULL;
+static gchar *opt_resize = NULL;
 
 #ifndef G_OS_WIN32
 static gboolean
@@ -2142,38 +2150,6 @@ static void
 title_maybe_changed(VirtViewerApp *self, GParamSpec* pspec G_GNUC_UNUSED, gpointer user_data G_GNUC_UNUSED)
 {
     virt_viewer_app_set_all_window_subtitles(self);
-}
-
-static void
-virt_viewer_app_init(VirtViewerApp *self)
-{
-    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    GError *error = NULL;
-    priv = virt_viewer_app_get_instance_private(self);
-
-    gtk_window_set_default_icon_name("virt-viewer");
-
-#ifndef G_OS_WIN32
-    g_unix_signal_add (SIGINT, sigint_cb, self);
-#endif
-
-    priv->displays = g_hash_table_new_full(g_direct_hash, g_direct_equal, NULL, g_object_unref);
-    priv->config = g_key_file_new();
-    priv->config_file = g_build_filename(g_get_user_config_dir(),
-                                               "virt-viewer", "settings", NULL);
-    g_key_file_load_from_file(priv->config, priv->config_file,
-                    G_KEY_FILE_KEEP_COMMENTS|G_KEY_FILE_KEEP_TRANSLATIONS, &error);
-
-    if (g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-        g_debug("No configuration file %s", priv->config_file);
-    else if (error)
-        g_warning("Couldn't load configuration: %s", error->message);
-
-    g_clear_error(&error);
-
-    g_signal_connect(self, "notify::guest-name", G_CALLBACK(title_maybe_changed), NULL);
-    g_signal_connect(self, "notify::title", G_CALLBACK(title_maybe_changed), NULL);
-    g_signal_connect(self, "notify::guri", G_CALLBACK(title_maybe_changed), NULL);
 }
 
 static void
@@ -2314,6 +2290,41 @@ virt_viewer_app_action_smartcard_remove(GSimpleAction *act G_GNUC_UNUSED,
     virt_viewer_session_smartcard_remove(virt_viewer_app_get_session(self));
 }
 
+
+static void
+virt_viewer_app_set_display_auto_resize(VirtViewerApp *self,
+                                        VirtViewerDisplay *display)
+{
+    GAction *action = g_action_map_lookup_action(G_ACTION_MAP(self), "auto-resize");
+    GVariant *state = g_action_get_state(action);
+    gboolean resize = g_variant_get_boolean(state);
+    virt_viewer_display_set_auto_resize(display, resize);
+}
+
+static void
+set_window_autoresize(gpointer value, gpointer user_data)
+{
+    VirtViewerApp *self = VIRT_VIEWER_APP(user_data);
+    VirtViewerDisplay *display = virt_viewer_window_get_display(VIRT_VIEWER_WINDOW(value));
+    virt_viewer_app_set_display_auto_resize(self, display);
+}
+
+static void
+virt_viewer_app_action_auto_resize(GSimpleAction *act G_GNUC_UNUSED,
+                                   GVariant *state,
+                                   gpointer opaque)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_APP(opaque));
+
+    VirtViewerApp *self = VIRT_VIEWER_APP(opaque);
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    gboolean resize = g_variant_get_boolean(state);
+
+    g_simple_action_set_state(act, g_variant_new_boolean(resize));
+
+    g_list_foreach(priv->windows, set_window_autoresize, self);
+}
+
 static void
 virt_viewer_app_action_window(VirtViewerApp *self,
                               VirtViewerWindow *win,
@@ -2407,6 +2418,9 @@ static GActionEntry actions[] = {
       .activate = virt_viewer_app_action_smartcard_insert },
     { .name = "smartcard-remove",
       .activate = virt_viewer_app_action_smartcard_remove },
+    { .name = "auto-resize",
+      .state = "true",
+      .change_state = virt_viewer_app_action_auto_resize },
 };
 
 struct VirtViewerActionAccels {
@@ -2438,11 +2452,6 @@ virt_viewer_app_on_application_startup(GApplication *app)
 #endif
 
     G_APPLICATION_CLASS(virt_viewer_app_parent_class)->startup(app);
-
-    g_action_map_add_action_entries(G_ACTION_MAP(self),
-                                    actions,
-                                    G_N_ELEMENTS(actions),
-                                    self);
 
 #ifndef G_OS_WIN32
     gtk_settings = gtk_settings_get_default();
@@ -2551,6 +2560,24 @@ virt_viewer_app_local_command_line (GApplication   *gapp,
             goto end;
         }
         virt_viewer_app_set_cursor(self, cursor);
+    }
+
+    if (opt_resize) {
+        GAction *resize = g_action_map_lookup_action(G_ACTION_MAP(self),
+                                                    "auto-resize");
+        gboolean enabled = TRUE;
+        if (g_str_equal(opt_resize, "always")) {
+            enabled = TRUE;
+        } else if (g_str_equal(opt_resize, "never")) {
+            enabled = FALSE;
+        } else {
+            g_printerr("--auto-resize expects 'always' or 'never'\n");
+            *status = 1;
+            ret = TRUE;
+            goto end;
+        }
+        g_simple_action_set_state(G_SIMPLE_ACTION(resize),
+                                  g_variant_new_boolean(enabled));
     }
 
 end:
@@ -2710,6 +2737,43 @@ virt_viewer_app_class_init (VirtViewerAppClass *klass)
                                                          FALSE,
                                                          G_PARAM_READWRITE |
                                                          G_PARAM_STATIC_STRINGS));
+}
+
+static void
+virt_viewer_app_init(VirtViewerApp *self)
+{
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    GError *error = NULL;
+    priv = virt_viewer_app_get_instance_private(self);
+
+    gtk_window_set_default_icon_name("virt-viewer");
+
+#ifndef G_OS_WIN32
+    g_unix_signal_add (SIGINT, sigint_cb, self);
+#endif
+
+    priv->displays = g_hash_table_new_full(g_direct_hash, g_direct_equal, NULL, g_object_unref);
+    priv->config = g_key_file_new();
+    priv->config_file = g_build_filename(g_get_user_config_dir(),
+                                               "virt-viewer", "settings", NULL);
+    g_key_file_load_from_file(priv->config, priv->config_file,
+                    G_KEY_FILE_KEEP_COMMENTS|G_KEY_FILE_KEEP_TRANSLATIONS, &error);
+
+    if (g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
+        g_debug("No configuration file %s", priv->config_file);
+    else if (error)
+        g_warning("Couldn't load configuration: %s", error->message);
+
+    g_clear_error(&error);
+
+    g_signal_connect(self, "notify::guest-name", G_CALLBACK(title_maybe_changed), NULL);
+    g_signal_connect(self, "notify::title", G_CALLBACK(title_maybe_changed), NULL);
+    g_signal_connect(self, "notify::guri", G_CALLBACK(title_maybe_changed), NULL);
+
+    g_action_map_add_action_entries(G_ACTION_MAP(self),
+                                    actions,
+                                    G_N_ELEMENTS(actions),
+                                    self);
 }
 
 void
@@ -3400,6 +3464,8 @@ virt_viewer_app_add_option_entries(G_GNUC_UNUSED VirtViewerApp *self,
           N_("Open in full screen mode (adjusts guest resolution to fit the client)"), NULL },
         { "hotkeys", 'H', 0, G_OPTION_ARG_STRING, &opt_hotkeys,
           N_("Customise hotkeys"), NULL },
+        { "auto-resize", 'r', 0, G_OPTION_ARG_STRING, &opt_resize,
+          N_("Automatically resize remote framebuffer"), N_("<never|always>") },
         { "keymap", 'K', 0, G_OPTION_ARG_STRING, &opt_keymap,
           N_("Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"), NULL },
         { "cursor", '\0', 0, G_OPTION_ARG_STRING, &opt_cursor,

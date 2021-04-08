@@ -53,10 +53,17 @@ Start with the windows maximized to fullscreen.
 
 If supported, the remote display will be reconfigured to match the physical
 client monitor configuration, by enabling or disabling extra monitors as
-necessary. This is currently implemented by the Spice backend only.
+necessary. This is currently implemented by the Spice backend only and
+can be disabled by the C<--auto-resize> arguemnt.
 
 To specify which client monitors are used in fullscreen mode, see the
 CONFIGURATION section below.
+
+=item -r <always|never>, --auto-resize <always|never>
+
+Controls whether it is permitted to attempt to resize the remote framebuffer
+to match the local window size. This currently defaults to on, but note that
+not all servers will support this.
 
 =item -t TITLE, --title TITLE
 

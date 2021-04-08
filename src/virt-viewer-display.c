@@ -42,6 +42,8 @@ struct _VirtViewerDisplayPrivate
     guint show_hint;
     VirtViewerSession *session;
     gboolean fullscreen;
+    gboolean auto_resize;
+    gboolean force_aspect;
 };
 
 static void virt_viewer_display_get_preferred_width(GtkWidget *widget,
@@ -71,12 +73,13 @@ enum {
     PROP_DESKTOP_HEIGHT,
     PROP_FULLSCREEN,
     PROP_NTH_DISPLAY,
-    PROP_ZOOM,
     PROP_ZOOM_LEVEL,
     PROP_SHOW_HINT,
     PROP_SESSION,
     PROP_SELECTABLE,
     PROP_MONITOR,
+    PROP_AUTO_RESIZE,
+    PROP_FORCE_ASPECT,
 };
 
 static void
@@ -179,6 +182,24 @@ virt_viewer_display_class_init(VirtViewerDisplayClass *class)
                                                          FALSE,
                                                          G_PARAM_READABLE));
 
+    g_object_class_install_property(object_class,
+                                    PROP_AUTO_RESIZE,
+                                    g_param_spec_boolean("auto-resize",
+                                                         "Auto-resize",
+                                                         "Auto-resize",
+                                                         TRUE,
+                                                         G_PARAM_READABLE |
+                                                         G_PARAM_WRITABLE));
+
+    g_object_class_install_property(object_class,
+                                    PROP_FORCE_ASPECT,
+                                    g_param_spec_boolean("force-aspect",
+                                                         "Force aspect",
+                                                         "Force aspect ratio for widget",
+                                                         TRUE,
+                                                         G_PARAM_READABLE |
+                                                         G_PARAM_WRITABLE));
+
     g_signal_new("display-pointer-grab",
                  G_OBJECT_CLASS_TYPE(object_class),
                  G_SIGNAL_RUN_LAST | G_SIGNAL_NO_HOOKS,
@@ -250,6 +271,7 @@ virt_viewer_display_init(VirtViewerDisplay *display)
     priv->desktopWidth = MIN_DISPLAY_WIDTH;
     priv->desktopHeight = MIN_DISPLAY_HEIGHT;
     priv->zoom_level = NORMAL_ZOOM_LEVEL;
+    priv->force_aspect = TRUE;
 }
 
 GtkWidget*
@@ -283,6 +305,12 @@ virt_viewer_display_set_property(GObject *object,
         break;
     case PROP_MONITOR:
         priv->monitor = g_value_get_int(value);
+        break;
+    case PROP_AUTO_RESIZE:
+        priv->auto_resize = g_value_get_boolean(value);
+        break;
+    case PROP_FORCE_ASPECT:
+        priv->force_aspect = g_value_get_boolean(value);
         break;
 
     default:
@@ -324,6 +352,12 @@ virt_viewer_display_get_property(GObject *object,
         break;
     case PROP_FULLSCREEN:
         g_value_set_boolean(value, virt_viewer_display_get_fullscreen(display));
+        break;
+    case PROP_AUTO_RESIZE:
+        g_value_set_boolean(value, virt_viewer_display_get_auto_resize(display));
+        break;
+    case PROP_FORCE_ASPECT:
+        g_value_set_boolean(value, priv->force_aspect);
         break;
 
     default:
@@ -402,8 +436,6 @@ virt_viewer_display_size_allocate(GtkWidget *widget,
     GtkAllocation child_allocation;
     gint width, height;
     gint border_width;
-    double desktopAspect;
-    double actualAspect;
     GtkWidget *child = gtk_bin_get_child(bin);
 
     g_debug("Allocated %dx%d", allocation->width, allocation->height);
@@ -418,15 +450,20 @@ virt_viewer_display_size_allocate(GtkWidget *widget,
     width  = MAX(MIN_DISPLAY_WIDTH, allocation->width - 2 * border_width);
     height = MAX(MIN_DISPLAY_HEIGHT, allocation->height - 2 * border_width);
 
-    desktopAspect = (double) priv->desktopWidth / (double) priv->desktopHeight;
-    actualAspect = (double) width / (double) height;
+    if (priv->force_aspect) {
+        double desktopAspect = (double) priv->desktopWidth / (double) priv->desktopHeight;
+        double actualAspect = (double) width / (double) height;
 
-    if (actualAspect > desktopAspect) {
-        child_allocation.width = round(height * desktopAspect);
-        child_allocation.height = height;
+        if (actualAspect > desktopAspect) {
+            child_allocation.width = round(height * desktopAspect);
+            child_allocation.height = height;
+        } else {
+            child_allocation.width = width;
+            child_allocation.height = round(width / desktopAspect);
+        }
     } else {
         child_allocation.width = width;
-        child_allocation.height = round(width / desktopAspect);
+        child_allocation.height = height;
     }
 
     child_allocation.x = 0.5 * (width - child_allocation.width) + allocation->x + border_width;
@@ -751,4 +788,23 @@ virt_viewer_display_get_nth(VirtViewerDisplay *self)
     VirtViewerDisplayPrivate *priv;
     priv = virt_viewer_display_get_instance_private(self);
     return priv->nth_display;
+}
+
+void virt_viewer_display_set_auto_resize(VirtViewerDisplay *self, gboolean enabled)
+{
+    VirtViewerDisplayPrivate *priv;
+    g_return_if_fail(VIRT_VIEWER_IS_DISPLAY(self));
+
+    priv = virt_viewer_display_get_instance_private(self);
+    priv->auto_resize = enabled;
+    g_object_notify(G_OBJECT(self), "auto-resize");
+}
+
+gboolean virt_viewer_display_get_auto_resize(VirtViewerDisplay *self)
+{
+    VirtViewerDisplayPrivate *priv;
+    g_return_val_if_fail(VIRT_VIEWER_IS_DISPLAY(self), FALSE);
+
+    priv = virt_viewer_display_get_instance_private(self);
+    return priv->auto_resize;
 }

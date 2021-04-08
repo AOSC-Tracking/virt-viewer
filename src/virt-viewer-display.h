@@ -109,3 +109,5 @@ gboolean virt_viewer_display_get_selectable(VirtViewerDisplay *display);
 void virt_viewer_display_queue_resize(VirtViewerDisplay *display);
 void virt_viewer_display_get_preferred_monitor_geometry(VirtViewerDisplay *self, GdkRectangle* preferred);
 gint virt_viewer_display_get_nth(VirtViewerDisplay *self);
+void virt_viewer_display_set_auto_resize(VirtViewerDisplay *self, gboolean enabled);
+gboolean virt_viewer_display_get_auto_resize(VirtViewerDisplay *self);
