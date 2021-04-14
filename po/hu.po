@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2020-07-21 14:29+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/virt-"
@@ -24,6 +24,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.1.1\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -54,6 +55,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -65,24 +78,15 @@ msgstr ""
 msgid "%s version %s"
 msgstr "%s – %s verzió"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgid "(Press %s to release pointer)"
+msgstr "(Nyomja meg a(z) %s billentyűt a mutató eleresztéséhez)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Betöltés...</b>"
+
+msgid "<never|always>"
+msgstr ""
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -140,6 +144,9 @@ msgstr "Hitelesítés szükséges"
 
 msgid "Authentication was cancelled"
 msgstr "A hitelesítés meg lett szakítva"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "Elérhető virtuális gépek"
@@ -220,14 +227,18 @@ msgstr ""
 msgid "Ctrl_L+Alt_L"
 msgstr ""
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "Gyorsbillentyűk testreszabása"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "Közvetlen kapcsolat automatikus átjárók nélkül"
-
-msgid "Disconnect"
-msgstr "Leválasztás"
 
 #, c-format
 msgid "Display _%d"
@@ -279,6 +290,10 @@ msgstr "Mappamegosztás"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Például spice://valami.example.com:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -292,6 +307,10 @@ msgstr "Vendég részletei"
 msgid "Guest domain has shutdown"
 msgstr "A vendég tartomány leállt"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "Érvénytelen %s fájl: "
@@ -303,14 +322,8 @@ msgstr "Érvénytelen kioszk-kilépési argumentum: %s"
 msgid "Invalid password"
 msgstr "Érvénytelen jelszó"
 
-msgid "Leave fullscreen"
-msgstr "Teljes képernyő elhagyása"
-
 msgid "Loading..."
 msgstr "Betöltés…"
-
-msgid "Minimize"
-msgstr "Minimalizálás"
 
 msgid "Name"
 msgstr "Név"
@@ -341,6 +354,9 @@ msgstr "Jelszó:"
 msgid "Please add an extension to the file name"
 msgstr "Adjon egy kiterjesztést a fájlnévhez"
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "Beállítások"
 
@@ -365,8 +381,9 @@ msgstr "Újracsatlakozás a tartományhoz újraindításkor"
 msgid "Refresh"
 msgstr "Frissítés"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "Kurzor eleresztése"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -411,6 +428,7 @@ msgstr "Képernyőkép.png"
 msgid "Select ISO"
 msgstr "Válasszon ISO-t"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "Válasszon USB eszközöket az átirányításhoz"
 
@@ -426,8 +444,9 @@ msgstr "Válassza ki a virtuális gépet csak a neve alapján"
 msgid "Selected"
 msgstr "Kiválasztva"
 
-msgid "Send key combination"
-msgstr "Billentyűkombináció küldése"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr "Soros"
@@ -435,20 +454,25 @@ msgstr "Soros"
 msgid "Set window title"
 msgstr "Ablak címének megadása"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr "Vágólap megosztása"
 
 msgid "Share folder"
 msgstr "Mappa megosztása"
 
-msgid "Show password"
-msgstr "Jelszó megjelenítése"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "Smartcard behelyezése"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "Smartcard eltávolítása"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -465,8 +489,9 @@ msgstr[1] "%u / %u fájl átküldése…"
 msgid "Transferring 1 file..."
 msgstr "1 fájl átküldése…"
 
-msgid "USB device selection"
-msgstr "USB eszköz kiválasztása"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -524,6 +549,10 @@ msgstr "Felhasználónév:"
 msgid "VNC does not provide GUID"
 msgstr "A VNC nem szolgáltat GUID-ot"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
 
@@ -562,6 +591,10 @@ msgstr "_Kicsinyítés"
 msgid "Zoom _Out"
 msgstr "_Nagyítás"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "A nagyítási szint %d-%d között kell legyen\n"
@@ -569,38 +602,34 @@ msgstr "A nagyítási szint %d-%d között kell legyen\n"
 msgid "Zoom level of window, in percentage"
 msgstr "Ablak nagyítási szintje, százalékban"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[nincs]"
 
 msgid "_About"
 msgstr "_Névjegy"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "_Mégse"
-
-msgid "_Change CD"
-msgstr "_CD váltás"
 
 msgid "_Close"
 msgstr "_Bezárás"
 
-msgid "_Displays"
-msgstr "_Kijelzők"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "_Fájl"
-
-msgid "_Full screen"
-msgstr "_Teljes képernyő"
-
-msgid "_Guest Details"
-msgstr "_Vendég részletei"
-
-msgid "_Help"
-msgstr "_Súgó"
-
-msgid "_Machine"
-msgstr "_Gép"
+msgid "_Keyboard shortcuts"
+msgstr ""
 
 msgid "_Normal Size"
 msgstr "_Normál méret"
@@ -611,14 +640,8 @@ msgstr "_OK"
 msgid "_Pause"
 msgstr "_Felfüggesztés"
 
-msgid "_Power down"
-msgstr "_Leállítás"
-
-msgid "_Preferences"
-msgstr "_Beállítások"
-
-msgid "_Quit"
-msgstr "_Kilépés"
+msgid "_Preferences…"
+msgstr ""
 
 msgid "_Reset"
 msgstr "Új_raindítás"
@@ -628,18 +651,6 @@ msgstr "Menté_s"
 
 msgid "_Screenshot"
 msgstr "_Képernyőkép"
-
-msgid "_Send key"
-msgstr "_Billentyű leütése"
-
-msgid "_USB device selection"
-msgstr "_USB eszköz kiválasztása"
-
-msgid "_View"
-msgstr "_Nézet"
-
-msgid "_Zoom"
-msgstr "Nagyí_tás"
 
 msgid "failed to parse oVirt URI"
 msgstr ""
@@ -666,6 +677,75 @@ msgstr "A(z) %s oVirt VM nem fut"
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
 
+#~ msgid "Disconnect"
+#~ msgstr "Leválasztás"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "Teljes képernyő elhagyása"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimalizálás"
+
+#~ msgid "Release cursor"
+#~ msgstr "Kurzor eleresztése"
+
+#~ msgid "Send key combination"
+#~ msgstr "Billentyűkombináció küldése"
+
+#~ msgid "Show password"
+#~ msgstr "Jelszó megjelenítése"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "Smartcard behelyezése"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "Smartcard eltávolítása"
+
+#~ msgid "USB device selection"
+#~ msgstr "USB eszköz kiválasztása"
+
+#~ msgid "_Change CD"
+#~ msgstr "_CD váltás"
+
+#~ msgid "_Displays"
+#~ msgstr "_Kijelzők"
+
+#~ msgid "_File"
+#~ msgstr "_Fájl"
+
+#~ msgid "_Full screen"
+#~ msgstr "_Teljes képernyő"
+
+#~ msgid "_Guest Details"
+#~ msgstr "_Vendég részletei"
+
+#~ msgid "_Help"
+#~ msgstr "_Súgó"
+
+#~ msgid "_Machine"
+#~ msgstr "_Gép"
+
+#~ msgid "_Power down"
+#~ msgstr "_Leállítás"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Beállítások"
+
+#~ msgid "_Quit"
+#~ msgstr "_Kilépés"
+
+#~ msgid "_Send key"
+#~ msgstr "_Billentyű leütése"
+
+#~ msgid "_USB device selection"
+#~ msgstr "_USB eszköz kiválasztása"
+
+#~ msgid "_View"
+#~ msgstr "_Nézet"
+
+#~ msgid "_Zoom"
+#~ msgstr "Nagyí_tás"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -681,9 +761,6 @@ msgstr ""
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s - %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(Nyomja meg a(z) %s billentyűt a mutató eleresztéséhez)"
 
 #~ msgid "Address is too long for unix socket_path: %s"
 #~ msgstr "A cím túl hosszú a Unix foglalat útvonalhoz: %s"

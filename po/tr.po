@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2020-09-13 11:29+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/virt-"
@@ -21,6 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Generator: Weblate 4.2.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -51,6 +52,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -62,24 +75,15 @@ msgstr "%s - %s"
 msgid "%s version %s"
 msgstr "%s sürüm %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr "(İşaretçiyi serbest bırakmak için %s tuşuna basın) %s - %s"
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr "(İşaretçiyi serbest bırakmak için %s tuşuna basın) %s"
+msgid "(Press %s to release pointer)"
+msgstr ""
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Yükleniyor...</b>"
+
+msgid "<never|always>"
+msgstr ""
 
 msgid "<never|on-disconnect>"
 msgstr "<asla|bağlantı-kesildiğinde>"
@@ -137,6 +141,9 @@ msgstr "Kimlik Doğrulama gerekli"
 
 msgid "Authentication was cancelled"
 msgstr "Kimlik doğrulama iptal edildi"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "Kullanılabilir sanal makineler"
@@ -219,14 +226,18 @@ msgstr "UNIX soketi oluşturulamadı: %s"
 msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "Kısayol tuşlarını özelleştir"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "Otomatik tünel olmadan doğrudan bağlantı"
-
-msgid "Disconnect"
-msgstr "Bağlantıyı Kes"
 
 #, c-format
 msgid "Display _%d"
@@ -277,6 +288,10 @@ msgstr "Klasör paylaşımı"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Örneğin, spice://foo.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -290,6 +305,10 @@ msgstr "Konuk Ayrıntıları"
 msgid "Guest domain has shutdown"
 msgstr "Konuk etki alanı kapatıldı"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "Geçersiz dosya %s: "
@@ -301,14 +320,8 @@ msgstr "Geçersiz kiosk-quit argümanı: %s"
 msgid "Invalid password"
 msgstr "Geçersiz parola"
 
-msgid "Leave fullscreen"
-msgstr "Tam ekrandan ayrıl"
-
 msgid "Loading..."
 msgstr "Yükleniyor..."
-
-msgid "Minimize"
-msgstr "Küçült"
 
 msgid "Name"
 msgstr "Ad"
@@ -338,6 +351,9 @@ msgstr "Parola:"
 msgid "Please add an extension to the file name"
 msgstr "Lütfen dosya adına bir uzantı ekleyin"
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "Tercihler"
 
@@ -362,8 +378,9 @@ msgstr "Yeniden başlattıktan sonra etki alanına yeniden bağlan"
 msgid "Refresh"
 msgstr "Yenile"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "İmleci serbest bırak"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -409,6 +426,7 @@ msgstr "Screenshot.png"
 msgid "Select ISO"
 msgstr "ISO dosyası seç"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "Yeniden yönlendirme için USB aygıtlarını seç"
 
@@ -424,8 +442,9 @@ msgstr "Sanal makineyi sadece adına göre seç"
 msgid "Selected"
 msgstr "Seçildi"
 
-msgid "Send key combination"
-msgstr "Tuş dizisi gönder"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr "Seri"
@@ -433,20 +452,25 @@ msgstr "Seri"
 msgid "Set window title"
 msgstr "Pencere başlığını ayarla"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr "Panoyu paylaş"
 
 msgid "Share folder"
 msgstr "Klasör paylaş"
 
-msgid "Show password"
-msgstr "Parolayı göster"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "Akıllı kart takma"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "Akıllı kart kaldırma"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -463,8 +487,9 @@ msgstr[1] "%u / %u dosya aktarılıyor..."
 msgid "Transferring 1 file..."
 msgstr "1 dosya aktarılıyor..."
 
-msgid "USB device selection"
-msgstr "USB aygıt seçimi"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -523,6 +548,10 @@ msgstr "Kullanıcı Adı:"
 msgid "VNC does not provide GUID"
 msgstr "VNC GUID sağlamıyor"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
 
@@ -561,6 +590,10 @@ msgstr "_Yakınlaştır"
 msgid "Zoom _Out"
 msgstr "_Uzaklaştır"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "Yakınlaştırma seviyesi %d-%d arasında olmalı\n"
@@ -568,38 +601,34 @@ msgstr "Yakınlaştırma seviyesi %d-%d arasında olmalı\n"
 msgid "Zoom level of window, in percentage"
 msgstr "Pencerenin yakınlaştırma seviyesi, yüzde olarak"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[yok]"
 
 msgid "_About"
 msgstr "_Hakkında"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "_İptal"
-
-msgid "_Change CD"
-msgstr "_CD değiştir"
 
 msgid "_Close"
 msgstr "_Kapat"
 
-msgid "_Displays"
-msgstr "_Ekranlar"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "_Dosya"
-
-msgid "_Full screen"
-msgstr "_Tam ekran"
-
-msgid "_Guest Details"
-msgstr "_Konuk Ayrıntıları"
-
-msgid "_Help"
-msgstr "_Yardım"
-
-msgid "_Machine"
-msgstr "_Makine"
+msgid "_Keyboard shortcuts"
+msgstr ""
 
 msgid "_Normal Size"
 msgstr "_Normal Boyut"
@@ -610,14 +639,8 @@ msgstr "_Tamam"
 msgid "_Pause"
 msgstr "_Duraklat"
 
-msgid "_Power down"
-msgstr "_Kapat"
-
-msgid "_Preferences"
-msgstr "_Tercihler"
-
-msgid "_Quit"
-msgstr "_Çıkış"
+msgid "_Preferences…"
+msgstr ""
 
 msgid "_Reset"
 msgstr "_Sıfırla"
@@ -627,18 +650,6 @@ msgstr "_Kaydet"
 
 msgid "_Screenshot"
 msgstr "_Ekran görüntüsü"
-
-msgid "_Send key"
-msgstr "_Tuş gönder"
-
-msgid "_USB device selection"
-msgstr "_USB aygıtı seçimi"
-
-msgid "_View"
-msgstr "_Görüntüle"
-
-msgid "_Zoom"
-msgstr "_Yakınlaştır"
 
 msgid "failed to parse oVirt URI"
 msgstr "oVirt URI'sı ayrıştırılamadı"
@@ -664,6 +675,81 @@ msgstr "%s oVirt sanal makinesi çalışmıyor"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "sadece SSH veya UNIX soket bağlantısı destekleniyor."
+
+#~ msgid "(Press %s to release pointer) %s - %s"
+#~ msgstr "(İşaretçiyi serbest bırakmak için %s tuşuna basın) %s - %s"
+
+#~ msgid "(Press %s to release pointer) - %s"
+#~ msgstr "(İşaretçiyi serbest bırakmak için %s tuşuna basın) %s"
+
+#~ msgid "Disconnect"
+#~ msgstr "Bağlantıyı Kes"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "Tam ekrandan ayrıl"
+
+#~ msgid "Minimize"
+#~ msgstr "Küçült"
+
+#~ msgid "Release cursor"
+#~ msgstr "İmleci serbest bırak"
+
+#~ msgid "Send key combination"
+#~ msgstr "Tuş dizisi gönder"
+
+#~ msgid "Show password"
+#~ msgstr "Parolayı göster"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "Akıllı kart takma"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "Akıllı kart kaldırma"
+
+#~ msgid "USB device selection"
+#~ msgstr "USB aygıt seçimi"
+
+#~ msgid "_Change CD"
+#~ msgstr "_CD değiştir"
+
+#~ msgid "_Displays"
+#~ msgstr "_Ekranlar"
+
+#~ msgid "_File"
+#~ msgstr "_Dosya"
+
+#~ msgid "_Full screen"
+#~ msgstr "_Tam ekran"
+
+#~ msgid "_Guest Details"
+#~ msgstr "_Konuk Ayrıntıları"
+
+#~ msgid "_Help"
+#~ msgstr "_Yardım"
+
+#~ msgid "_Machine"
+#~ msgstr "_Makine"
+
+#~ msgid "_Power down"
+#~ msgstr "_Kapat"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Tercihler"
+
+#~ msgid "_Quit"
+#~ msgstr "_Çıkış"
+
+#~ msgid "_Send key"
+#~ msgstr "_Tuş gönder"
+
+#~ msgid "_USB device selection"
+#~ msgstr "_USB aygıtı seçimi"
+
+#~ msgid "_View"
+#~ msgstr "_Görüntüle"
+
+#~ msgid "_Zoom"
+#~ msgstr "_Yakınlaştır"
 
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"

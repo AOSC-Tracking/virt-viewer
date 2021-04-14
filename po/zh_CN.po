@@ -13,8 +13,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2021-02-05 13:40+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
@@ -26,6 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.4.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -56,6 +57,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -67,24 +80,15 @@ msgstr "%s - %s"
 msgid "%s version %s"
 msgstr "%s 的 %s 版本"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr "(按下 %s to 以释放指针) %s - %s"
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr "(按下 %s 以释放指针) - %s"
+msgid "(Press %s to release pointer)"
+msgstr "(按 %s 释放光标)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>正在加载...</b>"
+
+msgid "<never|always>"
+msgstr ""
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -139,6 +143,9 @@ msgstr "所需验证"
 
 msgid "Authentication was cancelled"
 msgstr "已取消认证"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "可用虚拟机"
@@ -221,14 +228,18 @@ msgstr "创建 UNIX 套接字时失败：%s"
 msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "自定义快捷键"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "无自动通道的直接连接"
-
-msgid "Disconnect"
-msgstr "断开连接"
 
 #, c-format
 msgid "Display _%d"
@@ -279,6 +290,10 @@ msgstr "文件夹共享"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "例如：spice://foo.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID："
 
@@ -292,6 +307,10 @@ msgstr "虚拟机详情"
 msgid "Guest domain has shutdown"
 msgstr "已关闭虚拟机域"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "无效文件 %s： "
@@ -303,14 +322,8 @@ msgstr "无效的 kiosk-quit 参数：%s"
 msgid "Invalid password"
 msgstr "无效密码"
 
-msgid "Leave fullscreen"
-msgstr "推出全屏"
-
 msgid "Loading..."
 msgstr "正在加载..."
-
-msgid "Minimize"
-msgstr "最小化"
 
 msgid "Name"
 msgstr "名称"
@@ -339,6 +352,9 @@ msgstr "密码："
 msgid "Please add an extension to the file name"
 msgstr "请在文件名中添加扩展名"
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "属性"
 
@@ -363,8 +379,9 @@ msgstr "重启后重新连接到域"
 msgid "Refresh"
 msgstr "刷新"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "释放光标"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -405,6 +422,7 @@ msgstr "Screenshot.png"
 msgid "Select ISO"
 msgstr "选择 ISO"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "为重新定向选择 USB 设备"
 
@@ -420,8 +438,9 @@ msgstr "仅通过名称选择虚拟系统"
 msgid "Selected"
 msgstr "已选择"
 
-msgid "Send key combination"
-msgstr "发送按键组合"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr "串行接口"
@@ -429,20 +448,25 @@ msgstr "串行接口"
 msgid "Set window title"
 msgstr "设置窗口标题"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr "共享剪贴板"
 
 msgid "Share folder"
 msgstr "共享文件夹"
 
-msgid "Show password"
-msgstr "显示密码"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "插入智能卡"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "删除智能卡"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -458,8 +482,9 @@ msgstr[0] "正在传输 %u 份文件，共 %u 份..."
 msgid "Transferring 1 file..."
 msgstr "正在传输 1 份文件..."
 
-msgid "USB device selection"
-msgstr "USB 设备选择"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -517,6 +542,10 @@ msgstr "用户名："
 msgid "VNC does not provide GUID"
 msgstr "VNC 不提供 GUID"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "虚拟系统查看器"
 
@@ -555,6 +584,10 @@ msgstr "放大(_I)"
 msgid "Zoom _Out"
 msgstr "缩小(_O)"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "缩放级别必须在 %d-%d 之间\n"
@@ -562,38 +595,34 @@ msgstr "缩放级别必须在 %d-%d 之间\n"
 msgid "Zoom level of window, in percentage"
 msgstr "窗口缩放级别，以百分比计"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[无]"
 
 msgid "_About"
 msgstr "关于(_A)"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "取消(_C)"
-
-msgid "_Change CD"
-msgstr "更换设备（_C）"
 
 msgid "_Close"
 msgstr "关闭(_C)"
 
-msgid "_Displays"
-msgstr "显示(_D)"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "文件（_F）"
-
-msgid "_Full screen"
-msgstr "全屏(_F)"
-
-msgid "_Guest Details"
-msgstr "虚拟机详情（_G）"
-
-msgid "_Help"
-msgstr "帮助（_H）"
-
-msgid "_Machine"
-msgstr "机器(_M)"
+msgid "_Keyboard shortcuts"
+msgstr ""
 
 msgid "_Normal Size"
 msgstr "正常大小(_N)"
@@ -604,14 +633,8 @@ msgstr "确定(_O)"
 msgid "_Pause"
 msgstr "暂停(_P)"
 
-msgid "_Power down"
-msgstr "关闭电源(_P)"
-
-msgid "_Preferences"
-msgstr "偏好设置(_P)"
-
-msgid "_Quit"
-msgstr "退出(_Q)"
+msgid "_Preferences…"
+msgstr ""
 
 msgid "_Reset"
 msgstr "重置(_R)"
@@ -621,18 +644,6 @@ msgstr "保存(_S)"
 
 msgid "_Screenshot"
 msgstr "截屏(_S)"
-
-msgid "_Send key"
-msgstr "发送按键（_S）"
-
-msgid "_USB device selection"
-msgstr "USB 设备选择(_U)"
-
-msgid "_View"
-msgstr "查看（_V）"
-
-msgid "_Zoom"
-msgstr "缩放（_Z）"
 
 msgid "failed to parse oVirt URI"
 msgstr "无法解析 oVirt URI"
@@ -659,6 +670,81 @@ msgstr "oVirt VM %s 未运行"
 msgid "only SSH or UNIX socket connection supported."
 msgstr "仅支持 SSH 或 UNIX 套接字连接。"
 
+#~ msgid "(Press %s to release pointer) %s - %s"
+#~ msgstr "(按下 %s to 以释放指针) %s - %s"
+
+#~ msgid "(Press %s to release pointer) - %s"
+#~ msgstr "(按下 %s 以释放指针) - %s"
+
+#~ msgid "Disconnect"
+#~ msgstr "断开连接"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "推出全屏"
+
+#~ msgid "Minimize"
+#~ msgstr "最小化"
+
+#~ msgid "Release cursor"
+#~ msgstr "释放光标"
+
+#~ msgid "Send key combination"
+#~ msgstr "发送按键组合"
+
+#~ msgid "Show password"
+#~ msgstr "显示密码"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "插入智能卡"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "删除智能卡"
+
+#~ msgid "USB device selection"
+#~ msgstr "USB 设备选择"
+
+#~ msgid "_Change CD"
+#~ msgstr "更换设备（_C）"
+
+#~ msgid "_Displays"
+#~ msgstr "显示(_D)"
+
+#~ msgid "_File"
+#~ msgstr "文件（_F）"
+
+#~ msgid "_Full screen"
+#~ msgstr "全屏(_F)"
+
+#~ msgid "_Guest Details"
+#~ msgstr "虚拟机详情（_G）"
+
+#~ msgid "_Help"
+#~ msgstr "帮助（_H）"
+
+#~ msgid "_Machine"
+#~ msgstr "机器(_M)"
+
+#~ msgid "_Power down"
+#~ msgstr "关闭电源(_P)"
+
+#~ msgid "_Preferences"
+#~ msgstr "偏好设置(_P)"
+
+#~ msgid "_Quit"
+#~ msgstr "退出(_Q)"
+
+#~ msgid "_Send key"
+#~ msgstr "发送按键（_S）"
+
+#~ msgid "_USB device selection"
+#~ msgstr "USB 设备选择(_U)"
+
+#~ msgid "_View"
+#~ msgstr "查看（_V）"
+
+#~ msgid "_Zoom"
+#~ msgstr "缩放（_Z）"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -671,9 +757,6 @@ msgstr "仅支持 SSH 或 UNIX 套接字连接。"
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s - %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(按 %s 释放光标)"
 
 #~ msgid "Connect to ssh failed."
 #~ msgstr "连接到 ssh 失败"

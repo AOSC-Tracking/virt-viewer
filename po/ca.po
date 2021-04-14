@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2018-02-27 05:02+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/virt-viewer/"
@@ -21,6 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Zanata 4.6.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -50,6 +51,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -61,24 +74,15 @@ msgstr ""
 msgid "%s version %s"
 msgstr "%s versió %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgid "(Press %s to release pointer)"
+msgstr "(Premeu %s per alliberar el punter)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>S'està carregant...</b>"
+
+msgid "<never|always>"
+msgstr ""
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -137,6 +141,9 @@ msgstr "Es requereix autenticació"
 
 msgid "Authentication was cancelled"
 msgstr "S'ha cancel·lat l'autenticació"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "Màquines virtuals disponibles"
@@ -217,14 +224,18 @@ msgstr ""
 msgid "Ctrl_L+Alt_L"
 msgstr ""
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "Personalitza les dreceres de teclat"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "Connexió directa sense túnels automàtics"
-
-msgid "Disconnect"
-msgstr "Desconnecta"
 
 #, c-format
 msgid "Display _%d"
@@ -275,6 +286,10 @@ msgstr "Compartició de carpetes"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Per exemple, spice://foo.exemple.cat:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -288,6 +303,10 @@ msgstr "Detalls del convidat"
 msgid "Guest domain has shutdown"
 msgstr "S'ha aturat el domini del convidat"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "Fitxer no vàlid %s:"
@@ -299,14 +318,8 @@ msgstr "Argument no vàlid de kiosk-quit: %s"
 msgid "Invalid password"
 msgstr "La contrasenya no és vàlida"
 
-msgid "Leave fullscreen"
-msgstr "Deixa la pantalla completa"
-
 msgid "Loading..."
 msgstr "S'està carregant..."
-
-msgid "Minimize"
-msgstr ""
 
 msgid "Name"
 msgstr "Nom"
@@ -337,6 +350,9 @@ msgstr "Contrasenya:"
 msgid "Please add an extension to the file name"
 msgstr ""
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "Preferències"
 
@@ -361,8 +377,9 @@ msgstr "Torna a connectar al domini en reiniciar"
 msgid "Refresh"
 msgstr "Refresca"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "Allibera el cursor"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -406,6 +423,7 @@ msgstr "Captura.png"
 msgid "Select ISO"
 msgstr "Selecciona l'ISO"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "Seleccioneu els dispositius USB per a la redirecció"
 
@@ -421,8 +439,9 @@ msgstr "Selecciona la màquina virtual només pel seu nom"
 msgid "Selected"
 msgstr "Seleccionat"
 
-msgid "Send key combination"
-msgstr "Envia una combinació de tecles"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr ""
@@ -430,20 +449,25 @@ msgstr ""
 msgid "Set window title"
 msgstr "Estableix el títol de la finestra"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr ""
 
 msgid "Share folder"
 msgstr "Comparteix la carpeta"
 
-msgid "Show password"
-msgstr "Mostra la contrasenya"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "Inserció d'una targeta intel·ligent"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "Extracció d'una targeta intel·ligent"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -460,8 +484,9 @@ msgstr[1] ""
 msgid "Transferring 1 file..."
 msgstr "S'està transferint 1 fitxer..."
 
-msgid "USB device selection"
-msgstr "Selecció del dispositiu USB"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -519,6 +544,10 @@ msgstr "Nom d'usuari:"
 msgid "VNC does not provide GUID"
 msgstr "VNC no proporciona GUID"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
 
@@ -557,6 +586,10 @@ msgstr "_Augmenta el zoom"
 msgid "Zoom _Out"
 msgstr "_Disminueix el zoom"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "El nivell del zoom ha d'estar dins de l'interval %d-%d\n"
@@ -564,37 +597,33 @@ msgstr "El nivell del zoom ha d'estar dins de l'interval %d-%d\n"
 msgid "Zoom level of window, in percentage"
 msgstr "Nivell de zoom de la finestra, en percentatge"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[cap]"
 
 msgid "_About"
 msgstr "_Quant a"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "_Cancel·la"
-
-msgid "_Change CD"
-msgstr "_Canvia el CD"
 
 msgid "_Close"
 msgstr "Tan_ca"
 
-msgid "_Displays"
-msgstr "_Monitors"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "_Fitxer"
-
-msgid "_Full screen"
-msgstr "Panta_lla completa"
-
-msgid "_Guest Details"
-msgstr "_Detalls del convidat"
-
-msgid "_Help"
-msgstr "A_juda"
-
-msgid "_Machine"
+msgid "_Keyboard shortcuts"
 msgstr ""
 
 msgid "_Normal Size"
@@ -606,14 +635,8 @@ msgstr "D'ac_ord"
 msgid "_Pause"
 msgstr ""
 
-msgid "_Power down"
+msgid "_Preferences…"
 msgstr ""
-
-msgid "_Preferences"
-msgstr "_Preferències"
-
-msgid "_Quit"
-msgstr "_Surt"
 
 msgid "_Reset"
 msgstr ""
@@ -623,18 +646,6 @@ msgstr "De_sa"
 
 msgid "_Screenshot"
 msgstr "Captura _de pantalla"
-
-msgid "_Send key"
-msgstr "Envia _tecles"
-
-msgid "_USB device selection"
-msgstr "Selecció del dispositiu _USB"
-
-msgid "_View"
-msgstr "_Visualitza"
-
-msgid "_Zoom"
-msgstr "_Zoom"
 
 msgid "failed to parse oVirt URI"
 msgstr ""
@@ -661,6 +672,66 @@ msgstr "La MV oVirt %s no s'està executant"
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
 
+#~ msgid "Disconnect"
+#~ msgstr "Desconnecta"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "Deixa la pantalla completa"
+
+#~ msgid "Release cursor"
+#~ msgstr "Allibera el cursor"
+
+#~ msgid "Send key combination"
+#~ msgstr "Envia una combinació de tecles"
+
+#~ msgid "Show password"
+#~ msgstr "Mostra la contrasenya"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "Inserció d'una targeta intel·ligent"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "Extracció d'una targeta intel·ligent"
+
+#~ msgid "USB device selection"
+#~ msgstr "Selecció del dispositiu USB"
+
+#~ msgid "_Change CD"
+#~ msgstr "_Canvia el CD"
+
+#~ msgid "_Displays"
+#~ msgstr "_Monitors"
+
+#~ msgid "_File"
+#~ msgstr "_Fitxer"
+
+#~ msgid "_Full screen"
+#~ msgstr "Panta_lla completa"
+
+#~ msgid "_Guest Details"
+#~ msgstr "_Detalls del convidat"
+
+#~ msgid "_Help"
+#~ msgstr "A_juda"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Preferències"
+
+#~ msgid "_Quit"
+#~ msgstr "_Surt"
+
+#~ msgid "_Send key"
+#~ msgstr "Envia _tecles"
+
+#~ msgid "_USB device selection"
+#~ msgstr "Selecció del dispositiu _USB"
+
+#~ msgid "_View"
+#~ msgstr "_Visualitza"
+
+#~ msgid "_Zoom"
+#~ msgstr "_Zoom"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -676,9 +747,6 @@ msgstr ""
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s - %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(Premeu %s per alliberar el punter)"
 
 #~ msgid "Address is too long for unix socket_path: %s"
 #~ msgstr "L'adreça és massa llarga per al socket_path UNIX: %s"

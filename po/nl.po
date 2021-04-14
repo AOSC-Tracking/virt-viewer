@@ -7,12 +7,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2021-02-28 12:40+0000\n"
 "Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
-"Language-Team: Dutch <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/nl/>\n"
+"Language-Team: Dutch <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,6 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.4.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -50,6 +51,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -61,24 +74,15 @@ msgstr "%s - %s"
 msgid "%s version %s"
 msgstr "%s versie %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr "(Druk op %s om de aanwijzer los te laten) %s - %s"
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr "(Druk op %s om de aanwijzer los te laten) - %s"
+msgid "(Press %s to release pointer)"
+msgstr "(Druk op %s om wijzer vrij te geven)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Bezig met laden...</b>"
+
+msgid "<never|always>"
+msgstr ""
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -136,6 +140,9 @@ msgstr "Authenticatie is vereist"
 
 msgid "Authentication was cancelled"
 msgstr "Verificatie is geannuleerd"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "Beschikbare virtuele machines"
@@ -218,14 +225,18 @@ msgstr "Aanmaken van UNIX-socket mislukte: %s"
 msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "Pas sneltoetsen aan"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "Directe verbinding zonder automatische tunnels"
-
-msgid "Disconnect"
-msgstr "Verbinding verbreken"
 
 #, c-format
 msgid "Display _%d"
@@ -276,6 +287,10 @@ msgstr "Mappen delen"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Bijvoorbeeld, spice://foo.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -289,6 +304,10 @@ msgstr "Gastdetails"
 msgid "Guest domain has shutdown"
 msgstr "Gast domein werd afgesloten"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "Ongeldig bestand %s: "
@@ -300,14 +319,8 @@ msgstr "Ongeldig kiosk-quit argument: %s"
 msgid "Invalid password"
 msgstr "Ongeldig wachtwoord"
 
-msgid "Leave fullscreen"
-msgstr "Verlaat volledig scherm"
-
 msgid "Loading..."
 msgstr "Bezig met laden..."
-
-msgid "Minimize"
-msgstr "Minimaliseren"
 
 msgid "Name"
 msgstr "Naam"
@@ -338,6 +351,9 @@ msgstr "Wachtwoord:"
 msgid "Please add an extension to the file name"
 msgstr "Voeg een extensie toe aan de bestandsnaam"
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "Voorkeuren"
 
@@ -362,8 +378,9 @@ msgstr "Verbindt opnieuw met domein nadat het opgestart is"
 msgid "Refresh"
 msgstr "Vernieuwen"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "Geef cursor vrij"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -409,6 +426,7 @@ msgstr "Screenshot.png"
 msgid "Select ISO"
 msgstr "Selecteer ISO"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "Selecteer USB apparaten voor omleiding"
 
@@ -424,8 +442,9 @@ msgstr "Selecteer de virtuele machine alleen op naam"
 msgid "Selected"
 msgstr "Geselecteerd"
 
-msgid "Send key combination"
-msgstr "Stuur sleutel combinatie"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr "Serieel"
@@ -433,20 +452,25 @@ msgstr "Serieel"
 msgid "Set window title"
 msgstr "Stel venstertitel in"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr "Klembord delen"
 
 msgid "Share folder"
 msgstr "Deel map"
 
-msgid "Show password"
-msgstr "Toon wachtwoord"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "Breng smartcard in"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "Verwijder Smartcard"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -463,8 +487,9 @@ msgstr[1] "%u bestanden van %u overzetten..."
 msgid "Transferring 1 file..."
 msgstr "1 bestand overzetten..."
 
-msgid "USB device selection"
-msgstr "USB apparaat selectie"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -522,6 +547,10 @@ msgstr "Gebruikersnaam:"
 msgid "VNC does not provide GUID"
 msgstr "VNC biedt geen GUID aan"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Virt viewer"
 
@@ -560,6 +589,10 @@ msgstr "_In zoomen"
 msgid "Zoom _Out"
 msgstr "_Uitzoomen"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "Zoom niveau moet tussen %d-%d zijn\n"
@@ -567,38 +600,34 @@ msgstr "Zoom niveau moet tussen %d-%d zijn\n"
 msgid "Zoom level of window, in percentage"
 msgstr "Zoom niveau in percentage van het venster"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[geen]"
 
 msgid "_About"
 msgstr "_Over"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "_Annuleren"
-
-msgid "_Change CD"
-msgstr "_Verander CG"
 
 msgid "_Close"
 msgstr "_Sluiten"
 
-msgid "_Displays"
-msgstr "_Displays"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "_Bestand"
-
-msgid "_Full screen"
-msgstr "_Volledig scherm"
-
-msgid "_Guest Details"
-msgstr "_Gastdetails"
-
-msgid "_Help"
-msgstr "_Hulp"
-
-msgid "_Machine"
-msgstr "_Machine"
+msgid "_Keyboard shortcuts"
+msgstr ""
 
 msgid "_Normal Size"
 msgstr "_Normale grootte"
@@ -609,14 +638,8 @@ msgstr "_OK"
 msgid "_Pause"
 msgstr "_Pauzeren"
 
-msgid "_Power down"
-msgstr "_Uitschakelen"
-
-msgid "_Preferences"
-msgstr "_Voorkeuren"
-
-msgid "_Quit"
-msgstr "_Stoppen"
+msgid "_Preferences…"
+msgstr ""
 
 msgid "_Reset"
 msgstr "_Resetten"
@@ -626,18 +649,6 @@ msgstr "_Opslaan"
 
 msgid "_Screenshot"
 msgstr "_Schermafdruk"
-
-msgid "_Send key"
-msgstr "_Stuur sleutel"
-
-msgid "_USB device selection"
-msgstr "_USB-apparaatselectie"
-
-msgid "_View"
-msgstr "_View"
-
-msgid "_Zoom"
-msgstr "_Zoom"
 
 msgid "failed to parse oVirt URI"
 msgstr "ontleden van oVirt URI mislukte"
@@ -664,6 +675,81 @@ msgstr "oVirt VM %s is niet actief"
 msgid "only SSH or UNIX socket connection supported."
 msgstr "alleen SSH of UNIX socket verbinding ondersteund."
 
+#~ msgid "(Press %s to release pointer) %s - %s"
+#~ msgstr "(Druk op %s om de aanwijzer los te laten) %s - %s"
+
+#~ msgid "(Press %s to release pointer) - %s"
+#~ msgstr "(Druk op %s om de aanwijzer los te laten) - %s"
+
+#~ msgid "Disconnect"
+#~ msgstr "Verbinding verbreken"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "Verlaat volledig scherm"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimaliseren"
+
+#~ msgid "Release cursor"
+#~ msgstr "Geef cursor vrij"
+
+#~ msgid "Send key combination"
+#~ msgstr "Stuur sleutel combinatie"
+
+#~ msgid "Show password"
+#~ msgstr "Toon wachtwoord"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "Breng smartcard in"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "Verwijder Smartcard"
+
+#~ msgid "USB device selection"
+#~ msgstr "USB apparaat selectie"
+
+#~ msgid "_Change CD"
+#~ msgstr "_Verander CG"
+
+#~ msgid "_Displays"
+#~ msgstr "_Displays"
+
+#~ msgid "_File"
+#~ msgstr "_Bestand"
+
+#~ msgid "_Full screen"
+#~ msgstr "_Volledig scherm"
+
+#~ msgid "_Guest Details"
+#~ msgstr "_Gastdetails"
+
+#~ msgid "_Help"
+#~ msgstr "_Hulp"
+
+#~ msgid "_Machine"
+#~ msgstr "_Machine"
+
+#~ msgid "_Power down"
+#~ msgstr "_Uitschakelen"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Voorkeuren"
+
+#~ msgid "_Quit"
+#~ msgstr "_Stoppen"
+
+#~ msgid "_Send key"
+#~ msgstr "_Stuur sleutel"
+
+#~ msgid "_USB device selection"
+#~ msgstr "_USB-apparaatselectie"
+
+#~ msgid "_View"
+#~ msgstr "_View"
+
+#~ msgid "_Zoom"
+#~ msgstr "_Zoom"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -679,9 +765,6 @@ msgstr "alleen SSH of UNIX socket verbinding ondersteund."
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s - %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(Druk op %s om wijzer vrij te geven)"
 
 #~ msgid "Address is too long for unix socket_path: %s"
 #~ msgstr "Adres is te lang voor unix socket_path: %s"

@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2018-02-26 12:49+0000\n"
 "Last-Translator: Hajime Taira <htaira@fedoraproject.org>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/virt-viewer/"
@@ -25,6 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Zanata 4.6.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -53,6 +54,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -64,24 +77,15 @@ msgstr ""
 msgid "%s version %s"
 msgstr "%s バージョン %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgid "(Press %s to release pointer)"
+msgstr "(ポインターを開放するには %s を押します)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>読み込み中...</b>"
+
+msgid "<never|always>"
+msgstr ""
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -140,6 +144,9 @@ msgstr "認証が必要です"
 
 msgid "Authentication was cancelled"
 msgstr "認証が取り消されました"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "利用可能な仮想マシン"
@@ -220,14 +227,18 @@ msgstr ""
 msgid "Ctrl_L+Alt_L"
 msgstr ""
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "ホットキーのカスタマイズ"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "自動的にトンネリングせず直接接続する"
-
-msgid "Disconnect"
-msgstr "切断"
 
 #, c-format
 msgid "Display _%d"
@@ -278,6 +289,10 @@ msgstr "フォルダー共有"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "例: spice://foo.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -291,6 +306,10 @@ msgstr "仮想マシンの詳細"
 msgid "Guest domain has shutdown"
 msgstr "仮想マシンがシャットダウンしました"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "無効なファイル %s:"
@@ -302,14 +321,8 @@ msgstr "無効な kiosk-quit の引数: %s"
 msgid "Invalid password"
 msgstr "無効なパスワード"
 
-msgid "Leave fullscreen"
-msgstr "フルスクリーンの解除"
-
 msgid "Loading..."
 msgstr "読み込み中..."
-
-msgid "Minimize"
-msgstr ""
 
 msgid "Name"
 msgstr "名前"
@@ -340,6 +353,9 @@ msgstr "パスワード:"
 msgid "Please add an extension to the file name"
 msgstr ""
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "個人設定"
 
@@ -364,8 +380,9 @@ msgstr "再起動時に仮想マシンに再接続"
 msgid "Refresh"
 msgstr "更新"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "カーソルの開放"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -409,6 +426,7 @@ msgstr "Screenshot.png"
 msgid "Select ISO"
 msgstr "ISO を選択する"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "リダイレクトする USB デバイスを選択"
 
@@ -424,8 +442,9 @@ msgstr "名前のみから仮想マシンを選択"
 msgid "Selected"
 msgstr "選択済み"
 
-msgid "Send key combination"
-msgstr "組み合わせキーの送信"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr ""
@@ -433,20 +452,25 @@ msgstr ""
 msgid "Set window title"
 msgstr "ウィンドウタイトルの設定"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr ""
 
 msgid "Share folder"
 msgstr "共有フォルダー"
 
-msgid "Show password"
-msgstr "パスワードの表示"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "スマートカードの挿入"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "スマートカードの抜き取り"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -462,8 +486,9 @@ msgstr[0] ""
 msgid "Transferring 1 file..."
 msgstr "1 個のファイルを転送中..."
 
-msgid "USB device selection"
-msgstr "USB デバイスの選択"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -521,6 +546,10 @@ msgstr "ユーザー名:"
 msgid "VNC does not provide GUID"
 msgstr "VNC が GUID を提供していません"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "仮想マシンビューアー"
 
@@ -559,6 +588,10 @@ msgstr "ズームイン(_I)"
 msgid "Zoom _Out"
 msgstr "ズームアウト(_O)"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "ズームレベルは %d-%d の範囲内でなければいけません\n"
@@ -566,37 +599,33 @@ msgstr "ズームレベルは %d-%d の範囲内でなければいけません\n
 msgid "Zoom level of window, in percentage"
 msgstr "ウィンドウのズームレベル（パーセント単位）"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[なし]"
 
 msgid "_About"
 msgstr "このアプリケーションについて(_A)"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "取り消し(_C)"
-
-msgid "_Change CD"
-msgstr "CDの変更(_C)"
 
 msgid "_Close"
 msgstr "閉じる（_C）"
 
-msgid "_Displays"
-msgstr "ディスプレイ(_D)"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "ファイル(_F)"
-
-msgid "_Full screen"
-msgstr "フルスクリーン(_F)"
-
-msgid "_Guest Details"
-msgstr "仮想マシンの詳細(_G)"
-
-msgid "_Help"
-msgstr "ヘルプ(_H)"
-
-msgid "_Machine"
+msgid "_Keyboard shortcuts"
 msgstr ""
 
 msgid "_Normal Size"
@@ -608,14 +637,8 @@ msgstr "_OK"
 msgid "_Pause"
 msgstr ""
 
-msgid "_Power down"
+msgid "_Preferences…"
 msgstr ""
-
-msgid "_Preferences"
-msgstr "設定(_P)"
-
-msgid "_Quit"
-msgstr "終了 (_Q)"
 
 msgid "_Reset"
 msgstr ""
@@ -625,18 +648,6 @@ msgstr "保存(_S)"
 
 msgid "_Screenshot"
 msgstr "スクリーンショット(_S)"
-
-msgid "_Send key"
-msgstr "キーを送信(_S)"
-
-msgid "_USB device selection"
-msgstr "USBデバイスの選択(_U)"
-
-msgid "_View"
-msgstr "表示(_V)"
-
-msgid "_Zoom"
-msgstr "ズーム(_Z)"
 
 msgid "failed to parse oVirt URI"
 msgstr ""
@@ -663,6 +674,66 @@ msgstr "oVirt上の仮想マシン %s は稼働していません"
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
 
+#~ msgid "Disconnect"
+#~ msgstr "切断"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "フルスクリーンの解除"
+
+#~ msgid "Release cursor"
+#~ msgstr "カーソルの開放"
+
+#~ msgid "Send key combination"
+#~ msgstr "組み合わせキーの送信"
+
+#~ msgid "Show password"
+#~ msgstr "パスワードの表示"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "スマートカードの挿入"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "スマートカードの抜き取り"
+
+#~ msgid "USB device selection"
+#~ msgstr "USB デバイスの選択"
+
+#~ msgid "_Change CD"
+#~ msgstr "CDの変更(_C)"
+
+#~ msgid "_Displays"
+#~ msgstr "ディスプレイ(_D)"
+
+#~ msgid "_File"
+#~ msgstr "ファイル(_F)"
+
+#~ msgid "_Full screen"
+#~ msgstr "フルスクリーン(_F)"
+
+#~ msgid "_Guest Details"
+#~ msgstr "仮想マシンの詳細(_G)"
+
+#~ msgid "_Help"
+#~ msgstr "ヘルプ(_H)"
+
+#~ msgid "_Preferences"
+#~ msgstr "設定(_P)"
+
+#~ msgid "_Quit"
+#~ msgstr "終了 (_Q)"
+
+#~ msgid "_Send key"
+#~ msgstr "キーを送信(_S)"
+
+#~ msgid "_USB device selection"
+#~ msgstr "USBデバイスの選択(_U)"
+
+#~ msgid "_View"
+#~ msgstr "表示(_V)"
+
+#~ msgid "_Zoom"
+#~ msgstr "ズーム(_Z)"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -678,9 +749,6 @@ msgstr ""
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s - %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(ポインターを開放するには %s を押します)"
 
 #~ msgid "Address is too long for unix socket_path: %s"
 #~ msgstr "アドレスはUNIX ソケットパスに対して長すぎます: %s"

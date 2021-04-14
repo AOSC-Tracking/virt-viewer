@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2021-01-03 09:36+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.fedoraproject.org/projects/virt-"
@@ -18,6 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.4\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -48,6 +49,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -59,24 +72,15 @@ msgstr "%s - %s"
 msgid "%s version %s"
 msgstr "%s versi %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr "(Tekan %s untuk melepas penunjuk) %s - %s"
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr "(Tekan %s untuk melepas penunjuk) - %s"
+msgid "(Press %s to release pointer)"
+msgstr ""
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Memuat...</b>"
+
+msgid "<never|always>"
+msgstr ""
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -134,6 +138,9 @@ msgstr "Autentikasi diperlukan"
 
 msgid "Authentication was cancelled"
 msgstr "Autentikasi dibatalkan"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "Mesin virtual yang tersedia"
@@ -218,15 +225,19 @@ msgstr "Gagal membuat soket UNIX: %s"
 msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 #, fuzzy
 msgid "Customise hotkeys"
 msgstr "Sesuaikan hotkeys"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "Koneksi langsung tanpa terowongan otomatis"
-
-msgid "Disconnect"
-msgstr "Putuskan"
 
 #, c-format
 msgid "Display _%d"
@@ -291,6 +302,10 @@ msgstr "Berbagi folder"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Misalnya, spice: //foo.example.org: 5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -306,6 +321,10 @@ msgstr "Rincian Pengunjung"
 msgid "Guest domain has shutdown"
 msgstr "Domain tamu telah ditutup"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, fuzzy, c-format
 msgid "Invalid file %s: "
 msgstr "File tidak valid %s: "
@@ -319,16 +338,8 @@ msgid "Invalid password"
 msgstr "Password tidak valid"
 
 #, fuzzy
-msgid "Leave fullscreen"
-msgstr "Ke_luar dari Layar Penuh"
-
-#, fuzzy
 msgid "Loading..."
 msgstr "Memuat..."
-
-#, fuzzy
-msgid "Minimize"
-msgstr "Minimalkan"
 
 #, fuzzy
 msgid "Name"
@@ -368,6 +379,9 @@ msgstr "Kata Sandi:"
 msgid "Please add an extension to the file name"
 msgstr "Harap tambahkan ekstensi ke nama file"
 
+msgid "Power _down"
+msgstr ""
+
 #, fuzzy
 msgid "Preferences"
 msgstr "Preferensi"
@@ -400,9 +414,9 @@ msgstr "Sambungkan kembali ke domain saat memulai ulang"
 msgid "Refresh"
 msgstr "Segarkan"
 
-#, fuzzy
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "Lepaskan kursor"
+msgstr ""
 
 #, fuzzy
 msgid ""
@@ -455,6 +469,7 @@ msgstr "Screenshot.png"
 msgid "Select ISO"
 msgstr "Pilih"
 
+#. Create the widgets
 #, fuzzy
 msgid "Select USB devices for redirection"
 msgstr "Pilih perangkat USB yang akan dialihkan"
@@ -475,9 +490,9 @@ msgstr "Pilih mesin virtual hanya dengan namanya"
 msgid "Selected"
 msgstr "Dipilih"
 
-#, fuzzy
-msgid "Send key combination"
-msgstr "Kirim kombinasi tombol"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 #, fuzzy
 msgid "Serial"
@@ -487,6 +502,9 @@ msgstr "Serial"
 msgid "Set window title"
 msgstr "Judul jendela"
 
+msgid "Share client session"
+msgstr ""
+
 #, fuzzy
 msgid "Share clipboard"
 msgstr "Bagikan papan klip"
@@ -495,17 +513,16 @@ msgstr "Bagikan papan klip"
 msgid "Share folder"
 msgstr "Bagikan folder"
 
-#, fuzzy
-msgid "Show password"
-msgstr "Tampilkan sandi"
+msgid "Show / hide password text"
+msgstr ""
 
-#, fuzzy
-msgid "Smartcard insertion"
-msgstr "Penyisipan kartu pintar"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-#, fuzzy
-msgid "Smartcard removal"
-msgstr "Penghapusan kartu pintar"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 #, fuzzy
 msgid "Spice"
@@ -524,9 +541,9 @@ msgstr[0] "Mentransfer %u file dari %u ..."
 msgid "Transferring 1 file..."
 msgstr "Mentransfer 1 file ..."
 
-#, fuzzy
-msgid "USB device selection"
-msgstr "Pemilihan perangkat USB"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, fuzzy, c-format
 msgid "USB redirection error: %s"
@@ -591,6 +608,10 @@ msgstr "Nama Pengguna:"
 msgid "VNC does not provide GUID"
 msgstr "VNC tidak menyediakan GUID"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 #, fuzzy
 msgid "Virt Viewer"
 msgstr ""
@@ -643,6 +664,10 @@ msgstr "Perbesar"
 msgid "Zoom _Out"
 msgstr "Perkecil"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, fuzzy, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "Tingkat pembesaran harus dalam %d-% d\n"
@@ -650,6 +675,14 @@ msgstr "Tingkat pembesaran harus dalam %d-% d\n"
 #, fuzzy
 msgid "Zoom level of window, in percentage"
 msgstr "Tingkat zoom jendela, dalam persentase"
+
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
 
 #, fuzzy
 msgid "[none]"
@@ -659,41 +692,22 @@ msgstr "(tidak ada)"
 msgid "_About"
 msgstr "Tent_ang"
 
+msgid "_Auto resize"
+msgstr ""
+
 #, fuzzy
 msgid "_Cancel"
 msgstr "Ba_tal"
 
 #, fuzzy
-msgid "_Change CD"
-msgstr "_Ubah CD"
-
-#, fuzzy
 msgid "_Close"
 msgstr "_Tutup"
 
-#, fuzzy
-msgid "_Displays"
-msgstr "_Displays"
+msgid "_Guest details"
+msgstr ""
 
-#, fuzzy
-msgid "_File"
-msgstr "_Berkas"
-
-#, fuzzy
-msgid "_Full screen"
-msgstr "Modus layar-penuh"
-
-#, fuzzy
-msgid "_Guest Details"
-msgstr "Detail _Guest"
-
-#, fuzzy
-msgid "_Help"
-msgstr "_Bantuan"
-
-#, fuzzy
-msgid "_Machine"
-msgstr "Mengelola Mesin Secara Utuh"
+msgid "_Keyboard shortcuts"
+msgstr ""
 
 #, fuzzy
 msgid "_Normal Size"
@@ -706,17 +720,8 @@ msgstr "_OK"
 msgid "_Pause"
 msgstr "_Jeda"
 
-#, fuzzy
-msgid "_Power down"
-msgstr "_Power down"
-
-#, fuzzy
-msgid "_Preferences"
-msgstr "_Preferensi"
-
-#, fuzzy
-msgid "_Quit"
-msgstr "_Keluar"
+msgid "_Preferences…"
+msgstr ""
 
 #, fuzzy
 msgid "_Reset"
@@ -729,22 +734,6 @@ msgstr "_Simpan"
 #, fuzzy
 msgid "_Screenshot"
 msgstr "Simpan tangkapan layar"
-
-#, fuzzy
-msgid "_Send key"
-msgstr "_Kirim kunci"
-
-#, fuzzy
-msgid "_USB device selection"
-msgstr "_Pilihan perangkat USB"
-
-#, fuzzy
-msgid "_View"
-msgstr "Pandangan"
-
-#, fuzzy
-msgid "_Zoom"
-msgstr "Perbesar"
 
 #, fuzzy
 msgid "failed to parse oVirt URI"
@@ -772,3 +761,100 @@ msgstr "oVirt VM %s tidak berjalan"
 #, fuzzy
 msgid "only SSH or UNIX socket connection supported."
 msgstr "hanya koneksi soket SSH atau UNIX yang didukung."
+
+#~ msgid "(Press %s to release pointer) %s - %s"
+#~ msgstr "(Tekan %s untuk melepas penunjuk) %s - %s"
+
+#~ msgid "(Press %s to release pointer) - %s"
+#~ msgstr "(Tekan %s untuk melepas penunjuk) - %s"
+
+#~ msgid "Disconnect"
+#~ msgstr "Putuskan"
+
+#, fuzzy
+#~ msgid "Leave fullscreen"
+#~ msgstr "Ke_luar dari Layar Penuh"
+
+#, fuzzy
+#~ msgid "Minimize"
+#~ msgstr "Minimalkan"
+
+#, fuzzy
+#~ msgid "Release cursor"
+#~ msgstr "Lepaskan kursor"
+
+#, fuzzy
+#~ msgid "Send key combination"
+#~ msgstr "Kirim kombinasi tombol"
+
+#, fuzzy
+#~ msgid "Show password"
+#~ msgstr "Tampilkan sandi"
+
+#, fuzzy
+#~ msgid "Smartcard insertion"
+#~ msgstr "Penyisipan kartu pintar"
+
+#, fuzzy
+#~ msgid "Smartcard removal"
+#~ msgstr "Penghapusan kartu pintar"
+
+#, fuzzy
+#~ msgid "USB device selection"
+#~ msgstr "Pemilihan perangkat USB"
+
+#, fuzzy
+#~ msgid "_Change CD"
+#~ msgstr "_Ubah CD"
+
+#, fuzzy
+#~ msgid "_Displays"
+#~ msgstr "_Displays"
+
+#, fuzzy
+#~ msgid "_File"
+#~ msgstr "_Berkas"
+
+#, fuzzy
+#~ msgid "_Full screen"
+#~ msgstr "Modus layar-penuh"
+
+#, fuzzy
+#~ msgid "_Guest Details"
+#~ msgstr "Detail _Guest"
+
+#, fuzzy
+#~ msgid "_Help"
+#~ msgstr "_Bantuan"
+
+#, fuzzy
+#~ msgid "_Machine"
+#~ msgstr "Mengelola Mesin Secara Utuh"
+
+#, fuzzy
+#~ msgid "_Power down"
+#~ msgstr "_Power down"
+
+#, fuzzy
+#~ msgid "_Preferences"
+#~ msgstr "_Preferensi"
+
+#, fuzzy
+#~ msgid "_Quit"
+#~ msgstr "_Keluar"
+
+#, fuzzy
+#~ msgid "_Send key"
+#~ msgstr "_Kirim kunci"
+
+#, fuzzy
+#~ msgid "_USB device selection"
+#~ msgstr "_Pilihan perangkat USB"
+
+#, fuzzy
+#~ msgid "_View"
+#~ msgstr "Pandangan"
+
+#, fuzzy
+#~ msgid "_Zoom"
+#~ msgstr "Perbesar"
