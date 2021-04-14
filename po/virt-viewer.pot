@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 10:44+0100\n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
@@ -261,6 +261,11 @@ msgstr ""
 msgid "Customise hotkeys"
 msgstr ""
 
+#: src/resources/ui/virt-viewer-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 #: src/virt-viewer.c:133
 msgid "Direct connection with no automatic tunnels"
 msgstr ""
@@ -330,6 +335,12 @@ msgstr ""
 msgid "For example, spice://foo.example.org:5900"
 msgstr ""
 
+#: src/resources/ui/virt-viewer-shortcuts.ui:38
+#: src/resources/ui/virt-viewer-shortcuts.ui:72
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 #: src/resources/ui/virt-viewer-guest-details.ui:66
 msgid "GUID:"
 msgstr ""
@@ -345,6 +356,11 @@ msgstr ""
 
 #: src/virt-viewer-app.c:1713
 msgid "Guest domain has shutdown"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:81
+msgctxt "shortcut window"
+msgid "Guest input devices"
 msgstr ""
 
 #: src/remote-viewer.c:787
@@ -402,6 +418,10 @@ msgstr ""
 msgid "Please add an extension to the file name"
 msgstr ""
 
+#: src/resources/ui/virt-viewer-menus.ui:63
+msgid "Power _down"
+msgstr ""
+
 #: src/resources/ui/virt-viewer-preferences.ui:8
 msgid "Preferences"
 msgstr ""
@@ -432,6 +452,11 @@ msgstr ""
 
 #: src/remote-viewer-iso-list-dialog.c:272
 msgid "Refresh"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:92
+msgctxt "shortcut window"
+msgid "Release cursor"
 msgstr ""
 
 #: src/virt-viewer-app.c:3470
@@ -499,6 +524,11 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
+#: src/resources/ui/virt-viewer-shortcuts.ui:85
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
+
 #: src/virt-viewer-session-spice.c:1029
 msgid "Serial"
 msgstr ""
@@ -523,6 +553,16 @@ msgstr ""
 msgid "Show / hide password text"
 msgstr ""
 
+#: src/resources/ui/virt-viewer-shortcuts.ui:58
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:65
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
+
 #: src/resources/ui/virt-viewer-preferences.ui:132
 msgid "Spice"
 msgstr ""
@@ -540,6 +580,11 @@ msgstr[1] ""
 
 #: src/virt-viewer-file-transfer-dialog.c:149
 msgid "Transferring 1 file..."
+msgstr ""
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:51
+msgctxt "shortcut window"
+msgid "USB device reset"
 msgstr ""
 
 #: src/virt-viewer-app.c:1867
@@ -614,6 +659,11 @@ msgstr ""
 msgid "VNC does not provide GUID"
 msgstr ""
 
+#: src/resources/ui/virt-viewer-shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 #: src/virt-viewer-main.c:38
 msgid "Virt Viewer"
 msgstr ""
@@ -656,6 +706,19 @@ msgstr ""
 msgid "Waiting for libvirt to start"
 msgstr ""
 
+#: src/resources/ui/virt-viewer-menus.ui:16
+msgid "Zoom _In"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-menus.ui:20
+msgid "Zoom _Out"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:17
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #: src/virt-viewer-app.c:2488
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
@@ -665,28 +728,75 @@ msgstr ""
 msgid "Zoom level of window, in percentage"
 msgstr ""
 
+#: src/resources/ui/virt-viewer-shortcuts.ui:24
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 #: src/virt-viewer.c:1039
 msgid "[none]"
 msgstr ""
 
+#: src/resources/ui/virt-viewer-menus.ui:34
+msgid "_About"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-menus.ui:28
+msgid "_Auto resize"
+msgstr ""
+
 #: src/resources/ui/remote-viewer-connect.ui:121
-#: src/resources/ui/virt-viewer-auth.ui:28 src/virt-viewer-window.c:1080
-#: src/resources/ui/virt-viewer-vm-connection.ui:25
+#: src/resources/ui/virt-viewer-auth.ui:28
 #: src/resources/ui/virt-viewer-file-transfer-dialog.ui:26
+#: src/resources/ui/virt-viewer-vm-connection.ui:25
+#: src/virt-viewer-window.c:1080
 msgid "_Cancel"
 msgstr ""
 
-#: src/virt-viewer-session-spice.c:841
 #: src/resources/ui/virt-viewer-guest-details.ui:22
+#: src/virt-viewer-session-spice.c:841
 msgid "_Close"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-menus.ui:42
+msgid "_Guest details"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-menus.ui:38
+msgid "_Keyboard shortcuts"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-menus.ui:24
+msgid "_Normal Size"
 msgstr ""
 
 #: src/resources/ui/virt-viewer-auth.ui:43
 msgid "_OK"
 msgstr ""
 
+#: src/resources/ui/virt-viewer-menus.ui:53
+msgid "_Pause"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-menus.ui:10
+msgid "_Preferences…"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-menus.ui:59
+msgid "_Reset"
+msgstr ""
+
 #: src/virt-viewer-window.c:1081
 msgid "_Save"
+msgstr ""
+
+#: src/resources/ui/virt-viewer-menus.ui:6
+msgid "_Screenshot"
 msgstr ""
 
 #: src/remote-viewer.c:435
@@ -694,9 +804,9 @@ msgid "failed to parse oVirt URI"
 msgstr ""
 
 #: src/resources/ui/virt-viewer-auth.ui:70
+#: src/resources/ui/virt-viewer-file-transfer-dialog.ui:55
 #: src/resources/ui/virt-viewer-guest-details.ui:80
 #: src/resources/ui/virt-viewer-guest-details.ui:94
-#: src/resources/ui/virt-viewer-file-transfer-dialog.ui:55
 msgid "label"
 msgstr ""
 
