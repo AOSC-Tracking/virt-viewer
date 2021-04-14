@@ -239,7 +239,7 @@ zoom_level_changed(VirtViewerDisplay *display,
 {
     guint zoom = virt_viewer_display_get_zoom_level(display);
 
-    vnc_display_set_zoom(vnc, zoom);
+    vnc_display_set_zoom_level(vnc, zoom);
 }
 #endif
 
