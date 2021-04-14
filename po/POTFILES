@@ -10,7 +10,9 @@ src/resources/ui/virt-viewer-about.ui
 src/resources/ui/virt-viewer-auth.ui
 src/resources/ui/virt-viewer-file-transfer-dialog.ui
 src/resources/ui/virt-viewer-guest-details.ui
+src/resources/ui/virt-viewer-menus.ui
 src/resources/ui/virt-viewer-preferences.ui
+src/resources/ui/virt-viewer-shortcuts.ui
 src/resources/ui/virt-viewer.ui
 src/resources/ui/virt-viewer-vm-connection.ui
 src/virt-viewer-app.c
