@@ -4,22 +4,22 @@
 #
 # Translators:
 # Necdet Yücel <necdetyucel@gmail.com>, 2012
-# Oğuz Ersen <oguzersen@protonmail.com>, 2020.
+# Oğuz Ersen <oguzersen@protonmail.com>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
-"PO-Revision-Date: 2020-09-13 11:29+0000\n"
+"POT-Creation-Date: 2021-04-14 10:44+0100\n"
+"PO-Revision-Date: 2021-04-14 16:15+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/tr/>\n"
+"Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 4.2.2\n"
+"X-Generator: Weblate 4.5.3\n"
 
 #, c-format
 msgid ""
@@ -57,7 +57,7 @@ msgstr ""
 #.
 #, c-format
 msgid "%s %s - %s"
-msgstr ""
+msgstr "%s %s - %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -77,16 +77,16 @@ msgstr "%s sürüm %s"
 
 #, c-format
 msgid "(Press %s to release pointer)"
-msgstr ""
+msgstr "(İşaretçiyi serbest bırakmak için %s'ye basın)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Yükleniyor...</b>"
 
 msgid "<never|always>"
-msgstr ""
+msgstr "<never|always>"
 
 msgid "<never|on-disconnect>"
-msgstr "<asla|bağlantı-kesildiğinde>"
+msgstr "<never|on-disconnect>"
 
 msgid "A remote desktop client built with GTK-VNC, SPICE-GTK and libvirt"
 msgstr ""
@@ -143,7 +143,7 @@ msgid "Authentication was cancelled"
 msgstr "Kimlik doğrulama iptal edildi"
 
 msgid "Automatically resize remote framebuffer"
-msgstr ""
+msgstr "Uzak çerçeve arabelleğini otomatik olarak yeniden boyutlandır"
 
 msgid "Available virtual machines"
 msgstr "Kullanılabilir sanal makineler"
@@ -227,7 +227,7 @@ msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
 msgid "Cursor display mode: 'local' or 'auto'"
-msgstr ""
+msgstr "İmleç görüntüleme modu: 'local' veya 'auto'"
 
 msgid "Customise hotkeys"
 msgstr "Kısayol tuşlarını özelleştir"
@@ -453,7 +453,7 @@ msgid "Set window title"
 msgstr "Pencere başlığını ayarla"
 
 msgid "Share client session"
-msgstr ""
+msgstr "İstemci oturumunu paylaş"
 
 msgid "Share clipboard"
 msgstr "Panoyu paylaş"
@@ -462,7 +462,7 @@ msgid "Share folder"
 msgstr "Klasör paylaş"
 
 msgid "Show / hide password text"
-msgstr ""
+msgstr "Parola metnini göster / gizle"
 
 msgctxt "shortcut window"
 msgid "Smartcard insert"
