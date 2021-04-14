@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2020-09-13 11:29+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://translate.fedoraproject.org/projects/virt-"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Weblate 4.2.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -49,6 +50,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -60,24 +73,15 @@ msgstr "%s – %s"
 msgid "%s version %s"
 msgstr "%s verze %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr "(Pro uvolnění kurzoru stiskněte %s) %s – %s"
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr "(Pro uvolnění kurzoru stiskněte %s) – %s"
+msgid "(Press %s to release pointer)"
+msgstr "(kurzor uvolníte stisknutím %s)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Načítání…</b>"
+
+msgid "<never|always>"
+msgstr ""
 
 msgid "<never|on-disconnect>"
 msgstr "<nikdy|při-odpojení>"
@@ -136,6 +140,9 @@ msgstr "Vyžadováno ověření"
 
 msgid "Authentication was cancelled"
 msgstr "Ověření bylo zrušeno"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "Virtuální stroje k dispozici"
@@ -218,14 +225,18 @@ msgstr "Vytvoření k unixovému soketu se nezdařilo: %s"
 msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "Přizpůsobit klávesové zkratky"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "Přímé připojení bez automatických tunelů"
-
-msgid "Disconnect"
-msgstr "Odpojit"
 
 #, c-format
 msgid "Display _%d"
@@ -277,6 +288,10 @@ msgstr "Sdílení složky"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Například spice://neco.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -289,6 +304,10 @@ msgstr "Podrobnosti o hostovi"
 
 msgid "Guest domain has shutdown"
 msgstr "Doména hosta se vypíná"
+
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
 
 #, c-format
 msgid "Invalid file %s: "
@@ -303,16 +322,8 @@ msgstr "Neplatný kiosk-quit argument: %s"
 msgid "Invalid password"
 msgstr "Neplatné heslo"
 
-# auto translated by TM merge from project: virt-manager, version: master,
-# DocId: virt-manager
-msgid "Leave fullscreen"
-msgstr "Opustit režim celé obrazovky"
-
 msgid "Loading..."
 msgstr "Načítání…"
-
-msgid "Minimize"
-msgstr "Minimalizovat"
 
 # auto translated by TM merge from project: FreeIPA, version: ipa-4-5, DocId:
 # po/ipa
@@ -349,6 +360,9 @@ msgstr "Heslo:"
 msgid "Please add an extension to the file name"
 msgstr "Prosím přidejte k názvu souboru příponu"
 
+msgid "Power _down"
+msgstr ""
+
 # auto translated by TM merge from project: libreport, version: rhel6, DocId:
 # libreport
 msgid "Preferences"
@@ -377,8 +391,9 @@ msgstr "Po restartu domény se k ní opět připojit"
 msgid "Refresh"
 msgstr "Načíst znovu"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "Uvolnit kurzor"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -424,6 +439,7 @@ msgstr "snimek_obrazovky.png"
 msgid "Select ISO"
 msgstr "Vybrat ISO"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "Vyberte USB zařízení, které chcete přesměrovat"
 
@@ -443,10 +459,9 @@ msgstr "Vybrat virtuální stroj pouze podle jeho názvu"
 msgid "Selected"
 msgstr "Vybráno"
 
-# auto translated by TM merge from project: virt-manager, version: master,
-# DocId: virt-manager
-msgid "Send key combination"
-msgstr "Odeslat kombinace kláves"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr "Sériové"
@@ -454,22 +469,25 @@ msgstr "Sériové"
 msgid "Set window title"
 msgstr "Nastavit titulek okna"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr "Sdílet schránku"
 
 msgid "Share folder"
 msgstr "Sdílet složku"
 
-# auto translated by TM merge from project: libreport, version: master, DocId:
-# libreport
-msgid "Show password"
-msgstr "Zobrazit heslo"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "Vložení Smartcard"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "Odebrání Smartcard"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -487,8 +505,9 @@ msgstr[2] "Přenášení souborů %u z %u…"
 msgid "Transferring 1 file..."
 msgstr "Přenáší se 1 soubor…"
 
-msgid "USB device selection"
-msgstr "Výběr USB zařízení"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -548,6 +567,10 @@ msgstr "Uživatelské jméno:"
 msgid "VNC does not provide GUID"
 msgstr "VNC neposkytuje GUID"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
 
@@ -586,12 +609,24 @@ msgstr "Př_iblížit"
 msgid "Zoom _Out"
 msgstr "_Oddálit"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "Je třeba, aby úroveň přiblížení byla z rozmezí %d-%d\n"
 
 msgid "Zoom level of window, in percentage"
 msgstr "Úroveň přiblížení okna, v procentech"
+
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
 
 msgid "[none]"
 msgstr "[žádné]"
@@ -600,38 +635,22 @@ msgstr "[žádné]"
 msgid "_About"
 msgstr "O _metodě"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "_Storno"
-
-msgid "_Change CD"
-msgstr "Vyměnit _CD"
 
 # auto translated by TM merge from project: system-config-printer, version:
 # master, DocId: system-config-printer
 msgid "_Close"
 msgstr "Z_avřít"
 
-msgid "_Displays"
-msgstr "_Obrazovky"
+msgid "_Guest details"
+msgstr ""
 
-# auto translated by TM merge from project: system-config-kdump, version:
-# master, DocId: system-config-kdump
-msgid "_File"
-msgstr "_Soubor"
-
-msgid "_Full screen"
-msgstr "_Na celou obrazovku"
-
-msgid "_Guest Details"
-msgstr "_Podrobnosti o hostovi"
-
-# auto translated by TM merge from project: system-config-language, version:
-# f27, DocId: system-config-language
-msgid "_Help"
-msgstr "_Nápověda"
-
-msgid "_Machine"
-msgstr "_Stroj"
+msgid "_Keyboard shortcuts"
+msgstr ""
 
 msgid "_Normal Size"
 msgstr "_Normální velikost"
@@ -644,17 +663,8 @@ msgstr "_OK"
 msgid "_Pause"
 msgstr "_Pozastavit"
 
-msgid "_Power down"
-msgstr "Vy_pnout"
-
-# auto translated by TM merge from project: ibus, version: head, DocId: ibus10
-msgid "_Preferences"
-msgstr "_Předvolby"
-
-# auto translated by TM merge from project: blivet-gui, version: master,
-# DocId: po/blivet-gui
-msgid "_Quit"
-msgstr "_Ukončit"
+msgid "_Preferences…"
+msgstr ""
 
 msgid "_Reset"
 msgstr "_Restartovat"
@@ -666,20 +676,6 @@ msgstr "_Uložit"
 
 msgid "_Screenshot"
 msgstr "_Snímek obrazovky"
-
-msgid "_Send key"
-msgstr "Po_slat klávesu"
-
-msgid "_USB device selection"
-msgstr "Výběr _USB zařízení"
-
-# auto translated by TM merge from project: firewalld, version: master, DocId:
-# po/firewalld
-msgid "_View"
-msgstr "_Zobrazit"
-
-msgid "_Zoom"
-msgstr "_Přiblížení"
 
 msgid "failed to parse oVirt URI"
 msgstr "nepodařilo se zpracovat oVirt URI"
@@ -708,6 +704,96 @@ msgstr "oVirt virt. stroj %s není spuštěný"
 msgid "only SSH or UNIX socket connection supported."
 msgstr "je podporováno připojení pouze přes SSH nebo k unixovému soketu."
 
+#~ msgid "(Press %s to release pointer) %s - %s"
+#~ msgstr "(Pro uvolnění kurzoru stiskněte %s) %s – %s"
+
+#~ msgid "(Press %s to release pointer) - %s"
+#~ msgstr "(Pro uvolnění kurzoru stiskněte %s) – %s"
+
+#~ msgid "Disconnect"
+#~ msgstr "Odpojit"
+
+# auto translated by TM merge from project: virt-manager, version: master,
+# DocId: virt-manager
+#~ msgid "Leave fullscreen"
+#~ msgstr "Opustit režim celé obrazovky"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimalizovat"
+
+#~ msgid "Release cursor"
+#~ msgstr "Uvolnit kurzor"
+
+# auto translated by TM merge from project: virt-manager, version: master,
+# DocId: virt-manager
+#~ msgid "Send key combination"
+#~ msgstr "Odeslat kombinace kláves"
+
+# auto translated by TM merge from project: libreport, version: master, DocId:
+# libreport
+#~ msgid "Show password"
+#~ msgstr "Zobrazit heslo"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "Vložení Smartcard"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "Odebrání Smartcard"
+
+#~ msgid "USB device selection"
+#~ msgstr "Výběr USB zařízení"
+
+#~ msgid "_Change CD"
+#~ msgstr "Vyměnit _CD"
+
+#~ msgid "_Displays"
+#~ msgstr "_Obrazovky"
+
+# auto translated by TM merge from project: system-config-kdump, version:
+# master, DocId: system-config-kdump
+#~ msgid "_File"
+#~ msgstr "_Soubor"
+
+#~ msgid "_Full screen"
+#~ msgstr "_Na celou obrazovku"
+
+#~ msgid "_Guest Details"
+#~ msgstr "_Podrobnosti o hostovi"
+
+# auto translated by TM merge from project: system-config-language, version:
+# f27, DocId: system-config-language
+#~ msgid "_Help"
+#~ msgstr "_Nápověda"
+
+#~ msgid "_Machine"
+#~ msgstr "_Stroj"
+
+#~ msgid "_Power down"
+#~ msgstr "Vy_pnout"
+
+# auto translated by TM merge from project: ibus, version: head, DocId: ibus10
+#~ msgid "_Preferences"
+#~ msgstr "_Předvolby"
+
+# auto translated by TM merge from project: blivet-gui, version: master,
+# DocId: po/blivet-gui
+#~ msgid "_Quit"
+#~ msgstr "_Ukončit"
+
+#~ msgid "_Send key"
+#~ msgstr "Po_slat klávesu"
+
+#~ msgid "_USB device selection"
+#~ msgstr "Výběr _USB zařízení"
+
+# auto translated by TM merge from project: firewalld, version: master, DocId:
+# po/firewalld
+#~ msgid "_View"
+#~ msgstr "_Zobrazit"
+
+#~ msgid "_Zoom"
+#~ msgstr "_Přiblížení"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -725,9 +811,6 @@ msgstr "je podporováno připojení pouze přes SSH nebo k unixovému soketu."
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s – %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(kurzor uvolníte stisknutím %s)"
 
 #~ msgid "Address is too long for unix socket_path: %s"
 #~ msgstr "Adresa je příliš dlouhá pro unixovou socket_path: %s"

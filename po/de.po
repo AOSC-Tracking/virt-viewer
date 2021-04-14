@@ -16,8 +16,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2019-03-25 08:53+0000\n"
 "Last-Translator: Thomas Eichhorn <tomislav@posteo.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/virt-viewer/"
@@ -29,6 +29,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Zanata 4.6.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -53,6 +54,18 @@ msgid ""
 msgstr ""
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -64,23 +77,14 @@ msgstr ""
 msgid "%s version %s"
 msgstr "%s Version %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgid "(Press %s to release pointer)"
+msgstr "(Drücken Sie %s, um den Mauszeiger freizugeben)"
 
 msgid "<b>Loading...</b>"
+msgstr ""
+
+msgid "<never|always>"
 msgstr ""
 
 msgid "<never|on-disconnect>"
@@ -142,6 +146,9 @@ msgstr "Authentifikation erforderlich"
 
 msgid "Authentication was cancelled"
 msgstr "Authentifizierung abgebrochen"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "Verfügbare virtuelle Maschinen"
@@ -222,14 +229,18 @@ msgstr ""
 msgid "Ctrl_L+Alt_L"
 msgstr ""
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "eigene angepasste Hotkeys"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "Direkte Verbindung ohne automatische Tunnel"
-
-msgid "Disconnect"
-msgstr "Verbindung trennen"
 
 #, c-format
 msgid "Display _%d"
@@ -280,6 +291,10 @@ msgstr "Ordnerfreigabe"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Zum Beispiel spice://foo.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -293,6 +308,10 @@ msgstr "Gast Details"
 msgid "Guest domain has shutdown"
 msgstr "Gast-Domain wurde beendet"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "Ungültige Datei %s: "
@@ -304,14 +323,8 @@ msgstr "Ungültiger kiosk-quit Parameter: %s"
 msgid "Invalid password"
 msgstr "Ungültiges Passwort"
 
-msgid "Leave fullscreen"
-msgstr "Vollbildmodus verlassen"
-
 msgid "Loading..."
 msgstr "Lade..."
-
-msgid "Minimize"
-msgstr ""
 
 msgid "Name"
 msgstr "Name"
@@ -342,6 +355,9 @@ msgstr "Passwort:"
 msgid "Please add an extension to the file name"
 msgstr ""
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "Präferenzen"
 
@@ -366,8 +382,9 @@ msgstr "Nach Neustart erneut mit Domain verbinden"
 msgid "Refresh"
 msgstr ""
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "Cursor freigeben"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -405,6 +422,7 @@ msgstr ""
 msgid "Select ISO"
 msgstr "ISO-Abbild auswählen"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "USB-Gerät zur Weiterleitung wählen"
 
@@ -420,8 +438,9 @@ msgstr ""
 msgid "Selected"
 msgstr "Ausgewählt"
 
-msgid "Send key combination"
-msgstr "Tastenkombination senden"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr ""
@@ -429,20 +448,25 @@ msgstr ""
 msgid "Set window title"
 msgstr "Titel des Window setzen"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr ""
 
 msgid "Share folder"
 msgstr "Ordner freigeben"
 
-msgid "Show password"
-msgstr "Passwort anzeigen"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "Smartcard-Eingabe"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "Smartcard-Entfernung"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -459,8 +483,9 @@ msgstr[1] ""
 msgid "Transferring 1 file..."
 msgstr "Eine Datei wird übertragen..."
 
-msgid "USB device selection"
-msgstr "USB-Geräteauswahl"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -518,6 +543,10 @@ msgstr "Benutzername:"
 msgid "VNC does not provide GUID"
 msgstr "VNC bietet keine GUID"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Virt-Viewer"
 
@@ -556,6 +585,10 @@ msgstr "Ver_größern"
 msgid "Zoom _Out"
 msgstr "Ver_kleinern"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "Zoom-Level muss zwischen %d-%d sein\n"
@@ -563,37 +596,33 @@ msgstr "Zoom-Level muss zwischen %d-%d sein\n"
 msgid "Zoom level of window, in percentage"
 msgstr "Zoomlevel des Fensters in Prozent"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[keine]"
 
 msgid "_About"
 msgstr "Ü_ber"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "_Abbrechen"
-
-msgid "_Change CD"
-msgstr "_CD wechseln"
 
 msgid "_Close"
 msgstr "_Schließen"
 
-msgid "_Displays"
-msgstr "_Anzeigen"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "_Datei"
-
-msgid "_Full screen"
-msgstr "_Vollbild"
-
-msgid "_Guest Details"
-msgstr "_Gast Details"
-
-msgid "_Help"
-msgstr "_Hilfe"
-
-msgid "_Machine"
+msgid "_Keyboard shortcuts"
 msgstr ""
 
 msgid "_Normal Size"
@@ -605,14 +634,8 @@ msgstr "_OK"
 msgid "_Pause"
 msgstr ""
 
-msgid "_Power down"
+msgid "_Preferences…"
 msgstr ""
-
-msgid "_Preferences"
-msgstr "_Einstellungen"
-
-msgid "_Quit"
-msgstr "_Quit"
 
 msgid "_Reset"
 msgstr ""
@@ -622,18 +645,6 @@ msgstr "_Speichern"
 
 msgid "_Screenshot"
 msgstr "_Bildschirmfoto"
-
-msgid "_Send key"
-msgstr "_Taste senden"
-
-msgid "_USB device selection"
-msgstr "_USB-Geräteauswahl"
-
-msgid "_View"
-msgstr "_Ansicht"
-
-msgid "_Zoom"
-msgstr "_Zoom"
 
 msgid "failed to parse oVirt URI"
 msgstr ""
@@ -660,6 +671,66 @@ msgstr "oVirt VM %s läuft nicht"
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
 
+#~ msgid "Disconnect"
+#~ msgstr "Verbindung trennen"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "Vollbildmodus verlassen"
+
+#~ msgid "Release cursor"
+#~ msgstr "Cursor freigeben"
+
+#~ msgid "Send key combination"
+#~ msgstr "Tastenkombination senden"
+
+#~ msgid "Show password"
+#~ msgstr "Passwort anzeigen"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "Smartcard-Eingabe"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "Smartcard-Entfernung"
+
+#~ msgid "USB device selection"
+#~ msgstr "USB-Geräteauswahl"
+
+#~ msgid "_Change CD"
+#~ msgstr "_CD wechseln"
+
+#~ msgid "_Displays"
+#~ msgstr "_Anzeigen"
+
+#~ msgid "_File"
+#~ msgstr "_Datei"
+
+#~ msgid "_Full screen"
+#~ msgstr "_Vollbild"
+
+#~ msgid "_Guest Details"
+#~ msgstr "_Gast Details"
+
+#~ msgid "_Help"
+#~ msgstr "_Hilfe"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Einstellungen"
+
+#~ msgid "_Quit"
+#~ msgstr "_Quit"
+
+#~ msgid "_Send key"
+#~ msgstr "_Taste senden"
+
+#~ msgid "_USB device selection"
+#~ msgstr "_USB-Geräteauswahl"
+
+#~ msgid "_View"
+#~ msgstr "_Ansicht"
+
+#~ msgid "_Zoom"
+#~ msgstr "_Zoom"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -675,9 +746,6 @@ msgstr ""
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s - %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(Drücken Sie %s, um den Mauszeiger freizugeben)"
 
 #~ msgid "Connect to ssh failed."
 #~ msgstr "Verbindung über SSH ist fehlgeschlagen."

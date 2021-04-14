@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2015-02-20 08:08+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Bengali (India) (http://www.transifex.com/projects/p/virt-"
@@ -22,6 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Zanata 4.6.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -43,6 +44,18 @@ msgid ""
 msgstr ""
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -54,23 +67,14 @@ msgstr ""
 msgid "%s version %s"
 msgstr ""
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgid "(Press %s to release pointer)"
+msgstr "(পয়েন্টার মুক্ত করার জন্য %s টিপুন)"
 
 msgid "<b>Loading...</b>"
+msgstr ""
+
+msgid "<never|always>"
 msgstr ""
 
 msgid "<never|on-disconnect>"
@@ -121,6 +125,9 @@ msgid "Authentication required"
 msgstr "অনুমোদন প্রয়োজন"
 
 msgid "Authentication was cancelled"
+msgstr ""
+
+msgid "Automatically resize remote framebuffer"
 msgstr ""
 
 msgid "Available virtual machines"
@@ -202,14 +209,18 @@ msgstr ""
 msgid "Ctrl_L+Alt_L"
 msgstr ""
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "কাস্টোমাইজ হটকী"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "স্বয়ংক্রিয় টানেল বিনা কোনো সরাসরি যোগাযোগ নেই"
-
-msgid "Disconnect"
-msgstr "সংযোগ বিচ্ছেদ করুন"
 
 #, c-format
 msgid "Display _%d"
@@ -260,6 +271,10 @@ msgstr ""
 msgid "For example, spice://foo.example.org:5900"
 msgstr "উদাহরণস্বরূপ, spice://foo.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr ""
 
@@ -273,6 +288,10 @@ msgstr ""
 msgid "Guest domain has shutdown"
 msgstr "গেস্ট ডোমেইন বন্ধ হয়েছে"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr ""
@@ -284,13 +303,7 @@ msgstr "অবৈধ kiosk-quit আর্গুমেন্ট: %s"
 msgid "Invalid password"
 msgstr ""
 
-msgid "Leave fullscreen"
-msgstr "সম্পূর্ণ পর্দায় প্রদর্শন থেকে প্রস্থান"
-
 msgid "Loading..."
-msgstr ""
-
-msgid "Minimize"
 msgstr ""
 
 msgid "Name"
@@ -322,6 +335,9 @@ msgstr "পাসওয়ার্ড:"
 msgid "Please add an extension to the file name"
 msgstr ""
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr ""
 
@@ -346,8 +362,9 @@ msgstr "পুনরারম্ভের পরে ডোমেইনের স
 msgid "Refresh"
 msgstr ""
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "কার্সার মুক্ত করা হবে"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -383,6 +400,7 @@ msgstr ""
 msgid "Select ISO"
 msgstr ""
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "পুনর্নির্দেশের জন্য USB ডিভাইস নির্বাচন করুন"
 
@@ -398,8 +416,9 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
-msgid "Send key combination"
-msgstr "সেন্ড-কি-র সংকলন"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr ""
@@ -407,20 +426,25 @@ msgstr ""
 msgid "Set window title"
 msgstr "উইন্ডো টাইটেল সেট করুন"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr ""
 
 msgid "Share folder"
 msgstr ""
 
-msgid "Show password"
+msgid "Show / hide password text"
 msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "স্মার্ট-কার্ড অন্তর্ভুক্তি"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "স্মার্ট-কার্ড অপসারণ"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr ""
@@ -437,8 +461,9 @@ msgstr[1] ""
 msgid "Transferring 1 file..."
 msgstr ""
 
-msgid "USB device selection"
-msgstr "USB ডিভাইস নির্বাচন"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -496,6 +521,10 @@ msgstr "ব্যবহারকারীর নাম:"
 msgid "VNC does not provide GUID"
 msgstr ""
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
 
@@ -534,6 +563,10 @@ msgstr ""
 msgid "Zoom _Out"
 msgstr ""
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "জুম মাত্রা অবশ্যই %d-%d এর মধ্যবর্তী হতে হবে\n"
@@ -541,37 +574,33 @@ msgstr "জুম মাত্রা অবশ্যই %d-%d এর মধ্�
 msgid "Zoom level of window, in percentage"
 msgstr "উইন্ডোর প্রদর্শনের মাপ, শতাংশে ব্যক্ত"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[শূণ্য]"
 
 msgid "_About"
 msgstr ""
 
-msgid "_Cancel"
+msgid "_Auto resize"
 msgstr ""
 
-msgid "_Change CD"
+msgid "_Cancel"
 msgstr ""
 
 msgid "_Close"
 msgstr ""
 
-msgid "_Displays"
+msgid "_Guest details"
 msgstr ""
 
-msgid "_File"
-msgstr "ফাইল (_F)"
-
-msgid "_Full screen"
-msgstr ""
-
-msgid "_Guest Details"
-msgstr ""
-
-msgid "_Help"
-msgstr "সহায়তা (_H)"
-
-msgid "_Machine"
+msgid "_Keyboard shortcuts"
 msgstr ""
 
 msgid "_Normal Size"
@@ -583,13 +612,7 @@ msgstr ""
 msgid "_Pause"
 msgstr ""
 
-msgid "_Power down"
-msgstr ""
-
-msgid "_Preferences"
-msgstr ""
-
-msgid "_Quit"
+msgid "_Preferences…"
 msgstr ""
 
 msgid "_Reset"
@@ -600,18 +623,6 @@ msgstr ""
 
 msgid "_Screenshot"
 msgstr ""
-
-msgid "_Send key"
-msgstr "কি পাঠিয়ে দিন (_S)"
-
-msgid "_USB device selection"
-msgstr ""
-
-msgid "_View"
-msgstr "প্রদর্শন (_V)"
-
-msgid "_Zoom"
-msgstr "প্রদর্শনের নাম (_Z)"
 
 msgid "failed to parse oVirt URI"
 msgstr ""
@@ -638,6 +649,42 @@ msgstr ""
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
 
+#~ msgid "Disconnect"
+#~ msgstr "সংযোগ বিচ্ছেদ করুন"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "সম্পূর্ণ পর্দায় প্রদর্শন থেকে প্রস্থান"
+
+#~ msgid "Release cursor"
+#~ msgstr "কার্সার মুক্ত করা হবে"
+
+#~ msgid "Send key combination"
+#~ msgstr "সেন্ড-কি-র সংকলন"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "স্মার্ট-কার্ড অন্তর্ভুক্তি"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "স্মার্ট-কার্ড অপসারণ"
+
+#~ msgid "USB device selection"
+#~ msgstr "USB ডিভাইস নির্বাচন"
+
+#~ msgid "_File"
+#~ msgstr "ফাইল (_F)"
+
+#~ msgid "_Help"
+#~ msgstr "সহায়তা (_H)"
+
+#~ msgid "_Send key"
+#~ msgstr "কি পাঠিয়ে দিন (_S)"
+
+#~ msgid "_View"
+#~ msgstr "প্রদর্শন (_V)"
+
+#~ msgid "_Zoom"
+#~ msgstr "প্রদর্শনের নাম (_Z)"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -650,9 +697,6 @@ msgstr ""
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s - %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(পয়েন্টার মুক্ত করার জন্য %s টিপুন)"
 
 #~ msgid "Connect to ssh failed."
 #~ msgstr "ssh-র সাথে সংযোগ করতে ব্যর্থ।"

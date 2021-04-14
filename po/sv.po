@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2020-09-13 11:29+0000\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
 "Language-Team: Swedish <https://translate.fedoraproject.org/projects/virt-"
@@ -22,6 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.2.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -52,6 +53,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -63,24 +76,15 @@ msgstr "%s — %s"
 msgid "%s version %s"
 msgstr "%s version %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr "(Tryck %s för att släppa markören) %s — %s"
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr "(Tryck %s för att släppa markören) %s"
+msgid "(Press %s to release pointer)"
+msgstr "(Tryck %s för att släppa markören)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Laddar…</b>"
+
+msgid "<never|always>"
+msgstr ""
 
 msgid "<never|on-disconnect>"
 msgstr "<aldrig | vid-frånkoppling>"
@@ -137,6 +141,9 @@ msgstr "Autenticering krävs"
 
 msgid "Authentication was cancelled"
 msgstr "Autenticeringen avbröts"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "Tillgängliga virtuella maskiner"
@@ -219,14 +226,18 @@ msgstr "Att skapa et UNIX-uttag misslyckades: %s"
 msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "Anpassa snabbtangenter"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "Direkt anslutning utan några automatiska tunnlar"
-
-msgid "Disconnect"
-msgstr "Koppla ifrån"
 
 #, c-format
 msgid "Display _%d"
@@ -277,6 +288,10 @@ msgstr "Mappdelning"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Till exempel, spice://apa.exempel.se:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -290,6 +305,10 @@ msgstr "Gästdetaljer"
 msgid "Guest domain has shutdown"
 msgstr "Gästdomänen är avstängd"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "Felaktig fil %s: "
@@ -301,14 +320,8 @@ msgstr "Ogiltigt helskärmsargument: %s"
 msgid "Invalid password"
 msgstr "Felaktigt lösenord"
 
-msgid "Leave fullscreen"
-msgstr "Lämna helskärm"
-
 msgid "Loading..."
 msgstr "Laddar…"
-
-msgid "Minimize"
-msgstr "Minimera"
 
 msgid "Name"
 msgstr "Namn"
@@ -338,6 +351,9 @@ msgstr "Lösenord:"
 msgid "Please add an extension to the file name"
 msgstr "Lägg till en ändelse till filnamnet"
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "Inställningar"
 
@@ -362,8 +378,9 @@ msgstr "Återanslut till domänen vid omstart"
 msgid "Refresh"
 msgstr "Uppdatera"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "Släpp markören"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -407,6 +424,7 @@ msgstr "Skärmbild.png"
 msgid "Select ISO"
 msgstr "Välj ISO"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "Välj USB-enheter att omdirigera"
 
@@ -422,8 +440,9 @@ msgstr "Välj den virtuella maskinen endast vi dess namn"
 msgid "Selected"
 msgstr "Vald"
 
-msgid "Send key combination"
-msgstr "Skicka tangentbordskombination"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr "Seriell"
@@ -431,20 +450,25 @@ msgstr "Seriell"
 msgid "Set window title"
 msgstr "Ange fönstertitel"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr "Dela urklipp"
 
 msgid "Share folder"
 msgstr "Dela mapp"
 
-msgid "Show password"
-msgstr "Visa lösenord"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "Insättning av smartkort"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "Uttag av smartkort"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -461,8 +485,9 @@ msgstr[1] "Överför %u filer av %u …"
 msgid "Transferring 1 file..."
 msgstr "Överför 1 fil …"
 
-msgid "USB device selection"
-msgstr "Val av USB-enhet"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -520,6 +545,10 @@ msgstr "Användarnamn:"
 msgid "VNC does not provide GUID"
 msgstr "VNC tillhandahåller inte GUID"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
 
@@ -558,6 +587,10 @@ msgstr "Zooma _in"
 msgid "Zoom _Out"
 msgstr "Zooma _ut"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "Zoom-nivån måste vara inom %d-%d\n"
@@ -565,38 +598,34 @@ msgstr "Zoom-nivån måste vara inom %d-%d\n"
 msgid "Zoom level of window, in percentage"
 msgstr "Zoom-nivå för fönstret, i procent"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[ingen]"
 
 msgid "_About"
 msgstr "_Om"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "_Avbryt"
-
-msgid "_Change CD"
-msgstr "_Byt CD"
 
 msgid "_Close"
 msgstr "_Stäng"
 
-msgid "_Displays"
-msgstr "_Displayer"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "_Arkiv"
-
-msgid "_Full screen"
-msgstr "_Helskärm"
-
-msgid "_Guest Details"
-msgstr "_Gästdetaljer"
-
-msgid "_Help"
-msgstr "_Hjälp"
-
-msgid "_Machine"
-msgstr "_Maskin"
+msgid "_Keyboard shortcuts"
+msgstr ""
 
 msgid "_Normal Size"
 msgstr "_Normal storlek"
@@ -607,14 +636,8 @@ msgstr "_OK"
 msgid "_Pause"
 msgstr "_Pausa"
 
-msgid "_Power down"
-msgstr "_Stäng av"
-
-msgid "_Preferences"
-msgstr "_Egenskaper"
-
-msgid "_Quit"
-msgstr "_Avsluta"
+msgid "_Preferences…"
+msgstr ""
 
 msgid "_Reset"
 msgstr "_Återställ"
@@ -624,18 +647,6 @@ msgstr "_Spara"
 
 msgid "_Screenshot"
 msgstr "_Skärmbild"
-
-msgid "_Send key"
-msgstr "_Skicka tangent"
-
-msgid "_USB device selection"
-msgstr "Val av _USB-enhet"
-
-msgid "_View"
-msgstr "_Visa"
-
-msgid "_Zoom"
-msgstr "_Zoom"
 
 msgid "failed to parse oVirt URI"
 msgstr "kunde inte analysera oVirt-URI"
@@ -662,6 +673,81 @@ msgstr "oVirt-VM %s kör inte"
 msgid "only SSH or UNIX socket connection supported."
 msgstr "endast SSH- eller UNIX-uttagsförbindelser stödjs."
 
+#~ msgid "(Press %s to release pointer) %s - %s"
+#~ msgstr "(Tryck %s för att släppa markören) %s — %s"
+
+#~ msgid "(Press %s to release pointer) - %s"
+#~ msgstr "(Tryck %s för att släppa markören) %s"
+
+#~ msgid "Disconnect"
+#~ msgstr "Koppla ifrån"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "Lämna helskärm"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimera"
+
+#~ msgid "Release cursor"
+#~ msgstr "Släpp markören"
+
+#~ msgid "Send key combination"
+#~ msgstr "Skicka tangentbordskombination"
+
+#~ msgid "Show password"
+#~ msgstr "Visa lösenord"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "Insättning av smartkort"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "Uttag av smartkort"
+
+#~ msgid "USB device selection"
+#~ msgstr "Val av USB-enhet"
+
+#~ msgid "_Change CD"
+#~ msgstr "_Byt CD"
+
+#~ msgid "_Displays"
+#~ msgstr "_Displayer"
+
+#~ msgid "_File"
+#~ msgstr "_Arkiv"
+
+#~ msgid "_Full screen"
+#~ msgstr "_Helskärm"
+
+#~ msgid "_Guest Details"
+#~ msgstr "_Gästdetaljer"
+
+#~ msgid "_Help"
+#~ msgstr "_Hjälp"
+
+#~ msgid "_Machine"
+#~ msgstr "_Maskin"
+
+#~ msgid "_Power down"
+#~ msgstr "_Stäng av"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Egenskaper"
+
+#~ msgid "_Quit"
+#~ msgstr "_Avsluta"
+
+#~ msgid "_Send key"
+#~ msgstr "_Skicka tangent"
+
+#~ msgid "_USB device selection"
+#~ msgstr "Val av _USB-enhet"
+
+#~ msgid "_View"
+#~ msgstr "_Visa"
+
+#~ msgid "_Zoom"
+#~ msgstr "_Zoom"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -677,9 +763,6 @@ msgstr "endast SSH- eller UNIX-uttagsförbindelser stödjs."
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s - %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(Tryck %s för att släppa markören)"
 
 #~ msgid "Address is too long for unix socket_path: %s"
 #~ msgstr "Adressen är för lång för en unix-uttagssökväg: %s"

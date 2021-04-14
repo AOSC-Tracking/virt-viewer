@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2016-02-25 07:46+0000\n"
 "Last-Translator: Chester Cheng <snowlet.cheng@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/virt-"
@@ -25,6 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Zanata 4.6.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -46,6 +47,18 @@ msgid ""
 msgstr ""
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -57,23 +70,14 @@ msgstr ""
 msgid "%s version %s"
 msgstr ""
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr ""
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr ""
+msgid "(Press %s to release pointer)"
+msgstr "(按下 %s 以釋放游標)"
 
 msgid "<b>Loading...</b>"
+msgstr ""
+
+msgid "<never|always>"
 msgstr ""
 
 msgid "<never|on-disconnect>"
@@ -129,6 +133,9 @@ msgstr "須要通過認證"
 
 msgid "Authentication was cancelled"
 msgstr "認證已取消"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "可用的虛擬機器"
@@ -209,14 +216,18 @@ msgstr ""
 msgid "Ctrl_L+Alt_L"
 msgstr ""
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "自訂快速鍵"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "無自動穿隧的直接連線"
-
-msgid "Disconnect"
-msgstr "中斷連接"
 
 #, c-format
 msgid "Display _%d"
@@ -267,6 +278,10 @@ msgstr "資料夾共享"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "例如 spice://foo.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID："
 
@@ -280,6 +295,10 @@ msgstr "客座端詳細資料"
 msgid "Guest domain has shutdown"
 msgstr "客座端網域已關閉"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "無效的檔案 %s："
@@ -291,13 +310,7 @@ msgstr "無效的 kiosk-quit 引數：%s"
 msgid "Invalid password"
 msgstr "密碼無效"
 
-msgid "Leave fullscreen"
-msgstr "離開全螢幕"
-
 msgid "Loading..."
-msgstr ""
-
-msgid "Minimize"
 msgstr ""
 
 msgid "Name"
@@ -327,6 +340,9 @@ msgstr "密碼："
 msgid "Please add an extension to the file name"
 msgstr ""
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "偏好設定"
 
@@ -351,8 +367,9 @@ msgstr "重新啓動時重新連接網域"
 msgid "Refresh"
 msgstr ""
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "釋放游標"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -388,6 +405,7 @@ msgstr ""
 msgid "Select ISO"
 msgstr ""
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "選擇欲重定向的 USB 裝置"
 
@@ -403,8 +421,9 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
-msgid "Send key combination"
-msgstr "傳送按鍵組合"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr ""
@@ -412,20 +431,25 @@ msgstr ""
 msgid "Set window title"
 msgstr "設定視窗標題"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr ""
 
 msgid "Share folder"
 msgstr "共享資料夾"
 
-msgid "Show password"
-msgstr "顯示密碼"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "智慧卡插入"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "智慧卡移除"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -441,8 +465,9 @@ msgstr[0] ""
 msgid "Transferring 1 file..."
 msgstr ""
 
-msgid "USB device selection"
-msgstr "USB 裝置選取"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -500,6 +525,10 @@ msgstr "使用者名稱："
 msgid "VNC does not provide GUID"
 msgstr "VNC 不提供 GUID"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Virt 檢視器"
 
@@ -538,6 +567,10 @@ msgstr ""
 msgid "Zoom _Out"
 msgstr ""
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "縮放等級必須介於 %d-%d\n"
@@ -545,37 +578,33 @@ msgstr "縮放等級必須介於 %d-%d\n"
 msgid "Zoom level of window, in percentage"
 msgstr "視窗放大等級，單位為百分比"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[無]"
 
 msgid "_About"
 msgstr ""
 
-msgid "_Cancel"
+msgid "_Auto resize"
 msgstr ""
 
-msgid "_Change CD"
-msgstr "更換 CD(_C)"
+msgid "_Cancel"
+msgstr ""
 
 msgid "_Close"
 msgstr ""
 
-msgid "_Displays"
+msgid "_Guest details"
 msgstr ""
 
-msgid "_File"
-msgstr "檔案(_F)"
-
-msgid "_Full screen"
-msgstr ""
-
-msgid "_Guest Details"
-msgstr "客座端詳細資料 (_G)"
-
-msgid "_Help"
-msgstr "求助(_H)"
-
-msgid "_Machine"
+msgid "_Keyboard shortcuts"
 msgstr ""
 
 msgid "_Normal Size"
@@ -587,13 +616,7 @@ msgstr ""
 msgid "_Pause"
 msgstr ""
 
-msgid "_Power down"
-msgstr ""
-
-msgid "_Preferences"
-msgstr ""
-
-msgid "_Quit"
+msgid "_Preferences…"
 msgstr ""
 
 msgid "_Reset"
@@ -604,18 +627,6 @@ msgstr ""
 
 msgid "_Screenshot"
 msgstr ""
-
-msgid "_Send key"
-msgstr "傳送按鍵(_S)"
-
-msgid "_USB device selection"
-msgstr ""
-
-msgid "_View"
-msgstr "檢視(_V)"
-
-msgid "_Zoom"
-msgstr "遠近(_Z)"
 
 msgid "failed to parse oVirt URI"
 msgstr ""
@@ -642,6 +653,51 @@ msgstr "oVirt VM %s 沒有在執行"
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
 
+#~ msgid "Disconnect"
+#~ msgstr "中斷連接"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "離開全螢幕"
+
+#~ msgid "Release cursor"
+#~ msgstr "釋放游標"
+
+#~ msgid "Send key combination"
+#~ msgstr "傳送按鍵組合"
+
+#~ msgid "Show password"
+#~ msgstr "顯示密碼"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "智慧卡插入"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "智慧卡移除"
+
+#~ msgid "USB device selection"
+#~ msgstr "USB 裝置選取"
+
+#~ msgid "_Change CD"
+#~ msgstr "更換 CD(_C)"
+
+#~ msgid "_File"
+#~ msgstr "檔案(_F)"
+
+#~ msgid "_Guest Details"
+#~ msgstr "客座端詳細資料 (_G)"
+
+#~ msgid "_Help"
+#~ msgstr "求助(_H)"
+
+#~ msgid "_Send key"
+#~ msgstr "傳送按鍵(_S)"
+
+#~ msgid "_View"
+#~ msgstr "檢視(_V)"
+
+#~ msgid "_Zoom"
+#~ msgstr "遠近(_Z)"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -654,9 +710,6 @@ msgstr ""
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s - %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(按下 %s 以釋放游標)"
 
 #~ msgid "Connect to ssh failed."
 #~ msgstr "連至 ssh 的連線失敗。"

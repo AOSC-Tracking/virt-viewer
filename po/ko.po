@@ -10,9 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
-"PO-Revision-Date: 2021-03-22 08:01+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 10:44+0100\n"
+"PO-Revision-Date: 2021-04-14 16:15+0000\n"
 "Last-Translator: simmon <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/ko/>\n"
@@ -21,8 +21,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5.1\n"
+"X-Generator: Weblate 4.5.3\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -53,6 +54,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr "%s %s - %s"
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -64,24 +77,15 @@ msgstr "%s - %s"
 msgid "%s version %s"
 msgstr "%s 버전 %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr "(포인터를 놓으려면 %s를 눌러주세요) %s - %s"
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr "(포인터를 놓으려면 %s를 눌러주세요) - %s"
+msgid "(Press %s to release pointer)"
+msgstr "(포인터를 개방하려면 %s를 누르십시오)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>적재...</b>"
+
+msgid "<never|always>"
+msgstr "<never|always>"
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -107,7 +111,8 @@ msgstr "적어도 %s 버전 %s은 이 연결 설정에 필요합니다"
 msgid ""
 "At least %s version %s is required to setup this connection, see %s for "
 "details"
-msgstr "적어도 %s 버전 %s은 이 연결 설정에 필요하며, 상세 설정을 위해 %s를 참고하세요"
+msgstr ""
+"적어도 %s 버전 %s는 이 연결 설정에 필요하며, 상세 설정을 위해 %s를 참고하세요"
 
 msgid "Attach to the local display using libvirt"
 msgstr "libvirt를 사용하여 로컬 디스플레이에 연결"
@@ -136,6 +141,9 @@ msgstr "인증이 필요함"
 
 msgid "Authentication was cancelled"
 msgstr "인증이 취소되었습니다"
+
+msgid "Automatically resize remote framebuffer"
+msgstr "원격 프레임버퍼 자동 크기 조절"
 
 msgid "Available virtual machines"
 msgstr "이용 할 수 있는 가상 장비"
@@ -218,14 +226,18 @@ msgstr "유닉스 소켓 생성에 실패하였습니다: %s"
 msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr "커서 표시 모드: '로컬' 또는 '자동'"
+
 msgid "Customise hotkeys"
 msgstr "핫키 사용자 정의"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "자동으로 터널링하지 않고 직접 연결"
-
-msgid "Disconnect"
-msgstr "연결 해제"
 
 #, c-format
 msgid "Display _%d"
@@ -276,6 +288,10 @@ msgstr "폴더 공유"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "예를 들면, spice://foo.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -289,6 +305,10 @@ msgstr "게스트 상세정보"
 msgid "Guest domain has shutdown"
 msgstr "게스트 도메인이 종료되었습니다"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "유효하지 않은 파일 %s: "
@@ -300,14 +320,8 @@ msgstr "잘못된 키오스크-종료 인수: %s"
 msgid "Invalid password"
 msgstr "잘못된 비밀번호"
 
-msgid "Leave fullscreen"
-msgstr "전체 화면 해제"
-
 msgid "Loading..."
 msgstr "적재..."
-
-msgid "Minimize"
-msgstr "최소화합니다"
 
 msgid "Name"
 msgstr "이름"
@@ -328,13 +342,17 @@ msgid "No virtual machine was chosen"
 msgstr "선택한 가상장비가 없습니다"
 
 msgid "Open in full screen mode (adjusts guest resolution to fit the client)"
-msgstr "전체 화면 방법으로 개방합니다 (클라이언트에 맞게 게스트 해상도를 조정합니다)"
+msgstr ""
+"전체 화면 방법으로 개방합니다 (클라이언트에 맞게 게스트 해상도를 조정합니다)"
 
 msgid "Password:"
 msgstr "비밀번호:"
 
 msgid "Please add an extension to the file name"
 msgstr "파일 이름에 확장자를 추가해 주세요"
+
+msgid "Power _down"
+msgstr ""
 
 msgid "Preferences"
 msgstr "기본 설정"
@@ -360,13 +378,15 @@ msgstr "다시 시작시 도메인에 재연결"
 msgid "Refresh"
 msgstr "새로고침"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "커서 개방"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"키 형식 key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void 를 다시 지도화 합니다"
+"키 형식 key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void 를 다시 지"
+"도화 합니다"
 
 msgid "Remote Viewer"
 msgstr "원격 뷰어"
@@ -378,9 +398,11 @@ msgid ""
 "can connect directly to both local and remotely hosted guest OS, optionally "
 "using SSL/TLS encryption."
 msgstr ""
-"원격 표시기는 게스트 운영체제 표시를 위해 그래픽 표시기를 제공합니다. 이 때에 이는 VNC 또는 SPICE 통신규약을 사용하여 게스트 "
-"운영체제를 지원합니다. 앞으로 통신규약은 사용자 요구에 따라 지원 할 것입니다. 표시기는 선택적으로 SSL/TLS 암호화를 사용하여, "
-"로컬과 원격에 초대되어진 가상 운영체제를 직접 연결 할 수 있습니다."
+"원격 표시기는 게스트 운영체제 표시를 위해 그래픽 표시기를 제공합니다. 이 때"
+"에 이는 VNC 또는 SPICE 통신규약을 사용하여 게스트 운영체제를 지원합니다. 앞으"
+"로 통신규약은 사용자 요구에 따라 지원 할 것입니다. 표시기는 선택적으로 SSL/"
+"TLS 암호화를 사용하여, 로컬과 원격에 초대되어진 가상 운영체제를 직접 연결 할 "
+"수 있습니다."
 
 msgid "Remote viewer client"
 msgstr "원격 보기 클라이언트"
@@ -390,7 +412,8 @@ msgstr "원격 접근 가상 장비"
 
 #, c-format
 msgid "Run '%s --help' to see a full list of available command line options\n"
-msgstr "사용 가능한 명령 줄 선택의 전체 목록을 보는데 '%s --help'를 실행합니다\n"
+msgstr ""
+"사용 가능한 명령 줄 선택의 전체 목록을 보는데 '%s --help'를 실행합니다\n"
 
 msgid "Save screenshot"
 msgstr "스크린샷 저장"
@@ -401,6 +424,7 @@ msgstr "Screenshot.png"
 msgid "Select ISO"
 msgstr "ISO 선택"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "리디렉션을 위한 USB 장치 선택"
 
@@ -416,8 +440,9 @@ msgstr "이름으로만 가상 장비를 선택합니다"
 msgid "Selected"
 msgstr "선택됨"
 
-msgid "Send key combination"
-msgstr "조합 키 전송"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr "직렬"
@@ -425,20 +450,25 @@ msgstr "직렬"
 msgid "Set window title"
 msgstr "창 제목 설정"
 
+msgid "Share client session"
+msgstr "공유 클라이언트 세션"
+
 msgid "Share clipboard"
 msgstr "클립보드 공유"
 
 msgid "Share folder"
 msgstr "공유 폴더"
 
-msgid "Show password"
-msgstr "비밀번호 보여주기"
+msgid "Show / hide password text"
+msgstr "비밀번호 텍스트 보이기 / 숨기기"
 
-msgid "Smartcard insertion"
-msgstr "스마트카드 삽입"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "스마트카드 제거"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "향신료"
@@ -454,8 +484,9 @@ msgstr[0] "%u의 %u 를전송중..."
 msgid "Transferring 1 file..."
 msgstr "1 파일 전송중..."
 
-msgid "USB device selection"
-msgstr "USB 장치 선택"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -513,6 +544,10 @@ msgstr "사용자 이름:"
 msgid "VNC does not provide GUID"
 msgstr "VNC는 GUID를 제공하지 않습니다"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "가상 머신 뷰어"
 
@@ -551,6 +586,10 @@ msgstr "줌_인"
 msgid "Zoom _Out"
 msgstr "줌_아웃"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "줌 단계는 %d-%d 안에서 필요합니다\n"
@@ -558,38 +597,34 @@ msgstr "줌 단계는 %d-%d 안에서 필요합니다\n"
 msgid "Zoom level of window, in percentage"
 msgstr "윈도우의 줌 레벨 (백분율)"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[없음]"
 
 msgid "_About"
 msgstr "_정보"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "_취소"
-
-msgid "_Change CD"
-msgstr "_CD 변경"
 
 msgid "_Close"
 msgstr "_닫기"
 
-msgid "_Displays"
-msgstr "_표시"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "파일(_F)"
-
-msgid "_Full screen"
-msgstr "_전체 화면"
-
-msgid "_Guest Details"
-msgstr "_게스트 상세"
-
-msgid "_Help"
-msgstr "_도움말"
-
-msgid "_Machine"
-msgstr "_장비"
+msgid "_Keyboard shortcuts"
+msgstr ""
 
 msgid "_Normal Size"
 msgstr "_정상 크기"
@@ -600,14 +635,8 @@ msgstr "_확인"
 msgid "_Pause"
 msgstr "_일시정지"
 
-msgid "_Power down"
-msgstr "_전원 종료"
-
-msgid "_Preferences"
-msgstr "_기본 설정"
-
-msgid "_Quit"
-msgstr "_종료"
+msgid "_Preferences…"
+msgstr ""
 
 msgid "_Reset"
 msgstr "_다시 설정"
@@ -617,18 +646,6 @@ msgstr "_저장"
 
 msgid "_Screenshot"
 msgstr "_스크린샷"
-
-msgid "_Send key"
-msgstr "키 전송(_S)"
-
-msgid "_USB device selection"
-msgstr "_USB 장치 선택"
-
-msgid "_View"
-msgstr "보기(_V)"
-
-msgid "_Zoom"
-msgstr "_확대"
 
 msgid "failed to parse oVirt URI"
 msgstr "oVirt URI 구문 분석에 실패하였습니다"
@@ -655,14 +672,86 @@ msgstr "oVirt VM %s는 작동하지 않습니다"
 msgid "only SSH or UNIX socket connection supported."
 msgstr "단지 SSH만 또는 유닉스 소켓 연결만 지원합니다."
 
+#~ msgid "(Press %s to release pointer) %s - %s"
+#~ msgstr "(포인터를 놓으려면 %s를 눌러주세요) %s - %s"
+
+#~ msgid "(Press %s to release pointer) - %s"
+#~ msgstr "(포인터를 놓으려면 %s를 눌러주세요) - %s"
+
+#~ msgid "Disconnect"
+#~ msgstr "연결 해제"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "전체 화면 해제"
+
+#~ msgid "Minimize"
+#~ msgstr "최소화합니다"
+
+#~ msgid "Release cursor"
+#~ msgstr "커서 개방"
+
+#~ msgid "Send key combination"
+#~ msgstr "조합 키 전송"
+
+#~ msgid "Show password"
+#~ msgstr "비밀번호 보여주기"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "스마트카드 삽입"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "스마트카드 제거"
+
+#~ msgid "USB device selection"
+#~ msgstr "USB 장치 선택"
+
+#~ msgid "_Change CD"
+#~ msgstr "_CD 변경"
+
+#~ msgid "_Displays"
+#~ msgstr "_표시"
+
+#~ msgid "_File"
+#~ msgstr "파일(_F)"
+
+#~ msgid "_Full screen"
+#~ msgstr "_전체 화면"
+
+#~ msgid "_Guest Details"
+#~ msgstr "_게스트 상세"
+
+#~ msgid "_Help"
+#~ msgstr "_도움말"
+
+#~ msgid "_Machine"
+#~ msgstr "_장비"
+
+#~ msgid "_Power down"
+#~ msgstr "_전원 종료"
+
+#~ msgid "_Preferences"
+#~ msgstr "_기본 설정"
+
+#~ msgid "_Quit"
+#~ msgstr "_종료"
+
+#~ msgid "_Send key"
+#~ msgstr "키 전송(_S)"
+
+#~ msgid "_USB device selection"
+#~ msgstr "_USB 장치 선택"
+
+#~ msgid "_View"
+#~ msgstr "보기(_V)"
+
+#~ msgid "_Zoom"
+#~ msgstr "_확대"
+
 #~ msgid " "
 #~ msgstr " "
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s - %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(포인터를 개방하려면 %s를 누르십시오)"
 
 #~ msgid "Connect to ssh failed."
 #~ msgstr "ssh 연결을 실패했습니다. "

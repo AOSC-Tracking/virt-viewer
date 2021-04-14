@@ -3,24 +3,25 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019, 2020.
+# Yuri Chornoivan <yurchor@ukr.net>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
-"PO-Revision-Date: 2020-09-13 11:29+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 10:44+0100\n"
+"PO-Revision-Date: 2021-04-14 16:15+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/uk/>\n"
+"Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.2.2\n"
+"X-Generator: Weblate 4.5.3\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -51,6 +52,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr "%s %s — %s"
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -62,24 +75,15 @@ msgstr "%s — %s"
 msgid "%s version %s"
 msgstr "%s, версія %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr "(Натисніть %s, щоб звільнити вказівник) %s — %s"
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr "(Натисніть %s, щоб звільнити вказівник) — %s"
+msgid "(Press %s to release pointer)"
+msgstr "(Натисніть %s, щоб вивільнити вказівник)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Завантаження…</b>"
+
+msgid "<never|always>"
+msgstr "<never|always>"
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -138,6 +142,9 @@ msgstr "Потрібно пройти розпізнавання"
 
 msgid "Authentication was cancelled"
 msgstr "Розпізнавання було скасовано"
+
+msgid "Automatically resize remote framebuffer"
+msgstr "Автоматично змінювати розміри віддаленого буфера кадрів"
 
 msgid "Available virtual machines"
 msgstr "Доступні віртуальні машини"
@@ -220,14 +227,18 @@ msgstr "Не вдалося створити сокет UNIX: %s"
 msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr "Режим показу вказівника: «local» або «auto»"
+
 msgid "Customise hotkeys"
 msgstr "Налаштувати клавіатурні скорочення"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "Пряме з’єднання без тунелів"
-
-msgid "Disconnect"
-msgstr "Від’єднатися"
 
 #, c-format
 msgid "Display _%d"
@@ -278,6 +289,10 @@ msgstr "Спільне використання тек"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Приклад: spice://foo.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -291,6 +306,10 @@ msgstr "Параметри гостьової системи"
 msgid "Guest domain has shutdown"
 msgstr "Гостьовий домен завершив роботу"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "Некоректний файл %s: "
@@ -302,14 +321,8 @@ msgstr "Некоректний параметр kiosk-quit: %s"
 msgid "Invalid password"
 msgstr "Некоректний пароль"
 
-msgid "Leave fullscreen"
-msgstr "Вийти з повноекранного режиму"
-
 msgid "Loading..."
 msgstr "Завантаження…"
-
-msgid "Minimize"
-msgstr "Мінімізувати"
 
 msgid "Name"
 msgstr "Назва"
@@ -340,6 +353,9 @@ msgstr "Пароль:"
 msgid "Please add an extension to the file name"
 msgstr "Будь ласка, допишіть до назви файла суфікс"
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "Параметри"
 
@@ -364,8 +380,9 @@ msgstr "Заново приєднатися до домену після пер�
 msgid "Refresh"
 msgstr "Оновити"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "Вивільнити вказівник"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -412,6 +429,7 @@ msgstr "Знімок_вікна.png"
 msgid "Select ISO"
 msgstr "Виберіть ISO"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "Виберіть пристрої USB для переспрямування"
 
@@ -427,8 +445,9 @@ msgstr "Вибирати віртуальну машину лише за її н
 msgid "Selected"
 msgstr "Вибрано"
 
-msgid "Send key combination"
-msgstr "Надіслати комбінацію ключів"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr "Послідовний"
@@ -436,20 +455,25 @@ msgstr "Послідовний"
 msgid "Set window title"
 msgstr "Встановити вказаний заголовок вікна"
 
+msgid "Share client session"
+msgstr "Спільний клієнтський сеанс"
+
 msgid "Share clipboard"
 msgstr "Спільний буфер обміну"
 
 msgid "Share folder"
 msgstr "Оприлюднити теку"
 
-msgid "Show password"
-msgstr "Показувати пароль"
+msgid "Show / hide password text"
+msgstr "Показати або приховати текст пароля"
 
-msgid "Smartcard insertion"
-msgstr "Вставлення картки пам’яті"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "Вилучення картки пам’яті"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -467,8 +491,9 @@ msgstr[2] "Передаємо %u файлів з %u..."
 msgid "Transferring 1 file..."
 msgstr "Передаємо 1 файл…"
 
-msgid "USB device selection"
-msgstr "Вибір пристрою USB"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -528,6 +553,10 @@ msgstr "Користувач:"
 msgid "VNC does not provide GUID"
 msgstr "VNC не надає GUID"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Перегляд віртуальних систем"
 
@@ -566,6 +595,10 @@ msgstr "З_більшити"
 msgid "Zoom _Out"
 msgstr "З_меншити"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "Масштаб слід вказувати у діапазоні від %d до %d\n"
@@ -573,38 +606,34 @@ msgstr "Масштаб слід вказувати у діапазоні від 
 msgid "Zoom level of window, in percentage"
 msgstr "Масштаб вікна, у відсотках"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[немає]"
 
 msgid "_About"
 msgstr "_Про програму"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "_Скасувати"
-
-msgid "_Change CD"
-msgstr "За_мінити CD"
 
 msgid "_Close"
 msgstr "З_акрити"
 
-msgid "_Displays"
-msgstr "_Дисплеї"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "_Файл"
-
-msgid "_Full screen"
-msgstr "_Повноекранний режим"
-
-msgid "_Guest Details"
-msgstr "Параметри _гостьової системи"
-
-msgid "_Help"
-msgstr "_Довідка"
-
-msgid "_Machine"
-msgstr "_Машина"
+msgid "_Keyboard shortcuts"
+msgstr ""
 
 msgid "_Normal Size"
 msgstr "З_вичайний розмір"
@@ -615,14 +644,8 @@ msgstr "_Гаразд"
 msgid "_Pause"
 msgstr "П_ризупинити"
 
-msgid "_Power down"
-msgstr "Ви_мкнути"
-
-msgid "_Preferences"
-msgstr "_Налаштування"
-
-msgid "_Quit"
-msgstr "Ви_йти"
+msgid "_Preferences…"
+msgstr ""
 
 msgid "_Reset"
 msgstr "_Скинути"
@@ -632,18 +655,6 @@ msgstr "З_берегти"
 
 msgid "_Screenshot"
 msgstr "З_німок вікна"
-
-msgid "_Send key"
-msgstr "_Надіслати клавішу"
-
-msgid "_USB device selection"
-msgstr "_Вибір пристрою USB"
-
-msgid "_View"
-msgstr "П_ерегляд"
-
-msgid "_Zoom"
-msgstr "_Масштаб"
 
 msgid "failed to parse oVirt URI"
 msgstr "не вдалося обробити адресу oVirt"
@@ -670,6 +681,81 @@ msgstr "ВМ oVirt %s не запущено"
 msgid "only SSH or UNIX socket connection supported."
 msgstr "передбачено підтримку лише з'єднань із SSH або сокетами UNIX."
 
+#~ msgid "(Press %s to release pointer) %s - %s"
+#~ msgstr "(Натисніть %s, щоб звільнити вказівник) %s — %s"
+
+#~ msgid "(Press %s to release pointer) - %s"
+#~ msgstr "(Натисніть %s, щоб звільнити вказівник) — %s"
+
+#~ msgid "Disconnect"
+#~ msgstr "Від’єднатися"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "Вийти з повноекранного режиму"
+
+#~ msgid "Minimize"
+#~ msgstr "Мінімізувати"
+
+#~ msgid "Release cursor"
+#~ msgstr "Вивільнити вказівник"
+
+#~ msgid "Send key combination"
+#~ msgstr "Надіслати комбінацію ключів"
+
+#~ msgid "Show password"
+#~ msgstr "Показувати пароль"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "Вставлення картки пам’яті"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "Вилучення картки пам’яті"
+
+#~ msgid "USB device selection"
+#~ msgstr "Вибір пристрою USB"
+
+#~ msgid "_Change CD"
+#~ msgstr "За_мінити CD"
+
+#~ msgid "_Displays"
+#~ msgstr "_Дисплеї"
+
+#~ msgid "_File"
+#~ msgstr "_Файл"
+
+#~ msgid "_Full screen"
+#~ msgstr "_Повноекранний режим"
+
+#~ msgid "_Guest Details"
+#~ msgstr "Параметри _гостьової системи"
+
+#~ msgid "_Help"
+#~ msgstr "_Довідка"
+
+#~ msgid "_Machine"
+#~ msgstr "_Машина"
+
+#~ msgid "_Power down"
+#~ msgstr "Ви_мкнути"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Налаштування"
+
+#~ msgid "_Quit"
+#~ msgstr "Ви_йти"
+
+#~ msgid "_Send key"
+#~ msgstr "_Надіслати клавішу"
+
+#~ msgid "_USB device selection"
+#~ msgstr "_Вибір пристрою USB"
+
+#~ msgid "_View"
+#~ msgstr "П_ерегляд"
+
+#~ msgid "_Zoom"
+#~ msgstr "_Масштаб"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -685,9 +771,6 @@ msgstr "передбачено підтримку лише з'єднань із 
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s — %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(Натисніть %s, щоб вивільнити вказівник)"
 
 #~ msgid "Address is too long for unix socket_path: %s"
 #~ msgstr "Адреса є надто довгою для socket_path UNIX: %s"

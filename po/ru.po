@@ -15,12 +15,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
 "PO-Revision-Date: 2021-02-16 20:40+0000\n"
 "Last-Translator: Igor Gorbounov <igor.gorbounov@gmail.com>\n"
-"Language-Team: Russian <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/ru/>\n"
+"Language-Team: Russian <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,6 +29,7 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.4.2\n"
 
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
@@ -59,6 +60,18 @@ msgstr ""
 "\n"
 
 #. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#, c-format
+msgid "%s %s - %s"
+msgstr ""
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
 #. * This is "<subtitle> - <appname>"
 #. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
 #.
@@ -70,24 +83,15 @@ msgstr "%s - %s"
 msgid "%s version %s"
 msgstr "%s версии %s"
 
-#. translators:
-#. * This is "<ungrab accelerator> <subtitle> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
-#.
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
-msgstr "(Нажмите %s, чтобы освободить указатель) %s - %s"
-
-#. translators:
-#. * This is "<ungrab accelerator> - <appname>"
-#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
-#.
-#, c-format
-msgid "(Press %s to release pointer) - %s"
-msgstr "(Нажмите %s для освобождения указателя) - %s"
+msgid "(Press %s to release pointer)"
+msgstr "(нажмите %s для освобождения курсора)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>Загрузка...</b>"
+
+msgid "<never|always>"
+msgstr ""
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -146,6 +150,9 @@ msgstr "Требуется аутентификация"
 
 msgid "Authentication was cancelled"
 msgstr "Аутентификация была отменена"
+
+msgid "Automatically resize remote framebuffer"
+msgstr ""
 
 msgid "Available virtual machines"
 msgstr "Доступные виртуальные машины"
@@ -229,14 +236,18 @@ msgstr "Ошибка создания сокета UNIX: %s"
 msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr ""
+
 msgid "Customise hotkeys"
 msgstr "Настроить комбинации клавиш"
 
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr ""
+
 msgid "Direct connection with no automatic tunnels"
 msgstr "Прямое подключение без автоматических туннелей"
-
-msgid "Disconnect"
-msgstr "Отключиться"
 
 #, c-format
 msgid "Display _%d"
@@ -287,6 +298,10 @@ msgstr "Совместный доступ к папке"
 msgid "For example, spice://foo.example.org:5900"
 msgstr "Пример: spice://foo.example.org:5900"
 
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
 msgid "GUID:"
 msgstr "GUID:"
 
@@ -300,6 +315,10 @@ msgstr "Сведения о гостевой системе"
 msgid "Guest domain has shutdown"
 msgstr "Гостевой домен завершил работу"
 
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr ""
+
 #, c-format
 msgid "Invalid file %s: "
 msgstr "Недопустимый файл %s: "
@@ -311,14 +330,8 @@ msgstr "недопустимый параметр команды kiosk-quit: %s"
 msgid "Invalid password"
 msgstr "Неверный пароль"
 
-msgid "Leave fullscreen"
-msgstr "Выйти из полноэкранного режима"
-
 msgid "Loading..."
 msgstr "Загрузка..."
-
-msgid "Minimize"
-msgstr "Минимизировать"
 
 msgid "Name"
 msgstr "Имя"
@@ -349,6 +362,9 @@ msgstr "Пароль:"
 msgid "Please add an extension to the file name"
 msgstr "Добавьте расширение к имени файла"
 
+msgid "Power _down"
+msgstr ""
+
 msgid "Preferences"
 msgstr "Настройка"
 
@@ -373,14 +389,15 @@ msgstr "Повторно подключаться к домену после п�
 msgid "Refresh"
 msgstr "Обновить"
 
+msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr "Освободить курсор"
+msgstr ""
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"Формат переназначения клавиш: клавиша=модификатор+клавиша, например, "
-"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+"Формат переназначения клавиш: клавиша=модификатор+клавиша, например, F1=SHIFT"
+"+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "Удалённый рабочий стол"
@@ -420,6 +437,7 @@ msgstr "Screenshot.png"
 msgid "Select ISO"
 msgstr "Выбор ISO"
 
+#. Create the widgets
 msgid "Select USB devices for redirection"
 msgstr "Выбор USB-устройств для перенаправления"
 
@@ -435,8 +453,9 @@ msgstr "Выбирать виртуальную машину только по �
 msgid "Selected"
 msgstr "Выбрано"
 
-msgid "Send key combination"
-msgstr "Отправить комбинацию клавиш"
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr ""
 
 msgid "Serial"
 msgstr "Последовательная консоль"
@@ -444,20 +463,25 @@ msgstr "Последовательная консоль"
 msgid "Set window title"
 msgstr "Изменить заголовок окна"
 
+msgid "Share client session"
+msgstr ""
+
 msgid "Share clipboard"
 msgstr "Разделить буфер обмена"
 
 msgid "Share folder"
 msgstr "Общая папка"
 
-msgid "Show password"
-msgstr "Показать пароль"
+msgid "Show / hide password text"
+msgstr ""
 
-msgid "Smartcard insertion"
-msgstr "Подключение смарт-карты"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr ""
 
-msgid "Smartcard removal"
-msgstr "Извлечение смарт-карты"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr ""
 
 msgid "Spice"
 msgstr "Spice"
@@ -475,8 +499,9 @@ msgstr[2] "Передача %u файлов из %u..."
 msgid "Transferring 1 file..."
 msgstr "Передача 1 файла..."
 
-msgid "USB device selection"
-msgstr "Выбор USB-устройств"
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr ""
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -534,6 +559,10 @@ msgstr "Имя пользователь:"
 msgid "VNC does not provide GUID"
 msgstr "VNC не предоставляет GUID"
 
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr ""
+
 msgid "Virt Viewer"
 msgstr "Просмотр виртуальных систем"
 
@@ -572,6 +601,10 @@ msgstr "У_величить"
 msgid "Zoom _Out"
 msgstr "У_меньшить"
 
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr "Уровень увеличения должен быть в пределах %d-%d\n"
@@ -579,38 +612,34 @@ msgstr "Уровень увеличения должен быть в преде�
 msgid "Zoom level of window, in percentage"
 msgstr "Масштаб окна в процентах"
 
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
 msgstr "[нет]"
 
 msgid "_About"
 msgstr "_О программе"
 
+msgid "_Auto resize"
+msgstr ""
+
 msgid "_Cancel"
 msgstr "_Отменить"
-
-msgid "_Change CD"
-msgstr "_Изменение CD-диска"
 
 msgid "_Close"
 msgstr "За_крыть"
 
-msgid "_Displays"
-msgstr "_Дисплеи"
+msgid "_Guest details"
+msgstr ""
 
-msgid "_File"
-msgstr "_Файл"
-
-msgid "_Full screen"
-msgstr "_На весь экран"
-
-msgid "_Guest Details"
-msgstr "Сведения о  _гостевой системе"
-
-msgid "_Help"
-msgstr "_Справка"
-
-msgid "_Machine"
-msgstr "_Система"
+msgid "_Keyboard shortcuts"
+msgstr ""
 
 msgid "_Normal Size"
 msgstr "_Нормальный масштаб"
@@ -621,14 +650,8 @@ msgstr "_OK"
 msgid "_Pause"
 msgstr "П_ауза"
 
-msgid "_Power down"
-msgstr "_Выключение"
-
-msgid "_Preferences"
-msgstr "_Настройка"
-
-msgid "_Quit"
-msgstr "В_ыход"
+msgid "_Preferences…"
+msgstr ""
 
 msgid "_Reset"
 msgstr "П_ерезагрузка"
@@ -638,18 +661,6 @@ msgstr "_Сохранить"
 
 msgid "_Screenshot"
 msgstr "_Снимок экрана"
-
-msgid "_Send key"
-msgstr "О_тправить клавишу"
-
-msgid "_USB device selection"
-msgstr "Выбор _USB-устройств"
-
-msgid "_View"
-msgstr "_Просмотр"
-
-msgid "_Zoom"
-msgstr "_Масштаб"
 
 msgid "failed to parse oVirt URI"
 msgstr "не удалось обработать URI oVirt"
@@ -676,6 +687,81 @@ msgstr "Виртуальная машина oVirt %s не работает"
 msgid "only SSH or UNIX socket connection supported."
 msgstr "поддерживается только подключение по SSH или через сокет UNIX."
 
+#~ msgid "(Press %s to release pointer) %s - %s"
+#~ msgstr "(Нажмите %s, чтобы освободить указатель) %s - %s"
+
+#~ msgid "(Press %s to release pointer) - %s"
+#~ msgstr "(Нажмите %s для освобождения указателя) - %s"
+
+#~ msgid "Disconnect"
+#~ msgstr "Отключиться"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "Выйти из полноэкранного режима"
+
+#~ msgid "Minimize"
+#~ msgstr "Минимизировать"
+
+#~ msgid "Release cursor"
+#~ msgstr "Освободить курсор"
+
+#~ msgid "Send key combination"
+#~ msgstr "Отправить комбинацию клавиш"
+
+#~ msgid "Show password"
+#~ msgstr "Показать пароль"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "Подключение смарт-карты"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "Извлечение смарт-карты"
+
+#~ msgid "USB device selection"
+#~ msgstr "Выбор USB-устройств"
+
+#~ msgid "_Change CD"
+#~ msgstr "_Изменение CD-диска"
+
+#~ msgid "_Displays"
+#~ msgstr "_Дисплеи"
+
+#~ msgid "_File"
+#~ msgstr "_Файл"
+
+#~ msgid "_Full screen"
+#~ msgstr "_На весь экран"
+
+#~ msgid "_Guest Details"
+#~ msgstr "Сведения о  _гостевой системе"
+
+#~ msgid "_Help"
+#~ msgstr "_Справка"
+
+#~ msgid "_Machine"
+#~ msgstr "_Система"
+
+#~ msgid "_Power down"
+#~ msgstr "_Выключение"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Настройка"
+
+#~ msgid "_Quit"
+#~ msgstr "В_ыход"
+
+#~ msgid "_Send key"
+#~ msgstr "О_тправить клавишу"
+
+#~ msgid "_USB device selection"
+#~ msgstr "Выбор _USB-устройств"
+
+#~ msgid "_View"
+#~ msgstr "_Просмотр"
+
+#~ msgid "_Zoom"
+#~ msgstr "_Масштаб"
+
 #~ msgid ""
 #~ "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 #~ "Copyright (C) 2007-2014 Red Hat, Inc."
@@ -691,9 +777,6 @@ msgstr "поддерживается только подключение по SS
 
 #~ msgid "%s%s%s - %s"
 #~ msgstr "%s%s%s — %s"
-
-#~ msgid "(Press %s to release pointer)"
-#~ msgstr "(нажмите %s для освобождения курсора)"
 
 #~ msgid "Address is too long for unix socket_path: %s"
 #~ msgstr "Слишком длинный адрес для Unix socket_path: %s"

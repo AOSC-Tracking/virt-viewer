@@ -5,118 +5,119 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.com/virt-viewer/virt-viewer/-/issues\n"
-"POT-Creation-Date: 2020-09-11 11:34+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"PO-Revision-Date: 2021-04-08 06:02+0000\n"
+"Last-Translator: Jan Kuparinen <copper_fin@hotmail.com>\n"
+"Language-Team: Finnish <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5.3\n"
 
-#: src/remote-viewer.c:148
+#, c-format
 msgid ""
 "\n"
 "Error: can't handle multiple URIs\n"
 "\n"
 msgstr ""
+"\n"
+"Virhe: ei voi käsitellä useita URI-osoitteita\n"
+"\n"
 
-#: src/virt-viewer.c:183
 #, c-format
 msgid ""
 "\n"
 "No ID|UUID|DOMAIN-NAME was specified for '%s'\n"
 "\n"
 msgstr ""
+"\n"
+"ID|UUID|DOMAIN-NAME ei annettu kohteelle '%s'\n"
+"\n"
 
-#: src/virt-viewer.c:171
 #, c-format
 msgid ""
 "\n"
 "Usage: %s [OPTIONS] [ID|UUID|DOMAIN-NAME]\n"
 "\n"
 msgstr ""
-
-#. translators:
-#. * This is "<subtitle> - <appname>"
-#. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
-#.
-#: src/virt-viewer-window.c:1433
-#, c-format
-msgid "%s - %s"
-msgstr ""
-
-#: src/virt-viewer-app.c:2187
-#, c-format
-msgid "%s version %s"
-msgstr ""
+"\n"
+"Käyttö: %s [VALINNAT] [ID|UUID|TOIMIALUEEN-NIMI]\n"
+"\n"
 
 #. translators:
 #. * This is "<ungrab accelerator> <subtitle> - <appname>"
 #. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
 #.
-#: src/virt-viewer-window.c:1413
 #, c-format
-msgid "(Press %s to release pointer) %s - %s"
+msgid "%s %s - %s"
 msgstr ""
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
 #. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
 #.
-#: src/virt-viewer-window.c:1422
+#. translators:
+#. * This is "<subtitle> - <appname>"
+#. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
+#.
 #, c-format
-msgid "(Press %s to release pointer) - %s"
+msgid "%s - %s"
+msgstr "%s - %s"
+
+#, c-format
+msgid "%s version %s"
+msgstr "%s versio %s"
+
+#, c-format
+msgid "(Press %s to release pointer)"
 msgstr ""
 
-#: src/remote-viewer-iso-list-dialog.c:206
 msgid "<b>Loading...</b>"
+msgstr "<b>Ladataan...</b>"
+
+msgid "<never|always>"
 msgstr ""
 
-#: src/virt-viewer-app.c:2948
 msgid "<never|on-disconnect>"
-msgstr ""
+msgstr "<ei koskaan|yhteyttä katkaistaessa>"
 
-#: src/resources/ui/virt-viewer-about.ui:19
 msgid "A remote desktop client built with GTK-VNC, SPICE-GTK and libvirt"
 msgstr ""
+"Etätyöpöytäasiakas, joka on rakennettu käyttäen: GTK-VNC, SPICE-GTK ja "
+"libvirt"
 
-#: src/resources/ui/virt-viewer-about.ui:8
 msgid "About Virt-Viewer"
-msgstr ""
+msgstr "Tietoja Virt-Vieweristä"
 
-#: data/remote-viewer.desktop.in:4
 msgid "Access remote desktops"
-msgstr ""
+msgstr "Käytä etätyöpöytiä"
 
-#: src/virt-viewer-app.c:855
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Osoite on liian pitkä UNIX socket_path: %s:lle"
 
-#: src/virt-viewer-file.c:883
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
-msgstr ""
+msgstr "Tämän yhteyden muodostamiseen tarvitaan vähintään %s versio %s"
 
-#: src/virt-viewer-file.c:875
 #, c-format
 msgid ""
 "At least %s version %s is required to setup this connection, see %s for "
 "details"
 msgstr ""
+"Tämän yhteyden muodostamiseen tarvitaan vähintään %s versio %s, katso "
+"lisätietoja %s:stä"
 
-#: src/virt-viewer.c:133
 msgid "Attach to the local display using libvirt"
-msgstr ""
+msgstr "Kiinnitä paikalliseen näyttöön libvirtillä"
 
-#: src/virt-viewer.c:1056
 msgid "Authentication failed."
-msgstr ""
+msgstr "Tunnistautuminen epäonnistui."
 
-#: src/virt-viewer-auth.c:89
 #, c-format
 msgid ""
 "Authentication is required for the %s connection to:\n"
@@ -124,328 +125,270 @@ msgid ""
 "<b>%s</b>\n"
 "\n"
 msgstr ""
+"Tunnistautuminen vaaditaan %s yhteyden muodostamiseksi kohteeseen:\n"
+"\n"
+"<b>%s</b>\n"
+"\n"
 
-#: src/virt-viewer-auth.c:93
 #, c-format
 msgid "Authentication is required for the %s connection:\n"
-msgstr ""
+msgstr "Tunnistautuminen vaaditaan %s yhteyden muodostamiseksi:\n"
 
-#: src/resources/ui/virt-viewer-auth.ui:7
 msgid "Authentication required"
-msgstr ""
+msgstr "Tunnistautuminen vaaditaan"
 
-#: src/remote-viewer.c:448 src/virt-viewer.c:1109
 msgid "Authentication was cancelled"
+msgstr "Tunnistautuminen keskeytettiin"
+
+msgid "Automatically resize remote framebuffer"
 msgstr ""
 
-#: src/resources/ui/virt-viewer-vm-connection.ui:96
 msgid "Available virtual machines"
-msgstr ""
+msgstr "Saatavilla olevat virtuaalikoneet"
 
-#: src/resources/ui/remote-viewer-connect.ui:134
-#: src/resources/ui/virt-viewer-vm-connection.ui:39
 msgid "C_onnect"
-msgstr ""
+msgstr "_Yhdistä"
 
-#: src/virt-viewer-app.c:1385
 #, c-format
 msgid "Can't connect to channel: %s"
-msgstr ""
+msgstr "Ei voida muodostaa yhteyttä kanavaan: %s"
 
-#: src/remote-viewer.c:792
 msgid "Cannot determine the connection type from URI"
-msgstr ""
+msgstr "Yhteystyyppiä ei voida määrittää URI:stä"
 
-#: src/virt-viewer.c:550
 #, c-format
 msgid "Cannot determine the graphic type for the guest %s"
-msgstr ""
+msgstr "Vieraan %s graafista tyyppiä ei voida määrittää"
 
-#: src/virt-viewer.c:599
 #, c-format
 msgid "Cannot determine the host for the guest %s"
-msgstr ""
+msgstr "Vieraan %s isäntää ei voida määrittää"
 
-#: src/virt-viewer.c:928
 msgid "Cannot get guest state"
-msgstr ""
+msgstr "Vieraan tilaa ei voi saada"
 
-#: src/remote-viewer-iso-list-dialog.c:371
 msgid "Change CD"
-msgstr ""
+msgstr "Vaihda CD"
 
-#: src/virt-viewer.c:925
 msgid "Checking guest domain status"
-msgstr ""
+msgstr "Tarkistetaan vieraan toimialueen tila"
 
-#: src/resources/ui/virt-viewer-vm-connection.ui:8
 msgid "Choose a virtual machine"
-msgstr ""
+msgstr "Valitse virtuaalikone"
 
-#: src/remote-viewer-iso-list-dialog.c:278
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
-#: src/virt-viewer-app.c:1370
 msgid "Connect to SSH failed."
-msgstr ""
+msgstr "Yhteyden muodostaminen SSH:hon epäonnistui."
 
-#: src/virt-viewer-app.c:1404
 msgid "Connect to channel unsupported."
-msgstr ""
+msgstr "Kanavalle yhdistämistä ei tueta."
 
-#: src/virt-viewer.c:135
 msgid "Connect to hypervisor"
-msgstr ""
+msgstr "Yhdistä hypervisoriin"
 
-#: src/virt-viewer-app.c:1654
 msgid "Connected to graphic server"
-msgstr ""
+msgstr "Yhdistetty graafiseen palvelimeen"
 
-#: src/virt-viewer-app.c:871
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "Yhdistäminen UNIX-pistokkeeseen epäonnistui: %s"
 
-#: src/virt-viewer-app.c:1494
 msgid "Connecting to graphic server"
-msgstr ""
+msgstr "Yhdistetään graafiseen palvelimeen"
 
-#: src/resources/ui/remote-viewer-connect.ui:24
 msgid "Connection _Address"
-msgstr ""
+msgstr "Yhteys_osoite"
 
-#: src/resources/ui/remote-viewer-connect.ui:6
 msgid "Connection details"
-msgstr ""
+msgstr "Yhteyden tiedot"
 
-#: src/virt-viewer-display-vte.c:181
 msgid "Console support is compiled out!"
-msgstr ""
+msgstr "Konsolituki on jätetty pois käännöksestä!"
 
-#: src/resources/ui/virt-viewer-about.ui:17
 msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 "Copyright (C) 2007-2020 Red Hat, Inc."
 msgstr ""
+"Copyright © 2007-2012 Daniel P. Berrange\n"
+"Copyright © 2007-2020 Red Hat, Inc."
 
-#: src/remote-viewer.c:691
 msgid "Couldn't open oVirt session: "
-msgstr ""
+msgstr "OVirt-istuntoa ei voitu avata: "
 
-#: src/virt-viewer-app.c:865
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "UNIX-pistokkeen luominen epäonnistui: %s"
 
-#: src/virt-viewer-window.c:1405
 msgid "Ctrl_L+Alt_L"
+msgstr "Ctrl_L+Alt_L"
+
+msgid "Cursor display mode: 'local' or 'auto'"
 msgstr ""
 
-#: src/virt-viewer-app.c:2942
 msgid "Customise hotkeys"
+msgstr "Mukauta pikanäppäimiä"
+
+msgctxt "shortcut window"
+msgid "Devices"
 msgstr ""
 
-#: src/virt-viewer.c:131
 msgid "Direct connection with no automatic tunnels"
-msgstr ""
+msgstr "Suora yhteys ilman automaattisia tunneleita"
 
-#: src/virt-viewer-window.c:1294
-msgid "Disconnect"
-msgstr ""
-
-#: src/virt-viewer-app.c:2641
 #, c-format
 msgid "Display _%d"
-msgstr ""
+msgstr "Näyttö _%d"
 
-#: src/virt-viewer-app.c:1469
 msgid "Display can only be attached through libvirt with --attach"
-msgstr ""
+msgstr "Näyttö voidaan liittää vain libvirtin kautta --attach:illa"
 
-#: src/virt-viewer-app.c:2952
 msgid "Display debugging information"
-msgstr ""
+msgstr "Näytä vianjäljitystiedot"
 
-#: src/virt-viewer-app.c:2950
 msgid "Display verbose information"
-msgstr ""
+msgstr "Näytä vuolaat tiedot"
 
-#: src/virt-viewer-app.c:2936
 msgid "Display version information"
-msgstr ""
+msgstr "Näytä versiotiedot"
 
-#: src/virt-viewer-app.c:684
 msgid "Do not ask me again"
-msgstr ""
+msgstr "Älä kysy uudestaan"
 
-#: src/virt-viewer-app.c:682
 msgid "Do you want to close the session?"
-msgstr ""
+msgstr "Haluatko sulkea istunnon?"
 
-#: src/virt-viewer-app.c:2946
 msgid "Enable kiosk mode"
-msgstr ""
+msgstr "Käytä kioskitilaa"
 
-#: src/remote-viewer-iso-list-dialog.c:319
 msgid "Failed to change CD"
-msgstr ""
+msgstr "CD:n vaihtaminen epäonnistui"
 
-#: src/virt-viewer.c:1116
 msgid "Failed to connect: "
-msgstr ""
+msgstr "Yhteyden muodostaminen epäonnistui: "
 
-#: src/remote-viewer.c:719
 msgid "Failed to initiate connection"
-msgstr ""
+msgstr "Yhteyden muodostaminen epäonnistui"
 
-#: src/remote-viewer.c:765
 msgid "Failed to read stdin: "
-msgstr ""
+msgstr "Vakiosyötteen lukeminen epäonnistui: "
 
-#: src/virt-viewer-file-transfer-dialog.c:124
 msgid "File Transfers"
-msgstr ""
+msgstr "Tiedostonsiirrot"
 
-#: src/virt-viewer.c:889
 msgid "Finding guest domain"
-msgstr ""
+msgstr "Vierastoimialueen etsiminen"
 
-#: src/resources/ui/virt-viewer-preferences.ui:48
 msgid "Folder sharing"
-msgstr ""
+msgstr "Kansioiden jakaminen"
 
-#: src/resources/ui/remote-viewer-connect.ui:54
 msgid "For example, spice://foo.example.org:5900"
+msgstr "Esimerkiksi, spice://foo.example.org:5900"
+
+msgctxt "shortcut window"
+msgid "Fullscreen"
 msgstr ""
 
-#: src/resources/ui/virt-viewer-guest-details.ui:68
 msgid "GUID:"
-msgstr ""
+msgstr "GUID:"
 
-#: src/virt-viewer.c:627
 #, c-format
 msgid "Guest '%s' is not reachable"
-msgstr ""
+msgstr "Vieras '%s' ei ole tavoitettavissa"
 
-#: src/resources/ui/virt-viewer-guest-details.ui:7
 msgid "Guest Details"
-msgstr ""
+msgstr "Vieraan tiedot"
 
-#: src/virt-viewer-app.c:1593
 msgid "Guest domain has shutdown"
+msgstr "Vierastoimialue on sammutettu"
+
+msgctxt "shortcut window"
+msgid "Guest input devices"
 msgstr ""
 
-#: src/remote-viewer.c:782
 #, c-format
 msgid "Invalid file %s: "
-msgstr ""
+msgstr "Virheellinen tiedosto %s: "
 
-#: src/virt-viewer-app.c:2925
 #, c-format
 msgid "Invalid kiosk-quit argument: %s"
-msgstr ""
+msgstr "Virheellinen kiosk-quit-argumentti: %s"
 
-#: src/virt-viewer-session-spice.c:731
 msgid "Invalid password"
-msgstr ""
+msgstr "Väärä salasana"
 
-#: src/virt-viewer-window.c:1330 src/virt-viewer-window.c:1331
-msgid "Leave fullscreen"
-msgstr ""
-
-#: src/resources/ui/remote-viewer-iso-list.ui:28
 msgid "Loading..."
-msgstr ""
+msgstr "Ladataan..."
 
-#: src/virt-viewer-window.c:1302
-msgid "Minimize"
-msgstr ""
-
-#: src/resources/ui/remote-viewer-iso-list.ui:129
-#: src/resources/ui/virt-viewer-vm-connection.ui:74
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
-#: src/resources/ui/virt-viewer-guest-details.ui:56
 msgid "Name:"
-msgstr ""
+msgstr "Nimi:"
 
-#: src/remote-viewer-iso-list-dialog.c:156
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "Ei ISO-tiedostoja toimialueella"
 
-#: src/remote-viewer.c:748
 msgid "No connection was chosen"
-msgstr ""
+msgstr "Yhteyttä ei valittu"
 
-#: src/virt-viewer-vm-connection.c:64
 msgid "No running virtual machine found"
-msgstr ""
+msgstr "Käynnissä olevaa virtuaalikonetta ei löytynyt"
 
-#: src/virt-viewer-vm-connection.c:97
 msgid "No virtual machine was chosen"
-msgstr ""
+msgstr "Virtuaalikonetta ei valittu"
 
-#: src/virt-viewer-app.c:2940
 msgid "Open in full screen mode (adjusts guest resolution to fit the client)"
 msgstr ""
+"Avaa koko näytön tilassa (säätää vierasresoluutiota asiakkaalle sopivaksi)"
 
-#: src/resources/ui/virt-viewer-auth.ui:93
 msgid "Password:"
-msgstr ""
+msgstr "Salasana:"
 
-#: src/virt-viewer-window.c:1108
 msgid "Please add an extension to the file name"
+msgstr "Lisää tiedostopääte tiedostonimeen"
+
+msgid "Power _down"
 msgstr ""
 
-#: src/resources/ui/virt-viewer-preferences.ui:8
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
-#: src/virt-viewer-session-spice.c:1023
 msgid "QEMU debug console"
-msgstr ""
+msgstr "QEMU-virheenkorjauskonsoli"
 
-#: src/virt-viewer-session-spice.c:1021
 msgid "QEMU human monitor"
-msgstr ""
+msgstr "QEMU manuaalinen tarkkailu"
 
-#: src/virt-viewer-app.c:2948
 msgid "Quit on given condition in kiosk mode"
-msgstr ""
+msgstr "Sulje, jos annettu ehto täyttyy kioskitilassa"
 
-#: src/resources/ui/virt-viewer-preferences.ui:82
 msgid "Read-only"
-msgstr ""
+msgstr "Vain luku"
 
-#: src/resources/ui/remote-viewer-connect.ui:78
 msgid "Recent connections"
-msgstr ""
+msgstr "Viimeaikaiset yhteydet"
 
-#: src/virt-viewer.c:139
 msgid "Reconnect to domain upon restart"
-msgstr ""
+msgstr "Muodosta yhteys toimialueeseen uudelleenkäynnistyksen jälkeen"
 
-#: src/remote-viewer-iso-list-dialog.c:277
 msgid "Refresh"
-msgstr ""
+msgstr "Päivitä"
 
-#: src/resources/ui/virt-viewer.ui:255
+msgctxt "shortcut window"
 msgid "Release cursor"
 msgstr ""
 
-#: src/virt-viewer-app.c:2944
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
+"Näppäinten uudelleenkartoitusmuoto näppäin=näppäinmoodi+näppäin esim. "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
-#: data/remote-viewer.appdata.xml.in:6 data/remote-viewer.desktop.in:3
-#: src/remote-viewer-main.c:39
 msgid "Remote Viewer"
-msgstr ""
+msgstr "Etäkatselu"
 
-#: data/remote-viewer.appdata.xml.in:9
 msgid ""
 "Remote Viewer provides a graphical viewer for the guest OS display. At this "
 "time it supports guest OS using the VNC or SPICE protocols. Further "
@@ -453,369 +396,355 @@ msgid ""
 "can connect directly to both local and remotely hosted guest OS, optionally "
 "using SSL/TLS encryption."
 msgstr ""
+"Remote Viewer tarjoaa graafisen katseluohjelman vieras-käyttöjärjestelmän "
+"näytölle. Tällä hetkellä se tukee vieras-käyttöjärjestelmää VNC- tai SPICE-"
+"protokollien avulla. Muita protokollia voidaan tukea tulevaisuudessa "
+"käyttäjien vaatimusten mukaan. Katsoja voi muodostaa yhteyden sekä "
+"paikallisiin että etäisännöityihin vieras käyttöjärjestelmiin, valinnaisesti "
+"myös käyttämällä SSL/TLS-salausta."
 
-#: src/remote-viewer.c:123
 msgid "Remote viewer client"
-msgstr ""
+msgstr "Etäkatseluohjelma"
 
-#: data/remote-viewer.appdata.xml.in:7
 msgid "Remotely access virtual machines"
-msgstr ""
+msgstr "Etäyhteys virtuaalikoneisiin"
 
-#: src/remote-viewer.c:162 src/virt-viewer.c:200
 #, c-format
 msgid "Run '%s --help' to see a full list of available command line options\n"
 msgstr ""
+"Suorita '%s --help' nähdäksesi kaikki käytettävissä olevat "
+"komentorivivalitsimet.\n"
 
-#: src/virt-viewer-window.c:1082
 msgid "Save screenshot"
-msgstr ""
+msgstr "Tallenna kuvakaappaus"
 
-#: src/virt-viewer-window.c:1094
 msgid "Screenshot.png"
-msgstr ""
+msgstr "Kuvakaappaus.png"
 
-#: src/resources/ui/remote-viewer-iso-list.ui:78
 msgid "Select ISO"
-msgstr ""
+msgstr "Valitse ISO"
 
-#: src/virt-viewer-session-spice.c:829
+#. Create the widgets
 msgid "Select USB devices for redirection"
-msgstr ""
+msgstr "Valitse USB-laitteet uudelleenohjattavaksi"
 
-#: src/virt-viewer.c:143
 msgid "Select the virtual machine only by its ID"
-msgstr ""
+msgstr "Valitse virtuaalikone vain sen ID-tunnuksella"
 
-#: src/virt-viewer.c:145
 msgid "Select the virtual machine only by its UUID"
-msgstr ""
+msgstr "Valitse virtuaalikone vain sen UUID-tunnuksella"
 
-#: src/virt-viewer.c:141
 msgid "Select the virtual machine only by its name"
-msgstr ""
+msgstr "Valitse virtuaalikone vain sen nimellä"
 
-#: src/resources/ui/remote-viewer-iso-list.ui:116
 msgid "Selected"
+msgstr "Valitut"
+
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
 
-#: src/virt-viewer-window.c:1320
-msgid "Send key combination"
-msgstr ""
-
-#: src/virt-viewer-session-spice.c:1019
 msgid "Serial"
-msgstr ""
+msgstr "Sarja"
 
-#: src/remote-viewer.c:116
 msgid "Set window title"
+msgstr "Aseta ikkunan otsikko"
+
+msgid "Share client session"
 msgstr ""
 
-#: src/resources/ui/virt-viewer-preferences.ui:96
 msgid "Share clipboard"
-msgstr ""
+msgstr "Jaa leikepöytä"
 
-#: src/resources/ui/virt-viewer-preferences.ui:70
 msgid "Share folder"
+msgstr "Jaa hakemisto"
+
+msgid "Show / hide password text"
 msgstr ""
 
-#: src/resources/ui/virt-viewer-auth.ui:137
-msgid "Show password"
+msgctxt "shortcut window"
+msgid "Smartcard insert"
 msgstr ""
 
-#: src/resources/ui/virt-viewer.ui:62
-msgid "Smartcard insertion"
+msgctxt "shortcut window"
+msgid "Smartcard remove"
 msgstr ""
 
-#: src/resources/ui/virt-viewer.ui:72
-msgid "Smartcard removal"
-msgstr ""
-
-#: src/resources/ui/virt-viewer-preferences.ui:132
 msgid "Spice"
-msgstr ""
+msgstr "Spice"
 
-#: src/resources/ui/virt-viewer-about.ui:25
 msgid "The Fedora Translation Team"
-msgstr ""
+msgstr "Fedoran käännösryhmä"
 
-#: src/virt-viewer-file-transfer-dialog.c:152
 #, c-format
 msgid "Transferring %u file of %u..."
 msgid_plural "Transferring %u files of %u..."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Siirretään %u tiedosto %u:sta ..."
+msgstr[1] "Siirretään %u tiedostoa %u:sta ..."
 
-#: src/virt-viewer-file-transfer-dialog.c:150
 msgid "Transferring 1 file..."
+msgstr "Siirretään 1 tiedosto..."
+
+msgctxt "shortcut window"
+msgid "USB device reset"
 msgstr ""
 
-#: src/virt-viewer-window.c:1310 src/virt-viewer-window.c:1311
-msgid "USB device selection"
-msgstr ""
-
-#: src/virt-viewer-app.c:1731
 #, c-format
 msgid "USB redirection error: %s"
-msgstr ""
+msgstr "USB-uudelleenohjauksen virhe: %s"
 
-#: src/virt-viewer-app.c:1709
 #, c-format
 msgid "Unable to authenticate with remote desktop server at %s: %s\n"
 msgstr ""
+"Tunnistautuminen etätyöpöytäpalvelimeen epäonnistui osoitteessa %s: %s\n"
 
-#: src/virt-viewer-app.c:1723
 #, c-format
 msgid "Unable to authenticate with remote desktop server: %s"
-msgstr ""
+msgstr "Tunnistautuminen etätyöpöytäpalvelimeen epäonnistui: %s"
 
-#: src/virt-viewer.c:1048
 #, c-format
 msgid "Unable to connect to libvirt with URI: %s."
-msgstr ""
+msgstr "Yhteyttä libvirtiin ei voida muodostaa URI:lla: %s."
 
-#: src/virt-viewer-app.c:1683
 #, c-format
 msgid "Unable to connect to the graphic server %s"
-msgstr ""
+msgstr "Ei voida muodostaa yhteyttä graafiseen palvelimeen %s"
 
-#: src/remote-viewer.c:811
 #, c-format
 msgid "Unable to connect: %s"
-msgstr ""
+msgstr "Yhdistäminen epäonnistui: %s"
 
-#: src/virt-viewer-window.c:1271
 msgid "Unable to connnect to oVirt"
-msgstr ""
+msgstr "Yhteyttä oVirtiin ei saada"
 
-#: src/virt-viewer-window.c:1059
 #, c-format
 msgid "Unable to determine image format for file '%s'"
-msgstr ""
+msgstr "Tiedoston '%s' levykuvamuotoa ei voida määrittää"
 
-#: src/virt-viewer-window.c:1183
 msgctxt "Unknown UUID"
 msgid "Unknown"
-msgstr ""
+msgstr "Tuntematon"
 
-#: src/virt-viewer-window.c:1181
 msgctxt "Unknown name"
 msgid "Unknown"
-msgstr ""
+msgstr "Tuntematon"
 
-#: src/remote-viewer-iso-list-dialog.c:298
-#: src/virt-viewer-file-transfer-dialog.c:197
 msgid "Unspecified error"
-msgstr ""
+msgstr "Määrittelemätön virhe"
 
-#: src/virt-viewer-session-vnc.c:158
 #, c-format
 msgid "Unsupported authentication type %u"
-msgstr ""
+msgstr "Ei tuettu tunnistautumistyyppi %u"
 
-#: src/virt-viewer-app.c:1286
 #, c-format
 msgid "Unsupported graphic type '%s'"
-msgstr ""
+msgstr "Grafiikkatyyppi '%s' ei tuettu"
 
-#: src/resources/ui/virt-viewer-auth.ui:105
 msgid "Username:"
-msgstr ""
+msgstr "Käyttäjätunnus:"
 
-#: src/virt-viewer-display-vnc.c:130
 msgid "VNC does not provide GUID"
+msgstr "VNC ei tarjoa GUID-tunnusta"
+
+msgctxt "shortcut window"
+msgid "Viewer"
 msgstr ""
 
-#: src/virt-viewer-main.c:38
 msgid "Virt Viewer"
-msgstr ""
+msgstr "Virt katseluohjelma"
 
-#: data/virt-viewer-mime.xml.in:5
 msgid "Virt-Viewer connection file"
-msgstr ""
+msgstr "Virt katseluohjelman yhteystiedosto"
 
-#: src/virt-viewer.c:860
 #, c-format
 msgid "Virtual machine %s is not running"
-msgstr ""
+msgstr "Virtuaalikone %s ei ole käynnissä"
 
-#: src/virt-viewer.c:152
 msgid "Virtual machine graphical console"
-msgstr ""
+msgstr "Virtuaalikoneen graafinen konsoli"
 
-#: src/virt-viewer.c:137
 msgid "Wait for domain to start"
-msgstr ""
+msgstr "Odota toimialueen käynnistymistä"
 
-#: src/virt-viewer-app.c:1170
 #, c-format
 msgid "Waiting for display %d..."
-msgstr ""
+msgstr "Odotetaan näyttöä %d..."
 
-#: src/virt-viewer.c:893
 msgid "Waiting for guest domain to be created"
-msgstr ""
+msgstr "Odottaa vieras toimialueen luomista"
 
-#: src/virt-viewer.c:296
 msgid "Waiting for guest domain to re-start"
-msgstr ""
+msgstr "Odottaa vieras toimialueen uudellenkäynnistystä"
 
-#: src/virt-viewer.c:934
 msgid "Waiting for guest domain to start"
-msgstr ""
+msgstr "Odottaa vieras toimialueen käynnistymistä"
 
-#: src/virt-viewer.c:885
 msgid "Waiting for libvirt to start"
-msgstr ""
+msgstr "Odottaa libvirtin käynnistymistä"
 
-#: src/resources/ui/virt-viewer.ui:201
 msgid "Zoom _In"
-msgstr ""
+msgstr "_Lähennä"
 
-#: src/resources/ui/virt-viewer.ui:212
 msgid "Zoom _Out"
+msgstr "L_oitonna"
+
+msgctxt "shortcut window"
+msgid "Zoom in"
 msgstr ""
 
-#: src/virt-viewer-app.c:2122
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
-msgstr ""
+msgstr "Zoomaustason on oltava %d-%d sisällä\n"
 
-#: src/virt-viewer-app.c:2938
 msgid "Zoom level of window, in percentage"
+msgstr "Ikkunan zoomaustaso prosentteina"
+
+msgctxt "shortcut window"
+msgid "Zoom out"
 msgstr ""
 
-#: src/virt-viewer.c:1049
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr ""
+
 msgid "[none]"
-msgstr ""
+msgstr "[ei mitään]"
 
-#: src/resources/ui/virt-viewer.ui:297
 msgid "_About"
+msgstr "_Tietoja"
+
+msgid "_Auto resize"
 msgstr ""
 
-#: src/resources/ui/remote-viewer-connect.ui:120
-#: src/resources/ui/virt-viewer-auth.ui:27 src/virt-viewer-window.c:1085
-#: src/resources/ui/virt-viewer-vm-connection.ui:25
-#: src/resources/ui/virt-viewer-file-transfer-dialog.ui:28
 msgid "_Cancel"
-msgstr ""
+msgstr "_Peruuta"
 
-#: src/resources/ui/virt-viewer.ui:80
-msgid "_Change CD"
-msgstr ""
-
-#: src/virt-viewer-session-spice.c:831
-#: src/resources/ui/virt-viewer-guest-details.ui:23
 msgid "_Close"
+msgstr "_Sulje"
+
+msgid "_Guest details"
 msgstr ""
 
-#: src/resources/ui/virt-viewer.ui:246
-msgid "_Displays"
+msgid "_Keyboard shortcuts"
 msgstr ""
 
-#: src/resources/ui/virt-viewer.ui:28
-msgid "_File"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:180
-msgid "_Full screen"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:290
-msgid "_Guest Details"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:279
-msgid "_Help"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:119
-msgid "_Machine"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:229
 msgid "_Normal Size"
-msgstr ""
+msgstr "_Normaali koko"
 
-#: src/resources/ui/virt-viewer-auth.ui:42
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
-#: src/resources/ui/virt-viewer.ui:129
 msgid "_Pause"
+msgstr "_Keskeytä"
+
+msgid "_Preferences…"
 msgstr ""
 
-#: src/resources/ui/virt-viewer.ui:153
-msgid "_Power down"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:90
-msgid "_Preferences"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:103
-msgid "_Quit"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:144
 msgid "_Reset"
-msgstr ""
+msgstr "_Nollaa"
 
-#: src/virt-viewer-window.c:1086
 msgid "_Save"
-msgstr ""
+msgstr "_Tallenna"
 
-#: src/resources/ui/virt-viewer.ui:41
 msgid "_Screenshot"
-msgstr ""
+msgstr "_Kuvakaappaus"
 
-#: src/resources/ui/virt-viewer.ui:270
-msgid "_Send key"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:52
-msgid "_USB device selection"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:167
-msgid "_View"
-msgstr ""
-
-#: src/resources/ui/virt-viewer.ui:191
-msgid "_Zoom"
-msgstr ""
-
-#: src/remote-viewer.c:429
 msgid "failed to parse oVirt URI"
-msgstr ""
+msgstr "oVirt URI:n jäsentäminen epäonnistui"
 
-#: src/resources/ui/virt-viewer-auth.ui:71
-#: src/resources/ui/virt-viewer-guest-details.ui:82
-#: src/resources/ui/virt-viewer-guest-details.ui:96
-#: src/resources/ui/virt-viewer-file-transfer-dialog.ui:57
 msgid "label"
-msgstr ""
+msgstr "nimiö"
 
-#: src/remote-viewer.c:486
 #, c-format
 msgid "oVirt VM %s has no display"
-msgstr ""
+msgstr "oVirt VM %s:lla ei ole näyttöä"
 
-#: src/remote-viewer.c:512
 #, c-format
 msgid "oVirt VM %s has no host information"
-msgstr ""
+msgstr "oVirt VM %s:lla ei ole isäntätietoa"
 
-#: src/remote-viewer.c:523
 #, c-format
 msgid "oVirt VM %s has unknown display type: %u"
-msgstr ""
+msgstr "oVirt VM:llä %s on tuntematon näyttötyyppi: %u"
 
-#: src/remote-viewer.c:472
 #, c-format
 msgid "oVirt VM %s is not running"
-msgstr ""
+msgstr "oVirt VM %s ei ole käynnissä"
 
-#: src/virt-viewer-app.c:1387
 msgid "only SSH or UNIX socket connection supported."
-msgstr ""
+msgstr "vain SSH- tai UNIX-pistokeyhteyttä tuetaan."
+
+#~ msgid "(Press %s to release pointer) %s - %s"
+#~ msgstr "(Paina %s vapauttaaksesi osoitin) %s - %s"
+
+#~ msgid "(Press %s to release pointer) - %s"
+#~ msgstr "(Paina %s vapauttaaksesi osoitin)- %s"
+
+#~ msgid "Disconnect"
+#~ msgstr "Katkaise yhteys"
+
+#~ msgid "Leave fullscreen"
+#~ msgstr "Poistu koko näytön tilasta"
+
+#~ msgid "Minimize"
+#~ msgstr "Pienennä"
+
+#~ msgid "Release cursor"
+#~ msgstr "Vapauta kohdistin"
+
+#~ msgid "Send key combination"
+#~ msgstr "Lähetä näppäinyhdistelmä"
+
+#~ msgid "Show password"
+#~ msgstr "Näytä salasana"
+
+#~ msgid "Smartcard insertion"
+#~ msgstr "Älykortin asettaminen"
+
+#~ msgid "Smartcard removal"
+#~ msgstr "Älykortin poistaminen"
+
+#~ msgid "USB device selection"
+#~ msgstr "USB-laitteen valinta"
+
+#~ msgid "_Change CD"
+#~ msgstr "_Vaihda CD"
+
+#~ msgid "_Displays"
+#~ msgstr "_Näytöt"
+
+#~ msgid "_File"
+#~ msgstr "_Tiedosto"
+
+#~ msgid "_Full screen"
+#~ msgstr "Koko n_äyttö"
+
+#~ msgid "_Guest Details"
+#~ msgstr "_Vieraan tiedot"
+
+#~ msgid "_Help"
+#~ msgstr "_Ohje"
+
+#~ msgid "_Machine"
+#~ msgstr "_Kone"
+
+#~ msgid "_Power down"
+#~ msgstr "_Sammuta"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Asetukset"
+
+#~ msgid "_Quit"
+#~ msgstr "_Lopeta"
+
+#~ msgid "_Send key"
+#~ msgstr "_Lähetä avain"
+
+#~ msgid "_USB device selection"
+#~ msgstr "_USB-laitteen valinta"
+
+#~ msgid "_View"
+#~ msgstr "_Näytä"
+
+#~ msgid "_Zoom"
+#~ msgstr "_Zoomaa"
