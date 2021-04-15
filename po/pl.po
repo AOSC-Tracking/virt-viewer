@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-14 10:44+0100\n"
-"PO-Revision-Date: 2021-04-14 14:56+0000\n"
+"PO-Revision-Date: 2021-04-15 15:29+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/pl/>\n"
@@ -235,7 +235,7 @@ msgstr "Dostosowuje skróty"
 
 msgctxt "shortcut window"
 msgid "Devices"
-msgstr ""
+msgstr "Urządzenia"
 
 msgid "Direct connection with no automatic tunnels"
 msgstr "Bezpośrednie połączenie bez automatycznych tuneli"
@@ -293,7 +293,7 @@ msgstr "Na przykład spice://foo.example.org:5900"
 
 msgctxt "shortcut window"
 msgid "Fullscreen"
-msgstr ""
+msgstr "Pełny ekran"
 
 msgid "GUID:"
 msgstr "GUID:"
@@ -310,7 +310,7 @@ msgstr "Domena gościa została wyłączona"
 
 msgctxt "shortcut window"
 msgid "Guest input devices"
-msgstr ""
+msgstr "Urządzenia wejściowe gościa"
 
 #, c-format
 msgid "Invalid file %s: "
@@ -356,7 +356,7 @@ msgid "Please add an extension to the file name"
 msgstr "Proszę dodać rozszerzenie do nazwy pliku"
 
 msgid "Power _down"
-msgstr ""
+msgstr "_Wyłącz"
 
 msgid "Preferences"
 msgstr "Preferencje"
@@ -384,7 +384,7 @@ msgstr "Odśwież"
 
 msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr ""
+msgstr "Zwolnienie kursora"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -446,7 +446,7 @@ msgstr "Wybrane"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
-msgstr ""
+msgstr "Wysłanie uwagi bezpieczeństwa (Ctrl-Alt-Del)"
 
 msgid "Serial"
 msgstr "Szeregowo"
@@ -468,11 +468,11 @@ msgstr "Wyświetla/ukrywa hasło"
 
 msgctxt "shortcut window"
 msgid "Smartcard insert"
-msgstr ""
+msgstr "Włożenie karty smartcard"
 
 msgctxt "shortcut window"
 msgid "Smartcard remove"
-msgstr ""
+msgstr "Usunięcie karty smartcard"
 
 msgid "Spice"
 msgstr "Spice"
@@ -492,7 +492,7 @@ msgstr "Przesyłanie 1 pliku…"
 
 msgctxt "shortcut window"
 msgid "USB device reset"
-msgstr ""
+msgstr "Przywrócenie urządzenia USB"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -552,7 +552,7 @@ msgstr "VNC nie podaje GUID"
 
 msgctxt "shortcut window"
 msgid "Viewer"
-msgstr ""
+msgstr "Przeglądarka"
 
 msgid "Virt Viewer"
 msgstr "Przeglądarka wirtualizacji"
@@ -594,7 +594,7 @@ msgstr "_Oddal"
 
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Przybliżenie"
 
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
@@ -605,11 +605,11 @@ msgstr "Poziom powiększenia okna, w procentach"
 
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Oddalenie"
 
 msgctxt "shortcut window"
 msgid "Zoom reset"
-msgstr ""
+msgstr "Przywrócenie powiększenia"
 
 msgid "[none]"
 msgstr "[brak]"
@@ -618,7 +618,7 @@ msgid "_About"
 msgstr "_O programie"
 
 msgid "_Auto resize"
-msgstr ""
+msgstr "_Automatyczna zmiana rozmiaru"
 
 msgid "_Cancel"
 msgstr "_Anuluj"
@@ -627,10 +627,10 @@ msgid "_Close"
 msgstr "Za_mknij"
 
 msgid "_Guest details"
-msgstr ""
+msgstr "_Informacje o gościu"
 
 msgid "_Keyboard shortcuts"
-msgstr ""
+msgstr "_Skróty klawiszowe"
 
 msgid "_Normal Size"
 msgstr "Z_wykły rozmiar"
@@ -642,7 +642,7 @@ msgid "_Pause"
 msgstr "_Wstrzymaj"
 
 msgid "_Preferences…"
-msgstr ""
+msgstr "_Preferencje…"
 
 msgid "_Reset"
 msgstr "_Przywróć"
