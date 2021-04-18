@@ -4,23 +4,23 @@
 #
 # Translators:
 # denka <dennis@dennis.se>, 2014
-# Göran Uddeborg <goeran@uddeborg.se>, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
+# Göran Uddeborg <goeran@uddeborg.se>, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021.
 # Klap Hest <jojje3000@hotmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-14 16:57+0100\n"
-"PO-Revision-Date: 2020-09-13 11:29+0000\n"
+"PO-Revision-Date: 2021-04-18 10:02+0000\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
-"Language-Team: Swedish <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/sv/>\n"
+"Language-Team: Swedish <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.2.2\n"
+"X-Generator: Weblate 4.5.3\n"
 
 #, c-format
 msgid ""
@@ -58,7 +58,7 @@ msgstr ""
 #.
 #, c-format
 msgid "%s %s - %s"
-msgstr ""
+msgstr "%s %s - %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -84,7 +84,7 @@ msgid "<b>Loading...</b>"
 msgstr "<b>Laddar…</b>"
 
 msgid "<never|always>"
-msgstr ""
+msgstr "<aldrig|alltid>"
 
 msgid "<never|on-disconnect>"
 msgstr "<aldrig | vid-frånkoppling>"
@@ -143,7 +143,7 @@ msgid "Authentication was cancelled"
 msgstr "Autenticeringen avbröts"
 
 msgid "Automatically resize remote framebuffer"
-msgstr ""
+msgstr "Ändra automatiskt storlek på fjärrrambufferten"
 
 msgid "Available virtual machines"
 msgstr "Tillgängliga virtuella maskiner"
@@ -227,14 +227,14 @@ msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
 msgid "Cursor display mode: 'local' or 'auto'"
-msgstr ""
+msgstr "Markörvisningsläge: ”local” eller ”auto”"
 
 msgid "Customise hotkeys"
 msgstr "Anpassa snabbtangenter"
 
 msgctxt "shortcut window"
 msgid "Devices"
-msgstr ""
+msgstr "Enheter"
 
 msgid "Direct connection with no automatic tunnels"
 msgstr "Direkt anslutning utan några automatiska tunnlar"
@@ -290,7 +290,7 @@ msgstr "Till exempel, spice://apa.exempel.se:5900"
 
 msgctxt "shortcut window"
 msgid "Fullscreen"
-msgstr ""
+msgstr "Helskärm"
 
 msgid "GUID:"
 msgstr "GUID:"
@@ -307,7 +307,7 @@ msgstr "Gästdomänen är avstängd"
 
 msgctxt "shortcut window"
 msgid "Guest input devices"
-msgstr ""
+msgstr "Gästinmatningsenheter"
 
 #, c-format
 msgid "Invalid file %s: "
@@ -352,7 +352,7 @@ msgid "Please add an extension to the file name"
 msgstr "Lägg till en ändelse till filnamnet"
 
 msgid "Power _down"
-msgstr ""
+msgstr "Stäng _av"
 
 msgid "Preferences"
 msgstr "Inställningar"
@@ -380,7 +380,7 @@ msgstr "Uppdatera"
 
 msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr ""
+msgstr "Släpp markör"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -442,7 +442,7 @@ msgstr "Vald"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
-msgstr ""
+msgstr "Skicka säker uppmärksamhet (Ctrl-Alt-Del)"
 
 msgid "Serial"
 msgstr "Seriell"
@@ -451,7 +451,7 @@ msgid "Set window title"
 msgstr "Ange fönstertitel"
 
 msgid "Share client session"
-msgstr ""
+msgstr "Dela klientsession"
 
 msgid "Share clipboard"
 msgstr "Dela urklipp"
@@ -460,15 +460,15 @@ msgid "Share folder"
 msgstr "Dela mapp"
 
 msgid "Show / hide password text"
-msgstr ""
+msgstr "Visa/dölj lösenordstext"
 
 msgctxt "shortcut window"
 msgid "Smartcard insert"
-msgstr ""
+msgstr "Smartkortsinsättning"
 
 msgctxt "shortcut window"
 msgid "Smartcard remove"
-msgstr ""
+msgstr "Smartkortsborttagning"
 
 msgid "Spice"
 msgstr "Spice"
@@ -487,7 +487,7 @@ msgstr "Överför 1 fil …"
 
 msgctxt "shortcut window"
 msgid "USB device reset"
-msgstr ""
+msgstr "USB-enhetsåterställning"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -547,7 +547,7 @@ msgstr "VNC tillhandahåller inte GUID"
 
 msgctxt "shortcut window"
 msgid "Viewer"
-msgstr ""
+msgstr "Visare"
 
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
@@ -589,7 +589,7 @@ msgstr "Zooma _ut"
 
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Zooma in"
 
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
@@ -600,11 +600,11 @@ msgstr "Zoom-nivå för fönstret, i procent"
 
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Zooma ut"
 
 msgctxt "shortcut window"
 msgid "Zoom reset"
-msgstr ""
+msgstr "Återställ zoom"
 
 msgid "[none]"
 msgstr "[ingen]"
@@ -613,7 +613,7 @@ msgid "_About"
 msgstr "_Om"
 
 msgid "_Auto resize"
-msgstr ""
+msgstr "_Automatisk storleksändring"
 
 msgid "_Cancel"
 msgstr "_Avbryt"
@@ -622,10 +622,10 @@ msgid "_Close"
 msgstr "_Stäng"
 
 msgid "_Guest details"
-msgstr ""
+msgstr "_Gästdetaljer"
 
 msgid "_Keyboard shortcuts"
-msgstr ""
+msgstr "_Tangentbordsgenvägar"
 
 msgid "_Normal Size"
 msgstr "_Normal storlek"
@@ -637,7 +637,7 @@ msgid "_Pause"
 msgstr "_Pausa"
 
 msgid "_Preferences…"
-msgstr ""
+msgstr "_Inställningar …"
 
 msgid "_Reset"
 msgstr "_Återställ"
