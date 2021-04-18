@@ -1,23 +1,23 @@
 # Zdenek <chmelarz@gmail.com>, 2016. #zanata
 # Thomas Rohlik <rohrto@gmail.com>, 2017. #zanata
 # Zdenek <chmelarz@gmail.com>, 2017. #zanata
-# Pavel Borecki <pavel.borecki@gmail.com>, 2018. #zanata, 2020.
-# Pavel Borecki <pavel.borecki@gmail.com>, 2019. #zanata, 2020.
+# Pavel Borecki <pavel.borecki@gmail.com>, 2018. #zanata, 2020, 2021.
+# Pavel Borecki <pavel.borecki@gmail.com>, 2019. #zanata, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-14 16:57+0100\n"
-"PO-Revision-Date: 2020-09-13 11:29+0000\n"
+"PO-Revision-Date: 2021-04-18 10:02+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/cs/>\n"
+"Language-Team: Czech <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.2.2\n"
+"X-Generator: Weblate 4.5.3\n"
 
 #, c-format
 msgid ""
@@ -55,7 +55,7 @@ msgstr ""
 #.
 #, c-format
 msgid "%s %s - %s"
-msgstr ""
+msgstr "%s %s – %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -81,7 +81,7 @@ msgid "<b>Loading...</b>"
 msgstr "<b>Načítání…</b>"
 
 msgid "<never|always>"
-msgstr ""
+msgstr "<nikdy|vždy>"
 
 msgid "<never|on-disconnect>"
 msgstr "<nikdy|při-odpojení>"
@@ -142,7 +142,7 @@ msgid "Authentication was cancelled"
 msgstr "Ověření bylo zrušeno"
 
 msgid "Automatically resize remote framebuffer"
-msgstr ""
+msgstr "Automaticky přizpůsobovat rozlišení zobrazení"
 
 msgid "Available virtual machines"
 msgstr "Virtuální stroje k dispozici"
@@ -226,14 +226,14 @@ msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
 msgid "Cursor display mode: 'local' or 'auto'"
-msgstr ""
+msgstr "Režim zobrazení ukazatele: „lokální“ nebo „automaticky“"
 
 msgid "Customise hotkeys"
 msgstr "Přizpůsobit klávesové zkratky"
 
 msgctxt "shortcut window"
 msgid "Devices"
-msgstr ""
+msgstr "Zařízení"
 
 msgid "Direct connection with no automatic tunnels"
 msgstr "Přímé připojení bez automatických tunelů"
@@ -290,7 +290,7 @@ msgstr "Například spice://neco.example.org:5900"
 
 msgctxt "shortcut window"
 msgid "Fullscreen"
-msgstr ""
+msgstr "Celá obrazovka"
 
 msgid "GUID:"
 msgstr "GUID:"
@@ -307,7 +307,7 @@ msgstr "Doména hosta se vypíná"
 
 msgctxt "shortcut window"
 msgid "Guest input devices"
-msgstr ""
+msgstr "Vstupní zařízení na straně hosta"
 
 #, c-format
 msgid "Invalid file %s: "
@@ -361,7 +361,7 @@ msgid "Please add an extension to the file name"
 msgstr "Prosím přidejte k názvu souboru příponu"
 
 msgid "Power _down"
-msgstr ""
+msgstr "_Vypnout"
 
 # auto translated by TM merge from project: libreport, version: rhel6, DocId:
 # libreport
@@ -393,7 +393,7 @@ msgstr "Načíst znovu"
 
 msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr ""
+msgstr "Uvolnit ukazatel myši"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -461,7 +461,7 @@ msgstr "Vybráno"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
-msgstr ""
+msgstr "Odeslat upozornění zabezpečení (Ctrl-Alt-Del)"
 
 msgid "Serial"
 msgstr "Sériové"
@@ -470,7 +470,7 @@ msgid "Set window title"
 msgstr "Nastavit titulek okna"
 
 msgid "Share client session"
-msgstr ""
+msgstr "Sdílet relaci klienta"
 
 msgid "Share clipboard"
 msgstr "Sdílet schránku"
@@ -479,15 +479,15 @@ msgid "Share folder"
 msgstr "Sdílet složku"
 
 msgid "Show / hide password text"
-msgstr ""
+msgstr "Zobrazit/skrýt text hesla"
 
 msgctxt "shortcut window"
 msgid "Smartcard insert"
-msgstr ""
+msgstr "Vložit čipovou kartu"
 
 msgctxt "shortcut window"
 msgid "Smartcard remove"
-msgstr ""
+msgstr "Vyjmout čipovou kartu"
 
 msgid "Spice"
 msgstr "Spice"
@@ -507,7 +507,7 @@ msgstr "Přenáší se 1 soubor…"
 
 msgctxt "shortcut window"
 msgid "USB device reset"
-msgstr ""
+msgstr "Reset USB zařízení"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -569,7 +569,7 @@ msgstr "VNC neposkytuje GUID"
 
 msgctxt "shortcut window"
 msgid "Viewer"
-msgstr ""
+msgstr "Prohlížeč"
 
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
@@ -611,7 +611,7 @@ msgstr "_Oddálit"
 
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Přiblížit"
 
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
@@ -622,11 +622,11 @@ msgstr "Úroveň přiblížení okna, v procentech"
 
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Oddálit"
 
 msgctxt "shortcut window"
 msgid "Zoom reset"
-msgstr ""
+msgstr "Vrátit na 1:1"
 
 msgid "[none]"
 msgstr "[žádné]"
@@ -636,7 +636,7 @@ msgid "_About"
 msgstr "O _metodě"
 
 msgid "_Auto resize"
-msgstr ""
+msgstr "_Automaticky přizpůsobovat rozlišení"
 
 msgid "_Cancel"
 msgstr "_Storno"
@@ -647,10 +647,10 @@ msgid "_Close"
 msgstr "Z_avřít"
 
 msgid "_Guest details"
-msgstr ""
+msgstr "_Podrobnosti o hostovi"
 
 msgid "_Keyboard shortcuts"
-msgstr ""
+msgstr "_Klávesové zkratky"
 
 msgid "_Normal Size"
 msgstr "_Normální velikost"
@@ -664,7 +664,7 @@ msgid "_Pause"
 msgstr "_Pozastavit"
 
 msgid "_Preferences…"
-msgstr ""
+msgstr "_Předvolby…"
 
 msgid "_Reset"
 msgstr "_Restartovat"
