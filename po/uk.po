@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-14 10:44+0100\n"
-"PO-Revision-Date: 2021-04-14 16:15+0000\n"
+"PO-Revision-Date: 2021-04-18 10:02+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/uk/>\n"
@@ -235,7 +235,7 @@ msgstr "Налаштувати клавіатурні скорочення"
 
 msgctxt "shortcut window"
 msgid "Devices"
-msgstr ""
+msgstr "Пристрої"
 
 msgid "Direct connection with no automatic tunnels"
 msgstr "Пряме з’єднання без тунелів"
@@ -291,7 +291,7 @@ msgstr "Приклад: spice://foo.example.org:5900"
 
 msgctxt "shortcut window"
 msgid "Fullscreen"
-msgstr ""
+msgstr "На весь екран"
 
 msgid "GUID:"
 msgstr "GUID:"
@@ -308,7 +308,7 @@ msgstr "Гостьовий домен завершив роботу"
 
 msgctxt "shortcut window"
 msgid "Guest input devices"
-msgstr ""
+msgstr "Пристрої введення гостьової системи"
 
 #, c-format
 msgid "Invalid file %s: "
@@ -354,7 +354,7 @@ msgid "Please add an extension to the file name"
 msgstr "Будь ласка, допишіть до назви файла суфікс"
 
 msgid "Power _down"
-msgstr ""
+msgstr "Ви_мкнути"
 
 msgid "Preferences"
 msgstr "Параметри"
@@ -382,7 +382,7 @@ msgstr "Оновити"
 
 msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr ""
+msgstr "Звільнити вказівник"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -447,7 +447,7 @@ msgstr "Вибрано"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
-msgstr ""
+msgstr "Надіслати попередження щодо безпеки (Ctrl-Alt-Del)"
 
 msgid "Serial"
 msgstr "Послідовний"
@@ -469,11 +469,11 @@ msgstr "Показати або приховати текст пароля"
 
 msgctxt "shortcut window"
 msgid "Smartcard insert"
-msgstr ""
+msgstr "Вставити картку пам'яті"
 
 msgctxt "shortcut window"
 msgid "Smartcard remove"
-msgstr ""
+msgstr "Вилучити картку пам'яті"
 
 msgid "Spice"
 msgstr "Spice"
@@ -493,7 +493,7 @@ msgstr "Передаємо 1 файл…"
 
 msgctxt "shortcut window"
 msgid "USB device reset"
-msgstr ""
+msgstr "Скинути стан пристрою USB"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -555,7 +555,7 @@ msgstr "VNC не надає GUID"
 
 msgctxt "shortcut window"
 msgid "Viewer"
-msgstr ""
+msgstr "Переглядач"
 
 msgid "Virt Viewer"
 msgstr "Перегляд віртуальних систем"
@@ -597,7 +597,7 @@ msgstr "З_меншити"
 
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Збільшити"
 
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
@@ -608,11 +608,11 @@ msgstr "Масштаб вікна, у відсотках"
 
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Зменшити"
 
 msgctxt "shortcut window"
 msgid "Zoom reset"
-msgstr ""
+msgstr "Відновити масштаб"
 
 msgid "[none]"
 msgstr "[немає]"
@@ -621,7 +621,7 @@ msgid "_About"
 msgstr "_Про програму"
 
 msgid "_Auto resize"
-msgstr ""
+msgstr "_Автомасштаб"
 
 msgid "_Cancel"
 msgstr "_Скасувати"
@@ -630,10 +630,10 @@ msgid "_Close"
 msgstr "З_акрити"
 
 msgid "_Guest details"
-msgstr ""
+msgstr "П_араметри гостьової системи"
 
 msgid "_Keyboard shortcuts"
-msgstr ""
+msgstr "_Клавіатурні скорочення"
 
 msgid "_Normal Size"
 msgstr "З_вичайний розмір"
@@ -645,7 +645,7 @@ msgid "_Pause"
 msgstr "П_ризупинити"
 
 msgid "_Preferences…"
-msgstr ""
+msgstr "_Налаштування…"
 
 msgid "_Reset"
 msgstr "_Скинути"
