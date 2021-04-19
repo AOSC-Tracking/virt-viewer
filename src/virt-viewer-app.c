@@ -2846,7 +2846,21 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
         guint accel_key;
         GdkModifierType accel_mods;
         const gchar *accels[] = { accel, NULL };
-        gtk_accelerator_parse(accel, &accel_key, &accel_mods);
+
+        /*
+         * First try the spice translated accel.
+         * Works for basic modifiers and single letters/numbers
+         * where forced uppercasing matches GTK key names
+         */
+        gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
+
+        if (accel_key == 0 && accel_mods == 0) {
+            /* Fallback to native GTK accels to cope with
+             * case sensitive accels
+             */
+            accels[0] = value;
+            gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
+        }
 
         if (accel_key == 0 && accel_mods == 0) {
             g_warning("Invalid value '%s' for key '%s'", value, *hotkey);
