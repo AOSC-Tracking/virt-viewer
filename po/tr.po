@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-14 10:44+0100\n"
-"PO-Revision-Date: 2021-04-14 16:15+0000\n"
+"PO-Revision-Date: 2021-04-18 10:02+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/tr/>\n"
@@ -234,7 +234,7 @@ msgstr "Kısayol tuşlarını özelleştir"
 
 msgctxt "shortcut window"
 msgid "Devices"
-msgstr ""
+msgstr "Aygıtlar"
 
 msgid "Direct connection with no automatic tunnels"
 msgstr "Otomatik tünel olmadan doğrudan bağlantı"
@@ -290,7 +290,7 @@ msgstr "Örneğin, spice://foo.example.org:5900"
 
 msgctxt "shortcut window"
 msgid "Fullscreen"
-msgstr ""
+msgstr "Tam ekran"
 
 msgid "GUID:"
 msgstr "GUID:"
@@ -307,7 +307,7 @@ msgstr "Konuk etki alanı kapatıldı"
 
 msgctxt "shortcut window"
 msgid "Guest input devices"
-msgstr ""
+msgstr "Konuk giriş aygıtları"
 
 #, c-format
 msgid "Invalid file %s: "
@@ -352,7 +352,7 @@ msgid "Please add an extension to the file name"
 msgstr "Lütfen dosya adına bir uzantı ekleyin"
 
 msgid "Power _down"
-msgstr ""
+msgstr "Gücü _kapat"
 
 msgid "Preferences"
 msgstr "Tercihler"
@@ -380,7 +380,7 @@ msgstr "Yenile"
 
 msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr ""
+msgstr "İmleci serbest bırak"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -444,7 +444,7 @@ msgstr "Seçildi"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
-msgstr ""
+msgstr "Güvenli uyarı gönder (Ctrl-Alt-Del)"
 
 msgid "Serial"
 msgstr "Seri"
@@ -466,11 +466,11 @@ msgstr "Parola metnini göster / gizle"
 
 msgctxt "shortcut window"
 msgid "Smartcard insert"
-msgstr ""
+msgstr "Akıllı kart ekle"
 
 msgctxt "shortcut window"
 msgid "Smartcard remove"
-msgstr ""
+msgstr "Akıllı kart kaldır"
 
 msgid "Spice"
 msgstr "Spice"
@@ -489,7 +489,7 @@ msgstr "1 dosya aktarılıyor..."
 
 msgctxt "shortcut window"
 msgid "USB device reset"
-msgstr ""
+msgstr "USB aygıtı sıfırla"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -550,7 +550,7 @@ msgstr "VNC GUID sağlamıyor"
 
 msgctxt "shortcut window"
 msgid "Viewer"
-msgstr ""
+msgstr "Görüntüleyici"
 
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
@@ -592,7 +592,7 @@ msgstr "_Uzaklaştır"
 
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Yakınlaştır"
 
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
@@ -603,11 +603,11 @@ msgstr "Pencerenin yakınlaştırma seviyesi, yüzde olarak"
 
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Uzaklaştır"
 
 msgctxt "shortcut window"
 msgid "Zoom reset"
-msgstr ""
+msgstr "Yakınlaştırmayı sıfırla"
 
 msgid "[none]"
 msgstr "[yok]"
@@ -616,7 +616,7 @@ msgid "_About"
 msgstr "_Hakkında"
 
 msgid "_Auto resize"
-msgstr ""
+msgstr "_Otomatik olarak yeniden boyutlandır"
 
 msgid "_Cancel"
 msgstr "_İptal"
@@ -625,10 +625,10 @@ msgid "_Close"
 msgstr "_Kapat"
 
 msgid "_Guest details"
-msgstr ""
+msgstr "_Konuk ayrıntıları"
 
 msgid "_Keyboard shortcuts"
-msgstr ""
+msgstr "_Klavye kısayolları"
 
 msgid "_Normal Size"
 msgstr "_Normal Boyut"
@@ -640,7 +640,7 @@ msgid "_Pause"
 msgstr "_Duraklat"
 
 msgid "_Preferences…"
-msgstr ""
+msgstr "_Tercihler…"
 
 msgid "_Reset"
 msgstr "_Sıfırla"

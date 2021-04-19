@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-14 10:44+0100\n"
-"PO-Revision-Date: 2021-04-14 16:15+0000\n"
+"PO-Revision-Date: 2021-04-18 10:02+0000\n"
 "Last-Translator: simmon <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/ko/>\n"
@@ -30,7 +30,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"오류: 다양한 URIs을 다룰 수 없습니다\n"
+"오류: 다양한 URIs를 다룰 수 없습니다\n"
 "\n"
 
 #, c-format
@@ -79,7 +79,7 @@ msgstr "%s 버전 %s"
 
 #, c-format
 msgid "(Press %s to release pointer)"
-msgstr "(포인터를 개방하려면 %s를 누르십시오)"
+msgstr "(포인터를 개방하려면 %s를 누르세요)"
 
 msgid "<b>Loading...</b>"
 msgstr "<b>적재...</b>"
@@ -91,7 +91,7 @@ msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
 
 msgid "A remote desktop client built with GTK-VNC, SPICE-GTK and libvirt"
-msgstr "GTK-VNC, SPICE-GTK, libvirt로 빌드된 원격 데스크톱 클라이언트"
+msgstr "GTK-VNC, SPICE-GTK, libvirt로 빌트된 원격 데스크톱 클라이언트"
 
 msgid "About Virt-Viewer"
 msgstr "Virt-Viewer 정보"
@@ -101,7 +101,7 @@ msgstr "원격 데스크톱 접근"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr "주소가 유닉스 소캣_경로: %s을 위해 너무 길어요"
+msgstr "유닉스 소캣_경로: %s에 대한 주소가 너무 길어요"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -111,8 +111,7 @@ msgstr "적어도 %s 버전 %s은 이 연결 설정에 필요합니다"
 msgid ""
 "At least %s version %s is required to setup this connection, see %s for "
 "details"
-msgstr ""
-"적어도 %s 버전 %s는 이 연결 설정에 필요하며, 상세 설정을 위해 %s를 참고하세요"
+msgstr "적어도 %s 버전 %s는 이 연결 설정에 필요하며, 상세한 내용은 %s를 참조하세요"
 
 msgid "Attach to the local display using libvirt"
 msgstr "libvirt를 사용하여 로컬 디스플레이에 연결"
@@ -127,14 +126,14 @@ msgid ""
 "<b>%s</b>\n"
 "\n"
 msgstr ""
-"인증이 %s 연결하기 위해 필요합니다:\n"
+"인증이 다음에 대한 %s 연결에 필요합니다:\n"
 "\n"
 "<b>%s</b>\n"
 "\n"
 
 #, c-format
 msgid "Authentication is required for the %s connection:\n"
-msgstr "인증이 %s 연결하기 위해 필요합니다:\n"
+msgstr "인증이 다음 %s 연결하기 위해 필요합니다:\n"
 
 msgid "Authentication required"
 msgstr "인증이 필요함"
@@ -146,7 +145,7 @@ msgid "Automatically resize remote framebuffer"
 msgstr "원격 프레임버퍼 자동 크기 조절"
 
 msgid "Available virtual machines"
-msgstr "이용 할 수 있는 가상 장비"
+msgstr "이용 가능한 가상 머신"
 
 msgid "C_onnect"
 msgstr "연결"
@@ -176,7 +175,7 @@ msgid "Checking guest domain status"
 msgstr "게스트 도메인 상태 확인 중"
 
 msgid "Choose a virtual machine"
-msgstr "가상 장비를 선택합니다"
+msgstr "가상 머신을 선택합니다"
 
 msgid "Close"
 msgstr "닫기"
@@ -201,7 +200,7 @@ msgid "Connecting to graphic server"
 msgstr "그래픽 서버에 연결 중"
 
 msgid "Connection _Address"
-msgstr "연결주소"
+msgstr "연결_주소"
 
 msgid "Connection details"
 msgstr "상세 연결 정보"
@@ -217,7 +216,7 @@ msgstr ""
 "Copyright (C) 2007-2020 Red Hat, Inc."
 
 msgid "Couldn't open oVirt session: "
-msgstr "oVirt 세션을 연결 할 수 없습니다: "
+msgstr "oVirt 세션을 열 수 없습니다: "
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
@@ -230,30 +229,30 @@ msgid "Cursor display mode: 'local' or 'auto'"
 msgstr "커서 표시 모드: '로컬' 또는 '자동'"
 
 msgid "Customise hotkeys"
-msgstr "핫키 사용자 정의"
+msgstr "단축키 사용자 지정"
 
 msgctxt "shortcut window"
 msgid "Devices"
-msgstr ""
+msgstr "장치"
 
 msgid "Direct connection with no automatic tunnels"
-msgstr "자동으로 터널링하지 않고 직접 연결"
+msgstr "자동 터널 없이 직접 연결"
 
 #, c-format
 msgid "Display _%d"
-msgstr "표시_%d"
+msgstr "디스플레이_%d"
 
 msgid "Display can only be attached through libvirt with --attach"
-msgstr "화면은 --attach를 사용하여 libvirt를 통해 연결되어 질 수 있습니다"
+msgstr "--attach를 사용하여 libvirt를 통해서만 디스플레이에 연결 할 수 있습니다"
 
 msgid "Display debugging information"
-msgstr "디버그 정보 보기"
+msgstr "디버그 정보 표시"
 
 msgid "Display verbose information"
-msgstr "상세 정보 보기"
+msgstr "상세 정보 표시"
 
 msgid "Display version information"
-msgstr "버전 정보 보기"
+msgstr "버전 정보 표시"
 
 msgid "Do not ask me again"
 msgstr "다시 묻지 않습니다"
@@ -290,14 +289,14 @@ msgstr "예를 들면, spice://foo.example.org:5900"
 
 msgctxt "shortcut window"
 msgid "Fullscreen"
-msgstr ""
+msgstr "전체화면"
 
 msgid "GUID:"
 msgstr "GUID:"
 
 #, c-format
 msgid "Guest '%s' is not reachable"
-msgstr "Guest '%s'는 도달 할 수 없습니다"
+msgstr "Guest '%s'은 도달 할 수 없습니다"
 
 msgid "Guest Details"
 msgstr "게스트 상세정보"
@@ -307,11 +306,11 @@ msgstr "게스트 도메인이 종료되었습니다"
 
 msgctxt "shortcut window"
 msgid "Guest input devices"
-msgstr ""
+msgstr "게스트 입력 장치"
 
 #, c-format
 msgid "Invalid file %s: "
-msgstr "유효하지 않은 파일 %s: "
+msgstr "잘못된 파일 %s: "
 
 #, c-format
 msgid "Invalid kiosk-quit argument: %s"
@@ -333,17 +332,16 @@ msgid "No ISO files in domain"
 msgstr "도메인에 ISO 파일이 없습니다"
 
 msgid "No connection was chosen"
-msgstr "선택되어진 연결이 없습니다"
+msgstr "연결이 선택되지 않았습니다"
 
 msgid "No running virtual machine found"
-msgstr "동작하는 가상 장비를 찾을 수 없습니다"
+msgstr "동작하는 가상 머신을 찾을 수 없습니다"
 
 msgid "No virtual machine was chosen"
-msgstr "선택한 가상장비가 없습니다"
+msgstr "선택한 가상 머신이 없습니다"
 
 msgid "Open in full screen mode (adjusts guest resolution to fit the client)"
-msgstr ""
-"전체 화면 방법으로 개방합니다 (클라이언트에 맞게 게스트 해상도를 조정합니다)"
+msgstr "전체 화면 방법으로 열기 (클라이언트에 맞게 게스트 해상도를 조정)"
 
 msgid "Password:"
 msgstr "비밀번호:"
@@ -352,7 +350,7 @@ msgid "Please add an extension to the file name"
 msgstr "파일 이름에 확장자를 추가해 주세요"
 
 msgid "Power _down"
-msgstr ""
+msgstr "전원 종료"
 
 msgid "Preferences"
 msgstr "기본 설정"
@@ -367,7 +365,7 @@ msgid "Quit on given condition in kiosk mode"
 msgstr "키오스크 방법에서 주어진 상태로 종료합니다"
 
 msgid "Read-only"
-msgstr "읽기 전용"
+msgstr "읽기-전용"
 
 msgid "Recent connections"
 msgstr "최근 연결"
@@ -380,13 +378,12 @@ msgstr "새로고침"
 
 msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr ""
+msgstr "커서 놓기"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"키 형식 key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void 를 다시 지"
-"도화 합니다"
+"키 포맷 key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void 을 다시 대응 합니다"
 
 msgid "Remote Viewer"
 msgstr "원격 뷰어"
@@ -398,22 +395,19 @@ msgid ""
 "can connect directly to both local and remotely hosted guest OS, optionally "
 "using SSL/TLS encryption."
 msgstr ""
-"원격 표시기는 게스트 운영체제 표시를 위해 그래픽 표시기를 제공합니다. 이 때"
-"에 이는 VNC 또는 SPICE 통신규약을 사용하여 게스트 운영체제를 지원합니다. 앞으"
-"로 통신규약은 사용자 요구에 따라 지원 할 것입니다. 표시기는 선택적으로 SSL/"
-"TLS 암호화를 사용하여, 로컬과 원격에 초대되어진 가상 운영체제를 직접 연결 할 "
-"수 있습니다."
+"원격 뷰어는 게스트 운영체제 표시를 위해 그래픽 뷰어를 제공합니다. 이 때에 이는 VNC 또는 SPICE 통신규약을 사용하여 게스트 "
+"운영체제를 지원합니다. 앞으로 통신규약은 사용자 요구에 따라 지원 할 것입니다. 뷰어는 선택적으로 SSL/TLS 암호화를 사용하여, "
+"로컬과 원격에 초대되어진 가상 운영체제를 직접 연결 할 수 있습니다."
 
 msgid "Remote viewer client"
-msgstr "원격 보기 클라이언트"
+msgstr "원격 뷰어 클라이언트"
 
 msgid "Remotely access virtual machines"
-msgstr "원격 접근 가상 장비"
+msgstr "원격 접근 가상 머신"
 
 #, c-format
 msgid "Run '%s --help' to see a full list of available command line options\n"
-msgstr ""
-"사용 가능한 명령 줄 선택의 전체 목록을 보는데 '%s --help'를 실행합니다\n"
+msgstr "사용 가능한 명령 줄 선택의 전체 목록을 보는데 '%s --help' 를 실행합니다\n"
 
 msgid "Save screenshot"
 msgstr "스크린샷 저장"
@@ -429,23 +423,23 @@ msgid "Select USB devices for redirection"
 msgstr "리디렉션을 위한 USB 장치 선택"
 
 msgid "Select the virtual machine only by its ID"
-msgstr "ID로만 가상 장비를 선택합니다"
+msgstr "ID로만 가상 머신을 선택합니다"
 
 msgid "Select the virtual machine only by its UUID"
-msgstr "UUID로만 가상 장비를 선택합니다"
+msgstr "UUID로만 가상 머신을 선택합니다"
 
 msgid "Select the virtual machine only by its name"
-msgstr "이름으로만 가상 장비를 선택합니다"
+msgstr "이름으로만 가상 머신을 선택합니다"
 
 msgid "Selected"
 msgstr "선택됨"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
-msgstr ""
+msgstr "보안 주의 (Ctrl-Alt-Del)을 발송"
 
 msgid "Serial"
-msgstr "직렬"
+msgstr "시리얼"
 
 msgid "Set window title"
 msgstr "창 제목 설정"
@@ -464,29 +458,29 @@ msgstr "비밀번호 텍스트 보이기 / 숨기기"
 
 msgctxt "shortcut window"
 msgid "Smartcard insert"
-msgstr ""
+msgstr "스마트카드 삽입"
 
 msgctxt "shortcut window"
 msgid "Smartcard remove"
-msgstr ""
+msgstr "스마트카드 제거"
 
 msgid "Spice"
-msgstr "향신료"
+msgstr "스파이스"
 
 msgid "The Fedora Translation Team"
-msgstr "페도라 번역팀"
+msgstr "페도라 번역 팀"
 
 #, c-format
 msgid "Transferring %u file of %u..."
 msgid_plural "Transferring %u files of %u..."
-msgstr[0] "%u의 %u 를전송중..."
+msgstr[0] "%u의 %u 파일을 전송 중..."
 
 msgid "Transferring 1 file..."
-msgstr "1 파일 전송중..."
+msgstr "1 파일 전송 중..."
 
 msgctxt "shortcut window"
 msgid "USB device reset"
-msgstr ""
+msgstr "USB 장치 리셋"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -546,7 +540,7 @@ msgstr "VNC는 GUID를 제공하지 않습니다"
 
 msgctxt "shortcut window"
 msgid "Viewer"
-msgstr ""
+msgstr "뷰어"
 
 msgid "Virt Viewer"
 msgstr "가상 머신 뷰어"
@@ -588,7 +582,7 @@ msgstr "줌_아웃"
 
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "줌 인"
 
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
@@ -599,11 +593,11 @@ msgstr "윈도우의 줌 레벨 (백분율)"
 
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "줌 아웃"
 
 msgctxt "shortcut window"
 msgid "Zoom reset"
-msgstr ""
+msgstr "줌 리셋"
 
 msgid "[none]"
 msgstr "[없음]"
@@ -612,7 +606,7 @@ msgid "_About"
 msgstr "_정보"
 
 msgid "_Auto resize"
-msgstr ""
+msgstr "_자동 크기조절"
 
 msgid "_Cancel"
 msgstr "_취소"
@@ -621,10 +615,10 @@ msgid "_Close"
 msgstr "_닫기"
 
 msgid "_Guest details"
-msgstr ""
+msgstr "_게스트 상세정보"
 
 msgid "_Keyboard shortcuts"
-msgstr ""
+msgstr "_키보드 바로가기"
 
 msgid "_Normal Size"
 msgstr "_정상 크기"
@@ -636,7 +630,7 @@ msgid "_Pause"
 msgstr "_일시정지"
 
 msgid "_Preferences…"
-msgstr ""
+msgstr "_환경 설정…"
 
 msgid "_Reset"
 msgstr "_다시 설정"
