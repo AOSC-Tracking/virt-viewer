@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-14 16:57+0100\n"
-"PO-Revision-Date: 2021-04-18 10:02+0000\n"
+"PO-Revision-Date: 2021-04-20 07:02+0000\n"
 "Last-Translator: Pino Toscano <toscano.pino@tiscali.it>\n"
 "Language-Team: Italian <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/it/>\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5.3\n"
+"X-Generator: Weblate 4.6\n"
 
 #, c-format
 msgid ""
@@ -149,7 +149,7 @@ msgid "Authentication was cancelled"
 msgstr "L'autenticazione è stata annullata"
 
 msgid "Automatically resize remote framebuffer"
-msgstr ""
+msgstr "Ridimensiona automaticamente il framebuffer remoto"
 
 msgid "Available virtual machines"
 msgstr "Macchine virtuali disponibili"
@@ -233,7 +233,7 @@ msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
 msgid "Cursor display mode: 'local' or 'auto'"
-msgstr ""
+msgstr "Modalità di visualizzazione cursore: \"locale\" o \"auto\""
 
 msgid "Customise hotkeys"
 msgstr "Personalizza i tasti di scelta rapida"
@@ -313,7 +313,7 @@ msgstr "Il dominio del guest si è arrestato"
 
 msgctxt "shortcut window"
 msgid "Guest input devices"
-msgstr ""
+msgstr "Dispositivi di input del guest"
 
 #, c-format
 msgid "Invalid file %s: "
@@ -450,7 +450,7 @@ msgstr "Selezionato"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
-msgstr ""
+msgstr "Invio secure attention (Ctrl+Alt+Canc)"
 
 msgid "Serial"
 msgstr "Seriale"
@@ -459,7 +459,7 @@ msgid "Set window title"
 msgstr "Imposta il titolo della finestra"
 
 msgid "Share client session"
-msgstr ""
+msgstr "Condivi la sessione del client"
 
 msgid "Share clipboard"
 msgstr "Condividi gli appunti"
@@ -468,15 +468,15 @@ msgid "Share folder"
 msgstr "Condividi cartella"
 
 msgid "Show / hide password text"
-msgstr ""
+msgstr "Mostra/nascondi il testo della password"
 
 msgctxt "shortcut window"
 msgid "Smartcard insert"
-msgstr ""
+msgstr "Inserimento smartcard"
 
 msgctxt "shortcut window"
 msgid "Smartcard remove"
-msgstr ""
+msgstr "Rimozione smartcard"
 
 msgid "Spice"
 msgstr "Spice"
@@ -495,7 +495,7 @@ msgstr "Trasferimento di un file..."
 
 msgctxt "shortcut window"
 msgid "USB device reset"
-msgstr ""
+msgstr "Reset del dispositivo USB"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -557,7 +557,7 @@ msgstr "VNC non fornisce il GUID"
 
 msgctxt "shortcut window"
 msgid "Viewer"
-msgstr ""
+msgstr "Visualizzatore"
 
 msgid "Virt Viewer"
 msgstr "Virt Viewer"
@@ -614,7 +614,7 @@ msgstr "Riduci"
 
 msgctxt "shortcut window"
 msgid "Zoom reset"
-msgstr ""
+msgstr "Ripristino ingrandimento"
 
 msgid "[none]"
 msgstr "[nessuno]"
@@ -623,7 +623,7 @@ msgid "_About"
 msgstr "_Informazioni"
 
 msgid "_Auto resize"
-msgstr ""
+msgstr "Ridimensionamento _automatico"
 
 msgid "_Cancel"
 msgstr "_Annulla"
@@ -635,7 +635,7 @@ msgid "_Guest details"
 msgstr "Dettagli del _guest"
 
 msgid "_Keyboard shortcuts"
-msgstr ""
+msgstr "Scorciatoie da _tastiera"
 
 msgid "_Normal Size"
 msgstr "Dimensione _normale"
