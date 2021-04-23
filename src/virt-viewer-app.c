@@ -592,7 +592,7 @@ static
 void virt_viewer_app_set_keymap(VirtViewerApp *self, const gchar *keymap_string)
 {
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    gchar **key, **keymaps, **valkey, **valuekeys = NULL;
+    gchar **key, **keymaps = NULL, **valkey, **valuekeys = NULL;
     VirtViewerKeyMapping *keyMappingArray, *keyMappingPtr;
     guint *mappedArray, *ptrMove;
 
