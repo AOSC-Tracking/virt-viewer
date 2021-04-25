@@ -2177,8 +2177,8 @@ virt_viewer_update_smartcard_accels(VirtViewerApp *self)
     } else {
         g_debug("disabling smartcard shortcuts");
         const gchar *no_accels[] = { NULL };
-        char **old_insert_accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self), "win.smartcard-insert");
-        char **old_remove_accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self), "win.smartcard-remove");
+        char **old_insert_accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self), "app.smartcard-insert");
+        char **old_remove_accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self), "app.smartcard-remove");
         if (old_insert_accels) {
             g_strfreev(priv->insert_smartcard_accel);
             priv->insert_smartcard_accel = old_insert_accels;
@@ -2187,8 +2187,8 @@ virt_viewer_update_smartcard_accels(VirtViewerApp *self)
             g_strfreev(priv->remove_smartcard_accel);
             priv->remove_smartcard_accel = old_remove_accels;
         }
-        gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.smartcard-insert", no_accels);
-        gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.smartcard-remove", no_accels);
+        gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-insert", no_accels);
+        gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-remove", no_accels);
     }
 }
 
@@ -2891,7 +2891,7 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
         } else if (g_str_equal(*hotkey, "smartcard-remove")) {
             gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-remove", accels);
         } else if (g_str_equal(*hotkey, "usb-device-reset")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.usb-device-reset", accels);
+            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.usb-device-reset", accels);
         } else {
             g_warning("Unknown hotkey command %s", *hotkey);
         }
