@@ -72,6 +72,8 @@ gboolean virt_viewer_app_activate(VirtViewerApp *self, GError **error);
 gboolean virt_viewer_app_initial_connect(VirtViewerApp *self, GError **error);
 gboolean virt_viewer_app_get_direct(VirtViewerApp *self);
 void virt_viewer_app_set_direct(VirtViewerApp *self, gboolean direct);
+char** virt_viewer_app_get_hotkey_names(void);
+void virt_viewer_app_set_hotkey(VirtViewerApp *self, const gchar *hotkey_name, const gchar *hotkey);
 void virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys);
 void virt_viewer_app_set_attach(VirtViewerApp *self, gboolean attach);
 gboolean virt_viewer_app_get_attach(VirtViewerApp *self);

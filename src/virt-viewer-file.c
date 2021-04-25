@@ -883,17 +883,6 @@ virt_viewer_file_set_ovirt_admin(VirtViewerFile* self, gint value)
     g_object_notify(G_OBJECT(self), "ovirt-admin");
 }
 
-static void
-spice_hotkey_set_accel(VirtViewerApp *app, const gchar *action_name, const gchar *key)
-{
-    gchar *accel = spice_hotkey_to_gtk_accelerator(key);
-    const gchar *accels[] = { accel, NULL };
-
-    gtk_application_set_accels_for_action(GTK_APPLICATION(app), action_name, accels);
-
-    g_free(accel);
-}
-
 static gboolean
 virt_viewer_file_check_min_version(VirtViewerFile *self, GError **error)
 {
@@ -969,28 +958,14 @@ virt_viewer_file_fill_app(VirtViewerFile* self, VirtViewerApp *app, GError **err
     virt_viewer_app_clear_hotkeys(app);
 
     {
+        gchar **hotkey_names = virt_viewer_app_get_hotkey_names();
         gchar *val;
-        static const struct {
-            const char *prop;
-            const char *action_name;
-        } accels[] = {
-            { "release-cursor", "win.release-cursor" },
-            { "toggle-fullscreen", "win.fullscreen" },
-            { "zoom-in", "win.zoom-in" },
-            { "zoom-out", "win.zoom-out" },
-            { "zoom-reset", "win.zoom-reset" },
-            { "smartcard-insert", "app.smartcard-insert" },
-            { "smartcard-remove", "app.smartcard-remove" },
-            { "secure-attention", "win.secure-attention" },
-            { "usb-device-reset", "win.usb-device-reset" },
-        };
         int i;
-
-        for (i = 0; i < G_N_ELEMENTS(accels); i++) {
-            if (!virt_viewer_file_is_set(self, accels[i].prop))
+        for (i = 0; i < g_strv_length(hotkey_names); i++) {
+            if (!virt_viewer_file_is_set(self, hotkey_names[i]))
                 continue;
-            g_object_get(self, accels[i].prop, &val, NULL);
-            spice_hotkey_set_accel(app, accels[i].action_name, val);
+            g_object_get(self, hotkey_names[i], &val, NULL);
+            virt_viewer_app_set_hotkey(app, hotkey_names[i], val);
             g_free(val);
         }
     }

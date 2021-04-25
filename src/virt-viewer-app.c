@@ -2429,22 +2429,23 @@ static GActionEntry actions[] = {
       .change_state = virt_viewer_app_action_auto_resize },
 };
 
-struct VirtViewerActionAccels {
+static const struct {
+    const char *name;
     const char *action;
-    const char *accels[3];
+    const gchar *default_accels[3];
+} hotkey_defaults[] = {
+    { "toggle-fullscreen", "win.fullscreen", {"F11", NULL, NULL} },
+    { "zoom-in", "win.zoom-in", { "<Ctrl>plus", "<Ctrl>KP_Add", NULL } },
+    { "zoom-out", "win.zoom-out", { "<Ctrl>minus", "<Ctrl>KP_Subtract", NULL } },
+    { "zoom-reset", "win.zoom-reset", { "<Ctrl>0", "<Ctrl>KP_0", NULL } },
+    { "release-cursor", "win.release-cursor", {"<Shift>F12", NULL, NULL} },
+    { "smartcard-insert", "app.smartcard-insert", {"<Shift>F8", NULL, NULL} },
+    { "smartcard-remove", "app.smartcard-remove", {"<Shift>F9", NULL, NULL} },
+    { "secure-attention", "win.secure-attention", {"<Ctrl><Alt>End", NULL, NULL} },
+    { "usb-device-reset", "win.usb-device-reset", {"<Ctrl><Shift>r", NULL, NULL} },
 };
 
-static const struct VirtViewerActionAccels action_accels[] = {
-    { "win.fullscreen", {"F11", NULL, NULL} },
-    { "win.zoom-in", { "<Ctrl>plus", "<Ctrl>KP_Add", NULL } },
-    { "win.zoom-out", { "<Ctrl>minus", "<Ctrl>KP_Subtract", NULL } },
-    { "win.zoom-reset", { "<Ctrl>0", "<Ctrl>KP_0", NULL } },
-    { "win.release-cursor", {"<Shift>F12", NULL, NULL} },
-    { "app.smartcard-insert", {"<Shift>F8", NULL, NULL} },
-    { "app.smartcard-remove", {"<Shift>F9", NULL, NULL} },
-    { "win.secure-attention", {"<Ctrl><Alt>End", NULL, NULL} },
-    { "win.usb-device-reset", {"<Ctrl><Shift>r", NULL, NULL} },
-};
+static gchar **hotkey_names;
 
 static void
 virt_viewer_app_on_application_startup(GApplication *app)
@@ -2468,12 +2469,6 @@ virt_viewer_app_on_application_startup(GApplication *app)
 
     priv->resource = virt_viewer_get_resource();
 
-    for (i = 0 ; i < G_N_ELEMENTS(action_accels); i++) {
-        gtk_application_set_accels_for_action(GTK_APPLICATION(app),
-                                              action_accels[i].action,
-                                              action_accels[i].accels);
-    }
-
     virt_viewer_app_set_debug(opt_debug);
     virt_viewer_app_set_fullscreen(self, opt_fullscreen);
 
@@ -2483,11 +2478,21 @@ virt_viewer_app_on_application_startup(GApplication *app)
     priv->quit_on_disconnect = opt_kiosk ? opt_kiosk_quit : TRUE;
 
     priv->main_window = virt_viewer_app_window_new(self,
-                                                         virt_viewer_app_get_first_monitor(self));
+                                                   virt_viewer_app_get_first_monitor(self));
     priv->main_notebook = GTK_WIDGET(virt_viewer_window_get_notebook(priv->main_window));
     priv->initial_display_map = virt_viewer_app_get_monitor_mapping_for_section(self, "fallback");
 
     virt_viewer_app_set_kiosk(self, opt_kiosk);
+
+    hotkey_names = g_new(gchar*, G_N_ELEMENTS(hotkey_defaults) + 1);
+    for (i = 0 ; i < G_N_ELEMENTS(hotkey_defaults); i++) {
+        hotkey_names[i] = g_strdup(hotkey_defaults[i].name);
+        gtk_application_set_accels_for_action(GTK_APPLICATION(app),
+                                              hotkey_defaults[i].action,
+                                              hotkey_defaults[i].default_accels);
+    }
+    hotkey_names[i] = NULL;
+
     virt_viewer_app_set_hotkeys(self, opt_hotkeys);
 
     if (opt_zoom < MIN_ZOOM_LEVEL || opt_zoom > MAX_ZOOM_LEVEL) {
@@ -2816,17 +2821,69 @@ virt_viewer_app_set_enable_accel(VirtViewerApp *self, gboolean enable)
     g_object_notify(G_OBJECT(self), "enable-accel");
 }
 
+gchar**
+virt_viewer_app_get_hotkey_names(void)
+{
+    return hotkey_names;
+}
+
 void
 virt_viewer_app_clear_hotkeys(VirtViewerApp *self)
 {
     gint i;
     const gchar *no_accels[] = { NULL };
 
-    for (i = 0 ; i < G_N_ELEMENTS(action_accels); i++) {
+    for (i = 0 ; i < G_N_ELEMENTS(hotkey_defaults); i++) {
         gtk_application_set_accels_for_action(GTK_APPLICATION(self),
-                                              action_accels[i].action,
+                                              hotkey_defaults[i].action,
                                               no_accels);
     }
+}
+
+void
+virt_viewer_app_set_hotkey(VirtViewerApp *self, const gchar *hotkey_name,
+                           const gchar *hotkey)
+{
+    g_return_if_fail(VIRT_VIEWER_IS_APP(self));
+
+    const gchar *action = NULL;
+    int i;
+    for (i = 0; i < G_N_ELEMENTS(hotkey_defaults); i++) {
+        if (g_str_equal(hotkey_name, hotkey_defaults[i].name)) {
+            action = hotkey_defaults[i].action;
+            break;
+        }
+    }
+    if (action == NULL) {
+        g_warning("Unknown hotkey name %s", hotkey_name);
+        return;
+    }
+
+    gchar *accel = spice_hotkey_to_gtk_accelerator(hotkey);
+    const gchar *accels[] = { accel, NULL };
+    guint accel_key;
+    GdkModifierType accel_mods;
+    /*
+     * First try the spice translated accel.
+     * Works for basic modifiers and single letters/numbers
+     * where forced uppercasing matches GTK key names
+     */
+    gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
+    if (accel_key == 0 && accel_mods == 0) {
+        /* Fallback to native GTK accels to cope with
+         * case sensitive accels
+         */
+        accels[0] = hotkey;
+        gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
+    }
+    if (accel_key == 0 && accel_mods == 0) {
+        g_warning("Invalid hotkey '%s' for '%s'", hotkey, hotkey_name);
+        g_free(accel);
+        return;
+    }
+
+    gtk_application_set_accels_for_action(GTK_APPLICATION(self), action, accels);
+    g_free(accel);
 }
 
 void
@@ -2850,61 +2907,14 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
     virt_viewer_app_clear_hotkeys(self);
 
     for (hotkey = hotkeys; *hotkey != NULL; hotkey++) {
-        gchar *key = strstr(*hotkey, "=");
-        const gchar *value = (key == NULL) ? NULL : (*key = '\0', key + 1);
+        gchar *eq = strstr(*hotkey, "=");
+        const gchar *value = (eq == NULL) ? NULL : (*eq = '\0', eq + 1);
         if (value == NULL || *value == '\0') {
-            g_warning("missing value for key '%s'", *hotkey);
+            g_warning("Missing value for hotkey '%s'", *hotkey);
             continue;
         }
 
-        gchar *accel = spice_hotkey_to_gtk_accelerator(value);
-        guint accel_key;
-        GdkModifierType accel_mods;
-        const gchar *accels[] = { accel, NULL };
-
-        /*
-         * First try the spice translated accel.
-         * Works for basic modifiers and single letters/numbers
-         * where forced uppercasing matches GTK key names
-         */
-        gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
-
-        if (accel_key == 0 && accel_mods == 0) {
-            /* Fallback to native GTK accels to cope with
-             * case sensitive accels
-             */
-            accels[0] = value;
-            gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
-        }
-
-        if (accel_key == 0 && accel_mods == 0) {
-            g_warning("Invalid value '%s' for key '%s'", value, *hotkey);
-            g_free(accel);
-            continue;
-        }
-
-        if (g_str_equal(*hotkey, "toggle-fullscreen")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.fullscreen", accels);
-        } else if (g_str_equal(*hotkey, "release-cursor")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.release-cursor", accels);
-        } else if (g_str_equal(*hotkey, "zoom-reset")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.zoom-reset", accels);
-        } else if (g_str_equal(*hotkey, "zoom-out")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.zoom-out", accels);
-        } else if (g_str_equal(*hotkey, "zoom-in")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.zoom-in", accels);
-        } else if (g_str_equal(*hotkey, "secure-attention")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.secure-attention", accels);
-        } else if (g_str_equal(*hotkey, "smartcard-insert")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-insert", accels);
-        } else if (g_str_equal(*hotkey, "smartcard-remove")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-remove", accels);
-        } else if (g_str_equal(*hotkey, "usb-device-reset")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.usb-device-reset", accels);
-        } else {
-            g_warning("Unknown hotkey command %s", *hotkey);
-        }
-        g_free(accel);
+        virt_viewer_app_set_hotkey(self, *hotkey, value);
     }
     g_strfreev(hotkeys);
 
