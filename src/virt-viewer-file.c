@@ -63,6 +63,7 @@
  * - smartcard-insert: string in spice hotkey format
  * - smartcard-remove: string in spice hotkey format
  * - secure-attention: string in spice hotkey format
+ * - usb-device-reset: string in spice hotkey format
  * - enable-smartcard: int (0 or 1 atm)
  * - enable-usbredir: int (0 or 1 atm)
  * - color-depth: int
@@ -137,6 +138,7 @@ enum  {
     PROP_SECURE_CHANNELS,
     PROP_DELETE_THIS_FILE,
     PROP_SECURE_ATTENTION,
+    PROP_USB_DEVICE_RESET,
     PROP_OVIRT_ADMIN,
     PROP_OVIRT_HOST,
     PROP_OVIRT_VM_GUID,
@@ -575,6 +577,19 @@ virt_viewer_file_set_secure_attention(VirtViewerFile* self, const gchar* value)
 }
 
 gchar*
+virt_viewer_file_get_usb_device_reset(VirtViewerFile* self)
+{
+    return virt_viewer_file_get_string(self, MAIN_GROUP, "usb-device-reset");
+}
+
+void
+virt_viewer_file_set_usb_device_reset(VirtViewerFile* self, const gchar* value)
+{
+    virt_viewer_file_set_string(self, MAIN_GROUP, "usb-device-reset", value);
+    g_object_notify(G_OBJECT(self), "usb-device-reset");
+}
+
+gchar*
 virt_viewer_file_get_smartcard_remove(VirtViewerFile* self)
 {
     return virt_viewer_file_get_string(self, MAIN_GROUP, "smartcard-remove");
@@ -967,6 +982,7 @@ virt_viewer_file_fill_app(VirtViewerFile* self, VirtViewerApp *app, GError **err
             { "smartcard-insert", "app.smartcard-insert" },
             { "smartcard-remove", "app.smartcard-remove" },
             { "secure-attention", "win.secure-attention" },
+            { "usb-device-reset", "win.usb-device-reset" },
         };
         int i;
 
@@ -1053,6 +1069,9 @@ virt_viewer_file_set_property(GObject* object, guint property_id,
         break;
     case PROP_SECURE_ATTENTION:
         virt_viewer_file_set_secure_attention(self, g_value_get_string(value));
+        break;
+    case PROP_USB_DEVICE_RESET:
+        virt_viewer_file_set_usb_device_reset(self, g_value_get_string(value));
         break;
     case PROP_ENABLE_SMARTCARD:
         virt_viewer_file_set_enable_smartcard(self, g_value_get_int(value));
@@ -1179,6 +1198,9 @@ virt_viewer_file_get_property(GObject* object, guint property_id,
         break;
     case PROP_SECURE_ATTENTION:
         g_value_take_string(value, virt_viewer_file_get_secure_attention(self));
+        break;
+    case PROP_USB_DEVICE_RESET:
+        g_value_take_string(value, virt_viewer_file_get_usb_device_reset(self));
         break;
     case PROP_ENABLE_SMARTCARD:
         g_value_set_int(value, virt_viewer_file_get_enable_smartcard(self));
@@ -1332,6 +1354,10 @@ virt_viewer_file_class_init(VirtViewerFileClass* klass)
 
     g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_SECURE_ATTENTION,
         g_param_spec_string("secure-attention", "secure-attention", "secure-attention", NULL,
+                            G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
+
+    g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_USB_DEVICE_RESET,
+        g_param_spec_string("usb-device-reset", "usb-device-reset", "usb-device-reset", NULL,
                             G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
 
     g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_ENABLE_SMARTCARD,
