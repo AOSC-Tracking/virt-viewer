@@ -2089,6 +2089,12 @@ virt_viewer_app_dispose (GObject *object)
     priv->uuid = NULL;
     g_free(priv->config_file);
     priv->config_file = NULL;
+    g_strfreev(priv->insert_smartcard_accel);
+    priv->insert_smartcard_accel = NULL;
+    g_strfreev(priv->remove_smartcard_accel);
+    priv->remove_smartcard_accel = NULL;
+    g_strfreev(priv->usb_device_reset_accel);
+    priv->usb_device_reset_accel = NULL;
     g_clear_pointer(&priv->config, g_key_file_free);
     g_clear_pointer(&priv->initial_display_map, g_hash_table_unref);
 
@@ -2169,24 +2175,15 @@ virt_viewer_update_smartcard_accels(VirtViewerApp *self)
     }
     if (sw_smartcard) {
         g_debug("enabling smartcard shortcuts");
-
-        gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-insert",
-                                              (const gchar * const *)priv->insert_smartcard_accel);
-        gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-remove",
-                                              (const gchar * const *)priv->remove_smartcard_accel);
+        if (priv->insert_smartcard_accel)
+            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-insert",
+                                                  (const gchar * const *)priv->insert_smartcard_accel);
+        if (priv->remove_smartcard_accel)
+            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-remove",
+                                                  (const gchar * const *)priv->remove_smartcard_accel);
     } else {
         g_debug("disabling smartcard shortcuts");
         const gchar *no_accels[] = { NULL };
-        char **old_insert_accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self), "app.smartcard-insert");
-        char **old_remove_accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self), "app.smartcard-remove");
-        if (old_insert_accels) {
-            g_strfreev(priv->insert_smartcard_accel);
-            priv->insert_smartcard_accel = old_insert_accels;
-        }
-        if (old_remove_accels) {
-            g_strfreev(priv->remove_smartcard_accel);
-            priv->remove_smartcard_accel = old_remove_accels;
-        }
         gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-insert", no_accels);
         gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-remove", no_accels);
     }
@@ -2206,16 +2203,11 @@ virt_viewer_update_usbredir_accels(VirtViewerApp *self)
     }
 
     if (has_usbredir) {
-        gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.usb-device-reset",
-                                              (const gchar * const *)priv->usb_device_reset_accel);
+        if (priv->usb_device_reset_accel)
+            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.usb-device-reset",
+                                                  (const gchar * const *)priv->usb_device_reset_accel);
     } else {
         const gchar *no_accels[] = { NULL };
-        char **old_accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self), "win.usb-device-reset");
-
-        if (old_accels) {
-            g_strfreev(priv->usb_device_reset_accel);
-            priv->usb_device_reset_accel = old_accels;
-        }
         gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.usb-device-reset", no_accels);
     }
 }
@@ -2447,6 +2439,26 @@ static const struct {
 
 static gchar **hotkey_names;
 
+/* g_strdupv() will not take a const gchar** */
+static gchar**
+g_strdupvc(const gchar* const *str_array)
+{
+    if (!str_array)
+        return NULL;
+    gsize i = 0;
+    gchar **retval;
+    while (str_array[i])
+        ++i;
+    retval = g_new(gchar*, i + 1);
+    i = 0;
+    while (str_array[i]) {
+        retval[i] = g_strdup(str_array[i]);
+        ++i;
+    }
+    retval[i] = NULL;
+    return retval;
+}
+
 static void
 virt_viewer_app_on_application_startup(GApplication *app)
 {
@@ -2487,6 +2499,18 @@ virt_viewer_app_on_application_startup(GApplication *app)
     hotkey_names = g_new(gchar*, G_N_ELEMENTS(hotkey_defaults) + 1);
     for (i = 0 ; i < G_N_ELEMENTS(hotkey_defaults); i++) {
         hotkey_names[i] = g_strdup(hotkey_defaults[i].name);
+        if (g_str_equal(hotkey_defaults[i].name, "smartcard-insert")) {
+            priv->insert_smartcard_accel = g_strdupvc(hotkey_defaults[i].default_accels);
+            continue;
+        }
+        if (g_str_equal(hotkey_defaults[i].name, "smartcard-remove")) {
+            priv->remove_smartcard_accel = g_strdupvc(hotkey_defaults[i].default_accels);
+            continue;
+        }
+        if (g_str_equal(hotkey_defaults[i].name, "usb-device-reset")) {
+            priv->usb_device_reset_accel = g_strdupvc(hotkey_defaults[i].default_accels);
+            continue;
+        }
         gtk_application_set_accels_for_action(GTK_APPLICATION(app),
                                               hotkey_defaults[i].action,
                                               hotkey_defaults[i].default_accels);
@@ -2832,12 +2856,20 @@ virt_viewer_app_clear_hotkeys(VirtViewerApp *self)
 {
     gint i;
     const gchar *no_accels[] = { NULL };
-
     for (i = 0 ; i < G_N_ELEMENTS(hotkey_defaults); i++) {
         gtk_application_set_accels_for_action(GTK_APPLICATION(self),
                                               hotkey_defaults[i].action,
                                               no_accels);
     }
+
+    g_return_if_fail(VIRT_VIEWER_IS_APP(self));
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    g_strfreev(priv->insert_smartcard_accel);
+    priv->insert_smartcard_accel = NULL;
+    g_strfreev(priv->remove_smartcard_accel);
+    priv->remove_smartcard_accel = NULL;
+    g_strfreev(priv->usb_device_reset_accel);
+    priv->usb_device_reset_accel = NULL;
 }
 
 void
@@ -2845,6 +2877,7 @@ virt_viewer_app_set_hotkey(VirtViewerApp *self, const gchar *hotkey_name,
                            const gchar *hotkey)
 {
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
 
     const gchar *action = NULL;
     int i;
@@ -2882,6 +2915,28 @@ virt_viewer_app_set_hotkey(VirtViewerApp *self, const gchar *hotkey_name,
         return;
     }
 
+    if (g_str_equal(hotkey_name, "smartcard-insert")) {
+        g_strfreev(priv->insert_smartcard_accel);
+        priv->insert_smartcard_accel = g_strdupvc(accels);
+        g_free(accel);
+        virt_viewer_update_smartcard_accels(self);
+        return;
+    }
+    if (g_str_equal(hotkey_name, "smartcard-remove")) {
+        g_strfreev(priv->remove_smartcard_accel);
+        priv->remove_smartcard_accel = g_strdupvc(accels);
+        g_free(accel);
+        virt_viewer_update_smartcard_accels(self);
+        return;
+    }
+    if (g_str_equal(hotkey_name, "usb-device-reset")) {
+        g_strfreev(priv->usb_device_reset_accel);
+        priv->usb_device_reset_accel = g_strdupvc(accels);
+        g_free(accel);
+        virt_viewer_update_usbredir_accels(self);
+        return;
+    }
+
     gtk_application_set_accels_for_action(GTK_APPLICATION(self), action, accels);
     g_free(accel);
 }
@@ -2899,8 +2954,6 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
     if (!hotkeys || g_strv_length(hotkeys) == 0) {
         g_strfreev(hotkeys);
         virt_viewer_app_set_enable_accel(self, FALSE);
-        virt_viewer_update_smartcard_accels(self);
-        virt_viewer_update_usbredir_accels(self);
         return;
     }
 
@@ -2919,8 +2972,6 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
     g_strfreev(hotkeys);
 
     virt_viewer_app_set_enable_accel(self, TRUE);
-    virt_viewer_update_smartcard_accels(self);
-    virt_viewer_update_usbredir_accels(self);
 }
 
 void
