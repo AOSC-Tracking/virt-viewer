@@ -356,6 +356,9 @@ virt_viewer_display_spice_release_cursor(VirtViewerDisplay *display)
 {
     VirtViewerDisplaySpice *self = VIRT_VIEWER_DISPLAY_SPICE(display);
 
+#if SPICE_GTK_CHECK_VERSION(0,40,0)
+    spice_display_keyboard_ungrab(self->display);
+#endif
     spice_display_mouse_ungrab(self->display);
 }
 

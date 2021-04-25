@@ -2175,7 +2175,10 @@ virt_viewer_update_smartcard_accels(VirtViewerApp *self)
     } else {
         g_debug("disabling smartcard shortcuts");
         const gchar *no_accels[] = { NULL };
-        char **old_insert_accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self), "win.smartcard-insert");
+        g_debug("pre");
+        if(gdk_display_get_default() == NULL) { g_debug("null"); }
+        char **old_insert_accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self), "app.smartcard-insert");
+        g_debug("post");
         char **old_remove_accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self), "win.smartcard-remove");
         if (old_insert_accels) {
             g_strfreev(priv->insert_smartcard_accel);
@@ -2885,7 +2888,7 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
         } else if (g_str_equal(*hotkey, "smartcard-remove")) {
             gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.smartcard-remove", accels);
         } else if (g_str_equal(*hotkey, "usb-device-reset")) {
-            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.usb-device-reset", accels);
+            gtk_application_set_accels_for_action(GTK_APPLICATION(self), "win.usb-device-reset", accels);
         } else {
             g_warning("Unknown hotkey command %s", *hotkey);
         }
