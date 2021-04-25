@@ -131,7 +131,6 @@ struct _VirtViewerAppPrivate {
     GResource *resource;
     gboolean direct;
     gboolean verbose;
-    gboolean enable_accel;
     gboolean authretry;
     gboolean started;
     gboolean fullscreen;
@@ -166,6 +165,7 @@ struct _VirtViewerAppPrivate {
     GKeyFile *config;
     gchar *config_file;
 
+    gchar *release_cursor_display_hotkey;
     gchar **insert_smartcard_accel;
     gchar **remove_smartcard_accel;
     gchar **usb_device_reset_accel;
@@ -185,7 +185,7 @@ enum {
     PROP_GURI,
     PROP_FULLSCREEN,
     PROP_TITLE,
-    PROP_ENABLE_ACCEL,
+    PROP_RELEASE_CURSOR_DISPLAY_HOTKEY,
     PROP_KIOSK,
     PROP_QUIT_ON_DISCONNECT,
     PROP_UUID,
@@ -1930,8 +1930,8 @@ virt_viewer_app_get_property (GObject *object, guint property_id,
         g_value_set_string(value, virt_viewer_app_get_title(self));
         break;
 
-    case PROP_ENABLE_ACCEL:
-        g_value_set_boolean(value, virt_viewer_app_get_enable_accel(self));
+    case PROP_RELEASE_CURSOR_DISPLAY_HOTKEY:
+        g_value_set_string(value, virt_viewer_app_get_release_cursor_display_hotkey(self));
         break;
 
     case PROP_KIOSK:
@@ -2001,8 +2001,8 @@ virt_viewer_app_set_property (GObject *object, guint property_id,
         priv->title = g_value_dup_string(value);
         break;
 
-    case PROP_ENABLE_ACCEL:
-        virt_viewer_app_set_enable_accel(self, g_value_get_boolean(value));
+    case PROP_RELEASE_CURSOR_DISPLAY_HOTKEY:
+        virt_viewer_app_set_release_cursor_display_hotkey(self, g_value_dup_string(value));
         break;
 
     case PROP_KIOSK:
@@ -2089,6 +2089,8 @@ virt_viewer_app_dispose (GObject *object)
     priv->uuid = NULL;
     g_free(priv->config_file);
     priv->config_file = NULL;
+    g_free(priv->release_cursor_display_hotkey);
+    priv->release_cursor_display_hotkey = NULL;
     g_strfreev(priv->insert_smartcard_accel);
     priv->insert_smartcard_accel = NULL;
     g_strfreev(priv->remove_smartcard_accel);
@@ -2496,6 +2498,7 @@ virt_viewer_app_on_application_startup(GApplication *app)
 
     virt_viewer_app_set_kiosk(self, opt_kiosk);
 
+    priv->release_cursor_display_hotkey = NULL;
     hotkey_names = g_new(gchar*, G_N_ELEMENTS(hotkey_defaults) + 1);
     for (i = 0 ; i < G_N_ELEMENTS(hotkey_defaults); i++) {
         hotkey_names[i] = g_strdup(hotkey_defaults[i].name);
@@ -2699,14 +2702,13 @@ virt_viewer_app_class_init (VirtViewerAppClass *klass)
                                                         G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(object_class,
-                                    PROP_ENABLE_ACCEL,
-                                    g_param_spec_boolean("enable-accel",
-                                                         "Enable Accel",
-                                                         "Enable accelerators",
-                                                         FALSE,
-                                                         G_PARAM_CONSTRUCT |
-                                                         G_PARAM_READWRITE |
-                                                         G_PARAM_STATIC_STRINGS));
+                                    PROP_RELEASE_CURSOR_DISPLAY_HOTKEY,
+                                    g_param_spec_string("release-cursor-display-hotkey",
+                                                        "Release Cursor Display Hotkey",
+                                                        "Display-managed hotkey to ungrab keyboard and mouse",
+                                                        NULL,
+                                                        G_PARAM_READWRITE |
+                                                        G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(object_class,
                                     PROP_KIOSK,
@@ -2828,21 +2830,24 @@ gboolean virt_viewer_app_get_direct(VirtViewerApp *self)
     return priv->direct;
 }
 
-gboolean
-virt_viewer_app_get_enable_accel(VirtViewerApp *self)
+gchar*
+virt_viewer_app_get_release_cursor_display_hotkey(VirtViewerApp *self)
 {
-    g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
+    g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), NULL);
 
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    return priv->enable_accel;
+    return priv->release_cursor_display_hotkey;
 }
 
 void
-virt_viewer_app_set_enable_accel(VirtViewerApp *self, gboolean enable)
+virt_viewer_app_set_release_cursor_display_hotkey(VirtViewerApp *self, const gchar *hotkey)
 {
+    g_return_if_fail(VIRT_VIEWER_IS_APP(self));
+
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    priv->enable_accel = enable;
-    g_object_notify(G_OBJECT(self), "enable-accel");
+    g_free(priv->release_cursor_display_hotkey);
+    priv->release_cursor_display_hotkey = g_strdup(hotkey);
+    g_object_notify(G_OBJECT(self), "release-cursor-display-hotkey");
 }
 
 gchar**
@@ -2863,6 +2868,7 @@ virt_viewer_app_clear_hotkeys(VirtViewerApp *self)
     }
 
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
+    virt_viewer_app_set_release_cursor_display_hotkey(self, "Control_L+Alt_L");
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     g_strfreev(priv->insert_smartcard_accel);
     priv->insert_smartcard_accel = NULL;
@@ -2909,7 +2915,18 @@ virt_viewer_app_set_hotkey(VirtViewerApp *self, const gchar *hotkey_name,
         accels[0] = hotkey;
         gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
     }
-    if (accel_key == 0 && accel_mods == 0) {
+    if (g_str_equal(hotkey_name, "release-cursor")) {
+        if (accel_key == 0) {
+            /* GTK does not support using modifiers as hotkeys without any non-modifiers
+             * (eg. CTRL+ALT), however the displays do support this for the grab sequence.
+             */
+            virt_viewer_app_set_release_cursor_display_hotkey(self, hotkey);
+            g_free(accel);
+            return;
+        }
+        virt_viewer_app_set_release_cursor_display_hotkey(self, NULL);
+    }
+    if (accel_key == 0) {
         g_warning("Invalid hotkey '%s' for '%s'", hotkey, hotkey_name);
         g_free(accel);
         return;
@@ -2953,7 +2970,6 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
 
     if (!hotkeys || g_strv_length(hotkeys) == 0) {
         g_strfreev(hotkeys);
-        virt_viewer_app_set_enable_accel(self, FALSE);
         return;
     }
 
@@ -2970,8 +2986,6 @@ virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys_str)
         virt_viewer_app_set_hotkey(self, *hotkey, value);
     }
     g_strfreev(hotkeys);
-
-    virt_viewer_app_set_enable_accel(self, TRUE);
 }
 
 void

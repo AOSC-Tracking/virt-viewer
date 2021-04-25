@@ -434,6 +434,133 @@ spice_hotkey_to_gtk_accelerator(const gchar *key)
     return accel;
 }
 
+static gchar *
+spice_key_to_gdk_key(const gchar *spice_key)
+{
+    guint i;
+    gchar *key = g_strdup(spice_key);
+
+    static const struct {
+        const char *spice;
+        const char *gdk;
+    } keys[] = {
+
+        { "alt", "Alt_L" },
+        { "lalt", "Alt_L" },
+        { "leftalt", "Alt_L" },
+        { "left-alt", "Alt_L" },
+        { "ralt", "Alt_R" },
+        { "rightalt", "Alt_R" },
+        { "right-alt", "Alt_R" },
+
+        { "ctrl", "Control_L" },
+        { "ctl", "Control_L" },
+        { "control", "Control_L" },
+        { "lctrl", "Control_L" },
+        { "leftctrl", "Control_L" },
+        { "left-ctrl", "Control_L" },
+        { "rctrl", "Control_R" },
+        { "rightctrl", "Control_R" },
+        { "right-ctrl", "Control_R" },
+
+        { "cmd", "Control_L" },
+        { "lcmd", "Control_L" },
+        { "leftcmd", "Control_L" },
+        { "left-cmd", "Control_L" },
+        { "rcmd", "Control_R" },
+        { "rightcmd", "Control_R" },
+        { "right-cmd", "Control_R" },
+
+        { "shift", "Shift_L" },
+        { "shft", "Shift_L" },
+        { "lshift", "Shift_L" },
+        { "leftshift", "Shift_L" },
+        { "left-shift", "Shift_L" },
+        { "rshift", "Shift_R" },
+        { "rightshift", "Shift_R" },
+        { "right-shift", "Shift_R" },
+
+        { "win", "Super_L" },
+        { "lwin", "Super_L" },
+        { "leftwin", "Super_L" },
+        { "left-win", "Super_L" },
+        { "rwin", "Super_R" },
+        { "rightwin", "Super_R" },
+        { "right-win", "Super_R" },
+
+        { "super", "Super_L" },
+        { "hyper", "Hyper_L" },
+        { "meta", "Meta_L" },
+
+        { "esc", "Escape" },
+        { "escape", "Escape" },
+        { "ins", "Insert" },
+        { "insert", "Insert" },
+        { "del", "Delete" },
+        { "delete", "Delete" },
+
+        { "pgup", "Page_Up" },
+        { "pageup", "Page_Up" },
+        { "pgdn", "Page_Down" },
+        { "pagedown", "Page_Down" },
+
+        { "home", "Home" },
+        { "end", "End" },
+        { "space", "space" },
+
+        { "enter", "Return" },
+
+        { "tab", "Tab" },
+        { "f1", "F1" },
+        { "f2", "F2" },
+        { "f3", "F3" },
+        { "f4", "F4" },
+        { "f5", "F5" },
+        { "f6", "F6" },
+        { "f7", "F7" },
+        { "f8", "F8" },
+        { "f9", "F9" },
+        { "f10", "F10" },
+        { "f11", "F11" },
+        { "f12", "F12" },
+    };
+
+    if (key[0] == '<' && key[strlen(key)-1] == '>') {
+        gchar *tmp = key;
+        key = g_strndup(key+1, strlen(key)-2);
+        g_free(tmp);
+    }
+
+    for (i = 0; i < G_N_ELEMENTS(keys); ++i) {
+        if (g_ascii_strcasecmp(keys[i].spice, key) == 0) {
+            g_free(key);
+            return g_strdup(keys[i].gdk);
+        }
+    }
+
+    return key;
+}
+
+gchar*
+spice_hotkey_to_display_hotkey(const gchar *key)
+{
+    gchar *new_key, **k, **keyv;
+
+    keyv = g_strsplit(key, "+", -1);
+    g_return_val_if_fail(keyv != NULL, NULL);
+
+    for (k = keyv; *k != NULL; k++) {
+        gchar *tmp = *k;
+        *k = spice_key_to_gdk_key(tmp);
+        g_free(tmp);
+    }
+
+    new_key = g_strjoinv("+", keyv);
+    g_strfreev(keyv);
+
+    return new_key;
+}
+
 static gboolean str_is_empty(const gchar *str)
 {
   return ((str == NULL) || (str[0] == '\0'));

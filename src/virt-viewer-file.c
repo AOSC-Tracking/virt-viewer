@@ -970,8 +970,6 @@ virt_viewer_file_fill_app(VirtViewerFile* self, VirtViewerApp *app, GError **err
         }
     }
 
-    virt_viewer_app_set_enable_accel(app, TRUE);
-
     if (virt_viewer_file_is_set(self, "fullscreen"))
         g_object_set(G_OBJECT(app), "fullscreen",
             virt_viewer_file_get_fullscreen(self), NULL);
