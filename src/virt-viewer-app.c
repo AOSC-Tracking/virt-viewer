@@ -2799,6 +2799,23 @@ gboolean virt_viewer_app_get_direct(VirtViewerApp *self)
     return priv->direct;
 }
 
+gboolean
+virt_viewer_app_get_enable_accel(VirtViewerApp *self)
+{
+    g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
+
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    return priv->enable_accel;
+}
+
+void
+virt_viewer_app_set_enable_accel(VirtViewerApp *self, gboolean enable)
+{
+    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+    priv->enable_accel = enable;
+    g_object_notify(G_OBJECT(self), "enable-accel");
+}
+
 void
 virt_viewer_app_clear_hotkeys(VirtViewerApp *self)
 {
@@ -2810,14 +2827,6 @@ virt_viewer_app_clear_hotkeys(VirtViewerApp *self)
                                               action_accels[i].action,
                                               no_accels);
     }
-}
-
-void
-virt_viewer_app_set_enable_accel(VirtViewerApp *self, gboolean enable)
-{
-    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    priv->enable_accel = enable;
-    g_object_notify(G_OBJECT(self), "enable-accel");
 }
 
 void
@@ -3331,15 +3340,6 @@ virt_viewer_app_show_display(VirtViewerApp *self)
     g_return_if_fail(VIRT_VIEWER_IS_APP(self));
     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
     g_list_foreach(priv->windows, show_display_cb, self);
-}
-
-gboolean
-virt_viewer_app_get_enable_accel(VirtViewerApp *self)
-{
-    g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
-
-    VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
-    return priv->enable_accel;
 }
 
 VirtViewerSession*
