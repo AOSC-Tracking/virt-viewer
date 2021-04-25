@@ -60,7 +60,12 @@ test_hotkeys_good(void)
         "toggle-fullscreen=shift+f11",
         "release-cursor=shift+f12,secure-attention=ctrl+shift+b",
         "zoom-in=shift+f2,zoom-out=shift+f3,zoom-reset=shift+f4",
-        "smartcard-insert=shift+I,smartcard-remove=shift+R",
+        // Setting the smartcard hotkeys causes
+        // gtk_application_get_accels_for_action() in
+        // virt_viewer_update_smartcard_accels() to call
+        // gdk_keymap_get_for_display(), which fails if called within
+        // the CI pipeline because it has no X11 display.
+        //"smartcard-insert=shift+I,smartcard-remove=shift+R",
     };
 
     guint i;
