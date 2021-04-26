@@ -16,7 +16,7 @@
 #define _GNU_SOURCE
 
 /* Build version details */
-#define BUILDID "-@BUILDID@"
+#define BUILDID "@BUILDID@"
 
 /* Define to the full name and version of this package. */
 #define PACKAGE_STRING "virt-viewer @VERSION@"
@@ -25,7 +25,7 @@
 #define PACKAGE_VERSION "@VERSION@"
 
 /* OS ID for this build */
-#define REMOTE_VIEWER_OS_ID "@OS_ID@"
+#mesondefine REMOTE_VIEWER_OS_ID
 
 /* Version number of package */
 #define VERSION "@VERSION@"
