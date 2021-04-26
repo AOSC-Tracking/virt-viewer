@@ -478,7 +478,10 @@ if id != ''
 else
   conf_data.set('BUILDID', '')
 endif
-conf_data.set('OS_ID', get_option('os-id'))
+osid = get_option('os-id')
+if osid != ''
+  conf_data.set('REMOTE_VIEWER_OS_ID', '"' + osid + '"')
+endif
 
 arr_version = meson.project_version().split('.')
 
