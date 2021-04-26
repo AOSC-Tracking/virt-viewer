@@ -50,7 +50,15 @@ the display, and libvirt for looking up VNC/SPICE server details.
 %setup -q
 
 %build
-%meson -Dbuild-id=%{release}
+%if !%{with_govirt}
+%define ovirt_opt -Dovirt=disabled
+%endif
+
+%if !%{with_spice}
+%define spice_opt -Dspice=disabled
+%endif
+
+%meson -Dbuild-id=%{release} %{?ovirt_opt} %{?spice_opt}
 %meson_build
 
 %install
