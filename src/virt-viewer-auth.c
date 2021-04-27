@@ -114,6 +114,8 @@ virt_viewer_auth_collect_credentials(VirtViewerAuth *self,
     int response;
     char *message;
 
+    gtk_entry_set_text(GTK_ENTRY(self->credUsername), "");
+    gtk_entry_set_text(GTK_ENTRY(self->credPassword), "");
     if (username) {
         gtk_widget_show(self->credUsername);
         gtk_widget_show(self->promptUsername);
