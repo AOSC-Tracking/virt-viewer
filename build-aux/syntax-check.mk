@@ -52,7 +52,7 @@ _sc_excl = \
 VC_LIST_EXCEPT = \
   $(VC_LIST) | sed 's|^$(_dot_escaped_srcdir)/||' \
 	| if test -f $(srcdir)/.x-$@; then grep -vEf $(srcdir)/.x-$@; \
-	  else grep -Ev -e "$${VC_LIST_EXCEPT_DEFAULT-ChangeLog}"; fi \
+	  else grep -Ev -e "$${VC_LIST_EXCEPT_DEFAULT}"; fi \
 	| grep -Ev -e '($(VC_LIST_ALWAYS_EXCLUDE_REGEX)|$(_sc_excl))' \
 	$(_prepend_srcdir_prefix)
 
@@ -527,13 +527,6 @@ sc_prohibit_verify_without_use:
 # Don't include xfreopen.h unless you use one of its functions.
 sc_prohibit_xfreopen_without_use:
 	@h='xfreopen.h' re='\<xfreopen *\(' $(_sc_header_without_use)
-
-# Each nonempty ChangeLog line must start with a year number, or a TAB.
-sc_changelog:
-	@prohibit='^[^12	]'					\
-	in_vc_files='^ChangeLog$$'					\
-	halt='found unexpected prefix in a ChangeLog'			\
-	  $(_sc_search_regexp)
 
 sc_trailing_blank:
 	@prohibit='[	 ]$$'						\
