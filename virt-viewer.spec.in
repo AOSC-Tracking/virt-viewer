@@ -74,7 +74,7 @@ the display, and libvirt for looking up VNC/SPICE server details.
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc README.md COPYING AUTHORS ChangeLog NEWS
+%doc README.md COPYING AUTHORS NEWS
 %{_bindir}/%{name}
 %{_bindir}/remote-viewer
 %{_datadir}/icons/hicolor/*/apps/*
