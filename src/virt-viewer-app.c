@@ -2347,10 +2347,12 @@ virt_viewer_app_action_window(VirtViewerApp *self,
             virt_viewer_window_hide(win);
         } else {
             virt_viewer_app_maybe_quit(self, win);
-            if (!priv->quitting)
+            if (!priv->quitting) {
                 /* the last item remains active, doesn't matter if we quit */
+                visible = TRUE;
                 g_action_change_state(G_ACTION(act),
-                                      g_variant_new_boolean(TRUE));
+                                      g_variant_new_boolean(visible));
+            }
         }
     }
 
