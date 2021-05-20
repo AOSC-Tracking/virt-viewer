@@ -1231,6 +1231,8 @@ ensure_window_for_display(VirtViewerApp *self, VirtViewerDisplay *display)
             g_object_set_data(G_OBJECT(display), "virt-viewer-window", win);
             g_object_weak_ref(G_OBJECT(win), window_weak_notify, display);
         }
+
+        virt_viewer_window_set_actions_sensitive(win, priv->connected);
     }
     virt_viewer_app_set_window_subtitle(self, win, nth);
 
