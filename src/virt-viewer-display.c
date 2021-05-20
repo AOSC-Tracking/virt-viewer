@@ -101,7 +101,7 @@ virt_viewer_display_class_init(VirtViewerDisplayClass *class)
                                     g_param_spec_int("desktop-width",
                                                      "Width",
                                                      "Desktop width",
-                                                     MIN_DISPLAY_WIDTH,
+                                                     1,
                                                      G_MAXINT32,
                                                      MIN_DISPLAY_WIDTH,
                                                      G_PARAM_READWRITE));
@@ -111,7 +111,7 @@ virt_viewer_display_class_init(VirtViewerDisplayClass *class)
                                     g_param_spec_int("desktop-height",
                                                      "Height",
                                                      "Desktop height",
-                                                     MIN_DISPLAY_HEIGHT,
+                                                     1,
                                                      G_MAXINT32,
                                                      MIN_DISPLAY_HEIGHT,
                                                      G_PARAM_READWRITE));
