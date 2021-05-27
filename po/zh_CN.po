@@ -10,13 +10,14 @@
 # Wei Liu <LLIU@REDHAT.COM>, 2012, 2013
 # Whired Planck <fungdaat31@outlook.com>, 2020.
 # 玉堂白鹤 <yjwork@qq.com>, 2021.
+# Charles Lee <lchopn@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-14 16:57+0100\n"
-"PO-Revision-Date: 2021-02-05 13:40+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
+"PO-Revision-Date: 2021-05-07 06:02+0000\n"
+"Last-Translator: Charles Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
 "projects/virt-viewer/virt-viewer/zh_CN/>\n"
 "Language: zh_CN\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.6.1\n"
 
 #, c-format
 msgid ""
@@ -145,7 +146,7 @@ msgid "Authentication was cancelled"
 msgstr "已取消认证"
 
 msgid "Automatically resize remote framebuffer"
-msgstr ""
+msgstr "自动重新设置远程帧缓冲的大小"
 
 msgid "Available virtual machines"
 msgstr "可用虚拟机"
@@ -236,7 +237,7 @@ msgstr "自定义快捷键"
 
 msgctxt "shortcut window"
 msgid "Devices"
-msgstr ""
+msgstr "设备"
 
 msgid "Direct connection with no automatic tunnels"
 msgstr "无自动通道的直接连接"
@@ -292,7 +293,7 @@ msgstr "例如：spice://foo.example.org:5900"
 
 msgctxt "shortcut window"
 msgid "Fullscreen"
-msgstr ""
+msgstr "全屏"
 
 msgid "GUID:"
 msgstr "GUID："
@@ -309,7 +310,7 @@ msgstr "已关闭虚拟机域"
 
 msgctxt "shortcut window"
 msgid "Guest input devices"
-msgstr ""
+msgstr "客户机输入设备"
 
 #, c-format
 msgid "Invalid file %s: "
@@ -353,7 +354,7 @@ msgid "Please add an extension to the file name"
 msgstr "请在文件名中添加扩展名"
 
 msgid "Power _down"
-msgstr ""
+msgstr "关闭电源 (_D)"
 
 msgid "Preferences"
 msgstr "属性"
@@ -381,7 +382,7 @@ msgstr "刷新"
 
 msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr ""
+msgstr "释放光标"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
@@ -440,7 +441,7 @@ msgstr "已选择"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
-msgstr ""
+msgstr "发送安全注意键（Ctrl-Alt-Del）"
 
 msgid "Serial"
 msgstr "串行接口"
@@ -449,7 +450,7 @@ msgid "Set window title"
 msgstr "设置窗口标题"
 
 msgid "Share client session"
-msgstr ""
+msgstr "共享客户端会话"
 
 msgid "Share clipboard"
 msgstr "共享剪贴板"
