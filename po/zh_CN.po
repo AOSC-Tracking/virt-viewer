@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-14 16:57+0100\n"
-"PO-Revision-Date: 2021-05-07 06:02+0000\n"
+"PO-Revision-Date: 2021-06-19 10:04+0000\n"
 "Last-Translator: Charles Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
 "projects/virt-viewer/virt-viewer/zh_CN/>\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.6.1\n"
+"X-Generator: Weblate 4.7\n"
 
 #, c-format
 msgid ""
@@ -63,7 +63,7 @@ msgstr ""
 #.
 #, c-format
 msgid "%s %s - %s"
-msgstr ""
+msgstr "%s %s - %s"
 
 #. translators:
 #. * This is "<ungrab accelerator> - <appname>"
@@ -89,7 +89,7 @@ msgid "<b>Loading...</b>"
 msgstr "<b>正在加载...</b>"
 
 msgid "<never|always>"
-msgstr ""
+msgstr "<never|always>"
 
 msgid "<never|on-disconnect>"
 msgstr "<never|on-disconnect>"
@@ -230,7 +230,7 @@ msgid "Ctrl_L+Alt_L"
 msgstr "Ctrl_L+Alt_L"
 
 msgid "Cursor display mode: 'local' or 'auto'"
-msgstr ""
+msgstr "光标显示模式：'local' 或者 'auto'"
 
 msgid "Customise hotkeys"
 msgstr "自定义快捷键"
@@ -459,15 +459,15 @@ msgid "Share folder"
 msgstr "共享文件夹"
 
 msgid "Show / hide password text"
-msgstr ""
+msgstr "显示/隐藏密码文本"
 
 msgctxt "shortcut window"
 msgid "Smartcard insert"
-msgstr ""
+msgstr "智能卡插入"
 
 msgctxt "shortcut window"
 msgid "Smartcard remove"
-msgstr ""
+msgstr "智能卡移除"
 
 msgid "Spice"
 msgstr "Spice"
@@ -485,7 +485,7 @@ msgstr "正在传输 1 份文件..."
 
 msgctxt "shortcut window"
 msgid "USB device reset"
-msgstr ""
+msgstr "USB 设备重置"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -545,7 +545,7 @@ msgstr "VNC 不提供 GUID"
 
 msgctxt "shortcut window"
 msgid "Viewer"
-msgstr ""
+msgstr "查看器"
 
 msgid "Virt Viewer"
 msgstr "虚拟系统查看器"
@@ -587,7 +587,7 @@ msgstr "缩小(_O)"
 
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "放大"
 
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
@@ -598,11 +598,11 @@ msgstr "窗口缩放级别，以百分比计"
 
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "缩小"
 
 msgctxt "shortcut window"
 msgid "Zoom reset"
-msgstr ""
+msgstr "缩放重置"
 
 msgid "[none]"
 msgstr "[无]"
@@ -611,7 +611,7 @@ msgid "_About"
 msgstr "关于(_A)"
 
 msgid "_Auto resize"
-msgstr ""
+msgstr "自动缩放(_A)"
 
 msgid "_Cancel"
 msgstr "取消(_C)"
@@ -620,10 +620,10 @@ msgid "_Close"
 msgstr "关闭(_C)"
 
 msgid "_Guest details"
-msgstr ""
+msgstr "虚拟机详情(_G)"
 
 msgid "_Keyboard shortcuts"
-msgstr ""
+msgstr "键盘快捷键(_K)"
 
 msgid "_Normal Size"
 msgstr "正常大小(_N)"
@@ -635,7 +635,7 @@ msgid "_Pause"
 msgstr "暂停(_P)"
 
 msgid "_Preferences…"
-msgstr ""
+msgstr "偏好设置(_P)…"
 
 msgid "_Reset"
 msgstr "重置(_R)"
