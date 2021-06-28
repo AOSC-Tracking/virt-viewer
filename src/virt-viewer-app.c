@@ -2372,6 +2372,7 @@ virt_viewer_app_action_monitor(GSimpleAction *act,
 {
     VirtViewerApp *self;
     VirtViewerWindow *win;
+    VirtViewerDisplay *display;
     VirtViewerAppPrivate *priv;
     int nth;
 
@@ -2383,7 +2384,8 @@ virt_viewer_app_action_monitor(GSimpleAction *act,
         return;
 
     nth = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(act), "nth"));
-    win = virt_viewer_app_get_nth_window(self, nth);
+    display = VIRT_VIEWER_DISPLAY(g_hash_table_lookup(priv->displays, GINT_TO_POINTER(nth)));
+    win = ensure_window_for_display(self, display);
 
     virt_viewer_app_action_window(self, win, act, state);
 }
