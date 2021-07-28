@@ -1,20 +1,21 @@
 # THIS FILE WAS AUTO-GENERATED
 #
-#  $ lcitool dockerfile centos-stream libvirt+minimal,libvirt-glib,gtk-vnc,virt-viewer
+#  $ lcitool dockerfile centos-stream-8 libvirt+minimal,libvirt-glib,gtk-vnc,virt-viewer
 #
-# https://gitlab.com/libvirt/libvirt-ci/-/commit/318adcadcf442daba1883f5046ad1970b65e5ca0
-FROM docker.io/library/centos:8
+# https://gitlab.com/libvirt/libvirt-ci/-/commit/6cd723b4affb2ee67e7d462dac480191c4b97598
+
+FROM quay.io/centos/centos:stream8
 
 RUN dnf update -y && \
-    dnf install -y centos-release-stream && \
     dnf install 'dnf-command(config-manager)' -y && \
-    dnf config-manager --set-enabled -y Stream-PowerTools && \
+    dnf config-manager --set-enabled -y powertools && \
     dnf install -y centos-release-advanced-virtualization && \
     dnf install -y epel-release && \
     dnf install -y \
         bash-completion \
         ca-certificates \
         ccache \
+        cpp \
         cyrus-sasl-devel \
         gcc \
         gdk-pixbuf2-devel \
@@ -56,10 +57,10 @@ RUN dnf update -y && \
     rpm -qa | sort > /packages.txt && \
     mkdir -p /usr/libexec/ccache-wrappers && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/cc && \
-    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/$(basename /usr/bin/gcc)
+    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
 
 RUN pip3 install \
-         meson==0.54.0
+         meson==0.56.0
 
 ENV LANG "en_US.UTF-8"
 ENV MAKE "/usr/bin/make"

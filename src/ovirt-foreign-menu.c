@@ -31,12 +31,23 @@
 #include "virt-viewer-util.h"
 #include "glib-compat.h"
 
-#if !GLIB_CHECK_VERSION(2, 60, 0)
-# if __GNUC_PREREQ (7, 0)
-#  define G_GNUC_FALLTHROUGH __attribute__((fallthrough))
-# else
-#  define G_GNUC_FALLTHROUGH do {} while(0)
-# endif
+/* GLib 2.69 annotated macros with version tags, and
+ * since we set GLIB_VERSION_MAX_ALLOWED  to 2.48
+ * it complains if we use G_GNUC_FALLTHROUGH at
+ * all. We temporarily purge the GLib definition
+ * of G_GNUC_FALLTHROUGH and define it ourselves.
+ * When we set min glib >= 2.60, we can delete
+ * all this
+ */
+#ifndef __GNUC_PREREQ
+# define __GNUC_PREREQ(maj, min) \
+    ((__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min))
+#endif
+#undef G_GNUC_FALLTHROUGH
+#if __GNUC_PREREQ (7, 0)
+# define G_GNUC_FALLTHROUGH __attribute__((fallthrough))
+#else
+# define G_GNUC_FALLTHROUGH do {} while(0)
 #endif
 
 typedef enum {
