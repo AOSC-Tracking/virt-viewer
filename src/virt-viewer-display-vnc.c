@@ -192,31 +192,26 @@ virt_viewer_display_vnc_resize_desktop(VncDisplay *vnc G_GNUC_UNUSED,
 
 
 static void
-enable_accel_changed(VirtViewerApp *app,
-                     GParamSpec *pspec G_GNUC_UNUSED,
-                     VncDisplay *vnc)
+release_cursor_display_hotkey_changed(VirtViewerApp *app,
+                                      GParamSpec *pspec G_GNUC_UNUSED,
+                                      VncDisplay *vnc)
 {
     gboolean kiosk;
-    guint accel_key = 0;
-    GdkModifierType accel_mods = 0;
-    gchar **accels;
-
-    if (virt_viewer_app_get_enable_accel(app)){
-        accels = gtk_application_get_accels_for_action(GTK_APPLICATION(app), "win.release-cursor");
-        if (accels[0])
-            gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
-        g_strfreev(accels);
-    }
-
+    gchar *hotkey;
     g_object_get(app, "kiosk", &kiosk, NULL);
+    hotkey = virt_viewer_app_get_release_cursor_display_hotkey(app);
 
-    if (accel_key || accel_mods || kiosk) {
-        VncGrabSequence *seq = vnc_grab_sequence_new(0, NULL);
+    if(kiosk || hotkey == NULL) {
         /* disable default grab sequence */
+        VncGrabSequence *seq = vnc_grab_sequence_new(0, NULL);
         vnc_display_set_grab_keys(vnc, seq);
         vnc_grab_sequence_free(seq);
     } else {
-        vnc_display_set_grab_keys(vnc, NULL);
+        hotkey = spice_hotkey_to_display_hotkey(hotkey);
+        VncGrabSequence *seq = vnc_grab_sequence_new_from_string(hotkey);
+        g_free(hotkey);
+        vnc_display_set_grab_keys(vnc, seq);
+        vnc_grab_sequence_free(seq);
     }
 }
 
@@ -293,9 +288,9 @@ virt_viewer_display_vnc_new(VirtViewerSessionVnc *session,
                      G_CALLBACK(virt_viewer_display_vnc_initialized), self);
 
     app = virt_viewer_session_get_app(VIRT_VIEWER_SESSION(session));
-    virt_viewer_signal_connect_object(app, "notify::enable-accel",
-                                      G_CALLBACK(enable_accel_changed), self->vnc, 0);
-    enable_accel_changed(app, NULL, self->vnc);
+    virt_viewer_signal_connect_object(app, "notify::release-cursor-display-hotkey",
+                                      G_CALLBACK(release_cursor_display_hotkey_changed), self->vnc, 0);
+    release_cursor_display_hotkey_changed(app, NULL, self->vnc);
 
 #ifdef HAVE_VNC_REMOTE_RESIZE
     virt_viewer_signal_connect_object(self, "notify::auto-resize",

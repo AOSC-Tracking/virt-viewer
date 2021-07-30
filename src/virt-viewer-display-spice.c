@@ -233,31 +233,26 @@ zoom_level_changed(VirtViewerDisplaySpice *self,
 }
 
 static void
-enable_accel_changed(VirtViewerApp *app,
-                     GParamSpec *pspec G_GNUC_UNUSED,
-                     VirtViewerDisplaySpice *self)
+release_cursor_display_hotkey_changed(VirtViewerApp *app,
+                                      GParamSpec *pspec G_GNUC_UNUSED,
+                                      VirtViewerDisplaySpice *self)
 {
     gboolean kiosk;
-    guint accel_key = 0;
-    GdkModifierType accel_mods = 0;
-    gchar **accels;
-
-    if (virt_viewer_app_get_enable_accel(app)){
-        accels = gtk_application_get_accels_for_action(GTK_APPLICATION(app), "win.release-cursor");
-        if (accels[0])
-            gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
-        g_strfreev(accels);
-    }
-
+    gchar *hotkey;
     g_object_get(app, "kiosk", &kiosk, NULL);
+    hotkey = virt_viewer_app_get_release_cursor_display_hotkey(app);
 
-    if (accel_key || accel_mods || kiosk) {
-        SpiceGrabSequence *seq = spice_grab_sequence_new(0, NULL);
+    if (kiosk || hotkey == NULL) {
         /* disable default grab sequence */
+        SpiceGrabSequence *seq = spice_grab_sequence_new(0, NULL);
         spice_display_set_grab_keys(self->display, seq);
         spice_grab_sequence_free(seq);
     } else {
-        spice_display_set_grab_keys(self->display, NULL);
+        hotkey = spice_hotkey_to_display_hotkey(hotkey);
+        SpiceGrabSequence *seq = spice_grab_sequence_new_from_string(hotkey);
+        g_free(hotkey);
+        spice_display_set_grab_keys(self->display, seq);
+        spice_grab_sequence_free(seq);
     }
 }
 
@@ -337,8 +332,8 @@ virt_viewer_display_spice_new(VirtViewerSessionSpice *session,
 
 
     app = virt_viewer_session_get_app(VIRT_VIEWER_SESSION(session));
-    virt_viewer_signal_connect_object(app, "notify::enable-accel",
-                                      G_CALLBACK(enable_accel_changed), self, 0);
+    virt_viewer_signal_connect_object(app, "notify::release-cursor-display-hotkey",
+                                      G_CALLBACK(release_cursor_display_hotkey_changed), self, 0);
     virt_viewer_signal_connect_object(self, "notify::fullscreen",
                                       G_CALLBACK(resize_policy_changed), app, 0);
     virt_viewer_signal_connect_object(self, "notify::auto-resize",
@@ -346,7 +341,7 @@ virt_viewer_display_spice_new(VirtViewerSessionSpice *session,
     virt_viewer_signal_connect_object(self, "notify::zoom-level",
                                       G_CALLBACK(zoom_level_changed), app, 0);
     resize_policy_changed(self, NULL, app);
-    enable_accel_changed(app, NULL, self);
+    release_cursor_display_hotkey_changed(app, NULL, self);
 
     return GTK_WIDGET(self);
 }
@@ -356,6 +351,9 @@ virt_viewer_display_spice_release_cursor(VirtViewerDisplay *display)
 {
     VirtViewerDisplaySpice *self = VIRT_VIEWER_DISPLAY_SPICE(display);
 
+#if SPICE_GTK_CHECK_VERSION(0,40,0)
+    spice_display_keyboard_ungrab(self->display);
+#endif
     spice_display_mouse_ungrab(self->display);
 }
 

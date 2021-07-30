@@ -72,6 +72,10 @@ gboolean virt_viewer_app_activate(VirtViewerApp *self, GError **error);
 gboolean virt_viewer_app_initial_connect(VirtViewerApp *self, GError **error);
 gboolean virt_viewer_app_get_direct(VirtViewerApp *self);
 void virt_viewer_app_set_direct(VirtViewerApp *self, gboolean direct);
+char** virt_viewer_app_get_hotkey_names(void);
+gchar* virt_viewer_app_get_release_cursor_display_hotkey(VirtViewerApp *self);
+void virt_viewer_app_set_release_cursor_display_hotkey(VirtViewerApp *self, const gchar *hotkey);
+void virt_viewer_app_set_hotkey(VirtViewerApp *self, const gchar *hotkey_name, const gchar *hotkey);
 void virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys);
 void virt_viewer_app_set_attach(VirtViewerApp *self, gboolean attach);
 gboolean virt_viewer_app_get_attach(VirtViewerApp *self);
@@ -94,13 +98,11 @@ void virt_viewer_app_set_connect_info(VirtViewerApp *self,
 void virt_viewer_app_show_status(VirtViewerApp *self, const gchar *fmt, ...) G_GNUC_PRINTF(2, 3);
 void virt_viewer_app_show_display(VirtViewerApp *self);
 GList* virt_viewer_app_get_windows(VirtViewerApp *self);
-gboolean virt_viewer_app_get_enable_accel(VirtViewerApp *self);
 VirtViewerSession* virt_viewer_app_get_session(VirtViewerApp *self);
 gboolean virt_viewer_app_get_fullscreen(VirtViewerApp *app);
 void virt_viewer_app_clear_hotkeys(VirtViewerApp *app);
 GList* virt_viewer_app_get_initial_displays(VirtViewerApp* self);
 gint virt_viewer_app_get_initial_monitor_for_display(VirtViewerApp* self, gint display);
-void virt_viewer_app_set_enable_accel(VirtViewerApp *app, gboolean enable);
 void virt_viewer_app_show_preferences(VirtViewerApp *app, GtkWidget *parent);
 gboolean virt_viewer_app_get_session_cancelled(VirtViewerApp *self);
 

@@ -224,7 +224,7 @@ virt_viewer_window_constructed(GObject *object)
     if (G_OBJECT_CLASS(virt_viewer_window_parent_class)->constructed)
         G_OBJECT_CLASS(virt_viewer_window_parent_class)->constructed(object);
 
-    g_signal_connect(self->app, "notify::enable-accel",
+    g_signal_connect(self->app, "notify::release-cursor-display-hotkey",
                      G_CALLBACK(rebuild_combo_menu), object);
     rebuild_combo_menu(NULL, NULL, object);
 }
@@ -872,33 +872,47 @@ virt_viewer_window_get_keycombo_menu(VirtViewerWindow *self)
         }
     }
 
-    if (virt_viewer_app_get_enable_accel(self->app)) {
-        gchar **accelactions = gtk_application_list_action_descriptions(GTK_APPLICATION(self->app));
+    gchar **accelactions = gtk_application_list_action_descriptions(GTK_APPLICATION(self->app));
 
-        sectionitems = g_menu_new();
-        section = g_menu_item_new_section(NULL, G_MENU_MODEL(sectionitems));
-        g_menu_append_item(menu, section);
+    sectionitems = g_menu_new();
+    section = g_menu_item_new_section(NULL, G_MENU_MODEL(sectionitems));
+    g_menu_append_item(menu, section);
 
-        for (i = 0; accelactions[i] != NULL; i++) {
-            gchar **accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self->app),
-                                                                   accelactions[i]);
-
-            for (j = 0; accels[j] != NULL; j++) {
+    for (i = 0; accelactions[i] != NULL; i++) {
+        if (g_str_equal(accelactions[i], "win.release-cursor")) {
+            gchar *display_hotkey = virt_viewer_app_get_release_cursor_display_hotkey(self->app);
+            if (display_hotkey) {
+                gchar *accel = spice_hotkey_to_gtk_accelerator(display_hotkey);
                 guint accel_key;
                 GdkModifierType accel_mods;
-                gtk_accelerator_parse(accels[j], &accel_key, &accel_mods);
+                gtk_accelerator_parse(accel, &accel_key, &accel_mods);
 
                 guint *keys = accel_key_to_keys(accel_key, accel_mods);
-                gchar *label = gtk_accelerator_get_label(accel_key, accel_mods);
+                gchar *label = spice_hotkey_to_display_hotkey(display_hotkey);
                 virt_viewer_menu_add_combo(self, sectionitems, keys, label);
                 g_free(label);
                 g_free(keys);
             }
-            g_strfreev(accels);
         }
 
-        g_strfreev(accelactions);
+        gchar **accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self->app),
+                                                               accelactions[i]);
+
+        for (j = 0; accels[j] != NULL; j++) {
+            guint accel_key;
+            GdkModifierType accel_mods;
+            gtk_accelerator_parse(accels[j], &accel_key, &accel_mods);
+
+            guint *keys = accel_key_to_keys(accel_key, accel_mods);
+            gchar *label = gtk_accelerator_get_label(accel_key, accel_mods);
+            virt_viewer_menu_add_combo(self, sectionitems, keys, label);
+            g_free(label);
+            g_free(keys);
+        }
+        g_strfreev(accels);
     }
+
+    g_strfreev(accelactions);
 
     return menu;
 }
@@ -921,9 +935,7 @@ virt_viewer_window_disable_modifiers(VirtViewerWindow *self)
 
     /* This stops global accelerators like Ctrl+Q == Quit */
     for (accels = self->accel_list ; accels ; accels = accels->next) {
-        if (virt_viewer_app_get_enable_accel(self->app) &&
-            self->accel_group == accels->data &&
-            !self->kiosk)
+        if (self->accel_group == accels->data && !self->kiosk)
             continue;
         gtk_window_remove_accel_group(GTK_WINDOW(self->window), accels->data);
     }
@@ -1292,25 +1304,25 @@ virt_viewer_window_update_title(VirtViewerWindow *self)
 
     if (self->grabbed) {
         gchar *label;
+        gchar *display_hotkey;
         guint accel_key = 0;
         GdkModifierType accel_mods = 0;
         gchar **accels;
 
-        if (virt_viewer_app_get_enable_accel(self->app)) {
+        display_hotkey = virt_viewer_app_get_release_cursor_display_hotkey(self->app);
+        if (display_hotkey) {
+            label = spice_hotkey_to_display_hotkey(display_hotkey);
+        } else {
             accels = gtk_application_get_accels_for_action(GTK_APPLICATION(self->app), "win.release-cursor");
             if (accels[0])
                 gtk_accelerator_parse(accels[0], &accel_key, &accel_mods);
             g_strfreev(accels);
-        }
-
-        if (accel_key || accel_mods) {
             g_debug("release-cursor accel key: key=%u, mods=%x", accel_key, accel_mods);
             label = gtk_accelerator_get_label(accel_key, accel_mods);
-        } else {
-            label = g_strdup(_("Ctrl_L+Alt_L"));
         }
 
         grabhint = g_strdup_printf(_("(Press %s to release pointer)"), label);
+        g_free(label);
 
         if (self->subtitle) {
             /* translators:
@@ -1330,8 +1342,6 @@ virt_viewer_window_update_title(VirtViewerWindow *self)
                                     grabhint,
                                     g_get_application_name());
         }
-
-        g_free(label);
     } else if (self->subtitle) {
         /* translators:
          * This is "<subtitle> - <appname>"
