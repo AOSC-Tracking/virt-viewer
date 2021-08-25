@@ -160,9 +160,10 @@ virt_viewer_timed_revealer_new(GtkWidget *toolbar)
      */
 
     gtk_container_add(GTK_CONTAINER(self), self->revealer);
+    gtk_widget_show(self->revealer);
     gtk_widget_set_halign(GTK_WIDGET(self), GTK_ALIGN_CENTER);
     gtk_widget_set_valign(GTK_WIDGET(self), GTK_ALIGN_START);
-    gtk_widget_show_all(GTK_WIDGET(self));
+    gtk_widget_show(GTK_WIDGET(self));
 
     g_signal_connect(self,
                      "grab-notify",

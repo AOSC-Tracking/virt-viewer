@@ -362,8 +362,10 @@ ovirt_foreign_menu_update(GtkApplication *gtkapp, GtkWindow *gtkwin, G_GNUC_UNUS
     RemoteViewer *self = REMOTE_VIEWER(gtkapp);
     VirtViewerWindow *win = g_object_get_data(G_OBJECT(gtkwin), "virt-viewer-window");
     GtkBuilder *builder = virt_viewer_window_get_builder(win);
-    GtkWidget *menu = GTK_WIDGET(gtk_builder_get_object(builder, "menu-change-cd"));
-    gtk_widget_set_visible(menu, self->ovirt_foreign_menu != NULL);
+    GtkWidget *button = GTK_WIDGET(gtk_builder_get_object(builder, "toolbar-cd"));
+    gtk_widget_set_visible(button, self->ovirt_foreign_menu != NULL);
+    button = GTK_WIDGET(gtk_builder_get_object(builder, "header-cd"));
+    gtk_widget_set_visible(button, self->ovirt_foreign_menu != NULL);
 }
 
 static void
