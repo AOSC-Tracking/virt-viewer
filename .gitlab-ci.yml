@@ -3,24 +3,6 @@ stages:
   - builds
   - sanity_checks
 
-.container_job_template: &container_job_definition
-  image: docker:stable
-  stage: containers
-  services:
-    - name: registry.gitlab.com/libvirt/libvirt-ci/docker-dind:master
-      alias: docker
-  before_script:
-    - export TAG="$CI_REGISTRY_IMAGE/ci-$NAME:latest"
-    - export COMMON_TAG="$CI_REGISTRY/virt-viewer/virt-viewer/ci-$NAME:latest"
-    - docker info
-    - docker login registry.gitlab.com -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
-  script:
-    - docker pull "$TAG" || docker pull "$COMMON_TAG" || true
-    - docker build --cache-from "$TAG" --cache-from "$COMMON_TAG" --tag "$TAG" -f "ci/containers/ci-$NAME.Dockerfile" ci/containers
-    - docker push "$TAG"
-  after_script:
-    - docker logout
-
 .script_variables: &script_variables |
   export MAKEFLAGS="-j$(getconf _NPROCESSORS_ONLN)"
   export SCRATCH_DIR="/tmp/scratch"
@@ -30,28 +12,20 @@ stages:
   export PATH="$VROOT/bin:$PATH"
   export PKG_CONFIG_PATH="$LIBDIR/pkgconfig"
 
-.dist_native_build_job_template: &dist_native_build_job_definition
-  image: $CI_REGISTRY_IMAGE/ci-$NAME:latest
-  stage: builds
+.native_build_job:
+  extends: .gitlab_native_build_job
   before_script:
     - *script_variables
   script:
     - meson build
-    - if test "$DIST" != "skip";
-      then
-        ninja -C build dist;
-      else
-        ninja -C build;
-        ninja -C build test;
-      fi
+    - ninja -C build dist;
     - if test -x /usr/bin/rpmbuild && test "$RPM" != "skip";
       then
         rpmbuild --nodeps -ta build/meson-dist/virt-viewer-*.tar.xz;
       fi
 
-.git_native_build_job_template: &git_native_build_job_definition
-  image: $CI_REGISTRY_IMAGE/ci-$NAME:latest
-  stage: builds
+.native_git_build_job:
+  extends: .gitlab_native_build_job
   before_script:
     - *script_variables
   script:
@@ -73,22 +47,15 @@ stages:
     - $NINJA -C build install
     - popd
     - meson build
-    - if test "$DIST" != "skip";
-      then
-        ninja -C build dist;
-      else
-        ninja -C build;
-        ninja -C build test;
-      fi
+    - ninja -C build dist;
     - if test -x /usr/bin/rpmbuild && test "$RPM" != "skip";
       then
         rpmbuild --nodeps -ta build/meson-dist/virt-viewer-*.tar.xz;
       fi
 
-# Default cross build jobs that are always run
-.git_cross_build_default_job_template: &git_cross_build_default_job_definition
+.cross_build_job:
+  extends: .gitlab_cross_build_job
   image: $CI_REGISTRY_IMAGE/ci-$NAME:latest
-  stage: builds
   cache:
     paths:
       - ccache/
@@ -96,222 +63,18 @@ stages:
   before_script:
     - *script_variables
   script:
-    - pushd "$PWD"
-    - mkdir -p "$SCRATCH_DIR"
-    - cd "$SCRATCH_DIR"
-    - git clone --depth 1 https://gitlab.com/libvirt/libvirt.git
-    - git clone --depth 1 https://gitlab.com/libvirt/libvirt-glib.git
-    - git clone --depth 1 https://gitlab.gnome.org/GNOME/gtk-vnc.git
-    - cd libvirt
-    - meson build -Ddriver_libvirtd=disabled "--prefix=$VROOT" "--libdir=$LIBDIR" $MESON_OPTS
-    - ninja -C build install
-    - cd ../libvirt-glib
-    - meson build --prefix="$VROOT" --libdir="$LIBDIR" -Ddocs=disabled $MESON_OPTS
-    - $NINJA -C build install
-    - cd ../gtk-vnc
-    - git submodule update --init
-    - meson build $MESON_OPTS --prefix="$VROOT" --libdir="$LIBDIR" -Dintrospection=disabled
-    - $NINJA -C build install
-    - popd
     - meson build $MESON_OPTS
     - $NINJA -C build
 
-# Check that all commits are signed-off for the DCO.
-# Skip on "virt-viewer" namespace, since we only need to run
-# this test on developer's personal forks from which
-# merge requests are submitted
-check-dco:
-  stage: sanity_checks
-  needs: []
-  image: registry.gitlab.com/libvirt/libvirt-ci/check-dco:master
-  script:
-    - /check-dco virt-viewer
-  except:
-    variables:
-      - $CI_PROJECT_NAMESPACE == 'virt-viewer'
-
-x86-centos-7-container:
-  <<: *container_job_definition
-  variables:
-    NAME: centos-7
-
-x86-centos-8-container:
-  <<: *container_job_definition
-  variables:
-    NAME: centos-8
-
-x86-centos-stream-container:
-  <<: *container_job_definition
-  variables:
-    NAME: centos-stream
-
-x86-debian-10-container:
-  <<: *container_job_definition
-  variables:
-    NAME: debian-10
-
-x86-debian-sid-container:
-  <<: *container_job_definition
-  variables:
-    NAME: debian-sid
-
-x86-fedora-32-container:
-  <<: *container_job_definition
-  variables:
-    NAME: fedora-32
-
-x86-fedora-33-container:
-  <<: *container_job_definition
-  variables:
-    NAME: fedora-33
-
-x86-fedora-rawhide-container:
-  <<: *container_job_definition
-  variables:
-    NAME: fedora-rawhide
-
-x86-opensuse-152-container:
-  <<: *container_job_definition
-  variables:
-    NAME: opensuse-152
-
-x86-ubuntu-1804-container:
-  <<: *container_job_definition
-  variables:
-    NAME: ubuntu-1804
-
-x86-ubuntu-2004-container:
-  <<: *container_job_definition
-  variables:
-    NAME: ubuntu-2004
-
-mingw32-fedora-rawhide-container:
-  <<: *container_job_definition
-  variables:
-    NAME: fedora-rawhide-cross-mingw32
-
-mingw64-fedora-rawhide-container:
-  <<: *container_job_definition
-  variables:
-    NAME: fedora-rawhide-cross-mingw64
-
+include: '/ci/gitlab.yml'
 
 codestyle:
   stage: sanity_checks
   image: $CI_REGISTRY_IMAGE/ci-centos-8:latest
   needs:
-    - x86-centos-8-container
+    - x86_64-centos-8-container
   before_script:
     - *script_variables
   script:
     - meson build || (cat build/meson-logs/meson-log.txt && exit 1)
     - meson test -C build --suite syntax-check --no-rebuild || (cat build/meson-logs/testlog.txt && exit 1)
-
-x86-centos-7-dist-build:
-  <<: *dist_native_build_job_definition
-  needs:
-    - x86-centos-7-container
-  variables:
-    NAME: centos-7
-    # git is too old for -C args
-    DIST: skip
-    RPM: skip
-
-x86-centos-8-git-build:
-  <<: *git_native_build_job_definition
-  needs:
-    - x86-centos-8-container
-  variables:
-    NAME: centos-8
-    RPM: skip
-
-x86-centos-stream-dist-build:
-  <<: *git_native_build_job_definition
-  needs:
-    - x86-centos-stream-container
-  variables:
-    NAME: centos-stream
-    RPM: skip
-
-x86-debian-10-dist-build:
-  <<: *dist_native_build_job_definition
-  needs:
-    - x86-debian-10-container
-  variables:
-    NAME: debian-10
-
-x86-debian-sid-dist-build:
-  <<: *dist_native_build_job_definition
-  needs:
-    - x86-debian-sid-container
-  variables:
-    NAME: debian-sid
-
-x86-fedora-32-dist-build:
-  <<: *dist_native_build_job_definition
-  needs:
-    - x86-fedora-32-container
-  variables:
-    NAME: fedora-32
-
-x86-fedora-33-dist-build:
-  <<: *dist_native_build_job_definition
-  needs:
-    - x86-fedora-33-container
-  variables:
-    NAME: fedora-33
-
-x86-fedora-rawhide-dist-build:
-  <<: *dist_native_build_job_definition
-  needs:
-    - x86-fedora-rawhide-container
-  variables:
-    NAME: fedora-rawhide
-
-x86-opensuse-152-dist-build:
-  <<: *dist_native_build_job_definition
-  needs:
-    - x86-opensuse-152-container
-  variables:
-    NAME: opensuse-152
-    RPM: skip
-
-x86-ubuntu-1804-dist-build:
-  <<: *dist_native_build_job_definition
-  needs:
-    - x86-ubuntu-1804-container
-  variables:
-    NAME: ubuntu-1804
-
-x86-ubuntu-2004-dist-build:
-  <<: *dist_native_build_job_definition
-  needs:
-    - x86-ubuntu-2004-container
-  variables:
-    NAME: ubuntu-2004
-
-mingw32-fedora-rawhide-git-build:
-  <<: *git_cross_build_default_job_definition
-  needs:
-    - mingw32-fedora-rawhide-container
-  variables:
-    NAME: fedora-rawhide-cross-mingw32
-  artifacts:
-    name: 'x86-msi'
-    when: on_success
-    expire_in: 30 days
-    paths:
-      - data/virt-viewer-x86*.msi.pot
-
-mingw64-fedora-rawhide-git-build:
-  <<: *git_cross_build_default_job_definition
-  needs:
-    - mingw64-fedora-rawhide-container
-  variables:
-    NAME: fedora-rawhide-cross-mingw64
-  artifacts:
-    name: 'x64-msi'
-    when: on_success
-    expire_in: 30 days
-    paths:
-      - data/virt-viewer-x64*.msi.pot
