@@ -74,6 +74,24 @@
               </packing>
             </child>
             <child>
+              <object class="GtkButton" id="toolbar-cd">
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">Change CD</property>
+                <property name="action-name">win.change-cd</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="icon-name">drive-optical-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkMenuButton" id="toolbar-machine">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
@@ -88,7 +106,7 @@
                 </child>
               </object>
               <packing>
-                <property name="position">3</property>
+                <property name="position">4</property>
               </packing>
             </child>
             <child>
@@ -107,7 +125,7 @@
               </object>
               <packing>
                 <property name="pack-type">end</property>
-                <property name="position">4</property>
+                <property name="position">5</property>
               </packing>
             </child>
           </object>
@@ -175,6 +193,24 @@
           </packing>
         </child>
         <child>
+          <object class="GtkButton" id="header-cd">
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="tooltip-text" translatable="yes">Change CD</property>
+            <property name="action-name">win.change-cd</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">drive-optical-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkMenuButton" id="header-machine">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
@@ -188,7 +224,7 @@
             </child>
           </object>
           <packing>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
         <child>
@@ -207,7 +243,7 @@
           </object>
           <packing>
             <property name="pack-type">end</property>
-            <property name="position">4</property>
+            <property name="position">5</property>
           </packing>
         </child>
       </object>

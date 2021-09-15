@@ -54,11 +54,9 @@ typedef enum {
     STATE_0,
     STATE_API,
     STATE_VM,
-#ifdef HAVE_OVIRT_DATA_CENTER
     STATE_HOST,
     STATE_CLUSTER,
     STATE_DATA_CENTER,
-#endif
     STATE_STORAGE_DOMAIN,
     STATE_VM_CDROM,
     STATE_CDROM_FILE,
@@ -68,11 +66,9 @@ typedef enum {
 static void ovirt_foreign_menu_next_async_step(OvirtForeignMenu *menu, GTask *task, OvirtForeignMenuState state);
 static void ovirt_foreign_menu_fetch_api_async(OvirtForeignMenu *menu, GTask *task);
 static void ovirt_foreign_menu_fetch_vm_async(OvirtForeignMenu *menu, GTask *task);
-#ifdef HAVE_OVIRT_DATA_CENTER
 static void ovirt_foreign_menu_fetch_host_async(OvirtForeignMenu *menu, GTask *task);
 static void ovirt_foreign_menu_fetch_cluster_async(OvirtForeignMenu *menu, GTask *task);
 static void ovirt_foreign_menu_fetch_data_center_async(OvirtForeignMenu *menu, GTask *task);
-#endif
 static void ovirt_foreign_menu_fetch_storage_domain_async(OvirtForeignMenu *menu, GTask *task);
 static void ovirt_foreign_menu_fetch_vm_cdrom_async(OvirtForeignMenu *menu, GTask *task);
 static void ovirt_foreign_menu_refresh_cdrom_file_async(OvirtForeignMenu *menu, GTask *task);
@@ -84,11 +80,9 @@ struct _OvirtForeignMenu {
     OvirtProxy *proxy;
     OvirtApi *api;
     OvirtVm *vm;
-#ifdef HAVE_OVIRT_DATA_CENTER
     OvirtHost *host;
     OvirtCluster *cluster;
     OvirtDataCenter *data_center;
-#endif
     char *vm_guid;
 
     OvirtCollection *files;
@@ -97,9 +91,9 @@ struct _OvirtForeignMenu {
     /* The next 2 members are used when changing the ISO image shown in
      * a VM */
     /* Name of the ISO which is currently used by the VM OvirtCdrom */
-    char *current_iso_name;
+    GStrv current_iso_info;
     /* Name of the ISO we are trying to insert in the VM OvirtCdrom */
-    char *next_iso_name;
+    GStrv next_iso_info;
 
     GList *iso_names;
 };
@@ -132,6 +126,40 @@ ovirt_foreign_menu_get_current_iso_name(OvirtForeignMenu *foreign_menu)
     return name;
 }
 
+static GStrv
+iso_info_new(const gchar *name, const gchar *id)
+{
+    GStrv info = g_new0(gchar *, 3);
+    info[0] = g_strdup(name);
+    info[1] = id != NULL ? g_strdup(id) : g_strdup(name);
+    return info;
+}
+
+
+GStrv
+ovirt_foreign_menu_get_current_iso_info(OvirtForeignMenu *menu)
+{
+    if (menu->cdrom == NULL)
+        return NULL;
+
+    return menu->current_iso_info;
+}
+
+static void
+ovirt_foreign_menu_set_current_iso_info(OvirtForeignMenu *menu, const gchar *name, const gchar *id)
+{
+    GStrv info = NULL;
+
+    g_debug("Setting current ISO to: name '%s', id '%s'", name, id);
+    if (menu->cdrom == NULL)
+        return;
+
+    if (name != NULL)
+        info = iso_info_new(name, id);
+
+    g_strfreev(menu->current_iso_info);
+    menu->current_iso_info = info;
+}
 
 GList*
 ovirt_foreign_menu_get_iso_names(OvirtForeignMenu *foreign_menu)
@@ -215,11 +243,9 @@ ovirt_foreign_menu_dispose(GObject *obj)
     g_clear_object(&self->proxy);
     g_clear_object(&self->api);
     g_clear_object(&self->vm);
-#ifdef HAVE_OVIRT_DATA_CENTER
     g_clear_object(&self->host);
     g_clear_object(&self->cluster);
     g_clear_object(&self->data_center);
-#endif
     g_clear_pointer(&self->vm_guid, g_free);
     g_clear_object(&self->files);
     g_clear_object(&self->cdrom);
@@ -229,8 +255,8 @@ ovirt_foreign_menu_dispose(GObject *obj)
         self->iso_names = NULL;
     }
 
-    g_clear_pointer(&self->current_iso_name, g_free);
-    g_clear_pointer(&self->next_iso_name, g_free);
+    g_clear_pointer(&self->current_iso_info, g_strfreev);
+    g_clear_pointer(&self->next_iso_info, g_strfreev);
 
     G_OBJECT_CLASS(ovirt_foreign_menu_parent_class)->dispose(obj);
 }
@@ -333,7 +359,6 @@ ovirt_foreign_menu_next_async_step(OvirtForeignMenu *menu,
             ovirt_foreign_menu_fetch_vm_async(menu, task);
             break;
         }
-#ifdef HAVE_OVIRT_DATA_CENTER
         G_GNUC_FALLTHROUGH;
     case STATE_HOST:
         if (menu->host == NULL) {
@@ -352,7 +377,6 @@ ovirt_foreign_menu_next_async_step(OvirtForeignMenu *menu,
             ovirt_foreign_menu_fetch_data_center_async(menu, task);
             break;
         }
-#endif
         G_GNUC_FALLTHROUGH;
     case STATE_STORAGE_DOMAIN:
         if (menu->files == NULL) {
@@ -419,21 +443,21 @@ static void iso_name_set_cb(GObject *source_object,
     updated = ovirt_cdrom_update_finish(OVIRT_CDROM(source_object),
                                         result, &error);
     if (updated) {
-        g_debug("Finished updating cdrom content: %s", foreign_menu->next_iso_name);
-        g_free(foreign_menu->current_iso_name);
-        foreign_menu->current_iso_name = foreign_menu->next_iso_name;
-        foreign_menu->next_iso_name = NULL;
+        g_debug("Finished updating cdrom content");
+        g_strfreev(foreign_menu->current_iso_info);
+        foreign_menu->current_iso_info = foreign_menu->next_iso_info;
+        foreign_menu->next_iso_info = NULL;
         g_task_return_boolean(task, TRUE);
         goto end;
     }
 
     /* Reset old state back as we were not successful in switching to
      * the new ISO */
-    g_debug("setting OvirtCdrom:file back to '%s'",
-            foreign_menu->current_iso_name);
+    g_debug("setting OvirtCdrom:file back");
     g_object_set(foreign_menu->cdrom, "file",
-                 foreign_menu->current_iso_name, NULL);
-    g_clear_pointer(&foreign_menu->next_iso_name, g_free);
+                 foreign_menu->current_iso_info ? foreign_menu->current_iso_info[1] : NULL,
+                 NULL);
+    g_clear_pointer(&foreign_menu->next_iso_info, g_strfreev);
 
     if (error != NULL) {
         g_warning("failed to update cdrom resource: %s", error->message);
@@ -451,6 +475,7 @@ end:
 
 void ovirt_foreign_menu_set_current_iso_name_async(OvirtForeignMenu *foreign_menu,
                                                    const char *name,
+                                                   const char *id,
                                                    GCancellable *cancellable,
                                                    GAsyncReadyCallback callback,
                                                    gpointer user_data)
@@ -458,18 +483,18 @@ void ovirt_foreign_menu_set_current_iso_name_async(OvirtForeignMenu *foreign_men
     GTask *task;
 
     g_return_if_fail(foreign_menu->cdrom != NULL);
-    g_return_if_fail(foreign_menu->next_iso_name == NULL);
+    g_return_if_fail(foreign_menu->next_iso_info == NULL);
 
     if (name) {
         g_debug("Updating VM cdrom image to '%s'", name);
-        foreign_menu->next_iso_name = g_strdup(name);
+        foreign_menu->next_iso_info = iso_info_new(name, id);
     } else {
         g_debug("Removing current cdrom image");
-        foreign_menu->next_iso_name = NULL;
+        foreign_menu->next_iso_info = NULL;
     }
 
     g_object_set(foreign_menu->cdrom,
-                 "file", name,
+                 "file", id,
                  NULL);
 
     task = g_task_new(foreign_menu, cancellable, callback, user_data);
@@ -494,10 +519,11 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
     GList *sorted_files = NULL;
     const GList *it;
     GList *it2;
+    gchar *current_iso_name = ovirt_foreign_menu_get_current_iso_name(menu);
 
     for (it = files; it != NULL; it = it->next) {
-        char *name;
-        g_object_get(it->data, "name", &name, NULL);
+        char *name = NULL, *id = NULL;
+        g_object_get(it->data, "name", &name, "guid", &id, NULL);
 
 #ifdef HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS
         if (OVIRT_IS_DISK(it->data)) {
@@ -505,8 +531,7 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
             g_object_get(it->data, "content-type", &content_type, NULL);
             if (content_type != OVIRT_DISK_CONTENT_TYPE_ISO) {
                 g_debug("Ignoring %s disk which content-type is not ISO", name);
-                g_free(name);
-                continue;
+                goto loop_end;
             }
         }
 #endif
@@ -517,12 +542,26 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
          * to differentiate between ISOs and floppy images */
         if (!g_str_has_suffix(name, ".iso")) {
             g_debug("Ignoring %s which does not have a .iso extension", name);
-            g_free(name);
-            continue;
+            goto loop_end;
         }
-        sorted_files = g_list_insert_sorted(sorted_files, name,
+
+        g_debug("Adding ISO to the list: name '%s', id '%s'", name, id);
+        sorted_files = g_list_insert_sorted(sorted_files, iso_info_new(name, id),
                                             (GCompareFunc)g_strcmp0);
+
+        /* Check if info matches with current cdrom file */
+        if (current_iso_name != NULL &&
+            (g_strcmp0(current_iso_name, name) == 0 ||
+             g_strcmp0(current_iso_name, id) == 0)) {
+                ovirt_foreign_menu_set_current_iso_info(menu, name, id);
+        }
+
+loop_end:
+        g_free(name);
+        g_free(id);
     }
+
+    g_free(current_iso_name);
 
     for (it = sorted_files, it2 = menu->iso_names;
          (it != NULL) && (it2 != NULL);
@@ -534,11 +573,11 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
 
     if ((it == NULL) && (it2 == NULL)) {
         /* sorted_files and menu->files content was the same */
-        g_list_free_full(sorted_files, (GDestroyNotify)g_free);
+        g_list_free_full(sorted_files, (GDestroyNotify)g_strfreev);
         return;
     }
 
-    g_list_free_full(menu->iso_names, (GDestroyNotify)g_free);
+    g_list_free_full(menu->iso_names, (GDestroyNotify)g_strfreev);
     menu->iso_names = sorted_files;
 }
 
@@ -561,12 +600,6 @@ static void cdrom_file_refreshed_cb(GObject *source_object,
     }
 
     /* Content of OvirtCdrom is now current */
-    g_clear_pointer(&menu->current_iso_name, g_free);
-    if (menu->cdrom != NULL) {
-        g_object_get(G_OBJECT(menu->cdrom),
-                     "file", &menu->current_iso_name,
-                     NULL);
-    }
     if (menu->cdrom != NULL) {
         ovirt_foreign_menu_next_async_step(menu, task, STATE_CDROM_FILE);
     } else {
@@ -648,12 +681,6 @@ static void ovirt_foreign_menu_fetch_vm_cdrom_async(OvirtForeignMenu *menu,
                                  cdroms_fetched_cb, task);
 }
 
-#ifdef HAVE_OVIRT_DATA_CENTER
-static gboolean strv_contains(const gchar * const *strv, const gchar *str)
-{
-  return g_strv_contains (strv, str);
-}
-
 static gboolean storage_domain_attached_to_data_center(OvirtStorageDomain *domain,
                                                       OvirtDataCenter *data_center)
 {
@@ -663,13 +690,12 @@ static gboolean storage_domain_attached_to_data_center(OvirtStorageDomain *domai
 
     g_object_get(domain, "data-center-ids", &data_center_ids, NULL);
     g_object_get(data_center, "guid", &data_center_guid, NULL);
-    match = strv_contains((const gchar * const *) data_center_ids, data_center_guid);
+    match = g_strv_contains((const gchar * const *) data_center_ids, data_center_guid);
     g_strfreev(data_center_ids);
     g_free(data_center_guid);
 
     return match;
 }
-#endif
 
 static gboolean storage_domain_validate(OvirtForeignMenu *menu G_GNUC_UNUSED,
                                         OvirtStorageDomain *domain)
@@ -690,12 +716,10 @@ static gboolean storage_domain_validate(OvirtForeignMenu *menu G_GNUC_UNUSED,
         ret = FALSE;
     }
 
-#ifdef HAVE_OVIRT_DATA_CENTER
     if (!storage_domain_attached_to_data_center(domain, menu->data_center)) {
         g_debug("Storage domain '%s' is not attached to data center", name);
         ret = FALSE;
     }
-#endif
 
     g_debug ("Storage domain '%s' is %s", name, ret ? "valid" : "not valid");
     g_free(name);
@@ -794,15 +818,11 @@ static void ovirt_foreign_menu_fetch_storage_domain_async(OvirtForeignMenu *menu
 {
     OvirtCollection *collection = NULL;
 
-#ifdef HAVE_OVIRT_DATA_CENTER
     g_return_if_fail(OVIRT_IS_FOREIGN_MENU(menu));
     g_return_if_fail(OVIRT_IS_PROXY(menu->proxy));
     g_return_if_fail(OVIRT_IS_DATA_CENTER(menu->data_center));
 
     collection = ovirt_data_center_get_storage_domains(menu->data_center);
-#else
-    collection = ovirt_api_get_storage_domains(menu->api);
-#endif
 
     g_debug("Start fetching iso file collection");
     ovirt_collection_fetch_async(collection, menu->proxy,
@@ -811,7 +831,6 @@ static void ovirt_foreign_menu_fetch_storage_domain_async(OvirtForeignMenu *menu
 }
 
 
-#ifdef HAVE_OVIRT_DATA_CENTER
 static void data_center_fetched_cb(GObject *source_object,
                                    GAsyncResult *result,
                                    gpointer user_data)
@@ -921,7 +940,6 @@ static void ovirt_foreign_menu_fetch_host_async(OvirtForeignMenu *menu,
                                  host_fetched_cb,
                                  task);
 }
-#endif /* HAVE_OVIRT_DATA_CENTER */
 
 
 static void vms_fetched_cb(GObject *source_object,
@@ -978,13 +996,9 @@ static void ovirt_foreign_menu_fetch_vm_async(OvirtForeignMenu *menu,
     g_return_if_fail(OVIRT_IS_PROXY(menu->proxy));
     g_return_if_fail(OVIRT_IS_API(menu->api));
 
-#ifdef HAVE_OVIRT_API_SEARCH_VMS
     char * query = g_strdup_printf("id=%s", menu->vm_guid);
     vms = ovirt_api_search_vms(menu->api, query);
     g_free(query);
-#else
-    vms = ovirt_api_get_vms(menu->api);
-#endif
 
     ovirt_collection_fetch_async(vms, menu->proxy,
                                  g_task_get_cancellable(task),

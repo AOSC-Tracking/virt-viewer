@@ -22,6 +22,7 @@
 
 #include <glib/gi18n.h>
 
+#include "glib-compat.h"
 #include "remote-viewer-iso-list-dialog.h"
 #include "virt-viewer-util.h"
 #include "ovirt-foreign-menu.h"
@@ -32,6 +33,7 @@ static void remote_viewer_iso_list_dialog_show_error(RemoteViewerISOListDialog *
 struct _RemoteViewerISOListDialog
 {
     GtkDialog parent;
+    GtkHeaderBar *header_bar;
     GtkListStore *list_store;
     GtkWidget *status;
     GtkWidget *spinner;
@@ -48,6 +50,7 @@ enum RemoteViewerISOListDialogModel
     ISO_IS_ACTIVE = 0,
     ISO_NAME,
     FONT_WEIGHT,
+    ISO_ID,
 };
 
 enum RemoteViewerISOListDialogProperties {
@@ -114,27 +117,43 @@ remote_viewer_iso_list_dialog_show_files(RemoteViewerISOListDialog *self)
 }
 
 static void
-remote_viewer_iso_list_dialog_foreach(char *name, RemoteViewerISOListDialog *self)
+remote_viewer_iso_list_dialog_set_subtitle(RemoteViewerISOListDialog *self, const char *iso_name)
 {
-    gchar *current_iso = ovirt_foreign_menu_get_current_iso_name(self->foreign_menu);
-    gboolean active = (g_strcmp0(current_iso, name) == 0);
+    gchar *subtitle = NULL;
+
+    if (iso_name && strlen(iso_name) != 0)
+        subtitle = g_strdup_printf(_("Current: %s"), iso_name);
+
+    gtk_header_bar_set_subtitle(self->header_bar, subtitle);
+    g_free(subtitle);
+}
+
+static void
+remote_viewer_iso_list_dialog_foreach(GStrv info, RemoteViewerISOListDialog *self)
+{
+    GStrv current_iso = ovirt_foreign_menu_get_current_iso_info(self->foreign_menu);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    gboolean active = (g_strv_equal((const gchar * const *) current_iso,
+                                    (const gchar * const *) info) == TRUE);
+G_GNUC_END_IGNORE_DEPRECATIONS
     gint weight = active ? PANGO_WEIGHT_BOLD : PANGO_WEIGHT_NORMAL;
     GtkTreeIter iter;
 
     gtk_list_store_append(self->list_store, &iter);
     gtk_list_store_set(self->list_store, &iter,
                        ISO_IS_ACTIVE, active,
-                       ISO_NAME, name,
-                       FONT_WEIGHT, weight, -1);
+                       ISO_NAME, info[0],
+                       FONT_WEIGHT, weight,
+                       ISO_ID, info[1],
+                       -1);
 
     if (active) {
         GtkTreePath *path = gtk_tree_model_get_path(GTK_TREE_MODEL(self->list_store), &iter);
         gtk_tree_view_set_cursor(GTK_TREE_VIEW(self->tree_view), path, NULL, FALSE);
         gtk_tree_view_scroll_to_cell(GTK_TREE_VIEW(self->tree_view), path, NULL, TRUE, 0.5, 0.5);
         gtk_tree_path_free(path);
+        remote_viewer_iso_list_dialog_set_subtitle(self, current_iso[0]);
     }
-
-    g_free(current_iso);
 }
 
 static void
@@ -199,6 +218,7 @@ remote_viewer_iso_list_dialog_response(GtkDialog *dialog,
 
     gtk_spinner_start(GTK_SPINNER(self->spinner));
     gtk_label_set_markup(GTK_LABEL(self->status), _("<b>Loading...</b>"));
+    remote_viewer_iso_list_dialog_set_subtitle(self, NULL);
     gtk_stack_set_visible_child_full(GTK_STACK(self->stack), "status",
                                      GTK_STACK_TRANSITION_TYPE_NONE);
     gtk_dialog_set_response_sensitive(GTK_DIALOG(self), GTK_RESPONSE_NONE, FALSE);
@@ -215,24 +235,29 @@ remote_viewer_iso_list_dialog_toggled(GtkCellRendererToggle *cell_renderer G_GNU
     GtkTreePath *tree_path = gtk_tree_path_new_from_string(path);
     GtkTreeIter iter;
     gboolean active;
-    gchar *name;
+    gchar *name, *id;
 
     gtk_tree_view_set_cursor(GTK_TREE_VIEW(self->tree_view), tree_path, NULL, FALSE);
     gtk_tree_model_get_iter(model, &iter, tree_path);
     gtk_tree_model_get(model, &iter,
                        ISO_IS_ACTIVE, &active,
-                       ISO_NAME, &name, -1);
+                       ISO_NAME, &name,
+                       ISO_ID, &id,
+                       -1);
 
     gtk_dialog_set_response_sensitive(GTK_DIALOG(self), GTK_RESPONSE_NONE, FALSE);
     gtk_widget_set_sensitive(self->tree_view, FALSE);
 
     self->cancellable = g_cancellable_new();
-    ovirt_foreign_menu_set_current_iso_name_async(self->foreign_menu, active ? NULL : name,
+    ovirt_foreign_menu_set_current_iso_name_async(self->foreign_menu,
+                                                  active ? NULL : name,
+                                                  active ? NULL : id,
                                                   self->cancellable,
                                                   (GAsyncReadyCallback)ovirt_foreign_menu_iso_name_changed,
                                                   self);
     gtk_tree_path_free(tree_path);
     g_free(name);
+    g_free(id);
 }
 
 G_MODULE_EXPORT void
@@ -252,8 +277,12 @@ remote_viewer_iso_list_dialog_init(RemoteViewerISOListDialog *self)
     GtkWidget *content = gtk_dialog_get_content_area(GTK_DIALOG(self));
     GtkBuilder *builder = virt_viewer_util_load_ui("remote-viewer-iso-list.ui");
     GtkCellRendererToggle *cell_renderer;
+    GtkWidget *button, *image;
 
     gtk_builder_connect_signals(builder, self);
+
+    self->header_bar = GTK_HEADER_BAR(gtk_dialog_get_header_bar(GTK_DIALOG(self)));
+    gtk_header_bar_set_has_subtitle(self->header_bar, TRUE);
 
     self->status = GTK_WIDGET(gtk_builder_get_object(builder, "status"));
     self->spinner = GTK_WIDGET(gtk_builder_get_object(builder, "spinner"));
@@ -268,12 +297,12 @@ remote_viewer_iso_list_dialog_init(RemoteViewerISOListDialog *self)
 
     g_object_unref(builder);
 
-    gtk_dialog_add_buttons(GTK_DIALOG(self),
-                           _("Refresh"), GTK_RESPONSE_NONE,
-                           _("Close"), GTK_RESPONSE_CLOSE,
-                           NULL);
+    button = gtk_dialog_add_button(GTK_DIALOG(self), "", GTK_RESPONSE_NONE);
+    image = gtk_image_new_from_icon_name("view-refresh-symbolic", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image(GTK_BUTTON(button), image);
+    gtk_button_set_always_show_image(GTK_BUTTON(button), TRUE);
+    gtk_widget_set_tooltip_text(button, _("Refresh"));
 
-    gtk_dialog_set_default_response(GTK_DIALOG(self), GTK_RESPONSE_CLOSE);
     gtk_dialog_set_response_sensitive(GTK_DIALOG(self), GTK_RESPONSE_NONE, FALSE);
     g_signal_connect(self, "response", G_CALLBACK(remote_viewer_iso_list_dialog_response), NULL);
 }
@@ -301,9 +330,9 @@ ovirt_foreign_menu_iso_name_changed(OvirtForeignMenu *foreign_menu,
                                     RemoteViewerISOListDialog *self)
 {
     GtkTreeModel *model = GTK_TREE_MODEL(self->list_store);
-    gchar *current_iso;
+    GStrv current_iso;
     GtkTreeIter iter;
-    gchar *name;
+    gchar *name, *id;
     gboolean active, match = FALSE;
     GError *error = NULL;
 
@@ -324,13 +353,18 @@ ovirt_foreign_menu_iso_name_changed(OvirtForeignMenu *foreign_menu,
     if (!gtk_tree_model_get_iter_first(model, &iter))
         goto end;
 
-    current_iso = ovirt_foreign_menu_get_current_iso_name(foreign_menu);
+    current_iso = ovirt_foreign_menu_get_current_iso_info(foreign_menu);
 
     do {
         gtk_tree_model_get(model, &iter,
                            ISO_IS_ACTIVE, &active,
-                           ISO_NAME, &name, -1);
-        match = (g_strcmp0(current_iso, name) == 0);
+                           ISO_NAME, &name,
+                           ISO_ID, &id,
+                           -1);
+
+        if (current_iso)
+            match = (g_strcmp0(current_iso[0], name) == 0 &&
+                     g_strcmp0(current_iso[1], id) == 0);
 
         /* iso is not active anymore */
         if (active && !match) {
@@ -344,11 +378,12 @@ ovirt_foreign_menu_iso_name_changed(OvirtForeignMenu *foreign_menu,
         }
 
         g_free(name);
+        g_free(id);
     } while (gtk_tree_model_iter_next(model, &iter));
 
+    remote_viewer_iso_list_dialog_set_subtitle(self, current_iso ? current_iso[0] : NULL);
     gtk_dialog_set_response_sensitive(GTK_DIALOG(self), GTK_RESPONSE_NONE, TRUE);
     gtk_widget_set_sensitive(self->tree_view, TRUE);
-    g_free(current_iso);
 
 end:
     g_clear_error(&error);
@@ -368,6 +403,7 @@ remote_viewer_iso_list_dialog_new(GtkWindow *parent, GObject *foreign_menu)
                           "border-width", 18,
                           "default-width", 400,
                           "default-height", 300,
+                          "use-header-bar", TRUE,
                           "foreign-menu", foreign_menu,
                           NULL);
 
