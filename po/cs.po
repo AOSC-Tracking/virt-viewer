@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-14 16:57+0100\n"
-"PO-Revision-Date: 2021-04-18 10:02+0000\n"
+"PO-Revision-Date: 2021-09-04 20:04+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/cs/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.5.3\n"
+"X-Generator: Weblate 4.8\n"
 
 #, c-format
 msgid ""
@@ -498,9 +498,9 @@ msgstr "Překladatelský tým projektu Fedora"
 #, c-format
 msgid "Transferring %u file of %u..."
 msgid_plural "Transferring %u files of %u..."
-msgstr[0] "Přenášení souboru %u z %u…"
-msgstr[1] "Přenášení souborů %u z %u…"
-msgstr[2] "Přenášení souborů %u z %u…"
+msgstr[0] "Přenášení %u souboru z %u…"
+msgstr[1] "Přenášení %u souborů z %u…"
+msgstr[2] "Přenášení %u souborů z %u…"
 
 msgid "Transferring 1 file..."
 msgstr "Přenáší se 1 soubor…"
@@ -633,7 +633,7 @@ msgstr "[žádné]"
 
 # auto translated by TM merge from project: ibus, version: head, DocId: ibus10
 msgid "_About"
-msgstr "O _metodě"
+msgstr "O _aplikaci"
 
 msgid "_Auto resize"
 msgstr "_Automaticky přizpůsobovat rozlišení"
@@ -647,7 +647,7 @@ msgid "_Close"
 msgstr "Z_avřít"
 
 msgid "_Guest details"
-msgstr "_Podrobnosti o hostovi"
+msgstr "Podrobnosti o _hostovi"
 
 msgid "_Keyboard shortcuts"
 msgstr "_Klávesové zkratky"
