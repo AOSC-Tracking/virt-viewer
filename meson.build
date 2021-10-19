@@ -417,8 +417,12 @@ if libvirt_dep.found()
 endif
 
 gtk_vnc_dep = dependency('gtk-vnc-2.0', version: gtk_vnc_min_version, required: get_option('vnc'))
+gvnc_pulse_dep = dependency('gvncpulse-1.0', required: true)
 if gtk_vnc_dep.found()
   conf_data.set('HAVE_GTK_VNC', '1')
+  if gvnc_pulse_dep.found()
+    conf_data.set('HAVE_VNC_AUDIO', '1')
+  endif
 endif
 
 spice_glib_dep = dependency('spice-client-glib-2.0', version: spice_gtk_min_version, required: get_option('spice'))

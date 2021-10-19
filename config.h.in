@@ -33,6 +33,9 @@
 /* Have gtk-vnc? */
 #mesondefine HAVE_GTK_VNC
 
+/* Have vncpulse? */
+#mesondefine HAVE_VNC_AUDIO
+
 /* Have libvirt? */
 #mesondefine HAVE_LIBVIRT
 
