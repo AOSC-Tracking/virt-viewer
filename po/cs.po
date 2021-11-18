@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2021-09-04 20:04+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/cs/>\n"
+"Language-Team: Czech <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -177,9 +177,6 @@ msgstr "Zjišťuje se stav domény hosta"
 msgid "Choose a virtual machine"
 msgstr "Zvolte virtuální stroj"
 
-msgid "Close"
-msgstr "Zavřít"
-
 msgid "Connect to SSH failed."
 msgstr "Připojení k SSH se nezdařilo."
 
@@ -222,8 +219,9 @@ msgstr "Nedaří se otevřít oVirt relaci: "
 msgid "Creating UNIX socket failed: %s"
 msgstr "Vytvoření k unixovému soketu se nezdařilo: %s"
 
-msgid "Ctrl_L+Alt_L"
-msgstr "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
+msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr "Režim zobrazení ukazatele: „lokální“ nebo „automaticky“"
@@ -435,9 +433,6 @@ msgstr "Uložit snímek obrazovky"
 
 msgid "Screenshot.png"
 msgstr "snimek_obrazovky.png"
-
-msgid "Select ISO"
-msgstr "Vybrat ISO"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -703,6 +698,15 @@ msgstr "oVirt virt. stroj %s není spuštěný"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "je podporováno připojení pouze přes SSH nebo k unixovému soketu."
+
+#~ msgid "Close"
+#~ msgstr "Zavřít"
+
+#~ msgid "Ctrl_L+Alt_L"
+#~ msgstr "Ctrl_L+Alt_L"
+
+#~ msgid "Select ISO"
+#~ msgstr "Vybrat ISO"
 
 #~ msgid "(Press %s to release pointer) %s - %s"
 #~ msgstr "(Pro uvolnění kurzoru stiskněte %s) %s – %s"

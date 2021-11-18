@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2017-01-29 10:04+0000\n"
 "Last-Translator: Rodrigo de Araujo Sousa Fonseca "
 "<rodrigodearaujo@fedoraproject.org>\n"
@@ -163,9 +163,6 @@ msgstr ""
 msgid "Choose a virtual machine"
 msgstr ""
 
-msgid "Close"
-msgstr ""
-
 msgid "Connect to SSH failed."
 msgstr ""
 
@@ -206,7 +203,8 @@ msgstr ""
 msgid "Creating UNIX socket failed: %s"
 msgstr ""
 
-msgid "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
 msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
@@ -393,9 +391,6 @@ msgid "Save screenshot"
 msgstr ""
 
 msgid "Screenshot.png"
-msgstr ""
-
-msgid "Select ISO"
 msgstr ""
 
 #. Create the widgets

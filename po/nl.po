@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2021-02-28 12:40+0000\n"
 "Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
 "Language-Team: Dutch <https://translate.fedoraproject.org/projects/virt-"
@@ -177,9 +177,6 @@ msgstr "Controleer gast domein status"
 msgid "Choose a virtual machine"
 msgstr "Kies een virtuele machine"
 
-msgid "Close"
-msgstr "Afsluiten"
-
 msgid "Connect to SSH failed."
 msgstr "Verbinding met SSH mislukte."
 
@@ -222,8 +219,9 @@ msgstr "Kan oVirt-sessie niet openen: "
 msgid "Creating UNIX socket failed: %s"
 msgstr "Aanmaken van UNIX-socket mislukte: %s"
 
-msgid "Ctrl_L+Alt_L"
-msgstr "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
+msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr ""
@@ -422,9 +420,6 @@ msgstr "Bewaar schermopname"
 
 msgid "Screenshot.png"
 msgstr "Screenshot.png"
-
-msgid "Select ISO"
-msgstr "Selecteer ISO"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -674,6 +669,15 @@ msgstr "oVirt VM %s is niet actief"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "alleen SSH of UNIX socket verbinding ondersteund."
+
+#~ msgid "Close"
+#~ msgstr "Afsluiten"
+
+#~ msgid "Ctrl_L+Alt_L"
+#~ msgstr "Ctrl_L+Alt_L"
+
+#~ msgid "Select ISO"
+#~ msgstr "Selecteer ISO"
 
 #~ msgid "(Press %s to release pointer) %s - %s"
 #~ msgstr "(Druk op %s om de aanwijzer los te laten) %s - %s"

@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2021-05-27 06:02+0000\n"
 "Last-Translator: Jan Kuparinen <copper_fin@hotmail.com>\n"
-"Language-Team: Finnish <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/fi/>\n"
+"Language-Team: Finnish <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -176,9 +176,6 @@ msgstr "Tarkistetaan vieraan toimialueen tila"
 msgid "Choose a virtual machine"
 msgstr "Valitse virtuaalikone"
 
-msgid "Close"
-msgstr "Sulje"
-
 msgid "Connect to SSH failed."
 msgstr "Yhteyden muodostaminen SSH:hon epäonnistui."
 
@@ -221,8 +218,9 @@ msgstr "OVirt-istuntoa ei voitu avata: "
 msgid "Creating UNIX socket failed: %s"
 msgstr "UNIX-pistokkeen luominen epäonnistui: %s"
 
-msgid "Ctrl_L+Alt_L"
-msgstr "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
+msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr "Kohdistimen näyttötila: 'paikallinen' tai 'auto'"
@@ -420,9 +418,6 @@ msgstr "Tallenna kuvakaappaus"
 
 msgid "Screenshot.png"
 msgstr "Kuvakaappaus.png"
-
-msgid "Select ISO"
-msgstr "Valitse ISO"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -673,6 +668,15 @@ msgstr "oVirt VM %s ei ole käynnissä"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "vain SSH- tai UNIX-pistokeyhteyttä tuetaan."
+
+#~ msgid "Close"
+#~ msgstr "Sulje"
+
+#~ msgid "Ctrl_L+Alt_L"
+#~ msgstr "Ctrl_L+Alt_L"
+
+#~ msgid "Select ISO"
+#~ msgstr "Valitse ISO"
 
 #~ msgid "(Press %s to release pointer) %s - %s"
 #~ msgstr "(Paina %s vapauttaaksesi osoitin) %s - %s"

@@ -10,11 +10,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2021-04-18 10:02+0000\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
-"Language-Team: Swedish <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/sv/>\n"
+"Language-Team: Swedish <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -178,9 +178,6 @@ msgstr "Kontrollerar gästdomänens status"
 msgid "Choose a virtual machine"
 msgstr "Välj en virtuell maskin"
 
-msgid "Close"
-msgstr "Stäng"
-
 msgid "Connect to SSH failed."
 msgstr "Att ansluta till SSH misslyckades."
 
@@ -223,8 +220,9 @@ msgstr "Kunde inte öppna oVirt-sessionen: "
 msgid "Creating UNIX socket failed: %s"
 msgstr "Att skapa et UNIX-uttag misslyckades: %s"
 
-msgid "Ctrl_L+Alt_L"
-msgstr "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
+msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr "Markörvisningsläge: ”local” eller ”auto”"
@@ -420,9 +418,6 @@ msgstr "Spara skärmbild"
 
 msgid "Screenshot.png"
 msgstr "Skärmbild.png"
-
-msgid "Select ISO"
-msgstr "Välj ISO"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -672,6 +667,15 @@ msgstr "oVirt-VM %s kör inte"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "endast SSH- eller UNIX-uttagsförbindelser stödjs."
+
+#~ msgid "Close"
+#~ msgstr "Stäng"
+
+#~ msgid "Ctrl_L+Alt_L"
+#~ msgstr "Ctrl_L+Alt_L"
+
+#~ msgid "Select ISO"
+#~ msgstr "Välj ISO"
 
 #~ msgid "(Press %s to release pointer) %s - %s"
 #~ msgstr "(Tryck %s för att släppa markören) %s — %s"

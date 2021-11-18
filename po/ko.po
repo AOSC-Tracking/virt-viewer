@@ -11,11 +11,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 10:44+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2021-04-18 10:02+0000\n"
 "Last-Translator: simmon <simmon@nplob.com>\n"
-"Language-Team: Korean <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/ko/>\n"
+"Language-Team: Korean <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -111,7 +111,8 @@ msgstr "적어도 %s 버전 %s은 이 연결 설정에 필요합니다"
 msgid ""
 "At least %s version %s is required to setup this connection, see %s for "
 "details"
-msgstr "적어도 %s 버전 %s는 이 연결 설정에 필요하며, 상세한 내용은 %s를 참조하세요"
+msgstr ""
+"적어도 %s 버전 %s는 이 연결 설정에 필요하며, 상세한 내용은 %s를 참조하세요"
 
 msgid "Attach to the local display using libvirt"
 msgstr "libvirt를 사용하여 로컬 디스플레이에 연결"
@@ -177,9 +178,6 @@ msgstr "게스트 도메인 상태 확인 중"
 msgid "Choose a virtual machine"
 msgstr "가상 머신을 선택합니다"
 
-msgid "Close"
-msgstr "닫기"
-
 msgid "Connect to SSH failed."
 msgstr "SSH 연결에 실패하였습니다."
 
@@ -222,8 +220,9 @@ msgstr "oVirt 세션을 열 수 없습니다: "
 msgid "Creating UNIX socket failed: %s"
 msgstr "유닉스 소켓 생성에 실패하였습니다: %s"
 
-msgid "Ctrl_L+Alt_L"
-msgstr "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
+msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr "커서 표시 모드: '로컬' 또는 '자동'"
@@ -243,7 +242,8 @@ msgid "Display _%d"
 msgstr "디스플레이_%d"
 
 msgid "Display can only be attached through libvirt with --attach"
-msgstr "--attach를 사용하여 libvirt를 통해서만 디스플레이에 연결 할 수 있습니다"
+msgstr ""
+"--attach를 사용하여 libvirt를 통해서만 디스플레이에 연결 할 수 있습니다"
 
 msgid "Display debugging information"
 msgstr "디버그 정보 표시"
@@ -383,7 +383,8 @@ msgstr "커서 놓기"
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"키 포맷 key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void 을 다시 대응 합니다"
+"키 포맷 key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void 을 다시 대"
+"응 합니다"
 
 msgid "Remote Viewer"
 msgstr "원격 뷰어"
@@ -395,9 +396,11 @@ msgid ""
 "can connect directly to both local and remotely hosted guest OS, optionally "
 "using SSL/TLS encryption."
 msgstr ""
-"원격 뷰어는 게스트 운영체제 표시를 위해 그래픽 뷰어를 제공합니다. 이 때에 이는 VNC 또는 SPICE 통신규약을 사용하여 게스트 "
-"운영체제를 지원합니다. 앞으로 통신규약은 사용자 요구에 따라 지원 할 것입니다. 뷰어는 선택적으로 SSL/TLS 암호화를 사용하여, "
-"로컬과 원격에 초대되어진 가상 운영체제를 직접 연결 할 수 있습니다."
+"원격 뷰어는 게스트 운영체제 표시를 위해 그래픽 뷰어를 제공합니다. 이 때에 이"
+"는 VNC 또는 SPICE 통신규약을 사용하여 게스트 운영체제를 지원합니다. 앞으로 통"
+"신규약은 사용자 요구에 따라 지원 할 것입니다. 뷰어는 선택적으로 SSL/TLS 암호"
+"화를 사용하여, 로컬과 원격에 초대되어진 가상 운영체제를 직접 연결 할 수 있습"
+"니다."
 
 msgid "Remote viewer client"
 msgstr "원격 뷰어 클라이언트"
@@ -407,16 +410,14 @@ msgstr "원격 접근 가상 머신"
 
 #, c-format
 msgid "Run '%s --help' to see a full list of available command line options\n"
-msgstr "사용 가능한 명령 줄 선택의 전체 목록을 보는데 '%s --help' 를 실행합니다\n"
+msgstr ""
+"사용 가능한 명령 줄 선택의 전체 목록을 보는데 '%s --help' 를 실행합니다\n"
 
 msgid "Save screenshot"
 msgstr "스크린샷 저장"
 
 msgid "Screenshot.png"
 msgstr "Screenshot.png"
-
-msgid "Select ISO"
-msgstr "ISO 선택"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -665,6 +666,15 @@ msgstr "oVirt VM %s는 작동하지 않습니다"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "단지 SSH만 또는 유닉스 소켓 연결만 지원합니다."
+
+#~ msgid "Close"
+#~ msgstr "닫기"
+
+#~ msgid "Ctrl_L+Alt_L"
+#~ msgstr "Ctrl_L+Alt_L"
+
+#~ msgid "Select ISO"
+#~ msgstr "ISO 선택"
 
 #~ msgid "(Press %s to release pointer) %s - %s"
 #~ msgstr "(포인터를 놓으려면 %s를 눌러주세요) %s - %s"

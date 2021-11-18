@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2016-02-25 07:46+0000\n"
 "Last-Translator: Chester Cheng <snowlet.cheng@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/virt-"
@@ -170,9 +170,6 @@ msgstr "正在檢查客端網域狀態"
 msgid "Choose a virtual machine"
 msgstr "選擇虛擬機器"
 
-msgid "Close"
-msgstr ""
-
 msgid "Connect to SSH failed."
 msgstr ""
 
@@ -213,7 +210,8 @@ msgstr "無法開啟 oVirt session："
 msgid "Creating UNIX socket failed: %s"
 msgstr ""
 
-msgid "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
 msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
@@ -400,9 +398,6 @@ msgid "Save screenshot"
 msgstr ""
 
 msgid "Screenshot.png"
-msgstr ""
-
-msgid "Select ISO"
 msgstr ""
 
 #. Create the widgets

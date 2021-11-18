@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 10:44+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2021-04-15 15:29+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/pl/>\n"
+"Language-Team: Polish <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -179,9 +179,6 @@ msgstr "Sprawdzanie stanu domeny gościa"
 msgid "Choose a virtual machine"
 msgstr "Wybór maszyny wirtualnej"
 
-msgid "Close"
-msgstr "Zamknij"
-
 msgid "Connect to SSH failed."
 msgstr "Połączenie z usługą SSH się nie powiodło."
 
@@ -224,8 +221,9 @@ msgstr "Nie można otworzyć sesji oVirt: "
 msgid "Creating UNIX socket failed: %s"
 msgstr "Utworzenie gniazda uniksowego się nie powiodło: %s"
 
-msgid "Ctrl_L+Alt_L"
-msgstr "Lewy Ctrl+Lewy Alt"
+#, c-format
+msgid "Current: %s"
+msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr "Tryb wyświetlania kursora: „local” lub „auto”"
@@ -424,9 +422,6 @@ msgstr "Zapis zrzutu ekranu"
 
 msgid "Screenshot.png"
 msgstr "Zrzut ekranu.png"
-
-msgid "Select ISO"
-msgstr "Wybierz plik ISO"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -677,6 +672,15 @@ msgstr "Maszyna wirtualna oVirt %s nie jest uruchomiona"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "obsługiwane są tylko połączenia SSH lub gniazda uniksowego."
+
+#~ msgid "Close"
+#~ msgstr "Zamknij"
+
+#~ msgid "Ctrl_L+Alt_L"
+#~ msgstr "Lewy Ctrl+Lewy Alt"
+
+#~ msgid "Select ISO"
+#~ msgstr "Wybierz plik ISO"
 
 #~ msgid "(Press %s to release pointer) %s - %s"
 #~ msgstr "(Naciśnięcie klawiszy %s uwalnia wskaźnik) %s — %s"

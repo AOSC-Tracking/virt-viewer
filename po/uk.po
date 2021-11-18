@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 10:44+0100\n"
-"PO-Revision-Date: 2021-04-18 10:02+0000\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"PO-Revision-Date: 2021-11-18 18:58+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/uk/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.5.3\n"
+"X-Generator: Weblate 4.9\n"
 
 #, c-format
 msgid ""
@@ -179,9 +179,6 @@ msgstr "Перевірка стану гостьового домену"
 msgid "Choose a virtual machine"
 msgstr "Виберіть віртуальну машину"
 
-msgid "Close"
-msgstr "Закрити"
-
 msgid "Connect to SSH failed."
 msgstr "Не вдалося з'єднатися із SSH."
 
@@ -224,8 +221,9 @@ msgstr "Не вдалося відкрити сеанс oVirt: "
 msgid "Creating UNIX socket failed: %s"
 msgstr "Не вдалося створити сокет UNIX: %s"
 
-msgid "Ctrl_L+Alt_L"
-msgstr "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
+msgstr "Поточний: %s"
 
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr "Режим показу вказівника: «local» або «auto»"
@@ -425,9 +423,6 @@ msgstr "Зберегти знімок вікна"
 
 msgid "Screenshot.png"
 msgstr "Знімок_вікна.png"
-
-msgid "Select ISO"
-msgstr "Виберіть ISO"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -680,6 +675,15 @@ msgstr "ВМ oVirt %s не запущено"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "передбачено підтримку лише з'єднань із SSH або сокетами UNIX."
+
+#~ msgid "Close"
+#~ msgstr "Закрити"
+
+#~ msgid "Ctrl_L+Alt_L"
+#~ msgstr "Ctrl_L+Alt_L"
+
+#~ msgid "Select ISO"
+#~ msgstr "Виберіть ISO"
 
 #~ msgid "(Press %s to release pointer) %s - %s"
 #~ msgstr "(Натисніть %s, щоб звільнити вказівник) %s — %s"

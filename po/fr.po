@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2020-09-28 19:29+0000\n"
 "Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: French <https://translate.fedoraproject.org/projects/virt-"
@@ -183,9 +183,6 @@ msgstr "Vérification du statut du domaine invité"
 msgid "Choose a virtual machine"
 msgstr "Choisissez une machine virtuelle"
 
-msgid "Close"
-msgstr "Fermer"
-
 msgid "Connect to SSH failed."
 msgstr "Échec de la connexion à SSH."
 
@@ -228,8 +225,9 @@ msgstr "Impossible d'ouvrir une session oVirt : "
 msgid "Creating UNIX socket failed: %s"
 msgstr "Échec de la création du socket UNIX : %s"
 
-msgid "Ctrl_L+Alt_L"
-msgstr "Ctrl_L + Alt_L"
+#, c-format
+msgid "Current: %s"
+msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr ""
@@ -428,9 +426,6 @@ msgstr "Enregistrer la capture d’écran"
 
 msgid "Screenshot.png"
 msgstr "Screenshot.png"
-
-msgid "Select ISO"
-msgstr "Sélectionnez l'ISO"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -683,6 +678,15 @@ msgstr "oVirt VM %s n'est pas en cours d'exécution"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "seule la connexion par socket SSH ou UNIX est prise en charge."
+
+#~ msgid "Close"
+#~ msgstr "Fermer"
+
+#~ msgid "Ctrl_L+Alt_L"
+#~ msgstr "Ctrl_L + Alt_L"
+
+#~ msgid "Select ISO"
+#~ msgstr "Sélectionnez l'ISO"
 
 #~ msgid "(Press %s to release pointer) %s - %s"
 #~ msgstr "(Appuyez sur %s pour relâcher le pointeur) %s — %s"

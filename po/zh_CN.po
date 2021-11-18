@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2021-06-19 10:04+0000\n"
 "Last-Translator: Charles Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
@@ -181,9 +181,6 @@ msgstr "正在检查虚拟机域状态"
 msgid "Choose a virtual machine"
 msgstr "选择虚拟机"
 
-msgid "Close"
-msgstr "关闭"
-
 msgid "Connect to SSH failed."
 msgstr "连接到 SSH 失败。"
 
@@ -226,8 +223,9 @@ msgstr "无法打开 oVirt 会话： "
 msgid "Creating UNIX socket failed: %s"
 msgstr "创建 UNIX 套接字时失败：%s"
 
-msgid "Ctrl_L+Alt_L"
-msgstr "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
+msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr "光标显示模式：'local' 或者 'auto'"
@@ -419,9 +417,6 @@ msgstr "保存截屏"
 
 msgid "Screenshot.png"
 msgstr "Screenshot.png"
-
-msgid "Select ISO"
-msgstr "选择 ISO"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -670,6 +665,15 @@ msgstr "oVirt VM %s 未运行"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "仅支持 SSH 或 UNIX 套接字连接。"
+
+#~ msgid "Close"
+#~ msgstr "关闭"
+
+#~ msgid "Ctrl_L+Alt_L"
+#~ msgstr "Ctrl_L+Alt_L"
+
+#~ msgid "Select ISO"
+#~ msgstr "选择 ISO"
 
 #~ msgid "(Press %s to release pointer) %s - %s"
 #~ msgstr "(按下 %s to 以释放指针) %s - %s"

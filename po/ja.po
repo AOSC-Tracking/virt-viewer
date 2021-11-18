@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2018-02-26 12:49+0000\n"
 "Last-Translator: Hajime Taira <htaira@fedoraproject.org>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/virt-viewer/"
@@ -181,9 +181,6 @@ msgstr "仮想マシンの状態を確認中"
 msgid "Choose a virtual machine"
 msgstr "仮想マシンの選択"
 
-msgid "Close"
-msgstr "閉じる"
-
 msgid "Connect to SSH failed."
 msgstr ""
 
@@ -224,7 +221,8 @@ msgstr "oVirt セッションを開けません:"
 msgid "Creating UNIX socket failed: %s"
 msgstr ""
 
-msgid "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
 msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
@@ -422,9 +420,6 @@ msgstr ""
 
 msgid "Screenshot.png"
 msgstr "Screenshot.png"
-
-msgid "Select ISO"
-msgstr "ISO を選択する"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -673,6 +668,12 @@ msgstr "oVirt上の仮想マシン %s は稼働していません"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
+
+#~ msgid "Close"
+#~ msgstr "閉じる"
+
+#~ msgid "Select ISO"
+#~ msgstr "ISO を選択する"
 
 #~ msgid "Disconnect"
 #~ msgstr "切断"
