@@ -28,6 +28,7 @@ BuildRequires: pkgconfig(libvirt)
 BuildRequires: pkgconfig(libvirt-glib-1.0)
 BuildRequires: pkgconfig(libxml-2.0)
 BuildRequires: pkgconfig(gtk-vnc-2.0)
+BuildRequires: pkgconfig(vte-2.91)
 %if %{with_spice}
 BuildRequires: pkgconfig(spice-client-gtk-3.0)
 BuildRequires: pkgconfig(spice-protocol)
