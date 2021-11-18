@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2020-07-21 14:29+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/virt-"
@@ -181,9 +181,6 @@ msgstr "Vendég tartomány állapotellenőrzése"
 msgid "Choose a virtual machine"
 msgstr "Válasszon egy virtuális gépet"
 
-msgid "Close"
-msgstr "Bezárás"
-
 msgid "Connect to SSH failed."
 msgstr ""
 
@@ -224,7 +221,8 @@ msgstr "Az oVirt munkamenet nem nyitható meg: "
 msgid "Creating UNIX socket failed: %s"
 msgstr ""
 
-msgid "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
 msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
@@ -424,9 +422,6 @@ msgstr "Képernyőkép mentése"
 
 msgid "Screenshot.png"
 msgstr "Képernyőkép.png"
-
-msgid "Select ISO"
-msgstr "Válasszon ISO-t"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -676,6 +671,12 @@ msgstr "A(z) %s oVirt VM nem fut"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
+
+#~ msgid "Close"
+#~ msgstr "Bezárás"
+
+#~ msgid "Select ISO"
+#~ msgstr "Válasszon ISO-t"
 
 #~ msgid "Disconnect"
 #~ msgstr "Leválasztás"

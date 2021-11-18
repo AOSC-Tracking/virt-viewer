@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2018-04-02 12:44+0000\n"
 "Last-Translator: Henrique Montemor Junqueira <hickijunqueira@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/virt-"
@@ -174,9 +174,6 @@ msgstr "Verificando o status do domínio do convidado"
 msgid "Choose a virtual machine"
 msgstr "Escolha uma máquina virtual"
 
-msgid "Close"
-msgstr "Feche"
-
 msgid "Connect to SSH failed."
 msgstr ""
 
@@ -217,7 +214,8 @@ msgstr "não foi possível abrir a sessão do oVirt:"
 msgid "Creating UNIX socket failed: %s"
 msgstr ""
 
-msgid "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
 msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
@@ -415,9 +413,6 @@ msgstr ""
 
 msgid "Screenshot.png"
 msgstr "CapturaDeTela.png"
-
-msgid "Select ISO"
-msgstr "Selecione o arquivo ISO"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -669,6 +664,12 @@ msgstr "A MV %s no oVirt  não está em execução"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
+
+#~ msgid "Close"
+#~ msgstr "Feche"
+
+#~ msgid "Select ISO"
+#~ msgstr "Selecione o arquivo ISO"
 
 #~ msgid "Disconnect"
 #~ msgstr "Desconectar"

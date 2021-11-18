@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2018-02-27 05:02+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/virt-viewer/"
@@ -178,9 +178,6 @@ msgstr "S'està comprovant l'estat del domini del convidat"
 msgid "Choose a virtual machine"
 msgstr "Trieu una màquina virtual"
 
-msgid "Close"
-msgstr "Tanca"
-
 msgid "Connect to SSH failed."
 msgstr ""
 
@@ -221,7 +218,8 @@ msgstr "No s'ha pogut obrir la sessió d'oVirt:"
 msgid "Creating UNIX socket failed: %s"
 msgstr ""
 
-msgid "Ctrl_L+Alt_L"
+#, c-format
+msgid "Current: %s"
 msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
@@ -419,9 +417,6 @@ msgstr ""
 
 msgid "Screenshot.png"
 msgstr "Captura.png"
-
-msgid "Select ISO"
-msgstr "Selecciona l'ISO"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -671,6 +666,12 @@ msgstr "La MV oVirt %s no s'està executant"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
+
+#~ msgid "Close"
+#~ msgstr "Tanca"
+
+#~ msgid "Select ISO"
+#~ msgstr "Selecciona l'ISO"
 
 #~ msgid "Disconnect"
 #~ msgstr "Desconnecta"

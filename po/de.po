@@ -18,11 +18,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 16:57+0100\n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
 "PO-Revision-Date: 2021-11-18 18:47+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
-"Language-Team: German <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/de/>\n"
+"Language-Team: German <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -187,9 +187,6 @@ msgstr "Prüfen des Gast-Domain-Status"
 msgid "Choose a virtual machine"
 msgstr "Wählen Sie eine virtuelle Maschine"
 
-msgid "Close"
-msgstr "Schließen"
-
 msgid "Connect to SSH failed."
 msgstr ""
 
@@ -230,8 +227,9 @@ msgstr "Konnte oVirt-Sitzung nicht öffnen: "
 msgid "Creating UNIX socket failed: %s"
 msgstr ""
 
-msgid "Ctrl_L+Alt_L"
-msgstr "Strg_L+Alt_L"
+#, c-format
+msgid "Current: %s"
+msgstr ""
 
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr ""
@@ -422,9 +420,6 @@ msgstr "Bildschirmfoto speichern"
 
 msgid "Screenshot.png"
 msgstr "Bildschirmfoto.png"
-
-msgid "Select ISO"
-msgstr "ISO-Abbild auswählen"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
@@ -674,6 +669,15 @@ msgstr "oVirt VM %s läuft nicht"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
+
+#~ msgid "Close"
+#~ msgstr "Schließen"
+
+#~ msgid "Ctrl_L+Alt_L"
+#~ msgstr "Strg_L+Alt_L"
+
+#~ msgid "Select ISO"
+#~ msgstr "ISO-Abbild auswählen"
 
 #~ msgid "Disconnect"
 #~ msgstr "Verbindung trennen"
