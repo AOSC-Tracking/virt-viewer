@@ -1,6 +1,6 @@
 project(
   'virt-viewer','c',
-  version: '10.0',
+  version: '11.0',
   license: 'GPLv3+',
   default_options: [
     'buildtype=debugoptimized',
