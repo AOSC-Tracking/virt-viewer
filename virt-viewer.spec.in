@@ -52,7 +52,7 @@ the display, and libvirt for looking up VNC/SPICE server details.
 
 %build
 
-%define buildid_opt -Dbuild-id=%{release} 
+%define buildid_opt -Dbuild-id=%{release}
 
 %if !%{with_govirt}
 %define ovirt_opt -Dovirt=disabled
