@@ -830,8 +830,8 @@ virt_viewer_app_open_tunnel_ssh(const char *sshhost,
                                 const char *port,
                                 const char *unixsock)
 {
-    const char *cmd[10] = { NULL };
-    char portstr[50] = { 0 };
+    const char *cmd[8];
+    char portstr[12] = { 0 };
     int n = 0;
     GString *cat;
 
@@ -853,7 +853,7 @@ virt_viewer_app_open_tunnel_ssh(const char *sshhost,
     if (port) {
         // Wrap raw IPv6 address in []
         const char *connect_str;
-        if (strstr(host, ":") != NULL && host[0] != '[') {
+        if (strstr(host, ":") != NULL) {
             connect_str = "TCP:[%s]:%s";
         } else {
             connect_str = "TCP:%s:%s";
