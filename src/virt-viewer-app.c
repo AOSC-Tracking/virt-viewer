@@ -830,8 +830,8 @@ virt_viewer_app_open_tunnel_ssh(const char *sshhost,
                                 const char *port,
                                 const char *unixsock)
 {
-    const char *cmd[10];
-    char portstr[50];
+    const char *cmd[10] = { NULL };
+    char portstr[50] = { 0 };
     int n = 0;
     GString *cat;
 
@@ -850,9 +850,16 @@ virt_viewer_app_open_tunnel_ssh(const char *sshhost,
     cat = g_string_new("if (command -v socat) >/dev/null 2>&1");
 
     g_string_append(cat, "; then socat - ");
-    if (port)
-        g_string_append_printf(cat, "TCP:%s:%s", host, port);
-    else
+    if (port) {
+        // Wrap raw IPv6 address in []
+        const char *connect_str;
+        if (strstr(host, ":") != NULL && host[0] != '[') {
+            connect_str = "TCP:[%s]:%s";
+        } else {
+            connect_str = "TCP:%s:%s";
+        }
+        g_string_append_printf(cat, connect_str, host, port);
+    } else
         g_string_append_printf(cat, "UNIX-CONNECT:%s", unixsock);
 
     g_string_append(cat, "; else nc ");
