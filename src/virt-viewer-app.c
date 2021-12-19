@@ -36,6 +36,7 @@
 #include <glib/gprintf.h>
 #include <glib/gi18n.h>
 #include <errno.h>
+#include <inttypes.h>
 
 #ifndef G_OS_WIN32
 #include <glib-unix.h>
@@ -152,7 +153,7 @@ struct _VirtViewerAppPrivate {
     char *gport;
     char *gtlsport;
     char *host; /* ssh */
-    int port;/* ssh */
+    uint16_t port;/* ssh */
     char *user; /* ssh */
     char *transport;
     char *pretty_address;
@@ -824,21 +825,21 @@ virt_viewer_app_open_tunnel(const char **cmd)
 
 static int
 virt_viewer_app_open_tunnel_ssh(const char *sshhost,
-                                int sshport,
+                                uint16_t sshport,
                                 const char *sshuser,
                                 const char *host,
                                 const char *port,
                                 const char *unixsock)
 {
     const char *cmd[8];
-    char portstr[12] = { 0 };
+    char portstr[6] = { 0 };
     int n = 0;
     GString *cat;
 
     cmd[n++] = "ssh";
     if (sshport) {
         cmd[n++] = "-p";
-        sprintf(portstr, "%d", sshport);
+        sprintf(portstr, "%hu", sshport);
         cmd[n++] = portstr;
     }
     if (sshuser) {
