@@ -1,0 +1,849 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the virt-viewer package.
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: virt-viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"PO-Revision-Date: 2022-01-13 08:16+0000\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/ka/>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10.1\n"
+
+#: src/remote-viewer.c:150
+#, c-format
+msgid ""
+"\n"
+"Error: can't handle multiple URIs\n"
+"\n"
+msgstr ""
+"\n"
+"შეცდომა: შეუძლებელია 1-ზე მეტი URI\n"
+"\n"
+
+#: src/virt-viewer.c:187
+#, c-format
+msgid ""
+"\n"
+"No ID|UUID|DOMAIN-NAME was specified for '%s'\n"
+"\n"
+msgstr ""
+"\n"
+"%s-სთვის არაა მითითებული ID|UUID|დომენის-სახელი\n"
+"\n"
+
+#: src/virt-viewer.c:175
+#, c-format
+msgid ""
+"\n"
+"Usage: %s [OPTIONS] [ID|UUID|DOMAIN-NAME]\n"
+"\n"
+msgstr ""
+"\n"
+"გამოყენება: %s [პარამეტრები] [ID|UUID|დომენის-სახელი]\n"
+"\n"
+
+#. translators:
+#. * This is "<ungrab accelerator> <subtitle> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) BigCorpTycoon MOTD - Virt Viewer"
+#.
+#: src/virt-viewer-window.c:1332
+#, c-format
+msgid "%s %s - %s"
+msgstr "%s %s - %s"
+
+#. translators:
+#. * This is "<ungrab accelerator> - <appname>"
+#. * Such as: "(Press Ctrl+Alt to release pointer) - Virt Viewer"
+#.
+#. translators:
+#. * This is "<subtitle> - <appname>"
+#. * Such as: "BigCorpTycoon MOTD - Virt Viewer"
+#.
+#: src/virt-viewer-window.c:1341 src/virt-viewer-window.c:1350
+#, c-format
+msgid "%s - %s"
+msgstr "%s - %s"
+
+#: src/virt-viewer-app.c:2583
+#, c-format
+msgid "%s version %s"
+msgstr "%s-ის ვერსია %s"
+
+#: src/virt-viewer-window.c:1324
+#, c-format
+msgid "(Press %s to release pointer)"
+msgstr "(კურსორის გასათავისუფლებლად დააჭირეთ %s-ს)"
+
+#: src/remote-viewer-iso-list-dialog.c:220
+msgid "<b>Loading...</b>"
+msgstr "<b>ჩატვირთვა...</b>"
+
+#: src/virt-viewer-app.c:3563
+msgid "<never|always>"
+msgstr "<არასდროს|ყოველთვის>"
+
+#: src/virt-viewer-app.c:3571
+msgid "<never|on-disconnect>"
+msgstr "<არასდროს|კავშირის დაკარგვისას>"
+
+#: src/resources/ui/virt-viewer-about.ui:19
+msgid "A remote desktop client built with GTK-VNC, SPICE-GTK and libvirt"
+msgstr ""
+"დისტანციური სამუშაო მაგიდის კლიენტი იყენებს GTK-VNC, SPICE-GTK, და libvirt-ს"
+
+#: src/resources/ui/virt-viewer-about.ui:8
+msgid "About Virt-Viewer"
+msgstr "Virt-Viewer-ის შესახებ"
+
+#: data/remote-viewer.desktop.in:4
+msgid "Access remote desktops"
+msgstr "წვდომა დისტანციურ სამუშაო დაფებთან"
+
+#: src/virt-viewer-app.c:883
+#, c-format
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr "მისამართი %s ძალიან გრძელია"
+
+#: src/virt-viewer-file.c:931
+#, c-format
+msgid "At least %s version %s is required to setup this connection"
+msgstr "%s-თან კავშირის დასამყარებლად საკმარისი მინიმალური ვერსიაა %s"
+
+#: src/virt-viewer-file.c:923
+#, c-format
+msgid ""
+"At least %s version %s is required to setup this connection, see %s for "
+"details"
+msgstr ""
+"%s-თან კავშირის დასამყარებლად საკმარისი მინიმალური ვერსიაა %s. დეტალებისთვის "
+"იხილეთ %s"
+
+#: src/virt-viewer.c:135
+msgid "Attach to the local display using libvirt"
+msgstr "ლოკალურ ეკრანთან libvirt-ით მიერთება"
+
+#: src/virt-viewer.c:1046
+msgid "Authentication failed."
+msgstr "ავთენტიკაცია წარუმატებელია."
+
+#: src/virt-viewer-auth.c:158
+#, c-format
+msgid ""
+"Authentication is required for the %s connection to:\n"
+"\n"
+"<b>%s</b>\n"
+"\n"
+msgstr ""
+"%s-თან კავშირისთვის საჭიროა ავთენტიკაცია:\n"
+"\n"
+"<b>%s</b>\n"
+"\n"
+
+#: src/virt-viewer-auth.c:162
+#, c-format
+msgid "Authentication is required for the %s connection:\n"
+msgstr "კავშირ %s-თვის საჭიროა ავთენტიკაცია:\n"
+
+#: src/resources/ui/virt-viewer-auth.ui:8
+msgid "Authentication required"
+msgstr "საჭიროა ავთენტიკაცია"
+
+#: src/remote-viewer.c:456 src/virt-viewer.c:1098
+msgid "Authentication was cancelled"
+msgstr "ავთენტიკაცია გაუქმდა"
+
+#: src/virt-viewer-app.c:3563
+msgid "Automatically resize remote framebuffer"
+msgstr "დისტანციური ფრეიმბაფერის ზომის ავტომატური ცვლილება"
+
+#: src/resources/ui/virt-viewer-vm-connection.ui:96
+msgid "Available virtual machines"
+msgstr "ხელმისაწვდომი ვირტუალური მანქანები"
+
+#: src/resources/ui/remote-viewer-connect.ui:135
+#: src/resources/ui/virt-viewer-vm-connection.ui:39
+msgid "C_onnect"
+msgstr "და_კავშირება"
+
+#: src/virt-viewer-app.c:1507
+#, c-format
+msgid "Can't connect to channel: %s"
+msgstr "არხზე მიერთება შეუძლებელია: %s"
+
+#: src/remote-viewer.c:799
+msgid "Cannot determine the connection type from URI"
+msgstr "მითითებული მისამართიდან შეუძლებელია კავშირის ტიპის დადგენა"
+
+#: src/virt-viewer.c:545
+#, c-format
+msgid "Cannot determine the graphic type for the guest %s"
+msgstr "შეუძლებელია სტუმარი %s-ის გრაფიკის ტიპის დადგენა"
+
+#: src/virt-viewer.c:594
+#, c-format
+msgid "Cannot determine the host for the guest %s"
+msgstr "შეუძლებელია სტუმარ %s-ის ჰოსტის დადგენა"
+
+#: src/virt-viewer.c:918
+msgid "Cannot get guest state"
+msgstr "შეუძლებელია სტუმრის სტატუსის დადგენა"
+
+#: src/remote-viewer-iso-list-dialog.c:401 src/resources/ui/virt-viewer.ui:80
+#: src/resources/ui/virt-viewer.ui:199
+msgid "Change CD"
+msgstr "CD-ის შეცვლა"
+
+#: src/virt-viewer.c:915
+msgid "Checking guest domain status"
+msgstr "ვამოწმებ სტუმრის დომენის სტატუსს"
+
+#: src/resources/ui/virt-viewer-vm-connection.ui:8
+msgid "Choose a virtual machine"
+msgstr "აირჩიეთ ვირტუალური მანქანა"
+
+#: src/virt-viewer-app.c:1492
+msgid "Connect to SSH failed."
+msgstr "SSH კავშირის შეცდომა."
+
+#: src/virt-viewer-app.c:1526
+msgid "Connect to channel unsupported."
+msgstr "არხზე მიერთება მხარდაუჭერელია."
+
+#: src/virt-viewer.c:137
+msgid "Connect to hypervisor"
+msgstr "ჰიპერვიზორთან მიერთება"
+
+#: src/virt-viewer-app.c:1778
+msgid "Connected to graphic server"
+msgstr "გრაფიკულ სერვერთან მიერთება"
+
+#: src/virt-viewer-app.c:899
+#, c-format
+msgid "Connecting to UNIX socket failed: %s"
+msgstr "UNIX სოკეტთან კავშირის შეცდომა: %s"
+
+#: src/virt-viewer-app.c:1616
+msgid "Connecting to graphic server"
+msgstr "ვუკავშირდები გრაფიკულ სერვერს"
+
+#: src/resources/ui/remote-viewer-connect.ui:24
+msgid "Connection _Address"
+msgstr "კავშირის _მისამართი"
+
+#: src/resources/ui/remote-viewer-connect.ui:7
+msgid "Connection details"
+msgstr "კავშირის დეტალები"
+
+#: src/virt-viewer-display-vte.c:184
+msgid "Console support is compiled out!"
+msgstr "კონსოლის მხარდაჭერა ჩაშენებული არაა!"
+
+#: src/resources/ui/virt-viewer-about.ui:17
+msgid ""
+"Copyright (C) 2007-2012 Daniel P. Berrange\n"
+"Copyright (C) 2007-2020 Red Hat, Inc."
+msgstr ""
+"Copyright (C) 2007-2012 Daniel P. Berrange\n"
+"Copyright (C) 2007-2020 Red Hat, Inc."
+
+#: src/remote-viewer.c:699
+msgid "Couldn't open oVirt session: "
+msgstr "oVirt-ის სესიის გახსნის შეცდომა: "
+
+#: src/virt-viewer-app.c:893
+#, c-format
+msgid "Creating UNIX socket failed: %s"
+msgstr "UNIX სოკეტის გახსნის შეცდომა: %s"
+
+#: src/remote-viewer-iso-list-dialog.c:125
+#, c-format
+msgid "Current: %s"
+msgstr "მიმდინარე: %s"
+
+#: src/virt-viewer-app.c:3567
+msgid "Cursor display mode: 'local' or 'auto'"
+msgstr "კურსორის ჩვენების რეჟიმი: 'ლოკალური' ან 'ავტო'"
+
+#: src/virt-viewer-app.c:3561
+msgid "Customise hotkeys"
+msgstr "გამოსაძახებელი ღილაკების გამართვა"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Devices"
+msgstr "მოწყობილობები"
+
+#: src/virt-viewer.c:133
+msgid "Direct connection with no automatic tunnels"
+msgstr "პირდაპირი კავშირი ავტომატური ტუნელების გარეშე"
+
+#: src/virt-viewer-app.c:3166
+#, c-format
+msgid "Display _%d"
+msgstr "ეკრანი _%d"
+
+#: src/virt-viewer-app.c:1591
+msgid "Display can only be attached through libvirt with --attach"
+msgstr "ეკრანის მიმაგრება შესაძლებელია მხოლოდ libvirt-ის --attach პარამეტრით"
+
+#: src/virt-viewer-app.c:3575
+msgid "Display debugging information"
+msgstr "პროგრამის შიდა ინფორმაციის ჩვენება"
+
+#: src/virt-viewer-app.c:3573
+msgid "Display verbose information"
+msgstr "მეტი ინფორმაცია"
+
+#: src/virt-viewer-app.c:3555
+msgid "Display version information"
+msgstr "ვერსიის ჩვენება"
+
+#: src/virt-viewer-app.c:705
+msgid "Do not ask me again"
+msgstr "აღარ მკითხო"
+
+#: src/virt-viewer-app.c:703
+msgid "Do you want to close the session?"
+msgstr "ნამდვილად გსურთ სესიის დახურვა?"
+
+#: src/virt-viewer-app.c:3569
+msgid "Enable kiosk mode"
+msgstr "კიოსკის რეჟიმის ჩართვა"
+
+#: src/remote-viewer-iso-list-dialog.c:343
+msgid "Failed to change CD"
+msgstr "CD-ის შეცვლის შეცდომა"
+
+#: src/virt-viewer.c:1105
+msgid "Failed to connect: "
+msgstr "კავშირის შეცდომა: "
+
+#: src/remote-viewer.c:727
+msgid "Failed to initiate connection"
+msgstr "დაკავშირების დაწყების შეცდომა"
+
+#: src/remote-viewer.c:772
+msgid "Failed to read stdin: "
+msgstr "შეცდომა stdin-ის კითხვისას: "
+
+#: src/virt-viewer-file-transfer-dialog.c:123
+msgid "File Transfers"
+msgstr "ფაილის გადაწერები"
+
+#: src/virt-viewer.c:879
+msgid "Finding guest domain"
+msgstr "სტუმრის დომენის ძებნა"
+
+#: src/resources/ui/virt-viewer-preferences.ui:47
+msgid "Folder sharing"
+msgstr "საქაღალდის გაზიარება"
+
+#: src/resources/ui/remote-viewer-connect.ui:54
+msgid "For example, spice://foo.example.org:5900"
+msgstr "მაგალითად, spice://foo.example.org:5900"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:38
+#: src/resources/ui/virt-viewer-shortcuts.ui:72
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr "მთელ ეკრანზე"
+
+#: src/resources/ui/virt-viewer-guest-details.ui:66
+msgid "GUID:"
+msgstr "GUID:"
+
+#: src/virt-viewer.c:622
+#, c-format
+msgid "Guest '%s' is not reachable"
+msgstr "სტუმარი %s მიუწვდომელია"
+
+#: src/resources/ui/virt-viewer-guest-details.ui:7
+msgid "Guest Details"
+msgstr "დეტალები სტუმარზე"
+
+#: src/virt-viewer-app.c:1715
+msgid "Guest domain has shutdown"
+msgstr "სტუმრის დომენი გაითიშა"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:81
+msgctxt "shortcut window"
+msgid "Guest input devices"
+msgstr "სტუმრის შემტანი მოწყობილობები"
+
+#: src/remote-viewer.c:789
+#, c-format
+msgid "Invalid file %s: "
+msgstr "არასწორი ფაილი %s: "
+
+#: src/virt-viewer-app.c:3544
+#, c-format
+msgid "Invalid kiosk-quit argument: %s"
+msgstr "kiosk-quit-ის არასწორი არგუმენტი: %s"
+
+#: src/virt-viewer-session-spice.c:739
+msgid "Invalid password"
+msgstr "არასწორი პაროლი"
+
+#: src/resources/ui/remote-viewer-iso-list.ui:30
+msgid "Loading..."
+msgstr "ჩატვირთვა..."
+
+#: src/resources/ui/remote-viewer-iso-list.ui:109
+#: src/resources/ui/virt-viewer-vm-connection.ui:74
+msgid "Name"
+msgstr "სახელი"
+
+#: src/resources/ui/virt-viewer-guest-details.ui:54
+msgid "Name:"
+msgstr "სახელი:"
+
+#: src/remote-viewer-iso-list-dialog.c:170
+msgid "No ISO files in domain"
+msgstr "დიმენს არ გააჩნია ISO ფაილები"
+
+#: src/remote-viewer.c:755
+msgid "No connection was chosen"
+msgstr "კავშირი არჩეული არაა"
+
+#: src/virt-viewer-vm-connection.c:64
+msgid "No running virtual machine found"
+msgstr "არცერთი ვირტუალური მანქანა არაა გაშვებული"
+
+#: src/virt-viewer-vm-connection.c:97
+msgid "No virtual machine was chosen"
+msgstr "ვირტუალური მანქანა მონიშნული არაა"
+
+#: src/virt-viewer-app.c:3559
+msgid "Open in full screen mode (adjusts guest resolution to fit the client)"
+msgstr "მთელ ეკრანზე გახსნა (სტუმრის გაფართოების კლიენტის ზომებში ჩატევით)"
+
+#: src/resources/ui/virt-viewer-auth.ui:93
+msgid "Password:"
+msgstr "პაროლი:"
+
+#: src/virt-viewer-window.c:1115
+msgid "Please add an extension to the file name"
+msgstr "გთხოვთ მიუთითოთ გაფართოებაც"
+
+#: src/resources/ui/virt-viewer-menus.ui:63
+msgid "Power _down"
+msgstr "გამორ_თვა"
+
+#: src/resources/ui/virt-viewer-preferences.ui:8
+msgid "Preferences"
+msgstr "გამართვა"
+
+#: src/virt-viewer-session-spice.c:1033
+msgid "QEMU debug console"
+msgstr "QEMU-ს დამატებითი ინფორმაციის კონსოლი"
+
+#: src/virt-viewer-session-spice.c:1031
+msgid "QEMU human monitor"
+msgstr "QEMU-ს ადამიანის მონიტორი"
+
+#: src/virt-viewer-app.c:3571
+msgid "Quit on given condition in kiosk mode"
+msgstr "მითითებული პირობის შესრულების შემთხვევაში kiosk რეჟიმიდან გამოსვლა"
+
+#: src/resources/ui/virt-viewer-preferences.ui:82
+msgid "Read-only"
+msgstr "მხოლოდ კითხვისთვის"
+
+#: src/resources/ui/remote-viewer-connect.ui:79
+msgid "Recent connections"
+msgstr "ახლახანს დამყარებული კავშირები"
+
+#: src/virt-viewer.c:141
+msgid "Reconnect to domain upon restart"
+msgstr "რესტარტისას დომენთან თავიდან დაკავშირება"
+
+#: src/remote-viewer-iso-list-dialog.c:304
+msgid "Refresh"
+msgstr "განახლება"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:92
+msgctxt "shortcut window"
+msgid "Release cursor"
+msgstr "კურსორის გათავისუფლება"
+
+#: src/virt-viewer-app.c:3565
+msgid ""
+"Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+msgstr ""
+"მალსახმობი კლავშების ფორმატის შეცვლა ღილაკი=დამ.ღილაკი+ღილაგი. მაგ. "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=არაფერი"
+
+#: data/remote-viewer.appdata.xml.in:6 data/remote-viewer.desktop.in:3
+#: src/remote-viewer-main.c:39
+msgid "Remote Viewer"
+msgstr "დისტანციურად ნახვა"
+
+#: data/remote-viewer.appdata.xml.in:9
+msgid ""
+"Remote Viewer provides a graphical viewer for the guest OS display. At this "
+"time it supports guest OS using the VNC or SPICE protocols. Further "
+"protocols may be supported in the future as user demand dictates. The viewer "
+"can connect directly to both local and remotely hosted guest OS, optionally "
+"using SSL/TLS encryption."
+msgstr ""
+
+#: src/remote-viewer.c:125
+msgid "Remote viewer client"
+msgstr "დისტანციურად ნახვის კლიენტი"
+
+#: data/remote-viewer.appdata.xml.in:7
+msgid "Remotely access virtual machines"
+msgstr "ვირტუალურ მანქანებთან დაშორებული წვდომა"
+
+#: src/remote-viewer.c:166 src/virt-viewer.c:205
+#, c-format
+msgid "Run '%s --help' to see a full list of available command line options\n"
+msgstr "გაუშვით '%s --help' მისი ხელმისწვდომი პარამეტრების სიის სანახავად\n"
+
+#: src/virt-viewer-window.c:1089
+msgid "Save screenshot"
+msgstr "ეკრანის ანაბეჭდის შენახვა"
+
+#: src/virt-viewer-window.c:1101
+msgid "Screenshot.png"
+msgstr "ეკრანის ანაბეჭდი.png"
+
+#. Create the widgets
+#: src/virt-viewer-session-spice.c:839
+msgid "Select USB devices for redirection"
+msgstr "აირჩიეთ USB მოწყობილობები გადამისამართებისთვის"
+
+#: src/virt-viewer.c:145
+msgid "Select the virtual machine only by its ID"
+msgstr "არჩიეთ ვირტუალური მანქანა მხოლოდ მისი ID-ით"
+
+#: src/virt-viewer.c:147
+msgid "Select the virtual machine only by its UUID"
+msgstr "აირჩიეთ ვირტუალური მანქანა მხოლოდ მისი UUID-ით"
+
+#: src/virt-viewer.c:143
+msgid "Select the virtual machine only by its name"
+msgstr "აირჩიეთ ვირტუალური მანქანა მხოლოდ მისი სახელით"
+
+#: src/resources/ui/remote-viewer-iso-list.ui:96
+msgid "Selected"
+msgstr "არჩეულია"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:85
+msgctxt "shortcut window"
+msgid "Send secure attention (Ctrl-Alt-Del)"
+msgstr "ყურადღების დაცულად მიქცევა (Ctrl-Alt-Del)"
+
+#: src/virt-viewer-session-spice.c:1029
+msgid "Serial"
+msgstr "სერიული ნომერი"
+
+#: src/remote-viewer.c:116
+msgid "Set window title"
+msgstr "ფანჯრის სათაურის შეცვლა"
+
+#: src/remote-viewer.c:118 src/virt-viewer.c:149
+msgid "Share client session"
+msgstr "კლიენტის სესიის გაზიარება"
+
+#: src/resources/ui/virt-viewer-preferences.ui:96
+msgid "Share clipboard"
+msgstr "გაცვლის ბაფერის გაზიარება"
+
+#: src/resources/ui/virt-viewer-preferences.ui:70
+msgid "Share folder"
+msgstr "საქაღალდის გაზიარება"
+
+#: src/virt-viewer-auth.c:152
+msgid "Show / hide password text"
+msgstr "პაროლის ჩვენება / დამალვა"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:58
+msgctxt "shortcut window"
+msgid "Smartcard insert"
+msgstr "შეაერთეთ Smartcard"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:65
+msgctxt "shortcut window"
+msgid "Smartcard remove"
+msgstr "გამოაძრეთ Smartcard"
+
+#: src/resources/ui/virt-viewer-preferences.ui:132
+msgid "Spice"
+msgstr "Spice პროტოკოლი"
+
+#: src/resources/ui/virt-viewer-about.ui:25
+msgid "The Fedora Translation Team"
+msgstr "Fedora-ს მთარგმნელების ჯგუფი"
+
+#: src/virt-viewer-file-transfer-dialog.c:151
+#, c-format
+msgid "Transferring %u file of %u..."
+msgid_plural "Transferring %u files of %u..."
+msgstr[0] "გადაწერა ფაილი %u-დან %u..."
+msgstr[1] "გადაწერა ფაილი %u-დან %u-ი..."
+
+#: src/virt-viewer-file-transfer-dialog.c:149
+msgid "Transferring 1 file..."
+msgstr "1 ფაილის გადაწერა..."
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:51
+msgctxt "shortcut window"
+msgid "USB device reset"
+msgstr "USB მოწყობილობის გადატვირთვა"
+
+#: src/virt-viewer-app.c:1869
+#, c-format
+msgid "USB redirection error: %s"
+msgstr "USB-ის გადამისამართების შეცდომა: %s"
+
+#: src/virt-viewer-app.c:1840
+#, c-format
+msgid "Unable to authenticate with remote desktop server at %s: %s\n"
+msgstr "დისტანციურ სამუშაო დაფასთან %s ავთენტიკაციის შეცდომა: %s\n"
+
+#: src/virt-viewer-app.c:1858
+#, c-format
+msgid "Unable to authenticate with remote desktop server: %s"
+msgstr "დისტანციურ სამუშაო დაფასთან ავთენტიკაციის სეცდომა: %s"
+
+#: src/virt-viewer.c:1038
+#, c-format
+msgid "Unable to connect to libvirt with URI: %s."
+msgstr "libvirt-თან კავშირის შეცდომა: %s."
+
+#: src/virt-viewer-app.c:1814
+#, c-format
+msgid "Unable to connect to the graphic server %s"
+msgstr "გრაფიკულ სერვერთან კავშირის შეცდომა %s"
+
+#: src/remote-viewer.c:818
+#, c-format
+msgid "Unable to connect: %s"
+msgstr "კავშირის შეცდომა: %s"
+
+#: src/virt-viewer-window.c:1243
+msgid "Unable to connnect to oVirt"
+msgstr "oVirt-თან დაკავშირების შეცდომა"
+
+#: src/virt-viewer-window.c:1066
+#, c-format
+msgid "Unable to determine image format for file '%s'"
+msgstr "დისკის ფორმატის დადგენა ფაილისთვის '%s' შეუძლებელია"
+
+#: src/virt-viewer-window.c:1155
+msgctxt "Unknown UUID"
+msgid "Unknown"
+msgstr "უცნობი"
+
+#: src/virt-viewer-window.c:1153
+msgctxt "Unknown name"
+msgid "Unknown"
+msgstr "უცნობი"
+
+#: src/remote-viewer-iso-list-dialog.c:322
+#: src/virt-viewer-file-transfer-dialog.c:196
+msgid "Unspecified error"
+msgstr "მიუთითებელი შეცდომა"
+
+#: src/virt-viewer-session-vnc.c:234
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr "%u-თან ავთენტიკაციის მხარდაჭერა არ არსებობს"
+
+#: src/virt-viewer-app.c:1408
+#, c-format
+msgid "Unsupported graphic type '%s'"
+msgstr "გრაფიკის მხარდაჭერა არ არსებობს: %s"
+
+#: src/resources/ui/virt-viewer-auth.ui:105
+msgid "Username:"
+msgstr "მომხმარებლის სახელი:"
+
+#: src/virt-viewer-display-vnc.c:139
+msgid "VNC does not provide GUID"
+msgstr "VNC-მა არ მოგვაწოდა GUID"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "Viewer"
+msgstr "მაყურებელი"
+
+#: src/virt-viewer-main.c:38
+msgid "Virt Viewer"
+msgstr "ვირტუალური მანქანების მენეჯერი"
+
+#: data/virt-viewer-mime.xml.in:5
+msgid "Virt-Viewer connection file"
+msgstr "Virt-Viewer-ის კავშირის ფაილი"
+
+#: src/virt-viewer.c:851
+#, c-format
+msgid "Virtual machine %s is not running"
+msgstr "ვირტუალური მანქანა %s გაშვებული არაა"
+
+#: src/virt-viewer.c:156
+msgid "Virtual machine graphical console"
+msgstr "ვირტუალური მანქანის გრაფიკული კონსოლი"
+
+#: src/virt-viewer.c:139
+msgid "Wait for domain to start"
+msgstr "დომენის სტარტის მოლოდინი"
+
+#: src/virt-viewer-app.c:1285
+#, c-format
+msgid "Waiting for display %d..."
+msgstr "დაელოდეთ ეკრანს %d..."
+
+#: src/virt-viewer.c:883
+msgid "Waiting for guest domain to be created"
+msgstr "სტუმრის დომენის შექმნის მოლოდინი"
+
+#: src/virt-viewer.c:295
+msgid "Waiting for guest domain to re-start"
+msgstr "სტუმრის დომენის რესტარტის მოლოდინი"
+
+#: src/virt-viewer.c:924
+msgid "Waiting for guest domain to start"
+msgstr "სტუმრის დომენის გაშვების მოლოდინი"
+
+#: src/virt-viewer.c:875
+msgid "Waiting for libvirt to start"
+msgstr "libvirt-ის გაშვების მოლოდინი"
+
+#: src/resources/ui/virt-viewer-menus.ui:16
+msgid "Zoom _In"
+msgstr "გადიდება"
+
+#: src/resources/ui/virt-viewer-menus.ui:20
+msgid "Zoom _Out"
+msgstr "დაპატარავება"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:17
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "გადიდება"
+
+#: src/virt-viewer-app.c:2526
+#, c-format
+msgid "Zoom level must be within %d-%d\n"
+msgstr "გადიდების მნიშვნელობის შუალედია %d-%d\n"
+
+#: src/virt-viewer-app.c:3557
+msgid "Zoom level of window, in percentage"
+msgstr "ფანჯრის გადიდების ზომა, პროცენტებში"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:24
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "დაპატარავება"
+
+#: src/resources/ui/virt-viewer-shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Zoom reset"
+msgstr "გადიდების გათიშვა"
+
+#: src/virt-viewer.c:1039
+msgid "[none]"
+msgstr "[არცერთი]"
+
+#: src/resources/ui/virt-viewer-menus.ui:34
+msgid "_About"
+msgstr "_შესახებ"
+
+#: src/resources/ui/virt-viewer-menus.ui:28
+msgid "_Auto resize"
+msgstr "_ზომის ავტომატური შეცვლა"
+
+#: src/resources/ui/remote-viewer-connect.ui:121
+#: src/resources/ui/virt-viewer-auth.ui:28
+#: src/resources/ui/virt-viewer-file-transfer-dialog.ui:26
+#: src/resources/ui/virt-viewer-vm-connection.ui:25
+#: src/virt-viewer-window.c:1092
+msgid "_Cancel"
+msgstr "_გაუქმება"
+
+#: src/resources/ui/virt-viewer-guest-details.ui:22
+#: src/virt-viewer-session-spice.c:841
+msgid "_Close"
+msgstr "_დახურვა"
+
+#: src/resources/ui/virt-viewer-menus.ui:42
+msgid "_Guest details"
+msgstr "_დეტალები სტუმარზე"
+
+#: src/resources/ui/virt-viewer-menus.ui:38
+msgid "_Keyboard shortcuts"
+msgstr "_კლავიატურის მალსახმობი ღილაკები"
+
+#: src/resources/ui/virt-viewer-menus.ui:24
+msgid "_Normal Size"
+msgstr "_ნორმალური ზომა"
+
+#: src/resources/ui/virt-viewer-auth.ui:43
+msgid "_OK"
+msgstr "_კარგი"
+
+#: src/resources/ui/virt-viewer-menus.ui:53
+msgid "_Pause"
+msgstr "_გაჩერება"
+
+#: src/resources/ui/virt-viewer-menus.ui:10
+msgid "_Preferences…"
+msgstr "_გამართვა…"
+
+#: src/resources/ui/virt-viewer-menus.ui:59
+msgid "_Reset"
+msgstr "_საწყის მნიშვნელობაზე დაბრუნება"
+
+#: src/virt-viewer-window.c:1093
+msgid "_Save"
+msgstr "_შენახვა"
+
+#: src/resources/ui/virt-viewer-menus.ui:6
+msgid "_Screenshot"
+msgstr "_ეკრანის ანაბეჭდი"
+
+#: src/remote-viewer.c:437
+msgid "failed to parse oVirt URI"
+msgstr "oVirt-ის URI-ის ანალიზის შეცდომა"
+
+#: src/resources/ui/virt-viewer-auth.ui:70
+#: src/resources/ui/virt-viewer-file-transfer-dialog.ui:55
+#: src/resources/ui/virt-viewer-guest-details.ui:80
+#: src/resources/ui/virt-viewer-guest-details.ui:94
+msgid "label"
+msgstr "ჭდე"
+
+#: src/remote-viewer.c:494
+#, c-format
+msgid "oVirt VM %s has no display"
+msgstr "Ovirt-ის VM %s-ს ეკრანი არ აქვს"
+
+#: src/remote-viewer.c:520
+#, c-format
+msgid "oVirt VM %s has no host information"
+msgstr "oVirt-ის VM %s-ს არ გააჩნია ინფორმაცია ჰოსტის შესახებ"
+
+#: src/remote-viewer.c:531
+#, c-format
+msgid "oVirt VM %s has unknown display type: %u"
+msgstr "oVirt-ის VM %s-ს გააჩნია ეკრანის უცნობი ტიპი: %u"
+
+#: src/remote-viewer.c:480
+#, c-format
+msgid "oVirt VM %s is not running"
+msgstr "oVirt-ის VM %s გაშვებული არაა"
+
+#: src/virt-viewer-app.c:1509
+msgid "only SSH or UNIX socket connection supported."
+msgstr "მხარდაჭერილია კავშირი მხოლოდ SSH ან UNIX socket-ით."
