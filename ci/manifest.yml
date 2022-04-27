@@ -9,7 +9,7 @@ gitlab:
   project: virt-viewer
 
 targets:
-  centos-8:
+  centos-stream-8:
     projects:
       - virt-viewer
       - libvirt
@@ -21,19 +21,13 @@ targets:
         variables:
           RPM: skip
 
-  centos-stream-8:
-    jobs:
-      - arch: x86_64
-        variables:
-          RPM: skip
-
   debian-10: x86_64
 
   debian-sid: x86_64
 
-  fedora-33: x86_64
-
   fedora-34: x86_64
+
+  fedora-35: x86_64
 
   fedora-rawhide:
     jobs:
@@ -51,7 +45,7 @@ targets:
           paths:
             - data/virt-viewer-x64*.msi
 
-  opensuse-leap-152:
+  opensuse-leap-153:
     jobs:
       - arch: x86_64
         variables:

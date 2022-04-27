@@ -21,6 +21,7 @@ exec "$@"' > /usr/bin/nosync && \
         bash-completion \
         ca-certificates \
         ccache \
+        cppi \
         gcc \
         git \
         glib2-devel \

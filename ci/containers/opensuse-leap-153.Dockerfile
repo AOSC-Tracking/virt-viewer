@@ -4,13 +4,14 @@
 #
 # https://gitlab.com/libvirt/libvirt-ci
 
-FROM registry.opensuse.org/opensuse/leap:15.2
+FROM registry.opensuse.org/opensuse/leap:15.3
 
 RUN zypper update -y && \
     zypper install -y \
            bash-completion \
            ca-certificates \
            ccache \
+           cppi \
            gcc \
            git \
            glib2-devel \
@@ -40,8 +41,7 @@ RUN zypper update -y && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/cc && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
 
-RUN pip3 install \
-         meson==0.56.0
+RUN pip3 install meson==0.56.0
 
 ENV LANG "en_US.UTF-8"
 ENV MAKE "/usr/bin/make"

@@ -10,8 +10,7 @@
   stage: containers
   needs: []
   services:
-    - name: registry.gitlab.com/libvirt/libvirt-ci/docker-dind:master
-      alias: docker
+    - docker:dind
   before_script:
     - export TAG="$CI_REGISTRY_IMAGE/ci-$NAME:latest"
     - export COMMON_TAG="$CI_REGISTRY/virt-viewer/virt-viewer/ci-$NAME:latest"
@@ -50,13 +49,6 @@ check-dco:
 
 # Native container jobs
 
-x86_64-centos-8-container:
-  extends: .container_job
-  allow_failure: false
-  variables:
-    NAME: centos-8
-
-
 x86_64-centos-stream-8-container:
   extends: .container_job
   allow_failure: false
@@ -78,18 +70,18 @@ x86_64-debian-sid-container:
     NAME: debian-sid
 
 
-x86_64-fedora-33-container:
-  extends: .container_job
-  allow_failure: false
-  variables:
-    NAME: fedora-33
-
-
 x86_64-fedora-34-container:
   extends: .container_job
   allow_failure: false
   variables:
     NAME: fedora-34
+
+
+x86_64-fedora-35-container:
+  extends: .container_job
+  allow_failure: false
+  variables:
+    NAME: fedora-35
 
 
 x86_64-fedora-rawhide-container:
@@ -99,11 +91,11 @@ x86_64-fedora-rawhide-container:
     NAME: fedora-rawhide
 
 
-x86_64-opensuse-leap-152-container:
+x86_64-opensuse-leap-153-container:
   extends: .container_job
   allow_failure: false
   variables:
-    NAME: opensuse-leap-152
+    NAME: opensuse-leap-153
 
 
 x86_64-opensuse-tumbleweed-container:
@@ -146,16 +138,6 @@ mingw64-fedora-rawhide-container:
 
 # Native build jobs
 
-x86_64-centos-8:
-  extends: .native_build_job
-  needs:
-    - x86_64-centos-8-container
-  allow_failure: false
-  variables:
-    NAME: centos-8
-    RPM: skip
-
-
 x86_64-centos-stream-8:
   extends: .native_build_job
   needs:
@@ -184,15 +166,6 @@ x86_64-debian-sid:
     NAME: debian-sid
 
 
-x86_64-fedora-33:
-  extends: .native_build_job
-  needs:
-    - x86_64-fedora-33-container
-  allow_failure: false
-  variables:
-    NAME: fedora-33
-
-
 x86_64-fedora-34:
   extends: .native_build_job
   needs:
@@ -200,6 +173,15 @@ x86_64-fedora-34:
   allow_failure: false
   variables:
     NAME: fedora-34
+
+
+x86_64-fedora-35:
+  extends: .native_build_job
+  needs:
+    - x86_64-fedora-35-container
+  allow_failure: false
+  variables:
+    NAME: fedora-35
 
 
 x86_64-fedora-rawhide:
@@ -211,13 +193,13 @@ x86_64-fedora-rawhide:
     NAME: fedora-rawhide
 
 
-x86_64-opensuse-leap-152:
+x86_64-opensuse-leap-153:
   extends: .native_build_job
   needs:
-    - x86_64-opensuse-leap-152-container
+    - x86_64-opensuse-leap-153-container
   allow_failure: false
   variables:
-    NAME: opensuse-leap-152
+    NAME: opensuse-leap-153
     RPM: skip
 
 
@@ -258,12 +240,13 @@ mingw32-fedora-rawhide:
     - mingw32-fedora-rawhide-container
   allow_failure: false
   variables:
-    NAME: fedora-rawhide
     CROSS: mingw32
+    NAME: fedora-rawhide
   artifacts:
-    expire_in: 30 days
+    expire_in: 2 days
     paths:
       - data/virt-viewer-x86*.msi
+
 
 mingw64-fedora-rawhide:
   extends: .cross_build_job
@@ -271,9 +254,9 @@ mingw64-fedora-rawhide:
     - mingw64-fedora-rawhide-container
   allow_failure: false
   variables:
-    NAME: fedora-rawhide
     CROSS: mingw64
+    NAME: fedora-rawhide
   artifacts:
-    expire_in: 30 days
+    expire_in: 2 days
     paths:
       - data/virt-viewer-x64*.msi

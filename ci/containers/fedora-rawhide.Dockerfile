@@ -17,11 +17,12 @@ else\n\
 fi\n\
 exec "$@"' > /usr/bin/nosync && \
     chmod +x /usr/bin/nosync && \
-    nosync dnf update -y && \
+    nosync dnf distro-sync -y && \
     nosync dnf install -y \
         bash-completion \
         ca-certificates \
         ccache \
+        cppi \
         gcc \
         git \
         glib2-devel \

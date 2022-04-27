@@ -70,9 +70,9 @@ include: '/ci/gitlab.yml'
 
 codestyle:
   stage: sanity_checks
-  image: $CI_REGISTRY_IMAGE/ci-centos-8:latest
+  image: $CI_REGISTRY_IMAGE/ci-centos-stream-8:latest
   needs:
-    - x86_64-centos-8-container
+    - x86_64-centos-stream-8-container
   before_script:
     - *script_variables
   script:
