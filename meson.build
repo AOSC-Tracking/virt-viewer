@@ -8,7 +8,7 @@ project(
     'c_std=gnu99',
     'warning_level=1',
   ],
-  meson_version: '>= 0.54.0'
+  meson_version: '>= 0.56.0'
 )
 
 pod2man = find_program('pod2man')

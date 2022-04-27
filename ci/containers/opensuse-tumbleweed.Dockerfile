@@ -6,12 +6,14 @@
 
 FROM registry.opensuse.org/opensuse/tumbleweed:latest
 
-RUN zypper update -y && \
+RUN zypper dist-upgrade -y && \
     zypper install -y \
            bash-completion \
            ca-certificates \
            ccache \
+           cppi \
            gcc \
+           gettext-runtime \
            git \
            glib2-devel \
            glibc-locale \

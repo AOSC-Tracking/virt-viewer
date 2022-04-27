@@ -4,7 +4,7 @@
 #
 # https://gitlab.com/libvirt/libvirt-ci
 
-FROM registry.fedoraproject.org/fedora:33
+FROM registry.fedoraproject.org/fedora:35
 
 RUN dnf install -y nosync && \
     echo -e '#!/bin/sh\n\
@@ -21,7 +21,9 @@ exec "$@"' > /usr/bin/nosync && \
         bash-completion \
         ca-certificates \
         ccache \
+        cppi \
         gcc \
+        gettext \
         git \
         glib2-devel \
         glibc-langpack-en \
