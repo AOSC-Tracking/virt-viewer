@@ -13,6 +13,7 @@ RUN zypper dist-upgrade -y && \
            ccache \
            cppi \
            gcc \
+           gettext-runtime \
            git \
            glib2-devel \
            glibc-locale \

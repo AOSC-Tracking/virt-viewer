@@ -43,6 +43,7 @@ ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
 
 RUN nosync dnf install -y \
         mingw64-gcc \
+        mingw64-gettext \
         mingw64-glib2 \
         mingw64-gstreamer1-plugins-bad-free \
         mingw64-gstreamer1-plugins-good \

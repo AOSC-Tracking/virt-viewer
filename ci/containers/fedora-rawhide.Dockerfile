@@ -24,6 +24,7 @@ exec "$@"' > /usr/bin/nosync && \
         ccache \
         cppi \
         gcc \
+        gettext \
         git \
         glib2-devel \
         glibc-langpack-en \

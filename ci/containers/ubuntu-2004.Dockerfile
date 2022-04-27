@@ -15,6 +15,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
             ca-certificates \
             ccache \
             gcc \
+            gettext \
             git \
             icoutils \
             libglib2.0-dev \
