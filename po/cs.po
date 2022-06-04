@@ -1,14 +1,14 @@
 # Zdenek <chmelarz@gmail.com>, 2016. #zanata
 # Thomas Rohlik <rohrto@gmail.com>, 2017. #zanata
 # Zdenek <chmelarz@gmail.com>, 2017. #zanata
-# Pavel Borecki <pavel.borecki@gmail.com>, 2018. #zanata, 2020, 2021.
-# Pavel Borecki <pavel.borecki@gmail.com>, 2019. #zanata, 2020, 2021.
+# Pavel Borecki <pavel.borecki@gmail.com>, 2018. #zanata, 2020, 2021, 2022.
+# Pavel Borecki <pavel.borecki@gmail.com>, 2019. #zanata, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-18 18:29+0000\n"
-"PO-Revision-Date: 2021-12-03 22:16+0000\n"
+"PO-Revision-Date: 2022-05-07 13:18+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/cs/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9.1\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #, c-format
 msgid ""
@@ -210,7 +210,7 @@ msgid ""
 "Copyright (C) 2007-2020 Red Hat, Inc."
 msgstr ""
 "Autorská práva © 2007-2012 Daniel P. Berrange\n"
-"Autorská práva © 2007-2020 Red Hat, Inc."
+"Autorská práva © 2007-2022 Red Hat, Inc."
 
 msgid "Couldn't open oVirt session: "
 msgstr "Nedaří se otevřít oVirt relaci: "
@@ -697,7 +697,8 @@ msgid "oVirt VM %s is not running"
 msgstr "oVirt virt. stroj %s není spuštěný"
 
 msgid "only SSH or UNIX socket connection supported."
-msgstr "je podporováno připojení pouze přes SSH nebo k unixovému soketu."
+msgstr ""
+"je podporováno připojení pouze prostřednictvím SSH nebo unixového soketu."
 
 #~ msgid "Close"
 #~ msgstr "Zavřít"

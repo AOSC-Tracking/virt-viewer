@@ -14,13 +14,14 @@
 # Daniel Berrange <dan-zanata@berrange.com>, 2019
 # Thomas Eichhorn <tomislav@posteo.de>, 2019
 # Ettore Atalan <atalanttore@googlemail.com>, 2021.
+# Joachim Philipp <joachim.philipp@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-18 18:29+0000\n"
-"PO-Revision-Date: 2021-12-05 21:16+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2022-06-03 14:18+0000\n"
+"Last-Translator: Joachim Philipp <joachim.philipp@gmail.com>\n"
 "Language-Team: German <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/de/>\n"
 "Language: de\n"
@@ -28,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9.1\n"
+"X-Generator: Weblate 4.12.2\n"
 
 #, c-format
 msgid ""
@@ -46,6 +47,9 @@ msgid ""
 "No ID|UUID|DOMAIN-NAME was specified for '%s'\n"
 "\n"
 msgstr ""
+"\n"
+"Kein(e) ID|UUID|Domänenname wurde angegeben für '%s'\n"
+"\n"
 
 #, c-format
 msgid ""
@@ -107,7 +111,7 @@ msgstr "Zugriff auf Remote-Desktops"
 
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Adresse ist zu lang für UNIX socket_path: %s"
 
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
@@ -152,7 +156,7 @@ msgid "Authentication was cancelled"
 msgstr "Authentifizierung abgebrochen"
 
 msgid "Automatically resize remote framebuffer"
-msgstr ""
+msgstr "Automatische Größenveränderung für Remote-Framebuffer"
 
 msgid "Available virtual machines"
 msgstr "Verfügbare virtuelle Maschinen"
@@ -162,7 +166,7 @@ msgstr "V_erbinden"
 
 #, c-format
 msgid "Can't connect to channel: %s"
-msgstr ""
+msgstr "Verbindung fehlgeschlagen zu Kanal: %s"
 
 msgid "Cannot determine the connection type from URI"
 msgstr "Verbindungstyp konnte nicht von URI ermittelt werden"
@@ -188,7 +192,7 @@ msgid "Choose a virtual machine"
 msgstr "Wählen Sie eine virtuelle Maschine"
 
 msgid "Connect to SSH failed."
-msgstr ""
+msgstr "Verbindung zu SSH fehlgeschlagen."
 
 msgid "Connect to channel unsupported."
 msgstr "Verbindung zu dem Kanal wird nicht unterstützt."
@@ -201,7 +205,7 @@ msgstr "Verbunden mit Grafikserver"
 
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "Verbindung zu UNIX Socket fehlgeschlagen: %s"
 
 msgid "Connecting to graphic server"
 msgstr "Verbinden mit Grafikserver"
@@ -219,20 +223,22 @@ msgid ""
 "Copyright (C) 2007-2012 Daniel P. Berrange\n"
 "Copyright (C) 2007-2020 Red Hat, Inc."
 msgstr ""
+"Copyright (C) 2007-2012 Daniel P. Berrange\n"
+"Copyright (C) 2007-2020 Red Hat, Inc."
 
 msgid "Couldn't open oVirt session: "
 msgstr "Konnte oVirt-Sitzung nicht öffnen: "
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Erstellung von UNIX Socket fehlgeschlagen: %s"
 
 #, c-format
 msgid "Current: %s"
 msgstr "Aktuell: %s"
 
 msgid "Cursor display mode: 'local' or 'auto'"
-msgstr ""
+msgstr "Cursor Anzeigemodus: 'local' oder 'auto'"
 
 msgid "Customise hotkeys"
 msgstr "eigene angepasste Hotkeys"
@@ -246,7 +252,7 @@ msgstr "Direkte Verbindung ohne automatische Tunnel"
 
 #, c-format
 msgid "Display _%d"
-msgstr ""
+msgstr "Anzeige _%d"
 
 msgid "Display can only be attached through libvirt with --attach"
 msgstr "Anzeige kann nur durch libvirt mit --attach zugeordnet werden"
@@ -335,7 +341,7 @@ msgid "Name:"
 msgstr "Name:"
 
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "Keine ISO Dateien in der Domäne"
 
 msgid "No connection was chosen"
 msgstr "Es wurde keine Verbindung gewählt"
@@ -358,7 +364,7 @@ msgid "Please add an extension to the file name"
 msgstr "Bitte fügen Sie dem Dateinamen eine Erweiterung hinzu"
 
 msgid "Power _down"
-msgstr ""
+msgstr "Herunterfahren"
 
 msgid "Preferences"
 msgstr "Präferenzen"
@@ -367,7 +373,7 @@ msgid "QEMU debug console"
 msgstr "QEMU-Debug-Konsole"
 
 msgid "QEMU human monitor"
-msgstr ""
+msgstr "QEMU menschlicher Monitor"
 
 msgid "Quit on given condition in kiosk mode"
 msgstr "Beenden bei bestimmter Bedingung im Kiosk-Modus"
@@ -386,11 +392,13 @@ msgstr "Auffrischen"
 
 msgctxt "shortcut window"
 msgid "Release cursor"
-msgstr ""
+msgstr "Cursor freilassen"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
+"Keys umkonfigurieren im Format key=keymod+key, z.B. "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "Remote-Viewer"

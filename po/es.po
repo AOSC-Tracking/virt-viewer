@@ -15,21 +15,22 @@
 # William  Moreno Reyes <williamjmorenor@gmail.com>, 2016
 # Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2017
 # Eduard Lucena <eduardlucena@gmail.com>, 2021.
+# Eduardo Lima <elima@redhat.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-18 18:29+0000\n"
-"PO-Revision-Date: 2021-02-17 15:21+0000\n"
-"Last-Translator: Eduard Lucena <eduardlucena@gmail.com>\n"
-"Language-Team: Spanish <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/es/>\n"
+"PO-Revision-Date: 2022-02-23 17:16+0000\n"
+"Last-Translator: Eduardo Lima <elima@redhat.com>\n"
+"Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #, c-format
 msgid ""
@@ -327,7 +328,7 @@ msgid "Invalid password"
 msgstr "Contraseña inválida"
 
 msgid "Loading..."
-msgstr "Cargando...|"
+msgstr "Cargando..."
 
 msgid "Name"
 msgstr "Nombre"
