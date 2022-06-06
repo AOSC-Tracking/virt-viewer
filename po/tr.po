@@ -5,13 +5,14 @@
 # Translators:
 # Necdet Yücel <necdetyucel@gmail.com>, 2012
 # Oğuz Ersen <oguzersen@protonmail.com>, 2020, 2021.
+# Oğuz Ersen <oguz@ersen.moe>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-18 18:29+0000\n"
-"PO-Revision-Date: 2021-11-21 19:16+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"PO-Revision-Date: 2022-06-06 13:18+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/tr/>\n"
 "Language: tr\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 4.9\n"
+"X-Generator: Weblate 4.12.2\n"
 
 #, c-format
 msgid ""
@@ -471,7 +472,7 @@ msgid "Spice"
 msgstr "Spice"
 
 msgid "The Fedora Translation Team"
-msgstr "Fedora Çeviri Ekibi"
+msgstr "Fedora Çeviri Takımı"
 
 #, c-format
 msgid "Transferring %u file of %u..."
