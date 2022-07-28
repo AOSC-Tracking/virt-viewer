@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2021-06-19 10:04+0000\n"
 "Last-Translator: Charles Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
@@ -321,8 +321,17 @@ msgstr "无效的 kiosk-quit 参数：%s"
 msgid "Invalid password"
 msgstr "无效密码"
 
+msgid "Leave fullscreen"
+msgstr "推出全屏"
+
 msgid "Loading..."
 msgstr "正在加载..."
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "名称"
@@ -434,6 +443,9 @@ msgstr "仅通过名称选择虚拟系统"
 msgid "Selected"
 msgstr "已选择"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr "发送安全注意键（Ctrl-Alt-Del）"
@@ -467,6 +479,9 @@ msgstr "智能卡移除"
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Fedora 翻译团队"
 
@@ -481,6 +496,9 @@ msgstr "正在传输 1 份文件..."
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr "USB 设备重置"
+
+msgid "USB device selection"
+msgstr "USB 设备选择"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -684,9 +702,6 @@ msgstr "仅支持 SSH 或 UNIX 套接字连接。"
 #~ msgid "Disconnect"
 #~ msgstr "断开连接"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "推出全屏"
-
 #~ msgid "Minimize"
 #~ msgstr "最小化"
 
@@ -704,9 +719,6 @@ msgstr "仅支持 SSH 或 UNIX 套接字连接。"
 
 #~ msgid "Smartcard removal"
 #~ msgstr "删除智能卡"
-
-#~ msgid "USB device selection"
-#~ msgstr "USB 设备选择"
 
 #~ msgid "_Change CD"
 #~ msgstr "更换设备（_C）"

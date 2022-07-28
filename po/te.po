@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2015-02-20 08:11+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Telugu (http://www.transifex.com/projects/p/virt-viewer/"
@@ -300,7 +300,16 @@ msgstr "చెల్లని kiosk-quit ఆర్గుమెంట్: %s"
 msgid "Invalid password"
 msgstr ""
 
+msgid "Leave fullscreen"
+msgstr "నిండుతెర విడు"
+
 msgid "Loading..."
+msgstr ""
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
 msgstr ""
 
 msgid "Name"
@@ -408,6 +417,9 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -441,6 +453,9 @@ msgstr ""
 msgid "Spice"
 msgstr ""
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Fedora అనువాద సమూహం"
 
@@ -456,6 +471,9 @@ msgstr ""
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "USB పరికర యెంపిక"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -644,9 +662,6 @@ msgstr ""
 #~ msgid "Disconnect"
 #~ msgstr "అననుసంధానించు"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "నిండుతెర విడు"
-
 #~ msgid "Release cursor"
 #~ msgstr "సూచీ విడుదలచేయి"
 
@@ -658,9 +673,6 @@ msgstr ""
 
 #~ msgid "Smartcard removal"
 #~ msgstr "స్మార్టుకార్డ్ తీసివేత"
-
-#~ msgid "USB device selection"
-#~ msgstr "USB పరికర యెంపిక"
 
 #~ msgid "_File"
 #~ msgstr "ఫైలు (_F)"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2017-01-29 10:04+0000\n"
 "Last-Translator: Rodrigo de Araujo Sousa Fonseca "
 "<rodrigodearaujo@fedoraproject.org>\n"
@@ -301,7 +301,16 @@ msgstr ""
 msgid "Invalid password"
 msgstr ""
 
+msgid "Leave fullscreen"
+msgstr ""
+
 msgid "Loading..."
+msgstr ""
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
 msgstr ""
 
 msgid "Name"
@@ -409,6 +418,9 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -442,6 +454,9 @@ msgstr ""
 msgid "Spice"
 msgstr ""
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr ""
 
@@ -456,6 +471,9 @@ msgstr ""
 
 msgctxt "shortcut window"
 msgid "USB device reset"
+msgstr ""
+
+msgid "USB device selection"
 msgstr ""
 
 #, c-format

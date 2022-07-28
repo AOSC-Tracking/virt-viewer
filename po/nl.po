@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2021-02-28 12:40+0000\n"
 "Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
 "Language-Team: Dutch <https://translate.fedoraproject.org/projects/virt-"
@@ -317,8 +317,17 @@ msgstr "Ongeldig kiosk-quit argument: %s"
 msgid "Invalid password"
 msgstr "Ongeldig wachtwoord"
 
+msgid "Leave fullscreen"
+msgstr "Verlaat volledig scherm"
+
 msgid "Loading..."
 msgstr "Bezig met laden..."
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "Naam"
@@ -437,6 +446,9 @@ msgstr "Selecteer de virtuele machine alleen op naam"
 msgid "Selected"
 msgstr "Geselecteerd"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -470,6 +482,9 @@ msgstr ""
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Het Fedora vertaal team"
 
@@ -485,6 +500,9 @@ msgstr "1 bestand overzetten..."
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "USB apparaat selectie"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -688,9 +706,6 @@ msgstr "alleen SSH of UNIX socket verbinding ondersteund."
 #~ msgid "Disconnect"
 #~ msgstr "Verbinding verbreken"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "Verlaat volledig scherm"
-
 #~ msgid "Minimize"
 #~ msgstr "Minimaliseren"
 
@@ -708,9 +723,6 @@ msgstr "alleen SSH of UNIX socket verbinding ondersteund."
 
 #~ msgid "Smartcard removal"
 #~ msgstr "Verwijder Smartcard"
-
-#~ msgid "USB device selection"
-#~ msgstr "USB apparaat selectie"
 
 #~ msgid "_Change CD"
 #~ msgstr "_Verander CG"

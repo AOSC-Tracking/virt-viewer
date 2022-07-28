@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2021-09-24 12:05+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.fedoraproject.org/projects/virt-"
@@ -315,8 +315,18 @@ msgstr "Argumen kiosk-quit tidak valid: %s"
 msgid "Invalid password"
 msgstr "Kata sandi tidak valid"
 
+#, fuzzy
+msgid "Leave fullscreen"
+msgstr "Ke_luar dari Layar Penuh"
+
 msgid "Loading..."
 msgstr "Memuat..."
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "Nama"
@@ -446,6 +456,9 @@ msgstr "Pilih mesin virtual hanya dengan namanya"
 msgid "Selected"
 msgstr "Dipilih"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr "Kirim perhatian aman (Ctrl-Alt-Del)"
@@ -484,6 +497,9 @@ msgstr "Pencabutan smartcard"
 msgid "Spice"
 msgstr "Rempah-rempah"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 #, fuzzy
 msgid "The Fedora Translation Team"
 msgstr "Tim Penerjemah Fedora"
@@ -500,6 +516,10 @@ msgstr "Mentransfer 1 file ..."
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr "Reset peranti USB"
+
+#, fuzzy
+msgid "USB device selection"
+msgstr "Pemilihan perangkat USB"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -738,10 +758,6 @@ msgstr "hanya koneksi soket SSH atau UNIX yang didukung."
 #~ msgstr "Putuskan"
 
 #, fuzzy
-#~ msgid "Leave fullscreen"
-#~ msgstr "Ke_luar dari Layar Penuh"
-
-#, fuzzy
 #~ msgid "Minimize"
 #~ msgstr "Minimalkan"
 
@@ -764,10 +780,6 @@ msgstr "hanya koneksi soket SSH atau UNIX yang didukung."
 #, fuzzy
 #~ msgid "Smartcard removal"
 #~ msgstr "Penghapusan kartu pintar"
-
-#, fuzzy
-#~ msgid "USB device selection"
-#~ msgstr "Pemilihan perangkat USB"
 
 #, fuzzy
 #~ msgid "_Change CD"

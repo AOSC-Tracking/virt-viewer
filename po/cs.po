@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2022-05-07 13:18+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/cs/>\n"
+"Language-Team: Czech <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -320,8 +320,19 @@ msgstr "Neplatný kiosk-quit argument: %s"
 msgid "Invalid password"
 msgstr "Neplatné heslo"
 
+# auto translated by TM merge from project: virt-manager, version: master,
+# DocId: virt-manager
+msgid "Leave fullscreen"
+msgstr "Opustit režim celé obrazovky"
+
 msgid "Loading..."
 msgstr "Načítání…"
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 # auto translated by TM merge from project: FreeIPA, version: ipa-4-5, DocId:
 # po/ipa
@@ -454,6 +465,9 @@ msgstr "Vybrat virtuální stroj pouze podle jeho názvu"
 msgid "Selected"
 msgstr "Vybráno"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr "Odeslat upozornění zabezpečení (Ctrl-Alt-Del)"
@@ -487,6 +501,9 @@ msgstr "Vyjmout čipovou kartu"
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Překladatelský tým projektu Fedora"
 
@@ -503,6 +520,9 @@ msgstr "Přenáší se 1 soubor…"
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr "Reset USB zařízení"
+
+msgid "USB device selection"
+msgstr "Výběr USB zařízení"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -718,11 +738,6 @@ msgstr ""
 #~ msgid "Disconnect"
 #~ msgstr "Odpojit"
 
-# auto translated by TM merge from project: virt-manager, version: master,
-# DocId: virt-manager
-#~ msgid "Leave fullscreen"
-#~ msgstr "Opustit režim celé obrazovky"
-
 #~ msgid "Minimize"
 #~ msgstr "Minimalizovat"
 
@@ -744,9 +759,6 @@ msgstr ""
 
 #~ msgid "Smartcard removal"
 #~ msgstr "Odebrání Smartcard"
-
-#~ msgid "USB device selection"
-#~ msgstr "Výběr USB zařízení"
 
 #~ msgid "_Change CD"
 #~ msgstr "Vyměnit _CD"

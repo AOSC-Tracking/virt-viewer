@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2015-02-20 08:08+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Bengali (http://www.transifex.com/projects/p/virt-viewer/"
@@ -304,7 +304,16 @@ msgstr ""
 msgid "Invalid password"
 msgstr ""
 
+msgid "Leave fullscreen"
+msgstr "সম্পূর্ণ পর্দায় প্রদর্শন থেকে প্রস্থান"
+
 msgid "Loading..."
+msgstr ""
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
 msgstr ""
 
 msgid "Name"
@@ -412,6 +421,9 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -445,6 +457,9 @@ msgstr ""
 msgid "Spice"
 msgstr ""
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Fedora-র অনুবাদকদের দল"
 
@@ -460,6 +475,9 @@ msgstr ""
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "USB ডিভাইস নির্বাচন"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -648,9 +666,6 @@ msgstr ""
 #~ msgid "Disconnect"
 #~ msgstr "সংযোগ বিচ্ছেদ করুন"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "সম্পূর্ণ পর্দায় প্রদর্শন থেকে প্রস্থান"
-
 #~ msgid "Release cursor"
 #~ msgstr "কার্সার মুক্ত করা হবে"
 
@@ -659,9 +674,6 @@ msgstr ""
 
 #~ msgid "Smartcard removal"
 #~ msgstr "স্মার্ট-কার্ড অপসারণ"
-
-#~ msgid "USB device selection"
-#~ msgstr "USB ডিভাইস নির্বাচন"
 
 #~ msgid "_File"
 #~ msgstr "ফাইল (_F)"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2015-02-20 08:10+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Marathi (http://www.transifex.com/projects/p/virt-viewer/"
@@ -299,7 +299,16 @@ msgstr "अवैध kiosk-quit बाब: %s"
 msgid "Invalid password"
 msgstr ""
 
+msgid "Leave fullscreen"
+msgstr "पडदाभर सोडा"
+
 msgid "Loading..."
+msgstr ""
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
 msgstr ""
 
 msgid "Name"
@@ -407,6 +416,9 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -440,6 +452,9 @@ msgstr ""
 msgid "Spice"
 msgstr ""
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Fedora भाषांतरन गट"
 
@@ -455,6 +470,9 @@ msgstr ""
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "USB साधनची निवड"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -643,9 +661,6 @@ msgstr ""
 #~ msgid "Disconnect"
 #~ msgstr "जोडणी खंडीत करा"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "पडदाभर सोडा"
-
 #~ msgid "Release cursor"
 #~ msgstr "रिलिज् कर्सर"
 
@@ -657,9 +672,6 @@ msgstr ""
 
 #~ msgid "Smartcard removal"
 #~ msgstr "स्मार्टकार्ड काढून टाकणे"
-
-#~ msgid "USB device selection"
-#~ msgstr "USB साधनची निवड"
 
 #~ msgid "_File"
 #~ msgstr "फाइल (_F)"
