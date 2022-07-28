@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,7 +64,7 @@ msgstr ""
 msgid "%s - %s"
 msgstr ""
 
-#: src/virt-viewer-app.c:2583
+#: src/virt-viewer-app.c:2590
 #, c-format
 msgid "%s version %s"
 msgstr ""
@@ -78,11 +78,11 @@ msgstr ""
 msgid "<b>Loading...</b>"
 msgstr ""
 
-#: src/virt-viewer-app.c:3563
+#: src/virt-viewer-app.c:3570
 msgid "<never|always>"
 msgstr ""
 
-#: src/virt-viewer-app.c:3571
+#: src/virt-viewer-app.c:3578
 msgid "<never|on-disconnect>"
 msgstr ""
 
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Access remote desktops"
 msgstr ""
 
-#: src/virt-viewer-app.c:883
+#: src/virt-viewer-app.c:890
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr ""
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Authentication was cancelled"
 msgstr ""
 
-#: src/virt-viewer-app.c:3563
+#: src/virt-viewer-app.c:3570
 msgid "Automatically resize remote framebuffer"
 msgstr ""
 
@@ -158,7 +158,7 @@ msgstr ""
 msgid "C_onnect"
 msgstr ""
 
-#: src/virt-viewer-app.c:1507
+#: src/virt-viewer-app.c:1514
 #, c-format
 msgid "Can't connect to channel: %s"
 msgstr ""
@@ -181,8 +181,9 @@ msgstr ""
 msgid "Cannot get guest state"
 msgstr ""
 
-#: src/remote-viewer-iso-list-dialog.c:401 src/resources/ui/virt-viewer.ui:80
-#: src/resources/ui/virt-viewer.ui:199
+#: src/remote-viewer-iso-list-dialog.c:401 src/resources/ui/virt-viewer.ui:98
+#: src/resources/ui/virt-viewer.ui:109 src/resources/ui/virt-viewer.ui:252
+#: src/resources/ui/virt-viewer.ui:263
 msgid "Change CD"
 msgstr ""
 
@@ -194,11 +195,11 @@ msgstr ""
 msgid "Choose a virtual machine"
 msgstr ""
 
-#: src/virt-viewer-app.c:1492
+#: src/virt-viewer-app.c:1499
 msgid "Connect to SSH failed."
 msgstr ""
 
-#: src/virt-viewer-app.c:1526
+#: src/virt-viewer-app.c:1533
 msgid "Connect to channel unsupported."
 msgstr ""
 
@@ -206,16 +207,16 @@ msgstr ""
 msgid "Connect to hypervisor"
 msgstr ""
 
-#: src/virt-viewer-app.c:1778
+#: src/virt-viewer-app.c:1785
 msgid "Connected to graphic server"
 msgstr ""
 
-#: src/virt-viewer-app.c:899
+#: src/virt-viewer-app.c:906
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
 msgstr ""
 
-#: src/virt-viewer-app.c:1616
+#: src/virt-viewer-app.c:1623
 msgid "Connecting to graphic server"
 msgstr ""
 
@@ -241,7 +242,7 @@ msgstr ""
 msgid "Couldn't open oVirt session: "
 msgstr ""
 
-#: src/virt-viewer-app.c:893
+#: src/virt-viewer-app.c:900
 #, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr ""
@@ -251,11 +252,11 @@ msgstr ""
 msgid "Current: %s"
 msgstr ""
 
-#: src/virt-viewer-app.c:3567
+#: src/virt-viewer-app.c:3574
 msgid "Cursor display mode: 'local' or 'auto'"
 msgstr ""
 
-#: src/virt-viewer-app.c:3561
+#: src/virt-viewer-app.c:3568
 msgid "Customise hotkeys"
 msgstr ""
 
@@ -268,24 +269,24 @@ msgstr ""
 msgid "Direct connection with no automatic tunnels"
 msgstr ""
 
-#: src/virt-viewer-app.c:3166
+#: src/virt-viewer-app.c:3173
 #, c-format
 msgid "Display _%d"
 msgstr ""
 
-#: src/virt-viewer-app.c:1591
+#: src/virt-viewer-app.c:1598
 msgid "Display can only be attached through libvirt with --attach"
 msgstr ""
 
-#: src/virt-viewer-app.c:3575
+#: src/virt-viewer-app.c:3582
 msgid "Display debugging information"
 msgstr ""
 
-#: src/virt-viewer-app.c:3573
+#: src/virt-viewer-app.c:3580
 msgid "Display verbose information"
 msgstr ""
 
-#: src/virt-viewer-app.c:3555
+#: src/virt-viewer-app.c:3562
 msgid "Display version information"
 msgstr ""
 
@@ -297,7 +298,7 @@ msgstr ""
 msgid "Do you want to close the session?"
 msgstr ""
 
-#: src/virt-viewer-app.c:3569
+#: src/virt-viewer-app.c:3576
 msgid "Enable kiosk mode"
 msgstr ""
 
@@ -352,7 +353,7 @@ msgstr ""
 msgid "Guest Details"
 msgstr ""
 
-#: src/virt-viewer-app.c:1715
+#: src/virt-viewer-app.c:1722
 msgid "Guest domain has shutdown"
 msgstr ""
 
@@ -366,7 +367,7 @@ msgstr ""
 msgid "Invalid file %s: "
 msgstr ""
 
-#: src/virt-viewer-app.c:3544
+#: src/virt-viewer-app.c:3551
 #, c-format
 msgid "Invalid kiosk-quit argument: %s"
 msgstr ""
@@ -375,8 +376,22 @@ msgstr ""
 msgid "Invalid password"
 msgstr ""
 
+#: src/resources/ui/virt-viewer.ui:146 src/resources/ui/virt-viewer.ui:157
+msgid "Leave fullscreen"
+msgstr ""
+
 #: src/resources/ui/remote-viewer-iso-list.ui:30
 msgid "Loading..."
+msgstr ""
+
+#: src/resources/ui/virt-viewer.ui:122 src/resources/ui/virt-viewer.ui:133
+#: src/resources/ui/virt-viewer.ui:276 src/resources/ui/virt-viewer.ui:286
+msgid "Machine"
+msgstr ""
+
+#: src/resources/ui/virt-viewer.ui:27 src/resources/ui/virt-viewer.ui:38
+#: src/resources/ui/virt-viewer.ui:183 src/resources/ui/virt-viewer.ui:193
+msgid "More actions"
 msgstr ""
 
 #: src/resources/ui/remote-viewer-iso-list.ui:109
@@ -404,7 +419,7 @@ msgstr ""
 msgid "No virtual machine was chosen"
 msgstr ""
 
-#: src/virt-viewer-app.c:3559
+#: src/virt-viewer-app.c:3566
 msgid "Open in full screen mode (adjusts guest resolution to fit the client)"
 msgstr ""
 
@@ -432,7 +447,7 @@ msgstr ""
 msgid "QEMU human monitor"
 msgstr ""
 
-#: src/virt-viewer-app.c:3571
+#: src/virt-viewer-app.c:3578
 msgid "Quit on given condition in kiosk mode"
 msgstr ""
 
@@ -457,7 +472,7 @@ msgctxt "shortcut window"
 msgid "Release cursor"
 msgstr ""
 
-#: src/virt-viewer-app.c:3565
+#: src/virt-viewer-app.c:3572
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
@@ -518,6 +533,11 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
+#: src/resources/ui/virt-viewer.ui:51 src/resources/ui/virt-viewer.ui:62
+#: src/resources/ui/virt-viewer.ui:206 src/resources/ui/virt-viewer.ui:216
+msgid "Send key"
+msgstr ""
+
 #: src/resources/ui/virt-viewer-shortcuts.ui:85
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
@@ -561,6 +581,10 @@ msgstr ""
 msgid "Spice"
 msgstr ""
 
+#: src/resources/ui/virt-viewer.ui:299 src/resources/ui/virt-viewer.ui:310
+msgid "Switch to fullscreen view"
+msgstr ""
+
 #: src/resources/ui/virt-viewer-about.ui:25
 msgid "The Fedora Translation Team"
 msgstr ""
@@ -581,17 +605,22 @@ msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
 
-#: src/virt-viewer-app.c:1869
+#: src/resources/ui/virt-viewer.ui:75 src/resources/ui/virt-viewer.ui:86
+#: src/resources/ui/virt-viewer.ui:229 src/resources/ui/virt-viewer.ui:240
+msgid "USB device selection"
+msgstr ""
+
+#: src/virt-viewer-app.c:1876
 #, c-format
 msgid "USB redirection error: %s"
 msgstr ""
 
-#: src/virt-viewer-app.c:1840
+#: src/virt-viewer-app.c:1847
 #, c-format
 msgid "Unable to authenticate with remote desktop server at %s: %s\n"
 msgstr ""
 
-#: src/virt-viewer-app.c:1858
+#: src/virt-viewer-app.c:1865
 #, c-format
 msgid "Unable to authenticate with remote desktop server: %s"
 msgstr ""
@@ -601,7 +630,7 @@ msgstr ""
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr ""
 
-#: src/virt-viewer-app.c:1814
+#: src/virt-viewer-app.c:1821
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr ""
@@ -640,7 +669,7 @@ msgstr ""
 msgid "Unsupported authentication type %u"
 msgstr ""
 
-#: src/virt-viewer-app.c:1408
+#: src/virt-viewer-app.c:1415
 #, c-format
 msgid "Unsupported graphic type '%s'"
 msgstr ""
@@ -679,7 +708,7 @@ msgstr ""
 msgid "Wait for domain to start"
 msgstr ""
 
-#: src/virt-viewer-app.c:1285
+#: src/virt-viewer-app.c:1292
 #, c-format
 msgid "Waiting for display %d..."
 msgstr ""
@@ -713,12 +742,12 @@ msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr ""
 
-#: src/virt-viewer-app.c:2526
+#: src/virt-viewer-app.c:2533
 #, c-format
 msgid "Zoom level must be within %d-%d\n"
 msgstr ""
 
-#: src/virt-viewer-app.c:3557
+#: src/virt-viewer-app.c:3564
 msgid "Zoom level of window, in percentage"
 msgstr ""
 
@@ -824,6 +853,6 @@ msgstr ""
 msgid "oVirt VM %s is not running"
 msgstr ""
 
-#: src/virt-viewer-app.c:1509
+#: src/virt-viewer-app.c:1516
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
