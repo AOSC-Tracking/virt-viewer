@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2018-02-27 05:02+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/virt-viewer/"
@@ -316,8 +316,17 @@ msgstr "Argument no vàlid de kiosk-quit: %s"
 msgid "Invalid password"
 msgstr "La contrasenya no és vàlida"
 
+msgid "Leave fullscreen"
+msgstr "Deixa la pantalla completa"
+
 msgid "Loading..."
 msgstr "S'està carregant..."
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "Nom"
@@ -434,6 +443,9 @@ msgstr "Selecciona la màquina virtual només pel seu nom"
 msgid "Selected"
 msgstr "Seleccionat"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -467,6 +479,9 @@ msgstr ""
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>"
 
@@ -482,6 +497,9 @@ msgstr "S'està transferint 1 fitxer..."
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "Selecció del dispositiu USB"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -676,9 +694,6 @@ msgstr ""
 #~ msgid "Disconnect"
 #~ msgstr "Desconnecta"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "Deixa la pantalla completa"
-
 #~ msgid "Release cursor"
 #~ msgstr "Allibera el cursor"
 
@@ -693,9 +708,6 @@ msgstr ""
 
 #~ msgid "Smartcard removal"
 #~ msgstr "Extracció d'una targeta intel·ligent"
-
-#~ msgid "USB device selection"
-#~ msgstr "Selecció del dispositiu USB"
 
 #~ msgid "_Change CD"
 #~ msgstr "_Canvia el CD"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2016-02-25 07:46+0000\n"
 "Last-Translator: Chester Cheng <snowlet.cheng@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/virt-"
@@ -308,7 +308,16 @@ msgstr "無效的 kiosk-quit 引數：%s"
 msgid "Invalid password"
 msgstr "密碼無效"
 
+msgid "Leave fullscreen"
+msgstr "離開全螢幕"
+
 msgid "Loading..."
+msgstr ""
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
 msgstr ""
 
 msgid "Name"
@@ -416,6 +425,9 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -449,6 +461,9 @@ msgstr ""
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Fedora 翻譯團隊"
 
@@ -463,6 +478,9 @@ msgstr ""
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "USB 裝置選取"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -651,9 +669,6 @@ msgstr ""
 #~ msgid "Disconnect"
 #~ msgstr "中斷連接"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "離開全螢幕"
-
 #~ msgid "Release cursor"
 #~ msgstr "釋放游標"
 
@@ -668,9 +683,6 @@ msgstr ""
 
 #~ msgid "Smartcard removal"
 #~ msgstr "智慧卡移除"
-
-#~ msgid "USB device selection"
-#~ msgstr "USB 裝置選取"
 
 #~ msgid "_Change CD"
 #~ msgstr "更換 CD(_C)"

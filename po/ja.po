@@ -14,11 +14,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2021-12-18 07:16+0000\n"
 "Last-Translator: Yasuhiko Kamata <belphegor@belbel.or.jp>\n"
-"Language-Team: Japanese <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/ja/>\n"
+"Language-Team: Japanese <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -116,7 +116,9 @@ msgstr "この接続を確立するために少なくとも %s バージョン %
 msgid ""
 "At least %s version %s is required to setup this connection, see %s for "
 "details"
-msgstr "この接続を確立するために少なくとも %s バージョン %s が必要です。詳しくは %s をご確認下さい"
+msgstr ""
+"この接続を確立するために少なくとも %s バージョン %s が必要です。詳しくは %s "
+"をご確認下さい"
 
 msgid "Attach to the local display using libvirt"
 msgstr "libvirt を使用してローカルディスプレイに接続"
@@ -322,8 +324,17 @@ msgstr "無効な kiosk-quit の引数: %s"
 msgid "Invalid password"
 msgstr "無効なパスワード"
 
+msgid "Leave fullscreen"
+msgstr "フルスクリーンの解除"
+
 msgid "Loading..."
 msgstr "読み込み中..."
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "名前"
@@ -387,7 +398,9 @@ msgstr "カーソル解放"
 
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
-msgstr "キーの再マッピング。キー=修飾キー+キー 例: F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+msgstr ""
+"キーの再マッピング。キー=修飾キー+キー 例: F1=SHIFT+CTRL+F1,1=SHIFT+F1,"
+"ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "リモートビューアー"
@@ -440,6 +453,9 @@ msgstr "名前のみから仮想マシンを選択"
 msgid "Selected"
 msgstr "選択済み"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr "セキュアアテンションキー (Ctrl-Alt-Del) の送信"
@@ -473,6 +489,9 @@ msgstr "スマートカード取り出し"
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Fedora 翻訳チーム"
 
@@ -487,6 +506,9 @@ msgstr "1 個のファイルを転送中..."
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr "USB デバイスリセット"
+
+msgid "USB device selection"
+msgstr "USB デバイスの選択"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -681,9 +703,6 @@ msgstr "SSH もしくは UNIX ソケット接続のみに対応しています�
 #~ msgid "Disconnect"
 #~ msgstr "切断"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "フルスクリーンの解除"
-
 #~ msgid "Release cursor"
 #~ msgstr "カーソルの開放"
 
@@ -698,9 +717,6 @@ msgstr "SSH もしくは UNIX ソケット接続のみに対応しています�
 
 #~ msgid "Smartcard removal"
 #~ msgstr "スマートカードの抜き取り"
-
-#~ msgid "USB device selection"
-#~ msgstr "USB デバイスの選択"
 
 #~ msgid "_Change CD"
 #~ msgstr "CDの変更(_C)"

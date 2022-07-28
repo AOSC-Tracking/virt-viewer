@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2021-11-18 18:58+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/uk/>\n"
+"Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -319,8 +319,17 @@ msgstr "Некоректний параметр kiosk-quit: %s"
 msgid "Invalid password"
 msgstr "Некоректний пароль"
 
+msgid "Leave fullscreen"
+msgstr "Вийти з повноекранного режиму"
+
 msgid "Loading..."
 msgstr "Завантаження…"
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "Назва"
@@ -440,6 +449,9 @@ msgstr "Вибирати віртуальну машину лише за її н
 msgid "Selected"
 msgstr "Вибрано"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr "Надіслати попередження щодо безпеки (Ctrl-Alt-Del)"
@@ -473,6 +485,9 @@ msgstr "Вилучити картку пам'яті"
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Команда локалізації Fedora"
 
@@ -489,6 +504,9 @@ msgstr "Передаємо 1 файл…"
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr "Скинути стан пристрою USB"
+
+msgid "USB device selection"
+msgstr "Вибір пристрою USB"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -694,9 +712,6 @@ msgstr "передбачено підтримку лише з'єднань із 
 #~ msgid "Disconnect"
 #~ msgstr "Від’єднатися"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "Вийти з повноекранного режиму"
-
 #~ msgid "Minimize"
 #~ msgstr "Мінімізувати"
 
@@ -714,9 +729,6 @@ msgstr "передбачено підтримку лише з'єднань із 
 
 #~ msgid "Smartcard removal"
 #~ msgstr "Вилучення картки пам’яті"
-
-#~ msgid "USB device selection"
-#~ msgstr "Вибір пристрою USB"
 
 #~ msgid "_Change CD"
 #~ msgstr "За_мінити CD"

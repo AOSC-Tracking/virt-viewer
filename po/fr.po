@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2020-09-28 19:29+0000\n"
 "Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: French <https://translate.fedoraproject.org/projects/virt-"
@@ -323,8 +323,17 @@ msgstr "Argument kiosk-quit invalide : %s"
 msgid "Invalid password"
 msgstr "Mot de passe invalide"
 
+msgid "Leave fullscreen"
+msgstr "Quitter le plein écran"
+
 msgid "Loading..."
 msgstr "Chargement..."
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "Nom"
@@ -443,6 +452,9 @@ msgstr "Sélectionnez la machine virtuelle uniquement par son nom"
 msgid "Selected"
 msgstr "Sélectionné"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -476,6 +488,9 @@ msgstr ""
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "L'équipe de traduction de Fedora"
 
@@ -491,6 +506,9 @@ msgstr "Transfert de 1 fichier..."
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "Sélection du périphérique USB"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -697,9 +715,6 @@ msgstr "seule la connexion par socket SSH ou UNIX est prise en charge."
 #~ msgid "Disconnect"
 #~ msgstr "Déconnexion"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "Quitter le plein écran"
-
 #~ msgid "Minimize"
 #~ msgstr "Réduire"
 
@@ -717,9 +732,6 @@ msgstr "seule la connexion par socket SSH ou UNIX est prise en charge."
 
 #~ msgid "Smartcard removal"
 #~ msgstr "Suppression d'une Smartcard"
-
-#~ msgid "USB device selection"
-#~ msgstr "Sélection du périphérique USB"
 
 #~ msgid "_Change CD"
 #~ msgstr "_Changer le CD"

@@ -10,11 +10,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2021-12-31 15:16+0000\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
-"Language-Team: Swedish <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/sv/>\n"
+"Language-Team: Swedish <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -318,8 +318,17 @@ msgstr "Ogiltigt helskärmsargument: %s"
 msgid "Invalid password"
 msgstr "Felaktigt lösenord"
 
+msgid "Leave fullscreen"
+msgstr "Lämna helskärm"
+
 msgid "Loading..."
 msgstr "Laddar…"
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "Namn"
@@ -435,6 +444,9 @@ msgstr "Välj den virtuella maskinen endast vi dess namn"
 msgid "Selected"
 msgstr "Vald"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr "Skicka säker uppmärksamhet (Ctrl-Alt-Del)"
@@ -468,6 +480,9 @@ msgstr "Smartkortsborttagning"
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Fedoras översättningsgrupp"
 
@@ -483,6 +498,9 @@ msgstr "Överför 1 fil …"
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr "USB-enhetsåterställning"
+
+msgid "USB device selection"
+msgstr "Val av USB-enhet"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -686,9 +704,6 @@ msgstr "endast SSH- eller UNIX-uttagsförbindelser stödjs."
 #~ msgid "Disconnect"
 #~ msgstr "Koppla ifrån"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "Lämna helskärm"
-
 #~ msgid "Minimize"
 #~ msgstr "Minimera"
 
@@ -706,9 +721,6 @@ msgstr "endast SSH- eller UNIX-uttagsförbindelser stödjs."
 
 #~ msgid "Smartcard removal"
 #~ msgstr "Uttag av smartkort"
-
-#~ msgid "USB device selection"
-#~ msgstr "Val av USB-enhet"
 
 #~ msgid "_Change CD"
 #~ msgstr "_Byt CD"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2020-07-21 14:29+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/virt-"
@@ -320,8 +320,17 @@ msgstr "Érvénytelen kioszk-kilépési argumentum: %s"
 msgid "Invalid password"
 msgstr "Érvénytelen jelszó"
 
+msgid "Leave fullscreen"
+msgstr "Teljes képernyő elhagyása"
+
 msgid "Loading..."
 msgstr "Betöltés…"
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "Név"
@@ -439,6 +448,9 @@ msgstr "Válassza ki a virtuális gépet csak a neve alapján"
 msgid "Selected"
 msgstr "Kiválasztva"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -472,6 +484,9 @@ msgstr ""
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "A Fedora fordítói csapata"
 
@@ -487,6 +502,9 @@ msgstr "1 fájl átküldése…"
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "USB eszköz kiválasztása"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -681,9 +699,6 @@ msgstr ""
 #~ msgid "Disconnect"
 #~ msgstr "Leválasztás"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "Teljes képernyő elhagyása"
-
 #~ msgid "Minimize"
 #~ msgstr "Minimalizálás"
 
@@ -701,9 +716,6 @@ msgstr ""
 
 #~ msgid "Smartcard removal"
 #~ msgstr "Smartcard eltávolítása"
-
-#~ msgid "USB device selection"
-#~ msgstr "USB eszköz kiválasztása"
 
 #~ msgid "_Change CD"
 #~ msgstr "_CD váltás"

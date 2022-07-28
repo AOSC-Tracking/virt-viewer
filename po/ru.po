@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2021-02-16 20:40+0000\n"
 "Last-Translator: Igor Gorbounov <igor.gorbounov@gmail.com>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/virt-"
@@ -328,8 +328,17 @@ msgstr "недопустимый параметр команды kiosk-quit: %s"
 msgid "Invalid password"
 msgstr "Неверный пароль"
 
+msgid "Leave fullscreen"
+msgstr "Выйти из полноэкранного режима"
+
 msgid "Loading..."
 msgstr "Загрузка..."
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "Имя"
@@ -448,6 +457,9 @@ msgstr "Выбирать виртуальную машину только по �
 msgid "Selected"
 msgstr "Выбрано"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -481,6 +493,9 @@ msgstr ""
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "Команда локализации Fedora"
 
@@ -497,6 +512,9 @@ msgstr "Передача 1 файла..."
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "Выбор USB-устройств"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -700,9 +718,6 @@ msgstr "поддерживается только подключение по SS
 #~ msgid "Disconnect"
 #~ msgstr "Отключиться"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "Выйти из полноэкранного режима"
-
 #~ msgid "Minimize"
 #~ msgstr "Минимизировать"
 
@@ -720,9 +735,6 @@ msgstr "поддерживается только подключение по SS
 
 #~ msgid "Smartcard removal"
 #~ msgstr "Извлечение смарт-карты"
-
-#~ msgid "USB device selection"
-#~ msgstr "Выбор USB-устройств"
 
 #~ msgid "_Change CD"
 #~ msgstr "_Изменение CD-диска"

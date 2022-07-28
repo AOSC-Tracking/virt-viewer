@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2018-04-02 12:44+0000\n"
 "Last-Translator: Henrique Montemor Junqueira <hickijunqueira@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/virt-"
@@ -312,8 +312,17 @@ msgstr "Inválido kiosk-quit argumento: %s"
 msgid "Invalid password"
 msgstr "Senha inválida"
 
+msgid "Leave fullscreen"
+msgstr "Deixar tela cheia"
+
 msgid "Loading..."
 msgstr "Carregando..."
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
+msgstr ""
 
 msgid "Name"
 msgstr "Nome"
@@ -430,6 +439,9 @@ msgstr "Selecione a máquina virtual apenas pelo nome"
 msgid "Selected"
 msgstr "Selecionado"
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -463,6 +475,9 @@ msgstr ""
 msgid "Spice"
 msgstr "Spice"
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr "A equipe de Tradução do Fedora "
 
@@ -478,6 +493,9 @@ msgstr "Transferindo 1 arquivo..."
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "Seleção de dispositivo de USB"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -674,9 +692,6 @@ msgstr ""
 #~ msgid "Disconnect"
 #~ msgstr "Desconectar"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "Deixar tela cheia"
-
 #~ msgid "Release cursor"
 #~ msgstr "Liberar o cursor"
 
@@ -691,9 +706,6 @@ msgstr ""
 
 #~ msgid "Smartcard removal"
 #~ msgstr "Remoção do Smartcard"
-
-#~ msgid "USB device selection"
-#~ msgstr "Seleção de dispositivo de USB"
 
 #~ msgid "_Change CD"
 #~ msgstr "Alterar _CD"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 18:29+0000\n"
+"POT-Creation-Date: 2022-07-28 11:18+0200\n"
 "PO-Revision-Date: 2015-02-20 08:08+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/virt-viewer/"
@@ -299,7 +299,16 @@ msgstr "Невалиден kiosk-quit аргумент: %s"
 msgid "Invalid password"
 msgstr ""
 
+msgid "Leave fullscreen"
+msgstr "Изход от Цял екран"
+
 msgid "Loading..."
+msgstr ""
+
+msgid "Machine"
+msgstr ""
+
+msgid "More actions"
 msgstr ""
 
 msgid "Name"
@@ -407,6 +416,9 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
+msgid "Send key"
+msgstr ""
+
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
@@ -440,6 +452,9 @@ msgstr ""
 msgid "Spice"
 msgstr ""
 
+msgid "Switch to fullscreen view"
+msgstr ""
+
 msgid "The Fedora Translation Team"
 msgstr ""
 "The Fedora Translation Team\n"
@@ -457,6 +472,9 @@ msgstr ""
 msgctxt "shortcut window"
 msgid "USB device reset"
 msgstr ""
+
+msgid "USB device selection"
+msgstr "Избор на USB устройства"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -645,9 +663,6 @@ msgstr ""
 #~ msgid "Disconnect"
 #~ msgstr "Изключване"
 
-#~ msgid "Leave fullscreen"
-#~ msgstr "Изход от Цял екран"
-
 #~ msgid "Release cursor"
 #~ msgstr "Освобождаване на показалеца"
 
@@ -659,9 +674,6 @@ msgstr ""
 
 #~ msgid "Smartcard removal"
 #~ msgstr "Премахване на смарткарта"
-
-#~ msgid "USB device selection"
-#~ msgstr "Избор на USB устройства"
 
 #~ msgid "_File"
 #~ msgstr "_Файл"
