@@ -157,7 +157,7 @@ if libvirt_dep.found()
     link_args: gui_security_link_args,
     include_directories: top_include_dir,
     install: true,
-    gui_app: true,
+    win_subsystem: 'windows',
   )
 endif
 
@@ -169,7 +169,7 @@ executable(
   link_args: gui_security_link_args,
   include_directories: top_include_dir,
   install: true,
-  gui_app: true,
+  win_subsystem: 'windows',
 )
 
 if host_machine.system() == 'windows'
