@@ -18,7 +18,7 @@ python3 = find_program('python3', required: true)
 # Python3 < 3.7 treats the C locale as 7-bit only. We must force env vars so
 # it treats it as UTF-8 regardless of the user's locale.
 runutf8 = [ 'LC_ALL=', 'LANG=C', 'LC_CTYPE=en_US.UTF-8' ]
-git = run_command('test', '-d', '.git').returncode() == 0
+git = run_command('test', '-d', '.git', check: false).returncode() == 0
 
 conf_data = configuration_data()
 conf_data.set('VERSION', meson.project_version())
@@ -214,6 +214,7 @@ size_max = cc.sizeof('size_t', prefix: '#include <stdint.h>')
 alloc_max = run_command(
   'python3', '-c',
   'print(min(2**(@0@ * 8 - 1) - 1, 2**(@1@ * 8) - 1))'.format(ptrdiff_max, size_max),
+  check: true,
 )
 cc_flags += [
   '-Walloc-size-larger-than=@0@'.format(alloc_max.stdout().strip()),
@@ -511,7 +512,7 @@ configure_file(
 subdir('build-aux')
 
 if git
-  authors = run_command(python3.path(), gen_authors_prog, env: runutf8)
+  authors = run_command(python3.path(), gen_authors_prog, env: runutf8, check: true)
   authors_file = 'AUTHORS.in'
 
   authors_conf = configuration_data()
