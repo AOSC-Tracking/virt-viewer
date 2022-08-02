@@ -536,14 +536,14 @@ if git
     configuration: conf_data
   )
 
-  meson.add_dist_script(python3.full_path(), dist_prog, meson.build_root(), 'AUTHORS')
-  meson.add_dist_script(python3.full_path(), dist_prog, meson.build_root(), 'virt-viewer.spec')
+  meson.add_dist_script(python3.full_path(), dist_prog, meson.project_build_root(), 'AUTHORS')
+  meson.add_dist_script(python3.full_path(), dist_prog, meson.project_build_root(), 'virt-viewer.spec')
 endif
 
 gnome = import('gnome')
 i18n = import('i18n')
 
-i18n_itsdir = join_paths(meson.source_root(), 'data', 'gettext')
+i18n_itsdir = join_paths(meson.project_source_root(), 'data', 'gettext')
 top_include_dir = [include_directories('.')]
 
 update_mime_database = find_program('update-mime-database', required: false)
