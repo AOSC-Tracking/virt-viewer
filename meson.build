@@ -463,8 +463,8 @@ bash_completion_dep = dependency('bash-completion', version: '>=' + bash_complet
 if bash_completion_dep.found()
   bash_completion_dir = get_option('bash_completion_dir')
   if bash_completion_dir == ''
-    bash_completion_dir = bash_completion_dep.get_pkgconfig_variable('completionsdir')
-    bash_completion_prefix = bash_completion_dep.get_pkgconfig_variable('prefix')
+    bash_completion_dir = bash_completion_dep.get_variable(pkgconfig: 'completionsdir')
+    bash_completion_prefix = bash_completion_dep.get_variable(pkgconfig: 'prefix')
     rc = run_command(
       'python3', '-c',
       'print("@0@".replace("@1@", "@2@"))'.format(
