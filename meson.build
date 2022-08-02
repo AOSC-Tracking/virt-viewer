@@ -512,7 +512,7 @@ configure_file(
 subdir('build-aux')
 
 if git
-  authors = run_command(python3.path(), gen_authors_prog, env: runutf8, check: true)
+  authors = run_command(python3.full_path(), gen_authors_prog, env: runutf8, check: true)
   authors_file = 'AUTHORS.in'
 
   authors_conf = configuration_data()
@@ -536,8 +536,8 @@ if git
     configuration: conf_data
   )
 
-  meson.add_dist_script(python3.path(), dist_prog, meson.build_root(), 'AUTHORS')
-  meson.add_dist_script(python3.path(), dist_prog, meson.build_root(), 'virt-viewer.spec')
+  meson.add_dist_script(python3.full_path(), dist_prog, meson.build_root(), 'AUTHORS')
+  meson.add_dist_script(python3.full_path(), dist_prog, meson.build_root(), 'virt-viewer.spec')
 endif
 
 gnome = import('gnome')
@@ -552,17 +552,17 @@ update_desktop_database = find_program('update-desktop-database', required: fals
 
 update_mime_database_path = ''
 if update_mime_database.found()
-  update_mime_database_path = update_mime_database.path()
+  update_mime_database_path = update_mime_database.full_path()
 endif
 
 update_icon_cache_path = ''
 if update_icon_cache.found()
-  update_icon_cache_path = update_icon_cache.path()
+  update_icon_cache_path = update_icon_cache.full_path()
 endif
 
 update_desktop_database_path = ''
 if update_desktop_database.found()
-  update_desktop_database_path = update_desktop_database.path()
+  update_desktop_database_path = update_desktop_database.full_path()
 endif
 
 meson.add_install_script('build-aux/post_install.py',
