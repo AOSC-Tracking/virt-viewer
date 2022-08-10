@@ -4,23 +4,23 @@
 #
 # Translators:
 # denka <dennis@dennis.se>, 2014
-# Göran Uddeborg <goeran@uddeborg.se>, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021.
+# Göran Uddeborg <goeran@uddeborg.se>, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022.
 # Klap Hest <jojje3000@hotmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-28 11:18+0200\n"
-"PO-Revision-Date: 2021-12-31 15:16+0000\n"
+"PO-Revision-Date: 2022-07-29 15:19+0000\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
-"Language-Team: Swedish <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/sv/>\n"
+"Language-Team: Swedish <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.13\n"
 
 #, c-format
 msgid ""
@@ -325,10 +325,10 @@ msgid "Loading..."
 msgstr "Laddar…"
 
 msgid "Machine"
-msgstr ""
+msgstr "Maskin"
 
 msgid "More actions"
-msgstr ""
+msgstr "Fler åtgärder"
 
 msgid "Name"
 msgstr "Namn"
@@ -445,7 +445,7 @@ msgid "Selected"
 msgstr "Vald"
 
 msgid "Send key"
-msgstr ""
+msgstr "Skicka tangenttryck"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
@@ -481,7 +481,7 @@ msgid "Spice"
 msgstr "Spice"
 
 msgid "Switch to fullscreen view"
-msgstr ""
+msgstr "Växla till helskärmsläge"
 
 msgid "The Fedora Translation Team"
 msgstr "Fedoras översättningsgrupp"
