@@ -23,23 +23,29 @@ targets:
 
   debian-10: x86_64
 
-  debian-sid: x86_64
-
-  fedora-34: x86_64
+  debian-sid:
+    jobs:
+      - arch: x86_64
+        allow-failure: true
 
   fedora-35: x86_64
+
+  fedora-36: x86_64
 
   fedora-rawhide:
     jobs:
       - arch: x86_64
+        allow-failure: true
 
       - arch: mingw32
+        allow-failure: true
         artifacts:
           expiry: 30 days
           paths:
             - data/virt-viewer-x86*.msi
 
       - arch: mingw64
+        allow-failure: true
         artifacts:
           expiry: 30 days
           paths:
@@ -54,9 +60,10 @@ targets:
   opensuse-tumbleweed:
     jobs:
       - arch: x86_64
+        allow-failure: true
         variables:
           RPM: skip
 
-  ubuntu-1804: x86_64
-
   ubuntu-2004: x86_64
+
+  ubuntu-2204: x86_64

@@ -50,7 +50,7 @@ if with_msi
     output: ['buildenv.txt'],
     command: [
       python3,
-      join_paths(meson.source_root(), 'build-aux', 'buildenv.py')
+      buildenv_prog,
     ],
     capture: true)
 
@@ -93,7 +93,7 @@ if with_msi
     build_by_default: false,
     command: [
       python3,
-      join_paths(meson.source_root(), 'build-aux', 'msitool.py'),
+      msitool_prog,
       meson.build_root(),
       prefix,
       wixl_arch,

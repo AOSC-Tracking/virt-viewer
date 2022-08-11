@@ -157,7 +157,7 @@ if libvirt_dep.found()
     link_args: gui_security_link_args,
     include_directories: top_include_dir,
     install: true,
-    gui_app: true,
+    win_subsystem: 'windows',
   )
 endif
 
@@ -169,12 +169,11 @@ executable(
   link_args: gui_security_link_args,
   include_directories: top_include_dir,
   install: true,
-  gui_app: true,
+  win_subsystem: 'windows',
 )
 
 if host_machine.system() == 'windows'
   windres = find_program('windres')
-  runwindres = join_paths(meson.source_root(), 'build-aux', 'run-windres.py')
 
   rcfile = configure_file(
     input: 'virt-viewer.rc.in',
@@ -188,7 +187,7 @@ if host_machine.system() == 'windows'
     output: ['virt-viewer-rc.o'],
     command : [
       python3,
-      runwindres,
+      run_windres_prog,
       windres,
       join_paths(meson.build_root(), 'icons'),
       meson.current_source_dir(),

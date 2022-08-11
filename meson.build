@@ -18,7 +18,7 @@ python3 = find_program('python3', required: true)
 # Python3 < 3.7 treats the C locale as 7-bit only. We must force env vars so
 # it treats it as UTF-8 regardless of the user's locale.
 runutf8 = [ 'LC_ALL=', 'LANG=C', 'LC_CTYPE=en_US.UTF-8' ]
-git = run_command('test', '-d', '.git').returncode() == 0
+git = run_command('test', '-d', '.git', check: false).returncode() == 0
 
 conf_data = configuration_data()
 conf_data.set('VERSION', meson.project_version())
@@ -214,6 +214,7 @@ size_max = cc.sizeof('size_t', prefix: '#include <stdint.h>')
 alloc_max = run_command(
   'python3', '-c',
   'print(min(2**(@0@ * 8 - 1) - 1, 2**(@1@ * 8) - 1))'.format(ptrdiff_max, size_max),
+  check: true,
 )
 cc_flags += [
   '-Walloc-size-larger-than=@0@'.format(alloc_max.stdout().strip()),
@@ -462,8 +463,8 @@ bash_completion_dep = dependency('bash-completion', version: '>=' + bash_complet
 if bash_completion_dep.found()
   bash_completion_dir = get_option('bash_completion_dir')
   if bash_completion_dir == ''
-    bash_completion_dir = bash_completion_dep.get_pkgconfig_variable('completionsdir')
-    bash_completion_prefix = bash_completion_dep.get_pkgconfig_variable('prefix')
+    bash_completion_dir = bash_completion_dep.get_variable(pkgconfig: 'completionsdir')
+    bash_completion_prefix = bash_completion_dep.get_variable(pkgconfig: 'prefix')
     rc = run_command(
       'python3', '-c',
       'print("@0@".replace("@1@", "@2@"))'.format(
@@ -508,9 +509,10 @@ configure_file(
   configuration: conf_data
 )
 
+subdir('build-aux')
+
 if git
-  authors_helper = join_paths(meson.source_root(), 'build-aux', 'gen-authors.py')
-  authors = run_command(python3.path(), authors_helper, env: runutf8)
+  authors = run_command(python3.full_path(), gen_authors_prog, env: runutf8, check: true)
   authors_file = 'AUTHORS.in'
 
   authors_conf = configuration_data()
@@ -534,15 +536,14 @@ if git
     configuration: conf_data
   )
 
-  dist_helper = join_paths(meson.source_root(), 'build-aux', 'dist.py')
-  meson.add_dist_script(python3.path(), dist_helper, meson.build_root(), 'AUTHORS')
-  meson.add_dist_script(python3.path(), dist_helper, meson.build_root(), 'virt-viewer.spec')
+  meson.add_dist_script(python3.full_path(), dist_prog, meson.project_build_root(), 'AUTHORS')
+  meson.add_dist_script(python3.full_path(), dist_prog, meson.project_build_root(), 'virt-viewer.spec')
 endif
 
 gnome = import('gnome')
 i18n = import('i18n')
 
-i18n_itsdir = join_paths(meson.source_root(), 'data', 'gettext')
+i18n_itsdir = join_paths(meson.project_source_root(), 'data', 'gettext')
 top_include_dir = [include_directories('.')]
 
 update_mime_database = find_program('update-mime-database', required: false)
@@ -551,17 +552,17 @@ update_desktop_database = find_program('update-desktop-database', required: fals
 
 update_mime_database_path = ''
 if update_mime_database.found()
-  update_mime_database_path = update_mime_database.path()
+  update_mime_database_path = update_mime_database.full_path()
 endif
 
 update_icon_cache_path = ''
 if update_icon_cache.found()
-  update_icon_cache_path = update_icon_cache.path()
+  update_icon_cache_path = update_icon_cache.full_path()
 endif
 
 update_desktop_database_path = ''
 if update_desktop_database.found()
-  update_desktop_database_path = update_desktop_database.path()
+  update_desktop_database_path = update_desktop_database.full_path()
 endif
 
 meson.add_install_script('build-aux/post_install.py',
