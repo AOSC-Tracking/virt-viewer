@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: virt-viewer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-28 11:18+0200\n"
-"PO-Revision-Date: 2022-01-13 08:16+0000\n"
+"PO-Revision-Date: 2022-07-31 11:19+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: Georgian <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/ka/>\n"
+"Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.13\n"
 
 #, c-format
 msgid ""
@@ -134,7 +134,7 @@ msgid "Authentication is required for the %s connection:\n"
 msgstr "კავშირ %s-თვის საჭიროა ავთენტიკაცია:\n"
 
 msgid "Authentication required"
-msgstr "საჭიროა ავთენტიკაცია"
+msgstr "ავთენტიფიკაცია აუცილებელია"
 
 msgid "Authentication was cancelled"
 msgstr "ავთენტიკაცია გაუქმდა"
@@ -316,16 +316,16 @@ msgid "Invalid password"
 msgstr "არასწორი პაროლი"
 
 msgid "Leave fullscreen"
-msgstr ""
+msgstr "სრული ეკრანიდან გასვლა"
 
 msgid "Loading..."
 msgstr "ჩატვირთვა..."
 
 msgid "Machine"
-msgstr ""
+msgstr "მანქანა"
 
 msgid "More actions"
-msgstr ""
+msgstr "მეტი ქმედება"
 
 msgid "Name"
 msgstr "სახელი"
@@ -401,6 +401,11 @@ msgid ""
 "can connect directly to both local and remotely hosted guest OS, optionally "
 "using SSL/TLS encryption."
 msgstr ""
+"Remote viewer საშუალებას გაძლევთ გქონდეთ გრაფიკული წვდომა სტუმარი ოს-ის "
+"კონსოლთან. ამ დროისთვის მას სტუმარი ოს-ის მხარდაჭერა VNC და SPICE "
+"პროტოკოლებით გააჩნია. დამატებითი პროტოკოლები შეიძლება მომავალში დაემატოს, "
+"მოთხოვნიდან გამომდინარე. მნახველს შეუძლია დაკავშირება ორივე, ლოკალურ და "
+"დაშორებულ სტუმარ ოს-თან, სურვილისამებრ SSL/TLS შიფრაციით."
 
 msgid "Remote viewer client"
 msgstr "დისტანციურად ნახვის კლიენტი"
@@ -435,7 +440,7 @@ msgid "Selected"
 msgstr "არჩეულია"
 
 msgid "Send key"
-msgstr ""
+msgstr "ღილაკის გაგზავნა"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
@@ -471,7 +476,7 @@ msgid "Spice"
 msgstr "Spice პროტოკოლი"
 
 msgid "Switch to fullscreen view"
-msgstr ""
+msgstr "მთელ ეკრანზე გადართვა"
 
 msgid "The Fedora Translation Team"
 msgstr "Fedora-ს მთარგმნელების ჯგუფი"
@@ -490,7 +495,7 @@ msgid "USB device reset"
 msgstr "USB მოწყობილობის გადატვირთვა"
 
 msgid "USB device selection"
-msgstr ""
+msgstr "USB მოწყობილობის არჩევანი"
 
 #, c-format
 msgid "USB redirection error: %s"
@@ -634,7 +639,7 @@ msgid "_Normal Size"
 msgstr "_ნორმალური ზომა"
 
 msgid "_OK"
-msgstr "_კარგი"
+msgstr "_დიახ"
 
 msgid "_Pause"
 msgstr "_გაჩერება"

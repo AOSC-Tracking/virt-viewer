@@ -7,21 +7,22 @@
 # eukim <eukim@redhat.com>, 2012, 2013
 # Hyunsok Oh <hoh@redhat.com>, 2010
 # simmon <simmon@nplob.com>, 2021.
+# 김인수 <simmon@nplob.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-28 11:18+0200\n"
-"PO-Revision-Date: 2021-11-21 19:16+0000\n"
-"Last-Translator: simmon <simmon@nplob.com>\n"
-"Language-Team: Korean <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/ko/>\n"
+"PO-Revision-Date: 2022-07-29 15:19+0000\n"
+"Last-Translator: 김인수 <simmon@nplob.com>\n"
+"Language-Team: Korean <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.9\n"
+"X-Generator: Weblate 4.13\n"
 
 #, c-format
 msgid ""
@@ -326,10 +327,10 @@ msgid "Loading..."
 msgstr "적재..."
 
 msgid "Machine"
-msgstr ""
+msgstr "장비"
 
 msgid "More actions"
-msgstr ""
+msgstr "더 많은 동작"
 
 msgid "Name"
 msgstr "이름"
@@ -445,7 +446,7 @@ msgid "Selected"
 msgstr "선택됨"
 
 msgid "Send key"
-msgstr ""
+msgstr "키 전송"
 
 msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
@@ -481,7 +482,7 @@ msgid "Spice"
 msgstr "스파이스"
 
 msgid "Switch to fullscreen view"
-msgstr ""
+msgstr "전체화면 보기로 전환"
 
 msgid "The Fedora Translation Team"
 msgstr "페도라 번역 팀"
