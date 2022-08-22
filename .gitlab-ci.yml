@@ -72,7 +72,8 @@ codestyle:
   stage: sanity_checks
   image: $CI_REGISTRY_IMAGE/ci-centos-stream-8:latest
   needs:
-    - x86_64-centos-stream-8-container
+    - job: x86_64-centos-stream-8-container
+      optional: true
   before_script:
     - *script_variables
   script:
