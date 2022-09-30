@@ -11,33 +11,33 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y eatmydata && \
     eatmydata apt-get dist-upgrade -y && \
     eatmydata apt-get install --no-install-recommends -y \
-            bash-completion \
-            ca-certificates \
-            ccache \
-            gcc \
-            gettext \
-            git \
-            icoutils \
-            libglib2.0-dev \
-            libgovirt-dev \
-            libgtk-3-dev \
-            libgtk-vnc-2.0-dev \
-            librest-dev \
-            libspice-client-gtk-3.0-dev \
-            libtool \
-            libtool-bin \
-            libvirt-dev \
-            libvirt-glib-1.0-dev \
-            libvte-2.91-dev \
-            libxml2-dev \
-            libxml2-utils \
-            locales \
-            make \
-            ninja-build \
-            pkgconf \
-            python3-pip \
-            python3-setuptools \
-            python3-wheel && \
+                      bash-completion \
+                      ca-certificates \
+                      ccache \
+                      gcc \
+                      gettext \
+                      git \
+                      icoutils \
+                      libglib2.0-dev \
+                      libgovirt-dev \
+                      libgtk-3-dev \
+                      libgtk-vnc-2.0-dev \
+                      librest-dev \
+                      libspice-client-gtk-3.0-dev \
+                      libtool \
+                      libtool-bin \
+                      libvirt-dev \
+                      libvirt-glib-1.0-dev \
+                      libvte-2.91-dev \
+                      libxml2-dev \
+                      libxml2-utils \
+                      locales \
+                      make \
+                      ninja-build \
+                      pkgconf \
+                      python3-pip \
+                      python3-setuptools \
+                      python3-wheel && \
     eatmydata apt-get autoremove -y && \
     eatmydata apt-get autoclean -y && \
     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
@@ -49,7 +49,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 
 RUN /usr/bin/pip3 install meson==0.56.0
 
+ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
 ENV LANG "en_US.UTF-8"
 ENV MAKE "/usr/bin/make"
 ENV NINJA "/usr/bin/ninja"
-ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
