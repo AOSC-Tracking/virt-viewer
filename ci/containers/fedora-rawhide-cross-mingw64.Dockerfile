@@ -19,41 +19,41 @@ exec "$@"' > /usr/bin/nosync && \
     chmod +x /usr/bin/nosync && \
     nosync dnf distro-sync -y && \
     nosync dnf install -y \
-        bash-completion \
-        ca-certificates \
-        ccache \
-        cppi \
-        git \
-        glibc-langpack-en \
-        gtk-vnc2-devel \
-        icoutils \
-        libtool \
-        libxml2 \
-        make \
-        meson \
-        ninja-build \
-        rpm-build && \
+               bash-completion \
+               ca-certificates \
+               ccache \
+               cppi \
+               git \
+               glibc-langpack-en \
+               gtk-vnc2-devel \
+               icoutils \
+               libtool \
+               libxml2 \
+               make \
+               meson \
+               ninja-build \
+               rpm-build && \
     nosync dnf autoremove -y && \
     nosync dnf clean all -y
 
+ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
 ENV LANG "en_US.UTF-8"
 ENV MAKE "/usr/bin/make"
 ENV NINJA "/usr/bin/ninja"
-ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
 
 RUN nosync dnf install -y \
-        mingw64-gcc \
-        mingw64-gettext \
-        mingw64-glib2 \
-        mingw64-gstreamer1-plugins-bad-free \
-        mingw64-gstreamer1-plugins-good \
-        mingw64-gtk3 \
-        mingw64-libgovirt \
-        mingw64-libvirt \
-        mingw64-libxml2 \
-        mingw64-pkg-config \
-        mingw64-rest \
-        mingw64-spice-gtk3 && \
+               mingw64-gcc \
+               mingw64-gettext \
+               mingw64-glib2 \
+               mingw64-gstreamer1-plugins-bad-free \
+               mingw64-gstreamer1-plugins-good \
+               mingw64-gtk3 \
+               mingw64-libgovirt \
+               mingw64-libvirt \
+               mingw64-libxml2 \
+               mingw64-pkg-config \
+               mingw64-rest \
+               mingw64-spice-gtk3 && \
     nosync dnf clean all -y && \
     rpm -qa | sort > /packages.txt && \
     mkdir -p /usr/libexec/ccache-wrappers && \

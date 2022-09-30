@@ -18,32 +18,32 @@ exec "$@"' > /usr/bin/nosync && \
     chmod +x /usr/bin/nosync && \
     nosync dnf update -y && \
     nosync dnf install -y \
-        bash-completion \
-        ca-certificates \
-        ccache \
-        cppi \
-        gcc \
-        gettext \
-        git \
-        glib2-devel \
-        glibc-langpack-en \
-        gtk-vnc2-devel \
-        gtk3-devel \
-        icoutils \
-        libgovirt-devel \
-        libtool \
-        libvirt-devel \
-        libvirt-gobject-devel \
-        libxml2 \
-        libxml2-devel \
-        make \
-        meson \
-        ninja-build \
-        pkgconfig \
-        rest-devel \
-        rpm-build \
-        spice-gtk3-devel \
-        vte291-devel && \
+               bash-completion \
+               ca-certificates \
+               ccache \
+               cppi \
+               gcc \
+               gettext \
+               git \
+               glib2-devel \
+               glibc-langpack-en \
+               gtk-vnc2-devel \
+               gtk3-devel \
+               icoutils \
+               libgovirt-devel \
+               libtool \
+               libvirt-devel \
+               libvirt-gobject-devel \
+               libxml2 \
+               libxml2-devel \
+               make \
+               meson \
+               ninja-build \
+               pkgconfig \
+               rest-devel \
+               rpm-build \
+               spice-gtk3-devel \
+               vte291-devel && \
     nosync dnf autoremove -y && \
     nosync dnf clean all -y && \
     rpm -qa | sort > /packages.txt && \
@@ -51,7 +51,7 @@ exec "$@"' > /usr/bin/nosync && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/cc && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
 
+ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
 ENV LANG "en_US.UTF-8"
 ENV MAKE "/usr/bin/make"
 ENV NINJA "/usr/bin/ninja"
-ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
