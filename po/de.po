@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-28 11:18+0200\n"
-"PO-Revision-Date: 2022-08-01 13:19+0000\n"
+"PO-Revision-Date: 2022-12-06 09:19+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://translate.fedoraproject.org/projects/"
 "virt-viewer/virt-viewer/de/>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #, c-format
 msgid ""
@@ -446,16 +446,16 @@ msgstr "Bildschirmfoto.png"
 
 #. Create the widgets
 msgid "Select USB devices for redirection"
-msgstr "USB-Gerät zur Weiterleitung wählen"
+msgstr "USB-Geräte zur Weiterleitung auswählen"
 
 msgid "Select the virtual machine only by its ID"
-msgstr ""
+msgstr "Virtuelle Maschine nur anhand ihrer Kennung auswählen"
 
 msgid "Select the virtual machine only by its UUID"
-msgstr ""
+msgstr "Virtuelle Maschine nur anhand ihrer UUID auswählen"
 
 msgid "Select the virtual machine only by its name"
-msgstr ""
+msgstr "Virtuelle Maschine nur anhand ihres Namens auswählen"
 
 msgid "Selected"
 msgstr "Ausgewählt"
@@ -633,7 +633,7 @@ msgstr "Verkleinern"
 
 msgctxt "shortcut window"
 msgid "Zoom reset"
-msgstr ""
+msgstr "Zoom zurücksetzen"
 
 msgid "[none]"
 msgstr "[keine]"
