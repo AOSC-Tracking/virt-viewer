@@ -29,8 +29,10 @@
     <image>https://virt-manager.org/appdata/en_US/virt-viewer/shared_folder.png</image>
   </screenshot>
  </screenshots>
+ <launchable type="desktop-id">remote-viewer.desktop</launchable>
  <provides>
-  <binary>remote-viewer</binary>
+   <binary>remote-viewer</binary>
+   <binary>virt-viewer</binary>
  </provides>
  <url type="homepage">https://gitlab.com/virt-viewer/virt-viewer/</url>
  <url type="bugtracker">https://gitlab.com/virt-viewer/virt-viewer/-/issues</url>
