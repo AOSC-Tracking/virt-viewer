@@ -512,7 +512,7 @@ configure_file(
 subdir('build-aux')
 
 if git
-  authors = run_command(python3.full_path(), gen_authors_prog, env: runutf8, check: true)
+  authors = run_command(python3.full_path(), gen_authors_prog.full_path(), env: runutf8, check: true)
   authors_file = 'AUTHORS.in'
 
   authors_conf = configuration_data()
@@ -536,8 +536,8 @@ if git
     configuration: conf_data
   )
 
-  meson.add_dist_script(python3.full_path(), dist_prog, meson.project_build_root(), 'AUTHORS')
-  meson.add_dist_script(python3.full_path(), dist_prog, meson.project_build_root(), 'virt-viewer.spec')
+  meson.add_dist_script(python3.full_path(), dist_prog.full_path(), meson.project_build_root(), 'AUTHORS')
+  meson.add_dist_script(python3.full_path(), dist_prog.full_path(), meson.project_build_root(), 'virt-viewer.spec')
 endif
 
 gnome = import('gnome')

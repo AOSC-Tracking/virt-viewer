@@ -187,7 +187,7 @@ if host_machine.system() == 'windows'
     output: ['virt-viewer-rc.o'],
     command : [
       python3,
-      run_windres_prog,
+      run_windres_prog.full_path(),
       windres,
       join_paths(meson.build_root(), 'icons'),
       meson.current_source_dir(),
