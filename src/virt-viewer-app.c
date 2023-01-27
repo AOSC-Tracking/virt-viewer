@@ -847,7 +847,7 @@ virt_viewer_app_open_tunnel_ssh(const char *sshhost,
     }
     cmd[n++] = sshhost;
 
-    cat = g_string_new("if (command -v socat) >/dev/null 2>&1");
+    cat = g_string_new("sh -c 'if (command -v socat) >/dev/null 2>&1");
 
     g_string_append(cat, "; then socat - ");
     if (port) {
@@ -868,7 +868,7 @@ virt_viewer_app_open_tunnel_ssh(const char *sshhost,
     else
         g_string_append_printf(cat, "-U %s", unixsock);
 
-    g_string_append(cat, "; fi");
+    g_string_append(cat, "; fi'");
 
     cmd[n++] = cat->str;
     cmd[n++] = NULL;
