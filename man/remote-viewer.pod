@@ -330,6 +330,11 @@ And the rules themselves are concatenated like this:
 
 C<rule1|rule2|rule3>
 
+=item C<usb-redirect-on-connect> (string)
+
+Set a string specifying a filter to determine which USB devices, that are already plugged in,
+to redirect on connect once Spice connection is established. See usb-filter for the format.
+
 =item C<secure-channels> (string list)
 
 The list of session channels to secure.

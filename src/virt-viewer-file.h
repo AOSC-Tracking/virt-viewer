@@ -86,6 +86,8 @@ gint virt_viewer_file_get_enable_usb_autoshare(VirtViewerFile* self);
 void virt_viewer_file_set_enable_usb_autoshare(VirtViewerFile* self, gint value);
 gchar* virt_viewer_file_get_usb_filter(VirtViewerFile* self);
 void virt_viewer_file_set_usb_filter(VirtViewerFile* self, const gchar* value);
+gchar* virt_viewer_file_get_usb_redirect_on_connect(VirtViewerFile* self);
+void virt_viewer_file_set_usb_redirect_on_connect(VirtViewerFile* self, const gchar* value);
 gboolean virt_viewer_file_fill_app(VirtViewerFile* self, VirtViewerApp *app, GError **error);
 gchar* virt_viewer_file_get_smartcard_insert(VirtViewerFile* self);
 void virt_viewer_file_set_smartcard_insert(VirtViewerFile* self, const gchar* value);

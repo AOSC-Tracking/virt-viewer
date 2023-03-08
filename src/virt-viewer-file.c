@@ -70,6 +70,7 @@
  * - disable-effects: string list
  * - enable-usb-autoshare: int
  * - usb-filter: string
+ * - usb-redirect-on-connect: string
  * - secure-channels: string list
  * - delete-this-file: int (0 or 1 atm)
  * - proxy: proxy URL, like http://user:pass@foobar:8080
@@ -131,6 +132,7 @@ enum  {
     PROP_DISABLE_EFFECTS,
     PROP_ENABLE_USB_AUTOSHARE,
     PROP_USB_FILTER,
+    PROP_USB_REDIRECT_ON_CONNECT,
     PROP_PROXY,
     PROP_VERSION,
     PROP_VERSIONS,
@@ -694,6 +696,19 @@ virt_viewer_file_set_usb_filter(VirtViewerFile* self, const gchar* value)
 }
 
 gchar*
+virt_viewer_file_get_usb_redirect_on_connect(VirtViewerFile* self)
+{
+    return virt_viewer_file_get_string(self, MAIN_GROUP, "usb-redirect-on-connect");
+}
+
+void
+virt_viewer_file_set_usb_redirect_on_connect(VirtViewerFile* self, const gchar* value)
+{
+    virt_viewer_file_set_string(self, MAIN_GROUP, "usb-redirect-on-connect", value);
+    g_object_notify(G_OBJECT(self), "usb-redirect-on-connect");
+}
+
+gchar*
 virt_viewer_file_get_proxy(VirtViewerFile* self)
 {
     return virt_viewer_file_get_string(self, MAIN_GROUP, "proxy");
@@ -1065,6 +1080,9 @@ virt_viewer_file_set_property(GObject* object, guint property_id,
     case PROP_USB_FILTER:
         virt_viewer_file_set_usb_filter(self, g_value_get_string(value));
         break;
+    case PROP_USB_REDIRECT_ON_CONNECT:
+        virt_viewer_file_set_usb_redirect_on_connect(self, g_value_get_string(value));
+        break;
     case PROP_PROXY:
         virt_viewer_file_set_proxy(self, g_value_get_string(value));
         break;
@@ -1192,6 +1210,9 @@ virt_viewer_file_get_property(GObject* object, guint property_id,
         break;
     case PROP_USB_FILTER:
         g_value_take_string(value, virt_viewer_file_get_usb_filter(self));
+        break;
+    case PROP_USB_REDIRECT_ON_CONNECT:
+        g_value_take_string(value, virt_viewer_file_get_usb_redirect_on_connect(self));
         break;
     case PROP_PROXY:
         g_value_take_string(value, virt_viewer_file_get_proxy(self));
@@ -1351,6 +1372,10 @@ virt_viewer_file_class_init(VirtViewerFileClass* klass)
 
     g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_USB_FILTER,
         g_param_spec_string("usb-filter", "usb-filter", "usb-filter", NULL,
+                            G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
+
+    g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_USB_REDIRECT_ON_CONNECT,
+        g_param_spec_string("usb-redirect-on-connect", "usb-redirect-on-connect", "usb-redirect-on-connect", NULL,
                             G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
 
     g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_DISABLE_CHANNELS,

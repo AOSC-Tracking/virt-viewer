@@ -632,6 +632,16 @@ fill_session(VirtViewerFile *file, SpiceSession *session)
         g_free(filterstr);
     }
 
+    if (virt_viewer_file_is_set(file, "usb-redirect-on-connect")) {
+        gchar *filterstr = virt_viewer_file_get_usb_redirect_on_connect(file);
+        SpiceUsbDeviceManager *manager = spice_usb_device_manager_get(session,
+                                                                      NULL);
+        if (manager != NULL) {
+            g_object_set(manager, "redirect-on-connect", filterstr, NULL);
+        }
+        g_free(filterstr);
+    }
+
     if (virt_viewer_file_is_set(file, "secure-channels")) {
         gchar **channels = virt_viewer_file_get_secure_channels(file, NULL);
         g_object_set(G_OBJECT(session), "secure-channels", channels, NULL);
