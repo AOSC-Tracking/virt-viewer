@@ -17,7 +17,7 @@ Version:        @VERSION@
 Release:        %{relver}
 Summary:        MinGW Windows virt-viewer console application
 
-License:        GPLv2+
+License:        GPL-2.0-or-later
 URL:            https://gitlab.com/virt-viewer/virt-viewer
 Source0:        https://virt-manager.org/download/sources/virt-viewer/virt-viewer-%{version}.tar.xz
 
