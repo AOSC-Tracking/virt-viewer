@@ -302,11 +302,11 @@ virt_viewer_session_vnc_open_uri(VirtViewerSession* session,
         g_return_val_if_fail(virt_viewer_file_is_set(file, "port"), FALSE);
         g_return_val_if_fail(virt_viewer_file_is_set(file, "host"), FALSE);
 
-        portstr = g_strdup_printf("%d", virt_viewer_file_get_port(file));
-        hoststr = g_strdup(virt_viewer_file_get_host(file));
-
         if (!virt_viewer_file_fill_app(file, app, error))
             return FALSE;
+
+        portstr = g_strdup_printf("%d", virt_viewer_file_get_port(file));
+        hoststr = g_strdup(virt_viewer_file_get_host(file));
     } else {
         xmlURIPtr uri = NULL;
         if (!(uri = xmlParseURI(uristr)))
