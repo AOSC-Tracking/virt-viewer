@@ -42,6 +42,9 @@
 #if VNC_CHECK_VERSION(1, 2, 0)
 # define HAVE_VNC_POWER_CONTROL
 #endif
+#if VNC_CHECK_VERSION(1, 3, 2)
+# define HAVE_VNC_DISPLAY_CREDENTIAL_CA_CERT_DATA
+#endif
 
 struct _VirtViewerSessionVnc {
     VirtViewerSession parent;
@@ -343,8 +346,8 @@ virt_viewer_session_vnc_auth_credential(GtkWidget *src G_GNUC_UNUSED,
                                         VirtViewerSession *session)
 {
     VirtViewerSessionVnc *self = VIRT_VIEWER_SESSION_VNC(session);
-    char *username = NULL, *password = NULL;
-    gboolean wantPassword = FALSE, wantUsername = FALSE;
+    char *username = NULL, *password = NULL, *ca = NULL;
+    gboolean wantPassword = FALSE, wantUsername = FALSE, wantCA = FALSE;
     VirtViewerFile *file = NULL;
     int i;
 
@@ -360,6 +363,9 @@ virt_viewer_session_vnc_auth_credential(GtkWidget *src G_GNUC_UNUSED,
             wantPassword = TRUE;
             break;
         case VNC_DISPLAY_CREDENTIAL_CLIENTNAME:
+#ifdef HAVE_VNC_DISPLAY_CREDENTIAL_CA_CERT_DATA
+        case VNC_DISPLAY_CREDENTIAL_CA_CERT_DATA:
+#endif
             break;
         default:
             g_debug("Unsupported credential type %d", g_value_get_enum(cred));
@@ -381,6 +387,10 @@ virt_viewer_session_vnc_auth_credential(GtkWidget *src G_GNUC_UNUSED,
         if (wantPassword && virt_viewer_file_is_set(file, "password")) {
             password = virt_viewer_file_get_password(file);
             wantPassword = FALSE;
+        }
+        ca = virt_viewer_file_get_ovirt_ca(file);
+        if (wantCA && ca) {
+            wantCA = FALSE;
         }
     }
 
@@ -427,6 +437,16 @@ virt_viewer_session_vnc_auth_credential(GtkWidget *src G_GNUC_UNUSED,
                 vnc_display_close(self->vnc);
             }
             break;
+#ifdef HAVE_VNC_DISPLAY_CREDENTIAL_CA_CERT_DATA
+        case VNC_DISPLAY_CREDENTIAL_CA_CERT_DATA:
+            if (vnc_display_set_credential(self->vnc,
+                                           g_value_get_enum(cred),
+                                           ca)) {
+                g_debug("Failed to set credential type %d", g_value_get_enum(cred));
+                vnc_display_close(self->vnc);
+            }
+            break;
+#endif
         default:
             g_debug("Unsupported credential type %d", g_value_get_enum(cred));
             vnc_display_close(self->vnc);
@@ -436,6 +456,7 @@ virt_viewer_session_vnc_auth_credential(GtkWidget *src G_GNUC_UNUSED,
  cleanup:
     g_free(username);
     g_free(password);
+    g_free(ca);
 }
 
 
