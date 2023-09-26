@@ -29,7 +29,7 @@ monitors, it will enable only guest display #1 and display it on
 monitor #2.
 
 A2. When connecting to guest 6485b... on a client with 1 monitor,
-the "1:2" mapping refers to a non-existant monitor and will thus
+the "1:2" mapping refers to a non-existent monitor and will thus
 be ignored (C4). Because there are no valid display mappings
 specified, the configuration will be considered invalid (B13).
 The guest will then be displayed according to the default

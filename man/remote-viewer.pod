@@ -54,7 +54,7 @@ Start with the windows maximized to fullscreen.
 If supported, the remote display will be reconfigured to match the physical
 client monitor configuration, by enabling or disabling extra monitors as
 necessary. This is currently implemented by the Spice backend only and
-can be disabled by the C<--auto-resize> arguemnt.
+can be disabled by the C<--auto-resize> argument.
 
 To specify which client monitors are used in fullscreen mode, see the
 CONFIGURATION section below.
@@ -283,7 +283,7 @@ Key binding for zooming out and reducing client window size. (see L<HOTKEY> for 
 
 =item C<zoom-reset> (hotkey string)
 
-Key binding for reseting zoom and client window size. (see L<HOTKEY> for description of expected string)
+Key binding for resetting zoom and client window size. (see L<HOTKEY> for description of expected string)
 
 =item C<smartcard-insert> (hotkey string)
 
@@ -379,13 +379,13 @@ GUID of the oVirt virtual machine to connect to.
 =item C<jsessionid> (string)
 
 Value to set the 'jsessionid' cookie to. With oVirt 3.6, setting this
-authentication cookie to a valid value will allow to interact with the oVirt
+authentication cookie to a valid value will allow one to interact with the oVirt
 REST API without being asked for credentials.
 
 =item C<sso-token> (string)
 
 Value to set the 'Authorization' header to. With oVirt 4.0 or newer, setting
-this authentication header to a valid value will allow to interact with the
+this authentication header to a valid value will allow one to interact with the
 oVirt REST API without being asked for credentials.
 
 =item C<ca> (string)

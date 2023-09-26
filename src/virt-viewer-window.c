@@ -1240,7 +1240,7 @@ virt_viewer_window_change_cd(VirtViewerWindow *self G_GNUC_UNUSED)
                                         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                         GTK_MESSAGE_ERROR,
                                         GTK_BUTTONS_CLOSE,
-                                        _("Unable to connnect to oVirt"));
+                                        _("Unable to connect to oVirt"));
 
     g_signal_connect(dialog, "response", G_CALLBACK(iso_dialog_response), NULL);
     gtk_widget_show_all(dialog);

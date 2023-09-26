@@ -752,7 +752,7 @@ virt_viewer_session_spice_main_channel_event(SpiceChannel *channel,
         /* The username is firstly pre-filled with the username of the current
          * user and in case where some authentication error happened, the
          * username entry will be prefilled with the last username used.
-         * Unfortunately, we don't have a clear way to differantiate bewteen
+         * Unfortunately, we don't have a clear way to differentiate between
          * invalid username and invalid password. So, in both cases the username
          * entry will be pre-filled with the username used in the previous attempt. */
         if (username_required) {

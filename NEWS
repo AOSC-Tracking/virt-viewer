@@ -143,7 +143,7 @@
   - Enable connecting to SPICE over UNIX socket
   - Fix warnings with newer GCCs
   - Allow controlling zoom level with keypad
-  - Don't close app during seemless migration
+  - Don't close app during seamless migration
   - Don't show toolbar in kiosk mode
   - Re-show auth dialog in kiosk mode
   - Don't show error when cancelling auth
@@ -178,7 +178,7 @@
   - Require glib2 >= 2.38
   - Require gtk3 >= 3.10
   - Require libvirt-glib >= 0.1.8
-  - Increase minimum window size fo 320x200 instead of 50x50
+  - Increase minimum window size to 320x200 instead of 50x50
   - Remove use of GSLice
   - Don't show usbredir button if not connected yet
   - Only compute monitor mapping in full screen
@@ -254,7 +254,7 @@
   - Require address in remote viewer connect dialog
   - Automatically retry VNC connection after auth failure
   - Drop GTK2 support for Windows builds
-  - Enable keepalives on libvirt conncetion
+  - Enable keepalives on libvirt connection
   - Allow resize of window to arbitrary size
   - Fix thread safety handling event callbacks
   - Avoid deprecation warnings with newer glib
@@ -405,7 +405,7 @@
   - Fix misc memory leaks
   - Fix build with newer glibc and -O0
   - Improve automatic fullscreen Spice configuration
-  - Avoid crash when quiting application
+  - Avoid crash when quitting application
   - Rebuild display men whenever a window is added/removed
   - Number displays starting from 1 instead of 0
   - Add support for handling multiple monitors with Spice

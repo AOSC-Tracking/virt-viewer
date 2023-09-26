@@ -147,7 +147,7 @@ struct _VirtViewerAppPrivate {
     gboolean connected;
     gboolean cancelled;
     char *unixsock;
-    char *guri; /* prefered over ghost:gport */
+    char *guri; /* preferred over ghost:gport */
     char *ghost;
     char *gport;
     char *gtlsport;
@@ -3122,7 +3122,7 @@ virt_viewer_app_set_fullscreen(VirtViewerApp *self, gboolean fullscreen)
         .fullscreen = fullscreen,
     };
 
-    /* we iterate unconditionnaly, even if it was set before to update new windows */
+    /* we iterate unconditionally, even if it was set before to update new windows */
     priv->fullscreen = fullscreen;
     g_list_foreach(priv->windows, fullscreen_cb, &options);
 
