@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,12 +103,12 @@ msgstr ""
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr ""
 
-#: src/virt-viewer-file.c:931
+#: src/virt-viewer-file.c:946
 #, c-format
 msgid "At least %s version %s is required to setup this connection"
 msgstr ""
 
-#: src/virt-viewer-file.c:923
+#: src/virt-viewer-file.c:938
 #, c-format
 msgid ""
 "At least %s version %s is required to setup this connection, see %s for "
@@ -372,7 +372,7 @@ msgstr ""
 msgid "Invalid kiosk-quit argument: %s"
 msgstr ""
 
-#: src/virt-viewer-session-spice.c:739
+#: src/virt-viewer-session-spice.c:749
 msgid "Invalid password"
 msgstr ""
 
@@ -439,11 +439,11 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
-#: src/virt-viewer-session-spice.c:1033
+#: src/virt-viewer-session-spice.c:1043
 msgid "QEMU debug console"
 msgstr ""
 
-#: src/virt-viewer-session-spice.c:1031
+#: src/virt-viewer-session-spice.c:1041
 msgid "QEMU human monitor"
 msgstr ""
 
@@ -513,7 +513,7 @@ msgid "Screenshot.png"
 msgstr ""
 
 #. Create the widgets
-#: src/virt-viewer-session-spice.c:839
+#: src/virt-viewer-session-spice.c:849
 msgid "Select USB devices for redirection"
 msgstr ""
 
@@ -543,7 +543,7 @@ msgctxt "shortcut window"
 msgid "Send secure attention (Ctrl-Alt-Del)"
 msgstr ""
 
-#: src/virt-viewer-session-spice.c:1029
+#: src/virt-viewer-session-spice.c:1039
 msgid "Serial"
 msgstr ""
 
@@ -630,6 +630,10 @@ msgstr ""
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr ""
 
+#: src/virt-viewer-window.c:1243
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #: src/virt-viewer-app.c:1821
 #, c-format
 msgid "Unable to connect to the graphic server %s"
@@ -638,10 +642,6 @@ msgstr ""
 #: src/remote-viewer.c:818
 #, c-format
 msgid "Unable to connect: %s"
-msgstr ""
-
-#: src/virt-viewer-window.c:1243
-msgid "Unable to connnect to oVirt"
 msgstr ""
 
 #: src/virt-viewer-window.c:1066
@@ -664,7 +664,7 @@ msgstr ""
 msgid "Unspecified error"
 msgstr ""
 
-#: src/virt-viewer-session-vnc.c:234
+#: src/virt-viewer-session-vnc.c:237
 #, c-format
 msgid "Unsupported authentication type %u"
 msgstr ""
@@ -782,7 +782,7 @@ msgid "_Cancel"
 msgstr ""
 
 #: src/resources/ui/virt-viewer-guest-details.ui:22
-#: src/virt-viewer-session-spice.c:841
+#: src/virt-viewer-session-spice.c:851
 msgid "_Close"
 msgstr ""
 
