@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the virt-viewer package.
-# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022.
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-26 11:36+0200\n"
-"PO-Revision-Date: 2022-07-31 11:19+0000\n"
+"PO-Revision-Date: 2023-10-11 05:35+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: Georgian <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/ka/>\n"
+"Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 5.0.2\n"
 
 #, c-format
 msgid ""
@@ -514,7 +514,7 @@ msgid "Unable to connect to libvirt with URI: %s."
 msgstr "libvirt-თან კავშირის შეცდომა: %s."
 
 msgid "Unable to connect to oVirt"
-msgstr ""
+msgstr "შეცდომა oVirt-თან მიერთებისას"
 
 #, c-format
 msgid "Unable to connect to the graphic server %s"
