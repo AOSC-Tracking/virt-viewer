@@ -5,22 +5,22 @@
 # Translators:
 # Necdet Yücel <necdetyucel@gmail.com>, 2012
 # Oğuz Ersen <oguzersen@protonmail.com>, 2020, 2021.
-# Oğuz Ersen <oguz@ersen.moe>, 2022.
+# Oğuz Ersen <oguz@ersen.moe>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-26 11:36+0200\n"
-"PO-Revision-Date: 2022-07-29 15:19+0000\n"
+"PO-Revision-Date: 2023-11-06 16:48+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
-"Language-Team: Turkish <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/tr/>\n"
+"Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 5.1.1\n"
 
 #, c-format
 msgid ""
@@ -523,7 +523,7 @@ msgid "Unable to connect to libvirt with URI: %s."
 msgstr "URI ile libvirt'e bağlanamadı: %s."
 
 msgid "Unable to connect to oVirt"
-msgstr ""
+msgstr "oVirt'e bağlanamadı"
 
 #, c-format
 msgid "Unable to connect to the graphic server %s"
