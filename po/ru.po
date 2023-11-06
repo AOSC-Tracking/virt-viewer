@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2021-02-16 20:40+0000\n"
 "Last-Translator: Igor Gorbounov <igor.gorbounov@gmail.com>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/virt-"
@@ -25,8 +25,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.4.2\n"
 
 #, c-format
@@ -403,8 +403,8 @@ msgstr ""
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"Формат переназначения клавиш: клавиша=модификатор+клавиша, например, F1=SHIFT"
-"+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+"Формат переназначения клавиш: клавиша=модификатор+клавиша, например, "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "Удалённый рабочий стол"
@@ -532,6 +532,9 @@ msgstr "Не удалось пройти аутентификацию на уд�
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "Невозможно подключиться к libvirt с URI: %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "Не удалось установить соединение с графическим сервером %s"
@@ -539,9 +542,6 @@ msgstr "Не удалось установить соединение с гра�
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "Не удалось подключиться: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "Не удаётся подключиться к oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -699,6 +699,9 @@ msgstr "Виртуальная машина oVirt %s не работает"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "поддерживается только подключение по SSH или через сокет UNIX."
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "Не удаётся подключиться к oVirt"
 
 #~ msgid "Close"
 #~ msgstr "Закрыть"

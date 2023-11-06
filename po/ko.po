@@ -12,11 +12,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2022-07-29 15:19+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
-"Language-Team: Korean <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/ko/>\n"
+"Language-Team: Korean <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -518,6 +518,9 @@ msgstr "원격 데스크탑 서버로 인증할 수 없음: %s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "URI: %s 로 libvirt에 연결 할 수 없습니다."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "그래픽 서버 %s에 연결 할 수 없음"
@@ -525,9 +528,6 @@ msgstr "그래픽 서버 %s에 연결 할 수 없음"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "연결 할 수 없음: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "oVirt로 연결 할 수 있습니다"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -685,6 +685,9 @@ msgstr "oVirt VM %s는 작동하지 않습니다"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "단지 SSH만 또는 유닉스 소켓 연결만 지원합니다."
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "oVirt로 연결 할 수 있습니다"
 
 #~ msgid "Close"
 #~ msgstr "닫기"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2021-09-24 12:05+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.fedoraproject.org/projects/virt-"
@@ -538,6 +538,9 @@ msgstr "Tidak dapat mengautentikasi dengan server desktop jarak jauh: %s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "Tidak dapat tersambung ke libvirt dengan URI: %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, fuzzy, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "Tidak dapat terhubung ke server grafis %s"
@@ -545,10 +548,6 @@ msgstr "Tidak dapat terhubung ke server grafis %s"
 #, fuzzy, c-format
 msgid "Unable to connect: %s"
 msgstr "Tidak dapat terhubung: %s"
-
-#, fuzzy
-msgid "Unable to connnect to oVirt"
-msgstr "Tidak dapat terhubung ke oVirt"
 
 #, fuzzy, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -591,8 +590,8 @@ msgstr "Penampil"
 #, fuzzy
 msgid "Virt Viewer"
 msgstr ""
-"<computeroutput>$ </computeroutput><userinput>virt-viewer --connect qemu"
-"+ssh://root@<replaceable>server</replaceable>/system testkvm\n"
+"<computeroutput>$ </computeroutput><userinput>virt-viewer --connect "
+"qemu+ssh://root@<replaceable>server</replaceable>/system testkvm\n"
 "</userinput><computeroutput>root@server's password: \n"
 "root@server's password: </computeroutput>"
 
@@ -737,6 +736,10 @@ msgstr "oVirt VM %s tidak berjalan"
 #, fuzzy
 msgid "only SSH or UNIX socket connection supported."
 msgstr "hanya koneksi soket SSH atau UNIX yang didukung."
+
+#, fuzzy
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "Tidak dapat terhubung ke oVirt"
 
 #~ msgid "Close"
 #~ msgstr "Tutup"

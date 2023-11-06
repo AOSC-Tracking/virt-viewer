@@ -10,11 +10,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2022-07-29 15:19+0000\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
-"Language-Team: Swedish <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/sv/>\n"
+"Language-Team: Swedish <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -392,8 +392,8 @@ msgstr "Släpp markör"
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"Bind om tangenter format tangent=tangentmod+tangent t.ex. F1=SHIFT+CTRL"
-"+F1,1=SHIFT+F1,ALT_L=Void"
+"Bind om tangenter format tangent=tangentmod+tangent t.ex. "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "Fjärrvisare"
@@ -518,6 +518,9 @@ msgstr "Kan inte autenticera med fjärskrivbordsserver: %s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "Kan inte ansluta till libvirt med URI: %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "Kan inte ansluta till grafikservern %s"
@@ -525,9 +528,6 @@ msgstr "Kan inte ansluta till grafikservern %s"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "Kan inte ansluta: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "Kan inte ansluta till oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -685,6 +685,9 @@ msgstr "oVirt-VM %s kör inte"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "endast SSH- eller UNIX-uttagsförbindelser stödjs."
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "Kan inte ansluta till oVirt"
 
 #~ msgid "Close"
 #~ msgstr "Stäng"

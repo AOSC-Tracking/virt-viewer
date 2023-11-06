@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2020-09-28 19:29+0000\n"
 "Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: French <https://translate.fedoraproject.org/projects/virt-"
@@ -398,8 +398,8 @@ msgstr ""
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"Réattribuer le format de touches touche=keymod+touche p. ex. F1=MAJ+CTRL"
-"+F1,1=MAJ+F1,ALT_L=Vide"
+"Réattribuer le format de touches touche=keymod+touche p. ex. "
+"F1=MAJ+CTRL+F1,1=MAJ+F1,ALT_L=Vide"
 
 msgid "Remote Viewer"
 msgstr "Afficheur distant"
@@ -529,6 +529,9 @@ msgstr ""
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "Impossible d’établir la connexion à libvirt avec l’URI : %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "Impossible d'établir la connexion au serveur d'affichage %s"
@@ -536,9 +539,6 @@ msgstr "Impossible d'établir la connexion au serveur d'affichage %s"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "Impossible de se connecter à : %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "Incapable de se connecter à oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -696,6 +696,9 @@ msgstr "oVirt VM %s n'est pas en cours d'exécution"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "seule la connexion par socket SSH ou UNIX est prise en charge."
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "Incapable de se connecter à oVirt"
 
 #~ msgid "Close"
 #~ msgstr "Fermer"

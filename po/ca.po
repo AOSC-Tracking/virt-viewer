@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2018-02-27 05:02+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/virt-viewer/"
@@ -517,6 +517,9 @@ msgstr "No es pot autentificar amb el servidor d'escriptori remot: %s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "No es pot connectar a libvirt amb l'URI: %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "No es pot connectar amb el servidor gràfic %s"
@@ -524,9 +527,6 @@ msgstr "No es pot connectar amb el servidor gràfic %s"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "No es pot connectar: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "No es pot connectar a oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -684,6 +684,9 @@ msgstr "La MV oVirt %s no s'està executant"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "No es pot connectar a oVirt"
 
 #~ msgid "Close"
 #~ msgstr "Tanca"

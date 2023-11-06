@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2022-07-31 11:19+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/ka/>\n"
+"Language-Team: Georgian <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -388,8 +388,8 @@ msgstr "კურსორის გათავისუფლება"
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"მალსახმობი კლავშების ფორმატის შეცვლა ღილაკი=დამ.ღილაკი+ღილაგი. მაგ. F1=SHIFT"
-"+CTRL+F1,1=SHIFT+F1,ALT_L=არაფერი"
+"მალსახმობი კლავშების ფორმატის შეცვლა ღილაკი=დამ.ღილაკი+ღილაგი. მაგ. "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=არაფერი"
 
 msgid "Remote Viewer"
 msgstr "დისტანციურად ნახვა"
@@ -513,6 +513,9 @@ msgstr "დისტანციურ სამუშაო დაფასთ�
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "libvirt-თან კავშირის შეცდომა: %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "გრაფიკულ სერვერთან კავშირის შეცდომა %s"
@@ -520,9 +523,6 @@ msgstr "გრაფიკულ სერვერთან კავშირ�
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "კავშირის შეცდომა: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "oVirt-თან დაკავშირების შეცდომა"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -680,3 +680,6 @@ msgstr "oVirt-ის VM %s გაშვებული არაა"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "მხარდაჭერილია კავშირი მხოლოდ SSH ან UNIX socket-ით."
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "oVirt-თან დაკავშირების შეცდომა"

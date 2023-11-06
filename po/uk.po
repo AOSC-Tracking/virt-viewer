@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2022-07-29 15:19+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/uk/>\n"
+"Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.13\n"
 
 #, c-format
@@ -394,8 +394,8 @@ msgstr "Звільнити вказівник"
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"Формат переприв'язки клавіш — клавіша=модифікатор+клавіш. Приклад: F1=SHIFT"
-"+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
+"Формат переприв'язки клавіш — клавіша=модифікатор+клавіш. Приклад: "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "Віддалений переглядач"
@@ -526,6 +526,9 @@ msgstr "Не вдалося пройти розпізнавання на сер�
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "Не вдалося з’єднатися з libvirt з адресою %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "Не вдалося встановити з’єднання з графічним сервером %s"
@@ -533,9 +536,6 @@ msgstr "Не вдалося встановити з’єднання з граф
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "Не вдалося встановити з’єднання: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "Не вдалося встановити з’єднання із oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -693,6 +693,9 @@ msgstr "ВМ oVirt %s не запущено"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "передбачено підтримку лише з'єднань із SSH або сокетами UNIX."
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "Не вдалося встановити з’єднання із oVirt"
 
 #~ msgid "Close"
 #~ msgstr "Закрити"

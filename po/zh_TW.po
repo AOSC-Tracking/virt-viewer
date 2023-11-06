@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2022-08-02 17:19+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/"
@@ -499,15 +499,15 @@ msgstr "無法取得遠端桌面伺服器的認證：%s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "無法透過 URI 連接 libvirt：%s。"
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "無法連接圖形化伺服器 %s"
 
 #, c-format
 msgid "Unable to connect: %s"
-msgstr ""
-
-msgid "Unable to connnect to oVirt"
 msgstr ""
 
 #, c-format

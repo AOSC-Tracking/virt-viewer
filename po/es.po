@@ -21,11 +21,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2023-08-06 14:21+0000\n"
 "Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
-"Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/es/>\n"
+"Language-Team: Spanish <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -530,6 +530,9 @@ msgstr "No se puede autenticar con el servidor del escritorio remoto: %s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "No puede conectarse a libvirt con URI: %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "No se pudo conectar al servidor gráfico %s"
@@ -537,9 +540,6 @@ msgstr "No se pudo conectar al servidor gráfico %s"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "No se pudo conectar: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "No se pudo conectar con oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -697,6 +697,9 @@ msgstr "la MV oVirt %s no está ejecutándose"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "No se pudo conectar con oVirt"
 
 #~ msgid "Close"
 #~ msgstr "Cerrar"

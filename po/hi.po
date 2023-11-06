@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2015-02-20 08:09+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hindi (http://www.transifex.com/projects/p/virt-viewer/"
@@ -493,15 +493,15 @@ msgstr "दूरस्थ डेस्कटॉप सर्वर के स�
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr ""
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "%s ग्राफ़िक सर्वर से कनेक्ट करने में असमर्थ"
 
 #, c-format
 msgid "Unable to connect: %s"
-msgstr ""
-
-msgid "Unable to connnect to oVirt"
 msgstr ""
 
 #, c-format

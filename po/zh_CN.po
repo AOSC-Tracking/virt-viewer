@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2021-06-19 10:04+0000\n"
 "Last-Translator: Charles Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
@@ -516,6 +516,9 @@ msgstr "无法使用远程桌面服务器验证：%s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "无法使用 URI 连接到 libvirt：%s。"
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "无法连接到图形服务器 %s"
@@ -523,9 +526,6 @@ msgstr "无法连接到图形服务器 %s"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "无法连接：%s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "无法连接到 oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -683,6 +683,9 @@ msgstr "oVirt VM %s 未运行"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "仅支持 SSH 或 UNIX 套接字连接。"
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "无法连接到 oVirt"
 
 #~ msgid "Close"
 #~ msgstr "关闭"

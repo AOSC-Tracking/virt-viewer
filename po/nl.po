@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2021-02-28 12:40+0000\n"
 "Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
 "Language-Team: Dutch <https://translate.fedoraproject.org/projects/virt-"
@@ -392,8 +392,8 @@ msgstr ""
 msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
-"Herindeling toetsenformat key = keymod + key bijv. F1=SHIFT+CTRL+F1,1=SHIFT"
-"+F1,ALT_L=Void"
+"Herindeling toetsenformat key = keymod + key bijv. "
+"F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 
 msgid "Remote Viewer"
 msgstr "Viewer op afstand"
@@ -520,6 +520,9 @@ msgstr "Kon geen authenticatie verkrijgen met desktop server op afstand: %s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "Kan niet met libvirt verbinden met URI: %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "Ka niet verbinden met de grafische server %s"
@@ -527,9 +530,6 @@ msgstr "Ka niet verbinden met de grafische server %s"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "Kan niet verbinden: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "Kan niet verbinden met oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -687,6 +687,9 @@ msgstr "oVirt VM %s is niet actief"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "alleen SSH of UNIX socket verbinding ondersteund."
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "Kan niet verbinden met oVirt"
 
 #~ msgid "Close"
 #~ msgstr "Afsluiten"

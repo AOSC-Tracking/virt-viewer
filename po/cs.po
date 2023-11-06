@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2023-09-14 06:35+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech <https://translate.fedoraproject.org/projects/"
-"virt-viewer/virt-viewer/cs/>\n"
+"Language-Team: Czech <https://translate.fedoraproject.org/projects/virt-"
+"viewer/virt-viewer/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -540,6 +540,9 @@ msgstr "Nedaří se ověřit vůči serveru vzdálené plochy: %s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "Nedaří se připojit k libvirt prostřednictvím URI: %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "Nedaří se připojit ke grafickému serveru %s"
@@ -547,9 +550,6 @@ msgstr "Nedaří se připojit ke grafickému serveru %s"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "Nedaří se připojit: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "Nedaří se připojit k oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -719,6 +719,9 @@ msgstr "oVirt virt. stroj %s není spuštěný"
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
 "je podporováno připojení pouze prostřednictvím SSH nebo unixového soketu."
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "Nedaří se připojit k oVirt"
 
 #~ msgid "Close"
 #~ msgstr "Zavřít"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2021-12-18 07:16+0000\n"
 "Last-Translator: Yasuhiko Kamata <belphegor@belbel.or.jp>\n"
 "Language-Team: Japanese <https://translate.fedoraproject.org/projects/virt-"
@@ -526,6 +526,9 @@ msgstr "リモートデスクトップサーバーの認証で失敗しました
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "libvirt URI に接続できません: %s。"
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "グラフィックサーバー %s に接続できません"
@@ -533,9 +536,6 @@ msgstr "グラフィックサーバー %s に接続できません"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "接続できません: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "oVirtに接続できません"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -693,6 +693,9 @@ msgstr "oVirt上の仮想マシン %s は稼働していません"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr "SSH もしくは UNIX ソケット接続のみに対応しています。"
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "oVirtに接続できません"
 
 #~ msgid "Close"
 #~ msgstr "閉じる"

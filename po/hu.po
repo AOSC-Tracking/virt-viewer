@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2020-07-21 14:29+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/virt-"
@@ -522,6 +522,9 @@ msgstr "Hitelesítés sikertelen a távoli asztal kiszolgálóhoz: %s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "Nem lehet kapcsolódni a libvirthez az URI-val: %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "A(z) %s grafikus kiszolgálóhoz kapcsolódás nem lehetséges"
@@ -529,9 +532,6 @@ msgstr "A(z) %s grafikus kiszolgálóhoz kapcsolódás nem lehetséges"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "Nem lehet ide kapcsolódni: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "Nem lehet kapcsolódni az oVirthez"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -689,6 +689,9 @@ msgstr "A(z) %s oVirt VM nem fut"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "Nem lehet kapcsolódni az oVirthez"
 
 #~ msgid "Close"
 #~ msgstr "Bezárás"

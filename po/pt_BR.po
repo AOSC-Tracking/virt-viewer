@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 11:18+0200\n"
+"POT-Creation-Date: 2023-09-26 11:36+0200\n"
 "PO-Revision-Date: 2018-04-02 12:44+0000\n"
 "Last-Translator: Henrique Montemor Junqueira <hickijunqueira@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/virt-"
@@ -515,6 +515,9 @@ msgstr "Incapaz de autenticar com o servidor remoto: %s"
 msgid "Unable to connect to libvirt with URI: %s."
 msgstr "Não é possível conectar-se ao libvirt com o URI: %s."
 
+msgid "Unable to connect to oVirt"
+msgstr ""
+
 #, c-format
 msgid "Unable to connect to the graphic server %s"
 msgstr "Incapaz de conectar ao servidor de gráfico %s"
@@ -522,9 +525,6 @@ msgstr "Incapaz de conectar ao servidor de gráfico %s"
 #, c-format
 msgid "Unable to connect: %s"
 msgstr "Não foi possível conectar: %s"
-
-msgid "Unable to connnect to oVirt"
-msgstr "Não é possível conectar-se ao oVirt"
 
 #, c-format
 msgid "Unable to determine image format for file '%s'"
@@ -682,6 +682,9 @@ msgstr "A MV %s no oVirt  não está em execução"
 
 msgid "only SSH or UNIX socket connection supported."
 msgstr ""
+
+#~ msgid "Unable to connnect to oVirt"
+#~ msgstr "Não é possível conectar-se ao oVirt"
 
 #~ msgid "Close"
 #~ msgstr "Feche"
