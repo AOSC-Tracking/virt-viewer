@@ -90,7 +90,7 @@ common_deps = [
   glib_dep, gmodule_dep, gtk_dep,
   gtk_vnc_dep,
   spice_glib_dep, spice_gtk_dep, spice_protocol_dep,
-  govirt_dep, rest_dep,
+  govirt_dep,
   vte_dep,
 ]
 

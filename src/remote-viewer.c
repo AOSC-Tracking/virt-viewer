@@ -305,15 +305,15 @@ parse_ovirt_uri(const gchar *uri_str, char **rest_uri, char **name, char **usern
     g_strfreev(path_elements);
     xmlFreeURI(uri);
 
+    g_debug("oVirt username: %s", *username);
     g_debug("oVirt base URI: %s", *rest_uri);
     g_debug("oVirt VM name: %s", *name);
 
     return TRUE;
 }
 
-static gboolean
-authenticate_cb(RestProxy *proxy, RestProxyAuth *rstauth,
-                G_GNUC_UNUSED gboolean retrying, gpointer user_data)
+static void
+remote_viewer_authenticate(VirtViewerApp *app, OvirtProxy *proxy, gchar *user)
 {
     gchar *username = NULL;
     gchar *password = NULL;
@@ -322,16 +322,14 @@ authenticate_cb(RestProxy *proxy, RestProxyAuth *rstauth,
     gboolean kiosk = FALSE;
     VirtViewerAuth *auth;
 
-    g_object_get(proxy,
-                 "username", &username,
-                 NULL);
+    g_object_get(app, "kiosk", &kiosk, NULL);
 
-    g_object_get(G_OBJECT(user_data), "kiosk", &kiosk, NULL);
-
-    if (username == NULL || *username == '\0')
+    if (user == NULL || *user == '\0')
         username = g_strdup(g_get_user_name());
+    else
+        username = g_strdup(user);
 
-    window = virt_viewer_app_get_main_window(VIRT_VIEWER_APP(user_data));
+    window = virt_viewer_app_get_main_window(app);
     auth = virt_viewer_auth_new(virt_viewer_window_get_window(window));
     do {
 
@@ -346,14 +344,11 @@ authenticate_cb(RestProxy *proxy, RestProxyAuth *rstauth,
                      "username", username,
                      "password", password,
                      NULL);
-    } else {
-        rest_proxy_auth_cancel(rstauth);
     }
 
     gtk_widget_destroy(GTK_WIDGET(auth));
     g_free(username);
     g_free(password);
-    return success;
 }
 
 static void
@@ -439,12 +434,8 @@ create_ovirt_session(VirtViewerApp *app, const char *uri, GError **err)
     }
 
     proxy = ovirt_proxy_new(rest_uri);
-    g_object_set(proxy,
-                 "username", username,
-                 NULL);
+    remote_viewer_authenticate(app, proxy, username);
     ovirt_set_proxy_options(proxy);
-    g_signal_connect(G_OBJECT(proxy), "authenticate",
-                     G_CALLBACK(authenticate_cb), app);
 
     api = ovirt_proxy_fetch_api(proxy, &error);
     if (error != NULL) {

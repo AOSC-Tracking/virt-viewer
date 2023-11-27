@@ -38,8 +38,7 @@ libvirt_glib_min_version='>=0.1.8'
 gtk_vnc_min_version='>=0.4.0'
 spice_gtk_min_version='>=0.35'
 spice_protocol_min_version='>=0.12.7'
-govirt_min_version='>=0.3.7'
-rest_min_version='>=0.8'
+govirt_min_version='>=0.3.9'
 vte_min_version='>=0.46.0'
 bash_completion_version='2.0'
 
@@ -437,19 +436,7 @@ if spice_gtk_dep.found()
 endif
 
 govirt_dep = dependency('govirt-1.0', version: govirt_min_version, required: get_option('ovirt'))
-rest_dep = dependency('rest-0.7', version: rest_min_version, required: get_option('ovirt'))
-if get_option('ovirt').auto()
-  if govirt_dep.found() and not rest_dep.found()
-    govirt_dep = dependency('', required: false)
-  endif
-  if not govirt_dep.found() and rest_dep.found()
-    rest_dep = dependency('', required: false)
-  endif
-endif
 if govirt_dep.found()
-  if cc.has_function('ovirt_storage_domain_get_disks', dependencies: govirt_dep)
-    conf_data.set('HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS', '1')
-  endif
   conf_data.set('HAVE_OVIRT', '1')
 endif
 
