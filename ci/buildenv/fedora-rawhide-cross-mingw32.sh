@@ -8,7 +8,7 @@ function install_buildenv() {
     dnf update -y --nogpgcheck fedora-gpg-keys
     dnf distro-sync -y
     dnf install -y \
-        bash-completion \
+        bash-completion-devel \
         ca-certificates \
         ccache \
         cppi \
@@ -29,6 +29,7 @@ function install_buildenv() {
         mingw32-gstreamer1-plugins-bad-free \
         mingw32-gstreamer1-plugins-good \
         mingw32-gtk3 \
+        mingw32-headers \
         mingw32-libgovirt \
         mingw32-libvirt \
         mingw32-libxml2 \

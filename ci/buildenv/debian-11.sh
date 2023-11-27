@@ -16,6 +16,7 @@ function install_buildenv() {
             gettext \
             git \
             icoutils \
+            libc6-dev \
             libglib2.0-dev \
             libgovirt-dev \
             libgtk-3-dev \
@@ -31,18 +32,15 @@ function install_buildenv() {
             libxml2-utils \
             locales \
             make \
+            meson \
             ninja-build \
-            pkgconf \
-            python3-pip \
-            python3-setuptools \
-            python3-wheel
+            pkgconf
     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen
     dpkg-reconfigure locales
     dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt
     mkdir -p /usr/libexec/ccache-wrappers
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/cc
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
-    /usr/bin/pip3 install meson==0.56.0
 }
 
 export CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"

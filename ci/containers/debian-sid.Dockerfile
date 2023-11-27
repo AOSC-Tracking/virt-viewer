@@ -18,6 +18,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
                       gettext \
                       git \
                       icoutils \
+                      libc6-dev \
                       libglib2.0-dev \
                       libgovirt-dev \
                       libgtk-3-dev \

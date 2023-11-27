@@ -13,6 +13,8 @@ stages:
   export PKG_CONFIG_PATH="$LIBDIR/pkgconfig"
 
 .native_build_job:
+  extends:
+    - .gitlab_native_build_job
   script:
     - *script_variables
     - meson build
@@ -22,17 +24,9 @@ stages:
         rpmbuild --nodeps -ta build/meson-dist/virt-viewer-*.tar.xz;
       fi
 
-.native_build_job_prebuilt_env:
-  extends:
-    - .native_build_job
-    - .gitlab_native_build_job_prebuilt_env
-
-.native_build_job_local_env:
-  extends:
-    - .native_build_job
-    - .gitlab_native_build_job_local_env
-
 .native_git_build_job:
+  extends:
+    - .gitlab_native_build_job
   script:
     - *script_variables
     - pushd "$PWD"
@@ -59,18 +53,9 @@ stages:
         rpmbuild --nodeps -ta build/meson-dist/virt-viewer-*.tar.xz;
       fi
 
-.native_git_build_job_prebuilt_env:
-  extends:
-    - .native_git_build_job
-    - .gitlab_native_build_job_prebuilt_env
-
-.native_git_build_job_local_env:
-  extends:
-    - .native_git_build_job
-    - .gitlab_native_build_job_local_env
-
 .cross_build_job:
-  image: $CI_REGISTRY_IMAGE/ci-$NAME:latest
+  extends:
+    - .gitlab_cross_build_job
   cache:
     paths:
       - ccache/
@@ -80,39 +65,19 @@ stages:
     - meson build $MESON_OPTS
     - $NINJA -C build
 
-.cross_build_job_prebuilt_env:
-  extends:
-    - .cross_build_job
-    - .gitlab_cross_build_job_prebuilt_env
-
-.cross_build_job_local_env:
-  extends:
-    - .cross_build_job
-    - .gitlab_cross_build_job_local_env
-
 include: '/ci/gitlab.yml'
 
 .codestyle_job:
+  extends:
+    - .gitlab_native_build_job
+  needs:
+    - job: x86_64-centos-stream-8-container
+      optional: true
   stage: sanity_checks
   script:
     - *script_variables
     - meson build || (cat build/meson-logs/meson-log.txt && exit 1)
     - meson test -C build --suite syntax-check --no-rebuild || (cat build/meson-logs/testlog.txt && exit 1)
-
-codestyle_prebuilt_env:
-  extends:
-    - .codestyle_job
-    - .gitlab_native_build_job_prebuilt_env
-  needs:
-    - job: x86_64-centos-stream-8-container
-      optional: true
   variables:
-    NAME: centos-stream-8
-
-codestyle_local_env:
-  extends:
-    - .codestyle_job
-    - .gitlab_native_build_job_local_env
-  variables:
-    IMAGE: quay.io/centos/centos:stream8
+    TARGET_BASE_IMAGE: quay.io/centos/centos:stream8
     NAME: centos-stream-8
