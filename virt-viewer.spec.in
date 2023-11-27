@@ -4,7 +4,12 @@
 %global with_govirt 0
 %global with_spice 0
 %else
+# Disabled due to incompatible govirt/librest
+%if 0%{?fedora} >= 37
+%global with_govirt 0
+%else
 %global with_govirt 1
+%endif
 %global with_spice 1
 %endif
 

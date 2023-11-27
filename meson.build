@@ -39,6 +39,7 @@ gtk_vnc_min_version='>=0.4.0'
 spice_gtk_min_version='>=0.35'
 spice_protocol_min_version='>=0.12.7'
 govirt_min_version='>=0.3.7'
+govirt_max_version='>=0.3.9'
 rest_min_version='>=0.8'
 vte_min_version='>=0.46.0'
 bash_completion_version='2.0'
@@ -444,6 +445,16 @@ if get_option('ovirt').auto()
   endif
   if not govirt_dep.found() and rest_dep.found()
     rest_dep = dependency('', required: false)
+  endif
+endif
+if govirt_dep.found()
+  new_govirt_dep = dependency('govirt-1.0', version: govirt_max_version, required: false)
+  if new_govirt_dep.found()
+    if get_option('ovirt').auto()
+      govirt_dep = dependency('', required: false)
+    else
+      error('libgovirt >= 0.3.9 (with librest-1.0) not supported')
+    endif
   endif
 endif
 if govirt_dep.found()
