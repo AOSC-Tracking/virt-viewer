@@ -53,6 +53,7 @@ RUN dnf distro-sync -y && \
         libcurl-devel \
         libgcrypt-devel \
         libiscsi-devel \
+        libnbd-devel \
         libnl3-devel \
         libpcap-devel \
         libpciaccess-devel \
@@ -84,7 +85,6 @@ RUN dnf distro-sync -y && \
         python3-flake8 \
         qemu-img \
         readline-devel \
-        rpcgen \
         rpm-build \
         sanlock-devel \
         scrub \

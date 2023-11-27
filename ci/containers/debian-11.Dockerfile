@@ -4,7 +4,7 @@
 #
 # https://gitlab.com/libvirt/libvirt-ci
 
-FROM docker.io/library/debian:10-slim
+FROM docker.io/library/debian:11-slim
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
@@ -33,11 +33,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
                       libxml2-utils \
                       locales \
                       make \
+                      meson \
                       ninja-build \
-                      pkgconf \
-                      python3-pip \
-                      python3-setuptools \
-                      python3-wheel && \
+                      pkgconf && \
     eatmydata apt-get autoremove -y && \
     eatmydata apt-get autoclean -y && \
     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
@@ -46,8 +44,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     mkdir -p /usr/libexec/ccache-wrappers && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/cc && \
     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
-
-RUN /usr/bin/pip3 install meson==0.56.0
 
 ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
 ENV LANG "en_US.UTF-8"
