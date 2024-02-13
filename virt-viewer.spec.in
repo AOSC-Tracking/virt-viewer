@@ -84,8 +84,8 @@ the display, and libvirt for looking up VNC/SPICE server details.
 %{_bindir}/%{name}
 %{_bindir}/remote-viewer
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/applications/remote-viewer.desktop
-%{_datadir}/metainfo/remote-viewer.appdata.xml
+%{_datadir}/applications/org.virt-manager.virt-viewer.desktop
+%{_datadir}/metainfo/org.virt-manager.virt-viewer.appdata.xml
 %{_datadir}/mime/packages/virt-viewer-mime.xml
 %{_mandir}/man1/virt-viewer.1*
 %{_mandir}/man1/remote-viewer.1*

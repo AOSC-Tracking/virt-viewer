@@ -1,5 +1,5 @@
-data/remote-viewer.appdata.xml.in
-data/remote-viewer.desktop.in
+data/org.virt-manager.virt-viewer.appdata.xml.in
+data/org.virt-manager.virt-viewer.desktop.in
 data/virt-viewer-mime.xml.in
 src/glib-compat.c
 src/ovirt-foreign-menu.c

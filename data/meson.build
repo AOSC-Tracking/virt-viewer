@@ -1,5 +1,5 @@
 if host_machine.system() != 'windows'
-  desktop = 'remote-viewer.desktop'
+  desktop = 'org.virt-manager.virt-viewer.desktop'
 
   i18n.merge_file (
     type: 'desktop',
@@ -22,7 +22,7 @@ if host_machine.system() != 'windows'
     install_dir: join_paths(datadir, 'mime', 'packages')
   )
 
-  metainfo = 'remote-viewer.appdata.xml'
+  metainfo = 'org.virt-manager.virt-viewer.appdata.xml'
 
   i18n.merge_file (
     type: 'xml',

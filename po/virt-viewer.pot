@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-26 11:36+0200\n"
+"POT-Creation-Date: 2024-02-13 15:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgstr ""
 msgid "About Virt-Viewer"
 msgstr ""
 
-#: data/remote-viewer.desktop.in:4
+#: data/org.virt-manager.virt-viewer.desktop.in:4
 msgid "Access remote desktops"
 msgstr ""
 
@@ -477,12 +477,12 @@ msgid ""
 "Remap keys format key=keymod+key e.g. F1=SHIFT+CTRL+F1,1=SHIFT+F1,ALT_L=Void"
 msgstr ""
 
-#: data/remote-viewer.appdata.xml.in:6 data/remote-viewer.desktop.in:3
-#: src/remote-viewer-main.c:39
+#: data/org.virt-manager.virt-viewer.appdata.xml.in:6
+#: data/org.virt-manager.virt-viewer.desktop.in:3 src/remote-viewer-main.c:39
 msgid "Remote Viewer"
 msgstr ""
 
-#: data/remote-viewer.appdata.xml.in:9
+#: data/org.virt-manager.virt-viewer.appdata.xml.in:9
 msgid ""
 "Remote Viewer provides a graphical viewer for the guest OS display. At this "
 "time it supports guest OS using the VNC or SPICE protocols. Further "
@@ -495,7 +495,7 @@ msgstr ""
 msgid "Remote viewer client"
 msgstr ""
 
-#: data/remote-viewer.appdata.xml.in:7
+#: data/org.virt-manager.virt-viewer.appdata.xml.in:7
 msgid "Remotely access virtual machines"
 msgstr ""
 
