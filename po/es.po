@@ -17,21 +17,22 @@
 # Eduard Lucena <eduardlucena@gmail.com>, 2021.
 # Eduardo Lima <elima@redhat.com>, 2022.
 # Emilio Herrera <ehespinosa57@gmail.com>, 2023.
+# Alejandro Lizama <alejandro.lizama@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: virt-viewer 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-26 11:36+0200\n"
-"PO-Revision-Date: 2023-08-06 14:21+0000\n"
-"Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
-"Language-Team: Spanish <https://translate.fedoraproject.org/projects/virt-"
-"viewer/virt-viewer/es/>\n"
+"PO-Revision-Date: 2023-11-30 13:51+0000\n"
+"Last-Translator: Alejandro Lizama <alejandro.lizama@gmail.com>\n"
+"Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
+"virt-viewer/virt-viewer/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.2\n"
+"X-Generator: Weblate 5.2.1\n"
 
 #, c-format
 msgid ""
@@ -226,7 +227,7 @@ msgstr ""
 "Copyright (C) 2007-2020 Red Hat, Inc."
 
 msgid "Couldn't open oVirt session: "
-msgstr "No se pudo abrir la sesión oVirt"
+msgstr "No se pudo abrir la sesión oVirt: "
 
 #, c-format
 msgid "Creating UNIX socket failed: %s"
@@ -234,17 +235,17 @@ msgstr "Falló la creación del socket UNIX: %s"
 
 #, c-format
 msgid "Current: %s"
-msgstr ""
+msgstr "Actual: %s"
 
 msgid "Cursor display mode: 'local' or 'auto'"
-msgstr ""
+msgstr "Modo de visualización del cursor: 'local' o 'auto'"
 
 msgid "Customise hotkeys"
-msgstr "Personalizar teclas calientes"
+msgstr "Personalizar teclas de acceso rápido"
 
 msgctxt "shortcut window"
 msgid "Devices"
-msgstr ""
+msgstr "Dispositivos"
 
 msgid "Direct connection with no automatic tunnels"
 msgstr "Conexión directa sin túneles automáticos"
@@ -278,7 +279,7 @@ msgid "Failed to change CD"
 msgstr "No se pudo cambiar el CD"
 
 msgid "Failed to connect: "
-msgstr "Falló al conectarse a:"
+msgstr "Error al conectarse: "
 
 msgid "Failed to initiate connection"
 msgstr "No se pudo inicializar la conexión"
@@ -300,7 +301,7 @@ msgstr "Por ejemplo, spice://foo.example.org:5900"
 
 msgctxt "shortcut window"
 msgid "Fullscreen"
-msgstr ""
+msgstr "Pantalla Completa"
 
 msgid "GUID:"
 msgstr "GUID:"
@@ -317,7 +318,7 @@ msgstr "Dominio de huéspedes se ha apagado"
 
 msgctxt "shortcut window"
 msgid "Guest input devices"
-msgstr ""
+msgstr "Dipositivos de entrada de invitado"
 
 #, c-format
 msgid "Invalid file %s: "
@@ -337,10 +338,10 @@ msgid "Loading..."
 msgstr "Cargando..."
 
 msgid "Machine"
-msgstr ""
+msgstr "Servidor"
 
 msgid "More actions"
-msgstr ""
+msgstr "Mas acciones"
 
 msgid "Name"
 msgstr "Nombre"
@@ -349,7 +350,7 @@ msgid "Name:"
 msgstr "Nombre:"
 
 msgid "No ISO files in domain"
-msgstr ""
+msgstr "No hay archivos ISO en el dominio"
 
 msgid "No connection was chosen"
 msgstr "No se seleccionó ninguna conexión"
@@ -369,10 +370,10 @@ msgid "Password:"
 msgstr "Contraseña:"
 
 msgid "Please add an extension to the file name"
-msgstr ""
+msgstr "Por favor, agrege una extensión al nombre del archivo"
 
 msgid "Power _down"
-msgstr ""
+msgstr "Apagado"
 
 msgid "Preferences"
 msgstr "Preferencias"
