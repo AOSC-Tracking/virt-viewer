@@ -7,7 +7,7 @@
 function install_buildenv() {
     zypper dist-upgrade -y
     zypper install -y \
-           bash-completion \
+           bash-completion-devel \
            ca-certificates \
            ccache \
            cppi \
@@ -15,6 +15,7 @@ function install_buildenv() {
            gettext-runtime \
            git \
            glib2-devel \
+           glibc-devel \
            glibc-locale \
            gtk-vnc-devel \
            gtk3-devel \

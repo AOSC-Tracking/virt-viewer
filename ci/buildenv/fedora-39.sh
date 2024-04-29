@@ -5,10 +5,9 @@
 # https://gitlab.com/libvirt/libvirt-ci
 
 function install_buildenv() {
-    dnf update -y --nogpgcheck fedora-gpg-keys
-    dnf distro-sync -y
+    dnf update -y
     dnf install -y \
-        bash-completion-devel \
+        bash-completion \
         ca-certificates \
         ccache \
         cppi \

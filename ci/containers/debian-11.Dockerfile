@@ -4,7 +4,7 @@
 #
 # https://gitlab.com/libvirt/libvirt-ci
 
-FROM docker.io/library/ubuntu:22.04
+FROM docker.io/library/debian:11-slim
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
@@ -20,6 +20,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
                       icoutils \
                       libc6-dev \
                       libglib2.0-dev \
+                      libgovirt-dev \
                       libgtk-3-dev \
                       libgtk-vnc-2.0-dev \
                       librest-dev \

@@ -5,13 +5,15 @@
 # https://gitlab.com/libvirt/libvirt-ci
 
 function install_buildenv() {
-    dnf update -y --nogpgcheck fedora-gpg-keys
-    dnf distro-sync -y
+    dnf update -y
+    dnf install 'dnf-command(config-manager)' -y
+    dnf config-manager --set-enabled -y powertools
+    dnf install -y centos-release-advanced-virtualization
+    dnf install -y epel-release
     dnf install -y \
-        bash-completion-devel \
+        bash-completion \
         ca-certificates \
         ccache \
-        cppi \
         gcc \
         gettext \
         git \
@@ -21,7 +23,6 @@ function install_buildenv() {
         gtk-vnc2-devel \
         gtk3-devel \
         icoutils \
-        libgovirt-devel \
         libtool \
         libvirt-devel \
         libvirt-gobject-devel \
@@ -31,7 +32,6 @@ function install_buildenv() {
         meson \
         ninja-build \
         pkgconfig \
-        rest-devel \
         rpm-build \
         spice-gtk3-devel \
         vte291-devel

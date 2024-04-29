@@ -16,6 +16,7 @@ function install_buildenv() {
             gettext \
             git \
             icoutils \
+            libc6-dev \
             libglib2.0-dev \
             libgtk-3-dev \
             libgtk-vnc-2.0-dev \

@@ -8,18 +8,18 @@ FROM registry.fedoraproject.org/fedora:rawhide
 
 RUN dnf update -y --nogpgcheck fedora-gpg-keys && \
     dnf install -y nosync && \
-    echo -e '#!/bin/sh\n\
+    printf '#!/bin/sh\n\
 if test -d /usr/lib64\n\
 then\n\
     export LD_PRELOAD=/usr/lib64/nosync/nosync.so\n\
 else\n\
     export LD_PRELOAD=/usr/lib/nosync/nosync.so\n\
 fi\n\
-exec "$@"' > /usr/bin/nosync && \
+exec "$@"\n' > /usr/bin/nosync && \
     chmod +x /usr/bin/nosync && \
     nosync dnf distro-sync -y && \
     nosync dnf install -y \
-               bash-completion \
+               bash-completion-devel \
                ca-certificates \
                ccache \
                cppi \
@@ -48,6 +48,7 @@ RUN nosync dnf install -y \
                mingw64-gstreamer1-plugins-bad-free \
                mingw64-gstreamer1-plugins-good \
                mingw64-gtk3 \
+               mingw64-headers \
                mingw64-libgovirt \
                mingw64-libvirt \
                mingw64-libxml2 \
