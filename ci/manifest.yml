@@ -1,8 +1,8 @@
 projects:
   - virt-viewer
-  - libvirt+dist
-  - libvirt-glib+dist
-  - gtk-vnc+dist
+  - https://gitlab.com/libvirt/libvirt/-/raw/master/ci/lcitool/projects/libvirt+dist.yml
+  - https://gitlab.com/libvirt/libvirt-glib/-/raw/master/ci/lcitool/projects/libvirt-glib+dist.yml
+  - https://gitlab.gnome.org/GNOME/gtk-vnc/-/raw/master/ci/lcitool/projects/gtk-vnc+dist.yml
 
 gitlab:
   namespace: virt-viewer
@@ -12,9 +12,9 @@ targets:
   centos-stream-8:
     projects:
       - virt-viewer
-      - libvirt
-      - libvirt-glib
-      - gtk-vnc
+      - https://gitlab.com/libvirt/libvirt/-/raw/master/ci/lcitool/projects/libvirt.yml
+      - https://gitlab.com/libvirt/libvirt-glib/-/raw/master/ci/lcitool/projects/libvirt-glib.yml
+      - https://gitlab.gnome.org/GNOME/gtk-vnc/-/raw/master/ci/lcitool/projects/gtk-vnc.yml
 
     jobs:
       - arch: x86_64
