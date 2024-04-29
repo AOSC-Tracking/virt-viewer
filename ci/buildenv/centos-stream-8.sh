@@ -52,6 +52,7 @@ function install_buildenv() {
         libcurl-devel \
         libgcrypt-devel \
         libiscsi-devel \
+        libnbd-devel \
         libnl3-devel \
         libpcap-devel \
         libpciaccess-devel \
@@ -83,7 +84,6 @@ function install_buildenv() {
         python3-flake8 \
         qemu-img \
         readline-devel \
-        rpcgen \
         rpm-build \
         sanlock-devel \
         scrub \
