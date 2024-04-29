@@ -10,6 +10,7 @@ packages:
   - gstreamer-plugins-good
   - gtk3
   - icoutils
+  - libc
   - libgovirt
   - librest
   - libtool
