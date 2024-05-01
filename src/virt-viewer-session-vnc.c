@@ -28,6 +28,9 @@
 #define GLIB_DISABLE_DEPRECATION_WARNINGS
 
 #include <gvnc.h>
+#ifdef HAVE_VNC_AUDIO
+#include <gvncpulse.h>
+#endif
 
 #include "virt-viewer-auth.h"
 #include "virt-viewer-session-vnc.h"
@@ -52,6 +55,7 @@ struct _VirtViewerSessionVnc {
     VirtViewerAuth *auth;
     /* XXX we should really just have a VncConnection */
     VncDisplay *vnc;
+    VncAudio *audio;
     gboolean auth_dialog_cancelled;
     gchar *error_msg;
     gboolean power_control;
@@ -82,6 +86,9 @@ virt_viewer_session_vnc_finalize(GObject *obj)
     if (self->main_window)
         g_object_unref(self->main_window);
     g_free(self->error_msg);
+#ifdef HAVE_VNC_AUDIO
+    g_clear_object(&self->audio);
+#endif
 
     G_OBJECT_CLASS(virt_viewer_session_vnc_parent_class)->finalize(obj);
 }
@@ -210,6 +217,27 @@ static void
 virt_viewer_session_vnc_initialized(VncDisplay *vnc G_GNUC_UNUSED,
                                     VirtViewerSessionVnc *session)
 {
+#ifdef HAVE_VNC_AUDIO
+    VncAudioFormat format = {
+        VNC_AUDIO_FORMAT_RAW_S32,
+        2,
+        44100,
+    };
+    VncConnection *conn = vnc_display_get_connection(session->vnc);
+    if (!vnc_connection_set_audio_format(conn, &format)) {
+        g_debug("Failed to set audio format");
+        return;
+    }
+    if (!vnc_connection_set_audio(conn, session->audio)) {
+        g_debug("Failed to set audio backend");
+        return;
+    }
+    if (!vnc_connection_audio_enable(conn)) {
+        g_debug("Failed to enable audio");
+        return;
+    }
+    g_debug("audio enabled");
+#endif
     g_signal_emit_by_name(session, "session-initialized");
 }
 
@@ -518,6 +546,9 @@ virt_viewer_session_vnc_new(VirtViewerApp *app, GtkWindow *main_window)
     g_object_ref_sink(self->vnc);
     self->main_window = g_object_ref(main_window);
     self->auth = virt_viewer_auth_new(self->main_window);
+#ifdef HAVE_VNC_AUDIO
+    self->audio = VNC_AUDIO(vnc_audio_pulse_new());
+#endif
 
     vnc_display_set_shared_flag(self->vnc,
                                 virt_viewer_app_get_shared(app));

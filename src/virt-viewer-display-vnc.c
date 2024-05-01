@@ -119,7 +119,7 @@ virt_viewer_display_vnc_key_ungrab(VncDisplay *vnc G_GNUC_UNUSED,
 }
 
 static void
-virt_viewer_display_vnc_initialized(VncDisplay *vnc G_GNUC_UNUSED,
+virt_viewer_display_vnc_initialized(VncDisplay *vnc,
                                     VirtViewerDisplay *display)
 {
     gchar *name = NULL;
